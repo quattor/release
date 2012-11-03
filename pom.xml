@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>org.quattor.release</groupId>
+  <artifactId>release-pom</artifactId>
+  <version>12.11-SNAPSHOT<!-- do not remove comment --></version>
+  <name>Quattor Release (POM)</name>
+
+  <url>http://quattor.org</url>
+
+  <description>
+    Utilities for creating a Quattor YUM repository from maven artifacts.
+  </description>
+
+  <packaging>pom</packaging>
+
+  <licenses>
+    <license>
+      <name>Apache 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>Quattor</name>
+    <url>http://quattor.org/</url>
+  </organization>
+
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/quattor/release/issues</url>
+  </issueManagement>
+
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>https://jenkins1.ugent.be/</url>
+  </ciManagement>
+
+  <scm>
+    <connection>git@github.com:quattor/release.git</connection>
+    <developerConnection>git@github.com:quattor/release.git</developerConnection>
+  </scm>
+
+  <repositories>
+
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+        <updatePolicy>never</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>QuattorReleases</id>
+      <name>Quattor Releases</name>
+      <url>http://stratuslab-srv01.lal.in2p3.fr:8081/content/repositories/quattor-releases</url>
+      <layout>default</layout>
+    </repository>
+
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>QuattorSnapshots</id>
+      <name>Quattor Snapshots</name>
+      <url>http://stratuslab-srv01.lal.in2p3.fr:8081/content/repositories/quattor-snapshots</url>
+      <layout>default</layout>
+    </repository>
+
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>quattor.releases</id>
+      <name>Releases</name>
+      <url>http://stratuslab-srv01.lal.in2p3.fr:8081/content/repositories/quattor-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>quattor.snapshots</id>
+      <name>Snapshots</name>
+      <url>http://stratuslab-srv01.lal.in2p3.fr:8081/content/repositories/quattor-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.quattor.pan</groupId>
+      <artifactId>panc-rpm</artifactId>
+      <version>9.2</version>
+      <type>rpm</type>
+    </dependency>
+    <dependency>
+      <groupId>org.quattor.cfg.module</groupId>
+      <artifactId>accounts</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
+      <classifier>rpm</classifier>
+      <type>rpm</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.4.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.3</version>
+
+          <configuration>
+            <actTransitively>false</actTransitively>
+            <resolutionFuzziness>version</resolutionFuzziness>
+            <reResolve>false</reResolve>
+            <includeTypes>rpm,zip,tar.gz</includeTypes>
+            <excludeTransitive>true</excludeTransitive>
+          </configuration>
+
+          <executions>
+
+            <execution>
+              <id>purge-repository-copy-dependencies</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <!-- <goal>purge-local-repository</goal> -->
+                <goal>copy-dependencies</goal>
+              </goals>
+            </execution>
+
+          </executions>
+        </plugin>
+      
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.1.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.5</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>2.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.9</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+            <target>1.5</target>
+            <source>1.5</source>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.8</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.2.1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.2.1</version>
+          <executions>
+            <execution>
+              <id>create-yum-repo</id>
+              <phase>package</phase>
+              <configuration>
+                <executable>src/scripts/create-yum-repo.pl</executable>
+                <arguments>
+                  <argument>${basedir}/target/dependency</argument>
+                  <argument>${basedir}/target/yum</argument>
+                </arguments>
+              </configuration>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>2.3.2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>jdepend-maven-plugin</artifactId>
+          <version>2.0-beta-2</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>1.2</version>
+        </plugin>
+
+      </plugins>
+
+    </pluginManagement>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <configuration>
+          <allowMinorUpdates>true</allowMinorUpdates>
+          <allowSnapshots>true</allowSnapshots>
+          <generateBackupPoms>false</generateBackupPoms>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+      </plugin>
+-->
+
+    </plugins>
+
+  </build>
+
+</project>
