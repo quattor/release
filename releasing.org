@@ -1,98 +1,99 @@
-* IN TEMPLATES ncm-accounts
-* IN TEMPLATES ncm-afsclt
-* IN TEMPLATES ncm-aiiserver
-* IN TEMPLATES ncm-alternatives
-* IN TEMPLATES ncm-altlogrotate
-* IN TEMPLATES ncm-amandaserver
-* IN TEMPLATES ncm-authconfig
-* IN TEMPLATES ncm-autofs
-* IN TEMPLATES ncm-ccm
-* IN TEMPLATES ncm-cdp
-* IN TEMPLATES ncm-chkconfig
-* IN TEMPLATES ncm-cron
-* IN TEMPLATES ncm-directoryservices
-* IN TEMPLATES ncm-dirperm
-* IN TEMPLATES ncm-diskless_server
-* IN TEMPLATES ncm-download
-* IN TEMPLATES ncm-drbd
-* IN TEMPLATES ncm-etcservices
-* IN TEMPLATES ncm-filecopy
-* IN TEMPLATES ncm-filesystems
-* IN TEMPLATES ncm-fmonagent
-* IN TEMPLATES ncm-fsprobe
-* IN TEMPLATES ncm-fstab
-* IN TEMPLATES ncm-gmetad
-* IN TEMPLATES ncm-gmond
-* IN TEMPLATES ncm-gpfs
-* IN TEMPLATES ncm-grub
-* IN TEMPLATES ncm-hostsaccess
-* IN TEMPLATES ncm-hostsfile
-* IN TEMPLATES ncm-interactivelimits
-* IN TEMPLATES ncm-ipmi
-* IN TEMPLATES ncm-iptables
-* IN TEMPLATES ncm-iscsitarget
-* IN TEMPLATES ncm-krb5clt
-* IN TEMPLATES ncm-ldconf
-* IN TEMPLATES ncm-linuxha
-* IN TEMPLATES ncm-mailaliases
-* IN TEMPLATES ncm-mcx
-* IN TEMPLATES ncm-metaconfig
-* IN TEMPLATES ncm-modprobe
-* IN TEMPLATES ncm-mysql
-* IN TEMPLATES ncm-nagios
-* IN TEMPLATES ncm-named
-* IN TEMPLATES ncm-networkupstools
-* IN TEMPLATES ncm-nfs
-* IN TEMPLATES ncm-nrpe
-* IN TEMPLATES ncm-nsca
-* IN TEMPLATES ncm-nscd
-* IN TEMPLATES ncm-ntpd
-* IN TEMPLATES ncm-ofed
-* IN TEMPLATES ncm-openvpn
-* IN TEMPLATES ncm-oramonserver
-* IN TEMPLATES ncm-pacemaker
-* IN TEMPLATES ncm-pakiti
-* IN TEMPLATES ncm-pam
-* IN TEMPLATES ncm-php
-* IN TEMPLATES ncm-pine
-* IN TEMPLATES ncm-pnp4nagios
-* IN TEMPLATES ncm-portmap
-* IN TEMPLATES ncm-postfix
-* IN TEMPLATES ncm-postgresql
-* IN TEMPLATES ncm-profile
-* IN TEMPLATES ncm-pvss
-* IN TEMPLATES ncm-raidman
-* IN TEMPLATES ncm-resolver
-* IN TEMPLATES ncm-rproxy
-* IN TEMPLATES ncm-runlevel
-* IN TEMPLATES ncm-selinux
-* IN TEMPLATES ncm-sendmail
-* IN TEMPLATES ncm-serialclient
-* IN TEMPLATES ncm-shorewall
-* IN TEMPLATES ncm-slocate
-* IN TEMPLATES ncm-spma
-* IN TEMPLATES ncm-squid
-* IN TEMPLATES ncm-srvtab
-* IN TEMPLATES ncm-ssh
-* IN TEMPLATES ncm-sshkeys
-* IN TEMPLATES ncm-state
-* IN TEMPLATES ncm-sudo
-* IN TEMPLATES ncm-symlink
-* IN TEMPLATES ncm-sysconfig
-* IN TEMPLATES ncm-sysctl
-* IN TEMPLATES ncm-syslog
-* IN TEMPLATES ncm-syslogng
-* IN TEMPLATES ncm-tftpd
-* IN TEMPLATES ncm-tomcat
-* IN TEMPLATES ncm-useraccess
-* IN TEMPLATES ncm-xen
-* IN TEMPLATES ncm-zephyrclt
-* IN TEMPLATES CAF
-* IN TEMPLATES LC
-* IN TEMPLATES CCM
-* COPIED ncm-cdispd
-* COPIED ncm-ncd
-* COPIED cdp-listend
+#+SEQ_TODO: TODO BUILT COPIED IN_REPOSITORIES IN_TEMPLATES TESTED_SL6 TESTED_SL5 | DONE CANCELLED
+* IN_TEMPLATES ncm-accounts
+* IN_TEMPLATES ncm-afsclt
+* IN_TEMPLATES ncm-aiiserver
+* IN_TEMPLATES ncm-alternatives
+* IN_TEMPLATES ncm-altlogrotate
+* IN_TEMPLATES ncm-amandaserver
+* IN_TEMPLATES ncm-authconfig
+* IN_TEMPLATES ncm-autofs
+* IN_TEMPLATES ncm-ccm
+* IN_TEMPLATES ncm-cdp
+* IN_TEMPLATES ncm-chkconfig
+* IN_TEMPLATES ncm-cron
+* IN_TEMPLATES ncm-directoryservices
+* IN_TEMPLATES ncm-dirperm
+* IN_TEMPLATES ncm-diskless_server
+* IN_TEMPLATES ncm-download
+* IN_TEMPLATES ncm-drbd
+* IN_TEMPLATES ncm-etcservices
+* IN_TEMPLATES ncm-filecopy
+* IN_TEMPLATES ncm-filesystems
+* IN_TEMPLATES ncm-fmonagent
+* IN_TEMPLATES ncm-fsprobe
+* IN_TEMPLATES ncm-fstab
+* IN_TEMPLATES ncm-gmetad
+* IN_TEMPLATES ncm-gmond
+* IN_TEMPLATES ncm-gpfs
+* IN_TEMPLATES ncm-grub
+* IN_TEMPLATES ncm-hostsaccess
+* IN_TEMPLATES ncm-hostsfile
+* IN_TEMPLATES ncm-interactivelimits
+* IN_TEMPLATES ncm-ipmi
+* IN_TEMPLATES ncm-iptables
+* IN_TEMPLATES ncm-iscsitarget
+* IN_TEMPLATES ncm-krb5clt
+* IN_TEMPLATES ncm-ldconf
+* IN_TEMPLATES ncm-linuxha
+* IN_TEMPLATES ncm-mailaliases
+* IN_TEMPLATES ncm-mcx
+* IN_TEMPLATES ncm-metaconfig
+* IN_TEMPLATES ncm-modprobe
+* IN_TEMPLATES ncm-mysql
+* IN_TEMPLATES ncm-nagios
+* IN_TEMPLATES ncm-named
+* IN_TEMPLATES ncm-networkupstools
+* IN_TEMPLATES ncm-nfs
+* IN_TEMPLATES ncm-nrpe
+* IN_TEMPLATES ncm-nsca
+* IN_TEMPLATES ncm-nscd
+* IN_TEMPLATES ncm-ntpd
+* IN_TEMPLATES ncm-ofed
+* IN_TEMPLATES ncm-openvpn
+* IN_TEMPLATES ncm-oramonserver
+* IN_TEMPLATES ncm-pacemaker
+* IN_TEMPLATES ncm-pakiti
+* IN_TEMPLATES ncm-pam
+* IN_TEMPLATES ncm-php
+* IN_TEMPLATES ncm-pine
+* IN_TEMPLATES ncm-pnp4nagios
+* IN_TEMPLATES ncm-portmap
+* IN_TEMPLATES ncm-postfix
+* IN_TEMPLATES ncm-postgresql
+* IN_TEMPLATES ncm-profile
+* IN_TEMPLATES ncm-pvss
+* IN_TEMPLATES ncm-raidman
+* IN_TEMPLATES ncm-resolver
+* IN_TEMPLATES ncm-rproxy
+* IN_TEMPLATES ncm-runlevel
+* IN_TEMPLATES ncm-selinux
+* IN_TEMPLATES ncm-sendmail
+* IN_TEMPLATES ncm-serialclient
+* IN_TEMPLATES ncm-shorewall
+* IN_TEMPLATES ncm-slocate
+* IN_TEMPLATES ncm-spma
+* IN_TEMPLATES ncm-squid
+* IN_TEMPLATES ncm-srvtab
+* IN_TEMPLATES ncm-ssh
+* IN_TEMPLATES ncm-sshkeys
+* IN_TEMPLATES ncm-state
+* IN_TEMPLATES ncm-sudo
+* IN_TEMPLATES ncm-symlink
+* IN_TEMPLATES ncm-sysconfig
+* IN_TEMPLATES ncm-sysctl
+* IN_TEMPLATES ncm-syslog
+* IN_TEMPLATES ncm-syslogng
+* IN_TEMPLATES ncm-tftpd
+* IN_TEMPLATES ncm-tomcat
+* IN_TEMPLATES ncm-useraccess
+* IN_TEMPLATES ncm-xen
+* IN_TEMPLATES ncm-zephyrclt
+* IN_TEMPLATES CAF
+* COPIED LC
+* IN_TEMPLATES CCM
+* IN_TEMPLATES ncm-cdispd
+* IN_TEMPLATES ncm-ncd
+* IN_TEMPLATES cdp-listend
 
 
-* TODO AII
+* IN_REPOSITORIES AII
