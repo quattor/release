@@ -822,6 +822,14 @@
     </dependency>
 
     <dependency>
+      <groupId>org.quattor.cfg.module</groupId>
+      <artifactId>ncm-query</artifactId>
+      <version>2.0.0</version>
+      <classifier>rpm</classifier>
+      <type>rpm</type>
+    </dependency>
+
+    <dependency>
       <groupId>org.quattor.deprecated</groupId>
       <artifactId>spma</artifactId>
       <version>2.1.1</version>
