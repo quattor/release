@@ -133,7 +133,7 @@
     <dependency>
       <groupId>org.quattor.maven</groupId>
       <artifactId>blockdevices</artifactId>
-      <version>1.1.2</version>
+      <version>1.1.3</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -774,41 +774,41 @@
     </dependency>
 
     <dependency>
-      <groupId>org.quattor.cfg.module</groupId>
+      <groupId>org.quattor.client.libraries</groupId>
       <artifactId>ccm</artifactId>
-      <version>3.1.0</version>
+      <version>3.1.10</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
 
     <dependency>
-      <groupId>org.quattor.cfg.module</groupId>
+      <groupId>org.quattor.client.libraries</groupId>
       <artifactId>perl-CAF</artifactId>
-      <version>2.1.0</version>
+      <version>2.1.1</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
 
     <dependency>
-      <groupId>org.quattor.cfg.module</groupId>
+      <groupId>org.quattor.client.libraries</groupId>
       <artifactId>perl-LC</artifactId>
-      <version>1.11.0</version>
+      <version>1.11.1</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
 
     <dependency>
-      <groupId>org.quattor.cfg.module</groupId>
+      <groupId>org.quattor.daemon</groupId>
       <artifactId>ncm-cdispd</artifactId>
-      <version>2.0.0</version>
+      <version>2.0.1</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
 
     <dependency>
-      <groupId>org.quattor.cfg.module</groupId>
+      <groupId>org.quattor.daemon</groupId>
       <artifactId>cdp-listend</artifactId>
-      <version>2.0.0</version>
+      <version>2.0.1</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -816,21 +816,21 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ncm-ncd</artifactId>
-      <version>2.0.0</version>
+      <version>2.0.1</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
 
     <dependency>
-      <groupId>org.quattor.cfg.module</groupId>
+      <groupId>org.quattor.deprecated</groupId>
       <artifactId>spma</artifactId>
-      <version>2.1.0</version>
+      <version>2.1.1</version>
     </dependency>
 
     <dependency>
-      <groupId>org.quattor.cfg.module</groupId>
+      <groupId>org.quattor.deprecated</groupId>
       <artifactId>rpmt-py</artifactId>
-      <version>1.2.0</version>
+      <version>1.2.1</version>
     </dependency>
 
   </dependencies>
