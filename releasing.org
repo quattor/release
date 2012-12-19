@@ -100,3 +100,4 @@
 * DONE ncm-lib-blockdevices
 * DONE spma
 * DONE rpmt-py
+* TODO ncm-query
