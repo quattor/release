@@ -8,7 +8,7 @@
 
   <groupId>org.quattor.release</groupId>
   <artifactId>release-pom</artifactId>
-  <version>12.12-SNAPSHOT<!-- do not remove comment --></version>
+  <version>13.02-SNAPSHOT<!-- do not remove comment --></version>
   <name>Quattor Release (POM)</name>
 
   <url>http://quattor.org</url>
