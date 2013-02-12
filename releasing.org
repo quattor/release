@@ -1,4 +1,4 @@
-#+SEQ_TODO: TODO BUILT COPIED IN_REPOSITORIES IN_TEMPLATES TESTED_SL6 TESTED_SL5 | DONE CANCELLED
+#+SEQ_TODO: TODO BRANCH_CREATED BUILT COPIED IN_REPOSITORIES IN_TEMPLATES TESTED_SL6 TESTED_SL5 | DONE CANCELLED
 * DONE ncm-accounts
 * DONE ncm-afsclt
 * DONE ncm-aiiserver
@@ -32,7 +32,6 @@
 * DONE ncm-ipmi
 * DONE ncm-iptables
 * DONE ncm-iscsitarget
-* CANCELLED ncm-krb5clt
 * DONE ncm-ldconf
 * DONE ncm-linuxha
 * DONE ncm-mailaliases
@@ -88,16 +87,52 @@
 * DONE ncm-useraccess
 * DONE ncm-xen
 * DONE ncm-zephyrclt
+* DONE ncm-apel
+* DONE ncm-condorconfig
+* DONE ncm-dcache
+* DONE ncm-dpmlfc
+* DONE ncm-frontiersquid
+* DONE ncm-gacl
+* DONE ncm-gip2
+* DONE ncm-glitestartup
+* DONE ncm-globuscfg
+* DONE ncm-gold
+* DONE ncm-gridmapdir
+* DONE ncm-gsissh
+* DONE ncm-hydraserver
+* DONE ncm-lbconfig
+* DONE ncm-lcas
+* DONE ncm-lcgbdii
+* DONE ncm-lcgmonjob
+* DONE ncm-lcmaps
+* DONE ncm-maui
+* DONE ncm-mkgridmap
+* DONE ncm-moab
+* DONE ncm-myproxy
+* DONE ncm-pbsclient
+* DONE ncm-pbsknownhosts
+* DONE ncm-pbsserver
+* DONE ncm-vomrs
+* DONE ncm-vomsclient
+* DONE ncm-wlconfig
+* DONE ncm-wmsclient
+* DONE ncm-wmslb
+* DONE ncm-yaim
+* DONE ncm-yaim_usersconf
+
+
 * DONE CAF
 * DONE LC
 * DONE CCM
 * DONE ncm-cdispd
 * DONE ncm-ncd
 * DONE cdp-listend
-
-
 * DONE AII
 * DONE ncm-lib-blockdevices
-* DONE spma
-* DONE rpmt-py
-* TODO ncm-query
+* DONE ncm-query
+
+
+
+* CANCELLED ncm-krb5clt
+* CANCELLED spma
+* CANCELLED rpmt-py
