@@ -42,6 +42,7 @@
 * DONE ncm-nagios
 * DONE ncm-named
 * DONE ncm-networkupstools
+* DONE ncm-network
 * DONE ncm-nfs
 * DONE ncm-nrpe
 * DONE ncm-nsca
@@ -49,6 +50,7 @@
 * DONE ncm-ntpd
 * DONE ncm-ofed
 * DONE ncm-openvpn
+* DONE ncm-openldap
 * DONE ncm-oramonserver
 * DONE ncm-pacemaker
 * DONE ncm-pakiti
