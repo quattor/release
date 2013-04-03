@@ -143,6 +143,24 @@
       <version>13.3.0</version>
       <type>rpm</type>
     </dependency>
+
+    <dependency>
+      <groupId>org.quattor.cfg.module</groupId>
+      <artifactId>cdp</artifactId>
+      <version>13.3.0</version>
+      <classifier>rpm</classifier>
+      <type>rpm</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.quattor.cfg.module</groupId>
+      <artifactId>ccm</artifactId>
+      <version>13.3.0</version>
+      <classifier>rpm</classifier>
+      <type>rpm</type>
+    </dependency>
+
+
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>accounts</artifactId>
