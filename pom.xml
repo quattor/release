@@ -1040,6 +1040,22 @@
 
     <dependency>
       <groupId>org.quattor.daemon</groupId>
+      <artifactId>ncm-cdp</artifactId>
+      <version>13.3.0</version>
+      <classifier>rpm</classifier>
+      <type>rpm</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.quattor.daemon</groupId>
+      <artifactId>ncm-ccm</artifactId>
+      <version>13.3.0</version>
+      <classifier>rpm</classifier>
+      <type>rpm</type>
+    </dependency>
+
+    <dependency>
+      <groupId>org.quattor.daemon</groupId>
       <artifactId>cdp-listend</artifactId>
       <version>13.3.0</version>
       <classifier>rpm</classifier>
