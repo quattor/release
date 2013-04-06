@@ -1,13 +1,17 @@
 #!/bin/bash 
 
+release_dir_root=/var/www/yum-quattor
+nexus_dir=/var/lib/sonatype-work/nexus/storage/quattor-releases/
+
 usage () {
   echo ""
-  echo "Usage: $(basename $0) [--list|--force] release_number"
+  echo "Usage: $(basename $0) [--list|--force] [--release-pattern pattern] release_number"
   exit 1
 }
 
 list_release_rpms=0
 force=0
+release_pattern=''
 
 while [ -n "`echo $1 | grep '^--'`" ]
 do
@@ -18,6 +22,11 @@ do
 
   --list)
         list_release_rpms=1
+        ;;
+
+  --release-pattern)
+        shift
+        release_pattern=$1
         ;;
 
   esac
@@ -32,9 +41,12 @@ then
 fi
 
 release=$1
+release_dir=${release_dir_root}/${release}
 
-release_dir=/var/www/yum-quattor/${release}
-nexus_dir=/var/lib/sonatype-work/nexus/storage/quattor-releases/
+if [ -z "${release_pattern}" ]
+then
+  release_pattern=${release}
+fi
 
 if [ ${list_release_rpms} -eq 0 ]
 then
@@ -49,7 +61,7 @@ fi
 
 cd ${release_dir}
 
-release_rpms=$(find ${nexus_dir} -name \*${release}\*.rpm)
+release_rpms=$(find ${nexus_dir} -name "*${release_pattern}-rpm\.rpm")
 
 if [ ${list_release_rpms} -eq 1 ]
 then
