@@ -36,8 +36,11 @@ done
 
 if [ -z "$1" ]
 then
-  echo "Error: no release specified"
-  usage
+  if [ ${list_release_rpms} -eq 0 -o -z "${release_pattern}" ]
+  then
+    echo "Error: no release specified"
+    usage
+  fi
 fi
 
 release=$1
@@ -56,10 +59,9 @@ then
     exit 2
   else
     mkdir -p ${release_dir}
+    cd ${release_dir}
   fi
 fi
-
-cd ${release_dir}
 
 release_rpms=$(find ${nexus_dir} -name "*${release_pattern}-rpm\.rpm")
 
