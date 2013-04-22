@@ -29,6 +29,11 @@ do
         release_pattern=$1
         ;;
 
+  *)
+       echo "Error: unsupported option ($1)"
+       exit 1
+       ;;
+
   esac
 
   shift
