@@ -105,49 +105,49 @@
     <dependency>
       <groupId>org.quattor.maven</groupId>
       <artifactId>server</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.maven</groupId>
       <artifactId>dhcp</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.maven</groupId>
       <artifactId>ks</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.maven</groupId>
       <artifactId>pxelinux</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.maven</groupId>
       <artifactId>blockdevices</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.pan</groupId>
       <artifactId>panc-rpm</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <type>rpm</type>
     </dependency>
 
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>cdp</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -155,7 +155,7 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ccm</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -164,84 +164,84 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>accounts</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>afsclt</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>aiiserver</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>alternatives</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>altlogrotate</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>amandaserver</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>authconfig</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>autofs</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ccm</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>cdp</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>chkconfig</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>cups</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -249,14 +249,14 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>cron</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>directoryservices</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -264,14 +264,14 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>dirperm</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>diskless_server</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -279,35 +279,35 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>download</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>drbd</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>etcservices</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>filecopy</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>filesystems</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -315,7 +315,7 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>fmonagent</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -323,28 +323,28 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>fsprobe</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>fstab</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ganglia</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>gmetad</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -352,469 +352,469 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>gmond</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>gpfs</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>grub</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>hostsaccess</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>hostsfile</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>icinga</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>interactivelimits</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ipmi</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>iptables</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>iscsitarget</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ldconf</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>linuxha</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>mailaliases</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>mcx</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>metaconfig</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>modprobe</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>mysql</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>nagios</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>named</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>networkupstools</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>network</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>openldap</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>nfs</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>nrpe</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>nsca</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>nscd</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ntpd</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ofed</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>openvpn</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>oramonserver</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>pacemaker</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>pakiti</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>pam</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>php</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>pine</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>pnp4nagios</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>portmap</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>postfix</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>postgresql</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>profile</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>pvss</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>raidman</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>resolver</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>rproxy</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>runlevel</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>selinux</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>sendmail</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>serialclient</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>shorewall</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>slocate</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>spma</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>squid</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>srvtab</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ssh</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>sshkeys</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>state</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>sudo</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>symlink</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>sysconfig</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>sysctl</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>syslog</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>syslogng</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>tftpd</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>tomcat</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>useraccess</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>xen</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>zephyrclt</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -822,49 +822,49 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>apel</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>condorconfig</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>dcache</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>dpmlfc</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>frontiersquid</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>gacl</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>gip2</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -935,7 +935,7 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>libvirtd</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -1048,7 +1048,7 @@
     <dependency>
       <groupId>org.quattor.client.libraries</groupId>
       <artifactId>ccm</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -1056,7 +1056,7 @@
     <dependency>
       <groupId>org.quattor.client.libraries</groupId>
       <artifactId>perl-CAF</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -1064,7 +1064,7 @@
     <dependency>
       <groupId>org.quattor.client.libraries</groupId>
       <artifactId>perl-LC</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -1072,7 +1072,7 @@
     <dependency>
       <groupId>org.quattor.daemon</groupId>
       <artifactId>ncm-cdispd</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -1080,7 +1080,7 @@
     <dependency>
       <groupId>org.quattor.daemon</groupId>
       <artifactId>cdp-listend</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -1088,7 +1088,7 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ncm-ncd</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
@@ -1096,7 +1096,7 @@
     <dependency>
       <groupId>org.quattor.cfg.module</groupId>
       <artifactId>ncm-query</artifactId>
-      <version>13.5.0</version>
+      <version>13.6.0</version>
       <classifier>rpm</classifier>
       <type>rpm</type>
     </dependency>
