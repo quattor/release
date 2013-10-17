@@ -26,8 +26,8 @@ fi
 
 details=""
 
-gpg-agent && {
-    gpg --yes --sign $0 && {
+if gpg-agent; then
+    if gpg --yes --sign $0; then
         echo "Preparing repositories for release..."
         for r in $REPOS; do
             if [[ ! -d $r ]]; then
@@ -62,5 +62,5 @@ gpg-agent && {
             echo "RELEASE ABORTED"
             exit 2
         fi
-    }
-}
+    fi
+fi
