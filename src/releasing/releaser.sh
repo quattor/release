@@ -49,7 +49,7 @@ if gpg-agent; then
             for r in $REPOS; do
                 echo "---------------- Releasing $r ----------------"
                 cd $r
-                echo mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
+                mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
                 if [[ $? -gt 0 ]]; then
                     echo "RELEASE FAILURE"
                     exit 1
