@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query rpmt-py spma"
+REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices"
 RELEASE=""
 BUILD=""
 
@@ -49,7 +49,7 @@ if gpg-agent; then
             for r in $REPOS; do
                 echo "---------------- Releasing $r ----------------"
                 cd $r
-                echo mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
+                mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
                 if [[ $? -gt 0 ]]; then
                     echo "RELEASE FAILURE"
                     exit 1
