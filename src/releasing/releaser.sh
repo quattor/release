@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query rpmt-py spma"
+REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices"
 RELEASE=""
 BUILD=""
 
