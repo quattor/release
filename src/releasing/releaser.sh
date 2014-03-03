@@ -6,7 +6,12 @@ REPOS_BRANCH_TAG="template-library-os template-library-grid template-library-str
 RELEASE=""
 BUILD=""
 LIBRARY_CORE_DIR=$(pwd)/template-library-core
+MAXFILES=2048
 
+if [[ $(ulimit -n) -lt $MAXFILES ]]; then
+  echo "ABORT: Max open files (ulimit -n) is below $MAXFILES, releasing components will likely fail. Increase the limit and try again."
+  exit 2
+fi
 
 publish_templates() {
     type=$1
