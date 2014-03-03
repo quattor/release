@@ -91,7 +91,7 @@ if [[ -n $1 ]]; then
     RELEASE=$1
 else
     echo "ERROR: Release version not provided"
-    echo "    Based on the date, you should probably be working on $(date +%y.%m)"
+    echo "    Based on the date, you should probably be working on $(date +%-y.%-m).0"
     echo "USAGE: releaser.sh RELEASE_NUMBER [RELEASE_CANDIDATE]"
     exit 3
 fi
