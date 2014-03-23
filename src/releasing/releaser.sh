@@ -4,6 +4,22 @@ REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-
 RELEASE=""
 BUILD=""
 
+publish_templates() {
+    type=$1
+    tag=$2
+    cd configuration-modules-$1
+    git checkout $tag
+    mvn -q clean compile
+    cp -r ncm-*/target/pan/components/* ../template-library-$type
+    git checkout master
+    cd ../template-library-$type
+    git add .
+    git commit -m "Component templates for $tag"
+    git tag -m "Release $RELEASE"
+    git push
+    cd ..
+}
+
 if [[ -n $1 ]]; then
     RELEASE=$1
 else
@@ -57,6 +73,8 @@ if gpg-agent; then
                 cd ..
                 echo
             done
+            publish_templates "core" "ncm-components-$RELEASE"
+            publish_templates "grid" "configuration-modules-grid-$RELEASE"
             echo "RELEASE COMPLETED"
         else
             echo "RELEASE ABORTED"
