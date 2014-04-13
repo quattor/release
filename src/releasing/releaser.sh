@@ -43,9 +43,23 @@ publish_aii() {
     cd ..
 }
 
-push_changes() {
+tag_push_changes() {
+    tag=$1
+    release_major=$(echo $tag | sed -e 's/-.*$//')
+    release_minor=$(echo $tag | sed -e 's/^.*-//')
+    version_template=quattor/client/version.pan
     cd template-library-core
-    echo "After updating quattor/client/version.pan, don't forget to tag release as ${RELEASE}".
+
+    cat > ${version_template} <<EOF
+template quattor/client/version;
+
+variable QUATTOR_RELEASE ?= '${release_major}';
+variable QUATTOR_REPOSITORY_RELEASE ?= QUATTOR_RELEASE;
+variable QUATTOR_PACKAGES_VERSION ?= QUATTOR_REPOSITORY_RELEASE + '-${release_minor}';
+EOF
+
+    git tag -m "Release ${tag}" ${tag}
+    
     git push
 }
 
@@ -108,7 +122,7 @@ if gpg-agent; then
             # publish_templates "core" "configuration-modules-$RELEASE"
             # publish_templates "grid" "configuration-modules-$RELEASE"
             publish_aii "aii-$RELEASE"
-            push_changes
+            tag_push_changes "$RELEASE"
             echo "RELEASE COMPLETED"
         else
             echo "RELEASE ABORTED"
