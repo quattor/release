@@ -1,6 +1,7 @@
 #!/bin/bash
 
-REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices template-library-core"
+REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices \
+      template-library-core template-library-standard template-library-os template-library-grid template-library-examples"
 RELEASE=""
 BUILD=""
 LIBRARY_CORE_DIR=$(pwd)/template-library-core
@@ -62,11 +63,25 @@ EOF
     git commit -m "Update Quattor version file"
 }
 
-tag_push_changes() {
+tag_repository() {
     repo=$1
     tag=$2
     cd ${repo}
     git tag -m "Release ${tag}" ${tag}    
+    git push
+}
+
+tag_branches() {
+    repo=$1
+    version=$2
+    cd ${repo}
+    branches=$(git branches -r)
+    for branch in ${branches}
+    do
+      branch_name=$(basename ${branch)
+      tag=${branch_name}-${version}
+      git tag  -m "Release ${version} of branch ${branch_name}" ${tag} ${branch}
+    done
     git push
 }
 
@@ -135,7 +150,11 @@ if gpg-agent; then
             # publish_templates "grid" "configuration-modules-$RELEASE"
             publish_aii "aii-$RELEASE"
             update_version_file "$RELEASE"
-            tag_push_changes template-library-core "template-library-$RELEASE"
+            tag_repository template-library-core "template-library-$RELEASE"
+            tag_repository template-library-standard "template-library-$RELEASE"
+            tag_repository template-library-examples "template-library-$RELEASE"
+            tag_branches template-library-os "$RELEASE"
+            tag_branches template-library-grid "$RELEASE"
             echo "RELEASE COMPLETED"
         else
             echo "RELEASE ABORTED"
