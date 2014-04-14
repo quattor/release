@@ -10,14 +10,57 @@ publish_templates() {
     cd configuration-modules-$1
     git checkout $tag
     mvn -q clean compile
-    cp -r ncm-*/target/pan/components/* ../template-library-$type
+    library_core_dir=../template-library-core/quattor/aii
+    dest_root=${library_core_dir}/components
+    cp -r ncm-*/target/pan/components/* ${dest_root}
     git checkout master
-    cd ../template-library-$type
+    cd ${library_core_dir}
     git add .
     git commit -m "Component templates for $tag"
-    git tag -m "Release $RELEASE"
-    git push
     cd ..
+}
+
+publish_aii() {
+    tag=$1
+    cd aii
+    git checkout $tag
+    mvn -q clean compile
+    library_core_dir=../template-library-core/quattor/aii
+    dest_root=${library_core_dir}/quattor/aii
+    # It's better to do a rm before copying, in case a template has been suppressed.
+    # For aii-core, don't delete subdirectory as some are files not coming from somewhere else...
+    rm ../template-library-core/quattor/aii/*.pan
+    cp -r aii-core/target/pan/quattor/aii/* ${dest_root}
+    for aii_component in dhcp ks pxe
+    do
+      rm -Rf ${dest_root}/${aii_component}
+      cp -r aii-${aii_component}/target/pan/quattor/aii/${aii_component} ${dest_root}
+    done
+    git checkout master
+    cd ${library_core_dir}
+    git add .
+    git commit -m "AII templates for $tag"
+    cd ..
+}
+
+tag_push_changes() {
+    tag=$1
+    release_major=$(echo $tag | sed -e 's/-.*$//')
+    release_minor=$(echo $tag | sed -e 's/^.*-//')
+    version_template=quattor/client/version.pan
+    cd template-library-core
+
+    cat > ${version_template} <<EOF
+template quattor/client/version;
+
+variable QUATTOR_RELEASE ?= '${release_major}';
+variable QUATTOR_REPOSITORY_RELEASE ?= QUATTOR_RELEASE;
+variable QUATTOR_PACKAGES_VERSION ?= QUATTOR_REPOSITORY_RELEASE + '-${release_minor}';
+EOF
+
+    git tag -m "Release ${tag}" ${tag}
+    
+    git push
 }
 
 if [[ -n $1 ]]; then
@@ -75,6 +118,11 @@ if gpg-agent; then
             done
             publish_templates "core" "ncm-components-$RELEASE"
             publish_templates "grid" "configuration-modules-grid-$RELEASE"
+            # FIXME: tag should be the same for both repositories
+            # publish_templates "core" "configuration-modules-$RELEASE"
+            # publish_templates "grid" "configuration-modules-$RELEASE"
+            publish_aii "aii-$RELEASE"
+            tag_push_changes "$RELEASE"
             echo "RELEASE COMPLETED"
         else
             echo "RELEASE ABORTED"
