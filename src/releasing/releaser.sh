@@ -1,7 +1,8 @@
 #!/bin/bash
 
-REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices \
-      template-library-core template-library-standard template-library-os template-library-grid template-library-examples"
+REPOS_MVN="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices"
+REPOS_ONE_TAG="template-library-core template-library-standard template-library-examples template-library-monitoring"
+REPOS_BRANCH_TAG="template-library-os template-library-grid template-library-stratuslab"
 RELEASE=""
 BUILD=""
 LIBRARY_CORE_DIR=$(pwd)/template-library-core
@@ -67,6 +68,7 @@ tag_repository() {
     repo=$1
     tag=$2
     cd ${repo}
+    #FIXME: we may want to check that the tag doesn't exist already
     git tag -m "Release ${tag}" ${tag}    
     git push
 }
@@ -110,7 +112,7 @@ details=""
 if gpg-agent; then
     if gpg --yes --sign $0; then
         echo "Preparing repositories for release..."
-        for r in $REPOS; do
+        for r in $REPOS_MVN $REPOS_ONE_TAG $REPOS_BRANCH_TAG; do
             if [[ ! -d $r ]]; then
                 git clone -q git@github.com:quattor/$r.git
             fi
@@ -127,21 +129,16 @@ if gpg-agent; then
         echo -n "> "
         read prompt
         if [[ $prompt == "yes" ]]; then
-            for r in $REPOS; do
-                # Ignore repositories without a pom.xml file, like template-library-xxx
-                # Could be improved if necessary by defining an explicit list (of patterns) to ignore...
-                if [ -f "pom.xml" ]
-                then
-	                echo "---------------- Releasing $r ----------------"
-	                cd $r
-	                mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
-	                if [[ $? -gt 0 ]]; then
-	                    echo "RELEASE FAILURE"
-	                    exit 1
-	                fi
-	                cd ..
-	                echo
+            for r in $REPOS_MVN; do
+                echo "---------------- Releasing $r ----------------"
+                cd $r
+                mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
+                if [[ $? -gt 0 ]]; then
+                    echo "RELEASE FAILURE"
+                    exit 1
                 fi
+                cd ..
+                echo
             done
             publish_templates "core" "ncm-components-$RELEASE"
             publish_templates "grid" "configuration-modules-grid-$RELEASE"
@@ -150,11 +147,15 @@ if gpg-agent; then
             # publish_templates "grid" "configuration-modules-$RELEASE"
             publish_aii "aii-$RELEASE"
             update_version_file "$RELEASE"
-            tag_repository template-library-core "template-library-$RELEASE"
-            tag_repository template-library-standard "template-library-$RELEASE"
-            tag_repository template-library-examples "template-library-$RELEASE"
-            tag_branches template-library-os "$RELEASE"
-            tag_branches template-library-grid "$RELEASE"
+            #FIXME: ideally tag should be configurable but for now there is only template-library repos
+            for repo in $REPOS_ONE_TAG
+            do
+                tag_repository $repo "template-library-$RELEASE"
+            done
+            for repo in $REPOS_BRANCH_TAG
+            do
+                tag_branches $repo  "$RELEASE"
+            done
             echo "RELEASE COMPLETED"
         else
             echo "RELEASE ABORTED"
