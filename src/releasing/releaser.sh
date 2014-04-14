@@ -1,8 +1,10 @@
 #!/bin/bash
 
-REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices"
+REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices template-library-core"
 RELEASE=""
 BUILD=""
+LIBRARY_CORE_DIR=$(pwd)/template-library-core
+
 
 publish_templates() {
     type=$1
@@ -10,11 +12,10 @@ publish_templates() {
     cd configuration-modules-$1
     git checkout $tag
     mvn -q clean compile
-    library_core_dir=../template-library-core/quattor/aii
-    dest_root=${library_core_dir}/components
+    dest_root=${LIBRARY_CORE_DIR}/components
     cp -r ncm-*/target/pan/components/* ${dest_root}
     git checkout master
-    cd ${library_core_dir}
+    cd ${LIBRARY_CORE_DIR}
     git add .
     git commit -m "Component templates for $tag"
     cd ..
@@ -25,11 +26,10 @@ publish_aii() {
     cd aii
     git checkout $tag
     mvn -q clean compile
-    library_core_dir=../template-library-core/quattor/aii
-    dest_root=${library_core_dir}/quattor/aii
+    dest_root=${LIBRARY_CORE_DIR}/quattor/aii
     # It's better to do a rm before copying, in case a template has been suppressed.
     # For aii-core, don't delete subdirectory as some are files not coming from somewhere else...
-    rm ../template-library-core/quattor/aii/*.pan
+    rm ${dest_root}/*.pan
     cp -r aii-core/target/pan/quattor/aii/* ${dest_root}
     for aii_component in dhcp ks pxe
     do
@@ -37,18 +37,18 @@ publish_aii() {
       cp -r aii-${aii_component}/target/pan/quattor/aii/${aii_component} ${dest_root}
     done
     git checkout master
-    cd ${library_core_dir}
+    cd ${LIBRARY_CORE_DIR}
     git add .
     git commit -m "AII templates for $tag"
     cd ..
 }
 
-tag_push_changes() {
+update_version_file() {
     tag=$1
     release_major=$(echo $tag | sed -e 's/-.*$//')
     release_minor=$(echo $tag | sed -e 's/^.*-//')
     version_template=quattor/client/version.pan
-    cd template-library-core
+    cd ${LIBRARY_CORE_DIR}
 
     cat > ${version_template} <<EOF
 template quattor/client/version;
@@ -58,8 +58,15 @@ variable QUATTOR_REPOSITORY_RELEASE ?= QUATTOR_RELEASE;
 variable QUATTOR_PACKAGES_VERSION ?= QUATTOR_REPOSITORY_RELEASE + '-${release_minor}';
 EOF
 
-    git tag -m "Release ${tag}" ${tag}
-    
+    git add .
+    git commit -m "Update Quattor version file"
+}
+
+tag_push_changes() {
+    repo=$1
+    tag=$2
+    cd ${repo}
+    git tag -m "Release ${tag}" ${tag}    
     git push
 }
 
@@ -106,15 +113,20 @@ if gpg-agent; then
         read prompt
         if [[ $prompt == "yes" ]]; then
             for r in $REPOS; do
-                echo "---------------- Releasing $r ----------------"
-                cd $r
-                mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
-                if [[ $? -gt 0 ]]; then
-                    echo "RELEASE FAILURE"
-                    exit 1
+                # Ignore repositories without a pom.xml file, like template-library-xxx
+                # Could be improved if necessary by defining an explicit list (of patterns) to ignore...
+                if [ -f "pom.xml" ]
+                then
+	                echo "---------------- Releasing $r ----------------"
+	                cd $r
+	                mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
+	                if [[ $? -gt 0 ]]; then
+	                    echo "RELEASE FAILURE"
+	                    exit 1
+	                fi
+	                cd ..
+	                echo
                 fi
-                cd ..
-                echo
             done
             publish_templates "core" "ncm-components-$RELEASE"
             publish_templates "grid" "configuration-modules-grid-$RELEASE"
@@ -122,7 +134,8 @@ if gpg-agent; then
             # publish_templates "core" "configuration-modules-$RELEASE"
             # publish_templates "grid" "configuration-modules-$RELEASE"
             publish_aii "aii-$RELEASE"
-            tag_push_changes "$RELEASE"
+            update_version_file "$RELEASE"
+            tag_push_changes template-library-core "template-library-$RELEASE"
             echo "RELEASE COMPLETED"
         else
             echo "RELEASE ABORTED"
