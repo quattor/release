@@ -80,7 +80,7 @@ tag_branches() {
     branches=$(git branches -r)
     for branch in ${branches}
     do
-      branch_name=$(basename ${branch)
+      branch_name=$(basename ${branch})
       tag=${branch_name}-${version}
       git tag  -m "Release ${version} of branch ${branch_name}" ${tag} ${branch}
     done
