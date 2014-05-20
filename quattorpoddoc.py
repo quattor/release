@@ -8,6 +8,7 @@ the website on http://quattor.org.
 """
 import sys
 import os
+import fnmatch
 from vsc.utils.generaloption import simple_option
 from vsc.utils import fancylogger
 from vsc.utils.run import run_simple
@@ -77,14 +78,34 @@ def listcomponents(module_location):
     return a list of components in module_location.
     """
     components = []
+    counter = 0
     LOGGER.info("Searching for components in %s." % module_location)
     for posloc in os.listdir(module_location):
         if os.path.isdir(os.path.join(module_location, posloc)) and posloc.startswith("ncm-"):
             components.append(posloc)
             LOGGER.debug("Adding %s to component list." % posloc)
+            counter += 1
+    LOGGER.info("Found %s components." % counter)
     return components
-    
-    
+
+
+def listpods(module_location, components):
+    """
+    return an array of the pod files per component.
+    """
+    comppods = {}
+    counter = 0
+    LOGGER.info("searching for podfiles per component.")
+    for comp in components:
+        for root, dirs, files in os.walk(os.path.join(module_location, comp, "target")):
+            for fileh in files:
+                if fileh.endswith(".pod"):
+                    LOGGER.debug("%s - %s - %s" % (comp, fileh, root)) 
+                    counter += 1
+
+    LOGGER.info("Found %s pod files." % counter)
+
+
 def which(command):
     """
     Check if given command is available for the current user on this system.
@@ -116,5 +137,5 @@ if __name__ == '__main__':
         LOGGER.info("Skipping maven clean and compile.")
     checkinputandcommands(GO.options.modules_location, GO.options.output_location)
 
-    listcomponents(GO.options.modules_location)
-    
+    COMPS = listcomponents(GO.options.modules_location)
+    PODS = listpods(GO.options.modules_location, COMPS)
