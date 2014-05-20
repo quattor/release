@@ -6,7 +6,8 @@ the website on http://quattor.org.
 @author: Wouter Depypere (Ghent University)
 
 """
-
+import sys
+import os
 from vsc.utils.generaloption import simple_option
 from vsc.utils import fancylogger
 from vsc.utils.run import run_simple
@@ -48,10 +49,47 @@ def removemailadresses():
     """
     pass
 
+
+def checkinputandcommands(modloc, outputloc):
+    """
+    Check if the directories are in place.
+    Check if the required binaries are in place.
+    """
+    LOGGER.info("Checking if the given paths exist.")
+    if not os.path.exists(modloc):
+        LOGGER.error("configuration-modules-core location %s does not exist" % modloc)
+        sys.exit(1)
+    if not os.path.exists(outputloc):
+        LOGGER.error("Output location %s does not exist" % outputloc)
+        sys.exit(1)
+
+    LOGGER.info("Checking if required binaries are installed.")
+    if not which("mvn"):
+        LOGGER.error("The command mvn is not available on this system, please install maven.")
+        sys.exit(1)
+    if not which("pod2markdown"):
+        LOGGER.error("The command pod2markdown is not available on this system, please install pod2markdown.")
+        sys.exit(1)
+
+
+def which(command):
+    """
+    Check if given command is available for the current user on this system.
+    """
+    found = False
+    for direct in os.getenv("PATH").split(':'):
+        if (os.path.exists(os.path.join(direct, command))):
+            found = True
+
+    return found
+
+
 if __name__ == '__main__':
     OPTIONS = {
         'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store',
                              '/home/wdpypere/workspace/configuration-modules-core', 'm'),
+        'output_location': ('The location where the output markdown files should be written to.', None, 'store',
+                            '/home/wdpypere/quattor-component-docs', 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
                           'store_true', False, 'c')
     }
@@ -63,3 +101,4 @@ if __name__ == '__main__':
         mavencleancompile(GO.options.modules_location)
     else:
         LOGGER.info("Skipping maven clean and compile.")
+    checkinputandcommands(GO.options.modules_location, GO.options.output_location)
