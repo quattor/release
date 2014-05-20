@@ -8,7 +8,6 @@ the website on http://quattor.org.
 """
 import sys
 import os
-import fnmatch
 from vsc.utils.generaloption import simple_option
 from vsc.utils import fancylogger
 from vsc.utils.run import run_simple
@@ -97,13 +96,20 @@ def listpods(module_location, components):
     counter = 0
     LOGGER.info("searching for podfiles per component.")
     for comp in components:
-        for root, dirs, files in os.walk(os.path.join(module_location, comp, "target")):
-            for fileh in files:
-                if fileh.endswith(".pod"):
-                    LOGGER.debug("%s - %s - %s" % (comp, fileh, root)) 
-                    counter += 1
+        pods = []
 
+        for root, dirs , files in os.walk(os.path.join(module_location, comp, "target")):
+            for fileh in files:
+
+                if fileh.endswith(".pod"):
+                    LOGGER.debug("%s - %s - %s" % (comp, fileh, root))
+                    counter += 1
+                    pods.append(os.path.join(root, fileh))
+
+        comppods[comp] = pods
     LOGGER.info("Found %s pod files." % counter)
+    LOGGER.debug(comppods)
+    return comppods
 
 
 def which(command):
@@ -139,3 +145,4 @@ if __name__ == '__main__':
 
     COMPS = listcomponents(GO.options.modules_location)
     PODS = listpods(GO.options.modules_location, COMPS)
+ 
