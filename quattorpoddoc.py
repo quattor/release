@@ -72,6 +72,19 @@ def checkinputandcommands(modloc, outputloc):
         sys.exit(1)
 
 
+def listcomponents(module_location):
+    """
+    return a list of components in module_location.
+    """
+    components = []
+    LOGGER.info("Searching for components in %s." % module_location)
+    for posloc in os.listdir(module_location):
+        if os.path.isdir(os.path.join(module_location, posloc)) and posloc.startswith("ncm-"):
+            components.append(posloc)
+            LOGGER.debug("Adding %s to component list." % posloc)
+    return components
+    
+    
 def which(command):
     """
     Check if given command is available for the current user on this system.
@@ -102,3 +115,6 @@ if __name__ == '__main__':
     else:
         LOGGER.info("Skipping maven clean and compile.")
     checkinputandcommands(GO.options.modules_location, GO.options.output_location)
+
+    listcomponents(GO.options.modules_location)
+    
