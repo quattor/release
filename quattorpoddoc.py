@@ -36,12 +36,23 @@ def convertpodtomarkdown(podfile, outputfile):
     pass
 
 
-def generatetoc():
+def generatetoc(pods):
     """
     Generates a TOC for the parsed components.
     """
-    pass
+    LOGGER.info("Generating TOC.")
+    
+    content = "\n # COMPONENTS \n"
+    
+    for component in sorted(pods):
+        if len(pods[component]) == 1 :
+            content = "%s * %s \n" % (content, component)
+        else:
+            content = "%s * %s \n" %  (content, component)
+            for pod in pods[component]:
+                content =   "%s    * %s \n" %  (content, os.path.splitext(os.path.basename(pod))[0])
 
+    print content
 
 def removemailadresses():
     """
@@ -145,4 +156,5 @@ if __name__ == '__main__':
 
     COMPS = listcomponents(GO.options.modules_location)
     PODS = listpods(GO.options.modules_location, COMPS)
- 
+    
+    generatetoc(PODS)
