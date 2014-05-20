@@ -42,7 +42,7 @@ def generatetoc(pods):
     """
     LOGGER.info("Generating TOC.")
     
-    content = "\n # COMPONENTS \n"
+    content = "\n\n # COMPONENTS \n\n"
     
     for component in sorted(pods):
         if len(pods[component]) == 1 :
