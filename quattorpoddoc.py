@@ -10,9 +10,10 @@ import sys
 import os
 from vsc.utils.generaloption import simple_option
 from vsc.utils import fancylogger
-from vsc.utils.run import run_simple
+from vsc.utils.run import run_asyncloop
 
 LOGGER = fancylogger.getLogger()
+INDEXNAME = "components.md"
 
 
 def mavencleancompile(modules_location):
@@ -21,11 +22,11 @@ def mavencleancompile(modules_location):
     """
 
     LOGGER.info("Doing maven clean in %s." % modules_location)
-    output = run_simple("mvn clean", startpath=modules_location)
+    output = run_asyncloop("mvn clean", startpath=modules_location)
     LOGGER.debug(output)
 
     LOGGER.info("Doing maven compile in %s." % modules_location)
-    output = run_simple("mvn compile", startpath=modules_location)
+    output = run_asyncloop("mvn compile", startpath=modules_location)
     LOGGER.debug(output)
 
 
@@ -36,23 +37,27 @@ def convertpodtomarkdown(podfile, outputfile):
     pass
 
 
-def generatetoc(pods):
+def generatetoc(pods, outputloc):
     """
     Generates a TOC for the parsed components.
     """
-    LOGGER.info("Generating TOC.")
-    
-    content = "\n\n # COMPONENTS \n\n"
-    
-    for component in sorted(pods):
-        if len(pods[component]) == 1 :
-            content = "%s * %s \n" % (content, component)
-        else:
-            content = "%s * %s \n" %  (content, component)
-            for pod in pods[component]:
-                content =   "%s    * %s \n" %  (content, os.path.splitext(os.path.basename(pod))[0])
+    LOGGER.info("Generating TOC as %s." % os.path.join(outputloc, INDEXNAME))
 
-    print content
+    fih = open(os.path.join(outputloc, INDEXNAME), "w")
+
+    fih.write("\n\n # COMPONENTS \n\n")
+
+    for component in sorted(pods):
+        if len(pods[component]) == 1:
+            fih.write(" * %s \n" % component)
+        else:
+            fih.write(" * %s \n" % component)
+            for pod in pods[component]:
+                fih.write("    * %s \n" % os.path.splitext(os.path.basename(pod))[0])
+
+    fih.write("\n")
+    fih.close()
+
 
 def removemailadresses():
     """
@@ -61,7 +66,7 @@ def removemailadresses():
     pass
 
 
-def checkinputandcommands(modloc, outputloc):
+def checkinputandcommands(modloc, outputloc, runmaven):
     """
     Check if the directories are in place.
     Check if the required binaries are in place.
@@ -75,9 +80,10 @@ def checkinputandcommands(modloc, outputloc):
         sys.exit(1)
 
     LOGGER.info("Checking if required binaries are installed.")
-    if not which("mvn"):
-        LOGGER.error("The command mvn is not available on this system, please install maven.")
-        sys.exit(1)
+    if runmaven:
+        if not which("mvn"):
+            LOGGER.error("The command mvn is not available on this system, please install maven.")
+            sys.exit(1)
     if not which("pod2markdown"):
         LOGGER.error("The command pod2markdown is not available on this system, please install pod2markdown.")
         sys.exit(1)
@@ -109,7 +115,7 @@ def listpods(module_location, components):
     for comp in components:
         pods = []
 
-        for root, dirs , files in os.walk(os.path.join(module_location, comp, "target")):
+        for root, dirs, files in os.walk(os.path.join(module_location, comp, "target")):
             for fileh in files:
 
                 if fileh.endswith(".pod"):
@@ -147,14 +153,15 @@ if __name__ == '__main__':
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
 
+    checkinputandcommands(GO.options.modules_location, GO.options.output_location, GO.options.maven_compile)
+
     if GO.options.maven_compile:
         LOGGER.info("Doing maven clean and compile.")
         mavencleancompile(GO.options.modules_location)
     else:
         LOGGER.info("Skipping maven clean and compile.")
-    checkinputandcommands(GO.options.modules_location, GO.options.output_location)
 
     COMPS = listcomponents(GO.options.modules_location)
     PODS = listpods(GO.options.modules_location, COMPS)
-    
-    generatetoc(PODS)
+
+    generatetoc(PODS, GO.options.output_location)
