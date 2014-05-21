@@ -8,10 +8,15 @@ the website on http://quattor.org.
 """
 import sys
 import os
+import re
 from vsc.utils.generaloption import simple_option
 from vsc.utils import fancylogger
 from vsc.utils.run import run_asyncloop
 
+MAILREGEX = re.compile(("([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`"
+                        "{|}~-]+)*(@|\sat\s)(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(\.|"
+                        "\sdot\s))+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"))
+EXAMPLEMAILS = [ "example", "username", "system.admin" ]
 LOGGER = fancylogger.getLogger()
 
 
@@ -35,14 +40,16 @@ def generatemds(pods, location):
     """
     LOGGER.info("Generating md files.")
     counter = 0
+    mdfiles = []
     for component in sorted(pods):
         for pod in pods[component]:
             mdfile = "%s-%s.md" % (os.path.join(location, component), os.path.splitext(os.path.basename(pod))[0])
             convertpodtomarkdown(pod, mdfile)
-            counter +=1
-            
-    LOGGER.info("Written %s md files." % counter)
+            counter += 1
+            mdfiles.append(mdfile)
 
+    LOGGER.info("Written %s md files." % counter)
+    return mdfiles
 
 def convertpodtomarkdown(podfile, outputfile):
     """
@@ -79,11 +86,30 @@ def generatetoc(pods, outputloc, indexname):
     fih.close()
 
 
-def removemailadresses():
+def removemailadresses(mdfiles):
     """
     Removes the email addresses from the markdown files.
     """
-    pass
+    LOGGER.info("Removing emailaddresses from md files.")
+    for mdfile in mdfiles:
+        fih = open(mdfile, 'r')
+        mdcontent = fih.read().lower()
+        fih.close()
+        for email in re.findall(MAILREGEX, mdcontent):
+            LOGGER.debug(email[0])
+            replace = True
+            if email[0].startswith('//'):
+                replace = False
+            for ignoremail in EXAMPLEMAILS:
+                if ignoremail in email[0]:
+                    replace = False
+            LOGGER.debug("Will remove it.")
+            
+        if replace:
+            mdcontent = mdcontent.replace(email[0], '')
+            fih = open(mdfile, 'w')
+            fih.write(mdcontent)
+            fih.close()
 
 
 def checkinputandcommands(modloc, outputloc, runmaven):
@@ -187,6 +213,9 @@ if __name__ == '__main__':
     PODS = listpods(GO.options.modules_location, COMPS)
 
     generatetoc(PODS, GO.options.output_location, GO.options.index_name)
-    generatemds(PODS, GO.options.output_location)
+    MDS = generatemds(PODS, GO.options.output_location)
     
+    if GO.options.remove_emails:
+        removemailadresses(MDS)
+        
     LOGGER.info("Done.")
