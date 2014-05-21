@@ -170,3 +170,5 @@ if __name__ == '__main__':
     PODS = listpods(GO.options.modules_location, COMPS)
 
     generatetoc(PODS, GO.options.output_location, GO.options.index_name)
+    generatemds()
+    
