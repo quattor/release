@@ -33,11 +33,15 @@ def generatemds(pods, location):
     """
     Takes a list of components with podfiles and generates a md file for it.
     """
-    LOGGER.info("Generating md files")
+    LOGGER.info("Generating md files.")
+    counter = 0
     for component in sorted(pods):
         for pod in pods[component]:
             mdfile = "%s-%s.md" % (os.path.join(location, component), os.path.splitext(os.path.basename(pod))[0])
             convertpodtomarkdown(pod, mdfile)
+            counter +=1
+            
+    LOGGER.info("Written %s md files." % counter)
 
 
 def convertpodtomarkdown(podfile, outputfile):
@@ -165,7 +169,8 @@ if __name__ == '__main__':
                             '/home/wdpypere/quattor-component-docs', 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
                           'store_true', False, 'c'),
-        'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i')
+        'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
+        'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', False, 'r')
     }
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
@@ -183,3 +188,5 @@ if __name__ == '__main__':
 
     generatetoc(PODS, GO.options.output_location, GO.options.index_name)
     generatemds(PODS, GO.options.output_location)
+    
+    LOGGER.info("Done.")
