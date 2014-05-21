@@ -77,11 +77,13 @@ def generatetoc(pods, outputloc, indexname):
 
     for component in sorted(pods):
         if len(pods[component]) == 1:
-            fih.write(" * %s \n" % component)
+            linkname = "%s-%s.md" % (component, os.path.splitext(os.path.basename(pods[component][0]))[0])
+            fih.write(" * [%s](%s) \n" % (component, linkname))
         else:
             fih.write(" * %s \n" % component)
             for pod in pods[component]:
-                fih.write("    * %s \n" % os.path.splitext(os.path.basename(pod))[0])
+                linkname = "%s-%s.md" % (component, os.path.splitext(os.path.basename(pod))[0])
+                fih.write("    * [%s}(%s) \n" % (os.path.splitext(os.path.basename(pod))[0], linkname))
 
     fih.write("\n")
     fih.close()
@@ -98,16 +100,16 @@ def removemailadresses(mdfiles):
         mdcontent = fih.read()
         fih.close()
         for email in re.findall(MAILREGEX, mdcontent):
-            LOGGER.debug(email[0])
+            LOGGER.debug("Found %s." % email[0])
             replace = True
             if email[0].startswith('//'):
                 replace = False
             for ignoremail in EXAMPLEMAILS:
                 if ignoremail in email[0]:
                     replace = False
-            LOGGER.debug("Will remove it.")
 
         if replace:
+            LOGGER.debug("Removed it from line.")
             mdcontent = mdcontent.replace(email[0], '')
             fih = open(mdfile, 'w')
             fih.write(mdcontent)
@@ -127,12 +129,41 @@ def removewhitespace(mdfiles):
         mdcontent = fih.read()
         fih.close()
         if '\n\n\n' in mdcontent:
+            LOGGER.debug("Removing whitespace in %s." % mdfile)
             mdcontent = mdcontent.replace('\n\n\n', '\n')
             fih = open(mdfile, 'w')
             fih.write(mdcontent)
             fih.close()
             counter += 1
     LOGGER.info("Removed extra whitespace from %s files." % counter)
+
+
+def removeheaders(mdfiles):
+    """
+    Removes MAINTAINER and AUTHOR headers from md files.
+    """
+    LOGGER.info("Removing AUTHOR and MAINTAINER headers from md files.")
+    counter = 0
+    for mdfile in mdfiles:
+        fih = open(mdfile, 'r')
+        mdcontent = fih.read()
+        fih.close()
+        if '# MAINTAINER' in mdcontent:
+            LOGGER.debug("Removing # MAINTAINER in %s." % mdfile)
+            mdcontent = mdcontent.replace('# MAINTAINER', '')
+            fih = open(mdfile, 'w')
+            fih.write(mdcontent)
+            fih.close()
+            counter += 1
+        if '# AUTHOR' in mdcontent:
+            LOGGER.debug("Removing # AUTHOR in %s." % mdfile)
+            mdcontent = mdcontent.replace('# AUTHOR', '')
+            fih = open(mdfile, 'w')
+            fih.write(mdcontent)
+            fih.close()
+            counter += 1
+
+    LOGGER.info("Removed %s unused headers." % counter)
 
 
 def checkinputandcommands(modloc, outputloc, runmaven):
@@ -219,8 +250,9 @@ if __name__ == '__main__':
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
                           'store_true', False, 'c'),
         'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
-        'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', False, 'r'),
-        'remove_whitespace': ('Remove whitespace (\n\n\n\) from md files.', None, 'store_true', True, 'w')
+        'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
+        'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
+        'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R')
     }
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
@@ -241,6 +273,9 @@ if __name__ == '__main__':
 
     if GO.options.remove_emails:
         removemailadresses(MDS)
+
+    if GO.options.remove_headers:
+        removeheaders(MDS)
 
     if GO.options.remove_whitespace:
         removewhitespace(MDS)
