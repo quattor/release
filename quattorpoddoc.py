@@ -16,7 +16,7 @@ from vsc.utils.run import run_asyncloop
 MAILREGEX = re.compile(("([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`"
                         "{|}~-]+)*(@|\sat\s)(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(\.|"
                         "\sdot\s))+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"))
-EXAMPLEMAILS = [ "example", "username", "system.admin" ]
+EXAMPLEMAILS = ["example", "username", "system.admin"]
 LOGGER = fancylogger.getLogger()
 
 
@@ -50,6 +50,7 @@ def generatemds(pods, location):
 
     LOGGER.info("Written %s md files." % counter)
     return mdfiles
+
 
 def convertpodtomarkdown(podfile, outputfile):
     """
@@ -91,9 +92,10 @@ def removemailadresses(mdfiles):
     Removes the email addresses from the markdown files.
     """
     LOGGER.info("Removing emailaddresses from md files.")
+    counter = 0
     for mdfile in mdfiles:
         fih = open(mdfile, 'r')
-        mdcontent = fih.read().lower()
+        mdcontent = fih.read()
         fih.close()
         for email in re.findall(MAILREGEX, mdcontent):
             LOGGER.debug(email[0])
@@ -104,12 +106,33 @@ def removemailadresses(mdfiles):
                 if ignoremail in email[0]:
                     replace = False
             LOGGER.debug("Will remove it.")
-            
+
         if replace:
             mdcontent = mdcontent.replace(email[0], '')
             fih = open(mdfile, 'w')
             fih.write(mdcontent)
             fih.close()
+            counter += 1
+    LOGGER.info("Removed %s email addresses." % counter)
+
+
+def removewhitespace(mdfiles):
+    """
+    Removes extra whitespace (\n\n\n).
+    """
+    LOGGER.info("Removing extra whitespace from md files.")
+    counter = 0
+    for mdfile in mdfiles:
+        fih = open(mdfile, 'r')
+        mdcontent = fih.read()
+        fih.close()
+        if '\n\n\n' in mdcontent:
+            mdcontent = mdcontent.replace('\n\n\n', '\n')
+            fih = open(mdfile, 'w')
+            fih.write(mdcontent)
+            fih.close()
+            counter += 1
+    LOGGER.info("Removed extra whitespace from %s files." % counter)
 
 
 def checkinputandcommands(modloc, outputloc, runmaven):
@@ -196,7 +219,8 @@ if __name__ == '__main__':
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
                           'store_true', False, 'c'),
         'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
-        'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', False, 'r')
+        'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', False, 'r'),
+        'remove_whitespace': ('Remove whitespace (\n\n\n\) from md files.', None, 'store_true', True, 'w')
     }
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
@@ -214,8 +238,11 @@ if __name__ == '__main__':
 
     generatetoc(PODS, GO.options.output_location, GO.options.index_name)
     MDS = generatemds(PODS, GO.options.output_location)
-    
+
     if GO.options.remove_emails:
         removemailadresses(MDS)
-        
+
+    if GO.options.remove_whitespace:
+        removewhitespace(MDS)
+
     LOGGER.info("Done.")
