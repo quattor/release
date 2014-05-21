@@ -36,7 +36,7 @@ def convertpodtomarkdown(podfile, outputfile):
     LOGGER.debug("Running pod2markdown on %s." % podfile)
     output = run_asyncloop("pod2markdown %s" % podfile)
     LOGGER.debug("writing output to %s." % outputfile)
-    fih = open(outputfile)
+    fih = open(outputfile, "w")
     fih.write(output)
     fih.close()
 
