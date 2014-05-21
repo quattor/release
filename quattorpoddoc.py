@@ -100,7 +100,7 @@ def removemailadresses(mdfiles):
         mdcontent = fih.read()
         fih.close()
         for email in re.findall(MAILREGEX, mdcontent):
-            LOGGER.debug(email[0])
+            LOGGER.debug("Found %s." % email[0])
             replace = True
             if email[0].startswith('//'):
                 replace = False
@@ -109,7 +109,7 @@ def removemailadresses(mdfiles):
                     replace = False
 
         if replace:
-            LOGGER.debug("Will remove it.")
+            LOGGER.debug("Removed it from line.")
             mdcontent = mdcontent.replace(email[0], '')
             fih = open(mdfile, 'w')
             fih.write(mdcontent)
@@ -149,14 +149,14 @@ def removeheaders(mdfiles):
         mdcontent = fih.read()
         fih.close()
         if '# MAINTAINER' in mdcontent:
-            LOGGER.debug("Removing #MAINTAINER in %s." % mdfile)
+            LOGGER.debug("Removing # MAINTAINER in %s." % mdfile)
             mdcontent = mdcontent.replace('# MAINTAINER', '')
             fih = open(mdfile, 'w')
             fih.write(mdcontent)
             fih.close()
             counter += 1
         if '# AUTHOR' in mdcontent:
-            LOGGER.debug("Removing #MAINTAINER in %s." % mdfile)
+            LOGGER.debug("Removing # AUTHOR in %s." % mdfile)
             mdcontent = mdcontent.replace('# AUTHOR', '')
             fih = open(mdfile, 'w')
             fih.write(mdcontent)
