@@ -29,6 +29,17 @@ def mavencleancompile(modules_location):
     LOGGER.debug(output)
 
 
+def generatemds(pods, location):
+    """
+    Takes a list of components with podfiles and generates a md file for it.
+    """
+    LOGGER.info("Generating md files")
+    for component in sorted(pods):
+        for pod in pods[component]:
+            mdfile = "%s-%s.md" % (os.path.join(location, component), os.path.splitext(os.path.basename(pod))[0])
+            convertpodtomarkdown(pod, mdfile)
+
+
 def convertpodtomarkdown(podfile, outputfile):
     """
     Takes a podfile and converts it to a markdown with the help of pod2markdown.
@@ -36,8 +47,9 @@ def convertpodtomarkdown(podfile, outputfile):
     LOGGER.debug("Running pod2markdown on %s." % podfile)
     output = run_asyncloop("pod2markdown %s" % podfile)
     LOGGER.debug("writing output to %s." % outputfile)
+    LOGGER.debug(output)
     fih = open(outputfile, "w")
-    fih.write(output)
+    fih.write(output[1])
     fih.close()
 
 
@@ -170,5 +182,4 @@ if __name__ == '__main__':
     PODS = listpods(GO.options.modules_location, COMPS)
 
     generatetoc(PODS, GO.options.output_location, GO.options.index_name)
-    generatemds()
-    
+    generatemds(PODS, GO.options.output_location)
