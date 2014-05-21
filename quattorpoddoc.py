@@ -13,7 +13,6 @@ from vsc.utils import fancylogger
 from vsc.utils.run import run_asyncloop
 
 LOGGER = fancylogger.getLogger()
-INDEXNAME = "components.md"
 
 
 def mavencleancompile(modules_location):
@@ -34,16 +33,21 @@ def convertpodtomarkdown(podfile, outputfile):
     """
     Takes a podfile and converts it to a markdown with the help of pod2markdown.
     """
-    pass
+    LOGGER.debug("Running pod2markdown on %s." % podfile)
+    output = run_asyncloop("pod2markdown %s" % podfile)
+    LOGGER.debug("writing output to %s." % outputfile)
+    fih = open(outputfile)
+    fih.write(output)
+    fih.close()
 
 
-def generatetoc(pods, outputloc):
+def generatetoc(pods, outputloc, indexname):
     """
     Generates a TOC for the parsed components.
     """
-    LOGGER.info("Generating TOC as %s." % os.path.join(outputloc, INDEXNAME))
+    LOGGER.info("Generating TOC as %s." % os.path.join(outputloc, indexname))
 
-    fih = open(os.path.join(outputloc, INDEXNAME), "w")
+    fih = open(os.path.join(outputloc, indexname), "w")
 
     fih.write("\n\n # COMPONENTS \n\n")
 
@@ -148,7 +152,8 @@ if __name__ == '__main__':
         'output_location': ('The location where the output markdown files should be written to.', None, 'store',
                             '/home/wdpypere/quattor-component-docs', 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
-                          'store_true', False, 'c')
+                          'store_true', False, 'c'),
+        'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i')
     }
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
@@ -164,4 +169,4 @@ if __name__ == '__main__':
     COMPS = listcomponents(GO.options.modules_location)
     PODS = listpods(GO.options.modules_location, COMPS)
 
-    generatetoc(PODS, GO.options.output_location)
+    generatetoc(PODS, GO.options.output_location, GO.options.index_name)
