@@ -83,12 +83,12 @@ def generatetoc(pods, outputloc, indexname):
 
     for component in sorted(pods):
         if len(pods[component]) == 1:
-            linkname = "%s-%s.md" % (component, os.path.splitext(os.path.basename(pods[component][0]))[0])
+            linkname = "/documentation/%s-%s.html" % (component, os.path.splitext(os.path.basename(pods[component][0]))[0])
             fih.write(" * [%s](%s) \n" % (component, linkname))
         else:
             fih.write(" * %s \n" % component)
             for pod in pods[component]:
-                linkname = "%s-%s.md" % (component, os.path.splitext(os.path.basename(pod))[0])
+                linkname = "/documentation/%s-%s.html" % (component, os.path.splitext(os.path.basename(pod))[0])
                 fih.write("    * [%s](%s) \n" % (os.path.splitext(os.path.basename(pod))[0], linkname))
 
     fih.write("\n")
