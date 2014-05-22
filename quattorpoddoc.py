@@ -43,8 +43,9 @@ def generatemds(pods, location):
     mdfiles = []
     for component in sorted(pods):
         for pod in pods[component]:
-            mdfile = "%s-%s.md" % (os.path.join(location, component), os.path.splitext(os.path.basename(pod))[0])
-            convertpodtomarkdown(pod, mdfile)
+            title = os.path.splitext(os.path.basename(pod))[0]
+            mdfile = "%s-%s.md" % (os.path.join(location, component), title)
+            convertpodtomarkdown(pod, mdfile, title)
             counter += 1
             mdfiles.append(mdfile)
 
@@ -52,7 +53,7 @@ def generatemds(pods, location):
     return mdfiles
 
 
-def convertpodtomarkdown(podfile, outputfile):
+def convertpodtomarkdown(podfile, outputfile, title):
     """
     Takes a podfile and converts it to a markdown with the help of pod2markdown.
     """
@@ -61,6 +62,13 @@ def convertpodtomarkdown(podfile, outputfile):
     LOGGER.debug("writing output to %s." % outputfile)
     LOGGER.debug(output)
     fih = open(outputfile, "w")
+
+    fih.write("---\n")
+    fih.write(" layout: article\n")
+    fih.write("title: %s\n" % title)
+    fih.write("category: documentation\n")
+    fih.write("---\n")
+    
     fih.write(output[1])
     fih.close()
 
@@ -252,7 +260,7 @@ if __name__ == '__main__':
         'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store',
                              '/home/wdpypere/workspace/configuration-modules-core', 'm'),
         'output_location': ('The location where the output markdown files should be written to.', None, 'store',
-                            '/home/wdpypere/quattor-component-docs', 'o'),
+                            '/home/wdpypere/workspace/quattor.github.com/documentation', 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
                           'store_true', False, 'c'),
         'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
