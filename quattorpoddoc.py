@@ -43,8 +43,9 @@ def generatemds(pods, location):
     mdfiles = []
     for component in sorted(pods):
         for pod in pods[component]:
-            mdfile = "%s-%s.md" % (os.path.join(location, component), os.path.splitext(os.path.basename(pod))[0])
-            convertpodtomarkdown(pod, mdfile)
+            title = os.path.splitext(os.path.basename(pod))[0]
+            mdfile = "%s-%s.md" % (os.path.join(location, component), title)
+            convertpodtomarkdown(pod, mdfile, title)
             counter += 1
             mdfiles.append(mdfile)
 
@@ -52,7 +53,7 @@ def generatemds(pods, location):
     return mdfiles
 
 
-def convertpodtomarkdown(podfile, outputfile):
+def convertpodtomarkdown(podfile, outputfile, title):
     """
     Takes a podfile and converts it to a markdown with the help of pod2markdown.
     """
@@ -61,6 +62,13 @@ def convertpodtomarkdown(podfile, outputfile):
     LOGGER.debug("writing output to %s." % outputfile)
     LOGGER.debug(output)
     fih = open(outputfile, "w")
+
+    fih.write("---\n")
+    fih.write("layout: article\n")
+    fih.write("title: %s\n" % title)
+    fih.write("category: documentation\n")
+    fih.write("---\n")
+
     fih.write(output[1])
     fih.close()
 
@@ -73,17 +81,23 @@ def generatetoc(pods, outputloc, indexname):
 
     fih = open(os.path.join(outputloc, indexname), "w")
 
-    fih.write("\n\n # COMPONENTS \n\n")
+    fih.write("---\n")
+    fih.write("layout: documentation\n")
+    fih.write("category: documentation\n")
+    fih.write("title: Components\n")
+    fih.write("---\n")
+
+    fih.write("\n### Components \n\n")
 
     for component in sorted(pods):
         if len(pods[component]) == 1:
-            linkname = "%s-%s.md" % (component, os.path.splitext(os.path.basename(pods[component][0]))[0])
+            linkname = "/documentation/%s-%s.html" % (component, os.path.splitext(os.path.basename(pods[component][0]))[0])
             fih.write(" * [%s](%s) \n" % (component, linkname))
         else:
             fih.write(" * %s \n" % component)
             for pod in pods[component]:
-                linkname = "%s-%s.md" % (component, os.path.splitext(os.path.basename(pod))[0])
-                fih.write("    * [%s}(%s) \n" % (os.path.splitext(os.path.basename(pod))[0], linkname))
+                linkname = "/documentation/%s-%s.html" % (component, os.path.splitext(os.path.basename(pod))[0])
+                fih.write("    * [%s](%s) \n" % (os.path.splitext(os.path.basename(pod))[0], linkname))
 
     fih.write("\n")
     fih.close()
@@ -137,6 +151,25 @@ def removewhitespace(mdfiles):
             counter += 1
     LOGGER.info("Removed extra whitespace from %s files." % counter)
 
+
+def decreasetitlesize(mdfiles):
+    """
+    Makes titles smaller, e.g. replace "# " with "### ".
+    """
+    LOGGER.info("Downsizing titles in md files.")
+    counter = 0
+    for mdfile in mdfiles:
+        fih = open(mdfile, 'r')
+        mdcontent = fih.read()
+        fih.close()
+        if '# ' in mdcontent:
+            LOGGER.debug("Making titles smaller in %s." % mdfile)
+            mdcontent = mdcontent.replace('# ', '### ')
+            fih = open(mdfile, 'w')
+            fih.write(mdcontent)
+            fih.close()
+            counter += 1
+    LOGGER.info("Downsized titles in %s files." % counter)
 
 def removeheaders(mdfiles):
     """
@@ -246,13 +279,14 @@ if __name__ == '__main__':
         'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store',
                              '/home/wdpypere/workspace/configuration-modules-core', 'm'),
         'output_location': ('The location where the output markdown files should be written to.', None, 'store',
-                            '/home/wdpypere/quattor-component-docs', 'o'),
+                            '/home/wdpypere/workspace/quattor.github.com/documentation', 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
                           'store_true', False, 'c'),
         'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
         'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
-        'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R')
+        'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R'),
+        'small_titles': ('Decrease the title size in the md files.', None, 'store_true', True, 's')
     }
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
@@ -276,6 +310,9 @@ if __name__ == '__main__':
 
     if GO.options.remove_headers:
         removeheaders(MDS)
+
+    if GO.options.small_titles:
+        decreasetitlesize(MDS)
 
     if GO.options.remove_whitespace:
         removewhitespace(MDS)
