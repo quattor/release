@@ -311,7 +311,7 @@ if __name__ == '__main__':
     if GO.options.remove_headers:
         removeheaders(MDS)
 
-    if GO.options.smalltitles(MDS):
+    if GO.options.small_titles:
         decreasetitlesize(MDS)
 
     if GO.options.remove_whitespace:
