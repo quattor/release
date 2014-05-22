@@ -68,7 +68,7 @@ def convertpodtomarkdown(podfile, outputfile, title):
     fih.write("title: %s\n" % title)
     fih.write("category: documentation\n")
     fih.write("---\n")
-    
+
     fih.write(output[1])
     fih.close()
 
@@ -87,7 +87,7 @@ def generatetoc(pods, outputloc, indexname):
     fih.write("title: Components\n")
     fih.write("---\n")
 
-    fih.write("\n\n # COMPONENTS \n\n")
+    fih.write("\n# Components \n\n")
 
     for component in sorted(pods):
         if len(pods[component]) == 1:
@@ -151,6 +151,25 @@ def removewhitespace(mdfiles):
             counter += 1
     LOGGER.info("Removed extra whitespace from %s files." % counter)
 
+
+def decreasetitlesize(mdfiles):
+    """
+    Makes titles smaller, e.g. replace "# " with "### ".
+    """
+    LOGGER.info("Downsizing titles in md files.")
+    counter = 0
+    for mdfile in mdfiles:
+        fih = open(mdfile, 'r')
+        mdcontent = fih.read()
+        fih.close()
+        if '# ' in mdcontent:
+            LOGGER.debug("Making titles smaller in %s." % mdfile)
+            mdcontent = mdcontent.replace('# ', '### ')
+            fih = open(mdfile, 'w')
+            fih.write(mdcontent)
+            fih.close()
+            counter += 1
+    LOGGER.info("Downsized titles in %s files." % counter)
 
 def removeheaders(mdfiles):
     """
@@ -266,7 +285,8 @@ if __name__ == '__main__':
         'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
         'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
-        'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R')
+        'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R'),
+        'small_titles': ('Decrease the title size in the md files.', None, 'store_true', True, 's')
     }
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
@@ -290,6 +310,9 @@ if __name__ == '__main__':
 
     if GO.options.remove_headers:
         removeheaders(MDS)
+
+    if GO.options.smalltitles(MDS):
+        decreasetitlesize(MDS)
 
     if GO.options.remove_whitespace:
         removewhitespace(MDS)
