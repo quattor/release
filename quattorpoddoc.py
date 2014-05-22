@@ -73,6 +73,12 @@ def generatetoc(pods, outputloc, indexname):
 
     fih = open(os.path.join(outputloc, indexname), "w")
 
+    fih.write("---\n")
+    fih.write("layout: documentation\n")
+    fih.write("category: documentation\n")
+    fih.write("title: Components\n")
+    fih.write("---\n")
+
     fih.write("\n\n # COMPONENTS \n\n")
 
     for component in sorted(pods):
@@ -83,7 +89,7 @@ def generatetoc(pods, outputloc, indexname):
             fih.write(" * %s \n" % component)
             for pod in pods[component]:
                 linkname = "%s-%s.md" % (component, os.path.splitext(os.path.basename(pod))[0])
-                fih.write("    * [%s}(%s) \n" % (os.path.splitext(os.path.basename(pod))[0], linkname))
+                fih.write("    * [%s](%s) \n" % (os.path.splitext(os.path.basename(pod))[0], linkname))
 
     fih.write("\n")
     fih.close()
