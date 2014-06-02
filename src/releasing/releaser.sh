@@ -76,6 +76,7 @@ tag_repository() {
     #FIXME: we may want to check that the tag doesn't exist already
     git tag -m "Release ${tag}" ${tag}    
     git push --tags
+    cd -
 }
 
 tag_branches() {
@@ -90,6 +91,7 @@ tag_branches() {
       git tag  -m "Release ${version} of branch ${branch_name}" ${tag} ${branch}
     done
     git push --tags
+    cd -
 }
 
 if [[ -n $1 ]]; then
@@ -117,7 +119,7 @@ details=""
 if gpg-agent; then
     if gpg --yes --sign $0; then
         echo "Preparing repositories for release..."
-        mkdir src/
+        mkdir -p src/
         cd src/
         for r in $REPOS_MVN $REPOS_ONE_TAG $REPOS_BRANCH_TAG; do
             if [[ ! -d $r ]]; then
