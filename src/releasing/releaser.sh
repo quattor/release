@@ -75,21 +75,21 @@ tag_repository() {
     cd ${repo}
     #FIXME: we may want to check that the tag doesn't exist already
     git tag -m "Release ${tag}" ${tag}    
-    git push
+    git push --tags
 }
 
 tag_branches() {
     repo=$1
     version=$2
     cd ${repo}
-    branches=$(git branches -r)
+    branches=$(git branch -r)
     for branch in ${branches}
     do
       branch_name=$(basename ${branch})
       tag=${branch_name}-${version}
       git tag  -m "Release ${version} of branch ${branch_name}" ${tag} ${branch}
     done
-    git push
+    git push --tags
 }
 
 if [[ -n $1 ]]; then
