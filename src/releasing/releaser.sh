@@ -149,21 +149,21 @@ if gpg-agent; then
                 cd ..
                 echo
             done
-            publish_templates "core" "ncm-components-$RELEASE"
-            publish_templates "grid" "configuration-modules-grid-$RELEASE"
+            publish_templates "core" "ncm-components-$VERSION"
+            publish_templates "grid" "configuration-modules-grid-$VERSION"
             # FIXME: tag should be the same for both repositories
-            # publish_templates "core" "configuration-modules-$RELEASE"
-            # publish_templates "grid" "configuration-modules-$RELEASE"
-            publish_aii "aii-$RELEASE"
-            update_version_file "$RELEASE"
+            # publish_templates "core" "configuration-modules-$VERSION"
+            # publish_templates "grid" "configuration-modules-$VERSION"
+            publish_aii "aii-$VERSION"
+            update_version_file "$VERSION"
             #FIXME: ideally tag should be configurable but for now there is only template-library repos
             for repo in $REPOS_ONE_TAG
             do
-                tag_repository $repo "template-library-$RELEASE"
+                tag_repository $repo "template-library-$VERSION"
             done
             for repo in $REPOS_BRANCH_TAG
             do
-                tag_branches $repo  "$RELEASE"
+                tag_branches $repo  "$VERSION"
             done
             echo "RELEASE COMPLETED"
         else
