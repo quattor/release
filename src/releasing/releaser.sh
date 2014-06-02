@@ -94,11 +94,30 @@ tag_branches() {
     cd -
 }
 
+RELEASE_ROOT=$(dirname $(readlink -f "$0"))
+
+function echo_warning {
+  echo -e "\033[1;33mWARNING\033[0m  $1"
+}
+
+function echo_error {
+  echo -e "\033[1;31mERROR\033[0m  $1"
+}
+
+function echo_success {
+  echo -e "\033[1;32mSUCCESS\033[0m  $1"
+}
+
+function echo_info {
+  echo -e "\033[1;34mINFO\033[0m  $1"
+}
+
 if [[ -n $1 ]]; then
     RELEASE=$1
 else
-    echo "ERROR: Release version not provided"
+    echo_error "Release version not provided"
     echo "    Based on the date, you should probably be working on $(date +%-y.%-m).0"
+    echo
     echo "USAGE: releaser.sh RELEASE_NUMBER [RELEASE_CANDIDATE]"
     exit 3
 fi
@@ -106,7 +125,7 @@ fi
 if [[ -n $2 ]]; then
     BUILD=$2
 else
-    echo "WARNING: You are running a real release, please ensure you have built at least one release candidate before proceeding!"
+    echo_warning "You are running a final release, please ensure you have built at least one release candidate before proceeding!"
 fi
 
 VERSION="$RELEASE"
@@ -118,10 +137,11 @@ details=""
 
 if gpg-agent; then
     if gpg --yes --sign $0; then
-        echo "Preparing repositories for release..."
+        echo -n "Preparing repositories for release... "
+        cd $RELEASE_ROOT
+        for r in $REPOS_MVN $REPOS_ONE_TAG $REPOS_BRANCH_TAG; do
         mkdir -p src/
         cd src/
-        for r in $REPOS_MVN $REPOS_ONE_TAG $REPOS_BRANCH_TAG; do
             if [[ ! -d $r ]]; then
                 git clone -q git@github.com:quattor/$r.git
             fi
@@ -139,16 +159,17 @@ if gpg-agent; then
         read prompt
         if [[ $prompt == "yes" ]]; then
             for r in $REPOS_MVN; do
-                echo "---------------- Releasing $r ----------------"
+                echo_info "---------------- Releasing $r ----------------"
                 cd $r
                 mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
                 if [[ $? -gt 0 ]]; then
-                    echo "RELEASE FAILURE"
+                    echo_error "RELEASE FAILURE"
                     exit 1
                 fi
                 cd ..
                 echo
             done
+
             publish_templates "core" "ncm-components-$VERSION"
             publish_templates "grid" "configuration-modules-grid-$VERSION"
             # FIXME: tag should be the same for both repositories
@@ -165,9 +186,34 @@ if gpg-agent; then
             do
                 tag_branches $repo  "$VERSION"
             done
-            echo "RELEASE COMPLETED"
+
+            echo_success "---------------- Releases complete, building yum repositories ----------------"
+
+            cd $RELEASE_ROOT
+            mkdir -p target/
+
+            echo_info "Collecting RPMs"
+            mkdir -p target/$VERSION
+            find src/ -type f -name \*.rpm | grep /target/checkout/ | xargs -I @ cp @ target/$VERSION/
+
+            cd target/
+
+            echo_info "Signing RPMs"
+            rpm --resign $VERSION/*.rpm
+
+            echo_info "Creating repository"
+            createrepo $VERSION/
+
+            echo_info "Signing repository"
+            gpg --detach-sign --armor $VERSION/repodata/repomd.xml
+
+            echo_info "Creating repository tarball"
+            tar -cjf quattor-$VERSION.tar.bz2 $VERSION/
+            echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
+
+            echo_success "RELEASE COMPLETED"
         else
-            echo "RELEASE ABORTED"
+            echo_error "RELEASE ABORTED"
             exit 2
         fi
     fi
