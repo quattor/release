@@ -4,6 +4,8 @@ REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-
 RELEASE=""
 BUILD=""
 
+RELEASE_ROOT=$(dirname $(readlink -f "$0"))
+
 function echo_warning {
   echo -e "\033[1;33mWARNING\033[0m  $1"
 }
@@ -46,6 +48,7 @@ details=""
 if gpg-agent; then
     if gpg --yes --sign $0; then
         echo -n "Preparing repositories for release... "
+        cd $RELEASE_ROOT
         for r in $REPOS; do
             if [[ ! -d $r ]]; then
                 git clone -q git@github.com:quattor/$r.git
@@ -74,6 +77,30 @@ if gpg-agent; then
                 cd ..
                 echo
             done
+
+            echo_success "---------------- Releases complete, building yum repositories ----------------"
+
+            cd $RELEASE_ROOT
+            mkdir -p target/
+
+            echo_info "Collecting RPMs"
+            mkdir -p target/$VERSION
+            find src/ -type f -name \*.rpm | grep /target/checkout/ | xargs -I @ cp @ target/$VERSION/
+
+            cd target/
+
+            echo_info "Signing RPMs"
+            rpm --resign $VERSION/*.rpm
+
+            echo_info "Creating repository"
+            createrepo $VERSION/
+
+            echo_info "Signing repository"
+            gpg --detach-sign --armor $VERSION/repodata/repomd.xml
+
+            echo_info "Creating repository tarball"
+            tar -cjf quattor-$VERSION.tar.bz2 $VERSION/
+            echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
 
             echo_success "RELEASE COMPLETED"
         else
