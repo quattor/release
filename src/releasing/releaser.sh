@@ -4,11 +4,28 @@ REPOS="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-
 RELEASE=""
 BUILD=""
 
+function echo_warning {
+  echo -e "\033[1;33mWARNING\033[0m  $1"
+}
+
+function echo_error {
+  echo -e "\033[1;31mERROR\033[0m  $1"
+}
+
+function echo_success {
+  echo -e "\033[1;32mSUCCESS\033[0m  $1"
+}
+
+function echo_info {
+  echo -e "\033[1;34mINFO\033[0m  $1"
+}
+
 if [[ -n $1 ]]; then
     RELEASE=$1
 else
-    echo "ERROR: Release version not provided"
+    echo_error "Release version not provided"
     echo "    Based on the date, you should probably be working on $(date +%y.%m)"
+    echo
     echo "USAGE: releaser.sh RELEASE_NUMBER [RELEASE_CANDIDATE]"
     exit 3
 fi
@@ -16,7 +33,7 @@ fi
 if [[ -n $2 ]]; then
     BUILD=$2
 else
-    echo "WARNING: You are running a real release, please ensure you have built at least one release candidate before proceeding!"
+    echo_warning "You are running a final release, please ensure you have built at least one release candidate before proceeding!"
 fi
 
 VERSION="$RELEASE"
@@ -28,7 +45,7 @@ details=""
 
 if gpg-agent; then
     if gpg --yes --sign $0; then
-        echo "Preparing repositories for release..."
+        echo -n "Preparing repositories for release... "
         for r in $REPOS; do
             if [[ ! -d $r ]]; then
                 git clone -q git@github.com:quattor/$r.git
@@ -47,19 +64,20 @@ if gpg-agent; then
         read prompt
         if [[ $prompt == "yes" ]]; then
             for r in $REPOS; do
-                echo "---------------- Releasing $r ----------------"
+                echo_info "---------------- Releasing $r ----------------"
                 cd $r
                 mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
                 if [[ $? -gt 0 ]]; then
-                    echo "RELEASE FAILURE"
+                    echo_error "RELEASE FAILURE"
                     exit 1
                 fi
                 cd ..
                 echo
             done
-            echo "RELEASE COMPLETED"
+
+            echo_success "RELEASE COMPLETED"
         else
-            echo "RELEASE ABORTED"
+            echo_error "RELEASE ABORTED"
             exit 2
         fi
     fi
