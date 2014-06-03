@@ -140,9 +140,9 @@ if gpg-agent; then
     if gpg --yes --sign $0; then
         echo -n "Preparing repositories for release... "
         cd $RELEASE_ROOT
-        for r in $REPOS_MVN $REPOS_ONE_TAG $REPOS_BRANCH_TAG; do
         mkdir -p src/
         cd src/
+        for r in $REPOS_MVN $REPOS_ONE_TAG $REPOS_BRANCH_TAG; do
             if [[ ! -d $r ]]; then
                 git clone -q git@github.com:quattor/$r.git
             fi
