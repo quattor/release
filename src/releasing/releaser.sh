@@ -5,7 +5,7 @@ REPOS_ONE_TAG="template-library-core template-library-standard template-library-
 REPOS_BRANCH_TAG="template-library-os template-library-grid template-library-stratuslab"
 RELEASE=""
 BUILD=""
-LIBRARY_CORE_DIR=$(pwd)/template-library-core
+LIBRARY_CORE_DIR=template-library-core
 MAXFILES=2048
 
 if [[ $(ulimit -n) -lt $MAXFILES ]]; then
@@ -67,6 +67,7 @@ EOF
 
     git add .
     git commit -m "Update Quattor version file"
+    cd -
 }
 
 tag_repository() {
