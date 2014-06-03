@@ -67,6 +67,7 @@ EOF
 
     git add .
     git commit -m "Update Quattor version file"
+    git push
     cd -
 }
 
