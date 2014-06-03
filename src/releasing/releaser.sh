@@ -13,12 +13,14 @@ if [[ $(ulimit -n) -lt $MAXFILES ]]; then
   exit 2
 fi
 
+source maven-illuminate.sh
+
 publish_templates() {
     type=$1
     tag=$2
     cd configuration-modules-$1
     git checkout $tag
-    mvn -q clean compile
+    mvn-c -q clean compile
     dest_root=${LIBRARY_CORE_DIR}/components
     cp -r ncm-*/target/pan/components/* ${dest_root}
     git checkout master
@@ -32,7 +34,7 @@ publish_aii() {
     tag=$1
     cd aii
     git checkout $tag
-    mvn -q clean compile
+    mvn-c -q clean compile
     dest_root=${LIBRARY_CORE_DIR}/quattor/aii
     # It's better to do a rm before copying, in case a template has been suppressed.
     # For aii-core, don't delete subdirectory as some are files not coming from somewhere else...
@@ -163,7 +165,7 @@ if gpg-agent; then
             for r in $REPOS_MVN; do
                 echo_info "---------------- Releasing $r ----------------"
                 cd $r
-                mvn -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
+                mvn-c -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
                 if [[ $? -gt 0 ]]; then
                     echo_error "RELEASE FAILURE"
                     exit 1
