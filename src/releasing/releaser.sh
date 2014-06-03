@@ -53,9 +53,13 @@ publish_aii() {
 }
 
 update_version_file() {
-    tag=$1
-    release_major=$(echo $tag | sed -e 's/-.*$//')
-    release_minor=$(echo $tag | sed -e 's/^.*-//')
+    release_major=$1
+    if [ -z "$(echo $release_major | egrep 'rc[0-9]*$')" ]
+    then
+      release_minor="-1"
+    else
+      release_minor="_1"
+    fi
     version_template=quattor/client/version.pan
     cd ${LIBRARY_CORE_DIR}
 
@@ -68,7 +72,7 @@ variable QUATTOR_PACKAGES_VERSION ?= QUATTOR_REPOSITORY_RELEASE + '-${release_mi
 EOF
 
     git add .
-    git commit -m "Update Quattor version file"
+    git commit -m "Update Quattor version file for ${release_major}"
     git push
     cd -
 }
