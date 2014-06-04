@@ -178,24 +178,7 @@ if gpg-agent; then
                 echo
             done
 
-            publish_templates "core" "ncm-components-$VERSION"
-            publish_templates "grid" "configuration-modules-grid-$VERSION"
-            # FIXME: tag should be the same for both repositories
-            # publish_templates "core" "configuration-modules-$VERSION"
-            # publish_templates "grid" "configuration-modules-$VERSION"
-            publish_aii "aii-$VERSION"
-            update_version_file "$VERSION"
-            #FIXME: ideally tag should be configurable but for now there is only template-library repos
-            for repo in $REPOS_ONE_TAG
-            do
-                tag_repository $repo "template-library-$VERSION"
-            done
-            for repo in $REPOS_BRANCH_TAG
-            do
-                tag_branches $repo  "$VERSION"
-            done
-
-            echo_success "---------------- Releases complete, building yum repositories ----------------"
+            echo_success "---------------- Releases complete, building YUM repositories ----------------"
 
             cd $RELEASE_ROOT
             mkdir -p target/
@@ -218,6 +201,27 @@ if gpg-agent; then
             echo_info "Creating repository tarball"
             tar -cjf quattor-$VERSION.tar.bz2 $VERSION/
             echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
+
+            cd -
+
+            echo_success "---------------- YUM repositories complete, tagging git repositories ----------------"
+
+            publish_templates "core" "ncm-components-$VERSION"
+            publish_templates "grid" "configuration-modules-grid-$VERSION"
+            # FIXME: tag should be the same for both repositories
+            # publish_templates "core" "configuration-modules-$VERSION"
+            # publish_templates "grid" "configuration-modules-$VERSION"
+            publish_aii "aii-$VERSION"
+            update_version_file "$VERSION"
+            #FIXME: ideally tag should be configurable but for now there is only template-library repos
+            for repo in $REPOS_ONE_TAG
+            do
+                tag_repository $repo "template-library-$VERSION"
+            done
+            for repo in $REPOS_BRANCH_TAG
+            do
+                tag_branches $repo  "$VERSION"
+            done
 
             echo_success "RELEASE COMPLETED"
         else
