@@ -91,7 +91,7 @@ tag_branches() {
     repo=$1
     version=$2
     cd ${repo}
-    branches=$(git branch -r)
+    branches=$(git branch -r | grep -v ' -> ')
     for branch in ${branches}
     do
       branch_name=$(basename ${branch})
