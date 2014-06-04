@@ -202,9 +202,9 @@ if gpg-agent; then
             tar -cjf quattor-$VERSION.tar.bz2 $VERSION/
             echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
 
-            cd -
-
             echo_success "---------------- YUM repositories complete, tagging git repositories ----------------"
+
+            cd $RELEASE_ROOT/src
 
             publish_templates "core" "ncm-components-$VERSION"
             publish_templates "grid" "configuration-modules-grid-$VERSION"
