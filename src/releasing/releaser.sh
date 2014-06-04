@@ -13,6 +13,7 @@ if [[ $(ulimit -n) -lt $MAXFILES ]]; then
   exit 2
 fi
 
+shopt -s expand_aliases
 source maven-illuminate.sh
 
 publish_templates() {
