@@ -44,7 +44,7 @@ publish_aii() {
     # For aii-core, don't delete subdirectory as some are files not coming from somewhere else...
     rm ${dest_root}/*.pan
     cp -r aii-core/target/pan/quattor/aii/* ${dest_root}
-    for aii_component in dhcp ks pxe
+    for aii_component in dhcp ks pxelinux
     do
       rm -Rf ${dest_root}/${aii_component}
       cp -r aii-${aii_component}/target/pan/quattor/aii/${aii_component} ${dest_root}
