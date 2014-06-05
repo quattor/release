@@ -17,6 +17,7 @@ shopt -s expand_aliases
 source maven-illuminate.sh
 
 publish_templates() {
+    echo_info "Publishing Component Templates"
     type=$1
     tag=$2
     cd configuration-modules-$1
@@ -32,6 +33,7 @@ publish_templates() {
 }
 
 publish_aii() {
+    echo_info "Publishing AII Templates"
     tag=$1
     cd aii
     git checkout $tag
