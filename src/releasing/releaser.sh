@@ -5,9 +5,9 @@ REPOS_ONE_TAG="template-library-core template-library-standard template-library-
 REPOS_BRANCH_TAG="template-library-os template-library-grid template-library-stratuslab"
 RELEASE=""
 BUILD=""
-LIBRARY_CORE_DIR=template-library-core
 MAXFILES=2048
 RELEASE_ROOT=$(dirname $(readlink -f "$0"))
+LIBRARY_CORE_DIR=$RELEASE_ROOT/src/template-library-core
 
 if [[ $(ulimit -n) -lt $MAXFILES ]]; then
   echo "ABORT: Max open files (ulimit -n) is below $MAXFILES, releasing components will likely fail. Increase the limit and try again."
