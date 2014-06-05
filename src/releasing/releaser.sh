@@ -95,7 +95,8 @@ tag_branches() {
     repo=$1
     version=$2
     cd ${repo}
-    branches=$(git branch -r | grep -v ' -> ')
+    # Ignore remote HEAD symlink and branches marked as obsolete
+    branches=$(git branch -r | grep -v ' -> ' | egrep -v 'obsolete$' )
     for branch in ${branches}
     do
       branch_name=$(basename ${branch})
