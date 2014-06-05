@@ -7,6 +7,7 @@ RELEASE=""
 BUILD=""
 LIBRARY_CORE_DIR=template-library-core
 MAXFILES=2048
+RELEASE_ROOT=$(dirname $(readlink -f "$0"))
 
 if [[ $(ulimit -n) -lt $MAXFILES ]]; then
   echo "ABORT: Max open files (ulimit -n) is below $MAXFILES, releasing components will likely fail. Increase the limit and try again."
@@ -104,8 +105,6 @@ tag_branches() {
     git push origin --tags
     cd -
 }
-
-RELEASE_ROOT=$(dirname $(readlink -f "$0"))
 
 function echo_warning {
   echo -e "\033[1;33mWARNING\033[0m  $1"
