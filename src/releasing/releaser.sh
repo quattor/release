@@ -71,7 +71,7 @@ template quattor/client/version;
 
 variable QUATTOR_RELEASE ?= '${release_major}';
 variable QUATTOR_REPOSITORY_RELEASE ?= QUATTOR_RELEASE;
-variable QUATTOR_PACKAGES_VERSION ?= QUATTOR_REPOSITORY_RELEASE + '-${release_minor}';
+variable QUATTOR_PACKAGES_VERSION ?= QUATTOR_REPOSITORY_RELEASE + '${release_minor}';
 EOF
 
     git add .
