@@ -208,21 +208,21 @@ if gpg-agent; then
 
             cd $RELEASE_ROOT/src
 
-            publish_templates "core" "ncm-components-$VERSION"
-            publish_templates "grid" "configuration-modules-grid-$VERSION"
+            publish_templates "core" "ncm-components-$VERSION" && echo_success "Published Core Component Templates"
+            publish_templates "grid" "configuration-modules-grid-$VERSION" && echo_success "Published Grid Component Templates"
             # FIXME: tag should be the same for both repositories
             # publish_templates "core" "configuration-modules-$VERSION"
             # publish_templates "grid" "configuration-modules-$VERSION"
-            publish_aii "aii-$VERSION"
-            update_version_file "$VERSION"
+            publish_aii "aii-$VERSION" &&  echo_success "Published AII Templates"
+            update_version_file "$VERSION" && echo_success "Updated Quattor Version Template"
             #FIXME: ideally tag should be configurable but for now there is only template-library repos
             for repo in $REPOS_ONE_TAG
             do
-                tag_repository $repo "template-library-$VERSION"
+                tag_repository $repo "template-library-$VERSION" && echo_success "Tagged $repo"
             done
             for repo in $REPOS_BRANCH_TAG
             do
-                tag_branches $repo  "$VERSION"
+                tag_branches $repo  "$VERSION" && echo_success "Tagged branches in $repo"
             done
 
             echo_success "RELEASE COMPLETED"
