@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 """
 quattor-pod-doc generates markdown documentation from the
 pod's in configuration-modules-core and creates a index for
