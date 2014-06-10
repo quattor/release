@@ -17,6 +17,7 @@ from vsc.utils.run import run_asyncloop
 MAILREGEX = re.compile(("([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`"
                         "{|}~-]+)*(@|\sat\s)(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(\.|"
                         "\sdot\s))+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)"))
+PATHREGEX = re.compile(r'(\s+)((?:/[\w{}]+)+\.?\w*)(\s*)')
 EXAMPLEMAILS = ["example", "username", "system.admin"]
 LOGGER = fancylogger.getLogger()
 
@@ -200,6 +201,26 @@ def removeheaders(mdfiles):
     LOGGER.info("Removed %s unused headers." % counter)
 
 
+def codifypaths(mdfiles):
+    """
+    Puts paths inside code tags
+    """
+    LOGGER.info("Putting paths inside code tags.")
+    counter = 0
+    for mdfile in mdfiles:
+        fih = open(mdfile, 'r')
+        mdcontent = fih.read()
+        fih.close()
+
+        LOGGER.debug("Tagging paths in %s." % mdfile)
+        mdcontent, counter = PATHREGEX.subn(r'\1`\2`\3', mdcontent)
+        fih = open(mdfile, 'w')
+        fih.write(mdcontent)
+        fih.close()
+
+    LOGGER.info("Code tagged %s paths." % counter)
+
+
 def checkinputandcommands(modloc, outputloc, runmaven):
     """
     Check if the directories are in place.
@@ -290,7 +311,8 @@ if __name__ == '__main__':
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
         'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
         'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R'),
-        'small_titles': ('Decrease the title size in the md files.', None, 'store_true', True, 's')
+        'small_titles': ('Decrease the title size in the md files.', None, 'store_true', True, 's'),
+        'codify_paths': ('Put paths inside code tags.', None, 'store_true', True, 'p'),
     }
     GO = simple_option(OPTIONS)
     LOGGER.info("Starting main.")
@@ -320,5 +342,8 @@ if __name__ == '__main__':
 
     if GO.options.remove_whitespace:
         removewhitespace(MDS)
+
+    if GO.options.codify_paths:
+        codifypaths(MDS)
 
     LOGGER.info("Done.")
