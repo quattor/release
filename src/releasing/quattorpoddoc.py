@@ -69,6 +69,8 @@ def convertpodtomarkdown(podfile, outputfile, title):
     fih.write("layout: documentation\n")
     fih.write("title: %s\n" % title)
     fih.write("category: documentation\n")
+    fih.write("subcategory: components\n")
+    fih.write("menu: 'components.md'\n")
     fih.write("---\n")
 
     fih.write(output[1])
