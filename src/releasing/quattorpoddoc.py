@@ -206,6 +206,12 @@ def checkinputandcommands(modloc, outputloc, runmaven):
     Check if the required binaries are in place.
     """
     LOGGER.info("Checking if the given paths exist.")
+    if not modloc:
+        LOGGER.error("configuration-modules-core location not specified")
+        sys.exit(1)
+    if not outputloc:
+        LOGGER.error("output location not specified")
+        sys.exit(1)
     if not os.path.exists(modloc):
         LOGGER.error("configuration-modules-core location %s does not exist" % modloc)
         sys.exit(1)
@@ -277,12 +283,9 @@ def which(command):
 
 if __name__ == '__main__':
     OPTIONS = {
-        'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store',
-                             '/home/wdpypere/workspace/configuration-modules-core', 'm'),
-        'output_location': ('The location where the output markdown files should be written to.', None, 'store',
-                            '/home/wdpypere/workspace/quattor.github.com/documentation', 'o'),
-        'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None,
-                          'store_true', False, 'c'),
+        'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store', None, 'm'),
+        'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
+        'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
         'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
         'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
