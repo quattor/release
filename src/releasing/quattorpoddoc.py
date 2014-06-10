@@ -66,7 +66,7 @@ def convertpodtomarkdown(podfile, outputfile, title):
     fih = open(outputfile, "w")
 
     fih.write("---\n")
-    fih.write("layout: article\n")
+    fih.write("layout: documentation\n")
     fih.write("title: %s\n" % title)
     fih.write("category: documentation\n")
     fih.write("---\n")
