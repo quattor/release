@@ -45,8 +45,19 @@ def generatemds(pods, location):
     mdfiles = []
     for component in sorted(pods):
         for pod in pods[component]:
+            component = component.replace('ncm-','')
             title = os.path.splitext(os.path.basename(pod))[0]
-            mdfile = "%s-%s.md" % (os.path.join(location, component), title)
+            subdir = ''
+            if component != title:
+                subdir = title
+                title = component+' / '+title
+            path = os.path.join(location, component, subdir)
+            try:
+                os.makedirs(path)
+            except OSError as err:
+                if err.errno!=17:
+                    raise
+            mdfile = os.path.join(path, 'index.md')
             convertpodtomarkdown(pod, mdfile, title)
             counter += 1
             mdfiles.append(mdfile)
@@ -77,13 +88,15 @@ def convertpodtomarkdown(podfile, outputfile, title):
     fih.close()
 
 
-def generatetoc(pods, outputloc, indexname):
+def generatetoc(pods, outputloc, indexname, menufile):
     """
     Generates a TOC for the parsed components.
     """
     LOGGER.info("Generating TOC as %s." % os.path.join(outputloc, indexname))
 
     fih = open(os.path.join(outputloc, indexname), "w")
+    if menufile:
+        fihm = open(menufile, "w")
 
     fih.write("---\n")
     fih.write("layout: documentation\n")
@@ -94,17 +107,25 @@ def generatetoc(pods, outputloc, indexname):
     fih.write("\n### Components \n\n")
 
     for component in sorted(pods):
-        if len(pods[component]) == 1:
-            linkname = "/documentation/%s-%s.html" % (component, os.path.splitext(os.path.basename(pods[component][0]))[0])
-            fih.write(" * [%s](%s) \n" % (component, linkname))
-        else:
-            fih.write(" * %s \n" % component)
-            for pod in pods[component]:
-                linkname = "/documentation/%s-%s.html" % (component, os.path.splitext(os.path.basename(pod))[0])
-                fih.write("    * [%s](%s) \n" % (os.path.splitext(os.path.basename(pod))[0], linkname))
+        name = component.replace('ncm-','')
+        linkname = "/documentation/components/%s/" % (name)
+        fih.write(" * [%s](%s) \n" % (name, linkname))
+        if menufile:
+            fihm.write(" * [%s](%s) \n" % (name, linkname))
+        if len(pods[component]) > 1:
+            for pod in pods[component][1:]:
+                subname = os.path.splitext(os.path.basename(pod))[0]
+                linkname = "/documentation/components/%s/%s/" % (name, subname)
+                fih.write("    * [%s](%s) \n" % (subname, linkname))
+                if menufile:
+                    fihm.write("    * [%s](%s) \n" % (subname, linkname))
 
     fih.write("\n")
     fih.close()
+
+    if menufile:
+        fihm.write("\n")
+        fihm.close()
 
 
 def removemailadresses(mdfiles):
@@ -308,6 +329,7 @@ if __name__ == '__main__':
     OPTIONS = {
         'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store', None, 'm'),
         'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
+        'menu_list': ('The filename of a markdown file that a menu list shold be written to.', None, 'store', None, 'l'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
         'index_name': ('Filename for the index/toc for the components', None, 'store', 'index.md', 'i'),
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
@@ -330,7 +352,7 @@ if __name__ == '__main__':
     COMPS = listcomponents(GO.options.modules_location)
     PODS = listpods(GO.options.modules_location, COMPS)
 
-    generatetoc(PODS, GO.options.output_location, GO.options.index_name)
+    generatetoc(PODS, GO.options.output_location, GO.options.index_name, GO.options.menu_list)
     MDS = generatemds(PODS, GO.options.output_location)
 
     if GO.options.remove_emails:
