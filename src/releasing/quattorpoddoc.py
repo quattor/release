@@ -307,7 +307,7 @@ if __name__ == '__main__':
         'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store', None, 'm'),
         'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
-        'index_name': ('Filename for the index/toc for the components', None, 'store', 'components.md', 'i'),
+        'index_name': ('Filename for the index/toc for the components', None, 'store', 'index.md', 'i'),
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
         'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
         'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R'),
