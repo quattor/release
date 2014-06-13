@@ -17,6 +17,33 @@ fi
 shopt -s expand_aliases
 source maven-illuminate.sh
 
+# Update the Quattor version used by template-library-examples (SCDB-based) to the one being released
+update_examples () {
+    tag=$1
+    cd ${REPOS_PARENT_DIR}/template-library-examples
+    sed -i -e "s%quattor/[0-Z\.\_\-]\+\s%quattor/$tag %" $(find clusters -name cluster.build.properties)
+    git commit -a -m "Update Quattor version used by examples to ${tag}"
+    cd ..
+}
+
+# Remove all current configuration module related templates.
+# To be used before starting the update: after the updated
+# only the obsolete configuration modules will be missing.
+clean_templates() {
+    rm -Rf ${LIBRARY_CORE_DIR}/components/*
+}
+
+# Commit to template-library-core the removal of obsolete configuration modules
+remove_obsolete_components () {
+    cd ${LIBRARY_CORE_DIR}
+    #FIXME: ideally should check that there is only deleted files left
+    git add -A .
+    git commit -m 'Remove obsolete components'
+    cd ..
+}
+
+# Update the templates related to configuration modules.
+# This has to be called for every repository containing configuration modules.
 publish_templates() {
     echo_info "Publishing Component Templates"
     type=$1
@@ -29,10 +56,13 @@ publish_templates() {
     git checkout master
     cd ${LIBRARY_CORE_DIR}
     git add .
-    git commit -m "Component templates for $tag"
+    git commit -m "Component templates (${type}) for tag ${tag}"
     cd ..
 }
 
+# Update templates related to AII and its plugins.
+# Existing AII templates are removed before the update so
+# that obsolete templates are removed.
 publish_aii() {
     echo_info "Publishing AII Templates"
     tag=$1
@@ -51,11 +81,12 @@ publish_aii() {
     done
     git checkout master
     cd ${LIBRARY_CORE_DIR}
-    git add .
-    git commit -m "AII templates for $tag"
+    git add -A .
+    git commit -m "AII templates for tag $tag"
     cd ..
 }
 
+# Build the template version.pan appropriate for the version
 update_version_file() {
     release_major=$1
     if [ -z "$(echo $release_major | egrep 'rc[0-9]*$')" ]
@@ -77,7 +108,6 @@ EOF
 
     git add .
     git commit -m "Update Quattor version file for ${release_major}"
-    git push
     cd -
 }
 
@@ -209,22 +239,38 @@ if gpg-agent; then
 
             cd $RELEASE_ROOT/src
 
-            publish_templates "core" "ncm-components-$VERSION" && echo_success "Published Core Component Templates"
-            publish_templates "grid" "configuration-modules-grid-$VERSION" && echo_success "Published Grid Component Templates"
+            echo_info "---------------- Updating template-library-core  ----------------"
+            clean_templates
+            echo_info "    Updating configuration module templates..."
+            publish_templates "core" "ncm-components-$VERSION" && echo_info "    Published core configuration module templates"
+            publish_templates "grid" "configuration-modules-grid-$VERSION" && echo_info "    Published grid configuration module templates"
             # FIXME: tag should be the same for both repositories
             # publish_templates "core" "configuration-modules-$VERSION"
             # publish_templates "grid" "configuration-modules-$VERSION"
-            publish_aii "aii-$VERSION" &&  echo_success "Published AII Templates"
-            update_version_file "$VERSION" && echo_success "Updated Quattor Version Template"
+            echo_info "    Remove templates for obsolete components..."
+            remove_obsolete_components
+
+            echo_info "    Updating AII templates..."
+            publish_aii "aii-$VERSION" &&  echo_info "    AII templates successfully updated"
+
+            echo_info "    Updating Quattor version template..."
+            update_version_file "$VERSION" && echo_info "    Quattor version template sucessfully updated"
+
+            echo_info "    Tagging template library repositories..."
             #FIXME: ideally tag should be configurable but for now there is only template-library repos
             for repo in $REPOS_ONE_TAG
             do
-                tag_repository $repo "template-library-$VERSION" && echo_success "Tagged $repo"
+                tag_repository $repo "template-library-$VERSION" && echo_info "    Tagged $repo"
             done
             for repo in $REPOS_BRANCH_TAG
             do
-                tag_branches $repo  "$VERSION" && echo_success "Tagged branches in $repo"
+                tag_branches $repo  "$VERSION" && echo_info "    Tagged branches in $repo"
             done
+
+            echo_info "Updating examples"
+            update_examples $VERSION
+
+            echo_success "---------------- Update of template-library-core successfully completed ----------------"
 
             echo_success "RELEASE COMPLETED"
         else
