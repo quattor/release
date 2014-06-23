@@ -18,7 +18,7 @@
 #                             (incompatible with xxx_ignore_version)
 #  - xxx_ignore_version (optional): retrieve all branches/tags even if a specific
 #                                   version is requested (D: ignore_version_default)
-#  - xxx_dest_dir: directory where to put the repo contents, under SCDB root
+#  - xxx_dest_dir: directory where to put the repo contents, under template library root
 #                  (%BRANCH% is replaced by the "branch" name, %TAG% by the
 #                   Quattor version specified in the tag)
 #  - xxx_rename_master (optional): "branch name" to use if the branch is master
@@ -70,7 +70,7 @@ ignore_branch_patterns='\.obsolete$ ^HEAD$'
 template_lib_root=/tmp/quattor-template-library
 git_clone_root=${template_lib_root}/.gitrepos
 list_branches=0
-remove_scdb=0
+remove_tl_dir=0
 verbose=0
 add_legacy=0
 
@@ -117,7 +117,7 @@ do
     ;;
 
   -F)
-    remove_scdb=1
+    remove_tl_dir=1
     ;;
 
   *)
@@ -132,7 +132,7 @@ then
   quattor_version=$1
 else
   quattor_version=
-  echo "Temporary: quattor version to checkout is required"
+  echo "Quattor version to checkout is required (use 'HEAD' for the most recent revision)"
   exit 1
 fi
 
@@ -141,10 +141,10 @@ then
   ignore_branch_patterns="${ignore_branch_patterns} legacy$"
 fi
 
-# Check (or remove) the SCDB destination directory.
+# Check (or remove) the template library destination directory.
 if [ -d ${template_lib_root} ] 
 then
-  if [ ${remove_scdb} -eq 0 ]
+  if [ ${remove_tl_dir} -eq 0 ]
   then
     echo "Directory $template_lib_root already exists. Remove it or use -F"
     exit
@@ -158,7 +158,7 @@ mkdir -p ${template_lib_root}
 # Check (or remove+create) if the destination directory for Git clones exists
 if [ -d ${git_clone_root} ]
 then
-  if [ ${remove_scdb} -eq 0 ]
+  if [ ${remove_tl_dir} -eq 0 ]
   then
     echo "Directory ${git_clone_root} already exists. Remove it or use -F"
     exit
@@ -183,6 +183,12 @@ do
   repo_url=${git_url_root}/${repo_name}.git
   repo_dir=${git_clone_root}/${repo_name}
   branch_pattern=${!branch_variable}
+  # If quattor_version=HEAD, always use the HEAD revision of the branches
+  # matching the branch pattern
+  if [ "${quattor_version}" = "HEAD" ]
+  then
+    use_tags_default=0
+  fi
   use_tags=${!use_tags_variable}
   if [ -z ${use_tags} ]
   then
@@ -249,14 +255,19 @@ do
     # tag_dir contains the tag version derived from the tag name with the prefix 
     # (e.g. template-library-) removed. Define a non empty default value.
     tag_dir="undefined_tag"
-    if [ "${branch}" = "master" -a $?{master_dir_name} ]
+    if [ ${use_tags} -eq 0 ]
     then
-      branch_dir=${master_dir_name}
+      if [ "${branch}" = "master" -a $?{master_dir_name} ]
+      then
+        branch_dir=${master_dir_name}
+      else
+        branch_dir=${branch}
+      fi
     else
       branch_dir=$(echo ${branch} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
       tag_dir=$(echo ${branch} | sed -e "s%^.*${branch_dir}-%%")
-      [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
     fi
+    [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
 
     # Check if the branch should be ignored
     ignore_branch=0
