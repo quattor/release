@@ -96,7 +96,7 @@ silent_command () {
   return $status
 }
 
-while [ -n "`echo $1 | grep '^-'`" ]
+while [ -n "$(echo $1 | grep '^-')" ]
 do
   case $1 in
   --add-legacy)
@@ -121,6 +121,7 @@ do
     ;;
 
   *)
+    echo "Unkown option ($1)"
     usage
     ;;
   esac
