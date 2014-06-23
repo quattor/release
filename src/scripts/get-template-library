@@ -73,15 +73,17 @@ list_branches=0
 remove_tl_dir=0
 verbose=0
 add_legacy=0
+add_spma_templates=0
 
 usage () {
   echo "usage:  `basename $0` [-F] [--debug] [-d template_lib_root] quattor_version"
   echo ""
   echo "        -d template_library_root: directory where to create the template library."
   echo "                      (D: ${template_lib_root})"
-  echo "        --debug : debug mode. Checkout rather than export templates."
+  echo "        --debug : verbose output"
   echo "        -F : remove {template_lib_root} if it already exists."
   echo "        -l : list available branches matching the selected version."
+  echo "        --spma : download SPMA-based OS templates (disabled by default)."
   echo ""
   exit 1
 }
@@ -120,6 +122,10 @@ do
     remove_tl_dir=1
     ;;
 
+  --spma)
+    add_spma_templates=1
+    ;;
+
   *)
     echo "Unkown option ($1)"
     usage
@@ -140,6 +146,11 @@ fi
 if [ ${add_legacy} -ne 1 ]
 then
   ignore_branch_patterns="${ignore_branch_patterns} legacy$"
+fi
+
+if [ ${add_spma_templates} -ne 1 ]
+then
+  ignore_branch_patterns="${ignore_branch_patterns} legacy$ -spma$"
 fi
 
 # Check (or remove) the template library destination directory.
