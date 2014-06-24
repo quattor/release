@@ -256,6 +256,9 @@ if gpg-agent; then
             echo_info "    Updating Quattor version template..."
             update_version_file "$VERSION" && echo_info "    Quattor version template sucessfully updated"
 
+            echo_info "Updating examples"
+            update_examples $VERSION
+
             echo_info "    Tagging template library repositories..."
             #FIXME: ideally tag should be configurable but for now there is only template-library repos
             for repo in $REPOS_ONE_TAG
@@ -266,9 +269,6 @@ if gpg-agent; then
             do
                 tag_branches $repo  "$VERSION" && echo_info "    Tagged branches in $repo"
             done
-
-            echo_info "Updating examples"
-            update_examples $VERSION
 
             echo_success "---------------- Update of template-library-core successfully completed ----------------"
 
