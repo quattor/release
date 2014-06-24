@@ -67,12 +67,14 @@ monitoring_dest_dir=standard/monitoring
 # If a branch name matches one of the pattern, it will be ignored
 # HEAD added to workaround a bug in the release procedure when producing 14.5
 ignore_branch_patterns='\.obsolete$ ^HEAD$'
+ignore_version_patterns=''
 template_lib_root=/tmp/quattor-template-library
 git_clone_root=${template_lib_root}/.gitrepos
 list_branches=0
 remove_tl_dir=0
 verbose=0
 add_legacy=0
+add_rc_templates=0
 add_spma_templates=0
 
 usage () {
@@ -83,6 +85,7 @@ usage () {
   echo "        --debug : verbose output"
   echo "        -F : remove {template_lib_root} if it already exists."
   echo "        -l : list available branches matching the selected version."
+  echo "        --release-candidates: download release candidates in template-library-core (disabled by default)."
   echo "        --spma : download SPMA-based OS templates (disabled by default)."
   echo ""
   exit 1
@@ -122,6 +125,10 @@ do
     remove_tl_dir=1
     ;;
 
+  --release*)
+    add_rc_templates=1
+    ;;
+
   --spma)
     add_spma_templates=1
     ;;
@@ -150,7 +157,12 @@ fi
 
 if [ ${add_spma_templates} -ne 1 ]
 then
-  ignore_branch_patterns="${ignore_branch_patterns} legacy$ -spma$"
+  ignore_branch_patterns="${ignore_branch_patterns} -spma$"
+fi
+
+if [ ${add_rc_templates} -ne 1 ]
+then
+  ignore_version_patterns="${ignore_version_patterns} -rc[0-9]+$"
 fi
 
 # Check (or remove) the template library destination directory.
@@ -282,13 +294,25 @@ do
     [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
 
     # Check if the branch should be ignored
+    # Ignore pattern can be against branch name or version
     ignore_branch=0
     for ignore_pattern in ${ignore_branch_patterns}
     do
       [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, ignore_pattern = >>${ignore_pattern}<<"
-      if [ -n "$(echo ${branch_dir} | egrep -- ${ignore_pattern})" ]
+      if [ -n "$(echo ${branch_dir} | egrep -- ${ignore_pattern})" -a "${branch_dir}" != "${quattor_version}" ]
       then
         echo "Branch ${remote_branch} ignored"
+        ignore_branch=1
+        break
+      fi
+    done
+    # Always go through version patterns, even if branch should be ignored based on branch pattern: harmless
+    for ignore_pattern in ${ignore_version_patterns}
+    do
+      [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, version=${tag_dir}, ignore_version_pattern = >>${ignore_pattern}<<"
+      if [ -n "$(echo ${tag_dir} | egrep -- ${ignore_pattern})" -a "${tag_dir}" != "${quattor_version}" ]
+      then
+        echo "Branch ${remote_branch} (version ${tag_dir}) ignored"
         ignore_branch=1
         break
       fi
