@@ -20,7 +20,7 @@ source maven-illuminate.sh
 # Update the Quattor version used by template-library-examples (SCDB-based) to the one being released
 update_examples () {
     tag=$1
-    cd ${REPOS_PARENT_DIR}/template-library-examples
+    cd template-library-examples
     sed -i -e "s%quattor/[0-Z\.\_\-]\+\s%quattor/$tag %" $(find clusters -name cluster.build.properties)
     git commit -a -m "Update Quattor version used by examples to ${tag}"
     cd ..
