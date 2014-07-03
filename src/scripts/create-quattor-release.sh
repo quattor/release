@@ -89,7 +89,8 @@ done
 
 if [ ${list_release_rpms} -eq 0 ]
 then
-  createrepo .
+  # Create a SL5-compatible repo
+  createrepo -s sha .
 fi 
 
 
