@@ -226,7 +226,7 @@ if gpg-agent; then
             rpm --resign $VERSION/*.rpm
 
             echo_info "Creating repository"
-            createrepo $VERSION/
+            createrepo -s sha $VERSION/
 
             echo_info "Signing repository"
             gpg --detach-sign --armor $VERSION/repodata/repomd.xml
