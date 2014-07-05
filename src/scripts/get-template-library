@@ -329,7 +329,8 @@ do
     # tag_dir contains the tag version derived from the tag name with the prefix 
     # (e.g. template-library-) removed. Define a non empty default value.
     # branch_name is defined to the name of the branch the tag is based on when
-    # using tags else the actual branch name.
+    # using tags else the actual branch name. It is used for comparison with 
+    # pr_target, the target branch of a pull request.
     tag_dir="undefined_tag"
     if [ ${use_tags} -eq 0 ]
     then
@@ -343,7 +344,14 @@ do
     else
       branch_dir=$(echo ${branch} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
       tag_dir=$(echo ${branch} | sed -e "s%^.*${branch_dir}-%%")
-      branch_name=${branch_dir}
+      # For repository with a master branch, the tag is template-library-VERSION.
+      # For repositories with multiple production branch, the tag is BRANCH-VERSION.
+      if [ -n "$(echo ${branch_dir} | grep '^template-library')" ]
+      then
+        branch_name=master
+      else
+        branch_name=${branch_dir}
+      fi
     fi
     [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
 
@@ -384,7 +392,7 @@ do
     then
       if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch_name}" ]
       then
-        echo "Merging ${pr_user}/${pr_branch} into branch ${branch}..."
+        echo "Merging ${pr_user}/${pr_branch} into branch/tag ${branch}..."
         pr_remote=${git_url_root}/${pr_user}/${pr_repo}
         silent_command git remote add ${pr_user} ${pr_remote}
         if [ $? -ne 0 ]
@@ -399,7 +407,7 @@ do
         silent_command git pull ${pr_user} ${pr_branch}
         if [ $? -ne 0 ]
         then
-          echo "Error merging ${pr_user}/${pr_branch} into branch ${branch} of repository ${repo_name}"
+          echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch} of repository ${repo_name}"
           exit 11
         fi
         silent_command popd
