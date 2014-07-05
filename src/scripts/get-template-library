@@ -80,7 +80,9 @@ add_rc_templates=0
 add_spma_templates=0
 
 usage () {
-  echo "usage:  `basename $0` [-F] [--debug] [-d template_lib_root] quattor_version"
+  echo "usage:  `basename $0` [-F] [--debug] [-d template_lib_root] [options...] quattor_version"
+  echo ""
+  echo "    Valid options are:"
   echo ""
   echo "        -d template_library_root: directory where to create the template library."
   echo "                      (D: ${template_lib_root})"
@@ -126,6 +128,10 @@ do
 
   -F)
     remove_tl_dir=1
+    ;;
+
+  --help)
+    usage
     ;;
 
   --pull-request)
