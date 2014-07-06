@@ -159,7 +159,6 @@ if [ -n "$1" ]
 then
   quattor_version=$1
 else
-  quattor_version=
   echo "Quattor version to checkout is required (use 'HEAD' for the most recent revision)"
   exit 1
 fi
@@ -243,6 +242,7 @@ then
 fi
 mkdir ${git_clone_root}
 
+final_status=0     # Assume success
 
 for repo in ${git_repo_list}
 do
@@ -319,7 +319,10 @@ do
   fi
   [  ${verbose} -eq 1 -o ${list_branches} -eq 1 ] && echo -e "Branches/tags found in ${repo}:\n${branch_list}"
   [ ${list_branches} -eq 1 ] && continue
-  
+
+  # Will be set to 1 if at least   
+  branch_found=0
+
   for remote_branch in ${branch_list}
   do
     # Remove origin/ from the branch name
@@ -383,6 +386,7 @@ do
     then
       continue
     fi
+    branch_found=1
 
     # Checkout the appropriate branch or tag
     silent_command git checkout ${branch}
@@ -445,14 +449,22 @@ do
       exit 11
     fi
 
-  done
+  done    # branch loop
+
+  # Display an error if no branch matching the selection were found but continue.
+  # Probably a wrong tag has been used...
+  if [ ${branch_found} -eq 0 ]
+  then
+    final_status=100
+    echo "Error: no branch found matching Quattor version ${quattor_version}"
+  fi
 
   # Except if --debug has been specified, remove Git clone created
   if [ ${verbose} -eq 0 -a -d ${repo_dir} ]
   then
     rm -Rf ${repo_dir}
   fi
-done
+done      # repository loop
 
 
 # Delete directory used for storing Git clones if empty
@@ -461,3 +473,5 @@ then
   rmdir ${git_clone_root}
 fi
 
+
+exit ${final_status}
