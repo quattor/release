@@ -363,7 +363,7 @@ do
       [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, ignore_pattern = >>${ignore_pattern}<<"
       if [ -n "$(echo ${branch_dir} | egrep -- ${ignore_pattern})" -a "${branch_dir}" != "${quattor_version}" ]
       then
-        echo "Branch ${remote_branch} ignored"
+        [ ${verbose} -eq 1 ] && echo "Branch ${remote_branch} ignored"
         ignore_branch=1
         break
       fi
@@ -374,7 +374,7 @@ do
       [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, version=${tag_dir}, ignore_version_pattern = >>${ignore_pattern}<<"
       if [ -n "$(echo ${tag_dir} | egrep -- ${ignore_pattern})" -a "${tag_dir}" != "${quattor_version}" ]
       then
-        echo "Branch ${remote_branch} (version ${tag_dir}) ignored"
+        [ ${verbose} -eq 1 ] && echo "Branch ${remote_branch} (version ${tag_dir}) ignored"
         ignore_branch=1
         break
       fi
