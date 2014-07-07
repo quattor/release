@@ -8,7 +8,7 @@
 
 # Variables describing repositories to fetch to build the template library
 # For each repo xxx, the following variables must/may exist:
-#  - xxx_git_repo: name of the Git repo (at git_url_root url)
+#  - xxx_git_repo: name of the Git repo (at quattor_git_url url)
 #  - xxx_branch_pattern: a regexp to select the "branch" to fetch
 #                        ("branch" is matched against the branch or tag
 #                         according to xxx_use_tags)
@@ -23,12 +23,14 @@
 #                   Quattor version specified in the tag)
 #  - xxx_rename_master (optional): "branch name" to use if the branch is master
 
-git_url_root=https://github.com/quattor
+git_url_root=https://github.com
+quattor_git_url=${git_url_root}/quattor
 git_repo_list='core examples grid os standard monitoring'
 use_tags_default=1
 # Do not change the following defaults except if you know what you are doing...
 ignore_version_default=0
 tags_ignore_pattern_pattern=master
+pull_request=''
 
 core_git_repo=template-library-core
 core_branch_pattern='legacy|13\.1\.3|14\..*'
@@ -78,13 +80,16 @@ add_rc_templates=0
 add_spma_templates=0
 
 usage () {
-  echo "usage:  `basename $0` [-F] [--debug] [-d template_lib_root] quattor_version"
+  echo "usage:  `basename $0` [-F] [--debug] [-d template_lib_root] [options...] quattor_version"
+  echo ""
+  echo "    Valid options are:"
   echo ""
   echo "        -d template_library_root: directory where to create the template library."
   echo "                      (D: ${template_lib_root})"
   echo "        --debug : verbose output"
   echo "        -F : remove {template_lib_root} if it already exists."
   echo "        -l : list available branches matching the selected version."
+  echo "        --pull-request repository:user:branch[:target] : import the specified branch (GitHub pull request)."
   echo "        --release-candidates: download release candidates in template-library-core (disabled by default)."
   echo "        --spma : download SPMA-based OS templates (disabled by default)."
   echo ""
@@ -125,6 +130,15 @@ do
     remove_tl_dir=1
     ;;
 
+  --help)
+    usage
+    ;;
+
+  --pull-request)
+    shift
+    pull_request=$1
+    ;;
+
   --release*)
     add_rc_templates=1
     ;;
@@ -145,9 +159,44 @@ if [ -n "$1" ]
 then
   quattor_version=$1
 else
-  quattor_version=
   echo "Quattor version to checkout is required (use 'HEAD' for the most recent revision)"
   exit 1
+fi
+
+# --pull-request value must match the following format: repository:user:branch[:target_branch].
+#   - repository must match one of the repository managed by this script (and the user's fork must
+#     have the same name).
+#   - user: the GitHub user who contributed the PR (will be used to select the fork to use)
+#   - branch: the branch to import from the fork
+#   - target_branch: the branch in the Quattor repo which is in the target for the PR. It is
+#                    optional and default to master (it is in fact required if the target is not master)
+# Check that the value is syntactically valid.
+if [ -n "${pull_request}" ]
+then
+  pr_repo=$(echo ${pull_request} | awk -F: '{print $1}')
+  if [ -z "${pr_repo}" ]
+  then
+    echo "--pull-request value invalid (repository missing)"
+    usage
+  fi
+  pr_user=$(echo ${pull_request} | awk -F: '{print $2}')
+  if [ -z "${pr_user}" ]
+  then
+    echo "--pull-request value invalid (user missing)"
+    usage
+  fi
+  pr_branch=$(echo ${pull_request} | awk -F: '{print $3}')
+  if [ -z "${pr_branch}" ]
+  then
+    echo "--pull-request value invalid (branch missing)"
+    usage
+  fi
+  pr_target=$(echo ${pull_request} | awk -F: '{print $4}')
+  if [ -z "${pr_target}" ]
+  then
+    pr_target=master
+  fi
+  [ ${verbose} -eq 1 ] && echo "Pull request to import: repository=${pr_repo}, user=${pr_user}, branch=${pr_branch}, target=${pr_target}"
 fi
 
 if [ ${add_legacy} -ne 1 ]
@@ -193,6 +242,7 @@ then
 fi
 mkdir ${git_clone_root}
 
+final_status=0     # Assume success
 
 for repo in ${git_repo_list}
 do
@@ -204,7 +254,7 @@ do
   ignore_version_variable=${repo}_ignore_version
   tags_ignore_pattern_variable=${repo}_tags_ignore_pattern
   repo_name=${!repo_name_variable}
-  repo_url=${git_url_root}/${repo_name}.git
+  repo_url=${quattor_git_url}/${repo_name}.git
   repo_dir=${git_clone_root}/${repo_name}
   branch_pattern=${!branch_variable}
   # If quattor_version=HEAD, always use the HEAD revision of the branches
@@ -269,18 +319,25 @@ do
   fi
   [  ${verbose} -eq 1 -o ${list_branches} -eq 1 ] && echo -e "Branches/tags found in ${repo}:\n${branch_list}"
   [ ${list_branches} -eq 1 ] && continue
-  
+
+  # Will be set to 1 if at least   
+  branch_found=0
+
   for remote_branch in ${branch_list}
   do
     # Remove origin/ from the branch name
     branch=$(echo ${remote_branch} | sed -e 's#^.*origin/##')
 
-    # branch_dir contains the branch name retrieved from the tag.
+    # when using tags, branch_dir contains the branch name retrieved from the tag and
     # tag_dir contains the tag version derived from the tag name with the prefix 
     # (e.g. template-library-) removed. Define a non empty default value.
+    # branch_name is defined to the name of the branch the tag is based on when
+    # using tags else the actual branch name. It is used for comparison with 
+    # pr_target, the target branch of a pull request.
     tag_dir="undefined_tag"
     if [ ${use_tags} -eq 0 ]
     then
+      branch_name=${branch}
       if [ "${branch}" = "master" -a $?{master_dir_name} ]
       then
         branch_dir=${master_dir_name}
@@ -290,6 +347,14 @@ do
     else
       branch_dir=$(echo ${branch} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
       tag_dir=$(echo ${branch} | sed -e "s%^.*${branch_dir}-%%")
+      # For repository with a master branch, the tag is template-library-VERSION.
+      # For repositories with multiple production branch, the tag is BRANCH-VERSION.
+      if [ -n "$(echo ${branch_dir} | grep '^template-library')" ]
+      then
+        branch_name=master
+      else
+        branch_name=${branch_dir}
+      fi
     fi
     [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
 
@@ -301,7 +366,7 @@ do
       [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, ignore_pattern = >>${ignore_pattern}<<"
       if [ -n "$(echo ${branch_dir} | egrep -- ${ignore_pattern})" -a "${branch_dir}" != "${quattor_version}" ]
       then
-        echo "Branch ${remote_branch} ignored"
+        [ ${verbose} -eq 1 ] && echo "Branch ${remote_branch} ignored"
         ignore_branch=1
         break
       fi
@@ -312,7 +377,7 @@ do
       [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, version=${tag_dir}, ignore_version_pattern = >>${ignore_pattern}<<"
       if [ -n "$(echo ${tag_dir} | egrep -- ${ignore_pattern})" -a "${tag_dir}" != "${quattor_version}" ]
       then
-        echo "Branch ${remote_branch} (version ${tag_dir}) ignored"
+        [ ${verbose} -eq 1 ] && echo "Branch ${remote_branch} (version ${tag_dir}) ignored"
         ignore_branch=1
         break
       fi
@@ -321,7 +386,50 @@ do
     then
       continue
     fi
+    branch_found=1
 
+    # Checkout the appropriate branch or tag
+    silent_command git checkout ${branch}
+
+    # Import pull request changes if requested and if the PR target matches the current repository/branch
+    if [ -n "${pull_request}" ]
+    then
+      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch_name}" ]
+      then
+        echo "Merging ${pr_user}/${pr_branch} into branch/tag ${branch}..."
+        pr_remote=${git_url_root}/${pr_user}/${pr_repo}
+        silent_command git remote add ${pr_user} ${pr_remote}
+        if [ $? -ne 0 ]
+        then
+          echo "Error adding remote ${pr_remote} to repository ${repo_name}"
+          exit 11
+        fi
+        # git pull has a problem if GIT_WORK_TREE is defined (Git 1.7.1) but is not the current directory.
+        # As a workaround, cd into $GIT_WORK_TREE before the command and restore previous directory
+        # after the pull.
+        silent_command pushd $GIT_WORK_TREE
+        silent_command git pull ${pr_user} ${pr_branch}
+        if [ $? -ne 0 ]
+        then
+          echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch} of repository ${repo_name}"
+          exit 11
+        fi
+        silent_command popd
+      else
+        if [ ${verbose} -eq 1 ]
+        then
+          if [ "${pr_repo}" != "${repo_name}" ]
+          then
+            echo "Pull request doesn't match current repository (${repo_name}). Ignored"
+          elif [ "${pr_branch}" != "${branch}" ]
+          then
+            echo "Pull request doesn't match current branch (${branch_name}) in repository ${repo_name}. Ignored"
+          fi
+        fi
+      fi
+    fi
+
+    # Copy repository contents to the appropriate target directory.
     # Either %BRANCH% or %TAG% can be specified: no attempt to check that both are not use at the same time...
     dest_dir=${template_lib_root}/$(echo ${!dest_dir_variable} | sed -e "s#%BRANCH%#${branch_dir}#" | sed -e "s#%TAG%#${tag_dir}#")
     # os repository is a special case: '-spma' suffix must be removed to build the destination directory
@@ -330,17 +438,33 @@ do
       dest_dir=$(echo ${dest_dir} | sed -e 's/-spma//')
     fi
     echo Copying Git branch ${branch} contents to ${dest_dir}...
-    silent_command git checkout ${branch}
     mkdir -p ${dest_dir}
     cp -R ${repo_dir}/* ${dest_dir}
-  done
+
+    # Remove potentially untracked files to prevent errors at next checkout
+    silent_command git clean -f -d
+    if [ $? -ne 0 ]
+    then
+      echo "Error removing untracked files from branch ${branch} in repository ${repo}"
+      exit 11
+    fi
+
+  done    # branch loop
+
+  # Display an error if no branch matching the selection were found but continue.
+  # Probably a wrong tag has been used...
+  if [ ${branch_found} -eq 0 ]
+  then
+    final_status=100
+    echo "Error: no branch found matching Quattor version ${quattor_version}"
+  fi
 
   # Except if --debug has been specified, remove Git clone created
   if [ ${verbose} -eq 0 -a -d ${repo_dir} ]
   then
     rm -Rf ${repo_dir}
   fi
-done
+done      # repository loop
 
 
 # Delete directory used for storing Git clones if empty
@@ -349,3 +473,5 @@ then
   rmdir ${git_clone_root}
 fi
 
+
+exit ${final_status}
