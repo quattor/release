@@ -153,14 +153,23 @@ function echo_info {
   echo -e "\033[1;34mINFO\033[0m  $1"
 }
 
+function exit_usage {
+    echo
+    echo "USAGE: releaser.sh RELEASE_NUMBER [RELEASE_CANDIDATE]"
+    echo "       RELEASE_NUMBER should be of the form YY.MM.N without leading zeros"
+    exit 3
+}
+
 if [[ -n $1 ]]; then
     RELEASE=$1
+    if echo $RELEASE | grep -qv '^[1-9][0-9]\?\.\([1-9]\|1[012]\)\.[0-9]\+$'; then
+        echo_error "Release version doesn't match expected format."
+        exit_usage
+    fi
 else
     echo_error "Release version not provided"
     echo "    Based on the date, you should probably be working on $(date +%-y.%-m).0"
-    echo
-    echo "USAGE: releaser.sh RELEASE_NUMBER [RELEASE_CANDIDATE]"
-    exit 3
+    exit_usage
 fi
 
 if [[ -n $2 ]]; then
