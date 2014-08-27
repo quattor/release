@@ -117,7 +117,7 @@ tag_repository() {
     cd ${repo}
     #FIXME: we may want to check that the tag doesn't exist already
     git tag -m "Release ${tag}" ${tag}    
-    git push origin --tags
+    git push origin --tags HEAD
     cd -
 }
 
