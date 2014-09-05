@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Quattor Backlog</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.css">
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Lato:400);
+      body {
+        padding-bottom: 40px;
+        font-family: 'Lato', 'Helvetica', sans-serif;
+        background-color: #eef1f1;
+      }
+      h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-family: 'Lato', 'Helvetica', sans-serif;
+      }
+      blockquote {
+        font-size: small;
+      }
+      .navbar-inverse {
+        background-color: #004080;
+      }
+      .navbar-inverse .navbar-brand {
+        color: white;
+      }
+      .text-github-open {
+        color: #6cc644;
+      }
+      .text-github-closed {
+        color: #6E5494;
+      }
+      .thing-closed {
+        display: none;
+      }
+    </style>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <a class="navbar-brand"><img src="img/quattor_logo_navbar.png" width="94" height="23" alt="quattor logo"> &mdash; Releasing</a>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Backlog</a></li>
+          <li class="active"><a href="/burndown.html">Burndown</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="/regression.js"></script>
+
+<div id="container" style="min-width: 800px; height: 600px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+$(function () {
+    $.getJSON('burndown-14.8.json', function(mydata) {
+        $.each(mydata.closed, function(i, v) {
+            v[0] = Date.parse(v[0]);
+        });
+        $('#container').highcharts({
+            title: {
+                text: 'Progress toward 14.8 release'
+            },
+            xAxis: {
+                type: 'datetime',
+                title: {
+                    text: 'Date'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Open Issues & Pull Requests'
+                },
+                min: 0
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y:.0f}</b> open'
+            },
+            plotOptions: {
+                series: {
+                    marker: {
+                        enabled: false
+                    }
+                },
+            },
+            series: [
+                {
+                    name: 'Ideal',
+                    data: [
+                        [Date.parse('2014-07-01'), mydata.to_burn],
+                        [Date.parse('2014-09-01'), 0]
+                    ],
+                    color: '#73d216',
+                    dashStyle: 'shortdash',
+                    enableMouseTracking: false,
+                },
+                {
+                    name: 'Trend',
+                    type: 'line',
+                    data: (function() {
+                        return fitData(mydata.closed).data;
+                    })(),
+                    color: '#729fcf',
+                    dashStyle: 'shortdot',
+                    enableMouseTracking: false,
+                },
+                {
+                    name: 'Actual',
+                    data: mydata.closed,
+                    step: 'left',
+                    color: '#3465a4',
+                },
+            ]
+        });
+    });
+});
+</script>
+
+    </div>
+  </body>
+</html>
