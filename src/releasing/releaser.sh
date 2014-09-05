@@ -251,7 +251,7 @@ if gpg-agent; then
             echo_info "---------------- Updating template-library-core  ----------------"
             clean_templates
             echo_info "    Updating configuration module templates..."
-            publish_templates "core" "ncm-components-$VERSION" && echo_info "    Published core configuration module templates"
+            publish_templates "core" "configuration-modules-core-$VERSION" && echo_info "    Published core configuration module templates"
             publish_templates "grid" "configuration-modules-grid-$VERSION" && echo_info "    Published grid configuration module templates"
             # FIXME: tag should be the same for both repositories
             # publish_templates "core" "configuration-modules-$VERSION"
