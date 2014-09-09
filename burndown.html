@@ -56,13 +56,13 @@
 
 <script type="text/javascript">
 $(function () {
-    $.getJSON('burndown-14.8.json', function(mydata) {
+    $.getJSON('burndown-14.10.json', function(mydata) {
         $.each(mydata.closed, function(i, v) {
             v[0] = Date.parse(v[0]);
         });
         $('#container').highcharts({
             title: {
-                text: 'Progress toward 14.8 release'
+                text: 'Progress toward 14.10 release'
             },
             xAxis: {
                 type: 'datetime',
@@ -90,8 +90,8 @@ $(function () {
                 {
                     name: 'Ideal',
                     data: [
-                        [Date.parse('2014-07-01'), mydata.to_burn],
-                        [Date.parse('2014-09-01'), 0]
+                        [Date.parse('2014-09-01'), mydata.to_burn],
+                        [Date.parse('2014-11-01'), 0]
                     ],
                     color: '#73d216',
                     dashStyle: 'shortdash',
