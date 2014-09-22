@@ -101,7 +101,12 @@ $(function () {
                     name: 'Trend',
                     type: 'line',
                     data: (function() {
-                        return fitData(mydata.closed).data;
+                        start = mydata.closed[0][0];
+                        fit = fitData(mydata.closed);
+                        return [
+                            [start, fit.y(start)],
+                            [fit.x(0), 0],
+                        ];
                     })(),
                     color: '#729fcf',
                     dashStyle: 'shortdot',
