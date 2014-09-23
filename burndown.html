@@ -68,7 +68,44 @@ $(function () {
                 type: 'datetime',
                 title: {
                     text: 'Date'
-                }
+                },
+                plotLines: [
+                    {
+                        color: '#ef2929',
+                        value: Date.parse('2014-11-01'),
+                        width: '1',
+                        label: {
+                            text: 'Target',
+                            style: {
+                                color: '#a40000'
+                            }
+                        },
+                    },
+                ],
+                plotBands: [
+                    {
+                        color: '#eeeeec',
+                        from: Date.parse('2014-09-29'),
+                        to: Date.parse('2014-10-03'),
+                        label: {
+                            text: 'Workshop',
+                            style: {
+                                color: '#555753'
+                            }
+                        },
+                    },
+                    {
+                        color: '#eeeeec',
+                        from: Date.parse('2014-10-27'),
+                        to: Date.parse('2014-11-01'),
+                        label: {
+                            text: 'RCs',
+                            style: {
+                                color: '#555753'
+                            }
+                        },
+                    },
+                ],
             },
             yAxis: {
                 title: {
