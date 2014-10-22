@@ -33,7 +33,7 @@ tags_ignore_pattern_pattern=master
 pull_request=''
 
 core_git_repo=template-library-core
-core_branch_pattern='legacy|13\.1\.3|14\..*'
+core_branch_pattern='template-library-'
 core_dest_dir=quattor/%TAG%
 # With core repo, always checkout all tags matching core_branch_pattern,
 # whatever is done for other repos.
