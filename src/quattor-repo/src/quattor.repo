@@ -1,0 +1,14 @@
+[quattor]
+name=Quattor ${project.version}
+baseurl=http://yum.quattor.org/${project.version}
+enabled=1
+
+[quattor-aquilon]
+name=Quattor Aquilon
+baseurl=http://yum.quattor.org/aquilon
+enabled=1
+
+[quattor-externals]
+name=Quattor Externals
+baseurl=http://yum.quattor.org/externals
+enabled=1
