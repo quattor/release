@@ -2,13 +2,18 @@
 name=Quattor ${project.version}
 baseurl=http://yum.quattor.org/${project.version}
 enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-quattor-jrha
 
 [quattor-aquilon]
 name=Quattor Aquilon
 baseurl=http://yum.quattor.org/aquilon
 enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-quattor-jrha
 
 [quattor-externals]
 name=Quattor Externals
 baseurl=http://yum.quattor.org/externals
 enabled=1
+gpgcheck=0
