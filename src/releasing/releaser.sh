@@ -272,7 +272,7 @@ if gpg-agent; then
             #FIXME: ideally tag should be configurable but for now there is only template-library repos
             for repo in $REPOS_ONE_TAG
             do
-                tag_repository $repo "template-library-$VERSION" && echo_info "    Tagged $repo"
+                tag_repository $repo "$VERSION" && echo_info "    Tagged $repo"
             done
             for repo in $REPOS_BRANCH_TAG
             do
