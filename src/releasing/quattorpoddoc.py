@@ -90,19 +90,22 @@ def generatetoc(pods, outputloc, indexname, menufile):
     if menufile:
         fihm = open(menufile, "w")
 
-    fih.write("\n### Components \n\n")
+    fih.write("site_name: Quattor Configuration Modules (Core)\n\n")
+    fih.write("theme: 'readthedocs'\n\n")
+    fih.write("pages:\n")
+    fih.write("- ['index.md', 'introduction']\n")
 
     for component in sorted(pods):
         name = component.replace('ncm-','')
-        linkname = "/documentation/components/%s/" % (name)
-        fih.write(" * [%s](%s) \n" % (name, linkname))
+        linkname = "components/%s.md" % (name)
+        fih.write("- ['%s', 'components']\n" % (linkname))
         if menufile:
-            fihm.write(" * [%s](%s) \n" % (name, linkname))
+            fih.write("- ['%s', 'components']\n" % (linkname))
         if len(pods[component]) > 1:
-            for pod in pods[component][1:]:
+            for pod in sorted(pods[component][1:]):
                 subname = os.path.splitext(os.path.basename(pod))[0]
-                linkname = "/documentation/components/%s/%s/" % (name, subname)
-                fih.write("    * [%s](%s) \n" % (subname, linkname))
+                linkname = "components/%s::%s.md" % (name, subname)
+                fih.write("- ['%s', 'components']\n" % (linkname))
                 if menufile:
                     fihm.write("    * [%s](%s) \n" % (subname, linkname))
 
@@ -317,7 +320,7 @@ if __name__ == '__main__':
         'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
         'menu_list': ('The filename of a markdown file that a menu list shold be written to.', None, 'store', None, 'l'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
-        'index_name': ('Filename for the index/toc for the components', None, 'store', 'index.md', 'i'),
+        'index_name': ('Filename for the index/toc for the components.', None, 'store', 'mkdocs.yml', 'i'),
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
         'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
         'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R'),
