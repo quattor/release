@@ -76,14 +76,6 @@ def convertpodtomarkdown(podfile, outputfile, title):
     LOGGER.debug(output)
     fih = open(outputfile, "w")
 
-    fih.write("---\n")
-    fih.write("layout: documentation\n")
-    fih.write("title: %s\n" % title)
-    fih.write("category: documentation\n")
-    fih.write("subcategory: components\n")
-    fih.write("menu: 'components.md'\n")
-    fih.write("---\n")
-
     fih.write(output[1])
     fih.close()
 
@@ -97,12 +89,6 @@ def generatetoc(pods, outputloc, indexname, menufile):
     fih = open(os.path.join(outputloc, indexname), "w")
     if menufile:
         fihm = open(menufile, "w")
-
-    fih.write("---\n")
-    fih.write("layout: documentation\n")
-    fih.write("category: documentation\n")
-    fih.write("title: Components\n")
-    fih.write("---\n")
 
     fih.write("\n### Components \n\n")
 
