@@ -20,8 +20,8 @@ MAILREGEX = re.compile(("([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^
 PATHREGEX = re.compile(r'(\s+)((?:/[\w{}]+)+\.?\w*)(\s*)')
 EXAMPLEMAILS = ["example", "username", "system.admin"]
 LOGGER = fancylogger.getLogger()
-SUBDIR="components"
-DOCDIR="docs"
+SUBDIR = "components"
+DOCDIR = "docs"
 
 
 def mavencleancompile(modules_location):
@@ -45,22 +45,22 @@ def generatemds(pods, location):
     LOGGER.info("Generating md files.")
     counter = 0
     mdfiles = []
-    
+
     comppath = os.path.join(location, DOCDIR, SUBDIR)
     try:
         os.makedirs(comppath)
     except OSError as err:
-        if err.errno!=17:
-           raise
+        if err.errno != 17:
+            raise
 
     for component in sorted(pods):
         for pod in pods[component]:
-            component = component.replace('ncm-','')
+            component = component.replace('ncm-', '')
             title = os.path.splitext(os.path.basename(pod))[0]
             if component != title:
                 title = component+'::'+title
-            mdfile = os.path.join(comppath, '%s.md' %title)
-            convertpodtomarkdown(pod, mdfile, title)
+            mdfile = os.path.join(comppath, '%s.md' % title)
+            convertpodtomarkdown(pod, mdfile)
             counter += 1
             mdfiles.append(mdfile)
 
@@ -68,7 +68,7 @@ def generatemds(pods, location):
     return mdfiles
 
 
-def convertpodtomarkdown(podfile, outputfile, title):
+def convertpodtomarkdown(podfile, outputfile):
     """
     Takes a podfile and converts it to a markdown with the help of pod2markdown.
     """
@@ -91,6 +91,7 @@ def addintrogreeter(outputloc):
     fih.write("This is the documentation for the core set of configuration modules for configuring systems with Quattor.\n")
     fih.close()
 
+
 def generatetoc(pods, outputloc, indexname):
     """
     Generates a TOC for the parsed components.
@@ -103,11 +104,11 @@ def generatetoc(pods, outputloc, indexname):
     fih.write("theme: 'readthedocs'\n\n")
     fih.write("pages:\n")
     fih.write("- ['index.md', 'introduction']\n")
-    
+
     addintrogreeter(outputloc)
 
     for component in sorted(pods):
-        name = component.replace('ncm-','')
+        name = component.replace('ncm-', '')
         linkname = "%s/%s.md" % (SUBDIR, name)
         fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
         if len(pods[component]) > 1:
@@ -118,6 +119,7 @@ def generatetoc(pods, outputloc, indexname):
 
     fih.write("\n")
     fih.close()
+
 
 def removemailadresses(mdfiles):
     """
@@ -186,6 +188,7 @@ def decreasetitlesize(mdfiles):
             fih.close()
             counter += 1
     LOGGER.info("Downsized titles in %s files." % counter)
+
 
 def removeheaders(mdfiles):
     """
@@ -290,7 +293,7 @@ def listpods(module_location, components):
     for comp in components:
         pods = []
 
-        for root, dirs, files in os.walk(os.path.join(module_location, comp, "target")):
+        for root, _, files in os.walk(os.path.join(module_location, comp, "target")):
             for fileh in files:
 
                 if fileh.endswith(".pod"):
@@ -310,7 +313,7 @@ def which(command):
     """
     found = False
     for direct in os.getenv("PATH").split(':'):
-        if (os.path.exists(os.path.join(direct, command))):
+        if os.path.exists(os.path.join(direct, command)):
             found = True
 
     return found
