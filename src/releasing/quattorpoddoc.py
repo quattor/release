@@ -47,11 +47,8 @@ def generatemds(pods, location):
     mdfiles = []
 
     comppath = os.path.join(location, DOCDIR, SUBDIR)
-    try:
+    if not os.path.exists(comppath):
         os.makedirs(comppath)
-    except OSError as err:
-        if err.errno != 17:
-            raise
 
     for component in sorted(pods):
         for pod in pods[component]:
