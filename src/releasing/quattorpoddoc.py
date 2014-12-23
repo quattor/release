@@ -76,10 +76,8 @@ def convertpodtomarkdown(podfile, outputfile):
     output = run_asyncloop("pod2markdown %s" % podfile)
     LOGGER.debug("writing output to %s." % outputfile)
     LOGGER.debug(output)
-    fih = open(outputfile, "w")
-
-    fih.write(output[1])
-    fih.close()
+    with open(outputfile, "w") as fih:
+        fih.write(output[1])
 
 
 def addintrogreeter(outputloc):
@@ -87,9 +85,8 @@ def addintrogreeter(outputloc):
     Writes small intro file.
     """
     LOGGER.info("Adding introduction page.")
-    fih = open(os.path.join(outputloc, DOCDIR, "index.md"), "w")
-    fih.write("This is the documentation for the core set of configuration modules for configuring systems with Quattor.\n")
-    fih.close()
+    with open(os.path.join(outputloc, DOCDIR, "index.md"), "w") as fih:
+        fih.write("This is the documentation for the core set of configuration modules for configuring systems with Quattor.\n")
 
 
 def generatetoc(pods, outputloc, indexname):
@@ -98,27 +95,25 @@ def generatetoc(pods, outputloc, indexname):
     """
     LOGGER.info("Generating TOC as %s." % os.path.join(outputloc, indexname))
 
-    fih = open(os.path.join(outputloc, indexname), "w")
+    with open(os.path.join(outputloc, indexname), "w") as fih:
+        fih.write("site_name: Quattor Configuration Modules (Core)\n\n")
+        fih.write("theme: 'readthedocs'\n\n")
+        fih.write("pages:\n")
+        fih.write("- ['index.md', 'introduction']\n")
 
-    fih.write("site_name: Quattor Configuration Modules (Core)\n\n")
-    fih.write("theme: 'readthedocs'\n\n")
-    fih.write("pages:\n")
-    fih.write("- ['index.md', 'introduction']\n")
+        addintrogreeter(outputloc)
 
-    addintrogreeter(outputloc)
+        for component in sorted(pods):
+            name = component.replace('ncm-', '')
+            linkname = "%s/%s.md" % (SUBDIR, name)
+            fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
+            if len(pods[component]) > 1:
+                for pod in sorted(pods[component][1:]):
+                    subname = os.path.splitext(os.path.basename(pod))[0]
+                    linkname = "%s/%s::%s.md" % (SUBDIR, name, subname)
+                    fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
 
-    for component in sorted(pods):
-        name = component.replace('ncm-', '')
-        linkname = "%s/%s.md" % (SUBDIR, name)
-        fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
-        if len(pods[component]) > 1:
-            for pod in sorted(pods[component][1:]):
-                subname = os.path.splitext(os.path.basename(pod))[0]
-                linkname = "%s/%s::%s.md" % (SUBDIR, name, subname)
-                fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
-
-    fih.write("\n")
-    fih.close()
+        fih.write("\n")
 
 
 def removemailadresses(mdfiles):
@@ -128,9 +123,8 @@ def removemailadresses(mdfiles):
     LOGGER.info("Removing emailaddresses from md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         for email in re.findall(MAILREGEX, mdcontent):
             LOGGER.debug("Found %s." % email[0])
             replace = True
@@ -143,9 +137,8 @@ def removemailadresses(mdfiles):
         if replace:
             LOGGER.debug("Removed it from line.")
             mdcontent = mdcontent.replace(email[0], '')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
     LOGGER.info("Removed %s email addresses." % counter)
 
@@ -157,15 +150,13 @@ def removewhitespace(mdfiles):
     LOGGER.info("Removing extra whitespace from md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         if '\n\n\n' in mdcontent:
             LOGGER.debug("Removing whitespace in %s." % mdfile)
             mdcontent = mdcontent.replace('\n\n\n', '\n')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
     LOGGER.info("Removed extra whitespace from %s files." % counter)
 
@@ -177,15 +168,13 @@ def decreasetitlesize(mdfiles):
     LOGGER.info("Downsizing titles in md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         if '# ' in mdcontent:
             LOGGER.debug("Making titles smaller in %s." % mdfile)
             mdcontent = mdcontent.replace('# ', '### ')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
     LOGGER.info("Downsized titles in %s files." % counter)
 
@@ -197,22 +186,19 @@ def removeheaders(mdfiles):
     LOGGER.info("Removing AUTHOR and MAINTAINER headers from md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         if '# MAINTAINER' in mdcontent:
             LOGGER.debug("Removing # MAINTAINER in %s." % mdfile)
             mdcontent = mdcontent.replace('# MAINTAINER', '')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
         if '# AUTHOR' in mdcontent:
             LOGGER.debug("Removing # AUTHOR in %s." % mdfile)
             mdcontent = mdcontent.replace('# AUTHOR', '')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
 
     LOGGER.info("Removed %s unused headers." % counter)
@@ -225,15 +211,13 @@ def codifypaths(mdfiles):
     LOGGER.info("Putting paths inside code tags.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
 
         LOGGER.debug("Tagging paths in %s." % mdfile)
         mdcontent, counter = PATHREGEX.subn(r'\1`\2`\3', mdcontent)
-        fih = open(mdfile, 'w')
-        fih.write(mdcontent)
-        fih.close()
+        with open(mdfile, 'w') as fih:
+            fih.write(mdcontent)
 
     LOGGER.info("Code tagged %s paths." % counter)
 
