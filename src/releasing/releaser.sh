@@ -51,8 +51,12 @@ publish_templates() {
     cd configuration-modules-$1
     git checkout $tag
     mvn-c -q clean compile
-    dest_root=${LIBRARY_CORE_DIR}/components
-    cp -r ncm-*/target/pan/components/* ${dest_root}
+    components_root=${LIBRARY_CORE_DIR}/components
+    metaconfig_root=${LIBRARY_CORE_DIR}/metaconfig
+    mkdir -p ${components_root}
+    mkdir -p ${metaconfig_root}
+    cp -r ncm-*/target/pan/components/* ${components_root}
+    cp -r ncm-metaconfig/target/pan/metaconfig/* ${metaconfig_root}
     git checkout master
     cd ${LIBRARY_CORE_DIR}
     git add .
