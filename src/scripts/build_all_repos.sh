@@ -47,10 +47,13 @@ PROVEARGS="-Dprove.args=-v"
 
 # Dependencies checking
 # set to 0 on non-yum systems
-CHECKDEPS=1
+CHECKDEPS=${CHECKDEPS:-1}
 
 # Binary dependencies to be installed with yum                                                                                                        
-DEPS_INIT_BIN_YUM="rpmbuild perl panc mvn git"
+DEPS_INIT_BIN_YUM="rpmbuild perl mvn git"
+# Use newline separator to allow version statements 
+DEPS_INIT_YUM="panc >= 10.2
+"
 
 # the mvn epel url (who has this mirrored/enabled by default?)                                                                                        
 EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
@@ -75,6 +78,16 @@ function cerror () {
 }
 
 function get_cpanm () {
+    echo "Get and install cpanm"
+
+    # Try to get as much as possible via yum
+    deps_install_yum 'perl(App::cpanminus)' 0
+
+    # Some dependencies for build ing perl modules
+    for dep in gcc-c++ make; do
+        deps_install_yum "$dep"
+    done
+
     which curl >& /dev/null
     if [ $? -gt 0 ]; then
         which wget >& /dev/null
@@ -183,30 +196,49 @@ function deps_install_yum () {
 }
 
 function check_deps_init_bin () {
+    # these are fatal
     echo "Checking DEPS_INIT_BIN_YUM $DEPS_INIT_BIN_YUM"
-
-    # do it separately
-    has_mvn
-
-    for bin in $DEPS_INIT_BIN; do
-        # these are fatal
+    for bin in $DEPS_INIT_BIN_YUM; do
         deps_install_yum "*bin/$bin" 1
+    done
+    echo "Checking other deps: $DEPS_INIT_YUM"
+    for dep in "$DEPS_INIT_YUM"; do
+        deps_install_yum "$dep" 1
     done
 
     # should be part of rpmbuild dep
-    deps_install_yum /usr/lib/rpm/find-requires 1
-
+    for name in find-requires perl.req find-provides perl.prov; do
+        deps_install_yum /usr/lib/rpm/$name 1
+    done
+    
     echo "Done checking DEPS_INIT_BIN $DEPS_INIT_BIN"    
     return 0
 }
 
 function get_cpan_dep () {
-    perlpkg="$1"
+    perldep="$1"
     
-    echo "Looking for CPAN perlpkg $perlpkg"
+    perlpkg=`echo $perldep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1\3/p"`
+
+    # No version info
+    perlcpan=`echo $perldep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1/p"`
     
-    # TODO actually implement this
-    CPAN="$CPAN $perlpkg"
+    echo "Looking for CPAN perlcpan $perlcpan for dependency $perldep"
+
+    cpanm $perlcpan
+
+    if [ $? -eq 0 ]; then
+        echo "Perl dependency $perldep installed via CPAN"
+        perl -e "use $perlpkg;"
+        if [ $? -eq 0 ]; then
+            echo "Dependency $dep is a usable perl package"                
+        else
+            error 91 "Dependency $dep installed via CPAN (perlcpan $perlcpan) but not usabele (perlpkg $perlpkg)"
+        fi
+    else
+        error 90 "Perl dependency $perldep installed via CPAN failed"
+    fi
+
 }
 
 function get_repo_deps () {
@@ -221,7 +253,8 @@ function get_repo_deps () {
     
     for dir in $subdirs; do
         cd $REPOSITORY
-        get_repo_deps_subdir $repo $dir
+        # use dirname to scan both src/ and target/
+        get_repo_deps_subdir $repo `dirname $dir`
     done
 }
 
@@ -231,53 +264,56 @@ function get_repo_deps_subdir () {
     # repo + optional subdir
     dir=${2:-$repo}
 
-    # no src or target, just search the whole repo/subdir
     cd $dir
 
-    origIFS="$IFS"
-    # newline is th eonly delimiter for IFS
-    fakeIFS="
-"
-    export IFS=$fakeIFS
-    deps=`find . -type f | /usr/lib/rpm/find-requires | sort | uniq`
+    # only search src and target (there's some legacy code in other dirs)
+    # TT have 'use X', which perl.req things are perl modules
+    found=`find {src,target} -type f  ! -regex '.*\.tt'`
+    
+    # find-requires doesn't cover perl .t files
+    deps=`(echo "$found" | /usr/lib/rpm/perl.req ; echo "$found" | /usr/lib/rpm/find-requires) | sort | uniq | grep -E '\w'`
+    echo "Dependencies found for repo $repo (dir $dir): $deps"
 
-    echo "Deps found for repo $repo: $deps"
+    # this is what the current repository provides. they are not to be searched externally
+    provs=`(echo "$found" | /usr/lib/rpm/perl.prov ; echo "$found" | /usr/lib/rpm/find-provides) |sort | uniq | grep -E '\w'`
+    echo "Provides found for repo $repo (dir $dir): $provs"
 
     # WARNING dep can have whitespace!
-    for dep in $deps; do
-        export IFS=$origIFS 
+    for dep in "$deps"; do
         echo "Checking dependency '$dep'"
-        perlpkg=`echo $dep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1\3/p"`
-        if [ -z "$perlpkg" ]; then
-            echo "Dependency $dep is not a perl package"
-            # is it a full path?
-            if [[ "$dep" == /* ]] && [ -f "$dep" ]; then
-                echo "Dependency $dep is a absolute filename and exists"
-            else
-                deps_install_yum "$dep" 1
-            fi
+        
+        echo $provs |grep "$dep" >& /dev/null
+        if [ $? -eq 0 ]; then
+            echo "Dependency $dep is provided by this repository"
         else
-            # Test if is usable
-            echo "Dependency $dep is a perl package"
-            # The unittests run prove with additional paths
-            PERL5LIB="$PERL5LIB:src/test/perl:src/test/resources" perl -e "use $perlpkg;" >& /dev/null
-            if [ $? -eq 0 ]; then
-                echo "Dependency $dep is a usable perl package"                
-            else 
-                # try to get it with yum
-                deps_install_yum "$dep" 0                
-                if [ $? -eq 0 ]; then
-                    echo "Dependency $dep is a perl package found with yum"                
+            perlpkg=`echo $dep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1\3/p"`
+            if [ -z "$perlpkg" ]; then
+                echo "Dependency $dep is not a perl package"
+                # is it a full path?
+                if [[ "$dep" == /* ]] && [ -f "$dep" ]; then
+                    echo "Dependency $dep is a absolute filename and exists"
                 else
-                    get_cpan_dep "$dep"
+                    deps_install_yum "$dep" 1
+                fi
+            else
+                # Test if the perl module is usable
+                echo "Dependency $dep is a perl package"
+                # The unittests run prove with additional paths
+                PERL5LIB="$PERL5LIB:src/test/perl:src/test/resources:target/lib/perl" perl -e "use $perlpkg;"
+                if [ $? -eq 0 ]; then
+                    echo "Dependency $dep is a usable perl package"                
+                else
+                    # try to get it with yum
+                    deps_install_yum "$dep" 0                
+                    if [ $? -eq 0 ]; then
+                        echo "Dependency $dep is a perl package found with yum"                
+                    else
+                        get_cpan_dep "$dep"
+                    fi
                 fi
             fi
         fi
-        # Is thisone really necessary?
-        export IFS=$fakeIFS
     done
-    
-    export IFS=$origIFS 
 }
 
 function reset_perl5lib () {
@@ -317,15 +353,7 @@ function git_repo () {
         rm -Rf ./$repo
     fi
 
-    if [ -d ./$repo ]; then
-        cd $repo
-        git clean -fxd
-        cmd="git pull origin master"
-        $cmd
-        if [ $? -gt 0 ]; then
-	        error 22 "$cmd for repository $repo failed"
-        fi        
-    else
+    if [ ! -d ./$repo ]; then
         cmd="git clone https://github.com/quattor/$repo.git"
         $cmd
         if [ $? -gt 0 ]; then
@@ -333,26 +361,30 @@ function git_repo () {
         fi
     fi
 
+    cd $repo
+    # maven-tools clone doesn't start in master?
+    git checkout master
+    git clean -fxd
+    cmd="git pull origin master"
+    $cmd
+    if [ $? -gt 0 ]; then
+        error 22 "$cmd for repository $repo failed"
+    fi        
+
     cd $here
     return 0
 }
 
-function build_and_install () {
+function prepare_build () {
     local repo
     repo=$1
-    shift
-
-    mvntgt="$@"
 
     if [ -z "$repo" ]; then
-        error 10 "build_and_install No repository passed as argument"
+        error 10 "prepare_build No repository passed as argument"
+    else
+        echo "prepare_build repository $repo"
     fi
 
-    if [ -z "$mvntgt" ]; then
-        error 11 "build_and_install No maven target passed as argument"
-    fi
-
-    echo "build_and_install maven target $mvntgt repository $repo"
 
     if [ ! -d $REPOSITORY ]; then
         error 12 "No REPOSITORY directory $REPOSITORY"
@@ -361,62 +393,95 @@ function build_and_install () {
     cd $REPOSITORY
     git_repo $repo
 
-    cd $repo
+    return 0
+}
 
+function mvn_compile () {
+    local repo
+    repo=$1
+    shift
+
+    cd $REPOSITORY/$repo
+
+    mvntgt="compile"
+    
     # the PERL5LIB path for this repo during testing
-    tgtperl="$PWD/target/lib/perl/"
-
-    if [ "$mvntgt" == "package" ]; then
-        # remove compile target from PERL5LIB; this repo should be available via INSTALL at the end
-        export PERL5LIB=`echo $PERL5LIB | sed "s%$tgtperl:%%"`
-        echo "Removed $tgtperl from PERL5LIB for repository $repo after mvn package. New PERL5LIB $PERL5LIB"            
+    if [ "$repo" == "maven-tools" ]; then
+        echo "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
+        cd build-scripts
+        tgtperl="$PWD/src/main/perl/"
+    else
+        tgtperl="$PWD/target/lib/perl/"
     fi
 
     # always clean?
     clean=clean
     mvn="mvn $clean $mvntgt $PROVEARGS"
-    echo "build_install for repository $repo in $PWD : $mvn"
+    echo "mvn_compile for repository $repo in $PWD : $mvn"
     $mvn
     if [ $? -gt 0 ]; then
-	    error 13 "build_and_install mvn $mvntgt failed for repository $repo (cmd $mvn)"
+        error 13 "mvn_compile mvn $mvntgt failed for repository $repo (cmd $mvn)"
     fi    
 
-    if [ "$mvntgt" == "compile" ]; then
-        # add the target path to PERL5LIB
-        PERL5LIB="$tgtperl:$PERL5LIB"
-        # INSTALLPERL is always first dir
-        PERL5LIB=`echo $PERL5LIB | sed "s%$INSTALLPERL:%%"`
-        export PERL5LIB="$INSTALLPERL:$PERL5LIB"
-        echo "Added $tgtperl to PERL5LIB for repository $repo after mvn compile : PERL5LIB $PERL5LIB"
-    else
-        if [ "$mvntgt" == "package" ]; then
-            rpms=`find target/ -type f -name \*.rpm`
-            if [ -z "$rpms" ]; then
-	            error 14 "No rpms found for repository $repo"
-            else
-	            echo "Rpms $rpms build for repository $repo"
-                for rpm in $rpms; do
-                    cp $rpm $RPMS
-                    echo "Copied rpm $rpm to RPMS $RPMS"
-                done
-            fi
+    # add the target path to PERL5LIB
+    PERL5LIB="$tgtperl:$PERL5LIB"
+    # INSTALLPERL is always first dir
+    PERL5LIB=`echo $PERL5LIB | sed "s%$INSTALLPERL:%%"`
+    export PERL5LIB="$INSTALLPERL:$PERL5LIB"
+    echo "Added $tgtperl to PERL5LIB for repository $repo after mvn compile : PERL5LIB $PERL5LIB"
 
-            tars=`find target/ -type f -name \*.tar.gz`
-            if [ -z "$tars" ]; then
-	            error 15 "No tar.gz found for repository $repo"
+    return 0
+}
+
+function mvn_package () {
+    local repo
+    repo=$1
+
+    mvntgt="package"
+
+    cd $REPOSITORY/$repo
+    
+    tgtperl="$PWD/target/lib/perl/"
+
+    # remove compile target from PERL5LIB; this repo should be available via INSTALL at the end
+    export PERL5LIB=`echo $PERL5LIB | sed "s%$tgtperl:%%"`
+    echo "Removed $tgtperl from PERL5LIB for repository $repo after mvn package. New PERL5LIB $PERL5LIB"            
+
+    # always clean?
+    clean=clean
+    mvn="mvn $clean $mvntgt $PROVEARGS"
+    echo "mvn_package for repository $repo in $PWD : $mvn"
+    $mvn
+    if [ $? -gt 0 ]; then
+        error 13 "mvn_package mvn $mvntgt failed for repository $repo (cmd $mvn)"
+    fi    
+
+    echo "Looking for rpm in {target,*/target} in $PWD"
+    rpms=`find {target,*/target} -type f -name \*.rpm`
+    if [ -z "$rpms" ]; then
+        error 14 "No rpms found for repository $repo"
+    else
+        echo "Rpms $rpms build for repository $repo"
+        for rpm in $rpms; do
+            cp $rpm $RPMS
+            echo "Copied rpm $rpm to RPMS $RPMS"
+        done
+    fi
+
+    echo "Looking for tar.gz in {target,*/target} in $PWD"
+    tars=`find {target,*/target} -type f -name \*.tar.gz`
+    if [ -z "$tars" ]; then
+        error 15 "No tar.gz found for repository $repo"
+    else
+        echo "Found tars $tars"
+        for tgz in $tars; do
+            tar -C $INSTALL -xvzf $tgz
+            if [ $? -gt 0 ]; then
+                error 16 "Failed to unpack tarball for repository $repo in INSTALL $INSTALL"
             else
-                echo "Found tars $tars"
-                for tgz in $tars; do
-                    tar -C $INSTALL -xvzf $tgz
-                    if [ $? -gt 0 ]; then
-                        error 16 "Failed to unpack tarball for repository $repo in INSTALL $INSTALL"
-                    else
-                        echo "unpacked tarball $tgz for repository $repo in INSTALL $INSTALL"
-                    fi
-                done
+                echo "unpacked tarball $tgz for repository $repo in INSTALL $INSTALL"
             fi
-            
-        fi
+        done
     fi
 
     return 0
@@ -447,9 +512,13 @@ function main() {
 
     reset_perl5lib
 
+    # do it separately
+    has_mvn
+
     # compile first
     for repo in $REPOS_MVN_ORDERED; do
-	    build_and_install $repo compile
+        prepare_build $repo
+	    mvn_compile $repo
 	    if [ $? -gt 0 ]; then
 	        error 7 "build_and_install compile of repository $repo failed"
 	    fi
@@ -460,8 +529,16 @@ function main() {
 
         echo "Checking dependencies"
 
+        # slowish
+        get_cpanm
+        
         check_deps_minimal
         check_deps_init_bin
+
+        # get the Test::Quattor tools in the PERL5LIB
+        pretoolsPERL5LIB=$PERL5LIB
+        prepare_build maven-tools
+        mvn_compile maven-tools
 
         for repo in $REPOS_MVN_ORDERED; do
             get_repo_deps $repo
@@ -470,16 +547,19 @@ function main() {
             fi
         done
 
-        # TODO needs to be implemented. for now we gather the deps
-        if [ ! -z "$CPAN" ]; then
-            # fatal for now?
-            error 9 "Missing CPAN packages $CPAN"
-        fi
+        # restore the original PERl5LIb (maven-tools are versioned in the pom.xml)
+        export PERL5LIB=$pretoolsPERL5LIB
+
     fi
+
+    # The tests require access to core templates
+    git_repo template-library-core
+    # a checkout in the same base directory is default (but lets set this anyway) 
+    export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$REPOSITORY/template-library-core
 
     # with modified PERL5LIB, run the tests
     for repo in $REPOS_MVN_ORDERED; do
-	    build_and_install $repo package
+	    mvn_package $repo
 	    if [ $? -gt 0 ]; then
 	        error 8 "build_and_install package of repository $repo failed"
 	    fi
