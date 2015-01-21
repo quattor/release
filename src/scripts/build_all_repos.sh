@@ -10,6 +10,12 @@ required in the perl INC path(s).
 The script currently assumes that all non-Quattor dependencies for running 
 the unittests are present (e.g. panc, mvn, git, the perl test modules, ...).
 
+Set CHECKDEPS=0 if you are running this as regular user and all dependencies 
+are ok (CHECKDEPS=1 will try to run yum).
+
+Set GITCLEAN=0 if you made local modification to the repositories and want 
+to test with them (otherwise the repositories will be cleaned).
+
 EOF
     exit 2
 }
@@ -39,6 +45,9 @@ REPOSITORY=$DEST/repos
 
 # if set to 1, cleans up more
 RELEASE=0
+
+# Run a git clean on each repo
+GITCLEAN=${GITCLEAN:-1}
 
 # verbose tests
 export QUATTOR_TEST_LOG_CMD_MISSING=1
@@ -373,7 +382,14 @@ function git_repo () {
     cd $repo
     # maven-tools clone doesn't start in master?
     git checkout master
-    git clean -fxd
+
+    if [ $GITCLEAN -gt 0 ]; then
+        echo "git clean"
+        git clean -fxd
+    else
+        echo "git clean disabled"
+    fi
+
     cmd="git pull origin master"
     $cmd
     if [ $? -gt 0 ]; then
