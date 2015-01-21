@@ -144,7 +144,7 @@ function has_mvn () {
             if [ $? -gt 0 ]; then
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed" 
             fi
-            
+
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
         fi
@@ -266,6 +266,12 @@ function get_repo_deps_subdir () {
 
     cd $dir
 
+    origIFS="$IFS"
+    # newline is the only delimiter for IFS
+    fakeIFS="
+"
+    export IFS=$fakeIFS
+
     # only search src and target (there's some legacy code in other dirs)
     # TT have 'use X', which perl.req things are perl modules
     found=`find {src,target} -type f  ! -regex '.*\.tt'`
@@ -279,8 +285,9 @@ function get_repo_deps_subdir () {
     echo "Provides found for repo $repo (dir $dir): $provs"
 
     # WARNING dep can have whitespace!
-    for dep in "$deps"; do
+    for dep in $deps; do
         echo "Checking dependency '$dep'"
+        export IFS=$origIFS 
         
         echo $provs |grep "$dep" >& /dev/null
         if [ $? -eq 0 ]; then
@@ -313,7 +320,9 @@ function get_repo_deps_subdir () {
                 fi
             fi
         fi
+        export IFS=$fakeIFS
     done
+    export IFS=$origIFS 
 }
 
 function reset_perl5lib () {
@@ -511,6 +520,8 @@ function main() {
     fi
 
     reset_perl5lib
+
+    yum clean all
 
     # do it separately
     has_mvn
