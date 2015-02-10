@@ -58,8 +58,12 @@ PROVEARGS="-Dprove.args=-v"
 # set to 0 on non-yum systems
 CHECKDEPS=${CHECKDEPS:-1}
 
+# Main init binaries
+MAIN_INIT_BIN_YUM="repoquery git"
+
 # Binary dependencies to be installed with yum                                                                                                        
-DEPS_INIT_BIN_YUM="rpmbuild perl mvn git"
+DEPS_INIT_BIN_YUM="rpmbuild perl"
+
 # Use newline separator to allow version statements 
 DEPS_INIT_YUM="panc >= 10.2
 "
@@ -159,6 +163,11 @@ function has_mvn () {
         fi
     fi
 
+    # Required on EL5
+    if [ -f /etc/profile.d/apache-maven.sh ]; then
+        . /etc/profile.d/apache-maven.sh
+    fi
+
     return 0
 }
 
@@ -227,6 +236,8 @@ function check_deps_init_bin () {
 function get_cpan_dep () {
     perldep="$1"
     
+    fatal=${2:-1}
+    
     perlpkg=`echo $perldep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1\3/p"`
 
     # No version info
@@ -242,16 +253,19 @@ function get_cpan_dep () {
         if [ $? -eq 0 ]; then
             echo "Dependency $dep is a usable perl package"                
         else
-            error 91 "Dependency $dep installed via CPAN (perlcpan $perlcpan) but not usabele (perlpkg $perlpkg)"
+            ec=91
+            cerror $fatal $ec "Dependency $dep installed via CPAN (perlcpan $perlcpan) but not usabele (perlpkg $perlpkg)"
         fi
     else
-        error 90 "Perl dependency $perldep installed via CPAN failed"
+        ec=90
+        cerror $fatal $ec "Perl dependency $perldep installed via CPAN failed"
     fi
 
 }
 
 function get_repo_deps () {
     repo=$1
+    fatal=${2:-1}
     
     cd $REPOSITORY
 
@@ -263,7 +277,7 @@ function get_repo_deps () {
     for dir in $subdirs; do
         cd $REPOSITORY
         # use dirname to scan both src/ and target/
-        get_repo_deps_subdir $repo `dirname $dir`
+        get_repo_deps_subdir $repo `dirname $dir` $fatal
     done
 }
 
@@ -272,6 +286,8 @@ function get_repo_deps_subdir () {
 
     # repo + optional subdir
     dir=${2:-$repo}
+    
+    fatal=${3:-1}
 
     cd $dir
 
@@ -309,7 +325,7 @@ function get_repo_deps_subdir () {
                 if [[ "$dep" == /* ]] && [ -f "$dep" ]; then
                     echo "Dependency $dep is a absolute filename and exists"
                 else
-                    deps_install_yum "$dep" 1
+                    deps_install_yum "$dep" $fatal
                 fi
             else
                 # Test if the perl module is usable
@@ -320,11 +336,11 @@ function get_repo_deps_subdir () {
                     echo "Dependency $dep is a usable perl package"                
                 else
                     # try to get it with yum
-                    deps_install_yum "$dep" 0                
+                    deps_install_yum "$dep" 0
                     if [ $? -eq 0 ]; then
                         echo "Dependency $dep is a perl package found with yum"                
                     else
-                        get_cpan_dep "$dep"
+                        get_cpan_dep "$dep" $fatal
                     fi
                 fi
             fi
@@ -512,6 +528,26 @@ function mvn_package () {
     return 0
 }
 
+function main_init () {
+    reset_perl5lib
+
+    yum clean all
+
+    # provided by yum-utils
+    echo "Checking MAIN_INIT_BIN_YUM $MAIN_INIT_BIN_YUM"
+    for bin in $MAIN_INIT_BIN_YUM; do
+        cmd="yum install -y /usr/bin/$bin"
+        if [ $? -gt 0 ]; then
+            error 19 "Failed to install $bin as part of MAIN_INIT_BIN_YUM $MAIN_INIT_BIN_YUM"
+        else
+            echo "Installed $bin with $cmd"
+        fi
+    done
+
+    # do it separately
+    has_mvn
+}
+
 function main() {
     mkdir -p $DEST
     if [ $? -gt 0 ]; then
@@ -535,12 +571,7 @@ function main() {
 	    error 6 "failed to create REPOSITORY $REPOSITORY"
     fi
 
-    reset_perl5lib
-
-    yum clean all
-
-    # do it separately
-    has_mvn
+    main_init
 
     # compile first
     for repo in $REPOS_MVN_ORDERED; do
@@ -567,8 +598,14 @@ function main() {
         prepare_build maven-tools
         mvn_compile maven-tools
 
+        # start with non-fatal to resolve some circular deps
         for repo in $REPOS_MVN_ORDERED; do
-            get_repo_deps $repo
+            get_repo_deps $repo 0
+        done
+        
+        # this has to work now
+        for repo in $REPOS_MVN_ORDERED; do
+            get_repo_deps $repo 1
             if [ $? -gt 0 ]; then
                 error 9 "check_deps of repository $repo failed"
             fi
