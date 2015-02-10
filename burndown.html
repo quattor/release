@@ -62,7 +62,7 @@ $(function () {
         });
         $('#container').highcharts({
             title: {
-                text: 'Progress toward 14.12 release'
+                text: 'Progress toward 15.2 release'
             },
             xAxis: {
                 type: 'datetime',
@@ -72,7 +72,7 @@ $(function () {
                 plotLines: [
                     {
                         color: '#ef2929',
-                        value: Date.parse('2015-01-16'),
+                        value: Date.parse('2015-02-27'),
                         width: '1',
                         label: {
                             text: 'Target',
@@ -107,8 +107,8 @@ $(function () {
                     },
                     {
                         color: '#eeeeec',
-                        from: Date.parse('2015-01-12'),
-                        to: Date.parse('2015-01-16'),
+                        from: Date.parse('2015-02-16'),
+                        to: Date.parse('2015-02-27'),
                         label: {
                             text: 'RCs',
                             style: {
@@ -139,7 +139,7 @@ $(function () {
                     name: 'Ideal',
                     data: [
                         [Date.parse('2014-11-14'), mydata.to_burn],
-                        [Date.parse('2015-01-16'), 0]
+                        [Date.parse('2015-02-27'), 0]
                     ],
                     color: '#73d216',
                     dashStyle: 'shortdash',
