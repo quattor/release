@@ -3,7 +3,7 @@
 NAME=`basename ${0%.sh}`
 
 # base destination directory, base for all other
-DEST=${DEST:-$HOME/quattor_test/$NAME}
+DEST=${DEST:-$HOME/quattordev}
 
 # if set to 1, cleans up more e.g. the repositories
 RELEASE=${RELEASE:-0}
@@ -85,7 +85,8 @@ REPOS_MVN_TESTONLY_ORDERED="maven-tools"
 INSTALL=$DEST/install
 # perl5lib dir in INSTALL
 # LC is under lib/perl, remainder under usr/lib/perl?
-INSTALLPERL=$INSTALL/lib/perl:$INSTALL/usr/lib/perl
+CPANINSTALL=$INSTALL/usr
+INSTALLPERL=$INSTALL/lib/perl:$INSTALL/usr/lib/perl:$CPANINSTALL/lib/perl5
 
 # gather all produced rpms
 RPMS=$DEST/rpms
@@ -125,7 +126,7 @@ function error () {
     ec=$1
     shift
     echo "export PERL5LIB=$PERL5LIB"
-    echo "export PPWD=$PWD"
+    echo "export PWD=$PWD"
     echo $@
     exit $ec
 }
@@ -339,7 +340,7 @@ function get_cpan_dep () {
 
     echo "Looking for CPAN perlcpan $perlcpan for dependency $perldep"
 
-    cpanm $perlcpan
+    cpanm --local-lib=$CPANINSTALL $perlcpan
 
     if [ $? -eq 0 ]; then
         echo "Perl dependency $perldep installed via CPAN"
