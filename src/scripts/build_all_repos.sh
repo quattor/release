@@ -38,7 +38,7 @@ The minimal requirements of this script are $MINIMAL_DEPS_PATH
 
 The script will try to install as much dependencies and requirements
 as possible using yum. If run as non-root, it requires sudo rights
-to run 'yum install'.
+to run 'yum' and 'repoquery'.
 (It might also add a EPEL maven repo file in /etc/yum.repos.d/ using
 curl or wget; so also sudo rights for that are required).
 Installed dependencies are logged in timestamped files under $DEST
@@ -279,7 +279,7 @@ function deps_install_yum () {
     ec=0
 
     echo "Searching for dep $dep"
-    pkgs=`repoquery --qf '%{name}' --whatprovides "$dep" | sort| uniq`
+    pkgs=`$SUDO repoquery --qf '%{name}' --whatprovides "$dep" | sort| uniq`
     if [ -z "$pkgs" ]; then
         ec=70
         cerror $fatal $ec "No packages found for dep $dep with repoquery"
