@@ -35,14 +35,16 @@ PERL_CPAN_INSTALL_LIST=$DEST/perl_cpan_install_list.$now
 
 function usage () {
     cat <<EOF
-$NAME builds packages for all Quattor repos, without any quattor modules
-required in the perl INC path(s).
+$NAME is a bootstrap script for testing (and packaging) all Quattor repos, 
+without any Quattor or dependency modules required in the perl INC path(s).
+After the script completes, there should be a local environment that can 
+be used for development.
 
 The minimal requirements of this script are $MINIMAL_DEPS_PATH
 (expected to be found in PATH).
 
 The script will try to install as much dependencies and requirements
-as possible using yum. If run as non-root, it requires sudo rights
+as possible using yum. When run as non-root, it requires sudo rights
 to run 'yum' and 'repoquery'.
 (It might also add a EPEL maven repo file in /etc/yum.repos.d/ using
 curl or wget; so also sudo rights for that are required).
@@ -50,11 +52,12 @@ Installed dependencies are logged in timestamped files under $DEST
 ($REPODEPS_INSTALL_LIST, $YUM_INSTALL_LIST,
 $PERL_CPAN_PERLPKG_INSTALL_LIST, $PERL_CPAN_INSTALL_LIST).
 
-The Quattor git repositories are cloned and point to remote 'upstream'.
-Any uncomiited changes will be stashed before master is updated. (I.e.
+The Quattor git repositories are cloned and the remote 'upstream' is configured 
+to refer to them.
+Any uncomitted changes will be stashed before master is updated. (I.e.
 don't work in the master branch!)
 
-For missing perl dependencies that can't be installed with yum, CAPN will
+For missing perl dependencies that can't be installed with yum, CPAN will
 be used.
 
 Environment variables:
@@ -76,7 +79,8 @@ DISABLEREPO: exclude repositories from yum/repoquery
 
 Dangerous environment variables:
 
-RELEASE: WARNING if set to 1, it will remove the repositories and some other intrusive cleanup.
+RELEASE: if set to 1, it will remove the existing repositories and do some 
+other intrusive cleanups. DON'T USE IT if you are not sure you need it.
 
 GITCLEAN: GITCLEAN=0 if you made local modification to the repositories and want
 to test with them (otherwise the repositories will be cleaned)
@@ -233,9 +237,9 @@ function get_cpanm () {
 
 function download () {
 
-    url=$1
-    fn=$2
-    sudo=$3
+    url="$1"
+    fn="$2"
+    sudo="$3"
 
     which curl >& /dev/null
     if [ $? -gt 0 ]; then
@@ -248,9 +252,10 @@ function download () {
         fi
     else
         exe=curl
-        opt=-o
+        opt="-L -o"
     fi
 
+    echo "download with $sudo $exe $opt $fn $url"
     $sudo $exe $opt $fn $url
     return $?
 
@@ -308,7 +313,7 @@ function has_mvn () {
     which $mvn >& /dev/null
     if [ $? -gt 0 ]; then
         echo "No maven executable $mvn found in PATH"
-
+        fn=/etc/yum.repos.d/check_deps_mvn.repo
         download "$EPEL_MVN_REPO" $fn $SUDO
         if [ $? -gt 0 ]; then
             error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
@@ -361,7 +366,7 @@ function deps_install_yum () {
 
     ec=0
 
-    if [ -z $dep ]; then
+    if [ -z "$dep" ]; then
         echo "Trying to install empty dependency."
         return 0
     fi
@@ -747,6 +752,7 @@ function main_init () {
         binpath="/usr/bin/$bin"
         if [ ! -f $binpath ]; then
             cmd="$SUDO yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $binpath"
+            $cmd
             if [ $? -gt 0 ]; then
                 error 19 "Failed to install $bin as part of MAIN_INIT_BIN_YUM $MAIN_INIT_BIN_YUM"
             else
