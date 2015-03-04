@@ -764,6 +764,12 @@ function main_init () {
     # do it separately
     has_mvn
     has_panc
+
+    # generate the environment
+    cat > $DEST/env.sh <<EOF
+# Source this file to get the proper environment
+export PERL5LIB=$INSTALLPERL
+EOF
 }
 
 function main() {
@@ -856,12 +862,6 @@ function main() {
 	        error 8 "build_and_install package of repository $repo failed"
 	    fi
     done
-
-    # generate the environment
-    cat > $DEST/env.sh <<EOF
-# Source this file to get the proper environment
-export PERL5LIB=$INSTALLPERL
-EOF
 
     return 0
 }
