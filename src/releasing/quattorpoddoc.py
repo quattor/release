@@ -20,6 +20,8 @@ MAILREGEX = re.compile(("([a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^
 PATHREGEX = re.compile(r'(\s+)((?:/[\w{}]+)+\.?\w*)(\s*)')
 EXAMPLEMAILS = ["example", "username", "system.admin"]
 LOGGER = fancylogger.getLogger()
+SUBDIR = "components"
+DOCDIR = "docs"
 
 
 def mavencleancompile(modules_location):
@@ -43,22 +45,19 @@ def generatemds(pods, location):
     LOGGER.info("Generating md files.")
     counter = 0
     mdfiles = []
+
+    comppath = os.path.join(location, DOCDIR, SUBDIR)
+    if not os.path.exists(comppath):
+        os.makedirs(comppath)
+
     for component in sorted(pods):
         for pod in pods[component]:
-            component = component.replace('ncm-','')
+            component = component.replace('ncm-', '')
             title = os.path.splitext(os.path.basename(pod))[0]
-            subdir = ''
             if component != title:
-                subdir = title
-                title = component+' / '+title
-            path = os.path.join(location, component, subdir)
-            try:
-                os.makedirs(path)
-            except OSError as err:
-                if err.errno!=17:
-                    raise
-            mdfile = os.path.join(path, 'index.md')
-            convertpodtomarkdown(pod, mdfile, title)
+                title = component+'::'+title
+            mdfile = os.path.join(comppath, '%s.md' % title)
+            convertpodtomarkdown(pod, mdfile)
             counter += 1
             mdfiles.append(mdfile)
 
@@ -66,7 +65,7 @@ def generatemds(pods, location):
     return mdfiles
 
 
-def convertpodtomarkdown(podfile, outputfile, title):
+def convertpodtomarkdown(podfile, outputfile):
     """
     Takes a podfile and converts it to a markdown with the help of pod2markdown.
     """
@@ -74,58 +73,44 @@ def convertpodtomarkdown(podfile, outputfile, title):
     output = run_asyncloop("pod2markdown %s" % podfile)
     LOGGER.debug("writing output to %s." % outputfile)
     LOGGER.debug(output)
-    fih = open(outputfile, "w")
-
-    fih.write("---\n")
-    fih.write("layout: documentation\n")
-    fih.write("title: %s\n" % title)
-    fih.write("category: documentation\n")
-    fih.write("subcategory: components\n")
-    fih.write("menu: 'components.md'\n")
-    fih.write("---\n")
-
-    fih.write(output[1])
-    fih.close()
+    with open(outputfile, "w") as fih:
+        fih.write(output[1])
 
 
-def generatetoc(pods, outputloc, indexname, menufile):
+def addintrogreeter(outputloc):
+    """
+    Writes small intro file.
+    """
+    LOGGER.info("Adding introduction page.")
+    with open(os.path.join(outputloc, DOCDIR, "index.md"), "w") as fih:
+        fih.write("This is the documentation for the core set of configuration modules for configuring systems with Quattor.\n")
+
+
+def generatetoc(pods, outputloc, indexname):
     """
     Generates a TOC for the parsed components.
     """
     LOGGER.info("Generating TOC as %s." % os.path.join(outputloc, indexname))
 
-    fih = open(os.path.join(outputloc, indexname), "w")
-    if menufile:
-        fihm = open(menufile, "w")
+    with open(os.path.join(outputloc, indexname), "w") as fih:
+        fih.write("site_name: Quattor Configuration Modules (Core)\n\n")
+        fih.write("theme: 'readthedocs'\n\n")
+        fih.write("pages:\n")
+        fih.write("- ['index.md', 'introduction']\n")
 
-    fih.write("---\n")
-    fih.write("layout: documentation\n")
-    fih.write("category: documentation\n")
-    fih.write("title: Components\n")
-    fih.write("---\n")
+        addintrogreeter(outputloc)
 
-    fih.write("\n### Components \n\n")
+        for component in sorted(pods):
+            name = component.replace('ncm-', '')
+            linkname = "%s/%s.md" % (SUBDIR, name)
+            fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
+            if len(pods[component]) > 1:
+                for pod in sorted(pods[component][1:]):
+                    subname = os.path.splitext(os.path.basename(pod))[0]
+                    linkname = "%s/%s::%s.md" % (SUBDIR, name, subname)
+                    fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
 
-    for component in sorted(pods):
-        name = component.replace('ncm-','')
-        linkname = "/documentation/components/%s/" % (name)
-        fih.write(" * [%s](%s) \n" % (name, linkname))
-        if menufile:
-            fihm.write(" * [%s](%s) \n" % (name, linkname))
-        if len(pods[component]) > 1:
-            for pod in pods[component][1:]:
-                subname = os.path.splitext(os.path.basename(pod))[0]
-                linkname = "/documentation/components/%s/%s/" % (name, subname)
-                fih.write("    * [%s](%s) \n" % (subname, linkname))
-                if menufile:
-                    fihm.write("    * [%s](%s) \n" % (subname, linkname))
-
-    fih.write("\n")
-    fih.close()
-
-    if menufile:
-        fihm.write("\n")
-        fihm.close()
+        fih.write("\n")
 
 
 def removemailadresses(mdfiles):
@@ -135,9 +120,8 @@ def removemailadresses(mdfiles):
     LOGGER.info("Removing emailaddresses from md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         for email in re.findall(MAILREGEX, mdcontent):
             LOGGER.debug("Found %s." % email[0])
             replace = True
@@ -150,9 +134,8 @@ def removemailadresses(mdfiles):
         if replace:
             LOGGER.debug("Removed it from line.")
             mdcontent = mdcontent.replace(email[0], '')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
     LOGGER.info("Removed %s email addresses." % counter)
 
@@ -164,15 +147,13 @@ def removewhitespace(mdfiles):
     LOGGER.info("Removing extra whitespace from md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         if '\n\n\n' in mdcontent:
             LOGGER.debug("Removing whitespace in %s." % mdfile)
             mdcontent = mdcontent.replace('\n\n\n', '\n')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
     LOGGER.info("Removed extra whitespace from %s files." % counter)
 
@@ -184,17 +165,16 @@ def decreasetitlesize(mdfiles):
     LOGGER.info("Downsizing titles in md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         if '# ' in mdcontent:
             LOGGER.debug("Making titles smaller in %s." % mdfile)
             mdcontent = mdcontent.replace('# ', '### ')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
     LOGGER.info("Downsized titles in %s files." % counter)
+
 
 def removeheaders(mdfiles):
     """
@@ -203,22 +183,19 @@ def removeheaders(mdfiles):
     LOGGER.info("Removing AUTHOR and MAINTAINER headers from md files.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
         if '# MAINTAINER' in mdcontent:
             LOGGER.debug("Removing # MAINTAINER in %s." % mdfile)
             mdcontent = mdcontent.replace('# MAINTAINER', '')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
         if '# AUTHOR' in mdcontent:
             LOGGER.debug("Removing # AUTHOR in %s." % mdfile)
             mdcontent = mdcontent.replace('# AUTHOR', '')
-            fih = open(mdfile, 'w')
-            fih.write(mdcontent)
-            fih.close()
+            with open(mdfile, 'w') as fih:
+                fih.write(mdcontent)
             counter += 1
 
     LOGGER.info("Removed %s unused headers." % counter)
@@ -231,15 +208,13 @@ def codifypaths(mdfiles):
     LOGGER.info("Putting paths inside code tags.")
     counter = 0
     for mdfile in mdfiles:
-        fih = open(mdfile, 'r')
-        mdcontent = fih.read()
-        fih.close()
+        with open(mdfile, 'r') as fih:
+            mdcontent = fih.read()
 
         LOGGER.debug("Tagging paths in %s." % mdfile)
         mdcontent, counter = PATHREGEX.subn(r'\1`\2`\3', mdcontent)
-        fih = open(mdfile, 'w')
-        fih.write(mdcontent)
-        fih.close()
+        with open(mdfile, 'w') as fih:
+            fih.write(mdcontent)
 
     LOGGER.info("Code tagged %s paths." % counter)
 
@@ -299,7 +274,7 @@ def listpods(module_location, components):
     for comp in components:
         pods = []
 
-        for root, dirs, files in os.walk(os.path.join(module_location, comp, "target")):
+        for root, _, files in os.walk(os.path.join(module_location, comp, "target")):
             for fileh in files:
 
                 if fileh.endswith(".pod"):
@@ -319,7 +294,7 @@ def which(command):
     """
     found = False
     for direct in os.getenv("PATH").split(':'):
-        if (os.path.exists(os.path.join(direct, command))):
+        if os.path.exists(os.path.join(direct, command)):
             found = True
 
     return found
@@ -329,9 +304,8 @@ if __name__ == '__main__':
     OPTIONS = {
         'modules_location': ('The location of the configuration-modules-core checkout.', None, 'store', None, 'm'),
         'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
-        'menu_list': ('The filename of a markdown file that a menu list shold be written to.', None, 'store', None, 'l'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
-        'index_name': ('Filename for the index/toc for the components', None, 'store', 'index.md', 'i'),
+        'index_name': ('Filename for the index/toc for the components.', None, 'store', 'mkdocs.yml', 'i'),
         'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
         'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
         'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R'),
@@ -352,8 +326,8 @@ if __name__ == '__main__':
     COMPS = listcomponents(GO.options.modules_location)
     PODS = listpods(GO.options.modules_location, COMPS)
 
-    generatetoc(PODS, GO.options.output_location, GO.options.index_name, GO.options.menu_list)
     MDS = generatemds(PODS, GO.options.output_location)
+    generatetoc(PODS, GO.options.output_location, GO.options.index_name)
 
     if GO.options.remove_emails:
         removemailadresses(MDS)
