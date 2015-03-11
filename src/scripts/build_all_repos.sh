@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ "$DEBUGSCRIPT" == "1" ]; then
+    set -x
+fi
+
 NAME=`basename ${0%.sh}`
 
 # base destination directory, base for all other
@@ -20,6 +24,8 @@ PACKAGE=${PACKAGE:-package}
 MINIMAL_DEPS_PATH="which rpm yum repoquery";
 
 now=`date +%s`
+# List with all deps
+REPODEPS_INSTALL_LIST=$DEST/repodeps_install_list.$now
 # List with all yum install
 YUM_INSTALL_LIST=$DEST/yum_install_list.$now
 # Perl with all perl packages (incl version requirements) installed by cpan
@@ -27,28 +33,31 @@ PERL_CPAN_PERLPKG_INSTALL_LIST=$DEST/perl_cpan_perlpkg_install_list.$now
 # List with all cpanm install
 PERL_CPAN_INSTALL_LIST=$DEST/perl_cpan_install_list.$now
 
-
 function usage () {
     cat <<EOF
-$NAME builds packages for all Quattor repos, without any quattor modules
-required in the perl INC path(s).
+$NAME is a bootstrap script for testing (and packaging) all Quattor repos, 
+without any Quattor or dependency modules required in the perl INC path(s).
+After the script completes, there should be a local environment that can 
+be used for development.
 
 The minimal requirements of this script are $MINIMAL_DEPS_PATH
 (expected to be found in PATH).
 
 The script will try to install as much dependencies and requirements
-as possible using yum. If run as non-root, it requires sudo rights
+as possible using yum. When run as non-root, it requires sudo rights
 to run 'yum' and 'repoquery'.
 (It might also add a EPEL maven repo file in /etc/yum.repos.d/ using
 curl or wget; so also sudo rights for that are required).
 Installed dependencies are logged in timestamped files under $DEST
-($YUM_INSTALL_LIST, $PERL_CPAN_PERLPKG_INSTALL_LIST, $PERL_CPAN_INSTALL_LIST).
+($REPODEPS_INSTALL_LIST, $YUM_INSTALL_LIST,
+$PERL_CPAN_PERLPKG_INSTALL_LIST, $PERL_CPAN_INSTALL_LIST).
 
-The Quattor git repositories are cloned and point to remote 'upstream'.
-Any uncomiited changes will be stashed before master is updated. (I.e.
+The Quattor git repositories are cloned and the remote 'upstream' is configured 
+to refer to them.
+Any uncomitted changes will be stashed before master is updated. (I.e.
 don't work in the master branch!)
 
-For missing perl dependencies that can't be installed with yum, CAPN will
+For missing perl dependencies that can't be installed with yum, CPAN will
 be used.
 
 Environment variables:
@@ -60,11 +69,18 @@ are ok (CHECKDEPS=1 will try to run yum) (current CHECKDEPS=$CHECKDEPS).
 
 VERBOSE: VERBOSE=1 enables verbose logging (current VERBOSE=$VERBOSE)
 
+DEBUGSCRIPT: DEBUGSCRIPT=1 enables debugging this script via set -x
+
 PACKAGE: run 'mvn clean PACKAGE' (use e.g. test or package) (current PACKAGE=$PACKAGE)
+
+ENABLEREPO: include repositories from yum/repoquery
+
+DISABLEREPO: exclude repositories from yum/repoquery
 
 Dangerous environment variables:
 
-RELEASE: WARNING if set to 1, it will remove the repositories and some other intrusive cleanup.
+RELEASE: if set to 1, it will remove the existing repositories and do some 
+other intrusive cleanups. DON'T USE IT if you are not sure you need it.
 
 GITCLEAN: GITCLEAN=0 if you made local modification to the repositories and want
 to test with them (otherwise the repositories will be cleaned)
@@ -114,12 +130,23 @@ MAIN_INIT_BIN_YUM="repoquery git"
 # Binary dependencies to be installed with yum
 DEPS_INIT_BIN_YUM="rpmbuild perl"
 
+# only major.minor!
+PAN_MIN_VERSION=10.2
+PAN_MIN_VERSION_RPM_URL="https://github.com/quattor/pan/releases/download/pan-${PAN_MIN_VERSION}/panc-${PAN_MIN_VERSION}-1.noarch.rpm"
+
 # Use newline separator to allow version statements
-DEPS_INIT_YUM="panc >= 10.2
-"
+DEPS_INIT_YUM=""
 
 # the mvn epel url (who has this mirrored/enabled by default?)
 EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+
+if [ ! -z "$ENABLEREPO" ]; then
+    ENABLEREPOSFULL="--enablerepo=$ENABLEREPO"
+fi
+
+if [ ! -z "$DISABLEREPO" ]; then
+    DISABLEREPOSFULL="--disablerepo=$DISABLEREPO"
+fi
 
 function error () {
     # at least 2 arguments: exit code, the remainder is message
@@ -138,7 +165,7 @@ function cerror () {
     if [ $fatal -gt 0 ]; then
         error $@
     else
-        echo $@
+        echo "$@ (not fatal)"
     fi
 }
 
@@ -207,36 +234,95 @@ function get_cpanm () {
     return 0
 }
 
+
+function download () {
+
+    url="$1"
+    fn="$2"
+    sudo="$3"
+
+    which curl >& /dev/null
+    if [ $? -gt 0 ]; then
+        which wget >& /dev/null
+        if [ $? -gt 0 ]; then
+            error 80 "has_mvn no curl or wget found"
+        else
+            exe=wget
+            opt=-O
+        fi
+    else
+        exe=curl
+        opt="-L -o"
+    fi
+
+    echo "download with $sudo $exe $opt $fn $url"
+    $sudo $exe $opt $fn $url
+    return $?
+
+}
+
+function has_correct_panc () {
+    pancversion=`panc --version 2>/dev/null | sed -n "s/.*:[ ]*\([0-9]\+\)\.\([0-9]\+\).*/\1.\2/p"`
+
+    if [ ! -z "$pancversion" ]; then
+        maj1=${pancversion%.*}
+        min1=${pancversion#*.}
+
+        maj2=${PAN_MIN_VERSION%.*}
+        min2=${PAN_MIN_VERSION#*.}
+
+        if [ $maj1 -gt $maj2 ]; then
+            return 0
+        fi
+
+        if [ $maj1 -eq $maj2 ]; then
+            if [ $min1 -ge $min2 ]; then
+                return 0
+            fi
+        fi
+    fi
+
+    return 1
+}
+
+function has_panc () {
+
+    has_correct_panc
+    if [ $? -ne 0 ]; then
+        deps_install_yum "panc >= $PAN_MIN_VERSION" 0
+        has_correct_panc
+        if [ $? -ne 0 ]; then
+            rpm=$DEST/panc-${PAN_MIN_VERSION}.rpm
+            download $PAN_MIN_VERSION_RPM_URL $rpm
+            if [ $? -ne 0 ]; then
+                error 100 "Failed to download $PAN_MIN_VERSION_RPM_URL"
+            fi
+
+            $SUDO yum localinstall $DISABLEREPOSFULL $ENABLEREPOSFULL -y $rpm
+            if [ $? -ne 0 ]; then
+                error 101 "Failed to do localinstall of $rpm from $PAN_MIN_VERSION_RPM_URL"
+            fi
+
+        fi
+    fi
+}
+
 function has_mvn () {
     mvn="mvn"
     # this one is typically missing from repos etc etc
     which $mvn >& /dev/null
     if [ $? -gt 0 ]; then
         echo "No maven executable $mvn found in PATH"
+        fn=/etc/yum.repos.d/check_deps_mvn.repo
+        download "$EPEL_MVN_REPO" $fn $SUDO
+        if [ $? -gt 0 ]; then
+            error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
+        fi
 
         deps_install_yum "*bin/mvn" 0
         if [ $? -gt 0 ]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
             echo "Couldn't get mvn $mvn via yum. Going to add the mvn epel repo $EPEL_MVN_REPO to $fn and retry."
-
-            which curl >& /dev/null
-            if [ $? -gt 0 ]; then
-                which wget >& /dev/null
-                if [ $? -gt 0 ]; then
-                    error 80 "has_mvn no curl or wget found"
-                else
-                    exe=wget
-                    opt=-O
-                fi
-            else
-                exe=curl
-                opt=-o
-            fi
-
-            $SUDO $exe $opt $fn "$EPEL_MVN_REPO"
-            if [ $? -gt 0 ]; then
-                error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
-            fi
 
             # releasever but repos have single digits/RHEL naming
             major=`cat /etc/redhat-release | sed -n "s/.*release \([0-9]\+\)\..*/\1/p"`
@@ -250,6 +336,7 @@ function has_mvn () {
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
             fi
 
+            yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
         fi
@@ -279,22 +366,24 @@ function deps_install_yum () {
 
     ec=0
 
-    echo "Searching for dep $dep"
-    pkgs=`$SUDO repoquery --qf '%{name}' --whatprovides "$dep" | sort| uniq`
+    if [ -z "$dep" ]; then
+        echo "Trying to install empty dependency."
+        return 0
+    fi
+
+    echo "Searching for dep $dep with $SUDO repoquery --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
+    pkgs=`$SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides "$dep" 2>/dev/null | sort| uniq`
     if [ -z "$pkgs" ]; then
         ec=70
         cerror $fatal $ec "No packages found for dep $dep with repoquery"
     fi
 
-    # e.g. quattor unittest repo
-    enablerepos=""
-
     # yum command (e.g. add sudo or something like that)
     yum="$SUDO yum"
 
     for pkg in $pkgs; do
-        echo "Installing pkg $pkg with yum"
-        cmd="$yum install -y $enablerepos $pkg"
+        echo "Installing pkg $pkg with yum install $DISABLEREPOSFULL $ENABLEREPOSFULL"
+        cmd="$yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $pkg"
         $cmd
         if [ $? -gt 0 ]; then
             ec=71
@@ -314,6 +403,7 @@ function check_deps_init_bin () {
     for bin in $DEPS_INIT_BIN_YUM; do
         deps_install_yum "*bin/$bin" 1
     done
+
     echo "Checking other deps: $DEPS_INIT_YUM"
     for dep in "$DEPS_INIT_YUM"; do
         deps_install_yum "$dep" 1
@@ -418,6 +508,7 @@ function get_repo_deps_subdir () {
             if [ $? -eq 0 ]; then
                 echo "Dependency $dep is provided by this repository"
             else
+                echo $dep >> $REPODEPS_INSTALL_LIST
                 perlpkg=`echo $dep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1\3/p"`
                 if [ -z "$perlpkg" ]; then
                     echo "Dependency $dep is not a perl package"
@@ -652,14 +743,16 @@ function mvn_package () {
 function main_init () {
     reset_perl5lib
 
-    $SUDO yum clean all
+    $SUDO yum clean expire-cache
+    $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
 
     # provided by yum-utils
     echo "Checking MAIN_INIT_BIN_YUM $MAIN_INIT_BIN_YUM"
     for bin in $MAIN_INIT_BIN_YUM; do
         binpath="/usr/bin/$bin"
         if [ ! -f $binpath ]; then
-            cmd="$SUDO yum install -y $binpath"
+            cmd="$SUDO yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $binpath"
+            $cmd
             if [ $? -gt 0 ]; then
                 error 19 "Failed to install $bin as part of MAIN_INIT_BIN_YUM $MAIN_INIT_BIN_YUM"
             else
@@ -670,6 +763,13 @@ function main_init () {
 
     # do it separately
     has_mvn
+    has_panc
+
+    # generate the environment
+    cat > $DEST/env.sh <<EOF
+# Source this file to get the proper environment
+export PERL5LIB=$INSTALLPERL
+EOF
 }
 
 function main() {
