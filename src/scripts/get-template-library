@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script download all the template library subsets from Git repositories
 # on GitHub and gather them in a directory whose layout is compliant with 
 # SCDB cfg/ subdirectory.
