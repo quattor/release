@@ -112,6 +112,10 @@ ORIGPERL5LIB=$PERL5LIB
 
 # repository dir
 REPOSITORY=$DEST/repos
+# a checkout in the same base directory is default (but lets set this anyway)
+export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$REPOSITORY/template-library-core
+
+
 
 if [ ! -z "$VERBOSE" ]; then
     # verbose tests
@@ -769,7 +773,9 @@ function main_init () {
     cat > $DEST/env.sh <<EOF
 # Source this file to get the proper environment
 export PERL5LIB=$INSTALLPERL
+export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$QUATTOR_TEST_TEMPLATE_LIBRARY_CORE
 EOF
+
 }
 
 function main() {
@@ -844,8 +850,6 @@ function main() {
 
     # The tests require access to core templates
     git_repo template-library-core
-    # a checkout in the same base directory is default (but lets set this anyway)
-    export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$REPOSITORY/template-library-core
 
     # test the maven-tools build scripts repo separately (can't package it)
     for repo in $REPOS_MVN_TESTONLY_ORDERED; do
