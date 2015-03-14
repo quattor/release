@@ -69,7 +69,7 @@ monitoring_dest_dir=standard/monitoring
 # If a branch name matches one of the pattern, it will be ignored
 # HEAD added to workaround a bug in the release procedure when producing 14.5
 ignore_branch_patterns='\.obsolete$ ^HEAD$'
-ignore_version_patterns=''
+ignore_version_patterns='13.1.[1-3] 13.[2-9] 13.12 14.[2-8]'
 template_lib_root=/tmp/quattor-template-library
 git_clone_root=${template_lib_root}/.gitrepos
 list_branches=0
