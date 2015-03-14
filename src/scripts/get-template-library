@@ -42,7 +42,7 @@ core_ignore_version=1
 # Rename master branch from -core repo
 # Set to an empty string or comment out to disable renaming
 # Can be used for each repository but generally used only with -core
-core_rename_master=14.2.1
+core_rename_master=dev
 
 examples_git_repo=template-library-examples
 examples_branch_pattern=master
@@ -314,6 +314,11 @@ do
     fi
     [ ${verbose} -eq 1 ] && echo "Using tags rather than branches for repository ${repo} (branch pattern=${branch_pattern})"
     branch_list=$(git tag | egrep -- "${branch_pattern}")
+    # If version is HEAD, need to add master branch to all the other tags
+    if [ "${quattor_version}" = "HEAD" ]
+    then
+      branch_list="${branch_list} master"
+    fi
   else
     branch_list=$(git branch -r | egrep "origin/${branch_pattern}" | grep -v HEAD)
   fi
@@ -347,6 +352,12 @@ do
     else
       branch_dir=$(echo ${branch} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
       tag_dir=$(echo ${branch} | sed -e "s%^.*${branch_dir}-%%")
+      # master is normally not a tag name but master branch can be added to
+      # other tags when the version is HEAD (for example for template-library-core)
+      if [ "${tag_dir}" = "master" -a $?{master_dir_name} ]
+      then
+        tag_dir=${master_dir_name}
+      fi
       # For repository with a master branch, the tag is template-library-VERSION.
       # For repositories with multiple production branch, the tag is BRANCH-VERSION.
       if [ -n "$(echo ${branch_dir} | grep '^template-library')" ]
@@ -465,6 +476,29 @@ do
     rm -Rf ${repo_dir}
   fi
 done      # repository loop
+
+
+# If version request is HEAD, update the cluster.build.properties file in each
+# cluster example to use the master branch of template-library-core rather than
+# the last release.
+
+if [ ${list_branches} -eq 0 -a "${quattor_version}" = "HEAD" ]
+then
+  property_files=$(find ${template_lib_root}/clusters -name cluster.build.properties)
+  if [ -n "${property_files}" ]
+  then
+    if [ $?{core_rename_master} ]
+    then
+      quattor_dev_version=${core_rename_master}
+    else
+      quattor_dev_version=master
+    fi
+    echo "Updating cluster.build.properties files to use Quattor version ${quattor_dev_version} ($(echo ${property_files}))..."
+    sed -i "s%\squattor/\S\+\s% quattor/${quattor_dev_version} %" ${property_files} 
+  else
+    echo "Warning: no cluster.build.properties file found. Examples may be incomplete"
+  fi
+fi
 
 
 # Delete directory used for storing Git clones if empty
