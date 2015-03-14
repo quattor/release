@@ -26,14 +26,14 @@
 git_url_root=https://github.com
 quattor_git_url=${git_url_root}/quattor
 git_repo_list='core examples grid os standard monitoring'
-use_tags_default=1
 # Do not change the following defaults except if you know what you are doing...
+use_tags_default=1
 ignore_version_default=0
 tags_ignore_pattern_pattern=master
 pull_request=''
 
 core_git_repo=template-library-core
-core_branch_pattern='template-library-'
+core_branch_pattern='^(template-library-)*'
 core_dest_dir=quattor/%TAG%
 # With core repo, always checkout all tags matching core_branch_pattern,
 # whatever is done for other repos.
@@ -307,7 +307,7 @@ do
     then
       if [ ${tags_ignore_pattern} -eq 1 ]
       then
-        branch_pattern="-${quattor_version}$"
+        branch_pattern="${quattor_version}$"
       else
         branch_pattern="${branch_pattern}-${quattor_version}$"
       fi
