@@ -338,13 +338,9 @@ do
     # when using tags, branch_dir contains the branch name retrieved from the tag and
     # tag_dir contains the tag version derived from the tag name with the prefix 
     # (e.g. template-library-) removed. Define a non empty default value.
-    # branch_name is defined to the name of the branch the tag is based on when
-    # using tags else the actual branch name. It is used for comparison with 
-    # pr_target, the target branch of a pull request.
     tag_dir="undefined_tag"
     if [ ${use_tags} -eq 0 ]
     then
-      branch_name=${branch}
       if [ "${branch}" = "master" -a $?{master_dir_name} ]
       then
         branch_dir=${master_dir_name}
@@ -359,14 +355,6 @@ do
       if [ "${tag_dir}" = "master" -a $?{master_dir_name} ]
       then
         tag_dir=${master_dir_name}
-      fi
-      # For repository with a master branch, the tag is template-library-VERSION.
-      # For repositories with multiple production branch, the tag is BRANCH-VERSION.
-      if [ -n "$(echo ${branch_dir} | grep '^template-library')" ]
-      then
-        branch_name=master
-      else
-        branch_name=${branch_dir}
       fi
     fi
     [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
@@ -407,7 +395,8 @@ do
     # Import pull request changes if requested and if the PR target matches the current repository/branch
     if [ -n "${pull_request}" ]
     then
-      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch_name}" ]
+      [ ${verbose} -eq 1 ] && echo "Checking if PR applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target})..."
+      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch}" ]
       then
         echo "Merging ${pr_user}/${pr_branch} into branch/tag ${branch}..."
         pr_remote=${git_url_root}/${pr_user}/${pr_repo}
@@ -436,7 +425,7 @@ do
             echo "Pull request doesn't match current repository (${repo_name}). Ignored"
           elif [ "${pr_branch}" != "${branch}" ]
           then
-            echo "Pull request doesn't match current branch (${branch_name}) in repository ${repo_name}. Ignored"
+            echo "Pull request doesn't match current branch/tag (${branch}) in repository ${repo_name}. Ignored"
           fi
         fi
       fi
