@@ -333,7 +333,7 @@ do
   for remote_branch in ${branch_list}
   do
     # Remove origin/ from the branch name
-    branch=$(echo ${remote_branch} | sed -e 's#^.*origin/##')
+    branch_or_tag=$(echo ${remote_branch} | sed -e 's#^.*origin/##')
 
     # when using tags, branch_dir contains the branch name retrieved from the tag and
     # tag_dir contains the tag version derived from the tag name with the prefix 
@@ -341,15 +341,15 @@ do
     tag_dir="undefined_tag"
     if [ ${use_tags} -eq 0 ]
     then
-      if [ "${branch}" = "master" -a $?{master_dir_name} ]
+      if [ "${branch_or_tag}" = "master" -a $?{master_dir_name} ]
       then
         branch_dir=${master_dir_name}
       else
-        branch_dir=${branch}
+        branch_dir=${branch_or_tag}
       fi
     else
-      branch_dir=$(echo ${branch} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
-      tag_dir=$(echo ${branch} | sed -e "s%^.*${branch_dir}-%%")
+      branch_dir=$(echo ${branch_or_tag} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
+      tag_dir=$(echo ${branch_or_tag} | sed -e "s%^.*${branch_dir}-%%")
       # master is normally not a tag name but master branch can be added to
       # other tags when the version is HEAD (for example for template-library-core)
       if [ "${tag_dir}" = "master" -a $?{master_dir_name} ]
@@ -390,15 +390,15 @@ do
     branch_found=1
 
     # Checkout the appropriate branch or tag
-    silent_command git checkout ${branch}
+    silent_command git checkout ${branch_or_tag}
 
     # Import pull request changes if requested and if the PR target matches the current repository/branch
     if [ -n "${pull_request}" ]
     then
       [ ${verbose} -eq 1 ] && echo "Checking if PR applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target})..."
-      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch}" ]
+      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch_or_tag}" ]
       then
-        echo "Merging ${pr_user}/${pr_branch} into branch/tag ${branch}..."
+        echo "Merging ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag}..."
         pr_remote=${git_url_root}/${pr_user}/${pr_repo}
         silent_command git remote add ${pr_user} ${pr_remote}
         if [ $? -ne 0 ]
@@ -413,7 +413,7 @@ do
         silent_command git pull ${pr_user} ${pr_branch}
         if [ $? -ne 0 ]
         then
-          echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch} of repository ${repo_name}"
+          echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag} of repository ${repo_name}"
           exit 11
         fi
         silent_command popd
@@ -423,9 +423,9 @@ do
           if [ "${pr_repo}" != "${repo_name}" ]
           then
             echo "Pull request doesn't match current repository (${repo_name}). Ignored"
-          elif [ "${pr_branch}" != "${branch}" ]
+          elif [ "${pr_branch}" != "${branch_or_tag}" ]
           then
-            echo "Pull request doesn't match current branch/tag (${branch}) in repository ${repo_name}. Ignored"
+            echo "Pull request doesn't match current branch/tag (${branch_or_tag}) in repository ${repo_name}. Ignored"
           fi
         fi
       fi
@@ -439,7 +439,7 @@ do
     then
       dest_dir=$(echo ${dest_dir} | sed -e 's/-spma//')
     fi
-    echo Copying Git branch ${branch} contents to ${dest_dir}...
+    echo Copying Git branch ${branch_or_tag} contents to ${dest_dir}...
     mkdir -p ${dest_dir}
     cp -R ${repo_dir}/* ${dest_dir}
 
@@ -447,7 +447,7 @@ do
     silent_command git clean -f -d
     if [ $? -ne 0 ]
     then
-      echo "Error removing untracked files from branch ${branch} in repository ${repo}"
+      echo "Error removing untracked files from branch ${branch_or_tag} in repository ${repo}"
       exit 11
     fi
 
