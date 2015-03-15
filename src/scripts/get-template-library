@@ -91,9 +91,13 @@ usage () {
   echo "        -l : list available branches matching the selected version."
   echo "        --pull-request repository:user:branch[:target] : merge the GitHub pull request specifed by the"
   echo "                                  source branch repository:user:branch into repository:quattor:target."
-  echo "                                  target can be a branch or a tag. If not specified, it defaults to master."
+  echo "                                  target can be a branch or a tag. If not specified, it defaults to"
+  echo "                                  quattor_version or master when quattor_version=HEAD. Note that using"
+  echo "                                  a version other than HEAD generally produces unpredictable results."
   echo "        --release-candidates: download release candidates in template-library-core (disabled by default)."
   echo "        --spma : download SPMA-based OS templates (disabled by default)."
+  echo ""
+  echo "    quattor_version must be a released Quattor version (git tag) or HEAD."
   echo ""
   exit 1
 }
@@ -196,7 +200,17 @@ then
   pr_target=$(echo ${pull_request} | awk -F: '{print $4}')
   if [ -z "${pr_target}" ]
   then
-    pr_target=master
+    if [ "${quattor_version}" = "HEAD" ]
+    then
+      pr_target=master
+    else
+      pr_target=${quattor_version}
+    fi
+  elif [ -n "$(echo ${pr_target} | egrep '^template-library-')" ]
+  then
+    # Old tag name format: renormalize to the new format without the template-library- prefix
+    [ ${verbose} -eq 1 ] && echo "pr_target: template-library- prefix removed (legacy tag format)"
+    pr_target=$(echo ${pr_target} | sed 's/^template-library-//')
   fi
   [ ${verbose} -eq 1 ] && echo "Pull request to import: repository=${pr_repo}, user=${pr_user}, branch=${pr_branch}, target=${pr_target}"
 fi
@@ -338,9 +352,13 @@ do
     # when using tags, branch_dir contains the branch name retrieved from the tag and
     # tag_dir contains the tag version derived from the tag name with the prefix 
     # (e.g. template-library-) removed. Define a non empty default value.
+    # Also define the branch/tag name to use to compare with pr_target (--pull-request):
+    # when using a branch, use branch name (branch_or_tag) and when using a tag, use
+    # tag_dir before the rename applied to master.
     tag_dir="undefined_tag"
     if [ ${use_tags} -eq 0 ]
     then
+      pr_actual_target=${branch_or_tag}
       if [ "${branch_or_tag}" = "master" -a $?{master_dir_name} ]
       then
         branch_dir=${master_dir_name}
@@ -350,14 +368,27 @@ do
     else
       branch_dir=$(echo ${branch_or_tag} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
       tag_dir=$(echo ${branch_or_tag} | sed -e "s%^.*${branch_dir}-%%")
+      pr_actual_target=${tag_dir}
       # master is normally not a tag name but master branch can be added to
       # other tags when the version is HEAD (for example for template-library-core)
       if [ "${tag_dir}" = "master" -a $?{master_dir_name} ]
       then
         tag_dir=${master_dir_name}
       fi
+      # If branch_dir = template_library, reset it to tag_dir (old tag format)
+      if [ "${branch_dir}" == "template-library" ]
+      then
+        branch_dir=${tag_dir}
+      fi
+      # If branch_dir is not tag_dir or master, indicates a repository without a master
+      # branch (e.g. template-library-grid). In this case, pr_actual_target must be 
+      # redefined as branch_dir-tag_dir, as the tag name is prefixed by the branch name (branch_dir).
+      if [ "${branch_dir}" != "master" -a "${branch_dir}" != "${tag_dir}" ]
+      then
+        pr_actual_target="${branch_dir}-${tag_dir}"
+      fi
     fi
-    [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
+    [ ${verbose} -eq 1 ] && echo branch_dir=${branch_dir}, tag_dir=${tag_dir}, pr_acctual_target=${pr_actual_target}
 
     # Check if the branch should be ignored
     # Ignore pattern can be against branch name or version
@@ -395,10 +426,10 @@ do
     # Import pull request changes if requested and if the PR target matches the current repository/branch
     if [ -n "${pull_request}" ]
     then
-      [ ${verbose} -eq 1 ] && echo "Checking if PR applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target})..."
-      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch_or_tag}" ]
+      [ ${verbose} -eq 1 ] && echo "Checking if pull request applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target}, pr_actual_target=${pr_actual_target})..."
+      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${pr_actual_target}" ]
       then
-        echo "Merging ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag}..."
+        echo "Merging pull request from ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag}..."
         pr_remote=${git_url_root}/${pr_user}/${pr_repo}
         silent_command git remote add ${pr_user} ${pr_remote}
         if [ $? -ne 0 ]
