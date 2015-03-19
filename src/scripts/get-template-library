@@ -26,14 +26,14 @@
 git_url_root=https://github.com
 quattor_git_url=${git_url_root}/quattor
 git_repo_list='core examples grid os standard monitoring'
-use_tags_default=1
 # Do not change the following defaults except if you know what you are doing...
+use_tags_default=1
 ignore_version_default=0
 tags_ignore_pattern_pattern=master
 pull_request=''
 
 core_git_repo=template-library-core
-core_branch_pattern='template-library-'
+core_branch_pattern='^(template-library-)*'
 core_dest_dir=quattor/%TAG%
 # With core repo, always checkout all tags matching core_branch_pattern,
 # whatever is done for other repos.
@@ -42,7 +42,7 @@ core_ignore_version=1
 # Rename master branch from -core repo
 # Set to an empty string or comment out to disable renaming
 # Can be used for each repository but generally used only with -core
-core_rename_master=14.2.1
+core_rename_master=dev
 
 examples_git_repo=template-library-examples
 examples_branch_pattern=master
@@ -69,8 +69,8 @@ monitoring_dest_dir=standard/monitoring
 # If a branch name matches one of the pattern, it will be ignored
 # HEAD added to workaround a bug in the release procedure when producing 14.5
 ignore_branch_patterns='\.obsolete$ ^HEAD$'
-ignore_version_patterns=''
-template_lib_root=/tmp/quattor-template-library
+ignore_version_patterns='13.1.[1-3] 13.[2-9] 13.12 14.[2-8]'
+template_lib_root=${TMPDIR:-/tmp}/quattor-template-library
 git_clone_root=${template_lib_root}/.gitrepos
 list_branches=0
 remove_tl_dir=0
@@ -89,9 +89,15 @@ usage () {
   echo "        --debug : verbose output"
   echo "        -F : remove {template_lib_root} if it already exists."
   echo "        -l : list available branches matching the selected version."
-  echo "        --pull-request repository:user:branch[:target] : import the specified branch (GitHub pull request)."
+  echo "        --pull-request repository:user:branch[:target] : merge the GitHub pull request specifed by the"
+  echo "                                  source branch repository:user:branch into repository:quattor:target."
+  echo "                                  target can be a branch or a tag. If not specified, it defaults to"
+  echo "                                  quattor_version or master when quattor_version=HEAD. Note that using"
+  echo "                                  a version other than HEAD generally produces unpredictable results."
   echo "        --release-candidates: download release candidates in template-library-core (disabled by default)."
   echo "        --spma : download SPMA-based OS templates (disabled by default)."
+  echo ""
+  echo "    quattor_version must be a released Quattor version (git tag) or HEAD."
   echo ""
   exit 1
 }
@@ -194,7 +200,17 @@ then
   pr_target=$(echo ${pull_request} | awk -F: '{print $4}')
   if [ -z "${pr_target}" ]
   then
-    pr_target=master
+    if [ "${quattor_version}" = "HEAD" ]
+    then
+      pr_target=master
+    else
+      pr_target=${quattor_version}
+    fi
+  elif [ -n "$(echo ${pr_target} | egrep '^template-library-')" ]
+  then
+    # Old tag name format: renormalize to the new format without the template-library- prefix
+    [ ${verbose} -eq 1 ] && echo "pr_target: template-library- prefix removed (legacy tag format)"
+    pr_target=$(echo ${pr_target} | sed 's/^template-library-//')
   fi
   [ ${verbose} -eq 1 ] && echo "Pull request to import: repository=${pr_repo}, user=${pr_user}, branch=${pr_branch}, target=${pr_target}"
 fi
@@ -307,13 +323,18 @@ do
     then
       if [ ${tags_ignore_pattern} -eq 1 ]
       then
-        branch_pattern="-${quattor_version}$"
+        branch_pattern="${quattor_version}$"
       else
         branch_pattern="${branch_pattern}-${quattor_version}$"
       fi
     fi
     [ ${verbose} -eq 1 ] && echo "Using tags rather than branches for repository ${repo} (branch pattern=${branch_pattern})"
     branch_list=$(git tag | egrep -- "${branch_pattern}")
+    # If version is HEAD, need to add master branch to all the other tags
+    if [ "${quattor_version}" = "HEAD" ]
+    then
+      branch_list="${branch_list} master"
+    fi
   else
     branch_list=$(git branch -r | egrep "origin/${branch_pattern}" | grep -v HEAD)
   fi
@@ -326,37 +347,48 @@ do
   for remote_branch in ${branch_list}
   do
     # Remove origin/ from the branch name
-    branch=$(echo ${remote_branch} | sed -e 's#^.*origin/##')
+    branch_or_tag=$(echo ${remote_branch} | sed -e 's#^.*origin/##')
 
     # when using tags, branch_dir contains the branch name retrieved from the tag and
     # tag_dir contains the tag version derived from the tag name with the prefix 
     # (e.g. template-library-) removed. Define a non empty default value.
-    # branch_name is defined to the name of the branch the tag is based on when
-    # using tags else the actual branch name. It is used for comparison with 
-    # pr_target, the target branch of a pull request.
+    # Also define the branch/tag name to use to compare with pr_target (--pull-request):
+    # when using a branch, use branch name (branch_or_tag) and when using a tag, use
+    # tag_dir before the rename applied to master.
     tag_dir="undefined_tag"
     if [ ${use_tags} -eq 0 ]
     then
-      branch_name=${branch}
-      if [ "${branch}" = "master" -a $?{master_dir_name} ]
+      pr_actual_target=${branch_or_tag}
+      if [ "${branch_or_tag}" = "master" -a $?{master_dir_name} ]
       then
         branch_dir=${master_dir_name}
       else
-        branch_dir=${branch}
+        branch_dir=${branch_or_tag}
       fi
     else
-      branch_dir=$(echo ${branch} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
-      tag_dir=$(echo ${branch} | sed -e "s%^.*${branch_dir}-%%")
-      # For repository with a master branch, the tag is template-library-VERSION.
-      # For repositories with multiple production branch, the tag is BRANCH-VERSION.
-      if [ -n "$(echo ${branch_dir} | grep '^template-library')" ]
+      branch_dir=$(echo ${branch_or_tag} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
+      tag_dir=$(echo ${branch_or_tag} | sed -e "s%^.*${branch_dir}-%%")
+      pr_actual_target=${tag_dir}
+      # master is normally not a tag name but master branch can be added to
+      # other tags when the version is HEAD (for example for template-library-core)
+      if [ "${tag_dir}" = "master" -a $?{master_dir_name} ]
       then
-        branch_name=master
-      else
-        branch_name=${branch_dir}
+        tag_dir=${master_dir_name}
+      fi
+      # If branch_dir = template_library, reset it to tag_dir (old tag format)
+      if [ "${branch_dir}" == "template-library" ]
+      then
+        branch_dir=${tag_dir}
+      fi
+      # If branch_dir is not tag_dir or master, indicates a repository without a master
+      # branch (e.g. template-library-grid). In this case, pr_actual_target must be 
+      # redefined as branch_dir-tag_dir, as the tag name is prefixed by the branch name (branch_dir).
+      if [ "${branch_dir}" != "master" -a "${branch_dir}" != "${tag_dir}" ]
+      then
+        pr_actual_target="${branch_dir}-${tag_dir}"
       fi
     fi
-    [ ${verbose} -eq 1 ] && echo branch_dir=$branch_dir, tag_dir=$tag_dir
+    [ ${verbose} -eq 1 ] && echo branch_dir=${branch_dir}, tag_dir=${tag_dir}, pr_acctual_target=${pr_actual_target}
 
     # Check if the branch should be ignored
     # Ignore pattern can be against branch name or version
@@ -389,14 +421,15 @@ do
     branch_found=1
 
     # Checkout the appropriate branch or tag
-    silent_command git checkout ${branch}
+    silent_command git checkout ${branch_or_tag}
 
     # Import pull request changes if requested and if the PR target matches the current repository/branch
     if [ -n "${pull_request}" ]
     then
-      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${branch_name}" ]
+      [ ${verbose} -eq 1 ] && echo "Checking if pull request applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target}, pr_actual_target=${pr_actual_target})..."
+      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${pr_actual_target}" ]
       then
-        echo "Merging ${pr_user}/${pr_branch} into branch/tag ${branch}..."
+        echo "Merging pull request from ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag}..."
         pr_remote=${git_url_root}/${pr_user}/${pr_repo}
         silent_command git remote add ${pr_user} ${pr_remote}
         if [ $? -ne 0 ]
@@ -411,7 +444,7 @@ do
         silent_command git pull ${pr_user} ${pr_branch}
         if [ $? -ne 0 ]
         then
-          echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch} of repository ${repo_name}"
+          echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag} of repository ${repo_name}"
           exit 11
         fi
         silent_command popd
@@ -421,9 +454,9 @@ do
           if [ "${pr_repo}" != "${repo_name}" ]
           then
             echo "Pull request doesn't match current repository (${repo_name}). Ignored"
-          elif [ "${pr_branch}" != "${branch}" ]
+          elif [ "${pr_branch}" != "${branch_or_tag}" ]
           then
-            echo "Pull request doesn't match current branch (${branch_name}) in repository ${repo_name}. Ignored"
+            echo "Pull request doesn't match current branch/tag (${branch_or_tag}) in repository ${repo_name}. Ignored"
           fi
         fi
       fi
@@ -437,7 +470,7 @@ do
     then
       dest_dir=$(echo ${dest_dir} | sed -e 's/-spma//')
     fi
-    echo Copying Git branch ${branch} contents to ${dest_dir}...
+    echo Copying Git branch ${branch_or_tag} contents to ${dest_dir}...
     mkdir -p ${dest_dir}
     cp -R ${repo_dir}/* ${dest_dir}
 
@@ -445,7 +478,7 @@ do
     silent_command git clean -f -d
     if [ $? -ne 0 ]
     then
-      echo "Error removing untracked files from branch ${branch} in repository ${repo}"
+      echo "Error removing untracked files from branch ${branch_or_tag} in repository ${repo}"
       exit 11
     fi
 
@@ -465,6 +498,29 @@ do
     rm -Rf ${repo_dir}
   fi
 done      # repository loop
+
+
+# If version request is HEAD, update the cluster.build.properties file in each
+# cluster example to use the master branch of template-library-core rather than
+# the last release.
+
+if [ ${list_branches} -eq 0 -a "${quattor_version}" = "HEAD" ]
+then
+  property_files=$(find ${template_lib_root}/clusters -name cluster.build.properties)
+  if [ -n "${property_files}" ]
+  then
+    if [ $?{core_rename_master} ]
+    then
+      quattor_dev_version=${core_rename_master}
+    else
+      quattor_dev_version=master
+    fi
+    echo "Updating cluster.build.properties files to use Quattor version ${quattor_dev_version} ($(echo ${property_files}))..."
+    sed -i "s%\squattor/\S\+\s% quattor/${quattor_dev_version} %" ${property_files} 
+  else
+    echo "Warning: no cluster.build.properties file found. Examples may be incomplete"
+  fi
+fi
 
 
 # Delete directory used for storing Git clones if empty
