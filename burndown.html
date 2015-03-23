@@ -56,13 +56,13 @@
 
 <script type="text/javascript">
 $(function () {
-    $.getJSON('burndown-15.2.json', function(mydata) {
+    $.getJSON('burndown-15.4.json', function(mydata) {
         $.each(mydata.closed, function(i, v) {
             v[0] = Date.parse(v[0]);
         });
         $('#container').highcharts({
             title: {
-                text: 'Progress toward 15.2 release'
+                text: 'Progress toward 15.4 release'
             },
             xAxis: {
                 type: 'datetime',
@@ -72,7 +72,7 @@ $(function () {
                 plotLines: [
                     {
                         color: '#ef2929',
-                        value: Date.parse('2015-03-20'),
+                        value: Date.parse('2015-04-28'),
                         width: '1',
                         label: {
                             text: 'Target',
@@ -96,10 +96,10 @@ $(function () {
                 plotBands: [
                     {
                         color: '#eeeeec',
-                        from: Date.parse('2014-12-25'),
-                        to: Date.parse('2015-01-05'),
+                        from: Date.parse('2015-03-23'),
+                        to: Date.parse('2015-03-27'),
                         label: {
-                            text: 'Holidays',
+                            text: 'HEPiX',
                             style: {
                                 color: '#555753'
                             }
@@ -107,19 +107,8 @@ $(function () {
                     },
                     {
                         color: '#eeeeec',
-                        from: Date.parse('2015-03-02'),
-                        to: Date.parse('2015-03-06'),
-                        label: {
-                            text: 'Workshop',
-                            style: {
-                                color: '#555753'
-                            }
-                        },
-                    },
-                    {
-                        color: '#eeeeec',
-                        from: Date.parse('2015-03-07'),
-                        to: Date.parse('2015-03-20'),
+                        from: Date.parse('2015-04-20'),
+                        to: Date.parse('2015-04-28'),
                         label: {
                             text: 'RCs',
                             style: {
@@ -149,8 +138,8 @@ $(function () {
                 {
                     name: 'Ideal',
                     data: [
-                        [Date.parse('2014-11-14'), mydata.to_burn],
-                        [Date.parse('2015-02-27'), 0]
+                        [Date.parse('2015-03-23'), mydata.to_burn],
+                        [Date.parse('2015-04-28'), 0]
                     ],
                     color: '#73d216',
                     dashStyle: 'shortdash',
