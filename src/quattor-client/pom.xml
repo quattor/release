@@ -90,15 +90,12 @@
           <name>${project.artifactId}</name>
           <url>https://github.com/quattor/release</url>
           <requires>
+            <require>ncm-spma</require>
+            <require>ncm-cdispd</require>
             <require>ccm</require>
             <require>cdp-listend</require>
-            <require>ncm-cdispd</require>
-            <require>ncm-ncd</require>
             <require>ncm-query</require>
-            <require>perl-AppConfig</require>
-            <require>perl-CAF</require>
-            <require>perl-GSSAPI</require>
-            <require>perl-LC</require>
+            <require>ncm-ncd</require>
           </requires>
           <defaultDirmode>755</defaultDirmode>
           <mappings>
