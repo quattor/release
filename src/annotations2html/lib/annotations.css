@@ -1,0 +1,25 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400);
+
+body {
+  padding-bottom: 40px;
+  font-family: 'Lato', 'Helvetica', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Lato', 'Helvetica', sans-serif;
+}
+ul, ol {
+  padding-left: 2em;
+}
+
+dl {
+  padding-left: 2em;
+}
+
+.code {
+  font-family: monaco, 'lucida console','courier new', monospace;
+}
+
+dd {
+  padding-left: 2em;
+  padding-bottom: 1em;
+}
