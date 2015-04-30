@@ -301,8 +301,8 @@ function has_panc () {
             if [ $? -ne 0 ]; then
                 error 100 "Failed to download $PAN_MIN_VERSION_RPM_URL"
             fi
-
-            $SUDO yum localinstall $DISABLEREPOSFULL $ENABLEREPOSFULL -y $rpm
+            # panc rpm is not signed
+            $SUDO yum localinstall $DISABLEREPOSFULL $ENABLEREPOSFULL -y --nogpgcheck $rpm
             if [ $? -ne 0 ]; then
                 error 101 "Failed to do localinstall of $rpm from $PAN_MIN_VERSION_RPM_URL"
             fi
