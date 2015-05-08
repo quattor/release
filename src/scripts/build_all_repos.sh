@@ -33,6 +33,34 @@ PERL_CPAN_PERLPKG_INSTALL_LIST=$DEST/perl_cpan_perlpkg_install_list.$now
 # List with all cpanm install
 PERL_CPAN_INSTALL_LIST=$DEST/perl_cpan_install_list.$now
 
+# The current redhat-release
+RH_RELEASE=`sed -n "s/.*release \([0-9]\+\).*/\1/p" /etc/redhat-release`
+
+# Install and use the epel repo
+if [ "$RH_RELEASE" -eq 5 -o "$RH_RELEASE" -eq 6 ]; then
+    USE_EPEL=1
+else
+    USE_EPEL=0
+fi
+
+# Install and use rpmforge repo (expect rpm conflicts)
+if [ "$RH_RELEASE" -eq 5 ]; then
+    # YAML::XS on el5?
+    # try with cpan for now
+    USE_RPMFORGE=0
+else
+    USE_RPMFORGE=0
+fi
+
+# Don't add filters here just because something fails
+if [ "$RH_RELEASE" -eq 5 ]; then
+    # These will not work with el5 since they require perl 5.10.1
+    POM_FILTER='.*\(opennebula\|systemd\|ceph\|icinga\).*'
+else
+    POM_FILTER=""
+fi
+
+
 function usage () {
     cat <<EOF
 $NAME is a bootstrap script for testing (and packaging) all Quattor repos, 
@@ -45,9 +73,11 @@ The minimal requirements of this script are $MINIMAL_DEPS_PATH
 
 The script will try to install as much dependencies and requirements
 as possible using yum. When run as non-root, it requires sudo rights
-to run 'yum' and 'repoquery'.
+to run 'yum', 'repoquery'.
 (It might also add a EPEL maven repo file in /etc/yum.repos.d/ using
-curl or wget; so also sudo rights for that are required).
+curl or wget ad sed; so also sudo rights for that are required).
+This makes this user almost root, so be careful.
+
 Installed dependencies are logged in timestamped files under $DEST
 ($REPODEPS_INSTALL_LIST, $YUM_INSTALL_LIST,
 $PERL_CPAN_PERLPKG_INSTALL_LIST, $PERL_CPAN_INSTALL_LIST).
@@ -76,6 +106,14 @@ PACKAGE: run 'mvn clean PACKAGE' (use e.g. test or package) (current PACKAGE=$PA
 ENABLEREPO: include repositories from yum/repoquery
 
 DISABLEREPO: exclude repositories from yum/repoquery
+
+RH_RELEASE: redhat major version (current RH_RELEASE=$RH_RELEASE)
+
+USE_EPEL: install and use the epel-release repo (current USE_EPEL=$USE_EPEL)
+
+USE_RPMFORGE: install and use the rpmforge-release repo (current USE_RPMFORGE=$USE_RPMFORGE)
+
+POM_FILTER: remove matching lines from all pom.xml if not empty (current POM_FILTER=$POM_FILTER)
 
 Dangerous environment variables:
 
@@ -116,7 +154,6 @@ REPOSITORY=$DEST/repos
 export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$REPOSITORY/template-library-core
 
 
-
 if [ ! -z "$VERBOSE" ]; then
     # verbose tests
     export QUATTOR_TEST_LOG_CMD_MISSING=1
@@ -144,6 +181,12 @@ DEPS_INIT_YUM=""
 # the mvn epel url (who has this mirrored/enabled by default?)
 EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
 
+# EPEL repo
+EPEL_REPO_RPM=https://dl.fedoraproject.org/pub/epel/epel-release-latest-${RH_RELEASE}.noarch.rpm
+
+# repoforge repo
+RPMFORGE_REPO_RPM=http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el${RH_RELEASE}.rf.x86_64.rpm
+
 if [ ! -z "$ENABLEREPO" ]; then
     ENABLEREPOSFULL="--enablerepo=$ENABLEREPO"
 fi
@@ -158,6 +201,7 @@ function error () {
     shift
     echo "export PERL5LIB=$PERL5LIB"
     echo "export PWD=$PWD"
+    echo "export PATH=$PATH"
     echo $@
     exit $ec
 }
@@ -210,9 +254,12 @@ function get_cpanm () {
     echo "Get and install cpanm"
 
     # Try to get as much as possible via yum
+    # CPAN itself should come from yum, no way this will work otherwise
+    deps_install_yum 'perl(CPAN)' 1
+
     deps_install_yum 'perl(App::cpanminus)' 0
 
-    # Some dependencies for build ing perl modules
+    # Some dependencies for building perl modules
     for dep in gcc-c++ make; do
         deps_install_yum "$dep"
     done
@@ -234,6 +281,9 @@ function get_cpanm () {
     else
         echo "get_cpanm OK"
     fi
+
+    # Add cpanm (for el5 only?)
+    export PATH=$HOME/perl5/bin:$PATH
 
     return 0
 }
@@ -289,6 +339,22 @@ function has_correct_panc () {
     return 1
 }
 
+function localinstall_url () {
+    rpmurl=$1
+    localrpm=$2
+    installopts=$3
+    
+    download $rpmurl $localrpm
+    if [ $? -ne 0 ]; then
+        error 100 "Failed to download $rpmurl"
+    fi
+    # panc rpm is not signed
+    $SUDO yum localinstall $DISABLEREPOSFULL $ENABLEREPOSFULL -y $installopts $localrpm
+    if [ $? -ne 0 ]; then
+        error 101 "Failed to do localinstall of $localrpm from $rpmurl"
+    fi
+}
+
 function has_panc () {
 
     has_correct_panc
@@ -296,18 +362,20 @@ function has_panc () {
         deps_install_yum "panc >= $PAN_MIN_VERSION" 0
         has_correct_panc
         if [ $? -ne 0 ]; then
-            rpm=$DEST/panc-${PAN_MIN_VERSION}.rpm
-            download $PAN_MIN_VERSION_RPM_URL $rpm
-            if [ $? -ne 0 ]; then
-                error 100 "Failed to download $PAN_MIN_VERSION_RPM_URL"
-            fi
-            # panc rpm is not signed
-            $SUDO yum localinstall $DISABLEREPOSFULL $ENABLEREPOSFULL -y --nogpgcheck $rpm
-            if [ $? -ne 0 ]; then
-                error 101 "Failed to do localinstall of $rpm from $PAN_MIN_VERSION_RPM_URL"
-            fi
-
+            localinstall_url $PAN_MIN_VERSION_RPM_URL $DEST/panc-${PAN_MIN_VERSION}.rpm "--nogpgcheck"
         fi
+    fi
+}
+
+function check_epel () {
+    if [ $USE_EPEL -gt 0 ]; then
+        localinstall_url $EPEL_REPO_RPM $DEST/epel-release-$RH_RELEASE.rpm
+    fi
+}
+
+function check_rpmforge () {
+    if [ $USE_RPMFORGE -gt 0 ]; then
+        localinstall_url $RPMFORGE_REPO_RPM $DEST/rpmforge-release-$RH_RELEASE.rpm
     fi
 }
 
@@ -329,18 +397,17 @@ function has_mvn () {
             echo "Couldn't get mvn $mvn via yum. Going to add the mvn epel repo $EPEL_MVN_REPO to $fn and retry."
 
             # releasever but repos have single digits/RHEL naming
-            major=`cat /etc/redhat-release | sed -n "s/.*release \([0-9]\+\)\..*/\1/p"`
-            if [ -z "$major" ]; then
+            if [ -z "$RH_RELEASE" ]; then
                 error 81 "No major release version found via /etc/redhat-release"
             fi
-            echo "Going to use releasever $major for this repo"
-            sed -i "s/\$releasever/$major/g" $fn
+            echo "Going to use releasever $RH_RELEASE for this repo"
+            $sudo sed -i "s/\$releasever/$RH_RELEASE/g" $fn
 
             if [ $? -gt 0 ]; then
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
             fi
 
-            yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+            $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
         fi
@@ -706,8 +773,23 @@ function mvn_package () {
     clean=clean
     mvn="mvn $clean $mvntgt $PROVEARGS"
     echo "mvn_package for repository $repo in $PWD : $mvn"
+
+    if [ ! -z "$POM_FILTER" ]; then
+        echo "Deleting matching lines with POM_FILTER $POM_FILTER"
+        sed -i "/$POM_FILTER/d" pom.xml
+    fi
+
     $mvn
-    if [ $? -gt 0 ]; then
+    mvnec=$?
+
+    if [ ! -z "$POM_FILTER" ]; then
+        # restore pom.xml to avoid later git conflicts
+        cp pom.xml pom.xml.filtered.`date +%s`
+        git checkout pom.xml
+    fi
+
+
+    if [ $mvnec -gt 0 ]; then
         error 13 "mvn_package mvn $mvntgt failed for repository $repo (cmd $mvn)"
     fi
 
@@ -766,14 +848,21 @@ function main_init () {
     done
 
     # do it separately
+    check_epel
+    check_rpmforge
+
     has_mvn
     has_panc
+
+    # slowish
+    get_cpanm
 
     # generate the environment
     cat > $DEST/env.sh <<EOF
 # Source this file to get the proper environment
 export PERL5LIB=$INSTALLPERL
 export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$QUATTOR_TEST_TEMPLATE_LIBRARY_CORE
+export PATH=$PATH
 EOF
 
 }
@@ -816,9 +905,6 @@ function main() {
     if [ $CHECKDEPS -gt 0 ]; then
 
         echo "Checking dependencies"
-
-        # slowish
-        get_cpanm
 
         check_deps_minimal
         check_deps_init_bin
