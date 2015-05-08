@@ -60,12 +60,13 @@ else
     POM_FILTER=""
 fi
 
+OS_HACK=1
 
 function usage () {
     cat <<EOF
-$NAME is a bootstrap script for testing (and packaging) all Quattor repos, 
+$NAME is a bootstrap script for testing (and packaging) all Quattor repos,
 without any Quattor or dependency modules required in the perl INC path(s).
-After the script completes, there should be a local environment that can 
+After the script completes, there should be a local environment that can
 be used for development.
 
 The minimal requirements of this script are $MINIMAL_DEPS_PATH
@@ -82,7 +83,7 @@ Installed dependencies are logged in timestamped files under $DEST
 ($REPODEPS_INSTALL_LIST, $YUM_INSTALL_LIST,
 $PERL_CPAN_PERLPKG_INSTALL_LIST, $PERL_CPAN_INSTALL_LIST).
 
-The Quattor git repositories are cloned and the remote 'upstream' is configured 
+The Quattor git repositories are cloned and the remote 'upstream' is configured
 to refer to them.
 Any uncomitted changes will be stashed before master is updated. (I.e.
 don't work in the master branch!)
@@ -115,9 +116,11 @@ USE_RPMFORGE: install and use the rpmforge-release repo (current USE_RPMFORGE=$U
 
 POM_FILTER: remove matching lines from all pom.xml if not empty (current POM_FILTER=$POM_FILTER)
 
+OS_HACK: implement some OS specific hacks to get around some known issues with the OS (current OS_HACK=$OS_HACK)
+
 Dangerous environment variables:
 
-RELEASE: if set to 1, it will remove the existing repositories and do some 
+RELEASE: if set to 1, it will remove the existing repositories and do some
 other intrusive cleanups. DON'T USE IT if you are not sure you need it.
 
 GITCLEAN: GITCLEAN=0 if you made local modification to the repositories and want
@@ -343,7 +346,7 @@ function localinstall_url () {
     rpmurl=$1
     localrpm=$2
     installopts=$3
-    
+
     download $rpmurl $localrpm
     if [ $? -ne 0 ]; then
         error 100 "Failed to download $rpmurl"
@@ -369,13 +372,13 @@ function has_panc () {
 
 function check_epel () {
     if [ $USE_EPEL -gt 0 ]; then
-        localinstall_url $EPEL_REPO_RPM $DEST/epel-release-$RH_RELEASE.rpm
+        localinstall_url $EPEL_REPO_RPM $DEST/epel-release-$RH_RELEASE.rpm "--nogpgcheck"
     fi
 }
 
 function check_rpmforge () {
     if [ $USE_RPMFORGE -gt 0 ]; then
-        localinstall_url $RPMFORGE_REPO_RPM $DEST/rpmforge-release-$RH_RELEASE.rpm
+        localinstall_url $RPMFORGE_REPO_RPM $DEST/rpmforge-release-$RH_RELEASE.rpm "--nogpgcheck"
     fi
 }
 
@@ -419,6 +422,29 @@ function has_mvn () {
     fi
 
     return 0
+}
+
+function os_hack () {
+    if [ "$RH_RELEASE" -eq 5 ]; then
+        # cpanm sometimes does not install in the directory passed
+        export INSTALLPERL=$HOME/perl5/lib/perl5/:$INSTALLPERL
+        export PERL5LIB=$INSTALLPERL
+
+        # Force recent install of JSON::XS (CCM::Fecth has 'use JSON::XS v2.3.0'
+        # but the perl.req script is too buggy to spot the version
+
+        # Force install very recent Pod::Simple and Test::More
+        # To be fixed in build-scripts
+        for dep in Pod::Simple Test::More JSON::XS; do
+            get_cpan_dep "perl($dep)"
+        done
+    else
+        if [ "$RH_RELEASE" -eq 6 ]; then
+            # Force install very recent Pod::Simple
+            # To be fixed in build-scripts
+            get_cpan_dep 'perl(Pod::Simple)'
+        fi
+    fi
 }
 
 function check_deps_minimal () {
@@ -856,6 +882,10 @@ function main_init () {
 
     # slowish
     get_cpanm
+
+    if [ $OS_HACK -gt 0 ]; then
+        os_hack
+    fi
 
     # generate the environment
     cat > $DEST/env.sh <<EOF
