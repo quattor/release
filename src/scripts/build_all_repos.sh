@@ -373,12 +373,14 @@ function has_panc () {
 function check_epel () {
     if [ $USE_EPEL -gt 0 ]; then
         localinstall_url $EPEL_REPO_RPM $DEST/epel-release-$RH_RELEASE.rpm "--nogpgcheck"
+        $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
     fi
 }
 
 function check_rpmforge () {
     if [ $USE_RPMFORGE -gt 0 ]; then
         localinstall_url $RPMFORGE_REPO_RPM $DEST/rpmforge-release-$RH_RELEASE.rpm "--nogpgcheck"
+        $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
     fi
 }
 
