@@ -22,9 +22,6 @@ $USER             ALL= (ALL)      NOPASSWD:       /usr/bin/wget
 $USER             ALL= (ALL)      NOPASSWD:       /usr/bin/sed
 $USER             ALL= (ALL)      NOPASSWD:       /bin/sed
 
-#$USER		ALL= (ALL)	NOPASSWD:	/usr/bin/cp
-#$USER             ALL= (ALL)      NOPASSWD:       /bin/cp
-
 EOF
 
 if [ -f "/tmp/sudoers.lock" ]; then
