@@ -1,6 +1,10 @@
 #!/bin/bash
 
+# user to run everything under
 USER="quattor"
+
+# initial sleep (some OSes need some extra time)
+SLEEP=30
 
 adduser $USER
 
@@ -18,29 +22,22 @@ $USER             ALL= (ALL)      NOPASSWD:       /usr/bin/wget
 $USER             ALL= (ALL)      NOPASSWD:       /usr/bin/sed
 $USER             ALL= (ALL)      NOPASSWD:       /bin/sed
 
-#$USER		ALL= (ALL)	NOPASSWD:	/usr/bin/cp
-#$USER             ALL= (ALL)      NOPASSWD:       /bin/cp
-
 EOF
 
-sudoerslock=/tmp/sudoers.lock
-
-if [ -f $sudoerslock ]; then
+if [ -f "/tmp/sudoers.lock" ]; then
     exit 1
 fi
-
-# not really a lock, but enough for now
-touch $sudoerslock
-
+touch /tmp/sudores.lock
 visudo -c -f $TMPSUDOERS
 if [ "$?" -eq "0" ]; then
     cp $TMPSUDOERS /etc/sudoers
 fi
-rm $sudoerslock
+rm /tmp/sudores.lock
 
 if [ -f "/mnt/$SCRIPT" ]; then
     cp /mnt/$SCRIPT /tmp
     chmod +x /tmp/$SCRIPT
-    su $USER /tmp/build_all_repos.sh >& /tmp/${SCRIPT}.$$.out
+    # background the tests, allows to start other services like sshd in parallel in non-systemd
+    su - $USER -c "sleep $SLEEP ; /tmp/build_all_repos.sh >& /tmp/${SCRIPT}.$$.out" &
 fi
 

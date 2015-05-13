@@ -169,7 +169,7 @@ fi
 CHECKDEPS=${CHECKDEPS:-1}
 
 # Main init binaries
-MAIN_INIT_BIN_YUM="repoquery git"
+MAIN_INIT_BIN_YUM="repoquery curl wget"
 
 # Binary dependencies to be installed with yum
 DEPS_INIT_BIN_YUM="rpmbuild perl"
@@ -302,7 +302,7 @@ function download () {
     if [ $? -gt 0 ]; then
         which wget >& /dev/null
         if [ $? -gt 0 ]; then
-            error 80 "has_mvn no curl or wget found"
+            error 80 "download no curl or wget found"
         else
             exe=wget
             opt=-O
@@ -396,6 +396,7 @@ function has_mvn () {
             error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
         fi
 
+        $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
         deps_install_yum "*bin/mvn" 0
         if [ $? -gt 0 ]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
@@ -854,6 +855,24 @@ function mvn_package () {
     return 0
 }
 
+function main_init_bin_yum () {
+    miby="$@"
+
+    echo "Checking MAIN_INIT_BIN_YUM $miby"
+    for bin in $miby; do
+        binpath="/usr/bin/$bin"
+        if [ ! -f $binpath ]; then
+            cmd="$SUDO yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $binpath"
+            $cmd
+            if [ $? -gt 0 ]; then
+                error 19 "Failed to install $bin as part of MAIN_INIT_BIN_YUM $miby"
+            else
+                echo "Installed $bin with $cmd"
+            fi
+        fi
+    done
+}
+
 function main_init () {
     reset_perl5lib
 
@@ -861,23 +880,14 @@ function main_init () {
     $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
 
     # provided by yum-utils
-    echo "Checking MAIN_INIT_BIN_YUM $MAIN_INIT_BIN_YUM"
-    for bin in $MAIN_INIT_BIN_YUM; do
-        binpath="/usr/bin/$bin"
-        if [ ! -f $binpath ]; then
-            cmd="$SUDO yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $binpath"
-            $cmd
-            if [ $? -gt 0 ]; then
-                error 19 "Failed to install $bin as part of MAIN_INIT_BIN_YUM $MAIN_INIT_BIN_YUM"
-            else
-                echo "Installed $bin with $cmd"
-            fi
-        fi
-    done
+    main_init_bin_yum $MAIN_INIT_BIN_YUM
 
     # do it separately
     check_epel
     check_rpmforge
+
+    # get git (EL5 needs epel; to get epel you need curl/wget)
+    main_init_bin_yum git
 
     has_mvn
     has_panc
