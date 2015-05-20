@@ -71,7 +71,7 @@
                 <resource>
                   <directory>src</directory>
                   <includes>
-                    <include>*.repo</include>
+                    <include>quattor-release</include>
                   </includes>
                   <filtering>true</filtering>
                 </resource>
@@ -100,14 +100,14 @@
           <defaultDirmode>755</defaultDirmode>
           <mappings>
             <mapping>
-              <directory>/etc/quattor/</directory>
+              <directory>/etc/</directory>
               <filemode>644</filemode>
               <username>root</username>
               <groupname>root</groupname>
               <directoryIncluded>false</directoryIncluded>
               <sources>
                 <source>
-                  <location>src/README</location>
+                  <location>src/quattor-release</location>
                 </source>
               </sources>
               <recurseDirectories>true</recurseDirectories>
