@@ -1,0 +1,131 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.quattor.repo.yum</groupId>
+  <artifactId>quattor-repo-yum</artifactId>
+
+  <packaging>rpm</packaging>
+  <version>14.10.0-rc3-SNAPSHOT</version>
+  <name>Quattor YUM repositories.</name>
+
+  <parent>
+    <groupId>org.quattor.maven</groupId>
+    <artifactId>build-profile</artifactId>
+    <version>1.32</version>
+  </parent>
+
+  <licenses>
+    <license>
+      <name>Apache 2 License</name>
+      <url>http://www.opensource.org/licenses/apache2.0</url>
+      <comments>Copyright (c) Responsible Organization</comments>
+    </license>
+  </licenses>
+  
+  <developers>
+    <developer>
+      <name>James Adams</name>
+      <email>james.adams@stfc.ac.uk</email>
+    </developer>
+  </developers>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>tarballs</id>
+            <phase/>
+          </execution>    
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>pod2man</id>
+            <phase/>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>filter-sources</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration combine.self="override">
+              <outputDirectory>${project.build.directory}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src</directory>
+                  <includes>
+                    <include>*.repo</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rpm-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <summary>Quattor YUM Repositories</summary>
+          <name>${project.artifactId}</name>
+          <url>https://github.com/quattor/release</url>
+          <requires>
+            <require>yum</require>
+          </requires>
+          <defaultDirmode>755</defaultDirmode>
+          <mappings>
+            <mapping>
+              <directory>/etc/yum.repos.d/</directory>
+              <filemode>644</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <directoryIncluded>false</directoryIncluded>
+              <sources>
+                <source>
+                  <location>${project.build.directory}/quattor.repo</location>
+                </source>
+              </sources>
+              <recurseDirectories>true</recurseDirectories>
+            </mapping>
+            <mapping>
+              <directory>/etc/pki/rpm-gpg/</directory>
+              <filemode>644</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <directoryIncluded>false</directoryIncluded>
+              <sources>
+                <source>
+                  <location>src/RPM-GPG-KEY-quattor-jrha</location>
+                </source>
+              </sources>
+              <recurseDirectories>true</recurseDirectories>
+            </mapping>
+          </mappings>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+</project>

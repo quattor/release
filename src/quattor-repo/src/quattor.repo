@@ -1,0 +1,25 @@
+[quattor]
+name=Quattor ${project.version}
+baseurl=http://yum.quattor.org/${project.version}
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-quattor-jrha
+
+[quattor_aquilon]
+name=Quattor Aquilon
+baseurl=http://yum.quattor.org/aquilon
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-quattor-jrha
+
+[quattor_externals_arch]
+name=Quattor Externals
+baseurl=http://yum.quattor.org/externals/$arch/el$release
+enabled=1
+gpgcheck=0
+
+[quattor_externals_noarch]
+name=Quattor Externals
+baseurl=http://yum.quattor.org/externals/noarch/el$release
+enabled=1
+gpgcheck=0
