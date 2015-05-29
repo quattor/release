@@ -50,7 +50,13 @@ publish_templates() {
     tag=$2
     cd configuration-modules-$1
     git checkout $tag
-    mvn-c -q clean compile
+    mvn-c clean compile
+    # ugly hack
+    if [ -d ncm-metaconfig ]; then
+        cd ncm-metaconfig
+        mvn-c clean test
+        cd ..
+    fi
     components_root=${LIBRARY_CORE_DIR}/components
     metaconfig_root=${LIBRARY_CORE_DIR}/metaconfig
     mkdir -p ${components_root}
