@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOS_MVN="aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices"
+REPOS_MVN="release aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices"
 REPOS_ONE_TAG="template-library-core template-library-standard template-library-examples template-library-monitoring"
 REPOS_BRANCH_TAG="template-library-os template-library-grid template-library-stratuslab template-library-openstack"
 RELEASE=""
