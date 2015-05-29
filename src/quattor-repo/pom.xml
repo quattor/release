@@ -6,7 +6,7 @@
   <artifactId>quattor-repo-yum</artifactId>
 
   <packaging>rpm</packaging>
-  <version>14.10.0-rc3-SNAPSHOT</version>
+  <version>15.4.0-rc1</version>
   <name>Quattor YUM repositories.</name>
 
   <parent>
@@ -39,7 +39,7 @@
         <executions>
           <execution>
             <id>tarballs</id>
-            <phase/>
+            <phase />
           </execution>    
         </executions>
       </plugin>
@@ -50,7 +50,7 @@
         <executions>
           <execution>
             <id>pod2man</id>
-            <phase/>
+            <phase />
           </execution>
         </executions>
       </plugin>
