@@ -6,7 +6,7 @@
   <artifactId>quattor-release</artifactId>
   <packaging>pom</packaging>
 
-  <version>15.4.0-rc9-SNAPSHOT</version>
+  <version>15.4.0-rc9</version>
 
   <name>Quattor Release Packages</name>
   <description>Utility packages for using Quattor releases.</description>
