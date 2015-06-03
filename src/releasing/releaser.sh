@@ -221,7 +221,7 @@ if gpg-agent; then
             for r in $REPOS_MVN; do
                 echo_info "---------------- Releasing $r ----------------"
                 cd $r
-                mvn-c -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare release:perform
+                mvn-c -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare
                 if [[ $? -gt 0 ]]; then
                     echo_error "RELEASE FAILURE"
                     exit 1
