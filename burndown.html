@@ -56,13 +56,13 @@
 
 <script type="text/javascript">
 $(function () {
-    $.getJSON('burndown-15.4.json', function(mydata) {
+    $.getJSON('burndown-15.6.json', function(mydata) {
         $.each(mydata.closed, function(i, v) {
             v[0] = Date.parse(v[0]);
         });
         $('#container').highcharts({
             title: {
-                text: 'Progress toward 15.4 release'
+                text: 'Progress toward 15.6 release'
             },
             xAxis: {
                 type: 'datetime',
@@ -72,7 +72,7 @@ $(function () {
                 plotLines: [
                     {
                         color: '#ef2929',
-                        value: Date.parse('2015-05-08'),
+                        value: Date.parse('2015-06-30'),
                         width: '1',
                         label: {
                             text: 'Target',
@@ -96,19 +96,8 @@ $(function () {
                 plotBands: [
                     {
                         color: '#eeeeec',
-                        from: Date.parse('2015-03-23'),
-                        to: Date.parse('2015-03-27'),
-                        label: {
-                            text: 'HEPiX',
-                            style: {
-                                color: '#555753'
-                            }
-                        },
-                    },
-                    {
-                        color: '#eeeeec',
-                        from: Date.parse('2015-05-01'),
-                        to: Date.parse('2015-05-08'),
+                        from: Date.parse('2015-06-22'),
+                        to: Date.parse('2015-06-30'),
                         label: {
                             text: 'RCs',
                             style: {
@@ -138,8 +127,8 @@ $(function () {
                 {
                     name: 'Ideal',
                     data: [
-                        [Date.parse('2015-03-23'), mydata.to_burn],
-                        [Date.parse('2015-05-08'), 0]
+                        [Date.parse('2015-06-03'), mydata.to_burn],
+                        [Date.parse('2015-06-30'), 0]
                     ],
                     color: '#73d216',
                     dashStyle: 'shortdash',
