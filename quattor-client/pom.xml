@@ -107,7 +107,7 @@
               <directoryIncluded>false</directoryIncluded>
               <sources>
                 <source>
-                  <location>src/quattor-release</location>
+                  <location>target/quattor-release</location>
                 </source>
               </sources>
               <recurseDirectories>true</recurseDirectories>
