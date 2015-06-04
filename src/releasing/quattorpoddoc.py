@@ -131,12 +131,12 @@ def removemailadresses(mdfiles):
                 if ignoremail in email[0]:
                     replace = False
 
-        if replace:
-            LOGGER.debug("Removed it from line.")
-            mdcontent = mdcontent.replace(email[0], '')
-            with open(mdfile, 'w') as fih:
-                fih.write(mdcontent)
-            counter += 1
+            if replace:
+                LOGGER.debug("Removed it from line.")
+                mdcontent = mdcontent.replace(email[0], '')
+                with open(mdfile, 'w') as fih:
+                    fih.write(mdcontent)
+                counter += 1
     LOGGER.info("Removed %s email addresses." % counter)
 
 
