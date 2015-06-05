@@ -96,21 +96,20 @@ def generatetoc(pods, outputloc, indexname):
         fih.write("site_name: Quattor Configuration Modules (Core)\n\n")
         fih.write("theme: 'readthedocs'\n\n")
         fih.write("pages:\n")
-        fih.write("- ['index.md', 'introduction']\n")
+        fih.write("- Home: 'index.md'\n")
 
         addintrogreeter(outputloc)
 
+        fih.write("- Components:\n")
         for component in sorted(pods):
             name = component.replace('ncm-', '')
             linkname = "%s/%s.md" % (SUBDIR, name)
-            fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
+            fih.write("    - '%s'\n" % linkname)
             if len(pods[component]) > 1:
                 for pod in sorted(pods[component][1:]):
                     subname = os.path.splitext(os.path.basename(pod))[0]
                     linkname = "%s/%s::%s.md" % (SUBDIR, name, subname)
-                    fih.write("- ['%s', '%s']\n" % (linkname, SUBDIR))
-
-        fih.write("\n")
+                    fih.write("    - '%s'\n" % linkname)
 
 
 def removemailadresses(mdfiles):
