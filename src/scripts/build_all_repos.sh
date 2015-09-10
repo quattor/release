@@ -390,17 +390,16 @@ function has_mvn () {
     which $mvn >& /dev/null
     if [ $? -gt 0 ]; then
         echo "No maven executable $mvn found in PATH"
-        fn=/etc/yum.repos.d/check_deps_mvn.repo
-        download "$EPEL_MVN_REPO" $fn $SUDO
-        if [ $? -gt 0 ]; then
-            error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
-        fi
 
         $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
         deps_install_yum "*bin/mvn" 0
         if [ $? -gt 0 ]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
             echo "Couldn't get mvn $mvn via yum. Going to add the mvn epel repo $EPEL_MVN_REPO to $fn and retry."
+            download "$EPEL_MVN_REPO" $fn $SUDO
+            if [ $? -gt 0 ]; then
+                error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
+            fi
 
             # releasever but repos have single digits/RHEL naming
             if [ -z "$RH_RELEASE" ]; then
@@ -472,7 +471,7 @@ function deps_install_yum () {
     fi
 
     echo "Searching for dep $dep with $SUDO repoquery --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
-    pkgs=`$SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides "$dep" 2>/dev/null | sort| uniq`
+    pkgs=`$SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides "$dep" 2>/dev/null | grep -v 'No package provides' | sort| uniq`
     if [ -z "$pkgs" ]; then
         ec=70
         cerror $fatal $ec "No packages found for dep $dep with repoquery"
