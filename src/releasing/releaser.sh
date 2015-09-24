@@ -175,6 +175,20 @@ function exit_usage {
     exit 3
 }
 
+# Check that dependencies required to perform a release are available
+missing_deps=0
+for cmd in {gpg,gpg-agent,git,mvn,createrepo,tar,sed}; do
+    hash $cmd 2>/dev/null || {
+        echo_error "Command '$cmd' is required but could not be found"
+        missing_deps=$(($missing_deps + 1))
+    }
+done
+if [[ $missing_deps -gt 0 ]]; then
+    echo_error "Aborted due to $missing_deps missing dependencies (see above)"
+    exit 2
+fi
+
+
 if [[ -n $1 ]]; then
     RELEASE=$1
     if echo $RELEASE | grep -qv '^[1-9][0-9]\?\.\([1-9]\|1[012]\)\.[0-9]\+$'; then
