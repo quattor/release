@@ -10,8 +10,13 @@ RELEASE_ROOT=$(dirname $(readlink -f "$0"))
 LIBRARY_CORE_DIR=$RELEASE_ROOT/src/template-library-core
 
 if [[ $(ulimit -n) -lt $MAXFILES ]]; then
-  echo "ABORT: Max open files (ulimit -n) is below $MAXFILES, releasing components will likely fail. Increase the limit and try again."
-  exit 2
+  echo "INFO: Max open files (ulimit -n) is below $MAXFILES, trying to increase the limit for you."
+  ulimit -n 4096
+
+  if [[ $(ulimit -n) -lt $MAXFILES ]]; then
+    echo "ABORT: Max open files (ulimit -n) is still below $MAXFILES, releasing components will likely fail. Manually increase the limit and try again."
+    exit 2
+  fi
 fi
 
 shopt -s expand_aliases
