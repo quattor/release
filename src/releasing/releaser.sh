@@ -10,8 +10,13 @@ RELEASE_ROOT=$(dirname $(readlink -f "$0"))
 LIBRARY_CORE_DIR=$RELEASE_ROOT/src/template-library-core
 
 if [[ $(ulimit -n) -lt $MAXFILES ]]; then
-  echo "ABORT: Max open files (ulimit -n) is below $MAXFILES, releasing components will likely fail. Increase the limit and try again."
-  exit 2
+  echo "INFO: Max open files (ulimit -n) is below $MAXFILES, trying to increase the limit for you."
+  ulimit -n 4096
+
+  if [[ $(ulimit -n) -lt $MAXFILES ]]; then
+    echo "ABORT: Max open files (ulimit -n) is still below $MAXFILES, releasing components will likely fail. Manually increase the limit and try again."
+    exit 2
+  fi
 fi
 
 shopt -s expand_aliases
@@ -169,6 +174,20 @@ function exit_usage {
     echo "       RELEASE_NUMBER should be of the form YY.MM.N without leading zeros"
     exit 3
 }
+
+# Check that dependencies required to perform a release are available
+missing_deps=0
+for cmd in {gpg,gpg-agent,git,mvn,createrepo,tar,sed}; do
+    hash $cmd 2>/dev/null || {
+        echo_error "Command '$cmd' is required but could not be found"
+        missing_deps=$(($missing_deps + 1))
+    }
+done
+if [[ $missing_deps -gt 0 ]]; then
+    echo_error "Aborted due to $missing_deps missing dependencies (see above)"
+    exit 2
+fi
+
 
 if [[ -n $1 ]]; then
     RELEASE=$1
