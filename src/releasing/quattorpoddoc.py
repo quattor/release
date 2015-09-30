@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 """
-quattor-pod-doc generates markdown documentation from:
+quattorpoddoc generates markdown documentation from:
  - configuration-modules-core perl documentation
  - CAF perl documentation
  - CCM perl documentation
@@ -29,12 +29,18 @@ logger = fancylogger.getLogger()
 DOCDIR = "docs"
 
 REPOMAP = {
-    "configuration-modules-core": {"sitesubdir": "components",
-                                   "target": "/NCM/Component/"},
-    "CAF": {"sitesubdir": "CAF",
-            "target": "/CAF/"},
-    "CCM": {"sitesubdir": "CCM",
-            "target": "EDG/WP4/CCM/"},
+    "configuration-modules-core": {
+        "sitesubdir": "components",
+        "target": "/NCM/Component/"
+        },
+    "CAF": {
+        "sitesubdir": "CAF",
+        "target": "/CAF/"
+        },
+    "CCM": {
+        "sitesubdir": "CCM",
+        "target": "EDG/WP4/CCM/"
+        },
     }
 
 
@@ -43,12 +49,8 @@ def mavencleancompile(repo_location, repository):
     Executes mvn clean and mvn compile in the given modules_location.
     """
     repoloc = os.path.join(repo_location, repository)
-    logger.info("Doing maven clean in %s." % repoloc)
-    output = run_asyncloop("mvn clean", startpath=repoloc)
-    logger.debug(output)
-
-    logger.info("Doing maven compile in %s." % repoloc)
-    output = run_asyncloop("mvn compile", startpath=repoloc)
+    logger.info("Doing maven clean compile in %s." % repoloc)
+    output = run_asyncloop("mvn clean compile", startpath=repoloc)
     logger.debug(output)
 
 
@@ -64,7 +66,12 @@ def generatemds(repo, sources, location):
         os.makedirs(comppath)
 
     for source in sources:
-        if source.endswith(".pan"):
+        tpl = False
+        if source.endswith(".tpl"):
+            logger.warning("%s file extension is '.tpl', should become '.pan'." % source)
+            tpl = True
+
+        if source.endswith(".pan") or tpl:
             mdfile = createmdfrompan(source, comppath)
             mdfiles.append(mdfile)
         else:
@@ -78,14 +85,14 @@ def generatemds(repo, sources, location):
     return mdfiles
 
 
-def createmdfrompan(source, comppath):
+def create_md_from_pan(source, comppath):
     """
     Takes a pan schema, creates the pan annotations and parses them to markdown.
     """
     modname = os.path.basename(os.path.split(source)[0])
     mdfile = modname + "::schema.md"
     tmpdir = tempfile.mkdtemp()
-    logger.debug("Temporary directory: %s " % tmpdir)
+    logger.debug("Temporary directory: %s" % tmpdir)
     panccommand = ["panc-annotations", "--output-dir", tmpdir, "--base-dir"]
     panccommand.extend(os.path.split(source))
     output = run_asyncloop(panccommand)
@@ -132,7 +139,7 @@ def createmdfrompan(source, comppath):
                     fih.write("   description: %s \n" % doc.text)
                 for arg in fnname.findall(".//%sarg" % namespace):
                     fih.write("   - arg: %s \n" % arg.text)
-    logger.debug("Removing temporary directory: %s " % tmpdir)
+    logger.debug("Removing temporary directory: %s" % tmpdir)
     shutil.rmtree(tmpdir)
     return mdfile
 
