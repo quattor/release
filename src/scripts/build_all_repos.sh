@@ -190,6 +190,9 @@ EPEL_REPO_RPM=https://dl.fedoraproject.org/pub/epel/epel-release-latest-${RH_REL
 # repoforge repo
 RPMFORGE_REPO_RPM=http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el${RH_RELEASE}.rf.x86_64.rpm
 
+# noreplace (config) files
+NOREPLACE_FILES="/etc/ccm.conf /etc/cdp-listend.conf /etc/ncm-ncd.conf /etc/ncm-cdispd.conf"
+
 if [ ! -z "$ENABLEREPO" ]; then
     ENABLEREPOSFULL="--enablerepo=$ENABLEREPO"
 fi
@@ -908,6 +911,23 @@ EOF
 
 }
 
+function test_rpms() {
+
+    # Not the fastest way ever
+    for file in $NOREPLACE_FILES; do
+        for rpm in `ls $RPMS/*rpm`; do
+            decimal_bits=$(rpm -q --qf '[%{filenames}: %{fileflags}\n]' -p $rpm | grep -e "^$file:"| sed -e "s#$file: *##;")
+            if [ ! -z "$decimal_bits" ]; then
+                # check for 4th bit
+                bitset=$(($decimal_bits & 16))
+                if [ $bitset -ne 16 ]; then
+                    error 110 "Rpm $rpm provides noreplace file $file without noreplace bits set: $decimal_bits"
+                fi
+            fi
+        done
+    done
+}
+
 function main() {
     mkdir -p $DEST
     if [ $? -gt 0 ]; then
@@ -993,6 +1013,8 @@ function main() {
 	        error 8 "build_and_install package of repository $repo failed"
 	    fi
     done
+
+    test_rpms
 
     return 0
 }
