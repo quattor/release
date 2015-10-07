@@ -256,7 +256,7 @@ if gpg-agent; then
 
             echo_info "Collecting RPMs"
             mkdir -p target/$VERSION
-            find src/ -type f -name \*.rpm | grep /target/checkout/ | xargs -I @ cp @ target/$VERSION/
+            find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ target/$VERSION/
 
             cd target/
 
