@@ -415,6 +415,14 @@ function has_mvn () {
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
             fi
 
+            # temp hack to disable maven 3.3.3 which requires jdk7+,
+            # but the rpms in the repo have broken requirements
+            # use sed to cat, since sed has sudo rights
+            $sudo sed -i -e "\$aexclude=apache-maven*3.3.3*" /etc/yum.conf
+            if [ $? -gt 0 ]; then
+                error 82 "has_mvn maven 3.3.3 temp hack failed"
+            fi
+
             $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
