@@ -62,6 +62,8 @@ fi
 
 OS_HACK=1
 
+EATMYDATA=${EATMYDATA:-0}
+
 function usage () {
     cat <<EOF
 $NAME is a bootstrap script for testing (and packaging) all Quattor repos,
@@ -126,6 +128,10 @@ other intrusive cleanups. DON'T USE IT if you are not sure you need it.
 GITCLEAN: GITCLEAN=0 if you made local modification to the repositories and want
 to test with them (otherwise the repositories will be cleaned)
 (current GITCLEAN=$GITCLEAN). [TODO: reinvestigate what this means now that we stash]
+
+EATMYDATA: will build and preload the libeatmydata library. Will speed up this script,
+but intermediate powercuts might render unusable systems as fsync is mocked.
+Default is 0 (set to 1 to enable).
 
 
 EOF
@@ -415,6 +421,14 @@ function has_mvn () {
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
             fi
 
+            # temp hack to disable maven 3.3.3 which requires jdk7+,
+            # but the rpms in the repo have broken requirements
+            # use sed to cat, since sed has sudo rights
+            $sudo sed -i -e "\$aexclude=apache-maven*3.3.3*" /etc/yum.conf
+            if [ $? -gt 0 ]; then
+                error 82 "has_mvn maven 3.3.3 temp hack failed"
+            fi
+
             $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
@@ -473,7 +487,7 @@ function deps_install_yum () {
         return 0
     fi
 
-    echo "Searching for dep $dep with $SUDO repoquery --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
+    echo "Searching for dep $dep with $SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
     pkgs=`$SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides "$dep" 2>/dev/null | grep -v 'No package provides' | sort| uniq`
     if [ -z "$pkgs" ]; then
         ec=70
@@ -481,6 +495,7 @@ function deps_install_yum () {
     fi
 
     # yum command (e.g. add sudo or something like that)
+    # no -C here
     yum="$SUDO yum"
 
     for pkg in $pkgs; do
@@ -875,6 +890,38 @@ function main_init_bin_yum () {
     done
 }
 
+function eatmydata () {
+    echo "Building libeatmydata"
+    local lemd
+    lemd=$DEST/libeatmydata
+    mkdir -p $lemd
+    cd $lemd
+
+    # same as for cpanm + unzip
+    for dep in gcc-c++ make unzip; do
+        deps_install_yum "$dep"
+    done
+
+    download "https://github.com/dmwm/libeatmydata/archive/master.zip" $lemd/master.zip
+    unzip $lemd/master.zip
+    cd libeatmydata*master
+    if [ $? -gt 0 ]; then
+        error 130 "Downloading and unpacking libeatmydata failed"
+    fi
+
+    make
+
+    LIBEATMYDATA=$PWD/libeatmydata.so
+    if [ ! -f $LIBEATMYDATA ]; then
+        error 131 "Cannot find LIBEATMYDATA $LIBEATMYDATA"
+    fi
+
+    # enable it
+    export LD_PRELOAD=$LIBEATMYDATA
+
+    cd $DEST
+}
+
 function main_init () {
     reset_perl5lib
 
@@ -883,6 +930,10 @@ function main_init () {
 
     # provided by yum-utils
     main_init_bin_yum $MAIN_INIT_BIN_YUM
+
+    if [ $EATMYDATA -gt 0 ]; then
+        eatmydata
+    fi
 
     # do it separately
     check_epel
@@ -908,6 +959,11 @@ export PERL5LIB=$INSTALLPERL
 export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$QUATTOR_TEST_TEMPLATE_LIBRARY_CORE
 export PATH=$PATH
 EOF
+
+    if [ $EATMYDATA -gt 0 ]; then
+        # commented by default
+        echo "#export LD_PRELOAD=$LIBEATMYDATA" >> $DEST/env.sh
+    fi
 
 }
 
@@ -1015,6 +1071,12 @@ function main() {
     done
 
     test_rpms
+
+    if [ $EATMYDATA -gt 0 ]; then
+        unset LD_PRELOAD
+        sync
+    fi
+
 
     return 0
 }
