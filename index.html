@@ -70,6 +70,7 @@
 </div>
 </div>
 </div>
+<div id="burndown-container" style="min-width: 800px; margin: 0 auto;"></div>
 <div class="tab-pane panel panel-default" id="16-2">
 <table class="table panel-body">
 <tr>
@@ -498,15 +499,24 @@
 </table>
 </div>
 </div>
-<p class="text-muted">Page generated <span class="reldate">2016-01-13 11:34:03<span></p>
+<p class="text-muted">Page generated <span class="reldate">2016-01-13 13:14:45<span></p>
 </div>
 
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <script src="regression.js"></script>
+  <script src="burndown.js"></script>
   <script type="text/javascript">
     $(function() {
       $('.reldate').each(function(index) {
         $(this).text(moment.tz($(this).text(), "YYYY-MM-DDTHH:mm:ss", "UTC").fromNow());
       });
     });
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      release = String(e.target).split("#",2)[1].replace("-", "."); //Ugh.
+      if (release != "Backlog") burndown(release);
+      else $('#burndown-container').html('');
+    })
   </script>
   </body>
 </html>
