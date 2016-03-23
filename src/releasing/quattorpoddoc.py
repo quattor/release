@@ -85,7 +85,7 @@ def generatemds(repo, sources, location):
     return mdfiles
 
 
-def create_md_from_pan(source, comppath):
+def createmdfrompan(source, comppath):
     """
     Takes a pan schema, creates the pan annotations and parses them to markdown.
     """
