@@ -185,7 +185,7 @@ PAN_MIN_VERSION=10.2
 PAN_MIN_VERSION_RPM_URL="https://github.com/quattor/pan/releases/download/pan-${PAN_MIN_VERSION}/panc-${PAN_MIN_VERSION}-1.noarch.rpm"
 
 # Use newline separator to allow version statements
-DEPS_INIT_YUM=""
+DEPS_INIT_YUM="rpmlint"
 
 # the mvn epel url (who has this mirrored/enabled by default?)
 EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
@@ -982,6 +982,12 @@ function test_rpms() {
             fi
         done
     done
+
+    echo "Checking rpms in $RPMS with rpmlint"
+    rpmlint $RPMS
+    if [ $? -gt 0 ]; then
+        error 111 "Rpmlint failed"
+    fi
 }
 
 function main() {
