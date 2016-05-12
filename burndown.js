@@ -99,6 +99,24 @@ function burndown(release) {
                             enableMouseTracking: false,
                         },
                         {
+                            name: 'Predicted',
+                            type: 'line',
+                            data: (function() {
+                                start = mydata.closed[0][0] / 1000;
+                                end = target / 1000;
+                                console.log("Start: " + start);
+                                console.log("End: " + end);
+                                points = [];
+                                for (i = start; i<= end; i += 24*60*60*7) {
+                                    console.log(i);
+                                }
+                                return points;
+                            })(),
+                            color: '#204a87',
+                            dashStyle: 'shortdot',
+                            enableMouseTracking: false,
+                        },
+                        {
                             name: 'Actual',
                             data: mydata.closed,
                             step: 'left',
