@@ -74,7 +74,7 @@ function burndown(release) {
                     },
                     series: [
                         {
-                            name: 'Ideal',
+                            name: 'Ideal World',
                             data: [
                                 [start, mydata.to_burn],
                                 [target, 0]
@@ -84,49 +84,44 @@ function burndown(release) {
                             enableMouseTracking: false,
                         },
                         {
-                            name: 'Trend',
+                            name: 'Linear Regression',
                             type: 'line',
                             data: (function() {
                                 start = mydata.closed[0][0];
                                 fit = fitData(mydata.closed);
                                 return [
                                     [start, fit.y(start)],
-                                    [fit.x(0), 0],
+                                    [target, fit.y(target)],
                                 ];
                             })(),
-                            color: '#729fcf',
+                            color: '#ad7fa8',
                             dashStyle: 'shortdot',
                             enableMouseTracking: false,
                         },
                         {
-                            name: 'Predicted',
+                            name: 'Prediction',
                             type: 'line',
                             data: (function() {
-                                secondsinday = 24. * 60 * 60;
-                                start = mydata.closed[0][0] / 1000;
+                                secondsinday = 24 * 60 * 60;
+                                start = start / 1000;
                                 end = target / 1000;
                                 days = (end - start) / secondsinday;
-                                console.log("Start: " + start);
-                                console.log("End: " + end);
-                                console.log("Days: " + days);
-                                k = mydata.to_burn / (secondsinday * 4);
-                                l = mydata.to_burn / (secondsinday/10)
+                                coeff_a = mydata.to_burn / (secondsinday * (days / 30));
+                                coeff_b = mydata.to_burn / (secondsinday / (days / 3.5))
                                 points = [];
                                 for (day = 0; day <= days; day++) {
-                                    console.log("Day: " + day);
-                                    y = -k * Math.pow(day, 3) + l * Math.pow(day, 2) - day + mydata.to_burn;
+                                    y = -coeff_a * Math.pow(day, 3) + coeff_b * Math.pow(day, 2) - day + mydata.to_burn;
                                     x = mydata.closed[0][0] + day * secondsinday * 1000;
                                     points.push([x, y]);
                                 }
-                                console.log(points);
                                 return points;
                             })(),
-                            color: '#204a87',
-                            dashStyle: 'shortdot',
+                            color: '#75507b',
+                            dashStyle: 'shortdash',
                             enableMouseTracking: false,
                         },
                         {
-                            name: 'Actual',
+                            name: 'Reality',
                             data: mydata.closed,
                             step: 'left',
                             color: '#3465a4',
