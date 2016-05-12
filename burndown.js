@@ -102,14 +102,23 @@ function burndown(release) {
                             name: 'Predicted',
                             type: 'line',
                             data: (function() {
+                                secondsinday = 24. * 60 * 60;
                                 start = mydata.closed[0][0] / 1000;
                                 end = target / 1000;
+                                days = (end - start) / secondsinday;
                                 console.log("Start: " + start);
                                 console.log("End: " + end);
+                                console.log("Days: " + days);
+                                k = mydata.to_burn / (secondsinday * 4);
+                                l = mydata.to_burn / (secondsinday/10)
                                 points = [];
-                                for (i = start; i<= end; i += 24*60*60*7) {
-                                    console.log(i);
+                                for (day = 0; day <= days; day++) {
+                                    console.log("Day: " + day);
+                                    y = -k * Math.pow(day, 3) + l * Math.pow(day, 2) - day + mydata.to_burn;
+                                    x = mydata.closed[0][0] + day * secondsinday * 1000;
+                                    points.push([x, y]);
                                 }
+                                console.log(points);
                                 return points;
                             })(),
                             color: '#204a87',
