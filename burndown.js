@@ -96,6 +96,7 @@ function burndown(release) {
                             })(),
                             color: '#ad7fa8',
                             dashStyle: 'shortdot',
+                            visible: false,
                             enableMouseTracking: false,
                         },
                         {
