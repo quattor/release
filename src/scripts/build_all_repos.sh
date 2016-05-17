@@ -140,9 +140,15 @@ EOF
 
 echo "$NAME START "`date +%s` `date`
 
+# maven-tools is both testonly and packageonly
+# due to the build-scripts/package-build-scripts structure
+
+# only testing, and early dependency resolution no package
+REPOS_MVN_TESTONLY_ORDERED="maven-tools"
 # ordered list of repository names
 REPOS_MVN_ORDERED="LC CAF CCM ncm-ncd ncm-lib-blockdevices aii configuration-modules-core configuration-modules-grid cdp-listend ncm-cdispd ncm-query"
-REPOS_MVN_TESTONLY_ORDERED="maven-tools"
+# the package only step, no previous testing or dependency resolution is done
+REPOS_MVN_PACKAGEONLY_ORDERED="maven-tools"
 
 # pseudo-install dir
 INSTALL=$DEST/install
@@ -185,7 +191,7 @@ PAN_MIN_VERSION=10.2
 PAN_MIN_VERSION_RPM_URL="https://github.com/quattor/pan/releases/download/pan-${PAN_MIN_VERSION}/panc-${PAN_MIN_VERSION}-1.noarch.rpm"
 
 # Use newline separator to allow version statements
-DEPS_INIT_YUM=""
+DEPS_INIT_YUM="rpmlint"
 
 # the mvn epel url (who has this mirrored/enabled by default?)
 EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
@@ -528,7 +534,10 @@ function check_deps_init_bin () {
 
     # should be part of rpmbuild dep
     for name in find-requires perl.req find-provides perl.prov; do
-        deps_install_yum /usr/lib/rpm/$name 1
+        fn=/usr/lib/rpm/$name
+        if [ ! -f $fn ]; then
+            deps_install_yum $fn 1
+        fi
     done
 
     echo "Done checking DEPS_INIT_BIN $DEPS_INIT_BIN"
@@ -799,16 +808,20 @@ function mvn_compile () {
 function mvn_package () {
     local repo
     repo=$1
-    mvntgt=${2:-$PACAKGE}
+    mvntgt=${2:-$PACKAGE}
 
     cd $REPOSITORY/$repo
 
+    tgtperl="$PWD/target/lib/perl/"
     if [ "$repo" == "maven-tools" ]; then
-        echo "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
-        cd build-scripts
-        tgtperl="$PWD/src/main/perl/"
-    else
-        tgtperl="$PWD/target/lib/perl/"
+        if [ "$mvntgt" == "$PACKAGE" ]; then
+            echo "Exception for maven-tools repository: entering subdir package-build-scripts"
+            cd package-build-scripts
+        else
+            echo "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
+            cd build-scripts
+            tgtperl="$PWD/src/main/perl/"
+        fi
     fi
 
     # remove compile target from PERL5LIB; this repo should be available via INSTALL at the end
@@ -925,7 +938,7 @@ function eatmydata () {
 function main_init () {
     reset_perl5lib
 
-    $SUDO yum clean expire-cache
+    $SUDO yum clean all
     $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
 
     # provided by yum-utils
@@ -982,6 +995,12 @@ function test_rpms() {
             fi
         done
     done
+
+    echo "Checking rpms in $RPMS with rpmlint"
+    rpmlint $RPMS
+    if [ $? -gt 0 ]; then
+        error 111 "Rpmlint failed"
+    fi
 }
 
 function main() {
@@ -1006,6 +1025,9 @@ function main() {
     if [ $? -gt 0 ]; then
 	    error 6 "failed to create REPOSITORY $REPOSITORY"
     fi
+
+    # give VMs some extra time
+    sleep 60
 
     main_init
 
@@ -1063,7 +1085,7 @@ function main() {
     done
 
     # with modified PERL5LIB, run the tests
-    for repo in $REPOS_MVN_ORDERED; do
+    for repo in $REPOS_MVN_ORDERED $REPOS_MVN_PACKAGEONLY_ORDERED; do
 	    mvn_package $repo $PACKAGE
 	    if [ $? -gt 0 ]; then
 	        error 8 "build_and_install package of repository $repo failed"
