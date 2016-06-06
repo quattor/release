@@ -108,7 +108,7 @@ function burndown(release) {
                                 end = target / 1000;
                                 days = (end - start) / secondsinday;
                                 coeff_a = mydata.to_burn / (secondsinday * (days / 30));
-                                coeff_b = mydata.to_burn / (secondsinday / (days / 3.5))
+                                coeff_b = mydata.to_burn / (secondsinday / (days / 7))
                                 points = [];
                                 for (day = 0; day <= days; day++) {
                                     y = -coeff_a * Math.pow(day, 3) + coeff_b * Math.pow(day, 2) - day + mydata.to_burn;
