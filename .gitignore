@@ -2,3 +2,4 @@
 target
 .repository
 *.pyc
+.idea
