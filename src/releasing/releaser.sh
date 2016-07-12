@@ -19,6 +19,13 @@ if [[ $(ulimit -n) -lt $MAXFILES ]]; then
   fi
 fi
 
+if [[ -n "$QUATTOR_TEST_TEMPLATE_LIBRARY_CORE" && -d "$QUATTOR_TEST_TEMPLATE_LIBRARY_CORE" ]]; then
+    echo "INFO: QUATTOR_TEST_TEMPLATE_LIBRARY_CORE defined and set to '$QUATTOR_TEST_TEMPLATE_LIBRARY_CORE'"
+else
+    echo "ABORT: QUATTOR_TEST_TEMPLATE_LIBRARY_CORE is not correctly defined, cannot perform a release without a reference copy of template-library-core."
+    exit 2
+fi
+
 shopt -s expand_aliases
 source maven-illuminate.sh
 
