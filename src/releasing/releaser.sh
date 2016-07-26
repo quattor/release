@@ -96,7 +96,7 @@ publish_aii() {
     # For aii-core, don't delete subdirectory as some are files not coming from somewhere else...
     rm ${dest_root}/*.pan
     cp -r aii-core/target/pan/quattor/aii/* ${dest_root}
-    for aii_component in dhcp ks pxelinux
+    for aii_component in dhcp ks pxelinux opennebula
     do
       rm -Rf ${dest_root}/${aii_component}
       cp -r aii-${aii_component}/target/pan/quattor/aii/${aii_component} ${dest_root}
@@ -138,7 +138,7 @@ tag_repository() {
     tag=$2
     cd ${repo}
     #FIXME: we may want to check that the tag doesn't exist already
-    git tag -m "Release ${tag}" ${tag}    
+    git tag -m "Release ${tag}" ${tag}
     git push origin --tags HEAD
     cd -
 }
