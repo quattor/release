@@ -33,6 +33,10 @@ REPOMAP = {
         "sitesubdir": "components",
         "target": "/NCM/Component/"
         },
+    "configuration-modules-grid":{ 
+        "sitesubdir": "components-grid",
+        "target": "/NCM/Component/"
+        },
     "CAF": {
         "sitesubdir": "CAF",
         "target": "/CAF/"
