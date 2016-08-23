@@ -107,42 +107,47 @@ def create_md_from_pan(source, comppath):
     xml = etree.parse(os.path.join(tmpdir, tpl))
     root = xml.getroot()
 
+    mdtext = []
+
+    mdtext.append("# Types\n")
+    for stype in root.findall('%stype' % namespace):
+        name = stype.get('name')
+        mdtext.append("- /software/%s/%s" % (modname, name))
+
+        for doc in stype.findall(".//%sdesc" % namespace):
+            mdtext.append("%s- decription: %s" % (" "*4, doc.text))
+
+        for field in stype.findall(".//%sfield" % namespace):
+            mdtext.append("%s- /software/%s/%s/%s" % (" "*4, modname, name, field.get('name')))
+            required = field.get('required')
+            if required == "true":
+                mdtext.append("%s- required" % (" "*8))
+            else:
+                mdtext.append("%s- optional" % (" "*8))
+
+            for basetype in field.findall(".//%sbasetype" % namespace):
+                fieldtype = basetype.get('name')
+                mdtext.append("%s- type: %s" % (" "*8, fieldtype))
+                if fieldtype == "long" and basetype.get('range'):
+                    fieldrange = basetype.get('range')
+                    mdtext.append("%s- range: %s" % (" "*8, fieldrange))
+            mdtext.append("\n")
+
+    deffunctions = root.findall('%sfunction' % namespace)
+    if deffunctions:
+        mdtext.append("\n# Functions\n")
+        root.findall('%sfunction' % namespace)
+        for fnname in deffunctions:
+            name = fnname.get('name')
+            mdtext.append("- %s" % name)
+            for doc in fnname.findall(".//%sdesc" % namespace):
+                mdtext.append("   description: %s " % doc.text)
+            for arg in fnname.findall(".//%sarg" % namespace):
+                mdtext.append("- arg: %s " % arg.text)
+
     with open(os.path.join(comppath, mdfile), "w") as fih:
-        fih.write("# Types\n\n")
-        for stype in root.findall('%stype' % namespace):
-            name = stype.get('name')
-            fih.write("- /software/%s/%s\n" % (modname, name))
+        fih.write("\n".join(txt))
 
-            for doc in stype.findall(".//%sdesc" % namespace):
-                fih.write("%s- decription: %s\n" % (" "*4, doc.text))
-
-            for field in stype.findall(".//%sfield" % namespace):
-                fih.write("%s- /software/%s/%s/%s\n" % (" "*4, modname, name, field.get('name')))
-                required = field.get('required')
-                if required == "true":
-                    fih.write("%s- required\n" % (" "*8))
-                else:
-                    fih.write("%s- optional\n" % (" "*8))
-
-                for basetype in field.findall(".//%sbasetype" % namespace):
-                    fieldtype = basetype.get('name')
-                    fih.write("%s- type: %s\n" % (" "*8, fieldtype))
-                    if fieldtype == "long" and basetype.get('range'):
-                        fieldrange = basetype.get('range')
-                        fih.write("%s- range: %s\n" % (" "*8, fieldrange))
-                fih.write("\n\n")
-
-        deffunctions = root.findall('%sfunction' % namespace)
-        if deffunctions:
-            fih.write("\n# Functions\n\n")
-            root.findall('%sfunction' % namespace)
-            for fnname in deffunctions:
-                name = fnname.get('name')
-                fih.write("- %s\n" % name)
-                for doc in fnname.findall(".//%sdesc" % namespace):
-                    fih.write("   description: %s \n" % doc.text)
-                for arg in fnname.findall(".//%sarg" % namespace):
-                    fih.write("- arg: %s \n" % arg.text)
     logger.debug("Removing temporary directory: %s" % tmpdir)
     shutil.rmtree(tmpdir)
     return mdfile
