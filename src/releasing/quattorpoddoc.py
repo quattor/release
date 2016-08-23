@@ -48,7 +48,7 @@ REPOMAP = {
     }
 
 
-def mavencleancompile(repo_location, repository):
+def maven_clean_compile(repo_location, repository):
     """
     Executes mvn clean and mvn compile in the given modules_location.
     """
@@ -58,7 +58,7 @@ def mavencleancompile(repo_location, repository):
     logger.debug(output)
 
 
-def generatemds(repo, sources, location):
+def generate_mds(repo, sources, location):
     """
     Takes a list of components with podfiles and generates a md file for it.
     """
@@ -76,20 +76,20 @@ def generatemds(repo, sources, location):
             tpl = True
 
         if source.endswith(".pan") or tpl:
-            mdfile = createmdfrompan(source, comppath)
+            mdfile = create_md_from_pan(source, comppath)
             mdfiles.append(mdfile)
         else:
             sourcename = source.split(REPOMAP[repo]['target'])[-1]
             mdfile = os.path.splitext(sourcename)[0].replace("/", "::").lower() + ".md"
 
-            convertpodtomarkdown(source, os.path.join(comppath, mdfile))
+            convert_pod_to_markdown(source, os.path.join(comppath, mdfile))
             mdfiles.append(mdfile)
 
     logger.info("Written %s md files." % len(mdfiles))
     return mdfiles
 
 
-def createmdfrompan(source, comppath):
+def create_md_from_pan(source, comppath):
     """
     Takes a pan schema, creates the pan annotations and parses them to markdown.
     """
@@ -148,7 +148,7 @@ def createmdfrompan(source, comppath):
     return mdfile
 
 
-def convertpodtomarkdown(podfile, outputfile):
+def convert_pod_to_markdown(podfile, outputfile):
     """
     Takes a podfile and converts it to a markdown with the help of pod2markdown.
     """
@@ -160,7 +160,7 @@ def convertpodtomarkdown(podfile, outputfile):
         fih.write(output[1])
 
 
-def generatetoc(mdfiles, outputloc, indexname):
+def generate_toc(mdfiles, outputloc, indexname):
     """
     Generates a TOC for the parsed components.
     """
@@ -177,11 +177,11 @@ def generatetoc(mdfiles, outputloc, indexname):
             for page in sorted(mdfiles[subdivision]):
                 linkname = page.split(".")[0]
                 linktopage = "%s/%s" % (subdivision, page)
-                writeifexists(outputloc, linktopage, linkname, fih)
+                write_if_exists(outputloc, linktopage, linkname, fih)
         fih.write("\n")
 
 
-def writeifexists(outputloc, linktopage, linkname, fih):
+def write_if_exists(outputloc, linktopage, linkname, fih):
     """
     Checks if the MD exists before adding it to the TOC.
     """
@@ -193,7 +193,7 @@ def writeifexists(outputloc, linktopage, linkname, fih):
                     % os.path.join(outputloc, DOCDIR, linktopage))
 
 
-def removemailadresses(mdfiles, outputloc):
+def remove_mail(mdfiles, outputloc):
     """
     Removes the email addresses from the markdown files.
     """
@@ -223,7 +223,7 @@ def removemailadresses(mdfiles, outputloc):
     logger.info("Removed %s email addresses." % counter)
 
 
-def removewhitespace(mdfiles, outputloc):
+def remove_whitespace(mdfiles, outputloc):
     """
     Removes extra whitespace (\n\n\n).
     """
@@ -243,7 +243,7 @@ def removewhitespace(mdfiles, outputloc):
     logger.info("Removed extra whitespace from %s files." % counter)
 
 
-def decreasetitlesize(mdfiles, outputloc):
+def decrease_title_size(mdfiles, outputloc):
     """
     Makes titles smaller, e.g. replace "# " with "### ".
     """
@@ -263,7 +263,7 @@ def decreasetitlesize(mdfiles, outputloc):
     logger.info("Downsized titles in %s files." % counter)
 
 
-def removeheaders(mdfiles, outputloc):
+def remove_headers(mdfiles, outputloc):
     """
     Removes MAINTAINER and AUTHOR headers from md files.
     """
@@ -290,7 +290,7 @@ def removeheaders(mdfiles, outputloc):
     logger.info("Removed %s unused headers." % counter)
 
 
-def codifypaths(mdfiles, outputloc):
+def codify_paths(mdfiles, outputloc):
     """
     Puts paths inside code tags
     """
@@ -310,7 +310,7 @@ def codifypaths(mdfiles, outputloc):
     logger.info("Code tagged %s paths." % counter)
 
 
-def checkinputandcommands(sourceloc, outputloc, runmaven):
+def check_input_and_commands(sourceloc, outputloc, runmaven):
     """
     Check if the directories are in place.
     Check if the required binaries are in place.
@@ -343,7 +343,7 @@ def checkinputandcommands(sourceloc, outputloc, runmaven):
         sys.exit(1)
 
 
-def listperlmodules(module_location):
+def list_perl_modules(module_location):
     """
     return a list of perl modules in module_location.
     Try to filter out duplicates, pod takes precedence over pm.
@@ -428,29 +428,29 @@ def main(repoloc, outputloc):
         logger.info("Processing %s." % repo)
         if GO.options.maven_compile:
             logger.info("Doing maven clean and compile.")
-            mavencleancompile(repoloc, repo)
+            maven_clean_compile(repoloc, repo)
         else:
             logger.info("Skipping maven clean and compile.")
 
-        pmodules = listperlmodules(os.path.join(repoloc, repo))
-        mdfiles[REPOMAP[repo]['sitesubdir']] = generatemds(repo, pmodules, outputloc)
+        pmodules = list_perl_modules(os.path.join(repoloc, repo))
+        mdfiles[REPOMAP[repo]['sitesubdir']] = generate_mds(repo, pmodules, outputloc)
 
-    generatetoc(mdfiles, outputloc, GO.options.index_name)
+    generate_toc(mdfiles, outputloc, GO.options.index_name)
 
     if GO.options.remove_emails:
-        removemailadresses(mdfiles, outputloc)
+        remove_mail(mdfiles, outputloc)
 
     if GO.options.remove_headers:
-        removeheaders(mdfiles, outputloc)
+        remove_headers(mdfiles, outputloc)
 
     if GO.options.small_titles:
-        decreasetitlesize(mdfiles, outputloc)
+        decrease_title_size(mdfiles, outputloc)
 
     if GO.options.remove_whitespace:
-        removewhitespace(mdfiles, outputloc)
+        remove_whitespace(mdfiles, outputloc)
 
     if GO.options.codify_paths:
-        codifypaths(mdfiles, outputloc)
+        codify_paths(mdfiles, outputloc)
 
 
 if __name__ == '__main__':
@@ -468,7 +468,7 @@ if __name__ == '__main__':
     GO = simple_option(OPTIONS)
     logger.info("Starting main.")
 
-    checkinputandcommands(GO.options.modules_location, GO.options.output_location, GO.options.maven_compile)
+    check_input_and_commands(GO.options.modules_location, GO.options.output_location, GO.options.maven_compile)
 
     main(GO.options.modules_location, GO.options.output_location)
 
