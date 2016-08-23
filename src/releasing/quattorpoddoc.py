@@ -33,7 +33,7 @@ REPOMAP = {
         "sitesubdir": "components",
         "target": "/NCM/Component/"
         },
-    "configuration-modules-grid":{ 
+    "configuration-modules-grid":{
         "sitesubdir": "components-grid",
         "target": "/NCM/Component/"
         },
@@ -350,28 +350,30 @@ def list_perl_modules(module_location):
     """
     finallist = []
     for path, _, files in os.walk(module_location):
-        if is_wanted_dir(path, files):
-            for mfile in files:
-                if is_wanted_file(path, mfile):
-                    fname = os.path.join(path, mfile)
-                    duplicate = ""
-                    if "doc/pod" in fname:
-                        duplicate = fname.replace('doc/pod', 'lib/perl')
-                        if mfile.endswith('.pod'):
-                            duplicate = duplicate.replace(".pod", ".pm")
-                        if duplicate in finallist:
-                            finallist[finallist.index(duplicate)] = fname
-                            continue
+        if not is_wanted_dir(path, files):
+            continue
 
-                    duplicate = ""
-                    if "lib/perl" in fname:
-                        duplicate = fname.replace('lib/perl', 'doc/pod')
-                        if mfile.endswith('.pm'):
-                            duplicate = duplicate.replace(".pm", ".pod")
-                        if duplicate not in finallist:
-                            finallist.append(fname)
-                            continue
-                    finallist.append(os.path.join(path, mfile))
+        for mfile in files:
+            if is_wanted_file(path, mfile):
+                fname = os.path.join(path, mfile)
+                duplicate = ""
+                if "doc/pod" in fname:
+                    duplicate = fname.replace('doc/pod', 'lib/perl')
+                    if mfile.endswith('.pod'):
+                        duplicate = duplicate.replace(".pod", ".pm")
+                    if duplicate in finallist:
+                        finallist[finallist.index(duplicate)] = fname
+                        continue
+
+                duplicate = ""
+                if "lib/perl" in fname:
+                    duplicate = fname.replace('lib/perl', 'doc/pod')
+                if mfile.endswith('.pm'):
+                        duplicate = duplicate.replace(".pm", ".pod")
+                    if duplicate not in finallist:
+                        finallist.append(fname)
+                        continue
+                finallist.append(os.path.join(path, mfile))
 
     return finallist
 
