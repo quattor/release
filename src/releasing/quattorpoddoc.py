@@ -114,35 +114,35 @@ def create_md_from_pan(source, comppath):
             fih.write("- /software/%s/%s\n" % (modname, name))
 
             for doc in stype.findall(".//%sdesc" % namespace):
-                fih.write("    - decription: %s\n" % doc.text)
+                fih.write("%s- decription: %s\n" % (" "*4, doc.text))
 
             for field in stype.findall(".//%sfield" % namespace):
-                fih.write("    - /software/%s/%s/%s\n" % (modname, name, field.get('name')))
+                fih.write("%s- /software/%s/%s/%s\n" % (" "*4, modname, name, field.get('name')))
                 required = field.get('required')
                 if required == "true":
-                    fih.write("        - required\n")
+                    fih.write("%s- required\n" % (" "*8))
                 else:
-                    fih.write("        - optional\n")
+                    fih.write("%s- optional\n" % (" "*8))
 
                 for basetype in field.findall(".//%sbasetype" % namespace):
                     fieldtype = basetype.get('name')
-                    fih.write("        - type: %s\n" % fieldtype)
+                    fih.write("%s- type: %s\n" % (" "*8, fieldtype))
                     if fieldtype == "long" and basetype.get('range'):
                         fieldrange = basetype.get('range')
-                        fih.write("        - range: %s\n" % fieldrange)
+                        fih.write("%s- range: %s\n" % (" "*8, fieldrange))
                 fih.write("\n\n")
 
         deffunctions = root.findall('%sfunction' % namespace)
-        if len(deffunctions) > 0:
+        if deffunctions:
             fih.write("\n# Functions\n\n")
             root.findall('%sfunction' % namespace)
             for fnname in deffunctions:
                 name = fnname.get('name')
-                fih.write("  - %s\n" % name)
+                fih.write("- %s\n" % name)
                 for doc in fnname.findall(".//%sdesc" % namespace):
                     fih.write("   description: %s \n" % doc.text)
                 for arg in fnname.findall(".//%sarg" % namespace):
-                    fih.write("   - arg: %s \n" % arg.text)
+                    fih.write("- arg: %s \n" % arg.text)
     logger.debug("Removing temporary directory: %s" % tmpdir)
     shutil.rmtree(tmpdir)
     return mdfile
