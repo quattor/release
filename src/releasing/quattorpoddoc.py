@@ -2,6 +2,7 @@
 """
 quattorpoddoc generates markdown documentation from:
  - configuration-modules-core perl documentation
+ - configuration-modules-grid perl documentation
  - CAF perl documentation
  - CCM perl documentation
  - schema pan annotations
@@ -146,7 +147,7 @@ def create_md_from_pan(source, comppath):
                 mdtext.append("- arg: %s " % arg.text)
 
     with open(os.path.join(comppath, mdfile), "w") as fih:
-        fih.write("\n".join(txt))
+        fih.write("\n".join(mdtext))
 
     logger.debug("Removing temporary directory: %s" % tmpdir)
     shutil.rmtree(tmpdir)
@@ -374,7 +375,7 @@ def list_perl_modules(module_location):
                 if "lib/perl" in fname:
                     duplicate = fname.replace('lib/perl', 'doc/pod')
                 if mfile.endswith('.pm'):
-                        duplicate = duplicate.replace(".pm", ".pod")
+                    duplicate = duplicate.replace(".pm", ".pod")
                     if duplicate not in finallist:
                         finallist.append(fname)
                         continue
