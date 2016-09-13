@@ -92,7 +92,7 @@ def get_current_releases():
     return results
 
 
-def sync_template_library(base_dir):
+def sync_template_library(base_dir, releases):
     logger = logging.getLogger('sync-template-library')
 
     logger.debug('Using %s as base directory', base_dir)
@@ -107,7 +107,7 @@ def sync_template_library(base_dir):
         chdir(temp_dir)
         logger.info('Done')
 
-        for release in get_current_releases():
+        for release in releases:
             logger.info('Release %s available', release)
 
             for branch in branches:
@@ -146,8 +146,9 @@ if __name__ == '__main__':
         name='sync-template-library'
     )
 
-    parser = ArgumentParser(description='Linter for the pan language')
+    parser = ArgumentParser(description='Synchronise quattor template libraries')
     parser.add_argument('--debug', action='store_true', help='Enable debug output')
+    parser.add_argument('--releases', help='Sync specific release(s), delimit multiple releases with commas')
     parser.add_argument(
         'path',
         metavar='PATH',
@@ -160,6 +161,11 @@ if __name__ == '__main__':
     if args.debug:
         logger.setLevel(logging.DEBUG)
 
-    sync_template_library(abspath(args.path))
+    if args.releases:
+        releases = args.releases.split(',')
+    else:
+        releases = get_current_releases()
+
+    sync_template_library(abspath(args.path), releases)
 
     sys_exit(0)
