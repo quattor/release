@@ -747,7 +747,7 @@
 <!-- ncm&#45;cdispd#43 -->
 <g id="node99" class="node"><title>ncm-cdispd#43</title>
 <a xlink:href="https://github.com/quattor/ncm-cdispd/pull/43" xlink:title="Utils: use NCD::ComponentProxyList set_state function to set the statefile" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="747,-175 653,-175 653,-121 747,-121 747,-175"/>
+<polygon fill="#6e5494" stroke="black" points="747,-175 653,-175 653,-121 747,-121 747,-175"/>
 <text text-anchor="middle" x="700" y="-152" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="700" y="-139" font-family="Sans" font-size="10.00">ncm-cdispd#43</text>
 </a>
@@ -761,7 +761,7 @@
 <!-- ncm&#45;cdispd#37 -->
 <g id="node101" class="node"><title>ncm-cdispd#37</title>
 <a xlink:href="https://github.com/quattor/ncm-cdispd/issues/37" xlink:title="use NCD::ComponentProxyList-&gt;set_state to set statefile" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="990" cy="-166" rx="67.1751" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="990" cy="-166" rx="67.1751" ry="38.1838"/>
 <text text-anchor="middle" x="990" y="-170" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="990" y="-157" font-family="Sans" font-size="10.00">ncm-cdispd#37</text>
 </a>
