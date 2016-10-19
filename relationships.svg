@@ -202,7 +202,7 @@
 <!-- ncm&#45;ncd#88 -->
 <g id="node28" class="node"><title>ncm-ncd#88</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/88" xlink:title="Collection of fixes for minor issues" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="583,-292.77 501,-292.77 501,-238.77 583,-238.77 583,-292.77"/>
+<polygon fill="#6e5494" stroke="black" points="583,-292.77 501,-292.77 501,-238.77 583,-238.77 583,-292.77"/>
 <text text-anchor="middle" x="542" y="-269.77" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="542" y="-256.77" font-family="Sans" font-size="10.00">ncm-ncd#88</text>
 </a>
@@ -285,7 +285,7 @@
 <!-- CCM#142 -->
 <g id="node37" class="node"><title>CCM#142</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/142" xlink:title="Syncfile: cleanup unused code and remove any hint that something is (un)locked" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="291,-2526.77 213,-2526.77 213,-2472.77 291,-2472.77 291,-2526.77"/>
+<polygon fill="#6e5494" stroke="black" points="291,-2526.77 213,-2526.77 213,-2472.77 291,-2472.77 291,-2526.77"/>
 <text text-anchor="middle" x="252" y="-2503.77" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="252" y="-2490.77" font-family="Sans" font-size="10.00">CCM#142</text>
 </a>
@@ -293,7 +293,7 @@
 <!-- CCM#94 -->
 <g id="node39" class="node"><title>CCM#94</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/94" xlink:title="CCM should use CAF::Lock" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="542" cy="-2499.77" rx="48.0833" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="542" cy="-2499.77" rx="48.0833" ry="38.1838"/>
 <text text-anchor="middle" x="542" y="-2503.77" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="542" y="-2490.77" font-family="Sans" font-size="10.00">CCM#94</text>
 </a>
@@ -489,7 +489,7 @@
 <!-- configuration&#45;modules&#45;core#946 -->
 <g id="node65" class="node"><title>configuration-modules-core#946</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/946" xlink:title="ncm-fstab, ncm-filesystems: pass logger to NCM::Blockdevices" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="335,-1807.77 169,-1807.77 169,-1753.77 335,-1753.77 335,-1807.77"/>
+<polygon fill="#6e5494" stroke="black" points="335,-1807.77 169,-1807.77 169,-1753.77 335,-1753.77 335,-1807.77"/>
 <text text-anchor="middle" x="252" y="-1784.77" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="252" y="-1771.77" font-family="Sans" font-size="10.00">configuration-modules-core#946</text>
 </a>
