@@ -14,12 +14,12 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-quattor-jrha
 
 [quattor_externals_arch]
 name=Quattor Externals
-baseurl=http://yum.quattor.org/externals/$arch/el$release
+baseurl=http://yum.quattor.org/externals/$basearch/el$releasever
 enabled=1
 gpgcheck=0
 
 [quattor_externals_noarch]
 name=Quattor Externals
-baseurl=http://yum.quattor.org/externals/noarch/el$release
+baseurl=http://yum.quattor.org/externals/noarch/el$releasever
 enabled=1
 gpgcheck=0
