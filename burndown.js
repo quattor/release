@@ -48,7 +48,7 @@ function burndown(release) {
                                 from: rcs,
                                 to: target,
                                 label: {
-                                    text: 'RCs',
+                                    text: 'Freeze & RCs',
                                     style: {
                                         color: '#555753'
                                     }
