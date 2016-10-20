@@ -44,7 +44,7 @@ function burndown(release) {
                         ],
                         plotBands: [
                             {
-                                color: '#eeeeec',
+                                color: '#eeeeec7f',
                                 from: rcs,
                                 to: target,
                                 label: {
