@@ -103,7 +103,7 @@
 <!-- aii#205 -->
 <g id="node11" class="node"><title>aii#205</title>
 <a xlink:href="https://github.com/quattor/aii/pull/205" xlink:title="aii-opennebula: configure fix" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="481,-2415 403,-2415 403,-2361 481,-2361 481,-2415"/>
+<polygon fill="#6e5494" stroke="black" points="481,-2415 403,-2415 403,-2361 481,-2361 481,-2415"/>
 <text text-anchor="middle" x="442" y="-2392" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="442" y="-2379" font-family="Sans" font-size="10.00">aii#205</text>
 </a>
@@ -111,7 +111,7 @@
 <!-- aii#199 -->
 <g id="node13" class="node"><title>aii#199</title>
 <a xlink:href="https://github.com/quattor/aii/issues/199" xlink:title="AII-Opennebula: hook behaviour of --configure" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2455" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2455" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2459" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2446" font-family="Sans" font-size="10.00">aii#199</text>
 </a>
@@ -125,7 +125,7 @@
 <!-- aii#204 -->
 <g id="node15" class="node"><title>aii#204</title>
 <a xlink:href="https://github.com/quattor/aii/issues/204" xlink:title="aii-opennebula: http rpc endpoint is hardcoded" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2549" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2549" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2553" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2540" font-family="Sans" font-size="10.00">aii#204</text>
 </a>
@@ -139,7 +139,7 @@
 <!-- aii#208 -->
 <g id="node17" class="node"><title>aii#208</title>
 <a xlink:href="https://github.com/quattor/aii/issues/208" xlink:title="aii-opennebula: add some error msgs to opennebula_vmtemplate_vnet type checks" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2643" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2643" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2647" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2634" font-family="Sans" font-size="10.00">aii#208</text>
 </a>
@@ -589,7 +589,7 @@
 <!-- configuration&#45;modules&#45;core#919 -->
 <g id="node77" class="node"><title>configuration-modules-core#919</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/919" xlink:title="ncm-metaconfig: libvirtd include support to setup VM domains" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="525,-1398 359,-1398 359,-1344 525,-1344 525,-1398"/>
+<polygon fill="#6e5494" stroke="black" points="525,-1398 359,-1398 359,-1344 525,-1344 525,-1398"/>
 <text text-anchor="middle" x="442" y="-1375" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="442" y="-1362" font-family="Sans" font-size="10.00">configuration-modules-core#919</text>
 </a>
@@ -597,7 +597,7 @@
 <!-- configuration&#45;modules&#45;core#917 -->
 <g id="node79" class="node"><title>configuration-modules-core#917</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/917" xlink:title="ncm-metaconfig: libvirtd include support to configure VM domains from XML files" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-1371" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-1371" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-1375" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-1362" font-family="Sans" font-size="10.00">configuration-modules-core#917</text>
 </a>
@@ -647,7 +647,7 @@
 <!-- configuration&#45;modules&#45;core#884 -->
 <g id="node85" class="node"><title>configuration-modules-core#884</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/884" xlink:title="ncm-metaconfig: nginx fix ssl conf" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="525,-1138 359,-1138 359,-1084 525,-1084 525,-1138"/>
+<polygon fill="#6e5494" stroke="black" points="525,-1138 359,-1138 359,-1084 525,-1084 525,-1138"/>
 <text text-anchor="middle" x="442" y="-1115" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="442" y="-1102" font-family="Sans" font-size="10.00">configuration-modules-core#884</text>
 </a>
@@ -655,7 +655,7 @@
 <!-- configuration&#45;modules&#45;core#876 -->
 <g id="node87" class="node"><title>configuration-modules-core#876</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/876" xlink:title="ncm-metaconfig: nginx: ssl.tt file generates an empty ssl_client_certificate value" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-1111" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-1111" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-1115" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-1102" font-family="Sans" font-size="10.00">configuration-modules-core#876</text>
 </a>
