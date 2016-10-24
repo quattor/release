@@ -75,7 +75,7 @@
 <!-- aii#203 -->
 <g id="node10" class="node"><title>aii#203</title>
 <a xlink:href="https://github.com/quattor/aii/pull/203" xlink:title="Allow components as userhooks" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="481,-2559 403,-2559 403,-2505 481,-2505 481,-2559"/>
+<polygon fill="#6e5494" stroke="black" points="481,-2559 403,-2559 403,-2505 481,-2505 481,-2559"/>
 <text text-anchor="middle" x="442" y="-2536" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="442" y="-2523" font-family="Sans" font-size="10.00">aii#203</text>
 </a>
@@ -351,7 +351,7 @@
 <!-- CCM#137 -->
 <g id="node46" class="node"><title>CCM#137</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/137" xlink:title="Configuration: add name" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="481,-1954 403,-1954 403,-1900 481,-1900 481,-1954"/>
+<polygon fill="#6e5494" stroke="black" points="481,-1954 403,-1954 403,-1900 481,-1900 481,-1954"/>
 <text text-anchor="middle" x="442" y="-1931" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="442" y="-1918" font-family="Sans" font-size="10.00">CCM#137</text>
 </a>
