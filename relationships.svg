@@ -489,7 +489,7 @@
 <!-- configuration&#45;modules&#45;core#956 -->
 <g id="node65" class="node"><title>configuration-modules-core#956</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/956" xlink:title="ncm-accounts, ncm-amandaserver, ncm-cups, ncm-iptables, ncm-nscd: Use legacy type for simple yes/no strings" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="749,-1564 583,-1564 583,-1510 749,-1510 749,-1564"/>
+<polygon fill="#6e5494" stroke="black" points="749,-1564 583,-1564 583,-1510 749,-1510 749,-1564"/>
 <text text-anchor="middle" x="666" y="-1541" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="666" y="-1528" font-family="Sans" font-size="10.00">configuration-modules-core#956</text>
 </a>
@@ -497,7 +497,7 @@
 <!-- configuration&#45;modules&#45;core#752 -->
 <g id="node67" class="node"><title>configuration-modules-core#752</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/752" xlink:title="ncm-*: Migrate remaining yes/no strings to legacy_binary_affirmation_string type" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="990" cy="-1537" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="990" cy="-1537" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="990" y="-1541" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="990" y="-1528" font-family="Sans" font-size="10.00">configuration-modules-core#752</text>
 </a>
