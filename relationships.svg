@@ -1017,7 +1017,7 @@
 </g>
 <!-- template&#45;library&#45;standard#85 -->
 <g id="node141" class="node"><title>template-library-standard#85</title>
-<a xlink:href="https://github.com/quattor/template-library-standard/pull/85" xlink:title="filesystem/config: add support for configuring a biosboot partition" target="_parent">
+<a xlink:href="https://github.com/quattor/template-library-standard/pull/85" xlink:title="filesystem/config: add support for configuring a biosboot partition (legacy BIOS or UEFI)" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="742,-239 590,-239 590,-185 742,-185 742,-239"/>
 <text text-anchor="middle" x="666" y="-216" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="666" y="-203" font-family="Sans" font-size="10.00">template-library-standard#85</text>
