@@ -183,15 +183,15 @@ CHECKDEPS=${CHECKDEPS:-1}
 # Main init binaries
 MAIN_INIT_BIN_YUM="repoquery curl wget"
 
-# Binary dependencies to be installed with yum
-DEPS_INIT_BIN_YUM="rpmbuild perl"
+# Binary dependencies (/usr/bin/<name>) to be installed with yum
+DEPS_INIT_BIN_YUM="rpmbuild perl tar"
+
+# Dependencies (package names) to be installed
+DEPS_INIT_YUM="rpmlint perl-parent"
 
 # only major.minor!
 PAN_MIN_VERSION=10.2
 PAN_MIN_VERSION_RPM_URL="https://github.com/quattor/pan/releases/download/pan-${PAN_MIN_VERSION}/panc-${PAN_MIN_VERSION}-1.noarch.rpm"
-
-# Use newline separator to allow version statements
-DEPS_INIT_YUM="rpmlint"
 
 # the mvn epel url (who has this mirrored/enabled by default?)
 EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
@@ -388,14 +388,16 @@ function has_panc () {
 function check_epel () {
     if [ $USE_EPEL -gt 0 ]; then
         localinstall_url $EPEL_REPO_RPM $DEST/epel-release-$RH_RELEASE.rpm "--nogpgcheck"
-        $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+        $SUDO yum clean expire-cache
+        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
     fi
 }
 
 function check_rpmforge () {
     if [ $USE_RPMFORGE -gt 0 ]; then
         localinstall_url $RPMFORGE_REPO_RPM $DEST/rpmforge-release-$RH_RELEASE.rpm "--nogpgcheck"
-        $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+        $SUDO yum clean expire-cache
+        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
     fi
 }
 
@@ -406,7 +408,7 @@ function has_mvn () {
     if [ $? -gt 0 ]; then
         echo "No maven executable $mvn found in PATH"
 
-        $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
         deps_install_yum "*bin/mvn" 0
         if [ $? -gt 0 ]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
@@ -421,21 +423,21 @@ function has_mvn () {
                 error 81 "No major release version found via /etc/redhat-release"
             fi
             echo "Going to use releasever $RH_RELEASE for this repo"
-            $sudo sed -i "s/\$releasever/$RH_RELEASE/g" $fn
+            $SUDO sed -i "s/\$releasever/$RH_RELEASE/g" $fn
 
             if [ $? -gt 0 ]; then
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
             fi
 
-            # temp hack to disable maven 3.3.3 which requires jdk7+,
+            # temp hack to disable maven 3.3.* which requires jdk7+,
             # but the rpms in the repo have broken requirements
             # use sed to cat, since sed has sudo rights
-            $sudo sed -i -e "\$aexclude=apache-maven*3.3.3*" /etc/yum.conf
+            $SUDO sed -i -e "\$aexclude=apache-maven*3.3.*" /etc/yum.conf
             if [ $? -gt 0 ]; then
-                error 82 "has_mvn maven 3.3.3 temp hack failed"
+                error 82 "has_mvn maven 3.3. temp hack failed"
             fi
 
-            $sudo yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+            $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
         fi
@@ -455,10 +457,10 @@ function os_hack () {
         export INSTALLPERL=$HOME/perl5/lib/perl5/:$INSTALLPERL
         export PERL5LIB=$INSTALLPERL
 
-        # Force recent install of JSON::XS (CCM::Fecth has 'use JSON::XS v2.3.0'
-        # but the perl.req script is too buggy to spot the version
+        # Force recent install of JSON::XS (CCM::Fetch has 'use JSON::XS v2.3.0'
+        # but the perl.req script is too buggy to spot the version)
 
-        # Force install very recent Pod::Simple and Test::More
+        # Force install very recent Pod::Simple, Test::More and JSON::XS
         # To be fixed in build-scripts
         for dep in Pod::Simple Test::More JSON::XS; do
             get_cpan_dep "perl($dep)"
@@ -467,7 +469,9 @@ function os_hack () {
         if [ "$RH_RELEASE" -eq 6 ]; then
             # Force install very recent Pod::Simple
             # To be fixed in build-scripts
-            get_cpan_dep 'perl(Pod::Simple)'
+            for dep in Pod::Simple; do
+                get_cpan_dep "perl($dep)"
+            done
         fi
     fi
 }
@@ -521,6 +525,9 @@ function deps_install_yum () {
 }
 
 function check_deps_init_bin () {
+    $SUDO yum clean expire-cache
+    $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+
     # these are fatal
     echo "Checking DEPS_INIT_BIN_YUM $DEPS_INIT_BIN_YUM"
     for bin in $DEPS_INIT_BIN_YUM; do
@@ -528,7 +535,7 @@ function check_deps_init_bin () {
     done
 
     echo "Checking other deps: $DEPS_INIT_YUM"
-    for dep in "$DEPS_INIT_YUM"; do
+    for dep in $DEPS_INIT_YUM; do
         deps_install_yum "$dep" 1
     done
 
@@ -955,6 +962,9 @@ function main_init () {
     # get git (EL5 needs epel; to get epel you need curl/wget)
     main_init_bin_yum git
 
+    check_deps_minimal
+    check_deps_init_bin
+
     has_mvn
     has_panc
 
@@ -1044,9 +1054,6 @@ function main() {
     if [ $CHECKDEPS -gt 0 ]; then
 
         echo "Checking dependencies"
-
-        check_deps_minimal
-        check_deps_init_bin
 
         # get the Test::Quattor tools in the PERL5LIB
         pretoolsPERL5LIB=$PERL5LIB
