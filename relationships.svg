@@ -16,7 +16,7 @@
 </g>
 <!-- aii#218 -->
 <g id="node1" class="node"><title>aii#218</title>
-<a xlink:href="https://github.com/quattor/aii/pull/218" xlink:title="[WIP] aii-ks: fix logging of pre and post script actions for EL7" target="_parent">
+<a xlink:href="https://github.com/quattor/aii/pull/218" xlink:title="aii-ks: fix logging of pre and post script actions for EL7" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="705,-3175.35 627,-3175.35 627,-3121.35 705,-3121.35 705,-3175.35"/>
 <text text-anchor="middle" x="666" y="-3152.35" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="666" y="-3139.35" font-family="Sans" font-size="10.00">aii#218</text>
