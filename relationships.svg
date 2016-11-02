@@ -1054,7 +1054,7 @@
 <!-- release#265 -->
 <g id="node146" class="node"><title>release#265</title>
 <a xlink:href="https://github.com/quattor/release/pull/265" xlink:title="Fixes for build_all_repos" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="706,-219.355 626,-219.355 626,-165.355 706,-165.355 706,-219.355"/>
+<polygon fill="#6e5494" stroke="black" points="706,-219.355 626,-219.355 626,-165.355 706,-165.355 706,-219.355"/>
 <text text-anchor="middle" x="666" y="-196.355" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="666" y="-183.355" font-family="Sans" font-size="10.00">release#265</text>
 </a>
@@ -1062,7 +1062,7 @@
 <!-- release#264 -->
 <g id="node148" class="node"><title>release#264</title>
 <a xlink:href="https://github.com/quattor/release/issues/264" xlink:title="build_all_repos fails on el5/el6 on Test::More" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="990" cy="-168.355" rx="56.7776" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="990" cy="-168.355" rx="56.7776" ry="38.1838"/>
 <text text-anchor="middle" x="990" y="-172.355" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="990" y="-159.355" font-family="Sans" font-size="10.00">release#264</text>
 </a>
@@ -1076,7 +1076,7 @@
 <!-- release#262 -->
 <g id="node150" class="node"><title>release#262</title>
 <a xlink:href="https://github.com/quattor/release/issues/262" xlink:title="build_all_repos: dependency/package issues" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="990" cy="-262.355" rx="56.7776" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="990" cy="-262.355" rx="56.7776" ry="38.1838"/>
 <text text-anchor="middle" x="990" y="-266.355" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="990" y="-253.355" font-family="Sans" font-size="10.00">release#262</text>
 </a>
