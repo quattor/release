@@ -184,7 +184,7 @@ CHECKDEPS=${CHECKDEPS:-1}
 MAIN_INIT_BIN_YUM="repoquery curl wget"
 
 # Binary dependencies to be installed with yum
-DEPS_INIT_BIN_YUM="rpmbuild perl"
+DEPS_INIT_BIN_YUM="rpmbuild perl tar"
 
 # only major.minor!
 PAN_MIN_VERSION=10.2
