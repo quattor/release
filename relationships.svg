@@ -1228,7 +1228,7 @@
 <!-- template&#45;library&#45;core#126 -->
 <g id="node170" class="node"><title>template-library-core#126</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/126" xlink:title="Improved interface for partitions_add()" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1059,-235.497 921,-235.497 921,-181.497 1059,-181.497 1059,-235.497"/>
+<polygon fill="#6e5494" stroke="black" points="1059,-235.497 921,-235.497 921,-181.497 1059,-181.497 1059,-235.497"/>
 <text text-anchor="middle" x="990" y="-212.497" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="990" y="-199.497" font-family="Sans" font-size="10.00">template-library-core#126</text>
 </a>
@@ -1236,7 +1236,7 @@
 <!-- template&#45;library&#45;core#72 -->
 <g id="node172" class="node"><title>template-library-core#72</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/72" xlink:title="Add helper function to create a biosboot partition" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="358" cy="-4046.5" rx="94.0452" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="358" cy="-4046.5" rx="94.0452" ry="38.1838"/>
 <text text-anchor="middle" x="358" y="-4050.5" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="358" y="-4037.5" font-family="Sans" font-size="10.00">template-library-core#72</text>
 </a>
