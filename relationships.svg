@@ -904,7 +904,7 @@
 <!-- ncm&#45;cdispd#46 -->
 <g id="node121" class="node"><title>ncm-cdispd#46</title>
 <a xlink:href="https://github.com/quattor/ncm-cdispd/pull/46" xlink:title="ncm-cdispd: report sleep when no updated profile found with debug 1" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="713,-1474.5 619,-1474.5 619,-1420.5 713,-1420.5 713,-1474.5"/>
+<polygon fill="#6e5494" stroke="black" points="713,-1474.5 619,-1474.5 619,-1420.5 713,-1420.5 713,-1474.5"/>
 <text text-anchor="middle" x="666" y="-1451.5" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="666" y="-1438.5" font-family="Sans" font-size="10.00">ncm-cdispd#46</text>
 </a>
@@ -912,7 +912,7 @@
 <!-- ncm&#45;cdispd#45 -->
 <g id="node123" class="node"><title>ncm-cdispd#45</title>
 <a xlink:href="https://github.com/quattor/ncm-cdispd/issues/45" xlink:title="16.10.0-rc1: verbose too verbose!" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="990" cy="-1447.5" rx="67.1751" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="990" cy="-1447.5" rx="67.1751" ry="38.1838"/>
 <text text-anchor="middle" x="990" y="-1451.5" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="990" y="-1438.5" font-family="Sans" font-size="10.00">ncm-cdispd#45</text>
 </a>
