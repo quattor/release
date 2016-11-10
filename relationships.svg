@@ -39,7 +39,7 @@
 <!-- aii#221 -->
 <g id="node4" class="node"><title>aii#221</title>
 <a xlink:href="https://github.com/quattor/aii/pull/221" xlink:title="Shellfe: report all perl warnings" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="705,-3414.5 627,-3414.5 627,-3360.5 705,-3360.5 705,-3414.5"/>
+<polygon fill="#6e5494" stroke="black" points="705,-3414.5 627,-3414.5 627,-3360.5 705,-3360.5 705,-3414.5"/>
 <text text-anchor="middle" x="666" y="-3391.5" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="666" y="-3378.5" font-family="Sans" font-size="10.00">aii#221</text>
 </a>
@@ -47,7 +47,7 @@
 <!-- aii#220 -->
 <g id="node6" class="node"><title>aii#220</title>
 <a xlink:href="https://github.com/quattor/aii/issues/220" xlink:title="aii-shellfe should intercept perl warnings" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="990" cy="-3664.5" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="990" cy="-3664.5" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="990" y="-3668.5" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="990" y="-3655.5" font-family="Sans" font-size="10.00">aii#220</text>
 </a>
@@ -61,7 +61,7 @@
 <!-- aii#218 -->
 <g id="node7" class="node"><title>aii#218</title>
 <a xlink:href="https://github.com/quattor/aii/pull/218" xlink:title="aii-ks: fix logging of pre and post script actions for EL7" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="705,-3342.5 627,-3342.5 627,-3288.5 705,-3288.5 705,-3342.5"/>
+<polygon fill="#6e5494" stroke="black" points="705,-3342.5 627,-3342.5 627,-3288.5 705,-3288.5 705,-3342.5"/>
 <text text-anchor="middle" x="666" y="-3319.5" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="666" y="-3306.5" font-family="Sans" font-size="10.00">aii#218</text>
 </a>
@@ -69,7 +69,7 @@
 <!-- aii#120 -->
 <g id="node9" class="node"><title>aii#120</title>
 <a xlink:href="https://github.com/quattor/aii/issues/120" xlink:title="aii-ks 15.4: missing CR in messages displayed at the console " target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="990" cy="-3570.5" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="990" cy="-3570.5" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="990" y="-3574.5" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="990" y="-3561.5" font-family="Sans" font-size="10.00">aii#120</text>
 </a>
