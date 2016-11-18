@@ -638,7 +638,7 @@
 <!-- configuration&#45;modules&#45;core#965 -->
 <g id="node86" class="node"><title>configuration-modules-core#965</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/965" xlink:title="ncm-systemd: unmask masked units before state change" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="441,-1554 275,-1554 275,-1500 441,-1500 441,-1554"/>
+<polygon fill="#6e5494" stroke="black" points="441,-1554 275,-1554 275,-1500 441,-1500 441,-1554"/>
 <text text-anchor="middle" x="358" y="-1531" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="358" y="-1518" font-family="Sans" font-size="10.00">configuration-modules-core#965</text>
 </a>
@@ -646,7 +646,7 @@
 <!-- configuration&#45;modules&#45;core#962 -->
 <g id="node88" class="node"><title>configuration-modules-core#962</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/962" xlink:title="ncm-systemd 16.10-rc1: a masked service cannot be reenabled" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="358" cy="-296" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="358" cy="-296" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="358" y="-300" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="358" y="-287" font-family="Sans" font-size="10.00">configuration-modules-core#962</text>
 </a>
@@ -660,7 +660,7 @@
 <!-- configuration&#45;modules&#45;core#964 -->
 <g id="node90" class="node"><title>configuration-modules-core#964</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/964" xlink:title="ncm-systemd: no error for possible missing units" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="358" cy="-202" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="358" cy="-202" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="358" y="-206" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="358" y="-193" font-family="Sans" font-size="10.00">configuration-modules-core#964</text>
 </a>
