@@ -6,7 +6,7 @@
   <artifactId>quattor-yum-repo</artifactId>
 
   <packaging>pom</packaging>
-  <version>16.10.0-rc5-SNAPSHOT</version>
+  <version>16.10.0</version>
   <name>Quattor YUM repositories.</name>
 
   <parent>
