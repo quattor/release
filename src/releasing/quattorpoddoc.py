@@ -378,6 +378,7 @@ def list_perl_modules(module_location):
                     duplicate = duplicate.replace(".pm", ".pod")
                     if duplicate not in finallist:
                         finallist.append(fname)
+                    else:
                         continue
                 finallist.append(os.path.join(path, mfile))
 
