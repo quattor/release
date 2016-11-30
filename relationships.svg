@@ -454,7 +454,7 @@
 <!-- configuration&#45;modules&#45;core#957 -->
 <g id="node63" class="node"><title>configuration-modules-core#957</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/957" xlink:title="ncm-gpfs: allow to run mmsdrfrestore after each configfetch" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="217,-864 51,-864 51,-810 217,-810 217,-864"/>
+<polygon fill="#6e5494" stroke="black" points="217,-864 51,-864 51,-810 217,-810 217,-864"/>
 <text text-anchor="middle" x="134" y="-841" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-828" font-family="Sans" font-size="10.00">configuration-modules-core#957</text>
 </a>
