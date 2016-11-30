@@ -17,7 +17,7 @@
 <!-- aii#226 -->
 <g id="node1" class="node"><title>aii#226</title>
 <a xlink:href="https://github.com/quattor/aii/pull/226" xlink:title="aii-opennebula: Include ONE labels support" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="173,-2197 95,-2197 95,-2143 173,-2143 173,-2197"/>
+<polygon fill="#6e5494" stroke="black" points="173,-2197 95,-2197 95,-2143 173,-2143 173,-2197"/>
 <text text-anchor="middle" x="134" y="-2174" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-2161" font-family="Sans" font-size="10.00">aii#226</text>
 </a>
@@ -25,7 +25,7 @@
 <!-- aii#223 -->
 <g id="node3" class="node"><title>aii#223</title>
 <a xlink:href="https://github.com/quattor/aii/issues/223" xlink:title="aii opennebula handle missing template" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-2170" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-2170" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-2174" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-2161" font-family="Sans" font-size="10.00">aii#223</text>
 </a>
@@ -39,7 +39,7 @@
 <!-- aii#224 -->
 <g id="node5" class="node"><title>aii#224</title>
 <a xlink:href="https://github.com/quattor/aii/issues/224" xlink:title="aii-opennebula: Include labels feature" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-2264" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-2264" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-2268" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-2255" font-family="Sans" font-size="10.00">aii#224</text>
 </a>
@@ -53,7 +53,7 @@
 <!-- aii#228 -->
 <g id="node7" class="node"><title>aii#228</title>
 <a xlink:href="https://github.com/quattor/aii/issues/228" xlink:title="aii-opennebula: Include random passwords for SPICE/VNC connections" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-2076" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-2076" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-2080" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-2067" font-family="Sans" font-size="10.00">aii#228</text>
 </a>
@@ -418,7 +418,7 @@
 <!-- configuration&#45;modules&#45;core#967 -->
 <g id="node58" class="node"><title>configuration-modules-core#967</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/967" xlink:title="ncm-opennebula: Include OpenNebula labels support" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="217,-971 51,-971 51,-917 217,-917 217,-971"/>
+<polygon fill="#6e5494" stroke="black" points="217,-971 51,-971 51,-917 217,-917 217,-971"/>
 <text text-anchor="middle" x="134" y="-948" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-935" font-family="Sans" font-size="10.00">configuration-modules-core#967</text>
 </a>
@@ -426,7 +426,7 @@
 <!-- configuration&#45;modules&#45;core#959 -->
 <g id="node60" class="node"><title>configuration-modules-core#959</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/959" xlink:title="ncm-opennebula: Include Labels support" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-920" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-920" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-924" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-911" font-family="Sans" font-size="10.00">configuration-modules-core#959</text>
 </a>
@@ -440,7 +440,7 @@
 <!-- configuration&#45;modules&#45;core#966 -->
 <g id="node62" class="node"><title>configuration-modules-core#966</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/966" xlink:title="ncm-opennebula: src/test/perl/host.t fails with Net::OpenNebula 0.309.0" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-1014" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-1014" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-1018" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-1005" font-family="Sans" font-size="10.00">configuration-modules-core#966</text>
 </a>
