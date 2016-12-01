@@ -562,7 +562,7 @@
 <!-- ncm&#45;ncd#101 -->
 <g id="node78" class="node"><title>ncm-ncd#101</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/101" xlink:title="CLI: report the used CCM configuration CID and (optional) name" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="177,-372 91,-372 91,-318 177,-318 177,-372"/>
+<polygon fill="#6e5494" stroke="black" points="177,-372 91,-372 91,-318 177,-318 177,-372"/>
 <text text-anchor="middle" x="134" y="-349" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-336" font-family="Sans" font-size="10.00">ncm-ncd#101</text>
 </a>
@@ -570,7 +570,7 @@
 <!-- ncm&#45;ncd#92 -->
 <g id="node80" class="node"><title>ncm-ncd#92</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/issues/92" xlink:title="report configuration name during ncm-ncd start" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-306" rx="57.9828" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-306" rx="57.9828" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-310" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-297" font-family="Sans" font-size="10.00">ncm-ncd#92</text>
 </a>
