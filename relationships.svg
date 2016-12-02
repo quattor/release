@@ -396,7 +396,7 @@
 <!-- configuration&#45;modules&#45;core#976 -->
 <g id="node53" class="node"><title>configuration-modules-core#976</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/976" xlink:title="ncm-download: download to temporary file." target="_parent">
-<polygon fill="#6cc644" stroke="black" points="217,-1207 51,-1207 51,-1153 217,-1153 217,-1207"/>
+<polygon fill="#6e5494" stroke="black" points="217,-1207 51,-1207 51,-1153 217,-1153 217,-1207"/>
 <text text-anchor="middle" x="134" y="-1184" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-1171" font-family="Sans" font-size="10.00">configuration-modules-core#976</text>
 </a>
@@ -404,7 +404,7 @@
 <!-- configuration&#45;modules&#45;core#975 -->
 <g id="node55" class="node"><title>configuration-modules-core#975</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/975" xlink:title="ncm-download: can leave partial files" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-1180" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-1180" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-1184" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-1171" font-family="Sans" font-size="10.00">configuration-modules-core#975</text>
 </a>
