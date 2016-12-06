@@ -238,7 +238,7 @@
 <!-- CCM#153 -->
 <g id="node33" class="node"><title>CCM#153</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/153" xlink:title="TextRender: cast_double and cast_long fail on non-numeric argument" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="173,-1561 95,-1561 95,-1507 173,-1507 173,-1561"/>
+<polygon fill="#6e5494" stroke="black" points="173,-1561 95,-1561 95,-1507 173,-1507 173,-1561"/>
 <text text-anchor="middle" x="134" y="-1538" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-1525" font-family="Sans" font-size="10.00">CCM#153</text>
 </a>
@@ -246,7 +246,7 @@
 <!-- CCM#95 -->
 <g id="node35" class="node"><title>CCM#95</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/95" xlink:title="TextRender: cast_double and friends do not fail on impossible conversion" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="442" cy="-1534" rx="48.0833" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="442" cy="-1534" rx="48.0833" ry="38.1838"/>
 <text text-anchor="middle" x="442" y="-1538" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="442" y="-1525" font-family="Sans" font-size="10.00">CCM#95</text>
 </a>
