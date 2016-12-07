@@ -421,7 +421,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#981 -->
 <g id="node56" class="node"><title>configuration-modules-core#981</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/981" xlink:title="ncm-network, ncm-authconfig: Use new valid_interface type" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/981" xlink:title="ncm-network, ncm-authconfig, ncm-metaconfig: Use new valid_interface type" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="183,-1188 17,-1188 17,-1134 183,-1134 183,-1188"/>
 <text text-anchor="middle" x="100" y="-1165" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="100" y="-1152" font-family="Sans" font-size="10.00">configuration-modules-core#981</text>
@@ -430,7 +430,7 @@
 <!-- template&#45;library&#45;core#135 -->
 <g id="node58" class="node"><title>template-library-core#135</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/135" xlink:title="Add valid_interface type" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="443,-1188 305,-1188 305,-1134 443,-1134 443,-1188"/>
+<polygon fill="#6e5494" stroke="black" points="443,-1188 305,-1188 305,-1134 443,-1134 443,-1188"/>
 <text text-anchor="middle" x="374" y="-1165" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="374" y="-1152" font-family="Sans" font-size="10.00">template-library-core#135</text>
 </a>
@@ -444,7 +444,7 @@
 <!-- template&#45;library&#45;core#130 -->
 <g id="node99" class="node"><title>template-library-core#130</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/130" xlink:title="add valid_interface type" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="682" cy="-1161" rx="97.0803" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="682" cy="-1161" rx="97.0803" ry="38.1838"/>
 <text text-anchor="middle" x="682" y="-1165" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="682" y="-1152" font-family="Sans" font-size="10.00">template-library-core#130</text>
 </a>
