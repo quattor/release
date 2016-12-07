@@ -588,7 +588,7 @@
 <!-- maven&#45;tools#113 -->
 <g id="node81" class="node"><title>maven-tools#113</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/113" xlink:title="maven-tools: add component config.pan and schema.pan header templates" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="151,-513 49,-513 49,-459 151,-459 151,-513"/>
+<polygon fill="#6e5494" stroke="black" points="151,-513 49,-513 49,-459 151,-459 151,-513"/>
 <text text-anchor="middle" x="100" y="-490" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="100" y="-477" font-family="Sans" font-size="10.00">maven-tools#113</text>
 </a>
@@ -596,7 +596,7 @@
 <!-- maven&#45;tools#109 -->
 <g id="node83" class="node"><title>maven-tools#109</title>
 <a xlink:href="https://github.com/quattor/maven-tools/issues/109" xlink:title="Add support for site specific component configuration to component configs" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="374" cy="-486" rx="72.832" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="374" cy="-486" rx="72.832" ry="38.1838"/>
 <text text-anchor="middle" x="374" y="-490" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="374" y="-477" font-family="Sans" font-size="10.00">maven-tools#109</text>
 </a>
