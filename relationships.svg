@@ -566,7 +566,7 @@
 <!-- maven&#45;tools#115 -->
 <g id="node78" class="node"><title>maven-tools#115</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/115" xlink:title="Test::Quattor::Critic: add Perl::Critic whitelist testing" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="151,-596 49,-596 49,-542 151,-542 151,-596"/>
+<polygon fill="#6e5494" stroke="black" points="151,-596 49,-596 49,-542 151,-542 151,-596"/>
 <text text-anchor="middle" x="100" y="-573" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="100" y="-560" font-family="Sans" font-size="10.00">maven-tools#115</text>
 </a>
