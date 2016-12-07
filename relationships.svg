@@ -614,7 +614,7 @@
 <!-- configuration&#45;modules&#45;core#980 -->
 <g id="node86" class="node"><title>configuration-modules-core#980</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/980" xlink:title="ncm-mcx, ncm-directoryservices: Remove unescape method from NCM::Component" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="833,-358 667,-358 667,-304 833,-304 833,-358"/>
+<polygon fill="#6e5494" stroke="black" points="833,-358 667,-358 667,-304 833,-304 833,-358"/>
 <text text-anchor="middle" x="750" y="-335" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="750" y="-322" font-family="Sans" font-size="10.00">configuration-modules-core#980</text>
 </a>
