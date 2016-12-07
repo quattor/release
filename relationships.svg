@@ -484,7 +484,7 @@
 <!-- configuration&#45;modules&#45;core#911 -->
 <g id="node68" class="node"><title>configuration-modules-core#911</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/911" xlink:title="ncm-gpfs: add ccr support" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="833,-690 667,-690 667,-636 833,-636 833,-690"/>
+<polygon fill="#6e5494" stroke="black" points="833,-690 667,-690 667,-636 833,-636 833,-690"/>
 <text text-anchor="middle" x="750" y="-667" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="750" y="-654" font-family="Sans" font-size="10.00">configuration-modules-core#911</text>
 </a>
