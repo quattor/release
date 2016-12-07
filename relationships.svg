@@ -364,7 +364,7 @@
 <!-- CCM#151 -->
 <g id="node44" class="node"><title>CCM#151</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/151" xlink:title="Path: add /software/components/download/files/ to safe unescape paths" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="139,-1199 61,-1199 61,-1145 139,-1145 139,-1199"/>
+<polygon fill="#6e5494" stroke="black" points="139,-1199 61,-1199 61,-1145 139,-1145 139,-1199"/>
 <text text-anchor="middle" x="100" y="-1176" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="100" y="-1163" font-family="Sans" font-size="10.00">CCM#151</text>
 </a>
@@ -372,7 +372,7 @@
 <!-- CCM#149 -->
 <g id="node46" class="node"><title>CCM#149</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/149" xlink:title="Add ncm-download files to safe unescape paths" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="374" cy="-1172" rx="51.1176" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="374" cy="-1172" rx="51.1176" ry="38.1838"/>
 <text text-anchor="middle" x="374" y="-1176" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="374" y="-1163" font-family="Sans" font-size="10.00">CCM#149</text>
 </a>
