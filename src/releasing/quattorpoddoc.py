@@ -104,8 +104,8 @@ def create_md_from_pan(source, comppath):
     Takes a pan schema, creates the pan annotations and parses them to markdown.
     """
     modname = os.path.basename(os.path.split(source)[0])
-    filename = os.path.splitext(os.path.basename(source))[0]
-    mdfile = "%s::%s.md" % (modname, filename)
+    templatename = os.path.splitext(os.path.basename(source))[0]
+    mdfile = "%s::%s.md" % (modname, templatename)
     tmpdir = tempfile.mkdtemp()
     logger.debug("Temporary directory: %s" % tmpdir)
     panccommand = ["panc-annotations", "--output-dir", tmpdir, "--base-dir"]
@@ -114,7 +114,7 @@ def create_md_from_pan(source, comppath):
     logger.debug(output)
     namespace = "{http://quattor.org/pan/annotations}"
 
-    tpl = "%s.pan.annotation.xml" % filename
+    tpl = "%s.pan.annotation.xml" % templatename
     xml = etree.parse(os.path.join(tmpdir, tpl))
     root = xml.getroot()
 
