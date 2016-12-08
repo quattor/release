@@ -732,7 +732,7 @@
 <!-- ncm&#45;ncd#102 -->
 <g id="node100" class="node"><title>ncm-ncd#102</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/102" xlink:title="NCM::Component: remove escape and unescape methods" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="489,-516 403,-516 403,-462 489,-462 489,-516"/>
+<polygon fill="#6e5494" stroke="black" points="489,-516 403,-516 403,-462 489,-462 489,-516"/>
 <text text-anchor="middle" x="446" y="-493" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="446" y="-480" font-family="Sans" font-size="10.00">ncm-ncd#102</text>
 </a>
