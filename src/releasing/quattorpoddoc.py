@@ -64,7 +64,7 @@ def generate_mds(repo, sources, location):
     Takes a list of components with podfiles and generates a md file for it.
     """
     logger.info("Generating md files.")
-    mdfiles = []
+    mdfiles = set()
 
     comppath = os.path.join(location, DOCDIR, REPOMAP[repo]['sitesubdir'])
     if not os.path.exists(comppath):
@@ -78,17 +78,25 @@ def generate_mds(repo, sources, location):
 
         if source.endswith(".pan") or tpl:
             mdfile = create_md_from_pan(source, comppath)
-            mdfiles.append(mdfile)
+            mdfiles.add(mdfile)
         else:
             sourcename = source.split(REPOMAP[repo]['target'])[-1]
             mdfile = os.path.splitext(sourcename)[0].replace("/", "::").lower() + ".md"
 
             convert_pod_to_markdown(source, os.path.join(comppath, mdfile))
-            mdfiles.append(mdfile)
+            mdfiles.add(mdfile)
 
     logger.info("Written %s md files." % len(mdfiles))
     return mdfiles
 
+def find_description(sub, namespace):
+    """
+    Search for the desc tag, even if it is in documentation tag.
+    """
+    doc = sub.find("./%sdocumentation/%sdesc" % (namespace, namespace))
+    if doc is None:
+        doc = sub.find("./%sdesc" % namespace)
+    return doc
 
 def create_md_from_pan(source, comppath):
     """
@@ -115,11 +123,17 @@ def create_md_from_pan(source, comppath):
         name = stype.get('name')
         mdtext.append("- /software/%s/%s" % (modname, name))
 
-        for doc in stype.findall(".//%sdesc" % namespace):
+        doc = find_description(stype, namespace)
+        if doc is not None:
             mdtext.append("%s- decription: %s" % (" "*4, doc.text))
 
         for field in stype.findall(".//%sfield" % namespace):
             mdtext.append("%s- /software/%s/%s/%s" % (" "*4, modname, name, field.get('name')))
+
+            doct = find_description(field, namespace)
+            if doct is not None:
+                mdtext.append("%s- description: %s" % (" "*8, doct.text))
+
             required = field.get('required')
             if required == "true":
                 mdtext.append("%s- required" % (" "*8))
@@ -141,10 +155,13 @@ def create_md_from_pan(source, comppath):
         for fnname in deffunctions:
             name = fnname.get('name')
             mdtext.append("- %s" % name)
-            for doc in fnname.findall(".//%sdesc" % namespace):
-                mdtext.append("   description: %s " % doc.text)
+
+            doc = find_description(fnname, namespace)
+            if doc is not None:
+                mdtext.append("%s- description: %s " % ( " "*4, doc.text))
+
             for arg in fnname.findall(".//%sarg" % namespace):
-                mdtext.append("- arg: %s " % arg.text)
+                mdtext.append("%s- arg: %s" % (" "*4, arg.text))
 
     with open(os.path.join(comppath, mdfile), "w") as fih:
         fih.write("\n".join(mdtext))
