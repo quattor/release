@@ -530,7 +530,7 @@
 <!-- configuration&#45;modules&#45;core#981 -->
 <g id="node72" class="node"><title>configuration-modules-core#981</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/981" xlink:title="ncm-network, ncm-authconfig, ncm-metaconfig: Use new valid_interface type" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="529,-1246 363,-1246 363,-1192 529,-1192 529,-1246"/>
+<polygon fill="#6e5494" stroke="black" points="529,-1246 363,-1246 363,-1192 529,-1192 529,-1246"/>
 <text text-anchor="middle" x="446" y="-1223" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="446" y="-1210" font-family="Sans" font-size="10.00">configuration-modules-core#981</text>
 </a>
