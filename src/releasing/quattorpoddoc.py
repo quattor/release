@@ -78,7 +78,8 @@ def generate_mds(repo, sources, location):
 
         if source.endswith(".pan") or tpl:
             mdfile = create_md_from_pan(source, comppath)
-            mdfiles.add(mdfile)
+            if mdfile is not None:
+                mdfiles.add(mdfile)
         else:
             sourcename = source.split(REPOMAP[repo]['target'])[-1]
             mdfile = os.path.splitext(sourcename)[0].replace("/", "::").lower() + ".md"
@@ -103,7 +104,8 @@ def create_md_from_pan(source, comppath):
     Takes a pan schema, creates the pan annotations and parses them to markdown.
     """
     modname = os.path.basename(os.path.split(source)[0])
-    mdfile = modname + "::schema.md"
+    templatename = os.path.splitext(os.path.basename(source))[0]
+    mdfile = "%s::%s.md" % (modname, templatename)
     tmpdir = tempfile.mkdtemp()
     logger.debug("Temporary directory: %s" % tmpdir)
     panccommand = ["panc-annotations", "--output-dir", tmpdir, "--base-dir"]
@@ -112,14 +114,25 @@ def create_md_from_pan(source, comppath):
     logger.debug(output)
     namespace = "{http://quattor.org/pan/annotations}"
 
-    tpl = "schema.pan.annotation.xml"
+    tpl = "%s.pan.annotation.xml" % templatename
     xml = etree.parse(os.path.join(tmpdir, tpl))
     root = xml.getroot()
+
+    if len(root) == 0:
+        logger.debug("%s would be empty, skipping it." % mdfile)
+        return None
+
+    stypes = root.findall('%stype' % namespace)
+    deffunctions = root.findall('%sfunction' % namespace)
+
+    if len(stypes) == 0 and len(deffunctions) == 0:
+        logger.debug("%s has no usable content, skipping it." % mdfile)
+        return None
 
     mdtext = []
 
     mdtext.append("# Types\n")
-    for stype in root.findall('%stype' % namespace):
+    for stype in stypes:
         name = stype.get('name')
         mdtext.append("- /software/%s/%s" % (modname, name))
 
@@ -148,7 +161,6 @@ def create_md_from_pan(source, comppath):
                     mdtext.append("%s- range: %s" % (" "*8, fieldrange))
             mdtext.append("\n")
 
-    deffunctions = root.findall('%sfunction' % namespace)
     if deffunctions:
         mdtext.append("\n# Functions\n")
         root.findall('%sfunction' % namespace)
@@ -158,7 +170,7 @@ def create_md_from_pan(source, comppath):
 
             doc = find_description(fnname, namespace)
             if doc is not None:
-                mdtext.append("%s- description: %s " % ( " "*4, doc.text))
+                mdtext.append("%s- description: %s " % (" "*4, doc.text))
 
             for arg in fnname.findall(".//%sarg" % namespace):
                 mdtext.append("%s- arg: %s" % (" "*4, arg.text))
@@ -426,7 +438,7 @@ def is_wanted_file(path, filename):
      - a perl file based on shebang
     """
     if True in [filename.endswith(ext) for ext in [".pod", ".pm", ".pl"]]: return True
-    if filename == "schema.pan": return True
+    if filename.endswith(".pan"): return True
     if len(filename.split(".")) < 2:
         with open(os.path.join(path, filename), 'r') as pfile:
             if 'perl' in pfile.readline(): return True
