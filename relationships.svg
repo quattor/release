@@ -305,7 +305,7 @@
 <!-- CCM#159 -->
 <g id="node42" class="node"><title>CCM#159</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/159" xlink:title="Fetch::Download: handle content decoding failure" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="485,-1777 407,-1777 407,-1723 485,-1723 485,-1777"/>
+<polygon fill="#6e5494" stroke="black" points="485,-1777 407,-1777 407,-1723 485,-1723 485,-1777"/>
 <text text-anchor="middle" x="446" y="-1754" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="446" y="-1741" font-family="Sans" font-size="10.00">CCM#159</text>
 </a>
@@ -313,7 +313,7 @@
 <!-- CCM#158 -->
 <g id="node44" class="node"><title>CCM#158</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/158" xlink:title="fetch.t unittest fails on el5" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="754" cy="-1750" rx="51.1176" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="754" cy="-1750" rx="51.1176" ry="38.1838"/>
 <text text-anchor="middle" x="754" y="-1754" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="754" y="-1741" font-family="Sans" font-size="10.00">CCM#158</text>
 </a>
