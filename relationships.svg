@@ -731,7 +731,7 @@
 </g>
 <!-- configuration&#45;modules&#45;grid#124 -->
 <g id="node100" class="node"><title>configuration-modules-grid#124</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-grid/pull/124" xlink:title="Trim whitespace" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-grid/pull/124" xlink:title="ncm-*: Trim whitespace from pan templates" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="528,-588 364,-588 364,-534 528,-534 528,-588"/>
 <text text-anchor="middle" x="446" y="-565" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="446" y="-552" font-family="Sans" font-size="10.00">configuration-modules-grid#124</text>
