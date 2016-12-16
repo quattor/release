@@ -959,7 +959,7 @@
 <!-- release#276 -->
 <g id="node131" class="node"><title>release#276</title>
 <a xlink:href="https://github.com/quattor/release/issues/276" xlink:title="16.12.0-rc2" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="446" cy="-226" rx="56.7776" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="446" cy="-226" rx="56.7776" ry="38.1838"/>
 <text text-anchor="middle" x="446" y="-230" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="446" y="-217" font-family="Sans" font-size="10.00">release#276</text>
 </a>
