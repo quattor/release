@@ -1,0 +1,17 @@
+strictness: veryhigh
+test-warnings: true
+doc-warnings: true
+member-warnings: true
+
+ignore-paths:
+  - build
+  - htmlcov
+
+pep8:
+    disable:
+    options:
+        max-line-length: 120
+
+pep257:
+    disable:
+     - D203
