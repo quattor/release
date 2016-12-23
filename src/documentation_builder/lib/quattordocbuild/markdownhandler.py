@@ -79,8 +79,8 @@ def remove_mail(markdown):
         if email[0].startswith('//'):
             replace = False
         for ignoremail in EXAMPLEMAILS:
-                    if ignoremail in email[0]:
-                        replace = False
+            if ignoremail in email[0]:
+                replace = False
 
         if replace:
             logger.debug("Removed it from line.")
