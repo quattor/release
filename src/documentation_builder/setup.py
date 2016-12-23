@@ -11,7 +11,7 @@ if __name__ == '__main__':
     setup(
         name = 'documentation-builder',
         description = 'Documentation Builder for Quattor',
-        url='https://github.com/wdpypere/release/tree/doc_builder_2.0/src/documentation_builder',
+        url='https://github.com/quattor/release/src/documentation_builder/',
         version = '0.0.1',
         author = 'Wouter Depypere',
         author_email = 'wouter.depypere@ugent.be',
