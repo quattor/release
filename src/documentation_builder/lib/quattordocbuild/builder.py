@@ -14,10 +14,10 @@ def check_repository_map(repository_map):
     """Check if a repository mapping is valid."""
     logger.info("Checking repository map.")
     if repository_map is None:
-        logger.error("Repository map is empty.")
+        logger.error("Repository map is None.")
         return False
     if len(repository_map) == 0:
-        logger.error("Repository map is empty.")
+        logger.error("Repository map is an empty list.")
         return False
     for repository in repository_map.keys():
         keys = repository_map[repository].keys()
