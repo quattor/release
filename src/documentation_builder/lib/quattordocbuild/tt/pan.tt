@@ -1,0 +1,45 @@
+[% IF content.types.defined and content.types.size > 0 -%]
+
+### Types
+
+[% FOREACH type IN content.types -%]
+ - `/software/[% basename %]/[% type.name %]`
+[%  IF type.desc.defined -%]
+    - Description: [% type.desc %]
+[%  END -%]
+[%  IF type.fields.defined -%]
+[%      FOREACH field IN type.fields -%]
+    - `/software/[% basename %]/[% type.name %]/[% field.name %]`
+[%      IF field.desc.defined -%]
+        - Description: [% field.desc %]
+[%      END -%]
+[%      IF field.required == true -%]
+        - Required
+[%      ELSE -%]
+        - Optional
+[%      END -%]
+        - Type: [% field.type %]
+[%      IF field.range.defined -%]
+        - Range: [% field.range %]
+[%      END -%]
+[%   END -%]
+[%   END -%]
+[% END -%]
+[% END -%]
+[% IF content.functions.defined and content.functions.size -%]
+
+### Functions
+
+[%FOREACH function IN content.functions -%]
+ - [% function.name %]
+[%  IF function.desc.defined -%]
+    - Description: [% function.desc %]
+[%  END -%]
+[%  IF function.args.defined -%]
+    - Arguments:
+[%  FOREACH arg IN function.args -%]
+        - [% arg %]
+[%  END -%]
+[%  END -%]
+[% END -%]
+[% END -%]

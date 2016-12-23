@@ -21,7 +21,7 @@ if __name__ == '__main__':
         install_requires = [
             'vsc-utils',
             'vsc-base',
-            'jinja2',
+            'Template-Python',
             'lxml',
         ],
         test_suite = "test",

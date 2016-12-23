@@ -4,7 +4,7 @@ import os
 import re
 import tempfile
 import shutil
-import jinja2
+from template import Template, TemplateException
 from vsc.utils import fancylogger
 from vsc.utils.run import run_asyncloop
 from lxml import etree
@@ -16,27 +16,25 @@ namespace = "{http://quattor.org/pan/annotations}"
 def markdown_from_pan(panfile):
     """Make markdown from a pan annotated file."""
     logger.info("Making markdown from pan: %s." % panfile)
-    template = prepare_template()
     content = get_content_from_pan(panfile)
     basename = get_basename(panfile)
-    output = render_template(template, content, basename)
+    output = render_template(content, basename)
     if len(output) == 0:
         return None
     else:
         return output
 
 
-def prepare_template():
-    """Put the content in a template."""
-    loader = jinja2.FileSystemLoader(os.path.dirname(os.path.abspath(__file__)))
-    jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
-    template = jenv.get_template('pan.j2')
-    return template
-
-
-def render_template(template, content, basename):
+def render_template(content, basename):
     """Render the jinja template."""
-    output = template.render(content=content, basename=basename)
+    try:
+        name = 'pan.tt'
+        template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
+        output = template.process(name, {'content': content, 'basename': basename})
+    except TemplateException as e:
+        msg = "Failed to render template %s with data %s: %s." % (name, content, e)
+        logger.error(msg)
+        raise TemplateException('render', msg)
     return output
 
 

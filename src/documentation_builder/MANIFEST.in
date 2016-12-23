@@ -1,3 +1,3 @@
-include lib/quattordocbuild/pan.j2
-include lib/quattordocbuild/toc.j2
+include lib/quattordocbuild/tt/pan.tt
+include lib/quattordocbuild/tt/toc.tt
 include bin/build-quattor-documentation.sh

@@ -4,7 +4,6 @@ import sys
 import os
 import shutil
 import filecmp
-import jinja2
 from tempfile import mkdtemp
 from unittest import TestCase, main, TestLoader
 from lxml import etree
@@ -132,22 +131,35 @@ class PanHandlerTest(TestCase):
         expectedoutput = {'args': ['testargument', 'testargument2'], 'name': 'testfunction', 'desc': 'testdesc'}
         self.assertEquals(panh.parse_function(el1), expectedoutput)
 
-    def test_prepare_template(self):
-        """Test prepare_template function."""
-        # Test we get a Jinja2 Template back.
-        self.assertIsInstance(panh.prepare_template(), jinja2.Template)
-
     def test_render_template(self):
         """Test render_template function."""
-        template = panh.prepare_template()
         content = panh.get_content_from_pan("test/testdata/pan_annotated_schema.pan")
         testfile = open(os.path.join(self.tmpdir, "test.md"), 'w')
 
-        for line in panh.render_template(template, content, "component-test"):
+        output = panh.render_template(content, "component-test")
+        print output
+        for line in output:
             testfile.write(line)
         testfile.close()
 
         self.assertTrue(filecmp.cmp("test/testdata/markdown_from_pan.md", testfile.name))
+
+        # Test with only fields
+        content = {'functions': [{'args': ['first number to add'], 'name': 'add'}]}
+
+        output = panh.render_template(content, "component-test")
+        print output
+
+        expectedoutput = "\n### Functions\n\n - add\n    - Arguments:\n        - first number to add\n"
+        self.assertEquals(output, expectedoutput)
+
+        # Test with only Types
+        content = {'types': [{'fields': [{'required': 'false', 'type': 'string', 'name': 'ca'}], 'name': 'testtype'}]}
+        output = panh.render_template(content, "component-test")
+        print output
+        expectedoutput = "\n### Types\n\n - `/software/component-test/testtype`\n    - `/software/component-test/testtype/ca`\n\
+        - Optional\n        - Type: string\n"
+        self.assertEquals(output, expectedoutput)
 
     def test_get_content_from_pan(self):
         """Test get_content_from_pan function."""
@@ -184,6 +196,7 @@ class PanHandlerTest(TestCase):
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile)
         testoutput = panh.markdown_from_pan(testfile)
+        print testoutput
         self.assertEqual(len(testoutput), 484)
         self.assertTrue("Types" in testoutput)
         self.assertTrue("Functions" in testoutput)

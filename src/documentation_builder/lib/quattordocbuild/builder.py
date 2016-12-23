@@ -2,7 +2,7 @@
 
 import os
 import sys
-import jinja2
+from template import Template, TemplateException
 from sourcehandler import get_source_files
 from markdownhandler import generate_markdown, cleanup_content
 from vsc.utils import fancylogger
@@ -145,9 +145,14 @@ def write_site(sitepages, location, docsdir):
 
 def write_toc(toc, location):
     """Write the toc to disk."""
-    loader = jinja2.FileSystemLoader(os.path.dirname(os.path.abspath(__file__)))
-    jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
-    template = jenv.get_template('toc.j2')
-    tocfile = template.render(toc=toc)
+    try:
+        name = 'toc.tt'
+        template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
+        tocfile = template.process(name, {'toc': toc})
+    except TemplateException as e:
+        msg = "Failed to render template %s with data %s: %s." % (name, toc, e)
+        logger.error(msg)
+        raise TemplateException('render', msg)
+
     with open(os.path.join(location, "mkdocs.yml"), 'w') as fih:
         fih.write(tocfile)

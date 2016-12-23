@@ -97,6 +97,8 @@ class BuilderTest(TestCase):
         """Test write_toc function."""
         toc = {'CCM': set(['fetch::download.md']), 'components': set(['fmonagent.md', 'profile::functions.md'])}
         builder.write_toc(toc, self.tmpdir)
+        with open(os.path.join(self.tmpdir, "mkdocs.yml")) as fih:
+            print fih.read()
         self.assertTrue(filecmp.cmp('test/testdata/mkdocs.yml', os.path.join(self.tmpdir, "mkdocs.yml")))
 
     def suite(self):
