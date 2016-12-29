@@ -2,6 +2,7 @@
 
 import os
 import sys
+import re
 from template import Template, TemplateException
 from sourcehandler import get_source_files
 from markdownhandler import generate_markdown, cleanup_content
@@ -53,6 +54,7 @@ def build_documentation(repository_location, repository_map, cleanup_options, co
         markdownlist[repository] = markdown
 
     site_pages = build_site_structure(markdownlist, repository_map)
+    site_pages = make_interlinks(site_pages)
     write_site(site_pages, output_location, "docs")
     return True
 
@@ -126,6 +128,43 @@ def build_site_structure(markdownlist, repository_map):
     return sitepages
 
 
+def make_interlinks(pages):
+    """Make links in the content based on pagenames."""
+    logger.info("Creating interlinks.")
+    newpages = pages
+    for subdir in pages:
+        for page in pages[subdir]:
+            basename = os.path.splitext(page)[0]
+            link = '../%s/%s' % (subdir, page)
+            regxs = []
+            regxs.append("`%s`" % basename)
+            regxs.append("`ncm-%s`" % basename)
+            regxs.append("ncm-%s" % basename)
+            regxs.append("L<%s>" % basename)
+            regxs.append("L<ncm-%s>" % basename)
+            regxs.append("`%s::%s`" % (subdir, basename))
+            regxs.append("\[{0}\]\(https://metacpan.org/pod/{0}\)".format(basename))
+            if subdir in ['components', 'components-grid']:
+                regxs.append("\[NCM::Component::{0}\]\(https://metacpan.org/pod/NCM::Component::{0}\)".format(basename))
+
+            for regex in regxs:
+                newpages = replace_regex_link(newpages, regex, basename, link)
+
+    return newpages
+
+
+def replace_regex_link(pages, regex, basename, link):
+    """Replace links in a bunch of pages based on a regex."""
+    regex = r'( |^|\n)%s([,. $])' % regex
+    for subdir in pages:
+        for page in pages[subdir]:
+            content = pages[subdir][page]
+            if basename not in page and basename in content:
+                content = re.sub(regex, "\g<1>[%s](%s)\g<2>" % (basename, link), content)
+                pages[subdir][page] = content
+    return pages
+
+
 def write_site(sitepages, location, docsdir):
     """Write the pages for the website to disk and build a toc."""
     toc = {}
@@ -140,7 +179,7 @@ def write_site(sitepages, location, docsdir):
 
             toc[subdir].add(pagename)
 
-        # Sort the toc, ignore theccase.
+        # Sort the toc, ignore the case.
         toc[subdir] = sorted(toc[subdir], key=lambda s: s.lower())
 
     write_toc(toc, location)

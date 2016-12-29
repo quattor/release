@@ -79,6 +79,59 @@ class BuilderTest(TestCase):
                                             'profile::functions.md': u'\n### Functions\n'}}
         self.assertEquals(builder.build_site_structure(testdata, repomap), expected_response)
 
+    def test_make_interlinks(self):
+        """Test make_interlinks function."""
+        # Replace one reference
+        test_data = {'components-grid': {'fmonagent.md': ''},
+                     'components': {'icinga.md': 'I refer to `fmonagent`.'}}
+        expected = {'components-grid': {'fmonagent.md': ''},
+                    'components': {'icinga.md': 'I refer to [fmonagent](../components-grid/fmonagent.md).'}}
+        self.assertEquals(builder.make_interlinks(test_data), expected)
+
+        # Replace two references
+        test_data = {'comps-gr': {'fmnt.md': ''},
+                     'comps': {'icinga.md': 'refr `fmnt` and `fmnt`.'}}
+        expected = {'comps-gr': {'fmnt.md': ''},
+                    'comps': {'icinga.md': 'refr [fmnt](../comps-gr/fmnt.md) and [fmnt](../comps-gr/fmnt.md).'}}
+        self.assertEquals(builder.make_interlinks(test_data), expected)
+
+        # Replace ncm- reference
+        test_data = {'components-grid': {'fmonagent.md': ''},
+                     'components': {'icinga.md': 'I refer to `ncm-fmonagent`.'}}
+        expected = {'components-grid': {'fmonagent.md': ''},
+                    'components': {'icinga.md': 'I refer to [fmonagent](../components-grid/fmonagent.md).'}}
+        self.assertEquals(builder.make_interlinks(test_data), expected)
+
+        # Replace newline reference
+        test_data = {'components-grid': {'fmonagent.md': ''},
+                     'components': {'icinga.md': 'I refer to \n`ncm-fmonagent`.'}}
+        expected = {'components-grid': {'fmonagent.md': ''},
+                    'components': {'icinga.md': 'I refer to \n[fmonagent](../components-grid/fmonagent.md).'}}
+        self.assertEquals(builder.make_interlinks(test_data), expected)
+
+        # Replace linked reference
+        test_data = {'components-grid': {'fmonagent.md': ''},
+                     'components': {'icinga.md': 'I refer to L<ncm-fmonagent>.'}}
+        expected = {'components-grid': {'fmonagent.md': ''},
+                    'components': {'icinga.md': 'I refer to [fmonagent](../components-grid/fmonagent.md).'}}
+        self.assertEquals(builder.make_interlinks(test_data), expected)
+
+        # Replace linked wrong reference
+        test_data = {'components-grid': {'fmonagent.md': ''},
+                     'components': {'icinga.md': 'I refer \
+to [NCM::Component::FreeIPA::Client](https://metacpan.org/pod/NCM::Component::FreeIPA::Client).',
+                                    'FreeIPA::Client': 'Allo'}}
+        expected = {'components-grid': {'fmonagent.md': ''},
+                    'components': {'icinga.md': 'I refer to [FreeIPA::Client](../components/FreeIPA::Client).',
+                                   'FreeIPA::Client': 'Allo'}}
+
+        self.assertEquals(builder.make_interlinks(test_data), expected)
+
+        # Don't replace in own page
+        test_data = {'comps-grid': {'fmonagent.md': 'ref to `fmonagent`.'},
+                     'comps': {'icinga.md': 'ref to `icinga` and `ncm-icinga`.'}}
+        self.assertEquals(builder.make_interlinks(test_data), test_data)
+
     def test_write_site(self):
         """Test write_site function."""
         input = {'CCM': {'fetch::download.md': '# NAME\n\nEDG::WP4::CC'},
