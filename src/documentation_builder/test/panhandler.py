@@ -211,7 +211,9 @@ class PanHandlerTest(TestCase):
     def test_get_basename(self):
         """Test get_basename function."""
         test = "/tmp/test/src/modules-core/ncm-useraccess/target/pan/components/useraccess/config-common.pan"
-        self.assertTrue(panh.get_basename(test), "xxx")
+        self.assertEquals(panh.get_basename(test), "useraccess")
+        test = "/tmp/test/src/modules-grid/ncm-condorconfig/target/pan/components/condorconfig/schema.pan"
+        self.assertEquals(panh.get_basename(test), "condorconfig")
 
     def suite(self):
         """Return all the testcases in this module."""

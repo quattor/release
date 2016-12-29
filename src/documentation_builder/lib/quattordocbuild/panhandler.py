@@ -164,6 +164,6 @@ def get_basename(path):
     result = re.search(regex, path)
     result = result.group(1)
     if "ncm-" in result:
-        result = result.lstrip("ncm-")
+        result = result.replace("ncm-", "")
 
     return result
