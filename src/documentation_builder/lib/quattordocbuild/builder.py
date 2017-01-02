@@ -140,7 +140,8 @@ def write_site(sitepages, location, docsdir):
 
             toc[subdir].add(pagename)
 
-        toc[subdir] = sorted(toc[subdir])
+        # Sort the toc, ignore theccase.
+        toc[subdir] = sorted(toc[subdir], key=lambda s: s.lower())
 
     write_toc(toc, location)
 
