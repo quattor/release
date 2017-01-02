@@ -73,7 +73,7 @@ class BuilderTest(TestCase):
                      '/tmp/doc/src/configuration-modules-core/ncm-freeipa/target/pan/quattor/aii/freeipa/schema.pan':
                      'Hello2'
                      }}
-        expected_response = {'CCM': {'fetch::download.md': '# NAME\n\nEDG::WP4::CC'},
+        expected_response = {'CCM': {'Fetch::Download.md': '# NAME\n\nEDG::WP4::CC'},
                              'components': {'aii::freeipa::schema.md': 'Hello2',
                                             'fmonagent.md': 'Hello',
                                             'profile::functions.md': u'\n### Functions\n'}}
@@ -96,6 +96,12 @@ class BuilderTest(TestCase):
     def test_write_toc(self):
         """Test write_toc function."""
         toc = {'CCM': set(['fetch::download.md']), 'components': set(['fmonagent.md', 'profile::functions.md'])}
+        builder.write_toc(toc, self.tmpdir)
+        with open(os.path.join(self.tmpdir, "mkdocs.yml")) as fih:
+            print fih.read()
+        self.assertTrue(filecmp.cmp('test/testdata/mkdocs.yml', os.path.join(self.tmpdir, "mkdocs.yml")))
+
+        toc = {'components': set(['profile::functions.md', 'fmonagent.md']), 'CCM': set(['fetch::download.md'])}
         builder.write_toc(toc, self.tmpdir)
         with open(os.path.join(self.tmpdir, "mkdocs.yml")) as fih:
             print fih.read()

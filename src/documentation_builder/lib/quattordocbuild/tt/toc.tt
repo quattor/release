@@ -4,7 +4,7 @@ theme: 'readthedocs'
 
 pages:
 - introduction: 'index.md'
-[% FOREACH subdir_pages IN toc.pairs -%]
+[% FOREACH subdir_pages IN toc.pairs.sort -%]
 - [% subdir_pages.key %]:
 [%-     FOREACH page IN subdir_pages.value %]
     - [% page.split('.').first %]: [% subdir_pages.key %]/[% page -%]

@@ -118,7 +118,7 @@ def build_site_structure(markdownlist, repository_map):
             for target in targets:
                 if target in source and not found:
                     newname = source.split(target)[-1]
-                    newname = os.path.splitext(newname)[0].replace("/", "::").lower() + ".md"
+                    newname = os.path.splitext(newname)[0].replace("/", "::") + ".md"
                     sitepages[sitesubdir][newname] = markdown
                     found = True
             if not found:
@@ -139,6 +139,8 @@ def write_site(sitepages, location, docsdir):
                 fih.write(content)
 
             toc[subdir].add(pagename)
+
+        toc[subdir] = sorted(toc[subdir])
 
     write_toc(toc, location)
 
