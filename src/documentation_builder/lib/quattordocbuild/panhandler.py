@@ -26,7 +26,7 @@ def markdown_from_pan(panfile):
 
 
 def render_template(content, basename):
-    """Render the jinja template."""
+    """Render the template."""
     try:
         name = 'pan.tt'
         template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
