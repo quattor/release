@@ -1065,7 +1065,7 @@
 <!-- release#278 -->
 <g id="node146" class="node"><title>release#278</title>
 <a xlink:href="https://github.com/quattor/release/issues/278" xlink:title="16.12.0-rc3" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="976" cy="-226" rx="56.7776" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="976" cy="-226" rx="56.7776" ry="38.1838"/>
 <text text-anchor="middle" x="976" y="-230" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="976" y="-217" font-family="Sans" font-size="10.00">release#278</text>
 </a>
