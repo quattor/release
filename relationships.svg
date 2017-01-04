@@ -1130,11 +1130,8 @@
 </g>
 <!-- release#279 -->
 <g id="node158" class="node"><title>release#279</title>
-<a xlink:href="https://github.com/quattor/release/pull/279" xlink:title="get-template-library: add support for Travis build environment" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="490,-3969 410,-3969 410,-3915 490,-3915 490,-3969"/>
-<text text-anchor="middle" x="450" y="-3946" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="450" y="-3933" font-family="Sans" font-size="10.00">release#279</text>
-</a>
+<polygon fill="lightgrey" stroke="black" points="490,-3962.5 410,-3962.5 410,-3921.5 490,-3921.5 490,-3962.5"/>
+<text text-anchor="middle" x="450" y="-3939.5" font-family="Sans" font-size="10.00">release#279</text>
 </g>
 <!-- template&#45;library&#45;examples#34&#45;&gt;release#279 -->
 <g id="edge128" class="edge"><title>template-library-examples#34-&gt;release#279</title>
