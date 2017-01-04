@@ -31,6 +31,7 @@ use_tags_default=1
 ignore_version_default=0
 tags_ignore_pattern_pattern=master
 pull_request=''
+use_ci_work_dir=0
 
 core_git_repo=template-library-core
 core_branch_pattern='^(template-library-)*'
@@ -84,6 +85,7 @@ usage () {
   echo ""
   echo "    Valid options are:"
   echo ""
+  echo "        --continuous-integration: use working copy contents instead of the GitHub repository"
   echo "        -d template_library_root: directory where to create the template library."
   echo "                      (D: ${template_lib_root})"
   echo "        --debug : verbose output"
@@ -118,6 +120,10 @@ do
   --add-legacy)
      add_legacy=1
      ;;
+
+  --continuous*)
+    use_ci_work_dir=1
+    ;;
 
   -d)
     shift
@@ -179,6 +185,13 @@ fi
 # Check that the value is syntactically valid.
 if [ -n "${pull_request}" ]
 then
+  # --pull-request is incompatible with --continuous-integration
+  if [ ${use_ci_work_dir} -eq 1 ]
+  then
+    echo "--pull-request and --continuous-integration are incompatible"
+    usage
+  fi
+
   pr_repo=$(echo ${pull_request} | awk -F: '{print $1}')
   if [ -z "${pr_repo}" ]
   then
@@ -213,6 +226,35 @@ then
     pr_target=$(echo ${pr_target} | sed 's/^template-library-//')
   fi
   [ ${verbose} -eq 1 ] && echo "Pull request to import: repository=${pr_repo}, user=${pr_user}, branch=${pr_branch}, target=${pr_target}"
+fi
+
+
+# --continuous-integration: check environment
+# NOTE: currently only Travis is supported
+if [ ${use_ci_work_dir} -eq 1 ]
+then
+    if [ -n "${TRAVIS_BUILD_DIR}" ]
+    then
+        ci_work_dir=${TRAVIS_BUILD_DIR}
+    else
+        echo "Not in a Travis build environment: --continuous-integration invalid"
+        usage
+    fi
+    # $TRAVIS_REPO_SLUG contains the GitHub user/repo (e.g. quattor/template-library-core)
+    pr_repo=$(echo $TRAVIS_REPO_SLUG | sed -e 's%^quattor/%%')
+    if [ -z "${pr_repo}" ]
+    then
+        echo "Current PR repository could not be retrieved from TRAVIS_REPO_SLUG env var"
+        exit 2
+    fi
+    # TRAVIS_BRANCH contains the PR branch target
+    if [ -n "${TRAVIS_BRANCH}" ]
+    then
+        pr_target=${TRAVIS_BRANCH}
+    else
+        echo "TRAVIS_BRANCH not defined: not a Travis build environment,  --continuous-integration invalid"
+        exit 2
+    fi
 fi
 
 if [ ${add_legacy} -ne 1 ]
@@ -420,43 +462,54 @@ do
     fi
     branch_found=1
 
-    # Checkout the appropriate branch or tag
-    silent_command git checkout ${branch_or_tag}
-
-    # Import pull request changes if requested and if the PR target matches the current repository/branch
-    if [ -n "${pull_request}" ]
+    # If --continuous-inegration and the current repo/target matches the CI context, just define src_dir
+    # to be what has been checked out as part of the CI.
+    [ ${verbose} -eq 1 ] && echo "use_ci_work_dir=${use_ci_work_dir}, repo_name=${repo_name}, pr_repo=${pr_repo}, pr_target=${pr_target}, pr_actual_target=${pr_actual_target}"
+    if [ ${use_ci_work_dir} -eq 1 -a "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${pr_actual_target}" ]
     then
-      [ ${verbose} -eq 1 ] && echo "Checking if pull request applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target}, pr_actual_target=${pr_actual_target})..."
-      if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${pr_actual_target}" ]
+        src_dir=${ci_work_dir}
+
+    else
+      src_dir=${repo_dir}
+
+      # Checkout the appropriate branch or tag
+      silent_command git checkout ${branch_or_tag}
+
+      # Import pull request changes if requested and if the PR target matches the current repository/branch
+      if [ -n "${pull_request}" ]
       then
-        echo "Merging pull request from ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag}..."
-        pr_remote=${git_url_root}/${pr_user}/${pr_repo}
-        silent_command git remote add ${pr_user} ${pr_remote}
-        if [ $? -ne 0 ]
+        [ ${verbose} -eq 1 ] && echo "Checking if pull request applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target}, pr_actual_target=${pr_actual_target})..."
+        if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${pr_actual_target}" ]
         then
-          echo "Error adding remote ${pr_remote} to repository ${repo_name}"
-          exit 11
-        fi
-        # git pull has a problem if GIT_WORK_TREE is defined (Git 1.7.1) but is not the current directory.
-        # As a workaround, cd into $GIT_WORK_TREE before the command and restore previous directory
-        # after the pull.
-        silent_command pushd $GIT_WORK_TREE
-        silent_command git pull ${pr_user} ${pr_branch}
-        if [ $? -ne 0 ]
-        then
-          echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag} of repository ${repo_name}"
-          exit 11
-        fi
-        silent_command popd
-      else
-        if [ ${verbose} -eq 1 ]
-        then
-          if [ "${pr_repo}" != "${repo_name}" ]
+          echo "Merging pull request from ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag}..."
+          pr_remote=${git_url_root}/${pr_user}/${pr_repo}
+          silent_command git remote add ${pr_user} ${pr_remote}
+          if [ $? -ne 0 ]
           then
-            echo "Pull request doesn't match current repository (${repo_name}). Ignored"
-          elif [ "${pr_branch}" != "${branch_or_tag}" ]
+            echo "Error adding remote ${pr_remote} to repository ${repo_name}"
+            exit 11
+          fi
+          # git pull has a problem if GIT_WORK_TREE is defined (Git 1.7.1) but is not the current directory.
+          # As a workaround, cd into $GIT_WORK_TREE before the command and restore previous directory
+          # after the pull.
+          silent_command pushd $GIT_WORK_TREE
+          silent_command git pull ${pr_user} ${pr_branch}
+          if [ $? -ne 0 ]
           then
-            echo "Pull request doesn't match current branch/tag (${branch_or_tag}) in repository ${repo_name}. Ignored"
+            echo "Error merging ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag} of repository ${repo_name}"
+            exit 11
+          fi
+          silent_command popd
+        else
+          if [ ${verbose} -eq 1 ]
+          then
+            if [ "${pr_repo}" != "${repo_name}" ]
+            then
+              echo "Pull request doesn't match current repository (${repo_name}). Ignored"
+            elif [ "${pr_branch}" != "${branch_or_tag}" ]
+            then
+              echo "Pull request doesn't match current branch/tag (${branch_or_tag}) in repository ${repo_name}. Ignored"
+            fi
           fi
         fi
       fi
@@ -472,7 +525,7 @@ do
     fi
     echo Copying Git branch ${branch_or_tag} contents to ${dest_dir}...
     mkdir -p ${dest_dir}
-    cp -R ${repo_dir}/* ${dest_dir}
+    cp -R ${src_dir}/* ${dest_dir}
 
     # Remove potentially untracked files to prevent errors at next checkout
     silent_command git clean -f -d
