@@ -21,16 +21,6 @@ class BuilderTest(TestCase):
         """Remove temp dir."""
         shutil.rmtree(self.tmpdir)
 
-    def test_check_repository_map(self):
-        """Test check repository_map function."""
-        self.assertFalse(builder.check_repository_map(None))
-        self.assertFalse(builder.check_repository_map({}))
-        self.assertFalse(builder.check_repository_map({"test": {}}))
-        self.assertFalse(builder.check_repository_map({"test": {"sitesubdir": "test"}}))
-        self.assertFalse(builder.check_repository_map({"test": {"targets": ["test"]}}))
-        repomap = {'test': {'sitesubdir': 'components', 'targets': ['/NCM/Component', 'components']}}
-        self.assertTrue(builder.check_repository_map(repomap))
-
     def test_which(self):
         """Test which function."""
         self.assertFalse(builder.which('testtest1234'))
@@ -38,14 +28,12 @@ class BuilderTest(TestCase):
 
     def test_check_input(self):
         """Test check_input function."""
-        self.assertFalse(builder.check_input("", "", ""))
-        self.assertFalse(builder.check_input("", self.tmpdir, ""))
-        self.assertFalse(builder.check_input("", "/nonexistingdir", ""))
-        with self.assertRaises(AttributeError):
-            builder.check_input("", self.tmpdir, self.tmpdir)
-        self.assertFalse(builder.check_input({'test': 'test'}, self.tmpdir, self.tmpdir))
+        self.assertFalse(builder.check_input("", ""))
+        self.assertFalse(builder.check_input(self.tmpdir, ""))
+        self.assertFalse(builder.check_input("/nonexistingdir", ""))
+        self.assertTrue(builder.check_input(self.tmpdir, self.tmpdir))
         os.makedirs(os.path.join(self.tmpdir, "test"))
-        self.assertTrue(builder.check_input({'test': 'test'}, self.tmpdir, os.path.join(self.tmpdir, "test")))
+        self.assertTrue(builder.check_input(self.tmpdir, os.path.join(self.tmpdir, "test")))
 
     def test_check_commands(self):
         """Test check_commands function."""
@@ -55,11 +43,11 @@ class BuilderTest(TestCase):
         """Test build_site_structure function."""
         repomap = {
             "configuration-modules-core": {
-                "sitesubdir": "components",
+                "sitesection": "components",
                 "targets": ["/NCM/Component/", "/components/", "/pan/quattor/"]
             },
             "CCM": {
-                "sitesubdir": "CCM",
+                "sitesection": "CCM",
                 "targets": ["EDG/WP4/CCM/"],
             },
         }
@@ -107,13 +95,6 @@ class BuilderTest(TestCase):
                      'components': {'icinga.md': 'I refer to \n`ncm-fmonagent`.'}}
         expected = {'components-grid': {'fmonagent.md': ''},
                     'components': {'icinga.md': 'I refer to \n[fmonagent](../components-grid/fmonagent.md).'}}
-        self.assertEquals(builder.make_interlinks(test_data), expected)
-
-        # Replace linked reference
-        test_data = {'components-grid': {'fmonagent.md': ''},
-                     'components': {'icinga.md': 'I refer to L<ncm-fmonagent>.'}}
-        expected = {'components-grid': {'fmonagent.md': ''},
-                    'components': {'icinga.md': 'I refer to [fmonagent](../components-grid/fmonagent.md).'}}
         self.assertEquals(builder.make_interlinks(test_data), expected)
 
         # Replace linked wrong reference
