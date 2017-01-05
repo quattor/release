@@ -55,22 +55,15 @@ def cleanup_content(markdown, cleanup_options):
     """Run several cleaners on the content we get from perl files."""
     for source, content in markdown.iteritems():
         if not source.endswith('.pan'):
-            if cleanup_options['remove_emails']:
-                content = remove_mail(content)
-            if cleanup_options['remove_headers']:
-                content = remove_headers(content)
-            if cleanup_options['small_titles']:
-                content = decrease_title_size(content)
-            if cleanup_options['remove_whitespace']:
-                content = remove_whitespace(content)
-            if cleanup_options['codify_paths']:
-                content = codify_paths(content)
+            for fn in ['remove_emails', 'remove_headers', 'small_titles', 'remove_whitespace', 'codify_paths']:
+                if cleanup_options[fn]:
+                    content = globals()[fn](content)
             markdown[source] = content
 
     return markdown
 
 
-def remove_mail(markdown):
+def remove_emails(markdown):
     """Remove email adresses from markdown."""
     replace = False
     for email in re.findall(MAILREGEX, markdown):
@@ -107,7 +100,7 @@ def remove_whitespace(markdown):
     return markdown
 
 
-def decrease_title_size(markdown):
+def small_titles(markdown):
     """Make titles smaller, eg replace '# ' with '### ' at the start of a line."""
     markdown = re.sub(r'\n# |^# ', '\n### ', markdown)
     markdown = re.sub(r'\n## |^##', '\n#### ', markdown)

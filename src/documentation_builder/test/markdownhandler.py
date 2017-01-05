@@ -50,14 +50,14 @@ class MarkdownHandlerTest(TestCase):
         self.assertEquals(len(output), 2)
         self.assertEquals(sorted(output.keys()), [testfile1, testfile2])
 
-    def test_remove_mail(self):
-        """Test remove_mail function."""
+    def test_remove_emails(self):
+        """Test remove_emails function."""
         mailtext = "Hello: mail@mailtest.mail mister."
-        self.assertEquals(mdh.remove_mail(mailtext), "Hello:  mister.")
+        self.assertEquals(mdh.remove_emails(mailtext), "Hello:  mister.")
         mailtext = "Hello: //mail@mailtest.mail mister."
-        self.assertEquals(mdh.remove_mail(mailtext), mailtext)
+        self.assertEquals(mdh.remove_emails(mailtext), mailtext)
         mailtext = "Hello: example@example.com"
-        self.assertEquals(mdh.remove_mail(mailtext), mailtext)
+        self.assertEquals(mdh.remove_emails(mailtext), mailtext)
 
     def test_remove_headers(self):
         """Test remove_headers function."""
@@ -73,15 +73,15 @@ class MarkdownHandlerTest(TestCase):
         whitetext = "this \n is much better \n\n."
         self.assertEquals(mdh.remove_whitespace(whitetext), whitetext)
 
-    def test_decrease_title_size(self):
-        """Test decrease_title_size function."""
+    def test_small_titles(self):
+        """Test small_titles function."""
         titletext = "\n\n# very big title\n it is."
-        self.assertEquals(mdh.decrease_title_size(titletext), '\n\n### very big title\n it is.')
+        self.assertEquals(mdh.small_titles(titletext), '\n\n### very big title\n it is.')
         titletext = "\n## Smaller title."
-        self.assertEquals(mdh.decrease_title_size(titletext), '\n#### Smaller title.')
+        self.assertEquals(mdh.small_titles(titletext), '\n#### Smaller title.')
         titletext = "# test with set() and ## others Should \n# Deliver \n # not someting weird."
         expected = '\n### test with set() and ## others Should \n### Deliver \n # not someting weird.'
-        self.assertEquals(mdh.decrease_title_size(titletext), expected)
+        self.assertEquals(mdh.small_titles(titletext), expected)
 
     def test_codify_paths(self):
         """Test codify_paths function."""

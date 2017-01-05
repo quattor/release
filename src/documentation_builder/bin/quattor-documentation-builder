@@ -12,37 +12,17 @@ It get this from:
 @author: Wouter Depypere (Ghent University)
 """
 
-import sys
-import os
-
 from vsc.utils import fancylogger
 from vsc.utils.generaloption import simple_option
 from quattordocbuild.builder import build_documentation
 
 logger = fancylogger.getLogger()
 
-REPOMAP = {
-    "configuration-modules-core": {
-        "sitesubdir": "components",
-        "targets": ["/NCM/Component/", "/components/", "/pan/quattor/"]
-        },
-    "configuration-modules-grid":{
-        "sitesubdir": "components-grid",
-        "targets": ["/NCM/Component/", "/components/"]
-        },
-    "CAF": {
-        "sitesubdir": "CAF",
-        "targets": ["/CAF/",]
-        },
-    "CCM": {
-        "sitesubdir": "CCM",
-        "targets": ["EDG/WP4/CCM/",]
-        },
-}
 
 def main(repolocation, outputlocation, maven_compile, cleanup_options):
     """Main run of the script."""
-    build_documentation(repolocation, REPOMAP, cleanup_options, maven_compile, outputlocation)
+    build_documentation(repolocation, cleanup_options, maven_compile, outputlocation)
+
 
 if __name__ == '__main__':
     OPTIONS = {
@@ -63,7 +43,6 @@ if __name__ == '__main__':
         'remove_headers': GO.options.remove_headers,
         'small_titles': GO.options.small_titles,
         'codify_paths': GO.options.codify_paths,
-        }
+    }
     main(GO.options.modules_location, GO.options.output_location, GO.options.maven_compile, cleanup_options)
     logger.info("Done.")
-

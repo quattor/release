@@ -6,39 +6,20 @@ import re
 from template import Template, TemplateException
 from sourcehandler import get_source_files
 from markdownhandler import generate_markdown, cleanup_content
+from config import build_repository_map
 from vsc.utils import fancylogger
 
 logger = fancylogger.getLogger()
 
 
-def check_repository_map(repository_map):
-    """Check if a repository mapping is valid."""
-    logger.info("Checking repository map.")
-    if repository_map is None:
-        logger.error("Repository map is None.")
-        return False
-    if len(repository_map) == 0:
-        logger.error("Repository map is an empty list.")
-        return False
-    for repository in repository_map.keys():
-        keys = repository_map[repository].keys()
-        for opt in ['targets', 'sitesubdir']:
-            if opt not in keys:
-                logger.error("Respository %s does not have a '%s' in repository_map." % (repository, opt))
-                return False
-        if type(repository_map[repository]['targets']) is not list:
-            logger.error("Repository %s targets is not a list." % repository)
-            return False
-    return True
-
-
-def build_documentation(repository_location, repository_map, cleanup_options, compile, output_location):
+def build_documentation(repository_location, cleanup_options, compile, output_location):
     """Build the whole documentation from quattor repositories."""
-    if not check_repository_map(repository_map):
-        sys.exit(1)
-    if not check_input(repository_map, repository_location, output_location):
+    if not check_input(repository_location, output_location):
         sys.exit(1)
     if not check_commands(compile):
+        sys.exit(1)
+    repository_map = build_repository_map(repository_location)
+    if not repository_map:
         sys.exit(1)
 
     markdownlist = {}
@@ -46,6 +27,8 @@ def build_documentation(repository_location, repository_map, cleanup_options, co
     for repository in repository_map.keys():
         logger.info("Building documentation for %s." % repository)
         fullpath = os.path.join(repository_location, repository)
+        if repository_map[repository]["subdir"]:
+            fullpath = os.path.join(fullpath, repository_map[repository]["subdir"])
         logger.info("Path: %s." % fullpath)
         sources = get_source_files(fullpath, compile)
         logger.debug("Sources:" % sources)
@@ -69,7 +52,7 @@ def which(command):
     return found
 
 
-def check_input(repository_map, sourceloc, outputloc):
+def check_input(sourceloc, outputloc):
     """Check input and locations."""
     logger.info("Checking if the given paths exist.")
     if not sourceloc:
@@ -81,10 +64,6 @@ def check_input(repository_map, sourceloc, outputloc):
     if not os.path.exists(sourceloc):
         logger.error("Repo location %s does not exist" % sourceloc)
         return False
-    for repo in repository_map.keys():
-        if not os.path.exists(os.path.join(sourceloc, repo)):
-            logger.error("Repo location %s does not exist" % os.path.join(sourceloc, repo))
-            return False
     if not os.path.exists(outputloc):
         logger.error("Output location %s does not exist" % outputloc)
         return False
@@ -110,9 +89,9 @@ def build_site_structure(markdownlist, repository_map):
     """Make a mapping of files with their new names for the website."""
     sitepages = {}
     for repo, markdowns in markdownlist.iteritems():
-        sitesubdir = repository_map[repo]['sitesubdir']
+        sitesection = repository_map[repo]['sitesection']
 
-        sitepages[sitesubdir] = {}
+        sitepages[sitesection] = {}
 
         targets = repository_map[repo]['targets']
         for source, markdown in markdowns.iteritems():
@@ -121,7 +100,7 @@ def build_site_structure(markdownlist, repository_map):
                 if target in source and not found:
                     newname = source.split(target)[-1]
                     newname = os.path.splitext(newname)[0].replace("/", "::") + ".md"
-                    sitepages[sitesubdir][newname] = markdown
+                    sitepages[sitesection][newname] = markdown
                     found = True
             if not found:
                 logger.error("No suitable target found for %s in %s." % (source, targets))
@@ -138,14 +117,18 @@ def make_interlinks(pages):
             link = '../%s/%s' % (subdir, page)
             regxs = []
             regxs.append("`%s`" % basename)
-            regxs.append("`ncm-%s`" % basename)
-            regxs.append("ncm-%s" % basename)
-            regxs.append("L<%s>" % basename)
-            regxs.append("L<ncm-%s>" % basename)
             regxs.append("`%s::%s`" % (subdir, basename))
-            regxs.append("\[{0}\]\(https://metacpan.org/pod/{0}\)".format(basename))
+
+            cpans = "https://metacpan.org/pod/"
+
+            if subdir == 'CCM':
+                regxs.append("\[{2}::{0}\]\({1}{2}::{0}\)".format(basename, cpans, "EDG::WP4::CCM"))
+            if subdir == 'Unittest':
+                regxs.append("\[{2}::{0}\]\({1}{2}::{0}\)".format(basename, cpans, "Test"))
             if subdir in ['components', 'components-grid']:
-                regxs.append("\[NCM::Component::{0}\]\(https://metacpan.org/pod/NCM::Component::{0}\)".format(basename))
+                regxs.append("\[{2}::{0}\]\({1}{2}::{0}\)".format(basename, cpans, "NCM::Component"))
+                regxs.append("`ncm-%s`" % basename)
+                regxs.append("ncm-%s" % basename)
 
             for regex in regxs:
                 newpages = replace_regex_link(newpages, regex, basename, link)
@@ -159,7 +142,7 @@ def replace_regex_link(pages, regex, basename, link):
     for subdir in pages:
         for page in pages[subdir]:
             content = pages[subdir][page]
-            if basename not in page and basename in content:
+            if (basename not in page or basename == "Quattor") and basename in content:
                 content = re.sub(regex, "\g<1>[%s](%s)\g<2>" % (basename, link), content)
                 pages[subdir][page] = content
     return pages
