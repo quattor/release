@@ -51,7 +51,7 @@
 <!-- CAF#203 -->
 <g id="node6" class="node"><title>CAF#203</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/203" xlink:title="CAF::Download::LWP: CAF interface for LWP to handle https settings" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1015,-3244 937,-3244 937,-3190 1015,-3190 1015,-3244"/>
+<polygon fill="#6e5494" stroke="black" points="1015,-3244 937,-3244 937,-3190 1015,-3190 1015,-3244"/>
 <text text-anchor="middle" x="976" y="-3221" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="976" y="-3208" font-family="Sans" font-size="10.00">CAF#203</text>
 </a>
