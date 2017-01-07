@@ -330,7 +330,7 @@
 <!-- CCM#156 -->
 <g id="node46" class="node"><title>CCM#156</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/156" xlink:title="Fetch::Download: switch to CAF::Download::LWP" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="771,-3172 693,-3172 693,-3118 771,-3118 771,-3172"/>
+<polygon fill="#6e5494" stroke="black" points="771,-3172 693,-3172 693,-3118 771,-3118 771,-3172"/>
 <text text-anchor="middle" x="732" y="-3149" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="732" y="-3136" font-family="Sans" font-size="10.00">CCM#156</text>
 </a>
