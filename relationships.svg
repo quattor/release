@@ -941,7 +941,7 @@
 <!-- maven&#45;tools#119 -->
 <g id="node130" class="node"><title>maven-tools#119</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/119" xlink:title="Tidy and Critic should not check pod files" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1595,-794 1493,-794 1493,-740 1595,-740 1595,-794"/>
+<polygon fill="#6e5494" stroke="black" points="1595,-794 1493,-794 1493,-740 1595,-740 1595,-794"/>
 <text text-anchor="middle" x="1544" y="-771" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="1544" y="-758" font-family="Sans" font-size="10.00">maven-tools#119</text>
 </a>
