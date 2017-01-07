@@ -927,7 +927,7 @@
 <!-- maven&#45;tools#121 -->
 <g id="node128" class="node"><title>maven-tools#121</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/121" xlink:title="Prepare for CCM namespace cleanup" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1303,-762 1201,-762 1201,-708 1303,-708 1303,-762"/>
+<polygon fill="#6e5494" stroke="black" points="1303,-762 1201,-762 1201,-708 1303,-708 1303,-762"/>
 <text text-anchor="middle" x="1252" y="-739" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="1252" y="-726" font-family="Sans" font-size="10.00">maven-tools#121</text>
 </a>
