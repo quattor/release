@@ -919,7 +919,7 @@
 <!-- maven&#45;tools#122 -->
 <g id="node126" class="node"><title>maven-tools#122</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/122" xlink:title="Add critic policies based on severity with optional blacklist" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1027,-822 925,-822 925,-768 1027,-768 1027,-822"/>
+<polygon fill="#6e5494" stroke="black" points="1027,-822 925,-822 925,-768 1027,-768 1027,-822"/>
 <text text-anchor="middle" x="976" y="-799" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="976" y="-786" font-family="Sans" font-size="10.00">maven-tools#122</text>
 </a>
@@ -955,7 +955,7 @@
 <!-- maven&#45;tools#120 -->
 <g id="node132" class="node"><title>maven-tools#120</title>
 <a xlink:href="https://github.com/quattor/maven-tools/issues/120" xlink:title="perlcritic: use severity 5 for checks" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="134" cy="-2717" rx="72.832" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="134" cy="-2717" rx="72.832" ry="38.1838"/>
 <text text-anchor="middle" x="134" y="-2721" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="134" y="-2708" font-family="Sans" font-size="10.00">maven-tools#120</text>
 </a>
