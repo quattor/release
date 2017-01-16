@@ -388,7 +388,7 @@
 <!-- ncm&#45;lib&#45;blockdevices#73 -->
 <g id="node55" class="node"><title>ncm-lib-blockdevices#73</title>
 <a xlink:href="https://github.com/quattor/ncm-lib-blockdevices/pull/73" xlink:title="Blockdevices: determine correct disksize using integers (not floats) in bash" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="518,-168 382,-168 382,-114 518,-114 518,-168"/>
+<polygon fill="#6e5494" stroke="black" points="518,-168 382,-168 382,-114 518,-114 518,-168"/>
 <text text-anchor="middle" x="450" y="-145" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="450" y="-132" font-family="Sans" font-size="10.00">ncm-lib-blockdevices#73</text>
 </a>
