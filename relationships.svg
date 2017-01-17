@@ -335,7 +335,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1009 -->
 <g id="node47" class="node"><title>configuration-modules-core#1009</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1009" xlink:title="ncm-opennebula: Opennebula refactoring and AII code" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1009" xlink:title="ncm-opennebula: Opennebula refactoring and AII code (WIP)" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="220,-1536 48,-1536 48,-1482 220,-1482 220,-1536"/>
 <text text-anchor="middle" x="134" y="-1513" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-1500" font-family="Sans" font-size="10.00">configuration-modules-core#1009</text>
