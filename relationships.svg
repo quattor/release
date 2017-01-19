@@ -264,9 +264,9 @@
 <!-- configuration&#45;modules&#45;core#999 -->
 <g id="node34" class="node"><title>configuration-modules-core#999</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/999" xlink:title="ncm-grub: full overhaul" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="217,-369 51,-369 51,-315 217,-315 217,-369"/>
-<text text-anchor="middle" x="134" y="-346" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="134" y="-333" font-family="Sans" font-size="10.00">configuration-modules-core#999</text>
+<polygon fill="#6e5494" stroke="black" points="217,-393 51,-393 51,-339 217,-339 217,-393"/>
+<text text-anchor="middle" x="134" y="-370" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="134" y="-357" font-family="Sans" font-size="10.00">configuration-modules-core#999</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#232 -->
@@ -279,9 +279,9 @@
 </g>
 <!-- configuration&#45;modules&#45;core#999&#45;&gt;configuration&#45;modules&#45;core#232 -->
 <g id="edge30" class="edge"><title>configuration-modules-core#999-&gt;configuration-modules-core#232</title>
-<path fill="none" stroke="black" d="M217.853,-329.794C252.932,-324.687 294.319,-318.662 332.36,-313.125"/>
-<polygon fill="black" stroke="black" points="333.079,-316.557 342.471,-311.653 332.071,-309.63 333.079,-316.557"/>
-<text text-anchor="middle" x="290" y="-326" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" d="M217.853,-347.425C256.112,-338.95 301.874,-328.813 342.615,-319.788"/>
+<polygon fill="black" stroke="black" points="343.577,-323.16 352.583,-317.58 342.063,-316.325 343.577,-323.16"/>
+<text text-anchor="middle" x="290" y="-340" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1000 -->
 <g id="node38" class="node"><title>configuration-modules-core#1000</title>
@@ -293,9 +293,9 @@
 </g>
 <!-- configuration&#45;modules&#45;core#999&#45;&gt;configuration&#45;modules&#45;core#1000 -->
 <g id="edge32" class="edge"><title>configuration-modules-core#999-&gt;configuration-modules-core#1000</title>
-<path fill="none" stroke="black" d="M217.853,-354.737C252.345,-359.976 292.934,-366.142 330.446,-371.84"/>
-<polygon fill="black" stroke="black" points="330.009,-375.314 340.422,-373.355 331.061,-368.393 330.009,-375.314"/>
-<text text-anchor="middle" x="290" y="-372" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" d="M217.853,-372.369C249.638,-374.783 286.602,-377.59 321.563,-380.245"/>
+<polygon fill="black" stroke="black" points="321.614,-383.759 331.851,-381.027 322.144,-376.779 321.614,-383.759"/>
+<text text-anchor="middle" x="290" y="-383" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#950 -->
 <g id="node42" class="node"><title>configuration-modules-core#950</title>
@@ -355,38 +355,60 @@
 <polygon fill="black" stroke="black" points="321.772,-1512.5 331.772,-1509 321.771,-1505.5 321.772,-1512.5"/>
 <text text-anchor="middle" x="290" y="-1513" font-family="Sans" font-size="10.00">fix</text>
 </g>
+<!-- template&#45;library&#45;core#146 -->
+<g id="node50" class="node"><title>template-library-core#146</title>
+<a xlink:href="https://github.com/quattor/template-library-core/pull/146" xlink:title="Remove /system/oldnames from schema" target="_parent">
+<polygon fill="#6cc644" stroke="black" points="203,-168 65,-168 65,-114 203,-114 203,-168"/>
+<text text-anchor="middle" x="134" y="-145" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="134" y="-132" font-family="Sans" font-size="10.00">template-library-core#146</text>
+</a>
+</g>
+<!-- template&#45;library&#45;core#145 -->
+<g id="node52" class="node"><title>template-library-core#145</title>
+<a xlink:href="https://github.com/quattor/template-library-core/issues/145" xlink:title="What is oldnames intended for?" target="_parent">
+<ellipse fill="#6cc644" stroke="black" cx="450" cy="-58" rx="97.0803" ry="38.1838"/>
+<text text-anchor="middle" x="450" y="-62" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="450" y="-49" font-family="Sans" font-size="10.00">template-library-core#145</text>
+</a>
+</g>
+<!-- template&#45;library&#45;core#146&#45;&gt;template&#45;library&#45;core#145 -->
+<g id="edge44" class="edge"><title>template-library-core#146-&gt;template-library-core#145</title>
+<path fill="none" stroke="black" d="M203.348,-122.785C249.165,-110.751 309.687,-94.8543 359.313,-81.8197"/>
+<polygon fill="black" stroke="black" points="360.303,-85.1786 369.085,-79.2529 358.524,-78.4082 360.303,-85.1786"/>
+<text text-anchor="middle" x="290" y="-109" font-family="Sans" font-size="10.00">resolves</text>
+</g>
 <!-- template&#45;library&#45;core#142 -->
-<g id="node50" class="node"><title>template-library-core#142</title>
+<g id="node53" class="node"><title>template-library-core#142</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/142" xlink:title="Add structures to model operating system information" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="203,-240 65,-240 65,-186 203,-186 203,-240"/>
-<text text-anchor="middle" x="134" y="-217" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="134" y="-204" font-family="Sans" font-size="10.00">template-library-core#142</text>
+<polygon fill="#6cc644" stroke="black" points="203,-312 65,-312 65,-258 203,-258 203,-312"/>
+<text text-anchor="middle" x="134" y="-289" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="134" y="-276" font-family="Sans" font-size="10.00">template-library-core#142</text>
 </a>
 </g>
 <!-- template&#45;library&#45;core#143 -->
-<g id="node52" class="node"><title>template-library-core#143</title>
+<g id="node55" class="node"><title>template-library-core#143</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/143" xlink:title="Add CPU architecture type definition" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="519,-240 381,-240 381,-186 519,-186 519,-240"/>
+<polygon fill="#6e5494" stroke="black" points="519,-240 381,-240 381,-186 519,-186 519,-240"/>
 <text text-anchor="middle" x="450" y="-217" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="450" y="-204" font-family="Sans" font-size="10.00">template-library-core#143</text>
 </a>
 </g>
 <!-- template&#45;library&#45;core#142&#45;&gt;template&#45;library&#45;core#143 -->
-<g id="edge44" class="edge"><title>template-library-core#142-&gt;template-library-core#143</title>
-<path fill="none" stroke="black" d="M203.348,-213C252.742,-213 319.226,-213 370.724,-213"/>
-<polygon fill="none" stroke="black" points="370.814,-216.5 380.814,-213 370.814,-209.5 370.814,-216.5"/>
-<text text-anchor="middle" x="290" y="-217" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge46" class="edge"><title>template-library-core#142-&gt;template-library-core#143</title>
+<path fill="none" stroke="black" d="M203.348,-269.199C252.844,-257.922 319.504,-242.733 371.046,-230.99"/>
+<polygon fill="none" stroke="black" points="371.842,-234.398 380.814,-228.764 370.287,-227.573 371.842,-234.398"/>
+<text text-anchor="middle" x="290" y="-258" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- template&#45;library&#45;core#139 -->
-<g id="node53" class="node"><title>template-library-core#139</title>
+<g id="node56" class="node"><title>template-library-core#139</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/139" xlink:title="blockdevices: add correctness check configuration to physical devices" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="203,-168 65,-168 65,-114 203,-114 203,-168"/>
-<text text-anchor="middle" x="134" y="-145" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="134" y="-132" font-family="Sans" font-size="10.00">template-library-core#139</text>
+<polygon fill="#6cc644" stroke="black" points="203,-240 65,-240 65,-186 203,-186 203,-240"/>
+<text text-anchor="middle" x="134" y="-217" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="134" y="-204" font-family="Sans" font-size="10.00">template-library-core#139</text>
 </a>
 </g>
 <!-- ncm&#45;lib&#45;blockdevices#73 -->
-<g id="node55" class="node"><title>ncm-lib-blockdevices#73</title>
+<g id="node58" class="node"><title>ncm-lib-blockdevices#73</title>
 <a xlink:href="https://github.com/quattor/ncm-lib-blockdevices/pull/73" xlink:title="Blockdevices: determine correct disksize using integers (not floats) in bash" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="518,-168 382,-168 382,-114 518,-114 518,-168"/>
 <text text-anchor="middle" x="450" y="-145" font-family="Sans" font-size="10.00">pull-request</text>
@@ -394,10 +416,10 @@
 </a>
 </g>
 <!-- template&#45;library&#45;core#139&#45;&gt;ncm&#45;lib&#45;blockdevices#73 -->
-<g id="edge46" class="edge"><title>template-library-core#139-&gt;ncm-lib-blockdevices#73</title>
-<path fill="none" stroke="black" d="M203.348,-141C253.082,-141 320.144,-141 371.787,-141"/>
-<polygon fill="none" stroke="black" points="371.901,-144.5 381.901,-141 371.901,-137.5 371.901,-144.5"/>
-<text text-anchor="middle" x="290" y="-145" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge48" class="edge"><title>template-library-core#139-&gt;ncm-lib-blockdevices#73</title>
+<path fill="none" stroke="black" d="M203.348,-197.199C253.186,-185.844 320.424,-170.524 372.11,-158.747"/>
+<polygon fill="none" stroke="black" points="372.928,-162.15 381.901,-156.516 371.373,-155.325 372.928,-162.15"/>
+<text text-anchor="middle" x="290" y="-186" font-family="Sans" font-size="10.00">requires</text>
 </g>
 </g>
 </svg>
