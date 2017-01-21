@@ -380,24 +380,21 @@
 <!-- template&#45;library&#45;core#146 -->
 <g id="node53" class="node"><title>template-library-core#146</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/146" xlink:title="Remove /system/oldnames from schema" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="203,-168 65,-168 65,-114 203,-114 203,-168"/>
+<polygon fill="#6e5494" stroke="black" points="203,-168 65,-168 65,-114 203,-114 203,-168"/>
 <text text-anchor="middle" x="134" y="-145" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-132" font-family="Sans" font-size="10.00">template-library-core#146</text>
 </a>
 </g>
 <!-- template&#45;library&#45;core#145 -->
 <g id="node55" class="node"><title>template-library-core#145</title>
-<a xlink:href="https://github.com/quattor/template-library-core/issues/145" xlink:title="What is oldnames intended for?" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="450" cy="-58" rx="97.0803" ry="38.1838"/>
-<text text-anchor="middle" x="450" y="-62" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="450" y="-49" font-family="Sans" font-size="10.00">template-library-core#145</text>
-</a>
+<polygon fill="lightgrey" stroke="black" points="519,-96.5 381,-96.5 381,-55.5 519,-55.5 519,-96.5"/>
+<text text-anchor="middle" x="450" y="-73.5" font-family="Sans" font-size="10.00">template-library-core#145</text>
 </g>
 <!-- template&#45;library&#45;core#146&#45;&gt;template&#45;library&#45;core#145 -->
 <g id="edge46" class="edge"><title>template-library-core#146-&gt;template-library-core#145</title>
-<path fill="none" stroke="black" d="M203.348,-122.785C249.165,-110.751 309.687,-94.8543 359.313,-81.8197"/>
-<polygon fill="black" stroke="black" points="360.303,-85.1786 369.085,-79.2529 358.524,-78.4082 360.303,-85.1786"/>
-<text text-anchor="middle" x="290" y="-109" font-family="Sans" font-size="10.00">resolves</text>
+<path fill="none" stroke="black" d="M203.348,-126.735C252.742,-116.575 319.226,-102.9 370.724,-92.3068"/>
+<polygon fill="black" stroke="black" points="371.724,-95.6743 380.814,-90.2313 370.314,-88.8179 371.724,-95.6743"/>
+<text text-anchor="middle" x="290" y="-117" font-family="Sans" font-size="10.00">resolves</text>
 </g>
 <!-- template&#45;library&#45;core#142 -->
 <g id="node56" class="node"><title>template-library-core#142</title>
