@@ -402,7 +402,7 @@
 <!-- maven&#45;tools#125 -->
 <g id="node57" class="node"><title>maven-tools#125</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/125" xlink:title="Critic: no more backticks/qx/system, use CAF::Process" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="513,-206 411,-206 411,-152 513,-152 513,-206"/>
+<polygon fill="#6e5494" stroke="black" points="513,-206 411,-206 411,-152 513,-152 513,-206"/>
 <text text-anchor="middle" x="462" y="-183" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="462" y="-170" font-family="Sans" font-size="10.00">maven-tools#125</text>
 </a>
