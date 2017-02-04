@@ -233,7 +233,7 @@
 <!-- CAF#211 -->
 <g id="node33" class="node"><title>CAF#211</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/211" xlink:title="FileEditor: fix add_or_replace_sysconfig_lines " target="_parent">
-<polygon fill="#6cc644" stroke="black" points="501,-776 423,-776 423,-722 501,-722 501,-776"/>
+<polygon fill="#6e5494" stroke="black" points="501,-776 423,-776 423,-722 501,-722 501,-776"/>
 <text text-anchor="middle" x="462" y="-753" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="462" y="-740" font-family="Sans" font-size="10.00">CAF#211</text>
 </a>
