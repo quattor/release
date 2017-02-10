@@ -208,7 +208,7 @@
 <!-- CCM#160 -->
 <g id="node29" class="node"><title>CCM#160</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/160" xlink:title="Switch to 00-tqu" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="501,-789 423,-789 423,-735 501,-735 501,-789"/>
+<polygon fill="#6e5494" stroke="black" points="501,-789 423,-789 423,-735 501,-735 501,-789"/>
 <text text-anchor="middle" x="462" y="-766" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="462" y="-753" font-family="Sans" font-size="10.00">CCM#160</text>
 </a>
