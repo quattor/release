@@ -17,7 +17,7 @@
 <!-- aii#238 -->
 <g id="node1" class="node"><title>aii#238</title>
 <a xlink:href="https://github.com/quattor/aii/pull/238" xlink:title="aii-opennebula: Add VM image driver option" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="173,-1347 95,-1347 95,-1293 173,-1293 173,-1347"/>
+<polygon fill="#6e5494" stroke="black" points="173,-1347 95,-1347 95,-1293 173,-1293 173,-1347"/>
 <text text-anchor="middle" x="134" y="-1324" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-1311" font-family="Sans" font-size="10.00">aii#238</text>
 </a>
@@ -25,7 +25,7 @@
 <!-- aii#235 -->
 <g id="node3" class="node"><title>aii#235</title>
 <a xlink:href="https://github.com/quattor/aii/issues/235" xlink:title="aii-opennebula: Add qcow2 image support" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="462" cy="-1320" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="462" cy="-1320" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="462" y="-1324" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="462" y="-1311" font-family="Sans" font-size="10.00">aii#235</text>
 </a>
@@ -39,7 +39,7 @@
 <!-- aii#237 -->
 <g id="node4" class="node"><title>aii#237</title>
 <a xlink:href="https://github.com/quattor/aii/pull/237" xlink:title="aii-core: switch to CAF::Download::LWP" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="783,-1244 705,-1244 705,-1190 783,-1190 783,-1244"/>
+<polygon fill="#6e5494" stroke="black" points="783,-1244 705,-1244 705,-1190 783,-1190 783,-1244"/>
 <text text-anchor="middle" x="744" y="-1221" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="744" y="-1208" font-family="Sans" font-size="10.00">aii#237</text>
 </a>
@@ -464,7 +464,7 @@
 <!-- ncm&#45;lib&#45;blockdevices#76 -->
 <g id="node66" class="node"><title>ncm-lib-blockdevices#76</title>
 <a xlink:href="https://github.com/quattor/ncm-lib-blockdevices/pull/76" xlink:title="LV: force lvconvert by passing -y" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="202,-458 66,-458 66,-404 202,-404 202,-458"/>
+<polygon fill="#6e5494" stroke="black" points="202,-458 66,-458 66,-404 202,-404 202,-458"/>
 <text text-anchor="middle" x="134" y="-435" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-422" font-family="Sans" font-size="10.00">ncm-lib-blockdevices#76</text>
 </a>
@@ -472,7 +472,7 @@
 <!-- ncm&#45;lib&#45;blockdevices#75 -->
 <g id="node68" class="node"><title>ncm-lib-blockdevices#75</title>
 <a xlink:href="https://github.com/quattor/ncm-lib-blockdevices/issues/75" xlink:title="lvconvert requires -y option" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="462" cy="-370" rx="96.1665" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="462" cy="-370" rx="96.1665" ry="38.1838"/>
 <text text-anchor="middle" x="462" y="-374" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="462" y="-361" font-family="Sans" font-size="10.00">ncm-lib-blockdevices#75</text>
 </a>
