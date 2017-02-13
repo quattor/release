@@ -138,7 +138,7 @@
 <!-- CAF#206 -->
 <g id="node19" class="node"><title>CAF#206</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/206" xlink:title="Switch to 00-tqu" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="783,-1100 705,-1100 705,-1046 783,-1046 783,-1100"/>
+<polygon fill="#6e5494" stroke="black" points="783,-1100 705,-1100 705,-1046 783,-1046 783,-1100"/>
 <text text-anchor="middle" x="744" y="-1077" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="744" y="-1064" font-family="Sans" font-size="10.00">CAF#206</text>
 </a>
