@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><template xmlns="http://quattor.org/pan/annotations" name="pan_annotated_schema" source-range="1.1-1.42" type="DECLARATION">
+    <type name="testtype" source-range="4.1-9.2">
+        <documentation>
+            <desc>test type.</desc>
+        </documentation>
+        <basetype source-range="4.17-9.1" extensible="false">
+            <field name="debug" source-range="6.5-6.11" required="true">
+                <desc>Test long.</desc>
+                <basetype name="long" source-range="6.15-6.24" extensible="false" range="0..1"/>
+            </field>
+            <field name="ca_dir" source-range="8.5-8.12" required="false">
+                <desc>Test string</desc>
+                <basetype name="string" source-range="8.16-8.21" extensible="false"/>
+            </field>
+        </basetype>
+    </type>
+    <function name="add" source-range="16.1-18.2">
+        <documentation>
+            <desc>simple addition of two numbers</desc>
+            <arg>first number to add</arg>
+            <arg>second number to add</arg>
+        </documentation>
+    </function>
+</template>

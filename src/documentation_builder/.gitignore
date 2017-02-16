@@ -1,0 +1,26 @@
+## aptana/eclipse
+*.project
+*.pydevproject
+## python
+*.pyc
+*.pyo
+.eggs
+## emacs
+*~
+.#*
+*.orig
+*.bak
+## Various build products
+*.rpm
+*.o
+*.old
+*.DS_Store
+*.egg
+*.egg-info
+.coverage
+htmlcov/
+## Python __init__.py files for distributed packages
+MANIFEST
+dist/
+build/
+setup.cfg

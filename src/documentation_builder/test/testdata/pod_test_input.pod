@@ -1,0 +1,15 @@
+=pod
+
+=head1 Test pod file
+
+=head2 Really a pod file
+
+This is some text
+
+=over 4
+
+=item this is an item
+
+=back
+
+=cut
