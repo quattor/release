@@ -462,7 +462,7 @@
 <!-- configuration&#45;modules&#45;core#1005 -->
 <g id="node62" class="node"><title>configuration-modules-core#1005</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1005" xlink:title=" ncm-download: allow_older boolean to allow downloading remote files that are older then current file" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="534,-331 362,-331 362,-277 534,-277 534,-331"/>
+<polygon fill="#6e5494" stroke="black" points="534,-331 362,-331 362,-277 534,-277 534,-331"/>
 <text text-anchor="middle" x="448" y="-308" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-295" font-family="Sans" font-size="10.00">configuration-modules-core#1005</text>
 </a>
