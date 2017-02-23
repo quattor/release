@@ -42,7 +42,7 @@
 </g>
 <!-- aii#239 -->
 <g id="node4" class="node"><title>aii#239</title>
-<a xlink:href="https://github.com/quattor/aii/pull/239" xlink:title="AII:Shellfe: add parallel option to run methods in parallel" target="_parent">
+<a xlink:href="https://github.com/quattor/aii/pull/239" xlink:title="AII:Shellfe: Add option to run methods in parallel" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="173,-2151 95,-2151 95,-2097 173,-2097 173,-2151"/>
 <text text-anchor="middle" x="134" y="-2128" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-2115" font-family="Sans" font-size="10.00">aii#239</text>
