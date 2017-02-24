@@ -21,7 +21,7 @@
 <!-- aii#247 -->
 <g id="node1" class="node"><title>aii#247</title>
 <a xlink:href="https://github.com/quattor/aii/pull/247" xlink:title="aii-core: add perl-Parallel-ForkManager to RPM" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-1587 409,-1587 409,-1533 487,-1533 487,-1587"/>
+<polygon fill="#6e5494" stroke="black" points="487,-1587 409,-1587 409,-1533 487,-1533 487,-1587"/>
 <text text-anchor="middle" x="448" y="-1564" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-1551" font-family="Sans" font-size="10.00">aii#247</text>
 </a>
@@ -29,7 +29,7 @@
 <!-- aii#246 -->
 <g id="node3" class="node"><title>aii#246</title>
 <a xlink:href="https://github.com/quattor/aii/issues/246" xlink:title="aii-core: missing perl-Parallel-ForkManager dependency" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="764" cy="-1552" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="764" cy="-1552" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="764" y="-1556" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="764" y="-1543" font-family="Sans" font-size="10.00">aii#246</text>
 </a>
