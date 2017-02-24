@@ -187,7 +187,7 @@ MAIN_INIT_BIN_YUM="repoquery curl wget"
 DEPS_INIT_BIN_YUM="rpmbuild perl tar"
 
 # Dependencies (package names) to be installed
-DEPS_INIT_YUM="rpmlint perl-parent"
+DEPS_INIT_YUM="rpmlint perl-parent perl-IO-Compress-Zlib"
 
 # only major.minor!
 PAN_MIN_VERSION=10.3
