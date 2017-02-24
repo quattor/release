@@ -55,7 +55,7 @@ fi
 # Don't add filters here just because something fails
 if [ "$RH_RELEASE" -eq 5 ]; then
     # These will not work with el5 since they require perl 5.10.1
-    POM_FILTER='.*\(opennebula\|systemd\|ceph\|icinga\).*'
+    POM_FILTER='.*\(aii-|opennebula\|systemd\|ceph\|icinga\).*'
 else
     POM_FILTER=""
 fi
