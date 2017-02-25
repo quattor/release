@@ -197,7 +197,7 @@
 <!-- CAF#204 -->
 <g id="node26" class="node"><title>CAF#204</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/204" xlink:title="Reporter: add structured logging and message templating" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-1006 409,-1006 409,-952 487,-952 487,-1006"/>
+<polygon fill="#6e5494" stroke="black" points="487,-1006 409,-1006 409,-952 487,-952 487,-1006"/>
 <text text-anchor="middle" x="448" y="-983" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-970" font-family="Sans" font-size="10.00">CAF#204</text>
 </a>
