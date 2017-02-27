@@ -55,7 +55,7 @@ fi
 # Don't add filters here just because something fails
 if [ "$RH_RELEASE" -eq 5 ]; then
     # These will not work with el5 since they require perl 5.10.1
-    POM_FILTER='.*\(opennebula\|systemd\|ceph\|icinga\).*'
+    POM_FILTER='.*\(aii-|opennebula\|systemd\|ceph\|icinga\).*'
 else
     POM_FILTER=""
 fi
@@ -187,11 +187,15 @@ MAIN_INIT_BIN_YUM="repoquery curl wget"
 DEPS_INIT_BIN_YUM="rpmbuild perl tar"
 
 # Dependencies (package names) to be installed
-DEPS_INIT_YUM="rpmlint perl-parent"
+DEPS_INIT_YUM="rpmlint perl-parent perl-IO-Compress-Zlib"
 
 # only major.minor!
-PAN_MIN_VERSION=10.2
+PAN_MIN_VERSION=10.3
 PAN_MIN_VERSION_RPM_URL="https://github.com/quattor/pan/releases/download/pan-${PAN_MIN_VERSION}/panc-${PAN_MIN_VERSION}-1.noarch.rpm"
+
+# quattor externals repo
+USE_QEXT=1
+QEXT_REPO_URL="https://raw.githubusercontent.com/quattor/release/master/quattor-repo/src/quattor.repo"
 
 # the mvn epel url (who has this mirrored/enabled by default?)
 EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
@@ -382,6 +386,21 @@ function has_panc () {
         if [ $? -ne 0 ]; then
             localinstall_url $PAN_MIN_VERSION_RPM_URL $DEST/panc-${PAN_MIN_VERSION}.rpm "--nogpgcheck"
         fi
+    fi
+}
+
+function check_quattor_externals () {
+    if [ $USE_QEXT -gt 0 ]; then
+        fn=/etc/yum.repos.d/quattor.repo
+        download "$QEXT_REPO_URL" $fn $SUDO
+        if [ $? -gt 0 ]; then
+            error 102 "Failed to download quattor repo $QEXT_REPO_URL to $fn with '$SUDO $exe $opt'"
+        fi
+        # remove the quattor and aquilon repos; should only leave the externals
+        $SUDO sed -i '/quattor\]/,+5d;/quattor_aquilon\]/,+5d' $fn
+
+        $SUDO yum clean expire-cache
+        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
     fi
 }
 
@@ -956,6 +975,7 @@ function main_init () {
     fi
 
     # do it separately
+    check_quattor_externals
     check_epel
     check_rpmforge
 
