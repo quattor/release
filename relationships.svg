@@ -197,7 +197,7 @@
 <!-- CAF#214 -->
 <g id="node26" class="node"><title>CAF#214</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/214" xlink:title="FileWriter: resolve cyclic dependency" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-1434 409,-1434 409,-1380 487,-1380 487,-1434"/>
+<polygon fill="#6e5494" stroke="black" points="487,-1434 409,-1434 409,-1380 487,-1380 487,-1434"/>
 <text text-anchor="middle" x="448" y="-1411" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-1398" font-family="Sans" font-size="10.00">CAF#214</text>
 </a>
@@ -205,7 +205,7 @@
 <!-- CAF#213 -->
 <g id="node28" class="node"><title>CAF#213</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/213" xlink:title="cannot import CAF::TextRender or CCM::TextRender" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="764" cy="-1446" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="764" cy="-1446" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="764" y="-1450" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="764" y="-1437" font-family="Sans" font-size="10.00">CAF#213</text>
 </a>
