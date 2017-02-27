@@ -21,7 +21,7 @@
 <!-- aii#251 -->
 <g id="node1" class="node"><title>aii#251</title>
 <a xlink:href="https://github.com/quattor/aii/pull/251" xlink:title="aii-shellfe: add missing test resource file" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-1921 409,-1921 409,-1867 487,-1867 487,-1921"/>
+<polygon fill="#6e5494" stroke="black" points="487,-1921 409,-1921 409,-1867 487,-1867 487,-1921"/>
 <text text-anchor="middle" x="448" y="-1898" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-1885" font-family="Sans" font-size="10.00">aii#251</text>
 </a>
@@ -29,7 +29,7 @@
 <!-- aii#250 -->
 <g id="node3" class="node"><title>aii#250</title>
 <a xlink:href="https://github.com/quattor/aii/issues/250" xlink:title="shellfe-dhcp.t attemps to open an unexisting config file" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="764" cy="-1894" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="764" cy="-1894" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="764" y="-1898" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="764" y="-1885" font-family="Sans" font-size="10.00">aii#250</text>
 </a>
