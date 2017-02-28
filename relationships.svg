@@ -228,7 +228,7 @@
 <!-- CAF#220 -->
 <g id="node30" class="node"><title>CAF#220</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/220" xlink:title="Reporter: support struct logging and templating using old TT without STRICT support (eg el5)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-1589 409,-1589 409,-1535 487,-1535 487,-1589"/>
+<polygon fill="#6e5494" stroke="black" points="487,-1589 409,-1589 409,-1535 487,-1535 487,-1589"/>
 <text text-anchor="middle" x="448" y="-1566" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-1553" font-family="Sans" font-size="10.00">CAF#220</text>
 </a>
@@ -236,7 +236,7 @@
 <!-- CAF#219 -->
 <g id="node32" class="node"><title>CAF#219</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/219" xlink:title="CAF::Reporter struct logging fails on el5 due to missing strict TT mode" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="764" cy="-1562" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="764" cy="-1562" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="764" y="-1566" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="764" y="-1553" font-family="Sans" font-size="10.00">CAF#219</text>
 </a>
@@ -686,7 +686,7 @@
 <!-- maven&#45;tools#133 -->
 <g id="node94" class="node"><title>maven-tools#133</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/133" xlink:title="mvnprove: support actual tracing while running prove" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="499,-1037 397,-1037 397,-983 499,-983 499,-1037"/>
+<polygon fill="#6e5494" stroke="black" points="499,-1037 397,-1037 397,-983 499,-983 499,-1037"/>
 <text text-anchor="middle" x="448" y="-1014" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-1001" font-family="Sans" font-size="10.00">maven-tools#133</text>
 </a>
@@ -694,7 +694,7 @@
 <!-- maven&#45;tools#99 -->
 <g id="node96" class="node"><title>maven-tools#99</title>
 <a xlink:href="https://github.com/quattor/maven-tools/issues/99" xlink:title="mvnprove: -t options should run the tests in Trace mode" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="764" cy="-998" rx="68.7979" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="764" cy="-998" rx="68.7979" ry="38.1838"/>
 <text text-anchor="middle" x="764" y="-1002" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="764" y="-989" font-family="Sans" font-size="10.00">maven-tools#99</text>
 </a>
