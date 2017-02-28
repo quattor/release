@@ -55,10 +55,19 @@ fi
 # Don't add filters here just because something fails
 if [ "$RH_RELEASE" -eq 5 ]; then
     # These will not work with el5 since they require perl 5.10.1
-    POM_FILTER='.*\(aii-|opennebula\|systemd\|ceph\|icinga\).*'
+    POM_FILTER='.*\(opennebula\|systemd\|ceph\|icinga\).*'
 else
     POM_FILTER=""
 fi
+
+# Skip whole repos
+if [ "$RH_RELEASE" -eq 5 ]; then
+    # These will not work with el5 since they require perl 5.10.1
+    REPO_FILTER='aii'
+else
+    REPO_FILTER=""
+fi
+
 
 OS_HACK=1
 
@@ -117,6 +126,8 @@ USE_EPEL: install and use the epel-release repo (current USE_EPEL=$USE_EPEL)
 USE_RPMFORGE: install and use the rpmforge-release repo (current USE_RPMFORGE=$USE_RPMFORGE)
 
 POM_FILTER: remove matching lines from all pom.xml if not empty (current POM_FILTER=$POM_FILTER)
+
+REPO_FILTER: do not test matching repo(s) (current REPO_FILTER=$REPO_FILTER)
 
 OS_HACK: implement some OS specific hacks to get around some known issues with the OS (current OS_HACK=$OS_HACK)
 
@@ -1034,6 +1045,7 @@ function test_rpms() {
 }
 
 function main() {
+    local filtered
     mkdir -p $DEST
     if [ $? -gt 0 ]; then
 	    error 3 "failed to create DEST $DEST"
@@ -1060,6 +1072,19 @@ function main() {
     sleep 60
 
     main_init
+
+    if [ ! -z "$REPO_FILTER" ]; then
+        echo "Applying REPO_FILTER $REPO_FILTER to REPOS_MVN_ORDERED $REPOS_MVN_ORDERED"
+        for repo in $REPOS_MVN_ORDERED; do
+            if [[ $repo =~ $REPO_FILTER ]]; then
+                echo "Skipping filtered repo $repo"
+            else
+                filtered="$filtered $repo"
+            fi
+        done
+        REPOS_MVN_ORDERED="$filtered"
+        echo "Filtered REPOS_MVN_ORDERED=$REPOS_MVN_ORDERED"
+    fi
 
     # compile first
     for repo in $REPOS_MVN_ORDERED; do
