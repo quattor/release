@@ -317,7 +317,7 @@
 <!-- template&#45;library&#45;core#150 -->
 <g id="node93" class="node"><title>template-library-core#150</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/150" xlink:title="quattor/functions/network: cleanup and removal of get_subnet_params function" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1096,-1718 958,-1718 958,-1664 1096,-1664 1096,-1718"/>
+<polygon fill="#6e5494" stroke="black" points="1096,-1718 958,-1718 958,-1664 1096,-1664 1096,-1718"/>
 <text text-anchor="middle" x="1027" y="-1695" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="1027" y="-1682" font-family="Sans" font-size="10.00">template-library-core#150</text>
 </a>
@@ -656,7 +656,7 @@
 <!-- template&#45;library&#45;core#148 -->
 <g id="node95" class="node"><title>template-library-core#148</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/148" xlink:title="quattor/functions/network: boot_nic returns last, not first boot device" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="1252" cy="-1667" rx="97.0803" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="1252" cy="-1667" rx="97.0803" ry="38.1838"/>
 <text text-anchor="middle" x="1252" y="-1671" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="1252" y="-1658" font-family="Sans" font-size="10.00">template-library-core#148</text>
 </a>
