@@ -518,7 +518,7 @@
 <!-- maven&#45;tools#148 -->
 <g id="node73" class="node"><title>maven-tools#148</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/148" xlink:title="Test::Quattor::ProfileCache: use a ccm.cfg per compiled profile" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="497,-1554 395,-1554 395,-1500 497,-1500 497,-1554"/>
+<polygon fill="#6e5494" stroke="black" points="497,-1554 395,-1554 395,-1500 497,-1500 497,-1554"/>
 <text text-anchor="middle" x="446" y="-1531" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="446" y="-1518" font-family="Sans" font-size="10.00">maven-tools#148</text>
 </a>
@@ -526,7 +526,7 @@
 <!-- maven&#45;tools#135 -->
 <g id="node75" class="node"><title>maven-tools#135</title>
 <a xlink:href="https://github.com/quattor/maven-tools/issues/135" xlink:title="tests try to generate tabcompletion" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="764" cy="-1290" rx="72.832" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="764" cy="-1290" rx="72.832" ry="38.1838"/>
 <text text-anchor="middle" x="764" y="-1294" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="764" y="-1281" font-family="Sans" font-size="10.00">maven-tools#135</text>
 </a>
