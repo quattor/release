@@ -13,9 +13,9 @@ logger = fancylogger.getLogger()
 namespace = "{http://quattor.org/pan/annotations}"
 
 
-def markdown_from_pan(panfile):
-    """Make markdown from a pan annotated file."""
-    logger.info("Making markdown from pan: %s." % panfile)
+def rst_from_pan(panfile):
+    """Make reStructuredText from a pan annotated file."""
+    logger.info("Making reStructuredText from pan: %s." % panfile)
     content = get_content_from_pan(panfile)
     basename = get_basename(panfile)
     output = render_template(content, basename)
@@ -50,8 +50,8 @@ def get_content_from_pan(panfile):
             types, functions = get_types_and_functions(xmlroot)
             if types is not None:
                 content['types'] = []
-                for type in types:
-                    content['types'].append(parse_type(type))
+                for ptype in types:
+                    content['types'].append(parse_type(ptype))
 
             if functions is not None:
                 content['functions'] = []
@@ -75,18 +75,18 @@ def build_annotations(pfile, basedir, outputdir):
         return False
 
 
-def validate_annotations(xmlfile):
+def validate_annotations(pfile):
     """
     Check if a pan annotations file is usable.
 
     e.g. XML is parsable and the root element is not empty.
     If it is usable, return the xml root element.
     """
-    xml = etree.parse(xmlfile)
+    xml = etree.parse(pfile)
     root = xml.getroot()
 
     if len(root) == 0:
-        logger.debug("%s is empty, skipping it." % xmlfile)
+        logger.debug("%s is empty, skipping it." % pfile)
         return None
     else:
         return root

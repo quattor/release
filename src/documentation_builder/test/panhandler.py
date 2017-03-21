@@ -142,7 +142,7 @@ class PanHandlerTest(TestCase):
             testfile.write(line)
         testfile.close()
 
-        self.assertTrue(filecmp.cmp("test/testdata/markdown_from_pan.md", testfile.name))
+        self.assertTrue(filecmp.cmp("test/testdata/rst_from_pan.md", testfile.name))
 
         # Test with only fields
         content = {'functions': [{'args': ['first number to add'], 'name': 'add'}]}
@@ -193,14 +193,14 @@ class PanHandlerTest(TestCase):
         # Test with valid input.
         self.assertEqual(panh.get_content_from_pan("test/testdata/pan_annotated_schema.pan"), expectedresult)
 
-    def test_markdown_from_pan(self):
-        """Test markdown_from_pan function."""
+    def test_rst_from_pan(self):
+        """Test rst_from_pan function."""
         # Test valid input
         testdir = os.path.join(self.tmpdir, "testdata/target")
         testfile = os.path.join(testdir, "pan_annotated_schema.pan")
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile)
-        testoutput = panh.markdown_from_pan(testfile)
+        testoutput = panh.rst_from_pan(testfile)
         print testoutput
         self.assertEqual(len(testoutput), 666)
         self.assertTrue("Types" in testoutput)
@@ -211,7 +211,7 @@ class PanHandlerTest(TestCase):
         testfile = os.path.join(testdir, "pan_empty_input.pan")
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_empty_input.pan", testfile)
-        self.assertIsNone(panh.markdown_from_pan(testfile))
+        self.assertIsNone(panh.rst_from_pan(testfile))
 
     def test_get_basename(self):
         """Test get_basename function."""

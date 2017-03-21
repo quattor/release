@@ -4,7 +4,7 @@ import re
 
 from vsc.utils import fancylogger
 from vsc.utils.run import run_asyncloop
-from panhandler import markdown_from_pan
+from panhandler import rst_from_pan
 
 logger = fancylogger.getLogger()
 
@@ -24,7 +24,7 @@ def generate_markdown(sources):
     for source in sources:
         logger.debug("Parsing %s." % source)
         if source.endswith(".pan"):
-            markdown = markdown_from_pan(source)
+            markdown = rst_from_pan(source)
             if markdown is not None:
                 markdownlist[source] = markdown
         else:

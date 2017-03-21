@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 """
-Documentation-builder generates markdown documentation.
+Documentation-builder generates reStructuredText documentation.
 
 It get this from:
  - configuration-modules-core perl documentation
