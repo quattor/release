@@ -4,37 +4,34 @@ import os
 import re
 import tempfile
 import shutil
-from template import Template, TemplateException
+import jinja2
 from vsc.utils import fancylogger
-from vsc.utils.run import run_asyncloop
+from vsc.utils.run import asyncloop
 from lxml import etree
 
 logger = fancylogger.getLogger()
 namespace = "{http://quattor.org/pan/annotations}"
 
 
-def markdown_from_pan(panfile):
-    """Make markdown from a pan annotated file."""
-    logger.info("Making markdown from pan: %s." % panfile)
+def rst_from_pan(panfile, title):
+    """Make reStructuredText from a pan annotated file."""
+    logger.info("Making rst from pan: %s." % panfile)
     content = get_content_from_pan(panfile)
     basename = get_basename(panfile)
-    output = render_template(content, basename)
+    output = render_template(content, basename, title)
     if len(output) == 0:
         return None
     else:
         return output
 
 
-def render_template(content, basename):
+def render_template(content, basename, title):
     """Render the template."""
-    try:
-        name = 'pan.tt'
-        template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
-        output = template.process(name, {'content': content, 'basename': basename})
-    except TemplateException as e:
-        msg = "Failed to render template %s with data %s: %s." % (name, content, e)
-        logger.error(msg)
-        raise TemplateException('render', msg)
+    name = 'pan.j2'
+    loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'jinja'))
+    jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
+    template = jenv.get_template('pan.j2')
+    output = template.render(content=content, basename=basename, title=title)
     return output
 
 
@@ -50,8 +47,8 @@ def get_content_from_pan(panfile):
             types, functions = get_types_and_functions(xmlroot)
             if types is not None:
                 content['types'] = []
-                for type in types:
-                    content['types'].append(parse_type(type))
+                for ptype in types:
+                    content['types'].append(parse_type(ptype))
 
             if functions is not None:
                 content['functions'] = []
@@ -66,7 +63,7 @@ def build_annotations(pfile, basedir, outputdir):
     panccommand = ["panc-annotations", "--output-dir", outputdir, "--base-dir", basedir]
     panccommand.append(pfile)
     logger.debug("Running %s." % panccommand)
-    ec, output = output = run_asyncloop(panccommand)
+    ec, output = output = asyncloop(panccommand)
     logger.debug(output)
     if ec == 0 and os.path.exists(os.path.join(outputdir, "%s.annotation.xml" % pfile)):
         return True
@@ -75,18 +72,18 @@ def build_annotations(pfile, basedir, outputdir):
         return False
 
 
-def validate_annotations(xmlfile):
+def validate_annotations(pfile):
     """
     Check if a pan annotations file is usable.
 
     e.g. XML is parsable and the root element is not empty.
     If it is usable, return the xml root element.
     """
-    xml = etree.parse(xmlfile)
+    xml = etree.parse(pfile)
     root = xml.getroot()
 
     if len(root) == 0:
-        logger.debug("%s is empty, skipping it." % xmlfile)
+        logger.debug("%s is empty, skipping it." % pfile)
         return None
     else:
         return root
@@ -114,6 +111,8 @@ def find_description(element):
         desc = element.find("./%sdesc" % namespace)
     return desc
 
+def cleanup_description(desc):
+    return " ".join(desc.replace('\n', '').replace('\r', '').split())
 
 def parse_type(ptype):
     """Parse a type from an XML Element Tree."""
@@ -121,7 +120,7 @@ def parse_type(ptype):
     typeinfo['name'] = ptype.get('name')
     desc = find_description(ptype)
     if desc is not None:
-        typeinfo['desc'] = desc.text
+        typeinfo['desc'] = cleanup_description(desc.text)
 
     typeinfo['fields'] = []
 
@@ -130,7 +129,7 @@ def parse_type(ptype):
         fieldinfo['name'] = field.get('name')
         desc = find_description(field)
         if desc is not None:
-            fieldinfo['desc'] = desc.text
+            fieldinfo['desc'] = cleanup_description(desc.text)
 
         fieldinfo['required'] = field.get('required')
         basetype = field.find(".//%sbasetype" % namespace)
@@ -153,10 +152,10 @@ def parse_function(function):
     functinfo['name'] = function.get('name')
     desc = find_description(function)
     if desc is not None:
-        functinfo['desc'] = desc.text
+        functinfo['desc'] = cleanup_description(desc.text)
     functinfo['args'] = []
     for arg in function.findall(".//%sarg" % namespace):
-        functinfo['args'].append(arg.text)
+        functinfo['args'].append(cleanup_description(arg.text))
 
     return functinfo
 

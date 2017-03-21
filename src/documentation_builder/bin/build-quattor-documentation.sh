@@ -19,14 +19,13 @@ cd ..
 # Build the whole documentation
 quattor-documentation-builder -c -m $tmpdir/src/ -o $tmpdir/output/ --info || { echo 'Something went wrong building documentation.' ; exit 1 ; }
 
-# get required index which is not generated
-curl https://raw.githubusercontent.com/quattor/documentation/master/docs/index.md -o $tmpdir/output/docs/index.md
+# checkout current test build
+git clone https://github.com/wdpypere/docs-test-comps.git
+# build sphinx site
+cd docs-test-comps/docs
+rm -rf components CAF CCM components-grid Unittesting
+mv $tmpdir/output/docs/* .
+make clean html
 
-cd $tmpdir/output
-mkdocs build --clean
-
-# Get some tests up
-curl https://raw.githubusercontent.com/quattor/documentation/master/Gemfile -o Gemfile
-bundle
-
-bundle exec htmlproofer  --check-html ./site/ --file-ignore ./site/base.html,./site/breadcrumbs.html,./site/footer.html,./site/toc.html,./site/versions.html || { echo 'build test errors detected. stopping.' ; exit 1 ; }
+# show it
+firefox .build/html/index.html

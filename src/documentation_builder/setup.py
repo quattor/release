@@ -12,7 +12,7 @@ if __name__ == '__main__':
         name = 'documentation-builder',
         description = 'Documentation Builder for Quattor',
         url='https://github.com/quattor/release/src/documentation_builder/',
-        version = '0.0.2',
+        version = '0.0.3',
         author = 'Wouter Depypere',
         author_email = 'wouter.depypere@ugent.be',
         packages = find_packages('lib'),
@@ -21,7 +21,7 @@ if __name__ == '__main__':
         install_requires = [
             'vsc-utils',
             'vsc-base',
-            'Template-Python',
+            'jinja2',
             'lxml',
         ],
         test_suite = "test",

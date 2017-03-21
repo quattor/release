@@ -3,9 +3,9 @@
 import os
 import sys
 import re
-from template import Template, TemplateException
+import codecs
 from sourcehandler import get_source_files
-from markdownhandler import generate_markdown, cleanup_content
+from rsthandler import generate_rst, cleanup_content
 from config import build_repository_map
 from vsc.utils import fancylogger
 
@@ -22,7 +22,7 @@ def build_documentation(repository_location, cleanup_options, compile, output_lo
     if not repository_map:
         sys.exit(1)
 
-    markdownlist = {}
+    rstlist = {}
 
     for repository in repository_map.keys():
         logger.info("Building documentation for %s." % repository)
@@ -32,12 +32,13 @@ def build_documentation(repository_location, cleanup_options, compile, output_lo
         logger.info("Path: %s." % fullpath)
         sources = get_source_files(fullpath, compile)
         logger.debug("Sources:" % sources)
-        markdown = generate_markdown(sources)
-        cleanup_content(markdown, cleanup_options)
-        markdownlist[repository] = markdown
+        sources = make_titles(sources, repository_map[repository]['targets'])
+        rst = generate_rst(sources)
+        cleanup_content(rst, cleanup_options)
+        rstlist[repository] = rst
 
-    site_pages = build_site_structure(markdownlist, repository_map)
-    site_pages = make_interlinks(site_pages)
+    site_pages = build_site_structure(rstlist, repository_map)
+    # site_pages = make_interlinks(site_pages) # disabled for now
     write_site(site_pages, output_location, "docs")
     return True
 
@@ -79,31 +80,57 @@ def check_commands(runmaven):
         if not which("mvn"):
             logger.error("The command mvn is not available on this system, please install maven.")
             return False
-    if not which("pod2markdown"):
-        logger.error("The command pod2markdown is not available on this system, please install pod2markdown.")
+    if not which("pod2rst"):
+        logger.error("The command pod2rst is not available on this system, please install pod2rst.")
         return False
     return True
 
 
-def build_site_structure(markdownlist, repository_map):
+def make_titles(sources, targets):
+    """Add titles to sources."""
+    new_sources = {}
+    for source in sources:
+        title = make_title_from_source_path(source, targets)
+        new_sources[title] = source
+
+    return new_sources
+
+
+def make_title_from_source_path(source, targets):
+    """Make a title from source path."""
+    found = False
+    for target in targets:
+        if target in source and not found:
+            title = source.split(target)[-1]
+            title = os.path.splitext(title)[0].replace("/", " :: ")
+            return title
+        if not found:
+            logger.error("No suitable target found for %s in %s." % (source, targets))
+
+    return False
+
+
+def build_site_structure(rstlist, repository_map):
     """Make a mapping of files with their new names for the website."""
     sitepages = {}
-    for repo, markdowns in markdownlist.iteritems():
+    for repo, rsts in rstlist.iteritems():
         sitesection = repository_map[repo]['sitesection']
 
         sitepages[sitesection] = {}
 
         targets = repository_map[repo]['targets']
-        for source, markdown in markdowns.iteritems():
+        for source, rst in rsts.iteritems():
             found = False
             for target in targets:
                 if target in source and not found:
                     newname = source.split(target)[-1]
-                    newname = os.path.splitext(newname)[0].replace("/", "::") + ".md"
-                    sitepages[sitesection][newname] = markdown
+                    newname = os.path.splitext(newname)[0].replace("/", "_") + ".rst"
+                    sitepages[sitesection][newname] = rst
                     found = True
             if not found:
                 logger.error("No suitable target found for %s in %s." % (source, targets))
+
+    logger.debug("sitepages: %s" % sitepages)
     return sitepages
 
 
@@ -149,35 +176,11 @@ def replace_regex_link(pages, regex, basename, link):
 
 
 def write_site(sitepages, location, docsdir):
-    """Write the pages for the website to disk and build a toc."""
-    toc = {}
+    """Write the pages for the website to disk."""
     for subdir, pages in sitepages.iteritems():
-        toc[subdir] = set()
         fullsubdir = os.path.join(location, docsdir, subdir)
         if not os.path.exists(fullsubdir):
             os.makedirs(fullsubdir)
         for pagename, content in pages.iteritems():
-            with open(os.path.join(fullsubdir, pagename), 'w') as fih:
+            with codecs.open(os.path.join(fullsubdir, pagename), 'w', encoding='utf-8') as fih:
                 fih.write(content)
-
-            toc[subdir].add(pagename)
-
-        # Sort the toc, ignore the case.
-        toc[subdir] = sorted(toc[subdir], key=lambda s: s.lower())
-
-    write_toc(toc, location)
-
-
-def write_toc(toc, location):
-    """Write the toc to disk."""
-    try:
-        name = 'toc.tt'
-        template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
-        tocfile = template.process(name, {'toc': toc})
-    except TemplateException as e:
-        msg = "Failed to render template %s with data %s: %s." % (name, toc, e)
-        logger.error(msg)
-        raise TemplateException('render', msg)
-
-    with open(os.path.join(location, "mkdocs.yml"), 'w') as fih:
-        fih.write(tocfile)
