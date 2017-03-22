@@ -1,5 +1,8 @@
+component-test schema
+=====================
 
-### Types
+Types
+-----
 
  - `/software/component-test/testtype`
     - Description: test type.
@@ -13,7 +16,8 @@
         - Optional
         - Type: string
 
-### Functions
+Functions
+---------
 
  - add
     - Description: simple addition of two numbers

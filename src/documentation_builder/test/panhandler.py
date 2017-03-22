@@ -134,7 +134,7 @@ class PanHandlerTest(TestCase):
     def test_render_template(self):
         """Test render_template function."""
         content = panh.get_content_from_pan("test/testdata/pan_annotated_schema.pan")
-        testfile = open(os.path.join(self.tmpdir, "test.md"), 'w')
+        testfile = open(os.path.join(self.tmpdir, "test.rst"), 'w')
 
         output = panh.render_template(content, "component-test")
         print output
@@ -142,7 +142,7 @@ class PanHandlerTest(TestCase):
             testfile.write(line)
         testfile.close()
 
-        self.assertTrue(filecmp.cmp("test/testdata/rst_from_pan.md", testfile.name))
+        self.assertTrue(filecmp.cmp("test/testdata/rst_from_pan.rst", testfile.name))
 
         # Test with only fields
         content = {'functions': [{'args': ['first number to add'], 'name': 'add'}]}
@@ -150,15 +150,18 @@ class PanHandlerTest(TestCase):
         output = panh.render_template(content, "component-test")
         print output
 
-        expectedoutput = "\n### Functions\n\n - add\n    - Arguments:\n        - first number to add\n"
+        expectedoutput = 'component-test schema\n=====================\n\nFunctions\n---------\n\n - add\n\
+    - Arguments:\n        - first number to add\n'
+
         self.assertEquals(output, expectedoutput)
 
         # Test with only Types
         content = {'types': [{'fields': [{'required': 'false', 'type': 'string', 'name': 'ca'}], 'name': 'testtype'}]}
         output = panh.render_template(content, "component-test")
         print output
-        expectedoutput = "\n### Types\n\n - `/software/component-test/testtype`\n    - `/software/component-test/testtype/ca`\n\
-        - Optional\n        - Type: string\n"
+        expectedoutput = 'component-test schema\n=====================\n\nTypes\n-----\n\n\
+ - `/software/component-test/testtype`\n    - `/software/component-test/testtype/ca`\n\
+        - Optional\n        - Type: string\n'
         self.assertEquals(output, expectedoutput)
 
     def test_get_content_from_pan(self):
@@ -202,7 +205,7 @@ class PanHandlerTest(TestCase):
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile)
         testoutput = panh.rst_from_pan(testfile)
         print testoutput
-        self.assertEqual(len(testoutput), 666)
+        self.assertEqual(len(testoutput), 530)
         self.assertTrue("Types" in testoutput)
         self.assertTrue("Functions" in testoutput)
 

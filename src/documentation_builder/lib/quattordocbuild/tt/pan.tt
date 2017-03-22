@@ -1,6 +1,11 @@
-[% IF content.types.defined and content.types.size -%]
+[%- IF content.types.defined and content.types.size or content.functions.defined and content.functions.size -%]
+[% basename %] schema
+=====================
+[% END  %]
+[%- IF content.types.defined and content.types.size -%]
 
-### Types
+Types
+-----
 
 [% FOREACH type IN content.types -%]
  - `/software/[% basename %]/[% type.name %]`
@@ -31,7 +36,8 @@
 [% END -%]
 [% IF content.functions.defined and content.functions.size -%]
 
-### Functions
+Functions
+---------
 
 [% FOREACH function IN content.functions -%]
  - [% function.name %]
