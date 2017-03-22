@@ -241,7 +241,7 @@
 <!-- CCM#162 -->
 <g id="node34" class="node"><title>CCM#162</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/162" xlink:title="Cleanup: move internal modules in subdirectories and remove/integrate util scripts" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="141,-1554 63,-1554 63,-1500 141,-1500 141,-1554"/>
+<polygon fill="#6e5494" stroke="black" points="141,-1554 63,-1554 63,-1500 141,-1500 141,-1554"/>
 <text text-anchor="middle" x="102" y="-1531" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-1518" font-family="Sans" font-size="10.00">CCM#162</text>
 </a>
