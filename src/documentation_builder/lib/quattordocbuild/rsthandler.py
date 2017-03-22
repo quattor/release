@@ -1,6 +1,7 @@
-"""Module to handle markdown operations."""
+"""Module to handle rst operations."""
 
 import re
+import os
 
 from vsc.utils import fancylogger
 from vsc.utils.run import run_asyncloop
@@ -15,34 +16,34 @@ PATHREGEX = re.compile(r'(\s+)((?:/[\w{}]+)+\.?\w*)(\s*)')
 EXAMPLEMAILS = ["example", "username", "system.admin"]
 
 
-def generate_markdown(sources):
-    """Generate markdown."""
-    logger.info("Generating md files.")
+def generate_rst(sources):
+    """Generate rst."""
+    logger.info("Generating rst files.")
 
-    markdownlist = {}
+    rstlist = {}
 
     for source in sources:
         logger.debug("Parsing %s." % source)
         if source.endswith(".pan"):
-            markdown = rst_from_pan(source)
-            if markdown is not None:
-                markdownlist[source] = markdown
+            rst = rst_from_pan(source)
+            if rst is not None:
+                rstlist[source] = rst
         else:
-            markdown = rst_from_perl(source)
-            if markdown is not None:
-                markdownlist[source] = markdown
+            rst = rst_from_perl(source)
+            if rst is not None:
+                rstlist[source] = rst
 
-    return markdownlist
+    return rstlist
 
 
-def rst_from_perl(podfile):
+def rst_from_perl(podfile, name):
     """
     Take a perl file and converts it to a reStrcturedText with the help of pod2rst.
 
     Returns True if pod2rst worked, False if it failed.
     """
-    logger.info("Making markdown from perl: %s." % podfile)
-    ec, output = run_asyncloop("pod2rst --infile %s" % podfile)
+    logger.info("Making rst from perl: %s." % podfile)
+    ec, output = run_asyncloop("pod2rst --infile %s --title %s" % (podfile, name))
     logger.debug(output)
     if ec != 0 or output == "\n":
         logger.warning("pod2rst failed on %s." % podfile)
@@ -51,22 +52,22 @@ def rst_from_perl(podfile):
         return output
 
 
-def cleanup_content(markdown, cleanup_options):
+def cleanup_content(rst, cleanup_options):
     """Run several cleaners on the content we get from perl files."""
-    for source, content in markdown.iteritems():
+    for source, content in rst.iteritems():
         if not source.endswith('.pan'):
-            for fn in ['remove_emails', 'remove_headers', 'remove_whitespace', 'codify_paths']:
+            for fn in ['remove_emails', 'codify_paths']:
                 if cleanup_options[fn]:
                     content = globals()[fn](content)
-            markdown[source] = content
+            rst[source] = content
 
-    return markdown
+    return rst
 
 
-def remove_emails(markdown):
-    """Remove email adresses from markdown."""
+def remove_emails(rst):
+    """Remove email adresses from rst."""
     replace = False
-    for email in re.findall(MAILREGEX, markdown):
+    for email in re.findall(MAILREGEX, rst):
         logger.debug("Found %s." % email[0])
         replace = True
         if email[0].startswith('//'):
@@ -77,32 +78,14 @@ def remove_emails(markdown):
 
         if replace:
             logger.debug("Removed it from line.")
-            markdown = markdown.replace(email[0], '')
+            rst = rst.replace(email[0], '')
 
-    return markdown
-
-
-def remove_headers(markdown):
-    """Remove MAINTAINER and AUTHOR headers from md files."""
-    for header in ['# AUTHOR', '# MAINTAINER']:
-        if header in markdown:
-            markdown = markdown.replace(header, '')
-
-    return markdown
+    return rst
 
 
-def remove_whitespace(markdown):
-    """Remove extra whitespace (3 line breaks)."""
-    if '\n\n\n' in markdown:
-        markdown = markdown.replace('\n\n\n', '\n')
-        markdown = remove_whitespace(markdown)
-
-    return markdown
-
-
-def codify_paths(markdown):
+def codify_paths(rst):
     """Put paths into code tags."""
-    markdown, counter = PATHREGEX.subn(r'\1`\2`\3', markdown)
+    rst, counter = PATHREGEX.subn(r'\1`\2`\3', rst)
     if counter > 0:
-        markdown = codify_paths(markdown)
-    return markdown
+        rst = codify_paths(rst)
+    return rst

@@ -1,7 +1,3 @@
-[%- IF content.types.defined and content.types.size or content.functions.defined and content.functions.size -%]
-[% basename %] schema
-=====================
-[% END  %]
 [%- IF content.types.defined and content.types.size -%]
 
 Types

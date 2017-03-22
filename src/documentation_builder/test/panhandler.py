@@ -150,8 +150,7 @@ class PanHandlerTest(TestCase):
         output = panh.render_template(content, "component-test")
         print output
 
-        expectedoutput = 'component-test schema\n=====================\n\nFunctions\n---------\n\n - add\n\
-    - Arguments:\n        - first number to add\n'
+        expectedoutput = '\nFunctions\n---------\n\n - add\n    - Arguments:\n        - first number to add\n'
 
         self.assertEquals(output, expectedoutput)
 
@@ -159,8 +158,7 @@ class PanHandlerTest(TestCase):
         content = {'types': [{'fields': [{'required': 'false', 'type': 'string', 'name': 'ca'}], 'name': 'testtype'}]}
         output = panh.render_template(content, "component-test")
         print output
-        expectedoutput = 'component-test schema\n=====================\n\nTypes\n-----\n\n\
- - `/software/component-test/testtype`\n    - `/software/component-test/testtype/ca`\n\
+        expectedoutput = '\nTypes\n-----\n\n - `/software/component-test/testtype`\n    - `/software/component-test/testtype/ca`\n\
         - Optional\n        - Type: string\n'
         self.assertEquals(output, expectedoutput)
 
@@ -205,7 +203,7 @@ class PanHandlerTest(TestCase):
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile)
         testoutput = panh.rst_from_pan(testfile)
         print testoutput
-        self.assertEqual(len(testoutput), 530)
+        self.assertEqual(len(testoutput), 492)
         self.assertTrue("Types" in testoutput)
         self.assertTrue("Functions" in testoutput)
 

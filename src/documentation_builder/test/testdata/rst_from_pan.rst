@@ -1,5 +1,3 @@
-component-test schema
-=====================
 
 Types
 -----

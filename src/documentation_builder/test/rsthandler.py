@@ -15,7 +15,7 @@ class RstHandlerTest(TestCase):
     """Test class for rsthandler."""
 
     def setUp(self):
-        """Set up temmp dir for tests."""
+        """Set up temp dir for tests."""
         self.tmpdir = mkdtemp()
 
     def tearDown(self):
@@ -39,15 +39,15 @@ class RstHandlerTest(TestCase):
         file.close()
         self.assertTrue(filecmp.cmp(testoutput, expectedoutput))
 
-    def test_generate_markdown(self):
-        """Test generate_markdown."""
+    def test_generate_rst(self):
+        """Test generate_rst."""
         testdir = os.path.join(self.tmpdir, "testdata/target")
         testfile1 = os.path.join(testdir, "pan_annotated_schema.pan")
         testfile2 = os.path.join(testdir, "pod_test_input.pod")
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile1)
         shutil.copy("test/testdata/pod_test_input.pod", testfile2)
-        output = rsth.generate_markdown([testfile1, testfile2])
+        output = rsth.generate_rst([testfile1, testfile2])
         self.assertEquals(len(output), 2)
         self.assertEquals(sorted(output.keys()), [testfile1, testfile2])
 
@@ -59,20 +59,6 @@ class RstHandlerTest(TestCase):
         self.assertEquals(rsth.remove_emails(mailtext), mailtext)
         mailtext = "Hello: example@example.com"
         self.assertEquals(rsth.remove_emails(mailtext), mailtext)
-
-    def test_remove_headers(self):
-        """Test remove_headers function."""
-        headertext = "This is a \n test TEXT with AUTH and ication."
-        self.assertEquals(rsth.remove_headers(headertext), headertext)
-        headertext = "This is # MAINTAINER and # AUTHOR text \n with newlines."
-        self.assertEquals(rsth.remove_headers(headertext), "This is  and  text \n with newlines.")
-
-    def test_remove_whitespace(self):
-        """Test remove_whitespace function."""
-        whitetext = "this \n\n\n\n\n is a bit too much."
-        self.assertEquals(rsth.remove_whitespace(whitetext), "this \n is a bit too much.")
-        whitetext = "this \n is much better \n\n."
-        self.assertEquals(rsth.remove_whitespace(whitetext), whitetext)
 
     def test_codify_paths(self):
         """Test codify_paths function."""
@@ -90,11 +76,9 @@ class RstHandlerTest(TestCase):
         opts = {
             'codify_paths': True,
             'remove_emails': True,
-            'remove_whitespace': True,
-            'remove_headers': True,
         }
-        text = {"/tmp/testfile": "# MAINTAINER \n# Title \n\n\n\n\n /path/to/test/on \n test@test.com"}
-        self.assertEquals(rsth.cleanup_content(text, opts), {'/tmp/testfile': ' \n# Title \n `/path/to/test/on` \n '})
+        text = {"/tmp/testfile": "\n/path/to/test/on \n test@test.com"}
+        self.assertEquals(rsth.cleanup_content(text, opts), {'/tmp/testfile': '\n`/path/to/test/on` \n '})
 
     def suite(self):
         """Return all the testcases in this module."""

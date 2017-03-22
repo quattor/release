@@ -1,12 +1,12 @@
-site_name: Quattor Documentation
+Documentation
+-------------
+[%- FOREACH subdir_pages IN toc.pairs.sort %]
 
-theme: 'readthedocs'
-
-pages:
-- introduction: 'index.md'
-[% FOREACH subdir_pages IN toc.pairs.sort -%]
-- [% subdir_pages.key %]:
+.. toctree::
+    :caption: [% subdir_pages.key %]
+    :maxdepth: 1
+    
 [%-     FOREACH page IN subdir_pages.value %]
-    - [% page.split('.').first %]: [% subdir_pages.key %]/[% page -%]
-[%     END %]
+    [% subdir_pages.key %]/[% page.split('.').first %]
+[%-     END -%]
 [% END -%]

@@ -29,17 +29,13 @@ if __name__ == '__main__':
         'modules_location': ('The location of the repo checkout.', None, 'store', None, 'm'),
         'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
-        'remove_emails': ('Remove email addresses from generated md files.', None, 'store_true', True, 'r'),
-        'remove_whitespace': ('Remove whitespace (\n\n\n) from md files.', None, 'store_true', True, 'w'),
-        'remove_headers': ('Remove unneeded headers from files (MAINTAINER and AUTHOR).', None, 'store_true', True, 'R'),
+        'remove_emails': ('Remove email addresses from generated rst files.', None, 'store_true', True, 'r'),
         'codify_paths': ('Put paths inside code tags.', None, 'store_true', True, 'p'),
     }
     GO = simple_option(OPTIONS)
     logger.info("Starting main.")
     cleanup_options = {
         'remove_emails': GO.options.remove_emails,
-        'remove_whitespace': GO.options.remove_whitespace,
-        'remove_headers': GO.options.remove_headers,
         'codify_paths': GO.options.codify_paths,
     }
     main(GO.options.modules_location, GO.options.output_location, GO.options.maven_compile, cleanup_options)

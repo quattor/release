@@ -15,7 +15,7 @@ namespace = "{http://quattor.org/pan/annotations}"
 
 def rst_from_pan(panfile):
     """Make reStructuredText from a pan annotated file."""
-    logger.info("Making reStructuredText from pan: %s." % panfile)
+    logger.info("Making rst from pan: %s." % panfile)
     content = get_content_from_pan(panfile)
     basename = get_basename(panfile)
     output = render_template(content, basename)

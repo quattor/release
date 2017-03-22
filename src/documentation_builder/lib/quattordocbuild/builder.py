@@ -5,7 +5,7 @@ import sys
 import re
 from template import Template, TemplateException
 from sourcehandler import get_source_files
-from rsthandler import generate_markdown, cleanup_content
+from rsthandler import generate_rst, cleanup_content
 from config import build_repository_map
 from vsc.utils import fancylogger
 
@@ -22,7 +22,7 @@ def build_documentation(repository_location, cleanup_options, compile, output_lo
     if not repository_map:
         sys.exit(1)
 
-    markdownlist = {}
+    rstlist = {}
 
     for repository in repository_map.keys():
         logger.info("Building documentation for %s." % repository)
@@ -32,12 +32,12 @@ def build_documentation(repository_location, cleanup_options, compile, output_lo
         logger.info("Path: %s." % fullpath)
         sources = get_source_files(fullpath, compile)
         logger.debug("Sources:" % sources)
-        markdown = generate_markdown(sources)
-        cleanup_content(markdown, cleanup_options)
-        markdownlist[repository] = markdown
+        rst = generate_rst(sources)
+        cleanup_content(rst, cleanup_options)
+        rstlist[repository] = rst
 
-    site_pages = build_site_structure(markdownlist, repository_map)
-    site_pages = make_interlinks(site_pages)
+    site_pages = build_site_structure(rstlist, repository_map)
+    # site_pages = make_interlinks(site_pages) # disabled for now
     write_site(site_pages, output_location, "docs")
     return True
 
@@ -85,22 +85,22 @@ def check_commands(runmaven):
     return True
 
 
-def build_site_structure(markdownlist, repository_map):
+def build_site_structure(rstlist, repository_map):
     """Make a mapping of files with their new names for the website."""
     sitepages = {}
-    for repo, markdowns in markdownlist.iteritems():
+    for repo, rsts in rstlist.iteritems():
         sitesection = repository_map[repo]['sitesection']
 
         sitepages[sitesection] = {}
 
         targets = repository_map[repo]['targets']
-        for source, markdown in markdowns.iteritems():
+        for source, rst in rsts.iteritems():
             found = False
             for target in targets:
                 if target in source and not found:
                     newname = source.split(target)[-1]
-                    newname = os.path.splitext(newname)[0].replace("/", "::") + ".md"
-                    sitepages[sitesection][newname] = markdown
+                    newname = os.path.splitext(newname)[0].replace("/", "::") + ".rst"
+                    sitepages[sitesection][newname] = rst
                     found = True
             if not found:
                 logger.error("No suitable target found for %s in %s." % (source, targets))
@@ -179,5 +179,5 @@ def write_toc(toc, location):
         logger.error(msg)
         raise TemplateException('render', msg)
 
-    with open(os.path.join(location, "mkdocs.yml"), 'w') as fih:
+    with open(os.path.join(location, "gendocs.rst"), 'w') as fih:
         fih.write(tocfile)
