@@ -17,7 +17,7 @@
 <!-- aii#263 -->
 <g id="node1" class="node"><title>aii#263</title>
 <a xlink:href="https://github.com/quattor/aii/pull/263" xlink:title="pxelinux: allow network device names with pci function and/or device" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="141,-2643 63,-2643 63,-2589 141,-2589 141,-2643"/>
+<polygon fill="#6e5494" stroke="black" points="141,-2643 63,-2643 63,-2589 141,-2589 141,-2643"/>
 <text text-anchor="middle" x="102" y="-2620" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-2607" font-family="Sans" font-size="10.00">aii#263</text>
 </a>
@@ -25,7 +25,7 @@
 <!-- aii#261 -->
 <g id="node3" class="node"><title>aii#261</title>
 <a xlink:href="https://github.com/quattor/aii/issues/261" xlink:title="aii-pxelinux does not accept /dev/enp4s0f0" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2605" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-2605" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-2609" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="384" y="-2596" font-family="Sans" font-size="10.00">aii#261</text>
 </a>
