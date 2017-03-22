@@ -55,7 +55,7 @@ def cleanup_content(markdown, cleanup_options):
     """Run several cleaners on the content we get from perl files."""
     for source, content in markdown.iteritems():
         if not source.endswith('.pan'):
-            for fn in ['remove_emails', 'remove_headers', 'small_titles', 'remove_whitespace', 'codify_paths']:
+            for fn in ['remove_emails', 'remove_headers', 'remove_whitespace', 'codify_paths']:
                 if cleanup_options[fn]:
                     content = globals()[fn](content)
             markdown[source] = content
@@ -97,13 +97,6 @@ def remove_whitespace(markdown):
         markdown = markdown.replace('\n\n\n', '\n')
         markdown = remove_whitespace(markdown)
 
-    return markdown
-
-
-def small_titles(markdown):
-    """Make titles smaller, eg replace '# ' with '### ' at the start of a line."""
-    markdown = re.sub(r'\n# |^# ', '\n### ', markdown)
-    markdown = re.sub(r'\n## |^##', '\n#### ', markdown)
     return markdown
 
 

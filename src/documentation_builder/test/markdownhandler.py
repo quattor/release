@@ -73,16 +73,6 @@ class MarkdownHandlerTest(TestCase):
         whitetext = "this \n is much better \n\n."
         self.assertEquals(mdh.remove_whitespace(whitetext), whitetext)
 
-    def test_small_titles(self):
-        """Test small_titles function."""
-        titletext = "\n\n# very big title\n it is."
-        self.assertEquals(mdh.small_titles(titletext), '\n\n### very big title\n it is.')
-        titletext = "\n## Smaller title."
-        self.assertEquals(mdh.small_titles(titletext), '\n#### Smaller title.')
-        titletext = "# test with set() and ## others Should \n# Deliver \n # not someting weird."
-        expected = '\n### test with set() and ## others Should \n### Deliver \n # not someting weird.'
-        self.assertEquals(mdh.small_titles(titletext), expected)
-
     def test_codify_paths(self):
         """Test codify_paths function."""
         txt = "leave / me alone//"
@@ -101,10 +91,9 @@ class MarkdownHandlerTest(TestCase):
             'remove_emails': True,
             'remove_whitespace': True,
             'remove_headers': True,
-            'small_titles': True
         }
         text = {"/tmp/testfile": "# MAINTAINER \n# Title \n\n\n\n\n /path/to/test/on \n test@test.com"}
-        self.assertEquals(mdh.cleanup_content(text, opts), {'/tmp/testfile': ' \n### Title \n `/path/to/test/on` \n '})
+        self.assertEquals(mdh.cleanup_content(text, opts), {'/tmp/testfile': ' \n# Title \n `/path/to/test/on` \n '})
 
     def suite(self):
         """Return all the testcases in this module."""
