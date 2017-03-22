@@ -8,7 +8,7 @@ Documentation builder for the Quattor repositories.
  Usage: quattor-documentation-builder [options]
 
 
-  Documentation-builder generates markdown documentation.
+  Documentation-builder generates reStructuredText documentation.
 
   It get this from:
    - configuration-modules-core perl documentation
@@ -34,14 +34,13 @@ Documentation builder for the Quattor repositories.
     -m MODULES_LOCATION, --modules_location=MODULES_LOCATION
                         The location of the repo checkout.
     -o OUTPUT_LOCATION, --output_location=OUTPUT_LOCATION
-                        The location where the output markdown files should be written to.
+                        The location where the output rst files should be written to.
     -r, --remove_emails
                         Remove email addresses from generated md files. (def True)
     -R, --remove_headers
                         Remove unneeded headers from files (MAINTAINER and AUTHOR). (def True)
     -w, --remove_whitespace
                         Remove whitespace (   ) from md files. (def True)
-    -s, --small_titles  Decrease the title size in the md files. (def True)
 
   Debug and logging options (configfile section MAIN):
     -d, --debug         Enable debug log mode (def False)

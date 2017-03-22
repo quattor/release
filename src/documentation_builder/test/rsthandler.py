@@ -1,4 +1,4 @@
-"""Test class for markdownhandler."""
+"""Test class for rsthandler."""
 
 import sys
 import os
@@ -8,11 +8,11 @@ from tempfile import mkdtemp
 from unittest import TestCase, main, TestLoader
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../lib')))  # noqa
-from quattordocbuild import markdownhandler as mdh
+from quattordocbuild import rsthandler as rsth
 
 
-class MarkdownHandlerTest(TestCase):
-    """Test class for markdownhandler."""
+class RstHandlerTest(TestCase):
+    """Test class for rsthandler."""
 
     def setUp(self):
         """Set up temmp dir for tests."""
@@ -22,17 +22,18 @@ class MarkdownHandlerTest(TestCase):
         """Remove temp dir."""
         shutil.rmtree(self.tmpdir)
 
-    def test_markdown_from_perl(self):
-        """Test convert_pod_to_markdown function."""
+    def test_rst_from_perl(self):
+        """Test rst_from_perl function."""
         testinput = "test/testdata/pod_test_input.pod"
-        testoutput = os.path.join(self.tmpdir, "test.md")
-        expectedoutput = "test/testdata/markdown_from_pod.md"
+        testoutput = os.path.join(self.tmpdir, "test.rst")
+        expectedoutput = "test/testdata/rst_from_pod.rst"
 
         # Get False from bogus input
-        self.assertFalse(mdh.markdown_from_perl("test"))
+        self.assertFalse(rsth.rst_from_perl("nonexistent_file"))
 
         # Verify content
-        output = mdh.markdown_from_perl(testinput)
+        output = rsth.rst_from_perl(testinput)
+        print output
         file = open(testoutput, 'w')
         file.write(output)
         file.close()
@@ -46,43 +47,43 @@ class MarkdownHandlerTest(TestCase):
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile1)
         shutil.copy("test/testdata/pod_test_input.pod", testfile2)
-        output = mdh.generate_markdown([testfile1, testfile2])
+        output = rsth.generate_markdown([testfile1, testfile2])
         self.assertEquals(len(output), 2)
         self.assertEquals(sorted(output.keys()), [testfile1, testfile2])
 
     def test_remove_emails(self):
         """Test remove_emails function."""
         mailtext = "Hello: mail@mailtest.mail mister."
-        self.assertEquals(mdh.remove_emails(mailtext), "Hello:  mister.")
+        self.assertEquals(rsth.remove_emails(mailtext), "Hello:  mister.")
         mailtext = "Hello: //mail@mailtest.mail mister."
-        self.assertEquals(mdh.remove_emails(mailtext), mailtext)
+        self.assertEquals(rsth.remove_emails(mailtext), mailtext)
         mailtext = "Hello: example@example.com"
-        self.assertEquals(mdh.remove_emails(mailtext), mailtext)
+        self.assertEquals(rsth.remove_emails(mailtext), mailtext)
 
     def test_remove_headers(self):
         """Test remove_headers function."""
         headertext = "This is a \n test TEXT with AUTH and ication."
-        self.assertEquals(mdh.remove_headers(headertext), headertext)
+        self.assertEquals(rsth.remove_headers(headertext), headertext)
         headertext = "This is # MAINTAINER and # AUTHOR text \n with newlines."
-        self.assertEquals(mdh.remove_headers(headertext), "This is  and  text \n with newlines.")
+        self.assertEquals(rsth.remove_headers(headertext), "This is  and  text \n with newlines.")
 
     def test_remove_whitespace(self):
         """Test remove_whitespace function."""
         whitetext = "this \n\n\n\n\n is a bit too much."
-        self.assertEquals(mdh.remove_whitespace(whitetext), "this \n is a bit too much.")
+        self.assertEquals(rsth.remove_whitespace(whitetext), "this \n is a bit too much.")
         whitetext = "this \n is much better \n\n."
-        self.assertEquals(mdh.remove_whitespace(whitetext), whitetext)
+        self.assertEquals(rsth.remove_whitespace(whitetext), whitetext)
 
     def test_codify_paths(self):
         """Test codify_paths function."""
         txt = "leave / me alone//"
-        self.assertEquals(mdh.codify_paths(txt), txt)
+        self.assertEquals(rsth.codify_paths(txt), txt)
         txt = " /but/please/change/me/yes"
-        self.assertEquals(mdh.codify_paths(txt), ' `/but/please/change/me/yes`')
+        self.assertEquals(rsth.codify_paths(txt), ' `/but/please/change/me/yes`')
         txt = "\n /even/if/i/have/multiline/in/me/ \n"
-        self.assertEquals(mdh.codify_paths(txt), '\n `/even/if/i/have/multiline/in/me`/ \n')
+        self.assertEquals(rsth.codify_paths(txt), '\n `/even/if/i/have/multiline/in/me`/ \n')
         txt = " /or/even/if/i/have \n\n   /several/paths/that/have/coding "
-        self.assertEquals(mdh.codify_paths(txt), ' `/or/even/if/i/have` \n\n   `/several/paths/that/have/coding` ')
+        self.assertEquals(rsth.codify_paths(txt), ' `/or/even/if/i/have` \n\n   `/several/paths/that/have/coding` ')
 
     def test_cleanup_content(self):
         """Test cleanup_content."""
@@ -93,11 +94,11 @@ class MarkdownHandlerTest(TestCase):
             'remove_headers': True,
         }
         text = {"/tmp/testfile": "# MAINTAINER \n# Title \n\n\n\n\n /path/to/test/on \n test@test.com"}
-        self.assertEquals(mdh.cleanup_content(text, opts), {'/tmp/testfile': ' \n# Title \n `/path/to/test/on` \n '})
+        self.assertEquals(rsth.cleanup_content(text, opts), {'/tmp/testfile': ' \n# Title \n `/path/to/test/on` \n '})
 
     def suite(self):
         """Return all the testcases in this module."""
-        return TestLoader().loadTestsFromTestCase(MarkdownHandlerTest)
+        return TestLoader().loadTestsFromTestCase(RstHandlerTest)
 
 if __name__ == '__main__':
     main()

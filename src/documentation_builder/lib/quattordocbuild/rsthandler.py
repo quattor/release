@@ -28,24 +28,24 @@ def generate_markdown(sources):
             if markdown is not None:
                 markdownlist[source] = markdown
         else:
-            markdown = markdown_from_perl(source)
+            markdown = rst_from_perl(source)
             if markdown is not None:
                 markdownlist[source] = markdown
 
     return markdownlist
 
 
-def markdown_from_perl(podfile):
+def rst_from_perl(podfile):
     """
-    Take a perl file and converts it to a markdown with the help of pod2markdown.
+    Take a perl file and converts it to a reStrcturedText with the help of pod2rst.
 
-    Returns True if pod2markdown worked, False if it failed.
+    Returns True if pod2rst worked, False if it failed.
     """
     logger.info("Making markdown from perl: %s." % podfile)
-    ec, output = run_asyncloop("pod2markdown %s" % podfile)
+    ec, output = run_asyncloop("pod2rst --infile %s" % podfile)
     logger.debug(output)
     if ec != 0 or output == "\n":
-        logger.warning("pod2markdown failed on %s." % podfile)
+        logger.warning("pod2rst failed on %s." % podfile)
         return None
     else:
         return output

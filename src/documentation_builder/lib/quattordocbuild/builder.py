@@ -5,7 +5,7 @@ import sys
 import re
 from template import Template, TemplateException
 from sourcehandler import get_source_files
-from markdownhandler import generate_markdown, cleanup_content
+from rsthandler import generate_markdown, cleanup_content
 from config import build_repository_map
 from vsc.utils import fancylogger
 
@@ -79,8 +79,8 @@ def check_commands(runmaven):
         if not which("mvn"):
             logger.error("The command mvn is not available on this system, please install maven.")
             return False
-    if not which("pod2markdown"):
-        logger.error("The command pod2markdown is not available on this system, please install pod2markdown.")
+    if not which("pod2rst"):
+        logger.error("The command pod2rst is not available on this system, please install pod2rst.")
         return False
     return True
 
