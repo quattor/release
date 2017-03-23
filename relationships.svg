@@ -14,66 +14,94 @@
 <polygon fill="none" stroke="black" points="258,-454 258,-1018 822,-1018 822,-454 258,-454"/>
 <text text-anchor="middle" x="540" y="-1003.2" font-family="Sans" font-size="12.00">17.4</text>
 </g>
-<!-- aii#263 -->
-<g id="node1" class="node"><title>aii#263</title>
-<a xlink:href="https://github.com/quattor/aii/pull/263" xlink:title="pxelinux: allow network device names with pci function and/or device" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="141,-2562 63,-2562 63,-2508 141,-2508 141,-2562"/>
+<!-- aii#265 -->
+<g id="node1" class="node"><title>aii#265</title>
+<a xlink:href="https://github.com/quattor/aii/pull/265" xlink:title="Use aii-shellfe config options for CCM fecth as well" target="_parent">
+<polygon fill="#6cc644" stroke="black" points="141,-2562 63,-2562 63,-2508 141,-2508 141,-2562"/>
 <text text-anchor="middle" x="102" y="-2539" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="102" y="-2526" font-family="Sans" font-size="10.00">aii#263</text>
+<text text-anchor="middle" x="102" y="-2526" font-family="Sans" font-size="10.00">aii#265</text>
 </a>
 </g>
-<!-- aii#261 -->
-<g id="node3" class="node"><title>aii#261</title>
-<a xlink:href="https://github.com/quattor/aii/issues/261" xlink:title="aii-pxelinux does not accept /dev/enp4s0f0" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-2524" rx="41.2167" ry="38.1838"/>
+<!-- aii#225 -->
+<g id="node3" class="node"><title>aii#225</title>
+<a xlink:href="https://github.com/quattor/aii/pull/225" xlink:title="Add UEFI support through Grub-based PXE loader" target="_parent">
+<polygon fill="#6cc644" stroke="black" points="423,-2468 345,-2468 345,-2414 423,-2414 423,-2468"/>
+<text text-anchor="middle" x="384" y="-2445" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="384" y="-2432" font-family="Sans" font-size="10.00">aii#225</text>
+</a>
+</g>
+<!-- aii#265&#45;&gt;aii#225 -->
+<g id="edge2" class="edge"><title>aii#265-&gt;aii#225</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M141.777,-2519.24C173.123,-2507.05 218.055,-2490.11 258,-2477 283.061,-2468.77 311.265,-2460.62 334.626,-2454.15"/>
+<polygon fill="none" stroke="black" points="335.602,-2457.51 344.318,-2451.49 333.748,-2450.76 335.602,-2457.51"/>
+<text text-anchor="middle" x="225" y="-2500" font-family="Sans" font-size="10.00">requires</text>
+</g>
+<!-- aii#260 -->
+<g id="node5" class="node"><title>aii#260</title>
+<a xlink:href="https://github.com/quattor/aii/issues/260" xlink:title="aii-shellfe cannot verify server certificates when fetching profiles" target="_parent">
+<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2524" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-2528" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-2515" font-family="Sans" font-size="10.00">aii#261</text>
+<text text-anchor="middle" x="384" y="-2515" font-family="Sans" font-size="10.00">aii#260</text>
 </a>
 </g>
-<!-- aii#263&#45;&gt;aii#261 -->
-<g id="edge2" class="edge"><title>aii#263-&gt;aii#261</title>
+<!-- aii#265&#45;&gt;aii#260 -->
+<g id="edge4" class="edge"><title>aii#265-&gt;aii#260</title>
 <path fill="none" stroke="black" stroke-width="2" d="M141.955,-2530.84C161.278,-2529 184.821,-2527.03 206,-2526 248.423,-2523.93 296.597,-2523.51 332.121,-2523.56"/>
 <polygon fill="black" stroke="black" points="332.244,-2527.06 342.254,-2523.58 332.264,-2520.06 332.244,-2527.06"/>
 <text text-anchor="middle" x="225" y="-2530" font-family="Sans" font-size="10.00">fixes</text>
 </g>
-<!-- aii#225 -->
-<g id="node4" class="node"><title>aii#225</title>
-<a xlink:href="https://github.com/quattor/aii/pull/225" xlink:title="Add UEFI support through Grub-based PXE loader" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="141,-2490 63,-2490 63,-2436 141,-2436 141,-2490"/>
-<text text-anchor="middle" x="102" y="-2467" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="102" y="-2454" font-family="Sans" font-size="10.00">aii#225</text>
-</a>
-</g>
 <!-- aii#216 -->
-<g id="node6" class="node"><title>aii#216</title>
+<g id="node10" class="node"><title>aii#216</title>
 <a xlink:href="https://github.com/quattor/aii/issues/216" xlink:title="aii-pxelinux: add support for Grub-based UEFI PXE boot loader" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2336" rx="41.2167" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-2340" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-2327" font-family="Sans" font-size="10.00">aii#216</text>
+<ellipse fill="#6cc644" stroke="black" cx="696" cy="-2497" rx="41.2167" ry="38.1838"/>
+<text text-anchor="middle" x="696" y="-2501" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="696" y="-2488" font-family="Sans" font-size="10.00">aii#216</text>
 </a>
 </g>
 <!-- aii#225&#45;&gt;aii#216 -->
-<g id="edge4" class="edge"><title>aii#225-&gt;aii#216</title>
-<path fill="none" stroke="black" stroke-width="2" d="M141.582,-2448.02C156.392,-2442.01 173.203,-2434.68 188,-2427 220.614,-2410.07 225.058,-2399.28 258,-2383 282.65,-2370.82 311.287,-2359.89 335.025,-2351.65"/>
-<polygon fill="black" stroke="black" points="336.204,-2354.95 344.535,-2348.4 333.941,-2348.33 336.204,-2354.95"/>
-<text text-anchor="middle" x="225" y="-2421" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge8" class="edge"><title>aii#225-&gt;aii#216</title>
+<path fill="none" stroke="black" stroke-width="2" d="M423.515,-2448.09C479.743,-2458.18 582.88,-2476.7 644.87,-2487.82"/>
+<polygon fill="black" stroke="black" points="644.364,-2491.29 654.825,-2489.61 645.601,-2484.4 644.364,-2491.29"/>
+<text text-anchor="middle" x="542" y="-2477" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- aii#258 -->
-<g id="node8" class="node"><title>aii#258</title>
+<g id="node12" class="node"><title>aii#258</title>
 <a xlink:href="https://github.com/quattor/aii/issues/258" xlink:title="aii pxelinux write failure" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2430" rx="41.2167" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-2434" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-2421" font-family="Sans" font-size="10.00">aii#258</text>
+<ellipse fill="#6cc644" stroke="black" cx="696" cy="-2403" rx="41.2167" ry="38.1838"/>
+<text text-anchor="middle" x="696" y="-2407" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="696" y="-2394" font-family="Sans" font-size="10.00">aii#258</text>
 </a>
 </g>
 <!-- aii#225&#45;&gt;aii#258 -->
-<g id="edge6" class="edge"><title>aii#225-&gt;aii#258</title>
-<path fill="none" stroke="black" stroke-width="2" d="M141.508,-2458.38C191.35,-2452.54 277.184,-2442.5 332.226,-2436.06"/>
-<polygon fill="black" stroke="black" points="332.942,-2439.5 342.467,-2434.86 332.128,-2432.55 332.942,-2439.5"/>
-<text text-anchor="middle" x="225" y="-2455" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge10" class="edge"><title>aii#225-&gt;aii#258</title>
+<path fill="none" stroke="black" stroke-width="2" d="M423.515,-2436.19C479.743,-2429.34 582.88,-2416.78 644.87,-2409.23"/>
+<polygon fill="black" stroke="black" points="645.322,-2412.7 654.825,-2408.01 644.475,-2405.75 645.322,-2412.7"/>
+<text text-anchor="middle" x="542" y="-2428" font-family="Sans" font-size="10.00">fixes</text>
+</g>
+<!-- aii#263 -->
+<g id="node6" class="node"><title>aii#263</title>
+<a xlink:href="https://github.com/quattor/aii/pull/263" xlink:title="pxelinux: allow network device names with pci function and/or device" target="_parent">
+<polygon fill="#6e5494" stroke="black" points="141,-2490 63,-2490 63,-2436 141,-2436 141,-2490"/>
+<text text-anchor="middle" x="102" y="-2467" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="102" y="-2454" font-family="Sans" font-size="10.00">aii#263</text>
+</a>
+</g>
+<!-- aii#261 -->
+<g id="node8" class="node"><title>aii#261</title>
+<a xlink:href="https://github.com/quattor/aii/issues/261" xlink:title="aii-pxelinux does not accept /dev/enp4s0f0" target="_parent">
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-2358" rx="41.2167" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-2362" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-2349" font-family="Sans" font-size="10.00">aii#261</text>
+</a>
+</g>
+<!-- aii#263&#45;&gt;aii#261 -->
+<g id="edge6" class="edge"><title>aii#263-&gt;aii#261</title>
+<path fill="none" stroke="black" stroke-width="2" d="M141.508,-2448.29C192.415,-2429.33 280.87,-2396.4 335.713,-2375.98"/>
+<polygon fill="black" stroke="black" points="337.062,-2379.21 345.212,-2372.44 334.619,-2372.65 337.062,-2379.21"/>
+<text text-anchor="middle" x="225" y="-2427" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- aii#210 -->
-<g id="node9" class="node"><title>aii#210</title>
+<g id="node13" class="node"><title>aii#210</title>
 <a xlink:href="https://github.com/quattor/aii/pull/210" xlink:title="Shellfe: support active config for plugins" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="423,-892 345,-892 345,-838 423,-838 423,-892"/>
 <text text-anchor="middle" x="384" y="-869" font-family="Sans" font-size="10.00">pull-request</text>
@@ -81,7 +109,7 @@
 </a>
 </g>
 <!-- aii#209 -->
-<g id="node11" class="node"><title>aii#209</title>
+<g id="node15" class="node"><title>aii#209</title>
 <a xlink:href="https://github.com/quattor/aii/issues/209" xlink:title="support ACTIVE_CONFIG" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="696" cy="-948" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="696" y="-952" font-family="Sans" font-size="10.00">issue</text>
@@ -89,13 +117,13 @@
 </a>
 </g>
 <!-- aii#210&#45;&gt;aii#209 -->
-<g id="edge8" class="edge"><title>aii#210-&gt;aii#209</title>
+<g id="edge12" class="edge"><title>aii#210-&gt;aii#209</title>
 <path fill="none" stroke="black" stroke-width="2" d="M423.515,-875.512C480.054,-890.553 584.021,-918.211 645.894,-934.67"/>
 <polygon fill="black" stroke="black" points="645.257,-938.123 655.82,-937.311 647.056,-931.358 645.257,-938.123"/>
 <text text-anchor="middle" x="542" y="-916" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- ncm&#45;ncd#74 -->
-<g id="node13" class="node"><title>ncm-ncd#74</title>
+<g id="node17" class="node"><title>ncm-ncd#74</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/74" xlink:title="Set the current active config as an attribute to the component" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="737,-892 655,-892 655,-838 737,-838 737,-892"/>
 <text text-anchor="middle" x="696" y="-869" font-family="Sans" font-size="10.00">pull-request</text>
@@ -103,24 +131,24 @@
 </a>
 </g>
 <!-- aii#210&#45;&gt;ncm&#45;ncd#74 -->
-<g id="edge10" class="edge"><title>aii#210-&gt;ncm-ncd#74</title>
+<g id="edge14" class="edge"><title>aii#210-&gt;ncm-ncd#74</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M423.515,-865C479.628,-865 582.455,-865 644.486,-865"/>
 <polygon fill="none" stroke="black" points="644.825,-868.5 654.825,-865 644.825,-861.5 644.825,-868.5"/>
 <text text-anchor="middle" x="542" y="-869" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- aii#203 -->
-<g id="node15" class="node"><title>aii#203</title>
+<g id="node19" class="node"><title>aii#203</title>
 <polygon fill="lightgrey" stroke="black" points="725,-386.5 667,-386.5 667,-345.5 725,-345.5 725,-386.5"/>
 <text text-anchor="middle" x="696" y="-363.5" font-family="Sans" font-size="10.00">aii#203</text>
 </g>
 <!-- aii#210&#45;&gt;aii#203 -->
-<g id="edge12" class="edge"><title>aii#210-&gt;aii#203</title>
+<g id="edge16" class="edge"><title>aii#210-&gt;aii#203</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M423.677,-854.194C451.849,-844.264 487.781,-826.503 506,-797 529.842,-758.391 493.37,-422.48 524,-389 556.762,-353.19 616.406,-353.343 656.124,-358.376"/>
 <polygon fill="none" stroke="black" points="655.867,-361.875 666.261,-359.82 656.854,-354.945 655.867,-361.875"/>
 <text text-anchor="middle" x="542" y="-393" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- CAF#226 -->
-<g id="node16" class="node"><title>CAF#226</title>
+<g id="node20" class="node"><title>CAF#226</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/226" xlink:title="Filewriter: support sensitive option" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="141,-1842 63,-1842 63,-1788 141,-1788 141,-1842"/>
 <text text-anchor="middle" x="102" y="-1819" font-family="Sans" font-size="10.00">pull-request</text>
@@ -128,99 +156,99 @@
 </a>
 </g>
 <!-- CAF#202 -->
-<g id="node18" class="node"><title>CAF#202</title>
+<g id="node22" class="node"><title>CAF#202</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/202" xlink:title="FileWriter: use atomic write" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="423,-1290 345,-1290 345,-1236 423,-1236 423,-1290"/>
-<text text-anchor="middle" x="384" y="-1267" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="384" y="-1254" font-family="Sans" font-size="10.00">CAF#202</text>
+<polygon fill="#6cc644" stroke="black" points="423,-1312 345,-1312 345,-1258 423,-1258 423,-1312"/>
+<text text-anchor="middle" x="384" y="-1289" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="384" y="-1276" font-family="Sans" font-size="10.00">CAF#202</text>
 </a>
 </g>
 <!-- CAF#226&#45;&gt;CAF#202 -->
-<g id="edge14" class="edge"><title>CAF#226-&gt;CAF#202</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M141.82,-1808.15C158.894,-1803.07 177.332,-1794.25 188,-1779 212.798,-1743.54 189.031,-1429.8 206,-1390 215.617,-1367.44 231.947,-1371.35 244,-1350 255.553,-1329.53 241.466,-1315.71 258,-1299 277.92,-1278.87 308.258,-1269.81 334.173,-1265.8"/>
-<polygon fill="none" stroke="black" points="334.775,-1269.26 344.225,-1264.46 333.85,-1262.32 334.775,-1269.26"/>
-<text text-anchor="middle" x="225" y="-1394" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge18" class="edge"><title>CAF#226-&gt;CAF#202</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M141.801,-1808.14C158.871,-1803.05 177.311,-1794.24 188,-1779 211.445,-1745.58 191.247,-1450.07 206,-1412 215.583,-1387.27 231.379,-1389.32 244,-1366 253.969,-1347.58 243.018,-1335.64 258,-1321 278.257,-1301.21 308.604,-1292.15 334.44,-1288.07"/>
+<polygon fill="none" stroke="black" points="335.025,-1291.52 344.456,-1286.7 334.072,-1284.59 335.025,-1291.52"/>
+<text text-anchor="middle" x="225" y="-1416" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- CAF#200 -->
-<g id="node20" class="node"><title>CAF#200</title>
+<g id="node24" class="node"><title>CAF#200</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/200" xlink:title="FileWriter: add a sensitive flag to control logging of sensitive diff information" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-1346" rx="48.9975" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1350" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1337" font-family="Sans" font-size="10.00">CAF#200</text>
+<ellipse fill="#6cc644" stroke="black" cx="384" cy="-1368" rx="48.9975" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-1372" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1359" font-family="Sans" font-size="10.00">CAF#200</text>
 </a>
 </g>
 <!-- CAF#226&#45;&gt;CAF#200 -->
-<g id="edge16" class="edge"><title>CAF#226-&gt;CAF#200</title>
-<path fill="none" stroke="black" stroke-width="2" d="M141.721,-1808.08C158.774,-1802.98 177.223,-1794.18 188,-1779 226.281,-1725.09 186.798,-1545.27 206,-1482 219.304,-1438.16 222.947,-1422.5 258,-1393 277.461,-1376.62 303.175,-1365.67 326.297,-1358.5"/>
-<polygon fill="black" stroke="black" points="327.41,-1361.82 336.022,-1355.65 325.441,-1355.1 327.41,-1361.82"/>
-<text text-anchor="middle" x="225" y="-1486" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge20" class="edge"><title>CAF#226-&gt;CAF#200</title>
+<path fill="none" stroke="black" stroke-width="2" d="M141.687,-1808.06C158.734,-1802.95 177.187,-1794.15 188,-1779 223.577,-1729.15 188.073,-1562.56 206,-1504 219.41,-1460.19 222.947,-1444.5 258,-1415 277.461,-1398.62 303.175,-1387.67 326.297,-1380.5"/>
+<polygon fill="black" stroke="black" points="327.41,-1383.82 336.022,-1377.65 325.441,-1377.1 327.41,-1383.82"/>
+<text text-anchor="middle" x="225" y="-1508" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- CAF#204 -->
-<g id="node25" class="node"><title>CAF#204</title>
+<g id="node29" class="node"><title>CAF#204</title>
 <polygon fill="lightgrey" stroke="black" points="731,-1124.5 661,-1124.5 661,-1083.5 731,-1083.5 731,-1124.5"/>
 <text text-anchor="middle" x="696" y="-1101.5" font-family="Sans" font-size="10.00">CAF#204</text>
 </g>
 <!-- CAF#202&#45;&gt;CAF#204 -->
-<g id="edge20" class="edge"><title>CAF#202-&gt;CAF#204</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M423.631,-1258.38C449.14,-1253.79 481.907,-1244.75 506,-1227 517.612,-1218.45 515.67,-1211.77 524,-1200 547.103,-1167.35 544.195,-1149.38 578,-1128 599.624,-1114.32 627.542,-1108.24 650.794,-1105.61"/>
-<polygon fill="none" stroke="black" points="651.152,-1109.09 660.774,-1104.66 650.487,-1102.13 651.152,-1109.09"/>
-<text text-anchor="middle" x="542" y="-1204" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge24" class="edge"><title>CAF#202-&gt;CAF#204</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M423.52,-1281.07C449.303,-1276.77 482.423,-1267.78 506,-1249 518.763,-1238.83 515.767,-1231.09 524,-1217 547.345,-1177.05 540.158,-1154.62 578,-1128 599.076,-1113.17 627.212,-1107.06 650.723,-1104.71"/>
+<polygon fill="none" stroke="black" points="651.133,-1108.19 660.82,-1103.89 650.571,-1101.21 651.133,-1108.19"/>
+<text text-anchor="middle" x="542" y="-1221" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- CAF#206 -->
-<g id="node27" class="node"><title>CAF#206</title>
+<g id="node31" class="node"><title>CAF#206</title>
 <polygon fill="lightgrey" stroke="black" points="731,-1066.5 661,-1066.5 661,-1025.5 731,-1025.5 731,-1066.5"/>
 <text text-anchor="middle" x="696" y="-1043.5" font-family="Sans" font-size="10.00">CAF#206</text>
 </g>
 <!-- CAF#202&#45;&gt;CAF#206 -->
-<g id="edge22" class="edge"><title>CAF#202-&gt;CAF#206</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M423.733,-1261.7C450.808,-1258.63 485.36,-1250.02 506,-1227 536.148,-1193.38 502.7,-1166.82 524,-1127 539.715,-1097.62 548.821,-1091.08 578,-1075 600.35,-1062.68 627.927,-1055.53 650.8,-1051.41"/>
-<polygon fill="none" stroke="black" points="651.651,-1054.82 660.942,-1049.73 650.503,-1047.91 651.651,-1054.82"/>
-<text text-anchor="middle" x="542" y="-1131" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge26" class="edge"><title>CAF#202-&gt;CAF#206</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M423.651,-1283.92C450.868,-1280.96 485.626,-1272.4 506,-1249 541.413,-1208.33 499.713,-1177.15 524,-1129 539.285,-1098.7 548.431,-1091.66 578,-1075 600.233,-1062.47 627.803,-1055.31 650.702,-1051.24"/>
+<polygon fill="none" stroke="black" points="651.554,-1054.64 660.858,-1049.57 650.424,-1047.73 651.554,-1054.64"/>
+<text text-anchor="middle" x="542" y="-1133" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- CAF#148 -->
-<g id="node29" class="node"><title>CAF#148</title>
+<g id="node33" class="node"><title>CAF#148</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/148" xlink:title="CAF::FileWriter updates files in-place" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="696" cy="-1180" rx="48.9975" ry="38.1838"/>
-<text text-anchor="middle" x="696" y="-1184" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="696" y="-1171" font-family="Sans" font-size="10.00">CAF#148</text>
+<ellipse fill="#6cc644" stroke="black" cx="696" cy="-1285" rx="48.9975" ry="38.1838"/>
+<text text-anchor="middle" x="696" y="-1289" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="696" y="-1276" font-family="Sans" font-size="10.00">CAF#148</text>
 </a>
 </g>
 <!-- CAF#202&#45;&gt;CAF#148 -->
-<g id="edge24" class="edge"><title>CAF#202-&gt;CAF#148</title>
-<path fill="none" stroke="black" stroke-width="2" d="M423.515,-1252.49C478.147,-1237.95 577.062,-1211.64 639.493,-1195.03"/>
-<polygon fill="black" stroke="black" points="640.424,-1198.41 649.188,-1192.45 638.624,-1191.64 640.424,-1198.41"/>
-<text text-anchor="middle" x="542" y="-1228" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge28" class="edge"><title>CAF#202-&gt;CAF#148</title>
+<path fill="none" stroke="black" stroke-width="2" d="M423.515,-1285C477.181,-1285 573.576,-1285 636.145,-1285"/>
+<polygon fill="black" stroke="black" points="636.268,-1288.5 646.268,-1285 636.268,-1281.5 636.268,-1288.5"/>
+<text text-anchor="middle" x="542" y="-1289" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- CAF#223 -->
-<g id="node31" class="node"><title>CAF#223</title>
+<g id="node35" class="node"><title>CAF#223</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/223" xlink:title="CAF::FileWriter Can't call method " target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="696" cy="-1274" rx="48.9975" ry="38.1838"/>
-<text text-anchor="middle" x="696" y="-1278" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="696" y="-1265" font-family="Sans" font-size="10.00">CAF#223</text>
+<ellipse fill="#6cc644" stroke="black" cx="696" cy="-1379" rx="48.9975" ry="38.1838"/>
+<text text-anchor="middle" x="696" y="-1383" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="696" y="-1370" font-family="Sans" font-size="10.00">CAF#223</text>
 </a>
 </g>
 <!-- CAF#202&#45;&gt;CAF#223 -->
-<g id="edge26" class="edge"><title>CAF#202-&gt;CAF#223</title>
-<path fill="none" stroke="black" stroke-width="2" d="M423.515,-1264.39C477.258,-1266.29 573.855,-1269.69 636.417,-1271.9"/>
-<polygon fill="black" stroke="black" points="636.419,-1275.4 646.536,-1272.26 636.665,-1268.41 636.419,-1275.4"/>
-<text text-anchor="middle" x="542" y="-1274" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge30" class="edge"><title>CAF#202-&gt;CAF#223</title>
+<path fill="none" stroke="black" stroke-width="2" d="M423.587,-1296.58C447.473,-1303.59 478.504,-1312.75 506,-1321 551.181,-1334.56 602.321,-1350.19 640.154,-1361.8"/>
+<polygon fill="black" stroke="black" points="639.378,-1365.23 649.964,-1364.82 641.433,-1358.53 639.378,-1365.23"/>
+<text text-anchor="middle" x="542" y="-1341" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- CAF#189 -->
-<g id="node33" class="node"><title>CAF#189</title>
+<g id="node37" class="node"><title>CAF#189</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/189" xlink:title="FileWriter: add diff to history" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="696" cy="-1368" rx="48.9975" ry="38.1838"/>
-<text text-anchor="middle" x="696" y="-1372" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="696" y="-1359" font-family="Sans" font-size="10.00">CAF#189</text>
+<ellipse fill="#6cc644" stroke="black" cx="696" cy="-1191" rx="48.9975" ry="38.1838"/>
+<text text-anchor="middle" x="696" y="-1195" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="696" y="-1182" font-family="Sans" font-size="10.00">CAF#189</text>
 </a>
 </g>
 <!-- CAF#202&#45;&gt;CAF#189 -->
-<g id="edge28" class="edge"><title>CAF#202-&gt;CAF#189</title>
-<path fill="none" stroke="black" stroke-width="2" d="M423.75,-1274.06C447.693,-1280.89 478.728,-1290.03 506,-1299 552.058,-1314.14 603.74,-1333.04 641.561,-1347.22"/>
-<polygon fill="black" stroke="black" points="640.763,-1350.66 651.355,-1350.91 643.228,-1344.11 640.763,-1350.66"/>
-<text text-anchor="middle" x="542" y="-1321" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge32" class="edge"><title>CAF#202-&gt;CAF#189</title>
+<path fill="none" stroke="black" stroke-width="2" d="M423.587,-1273.42C447.473,-1266.41 478.504,-1257.25 506,-1249 551.181,-1235.44 602.321,-1219.81 640.154,-1208.2"/>
+<polygon fill="black" stroke="black" points="641.433,-1211.47 649.964,-1205.18 639.378,-1204.77 641.433,-1211.47"/>
+<text text-anchor="middle" x="542" y="-1247" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- CAF#224 -->
-<g id="node21" class="node"><title>CAF#224</title>
+<g id="node25" class="node"><title>CAF#224</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/224" xlink:title="CAF::Application: add methods option_exists() and set_options()" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="141,-1626 63,-1626 63,-1572 141,-1572 141,-1626"/>
 <text text-anchor="middle" x="102" y="-1603" font-family="Sans" font-size="10.00">pull-request</text>
@@ -228,18 +256,18 @@
 </a>
 </g>
 <!-- CAF#210 -->
-<g id="node23" class="node"><title>CAF#210</title>
+<g id="node27" class="node"><title>CAF#210</title>
 <polygon fill="lightgrey" stroke="black" points="419,-388.5 349,-388.5 349,-347.5 419,-347.5 419,-388.5"/>
 <text text-anchor="middle" x="384" y="-365.5" font-family="Sans" font-size="10.00">CAF#210</text>
 </g>
 <!-- CAF#224&#45;&gt;CAF#210 -->
-<g id="edge18" class="edge"><title>CAF#224-&gt;CAF#210</title>
+<g id="edge22" class="edge"><title>CAF#224-&gt;CAF#210</title>
 <path fill="none" stroke="black" stroke-width="2" d="M141.589,-1592.43C158.834,-1587.4 177.478,-1578.55 188,-1563 224.492,-1509.07 162.631,-439.576 206,-391 238.427,-354.68 297.585,-354.129 338.761,-359.213"/>
 <polygon fill="black" stroke="black" points="338.428,-362.701 348.814,-360.609 339.391,-355.767 338.428,-362.701"/>
 <text text-anchor="middle" x="225" y="-395" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- CCM#162 -->
-<g id="node34" class="node"><title>CCM#162</title>
+<g id="node38" class="node"><title>CCM#162</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/162" xlink:title="Cleanup: move internal modules in subdirectories and remove/integrate util scripts" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="141,-1554 63,-1554 63,-1500 141,-1500 141,-1554"/>
 <text text-anchor="middle" x="102" y="-1531" font-family="Sans" font-size="10.00">pull-request</text>
@@ -247,29 +275,29 @@
 </a>
 </g>
 <!-- CCM#160 -->
-<g id="node36" class="node"><title>CCM#160</title>
+<g id="node40" class="node"><title>CCM#160</title>
 <polygon fill="lightgrey" stroke="black" points="420,-272.5 348,-272.5 348,-231.5 420,-231.5 420,-272.5"/>
 <text text-anchor="middle" x="384" y="-249.5" font-family="Sans" font-size="10.00">CCM#160</text>
 </g>
 <!-- CCM#162&#45;&gt;CCM#160 -->
-<g id="edge30" class="edge"><title>CCM#162-&gt;CCM#160</title>
+<g id="edge34" class="edge"><title>CCM#162-&gt;CCM#160</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M141.591,-1520.43C158.837,-1515.4 177.481,-1506.55 188,-1491 225.292,-1435.86 164.171,-344.778 206,-293 236.864,-254.795 295.532,-247.811 337.066,-248.254"/>
 <polygon fill="none" stroke="black" points="337.143,-251.757 347.229,-248.512 337.321,-244.759 337.143,-251.757"/>
 <text text-anchor="middle" x="225" y="-297" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- CCM#156 -->
-<g id="node38" class="node"><title>CCM#156</title>
+<g id="node42" class="node"><title>CCM#156</title>
 <polygon fill="lightgrey" stroke="black" points="420,-330.5 348,-330.5 348,-289.5 420,-289.5 420,-330.5"/>
 <text text-anchor="middle" x="384" y="-307.5" font-family="Sans" font-size="10.00">CCM#156</text>
 </g>
 <!-- CCM#162&#45;&gt;CCM#156 -->
-<g id="edge32" class="edge"><title>CCM#162-&gt;CCM#156</title>
+<g id="edge36" class="edge"><title>CCM#162-&gt;CCM#156</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M141.588,-1520.43C158.833,-1515.4 177.477,-1506.55 188,-1491 224.061,-1437.71 163.145,-380.992 206,-333 238.048,-297.111 296.195,-296.149 337.297,-301.037"/>
 <polygon fill="none" stroke="black" points="336.976,-304.525 347.353,-302.388 337.908,-297.588 336.976,-304.525"/>
 <text text-anchor="middle" x="225" y="-337" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1073 -->
-<g id="node39" class="node"><title>configuration-modules-core#1073</title>
+<g id="node43" class="node"><title>configuration-modules-core#1073</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1073" xlink:title="ncm-network: device name regex: allow function and device in PCI name" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="188,-2418 16,-2418 16,-2364 188,-2364 188,-2418"/>
 <text text-anchor="middle" x="102" y="-2395" font-family="Sans" font-size="10.00">pull-request</text>
@@ -277,21 +305,21 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1069 -->
-<g id="node41" class="node"><title>configuration-modules-core#1069</title>
+<g id="node45" class="node"><title>configuration-modules-core#1069</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1069" xlink:title="ncm-network: /dev/enp4s0f0 and /dev/enp4s0f1 cannot be configured" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-2242" rx="121.122" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-2246" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-2233" font-family="Sans" font-size="10.00">configuration-modules-core#1069</text>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-2264" rx="121.122" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-2268" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-2255" font-family="Sans" font-size="10.00">configuration-modules-core#1069</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1073&#45;&gt;configuration&#45;modules&#45;core#1069 -->
-<g id="edge34" class="edge"><title>configuration-modules-core#1073-&gt;configuration-modules-core#1069</title>
-<path fill="none" stroke="black" stroke-width="2" d="M172.551,-2363.97C177.901,-2361.17 183.114,-2358.17 188,-2355 223.855,-2331.7 221.693,-2311.59 258,-2289 267.506,-2283.09 277.872,-2277.74 288.442,-2272.95"/>
-<polygon fill="black" stroke="black" points="289.997,-2276.09 297.767,-2268.89 287.201,-2269.68 289.997,-2276.09"/>
-<text text-anchor="middle" x="225" y="-2345" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge38" class="edge"><title>configuration-modules-core#1073-&gt;configuration-modules-core#1069</title>
+<path fill="none" stroke="black" stroke-width="2" d="M169.626,-2363.94C175.901,-2361.06 182.11,-2358.06 188,-2355 220.614,-2338.07 225.058,-2327.28 258,-2311 268.9,-2305.61 280.579,-2300.47 292.27,-2295.7"/>
+<polygon fill="black" stroke="black" points="293.649,-2298.92 301.634,-2291.95 291.049,-2292.42 293.649,-2298.92"/>
+<text text-anchor="middle" x="225" y="-2349" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1061 -->
-<g id="node42" class="node"><title>configuration-modules-core#1061</title>
+<g id="node46" class="node"><title>configuration-modules-core#1061</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1061" xlink:title="ncm-aiiserver: add support for AII Grub-2 related options" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="188,-2346 16,-2346 16,-2292 188,-2292 188,-2346"/>
 <text text-anchor="middle" x="102" y="-2323" font-family="Sans" font-size="10.00">pull-request</text>
@@ -299,21 +327,21 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#960 -->
-<g id="node44" class="node"><title>configuration-modules-core#960</title>
+<g id="node48" class="node"><title>configuration-modules-core#960</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/960" xlink:title="aii-server: add support for new options introduced for Grub-based PXE" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2148" rx="118.087" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-2152" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-2139" font-family="Sans" font-size="10.00">configuration-modules-core#960</text>
+<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2170" rx="118.087" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-2174" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-2161" font-family="Sans" font-size="10.00">configuration-modules-core#960</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1061&#45;&gt;configuration&#45;modules&#45;core#960 -->
-<g id="edge36" class="edge"><title>configuration-modules-core#1061-&gt;configuration-modules-core#960</title>
-<path fill="none" stroke="black" stroke-width="2" d="M174.384,-2291.98C179.15,-2289.21 183.74,-2286.22 188,-2283 227.856,-2252.85 217.557,-2224.36 258,-2195 266.987,-2188.48 276.984,-2182.75 287.306,-2177.76"/>
-<polygon fill="black" stroke="black" points="288.821,-2180.92 296.444,-2173.56 285.896,-2174.56 288.821,-2180.92"/>
-<text text-anchor="middle" x="225" y="-2270" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge40" class="edge"><title>configuration-modules-core#1061-&gt;configuration-modules-core#960</title>
+<path fill="none" stroke="black" stroke-width="2" d="M172.551,-2291.97C177.901,-2289.17 183.114,-2286.17 188,-2283 223.855,-2259.7 221.693,-2239.59 258,-2217 267.835,-2210.88 278.589,-2205.37 289.538,-2200.46"/>
+<polygon fill="black" stroke="black" points="290.972,-2203.65 298.765,-2196.48 288.197,-2197.23 290.972,-2203.65"/>
+<text text-anchor="middle" x="225" y="-2273" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1059 -->
-<g id="node45" class="node"><title>configuration-modules-core#1059</title>
+<g id="node49" class="node"><title>configuration-modules-core#1059</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1059" xlink:title="ncm-metaconfig: don't allow specific turning on of SEED and CAMELLIA" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="188,-1410 16,-1410 16,-1356 188,-1356 188,-1410"/>
 <text text-anchor="middle" x="102" y="-1387" font-family="Sans" font-size="10.00">pull-request</text>
@@ -321,18 +349,18 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#983 -->
-<g id="node47" class="node"><title>configuration-modules-core#983</title>
+<g id="node51" class="node"><title>configuration-modules-core#983</title>
 <polygon fill="lightgrey" stroke="black" points="467,-214.5 301,-214.5 301,-173.5 467,-173.5 467,-214.5"/>
 <text text-anchor="middle" x="384" y="-191.5" font-family="Sans" font-size="10.00">configuration-modules-core#983</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1059&#45;&gt;configuration&#45;modules&#45;core#983 -->
-<g id="edge38" class="edge"><title>configuration-modules-core#1059-&gt;configuration-modules-core#983</title>
+<g id="edge42" class="edge"><title>configuration-modules-core#1059-&gt;configuration-modules-core#983</title>
 <path fill="none" stroke="black" stroke-dasharray="1,5" d="M180.509,-1355.82C183.298,-1353.15 185.823,-1350.22 188,-1347 223.876,-1293.99 160.514,-240.033 206,-195 232.096,-169.164 272.317,-167.097 307.928,-172.3"/>
 <polygon fill="black" stroke="black" points="317.834,-173.947 307.231,-176.746 312.901,-173.127 307.969,-172.307 307.969,-172.307 307.969,-172.307 312.901,-173.127 308.707,-167.868 317.834,-173.947 317.834,-173.947"/>
 <text text-anchor="middle" x="225" y="-199" font-family="Sans" font-size="10.00">replaces</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1058 -->
-<g id="node48" class="node"><title>configuration-modules-core#1058</title>
+<g id="node52" class="node"><title>configuration-modules-core#1058</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1058" xlink:title="ncm-ssh: dissable insecure ssh ciphersuites and mac's" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="188,-1482 16,-1482 16,-1428 188,-1428 188,-1482"/>
 <text text-anchor="middle" x="102" y="-1459" font-family="Sans" font-size="10.00">pull-request</text>
@@ -340,13 +368,13 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1058&#45;&gt;configuration&#45;modules&#45;core#983 -->
-<g id="edge40" class="edge"><title>configuration-modules-core#1058-&gt;configuration-modules-core#983</title>
+<g id="edge44" class="edge"><title>configuration-modules-core#1058-&gt;configuration-modules-core#983</title>
 <path fill="none" stroke="black" stroke-dasharray="1,5" d="M180.511,-1427.82C183.299,-1425.15 185.823,-1422.22 188,-1419 224.984,-1364.33 163.958,-281.887 206,-231 217.347,-217.266 253.299,-208.449 289.949,-202.884"/>
 <polygon fill="black" stroke="black" points="300.285,-201.4 291.027,-207.276 295.336,-202.111 290.387,-202.822 290.387,-202.822 290.387,-202.822 295.336,-202.111 289.747,-198.367 300.285,-201.4 300.285,-201.4"/>
 <text text-anchor="middle" x="225" y="-235" font-family="Sans" font-size="10.00">replaces</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1043 -->
-<g id="node50" class="node"><title>configuration-modules-core#1043</title>
+<g id="node54" class="node"><title>configuration-modules-core#1043</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1043" xlink:title="ncm-network: core-schema: add additional checks to make sure gateway and broadcast are in network range" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="188,-2274 16,-2274 16,-2220 188,-2220 188,-2274"/>
 <text text-anchor="middle" x="102" y="-2251" font-family="Sans" font-size="10.00">pull-request</text>
@@ -354,35 +382,35 @@
 </a>
 </g>
 <!-- template&#45;library&#45;core#151 -->
-<g id="node52" class="node"><title>template-library-core#151</title>
+<g id="node56" class="node"><title>template-library-core#151</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/151" xlink:title="quattor/functions/network: add ip_in_network function" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="453,-2092 315,-2092 315,-2038 453,-2038 453,-2092"/>
-<text text-anchor="middle" x="384" y="-2069" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="384" y="-2056" font-family="Sans" font-size="10.00">template-library-core#151</text>
+<polygon fill="#6e5494" stroke="black" points="453,-2114 315,-2114 315,-2060 453,-2060 453,-2114"/>
+<text text-anchor="middle" x="384" y="-2091" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="384" y="-2078" font-family="Sans" font-size="10.00">template-library-core#151</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1043&#45;&gt;template&#45;library&#45;core#151 -->
-<g id="edge42" class="edge"><title>configuration-modules-core#1043-&gt;template-library-core#151</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M175.63,-2219.95C179.994,-2217.21 184.163,-2214.23 188,-2211 210.156,-2192.33 234.78,-2118.33 258,-2101 271.793,-2090.71 288.437,-2083.35 305.043,-2078.1"/>
-<polygon fill="none" stroke="black" points="306.181,-2081.41 314.794,-2075.24 304.214,-2074.69 306.181,-2081.41"/>
-<text text-anchor="middle" x="225" y="-2189" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge46" class="edge"><title>configuration-modules-core#1043-&gt;template-library-core#151</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M174.384,-2219.98C179.15,-2217.21 183.74,-2214.22 188,-2211 227.856,-2180.85 216.433,-2150.75 258,-2123 272.157,-2113.55 288.801,-2106.55 305.269,-2101.37"/>
+<polygon fill="none" stroke="black" points="306.32,-2104.71 314.925,-2098.53 304.343,-2098 306.32,-2104.71"/>
+<text text-anchor="middle" x="225" y="-2197" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- template&#45;library&#45;core#150 -->
-<g id="node109" class="node"><title>template-library-core#150</title>
+<g id="node113" class="node"><title>template-library-core#150</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/150" xlink:title="quattor/functions/network: cleanup and removal of get_subnet_params function" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="765,-2092 627,-2092 627,-2038 765,-2038 765,-2092"/>
-<text text-anchor="middle" x="696" y="-2069" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="696" y="-2056" font-family="Sans" font-size="10.00">template-library-core#150</text>
+<polygon fill="#6e5494" stroke="black" points="765,-2114 627,-2114 627,-2060 765,-2060 765,-2114"/>
+<text text-anchor="middle" x="696" y="-2091" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="696" y="-2078" font-family="Sans" font-size="10.00">template-library-core#150</text>
 </a>
 </g>
 <!-- template&#45;library&#45;core#151&#45;&gt;template&#45;library&#45;core#150 -->
-<g id="edge88" class="edge"><title>template-library-core#151-&gt;template-library-core#150</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M453.243,-2065C501.614,-2065 566.303,-2065 616.739,-2065"/>
-<polygon fill="none" stroke="black" points="616.951,-2068.5 626.951,-2065 616.951,-2061.5 616.951,-2068.5"/>
-<text text-anchor="middle" x="542" y="-2069" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge92" class="edge"><title>template-library-core#151-&gt;template-library-core#150</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M453.243,-2087C501.614,-2087 566.303,-2087 616.739,-2087"/>
+<polygon fill="none" stroke="black" points="616.951,-2090.5 626.951,-2087 616.951,-2083.5 616.951,-2090.5"/>
+<text text-anchor="middle" x="542" y="-2091" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1035 -->
-<g id="node53" class="node"><title>configuration-modules-core#1035</title>
+<g id="node57" class="node"><title>configuration-modules-core#1035</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1035" xlink:title="ncm-freeipa: CLI: support location based discovery" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="188,-2202 16,-2202 16,-2148 188,-2148 188,-2202"/>
 <text text-anchor="middle" x="102" y="-2179" font-family="Sans" font-size="10.00">pull-request</text>
@@ -390,35 +418,35 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1032 -->
-<g id="node55" class="node"><title>configuration-modules-core#1032</title>
+<g id="node59" class="node"><title>configuration-modules-core#1032</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1032" xlink:title="freeipa: documentation issue" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-1982" rx="121.122" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1986" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1973" font-family="Sans" font-size="10.00">configuration-modules-core#1032</text>
+<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2004" rx="121.122" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-2008" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1995" font-family="Sans" font-size="10.00">configuration-modules-core#1032</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1035&#45;&gt;configuration&#45;modules&#45;core#1032 -->
-<g id="edge44" class="edge"><title>configuration-modules-core#1035-&gt;configuration-modules-core#1032</title>
-<path fill="none" stroke="black" stroke-width="2" d="M176.932,-2147.93C180.877,-2145.21 184.606,-2142.24 188,-2139 201.514,-2126.09 196.489,-2117.09 206,-2101 226.089,-2067.02 226.604,-2052.93 258,-2029 266.303,-2022.67 275.549,-2017.12 285.155,-2012.27"/>
-<polygon fill="black" stroke="black" points="286.941,-2015.3 294.457,-2007.83 283.925,-2008.98 286.941,-2015.3"/>
-<text text-anchor="middle" x="225" y="-2105" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge48" class="edge"><title>configuration-modules-core#1035-&gt;configuration-modules-core#1032</title>
+<path fill="none" stroke="black" stroke-width="2" d="M174.384,-2147.98C179.15,-2145.21 183.74,-2142.22 188,-2139 197.964,-2131.46 247.889,-2058.34 258,-2051 266.607,-2044.75 276.141,-2039.24 285.999,-2034.4"/>
+<polygon fill="black" stroke="black" points="287.544,-2037.54 295.126,-2030.14 284.584,-2031.2 287.544,-2037.54"/>
+<text text-anchor="middle" x="225" y="-2120" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1033 -->
-<g id="node57" class="node"><title>configuration-modules-core#1033</title>
+<g id="node61" class="node"><title>configuration-modules-core#1033</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1033" xlink:title="freeipa: certutil doesn't initialise quattor/nssdb if directory exists but db doesn't" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-1888" rx="121.122" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1892" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1879" font-family="Sans" font-size="10.00">configuration-modules-core#1033</text>
+<ellipse fill="#6cc644" stroke="black" cx="384" cy="-1910" rx="121.122" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-1914" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1901" font-family="Sans" font-size="10.00">configuration-modules-core#1033</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1035&#45;&gt;configuration&#45;modules&#45;core#1033 -->
-<g id="edge46" class="edge"><title>configuration-modules-core#1035-&gt;configuration-modules-core#1033</title>
-<path fill="none" stroke="black" stroke-width="2" d="M179.597,-2147.74C182.671,-2145.09 185.502,-2142.18 188,-2139 219.671,-2098.65 188.881,-2073.35 206,-2025 221.417,-1981.45 222.725,-1964.83 258,-1935 265.768,-1928.43 274.542,-1922.74 283.755,-1917.81"/>
-<polygon fill="black" stroke="black" points="285.337,-1920.93 292.704,-1913.32 282.196,-1914.68 285.337,-1920.93"/>
-<text text-anchor="middle" x="225" y="-2029" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge50" class="edge"><title>configuration-modules-core#1035-&gt;configuration-modules-core#1033</title>
+<path fill="none" stroke="black" stroke-width="2" d="M179.047,-2147.91C182.311,-2145.21 185.328,-2142.25 188,-2139 213.351,-2108.16 192.179,-2088.45 206,-2051 222.529,-2006.21 221.832,-1988.17 258,-1957 265.707,-1950.36 274.44,-1944.62 283.628,-1939.66"/>
+<polygon fill="black" stroke="black" points="285.213,-1942.78 292.557,-1935.14 282.054,-1936.53 285.213,-1942.78"/>
+<text text-anchor="middle" x="225" y="-2055" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1028 -->
-<g id="node58" class="node"><title>configuration-modules-core#1028</title>
+<g id="node62" class="node"><title>configuration-modules-core#1028</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1028" xlink:title="Split logstash versions: keep legacy versions 1.2 and 2.0 and add 5.0" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="188,-1338 16,-1338 16,-1284 188,-1284 188,-1338"/>
 <text text-anchor="middle" x="102" y="-1315" font-family="Sans" font-size="10.00">pull-request</text>
@@ -426,18 +454,18 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1026 -->
-<g id="node60" class="node"><title>configuration-modules-core#1026</title>
+<g id="node64" class="node"><title>configuration-modules-core#1026</title>
 <polygon fill="lightgrey" stroke="black" points="470,-156.5 298,-156.5 298,-115.5 470,-115.5 470,-156.5"/>
 <text text-anchor="middle" x="384" y="-133.5" font-family="Sans" font-size="10.00">configuration-modules-core#1026</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1028&#45;&gt;configuration&#45;modules&#45;core#1026 -->
-<g id="edge48" class="edge"><title>configuration-modules-core#1028-&gt;configuration-modules-core#1026</title>
+<g id="edge52" class="edge"><title>configuration-modules-core#1028-&gt;configuration-modules-core#1026</title>
 <path fill="none" stroke="black" stroke-dasharray="1,5" d="M180.507,-1283.81C183.296,-1281.15 185.822,-1278.22 188,-1275 222.768,-1223.66 164.685,-205.239 206,-159 226.331,-136.245 257.155,-127.534 287.469,-125.452"/>
 <polygon fill="black" stroke="black" points="297.714,-124.989 287.927,-129.936 292.719,-125.214 287.724,-125.44 287.724,-125.44 287.724,-125.44 292.719,-125.214 287.521,-120.945 297.714,-124.989 297.714,-124.989"/>
 <text text-anchor="middle" x="225" y="-163" font-family="Sans" font-size="10.00">replaces</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1024 -->
-<g id="node61" class="node"><title>configuration-modules-core#1024</title>
+<g id="node65" class="node"><title>configuration-modules-core#1024</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1024" xlink:title="ncm-syslog: cleanup and refactor" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="470,-975 298,-975 298,-921 470,-921 470,-975"/>
 <text text-anchor="middle" x="384" y="-952" font-family="Sans" font-size="10.00">pull-request</text>
@@ -445,24 +473,24 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1024&#45;&gt;CAF#206 -->
-<g id="edge52" class="edge"><title>configuration-modules-core#1024-&gt;CAF#206</title>
+<g id="edge56" class="edge"><title>configuration-modules-core#1024-&gt;CAF#206</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M447.328,-975.173C484.809,-990.492 533.515,-1009.09 578,-1022 601.658,-1028.87 628.538,-1034.5 650.661,-1038.58"/>
 <polygon fill="none" stroke="black" points="650.321,-1042.07 660.783,-1040.39 651.559,-1035.18 650.321,-1042.07"/>
 <text text-anchor="middle" x="542" y="-1020" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- CAF#211 -->
-<g id="node63" class="node"><title>CAF#211</title>
+<g id="node67" class="node"><title>CAF#211</title>
 <polygon fill="lightgrey" stroke="black" points="731,-444.5 661,-444.5 661,-403.5 731,-403.5 731,-444.5"/>
 <text text-anchor="middle" x="696" y="-421.5" font-family="Sans" font-size="10.00">CAF#211</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1024&#45;&gt;CAF#211 -->
-<g id="edge50" class="edge"><title>configuration-modules-core#1024-&gt;CAF#211</title>
+<g id="edge54" class="edge"><title>configuration-modules-core#1024-&gt;CAF#211</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M470.122,-929.427C484.114,-922.69 496.96,-913.51 506,-901 530.173,-867.55 510.974,-569.161 524,-530 537.54,-489.295 542.522,-474.114 578,-450 599.309,-435.516 627.333,-428.946 650.724,-426.029"/>
 <polygon fill="none" stroke="black" points="651.193,-429.499 660.767,-424.961 650.453,-422.538 651.193,-429.499"/>
 <text text-anchor="middle" x="542" y="-534" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#950 -->
-<g id="node65" class="node"><title>configuration-modules-core#950</title>
+<g id="node69" class="node"><title>configuration-modules-core#950</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/950" xlink:title="ncm-spma: Remove support for package groups from yum backends" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="384" cy="-750" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-754" font-family="Sans" font-size="10.00">issue</text>
@@ -470,7 +498,7 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#951 -->
-<g id="node67" class="node"><title>configuration-modules-core#951</title>
+<g id="node71" class="node"><title>configuration-modules-core#951</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/951" xlink:title="ncm-spma (yum): Remove support for package groups" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="696" cy="-782" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="696" y="-786" font-family="Sans" font-size="10.00">issue</text>
@@ -478,13 +506,13 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#950&#45;&gt;configuration&#45;modules&#45;core#951 -->
-<g id="edge54" class="edge"><title>configuration-modules-core#950-&gt;configuration-modules-core#951</title>
+<g id="edge58" class="edge"><title>configuration-modules-core#950-&gt;configuration-modules-core#951</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M496.639,-761.553C521.602,-764.113 548.175,-766.838 573.509,-769.437"/>
 <polygon fill="none" stroke="black" points="573.221,-772.926 583.526,-770.464 573.935,-765.962 573.221,-772.926"/>
 <text text-anchor="middle" x="542" y="-772" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#952 -->
-<g id="node69" class="node"><title>configuration-modules-core#952</title>
+<g id="node73" class="node"><title>configuration-modules-core#952</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/952" xlink:title="ncm-spma (yumng): Remove support for package groups" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="696" cy="-688" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="696" y="-692" font-family="Sans" font-size="10.00">issue</text>
@@ -492,13 +520,13 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#950&#45;&gt;configuration&#45;modules&#45;core#952 -->
-<g id="edge56" class="edge"><title>configuration-modules-core#950-&gt;configuration-modules-core#952</title>
+<g id="edge60" class="edge"><title>configuration-modules-core#950-&gt;configuration-modules-core#952</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M484.436,-730.042C516.643,-723.641 552.485,-716.519 585.378,-709.982"/>
 <polygon fill="none" stroke="black" points="586.359,-713.356 595.485,-707.974 584.994,-706.49 586.359,-713.356"/>
 <text text-anchor="middle" x="542" y="-725" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#821 -->
-<g id="node70" class="node"><title>configuration-modules-core#821</title>
+<g id="node74" class="node"><title>configuration-modules-core#821</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/821" xlink:title="ncm-spma: Add backend for apt" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="185,-1266 19,-1266 19,-1212 185,-1212 185,-1266"/>
 <text text-anchor="middle" x="102" y="-1243" font-family="Sans" font-size="10.00">pull-request</text>
@@ -506,18 +534,18 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#716 -->
-<g id="node72" class="node"><title>configuration-modules-core#716</title>
+<g id="node76" class="node"><title>configuration-modules-core#716</title>
 <polygon fill="lightgrey" stroke="black" points="467,-98.5 301,-98.5 301,-57.5 467,-57.5 467,-98.5"/>
 <text text-anchor="middle" x="384" y="-75.5" font-family="Sans" font-size="10.00">configuration-modules-core#716</text>
 </g>
 <!-- configuration&#45;modules&#45;core#821&#45;&gt;configuration&#45;modules&#45;core#716 -->
-<g id="edge58" class="edge"><title>configuration-modules-core#821-&gt;configuration-modules-core#716</title>
+<g id="edge62" class="edge"><title>configuration-modules-core#821-&gt;configuration-modules-core#716</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M180.507,-1211.81C183.296,-1209.15 185.822,-1206.22 188,-1203 222.338,-1152.3 165.199,-146.655 206,-101 226.984,-77.5195 259.141,-68.9935 290.379,-67.2741"/>
 <polygon fill="none" stroke="black" points="290.593,-70.7691 300.474,-66.9447 290.365,-63.7728 290.593,-70.7691"/>
 <text text-anchor="middle" x="225" y="-105" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1063 -->
-<g id="node73" class="node"><title>configuration-modules-core#1063</title>
+<g id="node77" class="node"><title>configuration-modules-core#1063</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1063" xlink:title="ncm-opennebula: Include VNM configuration support for OVS/VXLAN" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="188,-2690 16,-2690 16,-2636 188,-2636 188,-2690"/>
 <text text-anchor="middle" x="102" y="-2667" font-family="Sans" font-size="10.00">pull-request</text>
@@ -525,7 +553,7 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1021 -->
-<g id="node75" class="node"><title>configuration-modules-core#1021</title>
+<g id="node79" class="node"><title>configuration-modules-core#1021</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1021" xlink:title="ncm-opennebula: include OpenNebulaNetwork.conf OVS support" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="384" cy="-2718" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-2722" font-family="Sans" font-size="10.00">issue</text>
@@ -533,24 +561,24 @@
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1063&#45;&gt;configuration&#45;modules&#45;core#1021 -->
-<g id="edge60" class="edge"><title>configuration-modules-core#1063-&gt;configuration-modules-core#1021</title>
+<g id="edge64" class="edge"><title>configuration-modules-core#1063-&gt;configuration-modules-core#1021</title>
 <path fill="none" stroke="black" stroke-width="2" d="M188.142,-2679.8C214.18,-2684.88 243.176,-2690.53 270.705,-2695.9"/>
 <polygon fill="black" stroke="black" points="270.288,-2699.39 280.773,-2697.87 271.628,-2692.52 270.288,-2699.39"/>
 <text text-anchor="middle" x="225" y="-2694" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1014 -->
-<g id="node77" class="node"><title>configuration-modules-core#1014</title>
+<g id="node81" class="node"><title>configuration-modules-core#1014</title>
 <polygon fill="lightgrey" stroke="black" points="470,-2662.5 298,-2662.5 298,-2621.5 470,-2621.5 470,-2662.5"/>
 <text text-anchor="middle" x="384" y="-2639.5" font-family="Sans" font-size="10.00">configuration-modules-core#1014</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1063&#45;&gt;configuration&#45;modules&#45;core#1014 -->
-<g id="edge62" class="edge"><title>configuration-modules-core#1063-&gt;configuration-modules-core#1014</title>
+<g id="edge66" class="edge"><title>configuration-modules-core#1063-&gt;configuration-modules-core#1014</title>
 <path fill="none" stroke="black" stroke-width="2" d="M188.142,-2656.59C219.565,-2654.25 255.296,-2651.58 287.558,-2649.18"/>
 <polygon fill="black" stroke="black" points="288.188,-2652.64 297.9,-2648.41 287.668,-2645.66 288.188,-2652.64"/>
 <text text-anchor="middle" x="225" y="-2659" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- LC#16 -->
-<g id="node78" class="node"><title>LC#16</title>
+<g id="node82" class="node"><title>LC#16</title>
 <a xlink:href="https://github.com/quattor/LC/pull/16" xlink:title="LC::Check: fix link() for hardlink creation" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="141,-2130 63,-2130 63,-2076 141,-2076 141,-2130"/>
 <text text-anchor="middle" x="102" y="-2107" font-family="Sans" font-size="10.00">pull-request</text>
@@ -558,21 +586,21 @@
 </a>
 </g>
 <!-- LC#17 -->
-<g id="node80" class="node"><title>LC#17</title>
+<g id="node84" class="node"><title>LC#17</title>
 <a xlink:href="https://github.com/quattor/LC/issues/17" xlink:title="LC::Check::link 17.2: hardlink management is buggy" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1794" rx="39.8075" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1798" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1785" font-family="Sans" font-size="10.00">LC#17</text>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1816" rx="39.8075" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-1820" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1807" font-family="Sans" font-size="10.00">LC#17</text>
 </a>
 </g>
 <!-- LC#16&#45;&gt;LC#17 -->
-<g id="edge64" class="edge"><title>LC#16-&gt;LC#17</title>
-<path fill="none" stroke="black" stroke-width="2" d="M141.672,-2095.58C158.501,-2090.39 176.782,-2081.65 188,-2067 224.799,-2018.94 186.623,-1989.35 206,-1932 220.911,-1887.87 222.503,-1871.16 258,-1841 279.675,-1822.58 309.256,-1811.05 334.309,-1804.02"/>
-<polygon fill="black" stroke="black" points="335.244,-1807.39 344.017,-1801.45 333.455,-1800.63 335.244,-1807.39"/>
-<text text-anchor="middle" x="225" y="-1936" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge68" class="edge"><title>LC#16-&gt;LC#17</title>
+<path fill="none" stroke="black" stroke-width="2" d="M141.934,-2095.3C158.605,-2090.07 176.687,-2081.37 188,-2067 219.183,-2027.38 189.334,-2002.58 206,-1955 221.526,-1910.67 222.28,-1893.5 258,-1863 279.632,-1844.53 309.21,-1833 334.273,-1825.98"/>
+<polygon fill="black" stroke="black" points="335.209,-1829.35 343.986,-1823.42 333.424,-1822.58 335.209,-1829.35"/>
+<text text-anchor="middle" x="225" y="-1959" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- maven&#45;tools#148 -->
-<g id="node81" class="node"><title>maven-tools#148</title>
+<g id="node85" class="node"><title>maven-tools#148</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/148" xlink:title="Test::Quattor::ProfileCache: use a ccm.cfg per compiled profile" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="153,-2058 51,-2058 51,-2004 153,-2004 153,-2058"/>
 <text text-anchor="middle" x="102" y="-2035" font-family="Sans" font-size="10.00">pull-request</text>
@@ -580,21 +608,21 @@
 </a>
 </g>
 <!-- maven&#45;tools#135 -->
-<g id="node83" class="node"><title>maven-tools#135</title>
+<g id="node87" class="node"><title>maven-tools#135</title>
 <a xlink:href="https://github.com/quattor/maven-tools/issues/135" xlink:title="tests try to generate tabcompletion" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1700" rx="72.832" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1704" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1691" font-family="Sans" font-size="10.00">maven-tools#135</text>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1722" rx="72.832" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-1726" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1713" font-family="Sans" font-size="10.00">maven-tools#135</text>
 </a>
 </g>
 <!-- maven&#45;tools#148&#45;&gt;maven&#45;tools#135 -->
-<g id="edge66" class="edge"><title>maven-tools#148-&gt;maven-tools#135</title>
-<path fill="none" stroke="black" stroke-width="2" d="M153.896,-2019.37C166.901,-2014.02 179.542,-2006.26 188,-1995 209.092,-1966.92 195.065,-1871.37 206,-1838 220.505,-1793.73 222.503,-1777.16 258,-1747 272.186,-1734.95 289.758,-1725.84 307.231,-1719.02"/>
-<polygon fill="black" stroke="black" points="308.73,-1722.2 316.906,-1715.46 306.313,-1715.63 308.73,-1722.2"/>
-<text text-anchor="middle" x="225" y="-1842" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge70" class="edge"><title>maven-tools#148-&gt;maven-tools#135</title>
+<path fill="none" stroke="black" stroke-width="2" d="M153.761,-2019.27C166.765,-2013.92 179.439,-2006.18 188,-1995 224.799,-1946.94 186.623,-1917.35 206,-1860 220.911,-1815.87 222.503,-1799.16 258,-1769 272.186,-1756.95 289.758,-1747.84 307.231,-1741.02"/>
+<polygon fill="black" stroke="black" points="308.73,-1744.2 316.906,-1737.46 306.313,-1737.63 308.73,-1744.2"/>
+<text text-anchor="middle" x="225" y="-1864" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- maven&#45;tools#142 -->
-<g id="node84" class="node"><title>maven-tools#142</title>
+<g id="node88" class="node"><title>maven-tools#142</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/142" xlink:title="Test::Quattor: mock CAF::Path link-related functions" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="153,-1986 51,-1986 51,-1932 153,-1932 153,-1986"/>
 <text text-anchor="middle" x="102" y="-1963" font-family="Sans" font-size="10.00">pull-request</text>
@@ -602,35 +630,35 @@
 </a>
 </g>
 <!-- CAF#225 -->
-<g id="node86" class="node"><title>CAF#225</title>
+<g id="node90" class="node"><title>CAF#225</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/225" xlink:title="CAF::Path: add methods to manage links" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="423,-1550 345,-1550 345,-1496 423,-1496 423,-1550"/>
-<text text-anchor="middle" x="384" y="-1527" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="384" y="-1514" font-family="Sans" font-size="10.00">CAF#225</text>
+<polygon fill="#6e5494" stroke="black" points="423,-1572 345,-1572 345,-1518 423,-1518 423,-1572"/>
+<text text-anchor="middle" x="384" y="-1549" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="384" y="-1536" font-family="Sans" font-size="10.00">CAF#225</text>
 </a>
 </g>
 <!-- maven&#45;tools#142&#45;&gt;CAF#225 -->
-<g id="edge68" class="edge"><title>maven-tools#142-&gt;CAF#225</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M153.806,-1947.81C166.974,-1942.47 179.723,-1934.59 188,-1923 223.331,-1873.52 188.469,-1708.22 206,-1650 219.431,-1605.4 221.343,-1587.74 258,-1559 279.793,-1541.91 309.35,-1532.93 334.359,-1528.22"/>
-<polygon fill="none" stroke="black" points="335.138,-1531.64 344.405,-1526.5 333.959,-1524.74 335.138,-1531.64"/>
-<text text-anchor="middle" x="225" y="-1654" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge72" class="edge"><title>maven-tools#142-&gt;CAF#225</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M153.763,-1947.78C166.93,-1942.44 179.69,-1934.57 188,-1923 220.627,-1877.58 189.722,-1725.5 206,-1672 219.56,-1627.44 221.343,-1609.74 258,-1581 279.793,-1563.91 309.35,-1554.93 334.359,-1550.22"/>
+<polygon fill="none" stroke="black" points="335.138,-1553.64 344.405,-1548.5 333.959,-1546.74 335.138,-1553.64"/>
+<text text-anchor="middle" x="225" y="-1676" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- maven&#45;tools#141 -->
-<g id="node88" class="node"><title>maven-tools#141</title>
+<g id="node92" class="node"><title>maven-tools#141</title>
 <a xlink:href="https://github.com/quattor/maven-tools/issues/141" xlink:title="Test::Quattor: mock the new symlink-related methods" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1606" rx="72.832" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1610" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1597" font-family="Sans" font-size="10.00">maven-tools#141</text>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1628" rx="72.832" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-1632" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1619" font-family="Sans" font-size="10.00">maven-tools#141</text>
 </a>
 </g>
 <!-- maven&#45;tools#142&#45;&gt;maven&#45;tools#141 -->
-<g id="edge70" class="edge"><title>maven-tools#142-&gt;maven-tools#141</title>
-<path fill="none" stroke="black" stroke-width="2" d="M153.55,-1947.63C166.714,-1942.28 179.525,-1934.45 188,-1923 211.788,-1890.87 193.816,-1782.08 206,-1744 220.196,-1699.63 222.503,-1683.16 258,-1653 272.186,-1640.95 289.758,-1631.84 307.231,-1625.02"/>
-<polygon fill="black" stroke="black" points="308.73,-1628.2 316.906,-1621.46 306.313,-1621.63 308.73,-1628.2"/>
-<text text-anchor="middle" x="225" y="-1748" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge74" class="edge"><title>maven-tools#142-&gt;maven-tools#141</title>
+<path fill="none" stroke="black" stroke-width="2" d="M153.896,-1947.37C166.901,-1942.02 179.542,-1934.26 188,-1923 209.092,-1894.92 195.065,-1799.37 206,-1766 220.505,-1721.73 222.503,-1705.16 258,-1675 272.186,-1662.95 289.758,-1653.84 307.231,-1647.02"/>
+<polygon fill="black" stroke="black" points="308.73,-1650.2 316.906,-1643.46 306.313,-1643.63 308.73,-1650.2"/>
+<text text-anchor="middle" x="225" y="-1770" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- maven&#45;tools#137 -->
-<g id="node89" class="node"><title>maven-tools#137</title>
+<g id="node93" class="node"><title>maven-tools#137</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/137" xlink:title="mvnprove: trace the tests, not prove (and include tracing compiletime)" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="153,-1698 51,-1698 51,-1644 153,-1644 153,-1698"/>
 <text text-anchor="middle" x="102" y="-1675" font-family="Sans" font-size="10.00">pull-request</text>
@@ -638,32 +666,32 @@
 </a>
 </g>
 <!-- maven&#45;tools#133 -->
-<g id="node91" class="node"><title>maven-tools#133</title>
+<g id="node95" class="node"><title>maven-tools#133</title>
 <polygon fill="lightgrey" stroke="black" points="435,-446.5 333,-446.5 333,-405.5 435,-405.5 435,-446.5"/>
 <text text-anchor="middle" x="384" y="-423.5" font-family="Sans" font-size="10.00">maven-tools#133</text>
 </g>
 <!-- maven&#45;tools#137&#45;&gt;maven&#45;tools#133 -->
-<g id="edge72" class="edge"><title>maven-tools#137-&gt;maven-tools#133</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M153.681,-1660.22C167.014,-1654.88 179.882,-1646.9 188,-1635 212.582,-1598.96 202.684,-893.496 206,-850 219.63,-671.245 135.025,-580.446 258,-450 274.3,-432.71 298.904,-425.664 322.056,-423.326"/>
-<polygon fill="black" stroke="black" points="332.208,-422.579 322.565,-427.801 327.221,-422.946 322.235,-423.313 322.235,-423.313 322.235,-423.313 327.221,-422.946 321.905,-418.825 332.208,-422.579 332.208,-422.579"/>
-<text text-anchor="middle" x="225" y="-854" font-family="Sans" font-size="10.00">replaces</text>
+<g id="edge76" class="edge"><title>maven-tools#137-&gt;maven-tools#133</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M153.678,-1660.22C167.012,-1654.88 179.88,-1646.9 188,-1635 212.244,-1599.47 202.796,-903.892 206,-861 219.714,-677.389 131.928,-584.191 258,-450 274.337,-432.611 299.07,-425.574 322.31,-423.269"/>
+<polygon fill="black" stroke="black" points="332.497,-422.539 322.844,-427.742 327.509,-422.896 322.522,-423.254 322.522,-423.254 322.522,-423.254 327.509,-422.896 322.2,-418.766 332.497,-422.539 332.497,-422.539"/>
+<text text-anchor="middle" x="225" y="-865" font-family="Sans" font-size="10.00">replaces</text>
 </g>
 <!-- maven&#45;tools#134 -->
-<g id="node93" class="node"><title>maven-tools#134</title>
+<g id="node97" class="node"><title>maven-tools#134</title>
 <a xlink:href="https://github.com/quattor/maven-tools/issues/134" xlink:title="tracing guideline" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1180" rx="72.832" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1184" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1171" font-family="Sans" font-size="10.00">maven-tools#134</text>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1202" rx="72.832" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-1206" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1193" font-family="Sans" font-size="10.00">maven-tools#134</text>
 </a>
 </g>
 <!-- maven&#45;tools#137&#45;&gt;maven&#45;tools#134 -->
-<g id="edge74" class="edge"><title>maven-tools#137-&gt;maven-tools#134</title>
-<path fill="none" stroke="black" stroke-width="2" d="M153.916,-1659.89C167.085,-1654.55 179.808,-1646.65 188,-1635 210.461,-1603.05 190.958,-1320.04 206,-1284 223.676,-1241.65 268.299,-1215.63 308.442,-1200.21"/>
-<polygon fill="black" stroke="black" points="309.813,-1203.44 317.994,-1196.7 307.4,-1196.87 309.813,-1203.44"/>
-<text text-anchor="middle" x="225" y="-1288" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge78" class="edge"><title>maven-tools#137-&gt;maven-tools#134</title>
+<path fill="none" stroke="black" stroke-width="2" d="M153.896,-1659.88C167.066,-1654.53 179.793,-1646.64 188,-1635 230.83,-1574.25 175.717,-1368.88 206,-1301 224.233,-1260.13 267.945,-1235.47 307.486,-1220.99"/>
+<polygon fill="black" stroke="black" points="308.878,-1224.21 317.165,-1217.61 306.571,-1217.6 308.878,-1224.21"/>
+<text text-anchor="middle" x="225" y="-1305" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- maven&#45;tools#136 -->
-<g id="node94" class="node"><title>maven-tools#136</title>
+<g id="node98" class="node"><title>maven-tools#136</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/136" xlink:title="Test/Quattor/Panc: refine valid annotation" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="153,-1194 51,-1194 51,-1140 153,-1140 153,-1194"/>
 <text text-anchor="middle" x="102" y="-1171" font-family="Sans" font-size="10.00">pull-request</text>
@@ -671,18 +699,18 @@
 </a>
 </g>
 <!-- maven&#45;tools#140 -->
-<g id="node96" class="node"><title>maven-tools#140</title>
+<g id="node100" class="node"><title>maven-tools#140</title>
 <polygon fill="lightgrey" stroke="black" points="435,-40.5 333,-40.5 333,0.5 435,0.5 435,-40.5"/>
 <text text-anchor="middle" x="384" y="-17.5" font-family="Sans" font-size="10.00">maven-tools#140</text>
 </g>
 <!-- maven&#45;tools#136&#45;&gt;maven&#45;tools#140 -->
-<g id="edge76" class="edge"><title>maven-tools#136-&gt;maven-tools#140</title>
+<g id="edge80" class="edge"><title>maven-tools#136-&gt;maven-tools#140</title>
 <path fill="none" stroke="black" stroke-width="2" d="M102.523,-1139.8C105.93,-975.939 127.352,-124.551 206,-43 235.288,-12.6313 283.389,-7.953 322.209,-10.2848"/>
 <polygon fill="black" stroke="black" points="322.135,-13.7894 332.374,-11.0646 322.671,-6.80987 322.135,-13.7894"/>
 <text text-anchor="middle" x="225" y="-47" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- ncm&#45;ncd#109 -->
-<g id="node97" class="node"><title>ncm-ncd#109</title>
+<g id="node101" class="node"><title>ncm-ncd#109</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/109" xlink:title="ncm-ncd: modified event reporting under NoAction=1 with new FileWriter" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="145,-1770 59,-1770 59,-1716 145,-1716 145,-1770"/>
 <text text-anchor="middle" x="102" y="-1747" font-family="Sans" font-size="10.00">pull-request</text>
@@ -690,13 +718,13 @@
 </a>
 </g>
 <!-- ncm&#45;ncd#109&#45;&gt;CAF#202 -->
-<g id="edge80" class="edge"><title>ncm-ncd#109-&gt;CAF#202</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M145.832,-1734.87C161.713,-1729.63 178.15,-1721.05 188,-1707 235.258,-1639.6 166.956,-1409.47 206,-1337 230.614,-1291.31 290.72,-1273.82 334.289,-1267.13"/>
-<polygon fill="none" stroke="black" points="335,-1270.57 344.422,-1265.72 334.035,-1263.63 335,-1270.57"/>
-<text text-anchor="middle" x="225" y="-1341" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge84" class="edge"><title>ncm-ncd#109-&gt;CAF#202</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M145.816,-1734.86C161.695,-1729.62 178.135,-1721.04 188,-1707 233.29,-1642.55 165.843,-1420.76 206,-1353 231.997,-1309.13 291.221,-1293.44 334.233,-1287.89"/>
+<polygon fill="none" stroke="black" points="334.704,-1291.36 344.24,-1286.75 333.906,-1284.41 334.704,-1291.36"/>
+<text text-anchor="middle" x="225" y="-1357" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- ncm&#45;ncd#108 -->
-<g id="node99" class="node"><title>ncm-ncd#108</title>
+<g id="node103" class="node"><title>ncm-ncd#108</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/108" xlink:title="CLI: disable log_world_readable and enable verbose_logfile by default" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="427,-621 341,-621 341,-567 427,-567 427,-621"/>
 <text text-anchor="middle" x="384" y="-598" font-family="Sans" font-size="10.00">pull-request</text>
@@ -704,13 +732,13 @@
 </a>
 </g>
 <!-- ncm&#45;ncd#109&#45;&gt;ncm&#45;ncd#108 -->
-<g id="edge78" class="edge"><title>ncm-ncd#109-&gt;ncm-ncd#108</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M145.916,-1734.93C161.809,-1729.7 178.232,-1721.11 188,-1707 203.382,-1684.79 204.057,-1247.95 206,-1221 217.38,-1063.17 228.825,-1024.51 244,-867 247.508,-830.592 241.39,-735.588 258,-703 274.416,-670.794 304.832,-644.056 331.667,-625.122"/>
-<polygon fill="none" stroke="black" points="333.962,-627.793 340.232,-619.252 330.005,-622.019 333.962,-627.793"/>
-<text text-anchor="middle" x="225" y="-1225" font-family="Sans" font-size="10.00">requires</text>
+<g id="edge82" class="edge"><title>ncm-ncd#109-&gt;ncm-ncd#108</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M145.906,-1734.93C161.797,-1729.69 178.222,-1721.1 188,-1707 202.829,-1685.62 204.137,-1264.95 206,-1239 217.551,-1078.08 229.122,-1038.64 244,-878 247.598,-839.153 240.376,-737.805 258,-703 274.389,-670.634 304.964,-643.818 331.891,-624.883"/>
+<polygon fill="none" stroke="black" points="334.198,-627.546 340.482,-619.015 330.25,-621.765 334.198,-627.546"/>
+<text text-anchor="middle" x="225" y="-1243" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- ncm&#45;ncd#93 -->
-<g id="node102" class="node"><title>ncm-ncd#93</title>
+<g id="node106" class="node"><title>ncm-ncd#93</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/issues/93" xlink:title="switch log_world_readable default to 0" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="696" cy="-594" rx="57.9828" ry="38.1838"/>
 <text text-anchor="middle" x="696" y="-598" font-family="Sans" font-size="10.00">issue</text>
@@ -718,13 +746,13 @@
 </a>
 </g>
 <!-- ncm&#45;ncd#108&#45;&gt;ncm&#45;ncd#93 -->
-<g id="edge82" class="edge"><title>ncm-ncd#108-&gt;ncm-ncd#93</title>
+<g id="edge86" class="edge"><title>ncm-ncd#108-&gt;ncm-ncd#93</title>
 <path fill="none" stroke="black" stroke-width="2" d="M427.711,-594C479.632,-594 566.855,-594 627.706,-594"/>
 <polygon fill="black" stroke="black" points="627.99,-597.5 637.99,-594 627.99,-590.5 627.99,-597.5"/>
 <text text-anchor="middle" x="542" y="-598" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- ncm&#45;ncd#94 -->
-<g id="node104" class="node"><title>ncm-ncd#94</title>
+<g id="node108" class="node"><title>ncm-ncd#94</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/issues/94" xlink:title="switch default verbose_logfile to 1" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="696" cy="-500" rx="57.9828" ry="38.1838"/>
 <text text-anchor="middle" x="696" y="-504" font-family="Sans" font-size="10.00">issue</text>
@@ -732,13 +760,13 @@
 </a>
 </g>
 <!-- ncm&#45;ncd#108&#45;&gt;ncm&#45;ncd#94 -->
-<g id="edge84" class="edge"><title>ncm-ncd#108-&gt;ncm-ncd#94</title>
+<g id="edge88" class="edge"><title>ncm-ncd#108-&gt;ncm-ncd#94</title>
 <path fill="none" stroke="black" stroke-width="2" d="M427.682,-583.701C451.029,-577.996 480.201,-570.545 506,-563 549.479,-550.285 597.942,-534.185 635.04,-521.443"/>
 <polygon fill="black" stroke="black" points="636.388,-524.681 644.701,-518.113 634.107,-518.063 636.388,-524.681"/>
 <text text-anchor="middle" x="542" y="-561" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- template&#45;library&#45;core#153 -->
-<g id="node105" class="node"><title>template-library-core#153</title>
+<g id="node109" class="node"><title>template-library-core#153</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/153" xlink:title="blockdevices schema: add support for esp partition flag" target="_parent">
 <polygon fill="#6e5494" stroke="black" points="171,-1914 33,-1914 33,-1860 171,-1860 171,-1914"/>
 <text text-anchor="middle" x="102" y="-1891" font-family="Sans" font-size="10.00">pull-request</text>
@@ -746,46 +774,46 @@
 </a>
 </g>
 <!-- template&#45;library&#45;core#152 -->
-<g id="node107" class="node"><title>template-library-core#152</title>
+<g id="node111" class="node"><title>template-library-core#152</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/152" xlink:title="update partition flags" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1440" rx="97.0803" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-1444" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-1431" font-family="Sans" font-size="10.00">template-library-core#152</text>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1462" rx="97.0803" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-1466" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-1453" font-family="Sans" font-size="10.00">template-library-core#152</text>
 </a>
 </g>
 <!-- template&#45;library&#45;core#153&#45;&gt;template&#45;library&#45;core#152 -->
-<g id="edge86" class="edge"><title>template-library-core#153-&gt;template-library-core#152</title>
-<path fill="none" stroke="black" stroke-width="2" d="M171.153,-1866.87C177.665,-1862.56 183.501,-1857.33 188,-1851 226.035,-1797.46 183.271,-1617.62 206,-1556 219.289,-1519.97 227.223,-1509.96 258,-1487 269.068,-1478.74 281.747,-1471.79 294.702,-1465.98"/>
-<polygon fill="black" stroke="black" points="296.335,-1469.09 304.165,-1461.96 293.593,-1462.65 296.335,-1469.09"/>
-<text text-anchor="middle" x="225" y="-1560" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge90" class="edge"><title>template-library-core#153-&gt;template-library-core#152</title>
+<path fill="none" stroke="black" stroke-width="2" d="M171.122,-1866.84C177.64,-1862.54 183.485,-1857.32 188,-1851 223.331,-1801.52 184.82,-1634.99 206,-1578 219.377,-1542.01 227.223,-1531.96 258,-1509 269.068,-1500.74 281.747,-1493.79 294.702,-1487.98"/>
+<polygon fill="black" stroke="black" points="296.335,-1491.09 304.165,-1483.96 293.593,-1484.65 296.335,-1491.09"/>
+<text text-anchor="middle" x="225" y="-1582" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- template&#45;library&#45;core#148 -->
-<g id="node111" class="node"><title>template-library-core#148</title>
+<g id="node115" class="node"><title>template-library-core#148</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/148" xlink:title="quattor/functions/network: boot_nic returns last, not first boot device" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="970" cy="-2032" rx="97.0803" ry="38.1838"/>
-<text text-anchor="middle" x="970" y="-2036" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="970" y="-2023" font-family="Sans" font-size="10.00">template-library-core#148</text>
+<ellipse fill="#bd2c00" stroke="black" cx="970" cy="-2054" rx="97.0803" ry="38.1838"/>
+<text text-anchor="middle" x="970" y="-2058" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="970" y="-2045" font-family="Sans" font-size="10.00">template-library-core#148</text>
 </a>
 </g>
 <!-- template&#45;library&#45;core#150&#45;&gt;template&#45;library&#45;core#148 -->
-<g id="edge90" class="edge"><title>template-library-core#150-&gt;template-library-core#148</title>
-<path fill="none" stroke="black" stroke-width="2" d="M765.142,-2056.67C795.948,-2052.96 832.879,-2048.51 866.848,-2044.42"/>
-<polygon fill="black" stroke="black" points="867.302,-2047.89 876.812,-2043.22 866.465,-2040.94 867.302,-2047.89"/>
-<text text-anchor="middle" x="843" y="-2053" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge94" class="edge"><title>template-library-core#150-&gt;template-library-core#148</title>
+<path fill="none" stroke="black" stroke-width="2" d="M765.142,-2078.67C795.948,-2074.96 832.879,-2070.51 866.848,-2066.42"/>
+<polygon fill="black" stroke="black" points="867.302,-2069.89 876.812,-2065.22 866.465,-2062.94 867.302,-2069.89"/>
+<text text-anchor="middle" x="843" y="-2075" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- template&#45;library&#45;core#149 -->
-<g id="node113" class="node"><title>template-library-core#149</title>
+<g id="node117" class="node"><title>template-library-core#149</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/149" xlink:title="remove get_subnet_params from quattor/functions/network" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="970" cy="-2126" rx="97.0803" ry="38.1838"/>
-<text text-anchor="middle" x="970" y="-2130" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="970" y="-2117" font-family="Sans" font-size="10.00">template-library-core#149</text>
+<ellipse fill="#bd2c00" stroke="black" cx="970" cy="-2148" rx="97.0803" ry="38.1838"/>
+<text text-anchor="middle" x="970" y="-2152" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="970" y="-2139" font-family="Sans" font-size="10.00">template-library-core#149</text>
 </a>
 </g>
 <!-- template&#45;library&#45;core#150&#45;&gt;template&#45;library&#45;core#149 -->
-<g id="edge92" class="edge"><title>template-library-core#150-&gt;template-library-core#149</title>
-<path fill="none" stroke="black" stroke-width="2" d="M765.142,-2080.39C798.471,-2087.81 838.97,-2096.83 875.13,-2104.88"/>
-<polygon fill="black" stroke="black" points="874.683,-2108.37 885.205,-2107.12 876.204,-2101.53 874.683,-2108.37"/>
-<text text-anchor="middle" x="843" y="-2104" font-family="Sans" font-size="10.00">fixes</text>
+<g id="edge96" class="edge"><title>template-library-core#150-&gt;template-library-core#149</title>
+<path fill="none" stroke="black" stroke-width="2" d="M765.142,-2102.39C798.471,-2109.81 838.97,-2118.83 875.13,-2126.88"/>
+<polygon fill="black" stroke="black" points="874.683,-2130.37 885.205,-2129.12 876.204,-2123.53 874.683,-2130.37"/>
+<text text-anchor="middle" x="843" y="-2126" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 </g>
 </svg>
