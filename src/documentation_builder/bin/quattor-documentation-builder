@@ -30,7 +30,7 @@ if __name__ == '__main__':
         'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
         'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
         'remove_emails': ('Remove email addresses from generated rst files.', None, 'store_true', True, 'r'),
-        'codify_paths': ('Put paths inside code tags.', None, 'store_true', True, 'p'),
+        'codify_paths': ('Put paths inside code tags.', None, 'store_true', False, 'p'),
     }
     GO = simple_option(OPTIONS)
     logger.info("Starting main.")
