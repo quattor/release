@@ -3,7 +3,6 @@
 import os
 import sys
 import re
-from template import Template, TemplateException
 from sourcehandler import get_source_files
 from rsthandler import generate_rst, cleanup_content
 from config import build_repository_map
@@ -91,9 +90,10 @@ def make_titles(sources, targets):
     new_sources = {}
     for source in sources:
         title = make_title_from_source_path(source, targets)
+        title = title.split(".")[0]
         new_sources[title] = source
 
-    return sources
+    return new_sources
 
 
 def make_title_from_source_path(source, targets):
@@ -176,35 +176,11 @@ def replace_regex_link(pages, regex, basename, link):
 
 
 def write_site(sitepages, location, docsdir):
-    """Write the pages for the website to disk and build a toc."""
-    toc = {}
+    """Write the pages for the website to disk."""
     for subdir, pages in sitepages.iteritems():
-        toc[subdir] = set()
         fullsubdir = os.path.join(location, docsdir, subdir)
         if not os.path.exists(fullsubdir):
             os.makedirs(fullsubdir)
         for pagename, content in pages.iteritems():
             with open(os.path.join(fullsubdir, pagename), 'w') as fih:
                 fih.write(content)
-
-            toc[subdir].add(pagename)
-
-        # Sort the toc, ignore the case.
-        toc[subdir] = sorted(toc[subdir], key=lambda s: s.lower())
-
-    write_toc(toc, location)
-
-
-def write_toc(toc, location):
-    """Write the toc to disk."""
-    try:
-        name = 'toc.tt'
-        template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
-        tocfile = template.process(name, {'toc': toc})
-    except TemplateException as e:
-        msg = "Failed to render template %s with data %s: %s." % (name, toc, e)
-        logger.error(msg)
-        raise TemplateException('render', msg)
-
-    with open(os.path.join(location, "gendocs.rst"), 'w') as fih:
-        fih.write(tocfile)

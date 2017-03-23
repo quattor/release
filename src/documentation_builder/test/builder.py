@@ -3,7 +3,6 @@
 import sys
 import os
 import shutil
-import filecmp
 from tempfile import mkdtemp
 from unittest import TestCase, main, TestLoader
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../lib')))  # noqa
@@ -126,20 +125,6 @@ to [NCM::Component::FreeIPA::Client](https://metacpan.org/pod/NCM::Component::Fr
         self.assertTrue(os.path.exists(os.path.join(sitedir, 'components/fmonagent.rst')))
         self.assertTrue(os.path.exists(os.path.join(sitedir, 'CCM')))
         self.assertTrue(os.path.exists(os.path.join(sitedir, 'CCM/fetch::download.rst')))
-
-    def test_write_toc(self):
-        """Test write_toc function."""
-        toc = {'CCM': set(['fetch::download.rst']), 'components': set(['fmonagent.rst', 'profile::functions.rst'])}
-        builder.write_toc(toc, self.tmpdir)
-        with open(os.path.join(self.tmpdir, "gendocs.rst")) as fih:
-            print fih.read()
-        self.assertTrue(filecmp.cmp('test/testdata/gendocs.rst', os.path.join(self.tmpdir, "gendocs.rst")))
-
-        toc = {'components': set(['profile::functions.rst', 'fmonagent.rst']), 'CCM': set(['fetch::download.rst'])}
-        builder.write_toc(toc, self.tmpdir)
-        with open(os.path.join(self.tmpdir, "gendocs.rst")) as fih:
-            print fih.read()
-        self.assertTrue(filecmp.cmp('test/testdata/gendocs.rst', os.path.join(self.tmpdir, "gendocs.rst")))
 
     def suite(self):
         """Return all the testcases in this module."""
