@@ -37,10 +37,6 @@ Documentation builder for the Quattor repositories.
                         The location where the output rst files should be written to.
     -r, --remove_emails
                         Remove email addresses from generated md files. (def True)
-    -R, --remove_headers
-                        Remove unneeded headers from files (MAINTAINER and AUTHOR). (def True)
-    -w, --remove_whitespace
-                        Remove whitespace (   ) from md files. (def True)
 
   Debug and logging options (configfile section MAIN):
     -d, --debug         Enable debug log mode (def False)

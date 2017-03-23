@@ -32,6 +32,7 @@ def build_documentation(repository_location, cleanup_options, compile, output_lo
         logger.info("Path: %s." % fullpath)
         sources = get_source_files(fullpath, compile)
         logger.debug("Sources:" % sources)
+        sources = make_titles(sources, repository_map[repository]['targets'])
         rst = generate_rst(sources)
         cleanup_content(rst, cleanup_options)
         rstlist[repository] = rst
@@ -85,6 +86,30 @@ def check_commands(runmaven):
     return True
 
 
+def make_titles(sources, targets):
+    """Add titles to sources."""
+    new_sources = {}
+    for source in sources:
+        title = make_title_from_source_path(source, targets)
+        new_sources[title] = source
+
+    return sources
+
+
+def make_title_from_source_path(source, targets):
+    """Make a title from source path."""
+    found = False
+    for target in targets:
+        if target in source and not found:
+            newname = source.split(target)[-1]
+            newname = os.path.splitext(newname)[0].replace("/", "::") + ".rst"
+            return newname
+        if not found:
+            logger.error("No suitable target found for %s in %s." % (source, targets))
+
+    return False
+
+
 def build_site_structure(rstlist, repository_map):
     """Make a mapping of files with their new names for the website."""
     sitepages = {}
@@ -104,6 +129,8 @@ def build_site_structure(rstlist, repository_map):
                     found = True
             if not found:
                 logger.error("No suitable target found for %s in %s." % (source, targets))
+
+    logger.debug("sitepages: %s" % sitepages)
     return sitepages
 
 

@@ -1,7 +1,6 @@
 """Module to handle rst operations."""
 
 import re
-import os
 
 from vsc.utils import fancylogger
 from vsc.utils.run import run_asyncloop
@@ -22,28 +21,28 @@ def generate_rst(sources):
 
     rstlist = {}
 
-    for source in sources:
+    for title, source in sources.iteritems():
         logger.debug("Parsing %s." % source)
         if source.endswith(".pan"):
-            rst = rst_from_pan(source)
+            rst = rst_from_pan(source, title)
             if rst is not None:
                 rstlist[source] = rst
         else:
-            rst = rst_from_perl(source)
+            rst = rst_from_perl(source, title)
             if rst is not None:
                 rstlist[source] = rst
 
     return rstlist
 
 
-def rst_from_perl(podfile, name):
+def rst_from_perl(podfile, title):
     """
     Take a perl file and converts it to a reStrcturedText with the help of pod2rst.
 
     Returns True if pod2rst worked, False if it failed.
     """
     logger.info("Making rst from perl: %s." % podfile)
-    ec, output = run_asyncloop("pod2rst --infile %s --title %s" % (podfile, name))
+    ec, output = run_asyncloop("pod2rst --infile %s --title %s" % (podfile, title))
     logger.debug(output)
     if ec != 0 or output == "\n":
         logger.warning("pod2rst failed on %s." % podfile)

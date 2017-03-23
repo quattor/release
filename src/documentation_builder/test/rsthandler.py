@@ -29,10 +29,10 @@ class RstHandlerTest(TestCase):
         expectedoutput = "test/testdata/rst_from_pod.rst"
 
         # Get False from bogus input
-        self.assertFalse(rsth.rst_from_perl("nonexistent_file"))
+        self.assertFalse(rsth.rst_from_perl("nonexistent_file", "allo"))
 
         # Verify content
-        output = rsth.rst_from_perl(testinput)
+        output = rsth.rst_from_perl(testinput, "testtitle")
         print output
         file = open(testoutput, 'w')
         file.write(output)
@@ -47,7 +47,7 @@ class RstHandlerTest(TestCase):
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile1)
         shutil.copy("test/testdata/pod_test_input.pod", testfile2)
-        output = rsth.generate_rst([testfile1, testfile2])
+        output = rsth.generate_rst({'title1': testfile1, 'title2': testfile2})
         self.assertEquals(len(output), 2)
         self.assertEquals(sorted(output.keys()), [testfile1, testfile2])
 

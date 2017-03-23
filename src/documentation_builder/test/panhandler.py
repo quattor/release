@@ -136,7 +136,7 @@ class PanHandlerTest(TestCase):
         content = panh.get_content_from_pan("test/testdata/pan_annotated_schema.pan")
         testfile = open(os.path.join(self.tmpdir, "test.rst"), 'w')
 
-        output = panh.render_template(content, "component-test")
+        output = panh.render_template(content, "component-test", "test::schema")
         print output
         for line in output:
             testfile.write(line)
@@ -147,7 +147,7 @@ class PanHandlerTest(TestCase):
         # Test with only fields
         content = {'functions': [{'args': ['first number to add'], 'name': 'add'}]}
 
-        output = panh.render_template(content, "component-test")
+        output = panh.render_template(content, "component-test", "test::schema")
         print output
 
         expectedoutput = '\nFunctions\n---------\n\n - add\n    - Arguments:\n        - first number to add\n'
@@ -156,7 +156,7 @@ class PanHandlerTest(TestCase):
 
         # Test with only Types
         content = {'types': [{'fields': [{'required': 'false', 'type': 'string', 'name': 'ca'}], 'name': 'testtype'}]}
-        output = panh.render_template(content, "component-test")
+        output = panh.render_template(content, "component-test", "test::schemae")
         print output
         expectedoutput = '\nTypes\n-----\n\n - `/software/component-test/testtype`\n    - `/software/component-test/testtype/ca`\n\
         - Optional\n        - Type: string\n'
@@ -201,7 +201,7 @@ class PanHandlerTest(TestCase):
         testfile = os.path.join(testdir, "pan_annotated_schema.pan")
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile)
-        testoutput = panh.rst_from_pan(testfile)
+        testoutput = panh.rst_from_pan(testfile, "title")
         print testoutput
         self.assertEqual(len(testoutput), 492)
         self.assertTrue("Types" in testoutput)
@@ -212,7 +212,7 @@ class PanHandlerTest(TestCase):
         testfile = os.path.join(testdir, "pan_empty_input.pan")
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_empty_input.pan", testfile)
-        self.assertIsNone(panh.rst_from_pan(testfile))
+        self.assertIsNone(panh.rst_from_pan(testfile, "title"))
 
     def test_get_basename(self):
         """Test get_basename function."""

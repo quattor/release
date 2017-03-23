@@ -13,24 +13,24 @@ logger = fancylogger.getLogger()
 namespace = "{http://quattor.org/pan/annotations}"
 
 
-def rst_from_pan(panfile):
+def rst_from_pan(panfile, title):
     """Make reStructuredText from a pan annotated file."""
     logger.info("Making rst from pan: %s." % panfile)
     content = get_content_from_pan(panfile)
     basename = get_basename(panfile)
-    output = render_template(content, basename)
+    output = render_template(content, basename, title)
     if len(output) == 0:
         return None
     else:
         return output
 
 
-def render_template(content, basename):
+def render_template(content, basename, title):
     """Render the template."""
     try:
         name = 'pan.tt'
         template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
-        output = template.process(name, {'content': content, 'basename': basename})
+        output = template.process(name, {'content': content, 'basename': basename, 'title': title})
     except TemplateException as e:
         msg = "Failed to render template %s with data %s: %s." % (name, content, e)
         logger.error(msg)
