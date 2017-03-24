@@ -143,6 +143,12 @@ else
     REPO_FILTER='aii'
 fi
 
+if [[ "$RH_RELEASE" -eq 7 ]]; then
+    AQUILON=1
+else
+    AQUILON=0
+fi
+
 OS_HACK=1
 
 EATMYDATA=${EATMYDATA:-0}
@@ -293,6 +299,10 @@ RPMFORGE_REPO_RPM=http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.
 
 # noreplace (config) files
 NOREPLACE_FILES="/etc/ccm.conf /etc/cdp-listend.conf /etc/ncm-ncd.conf /etc/ncm-cdispd.conf"
+
+IUS_REPO_RPM_EL7=https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-15.ius.centos7.noarch.rpm
+AQUILON_PROTO_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aq_proto_releases.sh
+AQUILON_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aquilon_release.sh
 
 if [[ ! -z "$ENABLEREPO" ]]; then
     ENABLEREPOSFULL="--enablerepo=$ENABLEREPO"
@@ -578,7 +588,6 @@ function os_hack () {
         for dep in "Pod::Simple" "Test::More" "JSON::XS"; do
             get_cpan_dep "perl($dep)"
         done
-
     else
         if [[ "$RH_RELEASE" -eq 6 ]]; then
             # Force install very recent Pod::Simple
@@ -1151,6 +1160,73 @@ function test_rpms() {
     fi
 }
 
+function build_aquilon_protocols() {
+    # ugly
+    local fn ius
+
+    # need very recent git for sorting tags on date
+    ius="ius-release"
+    download $IUS_REPO_RPM_EL7 $ius.rpm
+    $SUDO yum localinstall -y $ius.rpm
+    $SUDO yum remove -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" git git-core-doc git-core
+    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" git2u
+    $SUDO yum remove -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$ius"
+    $SUDO yum clean all
+
+    # This is the only requirement
+    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" protobuf-compiler
+
+    fn=/tmp/aquilon_protocols_build.sh
+    download $AQUILON_PROTO_BUILDSCRIPT $fn
+    chmod +x $fn
+
+    export BASE=$PWD
+    $fn
+
+    # install it, not the src rpm
+    latest=$(sed "s/-/_/" "$BASE/latest")
+    $SUDO yum localinstall -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$BASE"/aquilon-protocols/dist/*"$latest"*.noarch.rpm
+}
+
+function build_aquilon() {
+    # ugly
+    local fn
+    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" docbook5-style-xsl docbook5-schemas
+
+    fn=/tmp/aquilon_build.sh
+    download $AQUILON_BUILDSCRIPT $fn
+    chmod +x $fn
+
+    export BASE=$PWD
+    $fn
+
+    # get all deps
+    $SUDO yum localinstall -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$BASE"/aquilon/dist/*.noarch.rpm
+
+    # to run tests
+    RUNAQTESTS=0
+    if [ $RUNAQTESTS -gt 0 ]; then
+        $SUDO rpm -e aquilon
+        $SUDO yum install "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" python-devel libxml2-devel libxslt-devel
+        cd "$BASE/aquilon" || exit 1
+        # install bunch of test deps, like more recent protobuf?
+        # why not setuptools and tests_require?
+
+        for dep in $(git grep ms.version.addpkg tests/ |tr '"' "'"|sed "s/.*addpkg('//;s/', \?'.*//"|sort|uniq); do
+            echo "Installing aquilon test python dep $dep using fuzzy yum"
+            $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$dep" "python-$dep"
+        done
+
+        # some require more recent setuptools?
+        #easy_install --user -U setuptools
+        for dep in $(git grep ms.version.addpkg tests/ |tr '"' "'"|sed "s/.*addpkg('//;s/')//;s/', \?'/>=/"|sort|uniq); do
+            echo "Installing aquilon test python dep $dep"
+            easy_install --user "$dep"
+        done
+        yes yes | PYTHONPATH=$PWD tests/runtests.py
+    fi
+}
+
 function main() {
     local filtered
     mkdir -p "$DEST"
@@ -1257,6 +1333,11 @@ function main() {
     done
 
     test_rpms
+
+    if [[ $AQUILON -gt 0 ]]; then
+        build_aquilon_protocols
+        build_aquilon
+    fi
 
     if [[ "$EATMYDATA" -gt 0 ]]; then
         unset LD_PRELOAD
