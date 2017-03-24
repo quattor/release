@@ -90,7 +90,6 @@ def make_titles(sources, targets):
     new_sources = {}
     for source in sources:
         title = make_title_from_source_path(source, targets)
-        title = title.split(".")[0]
         new_sources[title] = source
 
     return new_sources
@@ -101,9 +100,9 @@ def make_title_from_source_path(source, targets):
     found = False
     for target in targets:
         if target in source and not found:
-            newname = source.split(target)[-1]
-            newname = os.path.splitext(newname)[0].replace("/", "::") + ".rst"
-            return newname
+            title = source.split(target)[-1]
+            title = os.path.splitext(title)[0].replace("/", " :: ")
+            return title
         if not found:
             logger.error("No suitable target found for %s in %s." % (source, targets))
 
@@ -124,7 +123,7 @@ def build_site_structure(rstlist, repository_map):
             for target in targets:
                 if target in source and not found:
                     newname = source.split(target)[-1]
-                    newname = os.path.splitext(newname)[0].replace("/", "::") + ".rst"
+                    newname = os.path.splitext(newname)[0].replace("/", "_") + ".rst"
                     sitepages[sitesection][newname] = rst
                     found = True
             if not found:

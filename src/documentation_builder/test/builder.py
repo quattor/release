@@ -60,10 +60,10 @@ class BuilderTest(TestCase):
                      '/tmp/doc/src/configuration-modules-core/ncm-freeipa/target/pan/quattor/aii/freeipa/schema.pan':
                      'Hello2'
                      }}
-        expected_response = {'CCM': {'Fetch::Download.rst': '# NAME\n\nEDG::WP4::CC'},
-                             'components': {'aii::freeipa::schema.rst': 'Hello2',
+        expected_response = {'CCM': {'Fetch_Download.rst': '# NAME\n\nEDG::WP4::CC'},
+                             'components': {'aii_freeipa_schema.rst': 'Hello2',
                                             'fmonagent.rst': 'Hello',
-                                            'profile::functions.rst': u'\n### Functions\n'}}
+                                            'profile_functions.rst': u'\n### Functions\n'}}
         self.assertEquals(builder.build_site_structure(testdata, repomap), expected_response)
 
     def test_make_interlinks(self):
