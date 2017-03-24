@@ -13,11 +13,11 @@ UPSTREAM=upstream
 
 RELEASEBRANCH=upstream
 
-BASE=/tmp
+BASE=${BASE:-/tmp}
 
 # PRs against upstream that we really want
 # 6: add bdist_rpm setup.py
-PRs="37 41"
+PRs="37 41 58"
 
 error () {
     echo "ERROR: $@"
@@ -25,17 +25,18 @@ error () {
 }
 
 # For now, always clone
-if [ ! -d $BASE/$NAME ]; then
-    cd $BASE
+if [ ! -d "$BASE/$NAME" ]; then
+    cd "$BASE"
+    if [ $? -gt 0 ]; then error "!!"; fi
     git clone $REPO
     if [ $? -gt 0 ]; then error "!!"; fi
-    cd $NAME
+    cd "$NAME"
     if [ $? -gt 0 ]; then error "!!"; fi
     git remote add $UPSTREAM $REPO
     if [ $? -gt 0 ]; then error "!!"; fi
 fi
 
-cd $BASE/$NAME
+cd "$BASE/$NAME"
 if [ $? -gt 0 ]; then error "!!"; fi
 
 git checkout $RELEASEBRANCH

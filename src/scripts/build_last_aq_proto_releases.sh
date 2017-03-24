@@ -16,7 +16,7 @@ REPO=https://github.com/quattor/$NAME.git
 # git remote add upstream https://github.com/quattor/aquilon-protocols.git
 UPSTREAM=upstream
 
-BASE=/tmp
+BASE=${BASE:-/tmp}
 
 # PRs against upstream that we really want
 # 6: add bdist_rpm setup.py
@@ -28,22 +28,23 @@ error () {
 }
 
 # For now, always clone
-if [ ! -d $BASE/$NAME ]; then
-    cd $BASE
+if [ ! -d "$BASE/$NAME" ]; then
+    cd "$BASE"
+    if [ $? -gt 0 ]; then error "!!"; fi
     git clone $REPO
     if [ $? -gt 0 ]; then error "!!"; fi
-    cd $NAME
+    cd "$NAME"
     if [ $? -gt 0 ]; then error "!!"; fi
     git remote add $UPSTREAM $REPO
     if [ $? -gt 0 ]; then error "!!"; fi
 fi
 
-cd $BASE/$NAME
+cd "$BASE/$NAME"
 if [ $? -gt 0 ]; then error "!!"; fi
 
 
-pbc=protobuf-compiler
-rpm -q $pbc  >&/dev/null
+pbc="protobuf-compiler"
+rpm -q "$pbc"  >&/dev/null
 if [ $? -ne 0 ]; then
     error "Please install required rpm: sudo yum install -y $pbc"
 fi
@@ -78,6 +79,11 @@ for tag in $(git tag -l --sort=-taggerdate |head -$NR_TAGS); do
     if [ $? -gt 0 ]; then error "!!"; fi
     git branch -D $branch
     if [ $? -gt 0 ]; then error "!!"; fi
+
+    # Make latest file which holds latest tag
+    if [ ! -f ./latest ]; then
+        echo "$tag" > ./latest
+    fi
 done
 
 echo "RPMS in $PWD/dist"

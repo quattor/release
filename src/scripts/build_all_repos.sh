@@ -4,7 +4,7 @@ if [ "$DEBUGSCRIPT" == "1" ]; then
     set -x
 fi
 
-NAME=`basename ${0%.sh}`
+NAME=$(basename ${0%.sh})
 
 # base destination directory, base for all other
 DEST=${DEST:-$HOME/quattordev}
@@ -23,7 +23,7 @@ PACKAGE=${PACKAGE:-package}
 
 MINIMAL_DEPS_PATH="which rpm yum repoquery";
 
-now=`date +%s`
+now=$(date +%s)
 # List with all deps
 REPODEPS_INSTALL_LIST=$DEST/repodeps_install_list.$now
 # List with all yum install
@@ -34,7 +34,7 @@ PERL_CPAN_PERLPKG_INSTALL_LIST=$DEST/perl_cpan_perlpkg_install_list.$now
 PERL_CPAN_INSTALL_LIST=$DEST/perl_cpan_install_list.$now
 
 # The current redhat-release
-RH_RELEASE=`sed -n "s/.*release \([0-9]\+\).*/\1/p" /etc/redhat-release`
+RH_RELEASE=$(sed -n "s/.*release \([0-9]\+\).*/\1/p" /etc/redhat-release)
 
 # Install and use the epel repo
 if [ "$RH_RELEASE" -eq 5 -o "$RH_RELEASE" -eq 6 ]; then
@@ -68,6 +68,11 @@ else
     REPO_FILTER=""
 fi
 
+if [ "$RH_RELEASE" -eq 7 ]; then
+    AQUILON=1
+else
+    AQUILON=0
+fi
 
 OS_HACK=1
 
@@ -149,13 +154,14 @@ EOF
     exit 2
 }
 
-echo "$NAME START "`date +%s` `date`
+echo "$NAME START $(date +%s) $(date)"
 
 # maven-tools is both testonly and packageonly
 # due to the build-scripts/package-build-scripts structure
 
 # only testing, and early dependency resolution no package
 REPOS_MVN_TESTONLY_ORDERED="maven-tools"
+
 # ordered list of repository names
 REPOS_MVN_ORDERED="LC CAF CCM ncm-ncd ncm-lib-blockdevices aii configuration-modules-core configuration-modules-grid cdp-listend ncm-cdispd ncm-query"
 # the package only step, no previous testing or dependency resolution is done
@@ -220,6 +226,10 @@ RPMFORGE_REPO_RPM=http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.
 # noreplace (config) files
 NOREPLACE_FILES="/etc/ccm.conf /etc/cdp-listend.conf /etc/ncm-ncd.conf /etc/ncm-cdispd.conf"
 
+IUS_REPO_RPM_EL7=https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-15.ius.centos7.noarch.rpm
+AQUILON_PROTO_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aq_proto_releases.sh
+AQUILON_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aquilon_release.sh
+
 if [ ! -z "$ENABLEREPO" ]; then
     ENABLEREPOSFULL="--enablerepo=$ENABLEREPO"
 fi
@@ -250,7 +260,7 @@ function cerror () {
     fi
 }
 
-ID=`/usr/bin/id -u`
+ID=$(/usr/bin/id -u)
 if [ -z "$ID" -o $ID -ne 0 ]; then
     SUDO=sudo
 else
@@ -349,7 +359,7 @@ function download () {
 }
 
 function has_correct_panc () {
-    pancversion=`panc --version 2>/dev/null | sed -n "s/.*:[ ]*\([0-9]\+\)\.\([0-9]\+\).*/\1.\2/p"`
+    pancversion=$(panc --version 2>/dev/null | sed -n "s/.*:[ ]*\([0-9]\+\)\.\([0-9]\+\).*/\1.\2/p")
 
     if [ ! -z "$pancversion" ]; then
         maj1=${pancversion%.*}
@@ -382,7 +392,7 @@ function localinstall_url () {
         error 100 "Failed to download $rpmurl"
     fi
     # panc rpm is not signed
-    $SUDO yum localinstall $DISABLEREPOSFULL $ENABLEREPOSFULL -y $installopts $localrpm
+    $SUDO yum localinstall "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" -y "$installopts" "$localrpm"
     if [ $? -ne 0 ]; then
         error 101 "Failed to do localinstall of $localrpm from $rpmurl"
     fi
@@ -411,7 +421,7 @@ function check_quattor_externals () {
         $SUDO sed -i '/quattor\]/,+5d;/quattor_aquilon\]/,+5d' $fn
 
         $SUDO yum clean expire-cache
-        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
     fi
 }
 
@@ -419,7 +429,7 @@ function check_epel () {
     if [ $USE_EPEL -gt 0 ]; then
         localinstall_url $EPEL_REPO_RPM $DEST/epel-release-$RH_RELEASE.rpm "--nogpgcheck"
         $SUDO yum clean expire-cache
-        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
     fi
 }
 
@@ -427,7 +437,7 @@ function check_rpmforge () {
     if [ $USE_RPMFORGE -gt 0 ]; then
         localinstall_url $RPMFORGE_REPO_RPM $DEST/rpmforge-release-$RH_RELEASE.rpm "--nogpgcheck"
         $SUDO yum clean expire-cache
-        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
     fi
 }
 
@@ -438,7 +448,7 @@ function has_mvn () {
     if [ $? -gt 0 ]; then
         echo "No maven executable $mvn found in PATH"
 
-        $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
         deps_install_yum "*bin/mvn" 0
         if [ $? -gt 0 ]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
@@ -459,7 +469,8 @@ function has_mvn () {
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
             fi
 
-            $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+            $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
         fi
@@ -520,7 +531,7 @@ function deps_install_yum () {
     fi
 
     echo "Searching for dep $dep with $SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
-    pkgs=`$SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides "$dep" 2>/dev/null | grep -v 'No package provides' | sort| uniq`
+    pkgs=$($SUDO repoquery -C --qf '%{name}' "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" --whatprovides "$dep" 2>/dev/null | grep -v 'No package provides' | sort| uniq)
     if [ -z "$pkgs" ]; then
         ec=70
         cerror $fatal $ec "No packages found for dep $dep with repoquery"
@@ -548,7 +559,7 @@ function deps_install_yum () {
 
 function check_deps_init_bin () {
     $SUDO yum clean expire-cache
-    $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+    $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
 
     # these are fatal
     echo "Checking DEPS_INIT_BIN_YUM $DEPS_INIT_BIN_YUM"
@@ -969,7 +980,7 @@ function main_init () {
     reset_perl5lib
 
     $SUDO yum clean all
-    $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+    $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
 
     # provided by yum-utils
     main_init_bin_yum $MAIN_INIT_BIN_YUM
@@ -1034,6 +1045,73 @@ function test_rpms() {
     rpmlint $RPMS
     if [ $? -gt 0 ]; then
         error 111 "Rpmlint failed"
+    fi
+}
+
+function build_aquilon_protocols() {
+    # ugly
+    local fn ius
+
+    # need very recent git for sorting tags on date
+    ius="ius-release"
+    download $IUS_REPO_RPM_EL7 $ius.rpm
+    $SUDO yum localinstall -y $ius.rpm
+    $SUDO yum remove -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" git git-core-doc git-core
+    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" git2u
+    $SUDO yum remove -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$ius"
+    $SUDO yum clean all
+
+    # This is the only requirement
+    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" protobuf-compiler
+
+    fn=/tmp/aquilon_protocols_build.sh
+    download $AQUILON_PROTO_BUILDSCRIPT $fn
+    chmod +x $fn
+
+    export BASE=$PWD
+    $fn
+
+    # install it, not the src rpm
+    latest=$(sed "s/-/_/" "$BASE/latest")
+    $SUDO yum localinstall -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$BASE"/aquilon-protocols/dist/*"$latest"*.noarch.rpm
+}
+
+function build_aquilon() {
+    # ugly
+    local fn
+    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" docbook5-style-xsl docbook5-schemas
+
+    fn=/tmp/aquilon_build.sh
+    download $AQUILON_BUILDSCRIPT $fn
+    chmod +x $fn
+
+    export BASE=$PWD
+    $fn
+
+    # get all deps
+    $SUDO yum localinstall -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$BASE"/aquilon/dist/*.noarch.rpm
+
+    # to run tests
+    RUNAQTESTS=0
+    if [ $RUNAQTESTS -gt 0 ]; then
+        $SUDO rpm -e aquilon
+        $SUDO yum install "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" python-devel libxml2-devel libxslt-devel
+        cd "$BASE/aquilon" || exit 1
+        # install bunch of test deps, like more recent protobuf?
+        # why not setuptools and tests_require?
+
+        for dep in $(git grep ms.version.addpkg tests/ |tr '"' "'"|sed "s/.*addpkg('//;s/', \?'.*//"|sort|uniq); do
+            echo "Installing aquilon test python dep $dep using fuzzy yum"
+            $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$dep" "python-$dep"
+        done
+
+        # some require more recent setuptools?
+        #easy_install --user -U setuptools
+        for dep in $(git grep ms.version.addpkg tests/ |tr '"' "'"|sed "s/.*addpkg('//;s/')//;s/', \?'/>=/"|sort|uniq); do
+            echo "Installing aquilon test python dep $dep"
+            easy_install --user "$dep"
+        done
+        yes yes | PYTHONPATH=$PWD tests/runtests.py
     fi
 }
 
@@ -1139,6 +1217,11 @@ function main() {
 
     test_rpms
 
+    if [ $AQUILON -gt 0 ]; then
+        build_aquilon_protocols
+        build_aquilon
+    fi
+
     if [ $EATMYDATA -gt 0 ]; then
         unset LD_PRELOAD
         sync
@@ -1158,6 +1241,6 @@ else
     msg="SUCCESS"
 fi
 
-echo "$NAME END $msg DEST $DEST"`date +%s` `date`
+echo "$NAME END $msg DEST $DEST $(date +%s) $(date)"
 
 exit $ec
