@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """
 Script to convert a Tracwiki page to Jekyll markdown.
