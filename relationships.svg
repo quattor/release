@@ -795,7 +795,7 @@
 <!-- ncm&#45;cdispd#48 -->
 <g id="node113" class="node"><title>ncm-cdispd#48</title>
 <a xlink:href="https://github.com/quattor/ncm-cdispd/pull/48" xlink:title="Do not set a default value for state directory" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="149,-2594 55,-2594 55,-2540 149,-2540 149,-2594"/>
+<polygon fill="#6e5494" stroke="black" points="149,-2594 55,-2594 55,-2540 149,-2540 149,-2594"/>
 <text text-anchor="middle" x="102" y="-2571" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-2558" font-family="Sans" font-size="10.00">ncm-cdispd#48</text>
 </a>
@@ -803,7 +803,7 @@
 <!-- ncm&#45;cdispd#36 -->
 <g id="node115" class="node"><title>ncm-cdispd#36</title>
 <a xlink:href="https://github.com/quattor/ncm-cdispd/issues/36" xlink:title="unittest default statedir of ncm-cdispd and ncm-ncd" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2236" rx="67.1751" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-2236" rx="67.1751" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-2240" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="384" y="-2227" font-family="Sans" font-size="10.00">ncm-cdispd#36</text>
 </a>
