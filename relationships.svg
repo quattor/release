@@ -172,7 +172,7 @@
 <!-- CAF#226 -->
 <g id="node24" class="node"><title>CAF#226</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/226" xlink:title="Filewriter: support sensitive option" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="141,-2940 63,-2940 63,-2886 141,-2886 141,-2940"/>
+<polygon fill="#6e5494" stroke="black" points="141,-2940 63,-2940 63,-2886 141,-2886 141,-2940"/>
 <text text-anchor="middle" x="102" y="-2917" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-2904" font-family="Sans" font-size="10.00">CAF#226</text>
 </a>
@@ -186,7 +186,7 @@
 <!-- CAF#202 -->
 <g id="node26" class="node"><title>CAF#202</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/202" xlink:title="FileWriter: use atomic write" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="423,-2830 345,-2830 345,-2776 423,-2776 423,-2830"/>
+<polygon fill="#6e5494" stroke="black" points="423,-2830 345,-2830 345,-2776 423,-2776 423,-2830"/>
 <text text-anchor="middle" x="384" y="-2807" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="384" y="-2794" font-family="Sans" font-size="10.00">CAF#202</text>
 </a>
@@ -200,7 +200,7 @@
 <!-- CAF#200 -->
 <g id="node28" class="node"><title>CAF#200</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/200" xlink:title="FileWriter: add a sensitive flag to control logging of sensitive diff information" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-2720" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-2720" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-2724" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="384" y="-2711" font-family="Sans" font-size="10.00">CAF#200</text>
 </a>
@@ -236,7 +236,7 @@
 <!-- CAF#148 -->
 <g id="node37" class="node"><title>CAF#148</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/148" xlink:title="CAF::FileWriter updates files in-place" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="698" cy="-2803" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="698" cy="-2803" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="698" y="-2807" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="698" y="-2794" font-family="Sans" font-size="10.00">CAF#148</text>
 </a>
@@ -250,7 +250,7 @@
 <!-- CAF#223 -->
 <g id="node39" class="node"><title>CAF#223</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/223" xlink:title="CAF::FileWriter Can't call method " target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="698" cy="-2897" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="698" cy="-2897" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="698" y="-2901" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="698" y="-2888" font-family="Sans" font-size="10.00">CAF#223</text>
 </a>
@@ -264,7 +264,7 @@
 <!-- CAF#189 -->
 <g id="node41" class="node"><title>CAF#189</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/189" xlink:title="FileWriter: add diff to history" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="698" cy="-2709" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="698" cy="-2709" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="698" y="-2713" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="698" y="-2700" font-family="Sans" font-size="10.00">CAF#189</text>
 </a>
@@ -817,7 +817,7 @@
 <!-- ncm&#45;ncd#109 -->
 <g id="node116" class="node"><title>ncm-ncd#109</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/109" xlink:title="ncm-ncd: modified event reporting under NoAction=1 with new FileWriter" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="145,-3012 59,-3012 59,-2958 145,-2958 145,-3012"/>
+<polygon fill="#6e5494" stroke="black" points="145,-3012 59,-3012 59,-2958 145,-2958 145,-3012"/>
 <text text-anchor="middle" x="102" y="-2989" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-2976" font-family="Sans" font-size="10.00">ncm-ncd#109</text>
 </a>
