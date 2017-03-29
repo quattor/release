@@ -641,8 +641,9 @@ function get_repo_deps_subdir () {
     export IFS=$fakeIFS
 
     # only search src and target (there's some legacy code in other dirs)
-    # TT have 'use X', which perl.req things are perl modules
-    found=`find {src,target} -type f  ! -regex '.*\.tt'`
+    # ignore mock modules from test/resources (and assume they have dependencies resolved elsewhere)
+    # TT have 'use X', which perl.req thinks are perl modules
+    found=$(find {src,target} -type f  ! -regex '.*\.tt' ! -regex '.*src/test/resources/.*)
 
     # find-requires doesn't cover perl .t files
     deps=`(echo "$found" | /usr/lib/rpm/perl.req ; echo "$found" | /usr/lib/rpm/find-requires) | sort | uniq | grep -E '\w'`
@@ -678,7 +679,7 @@ function get_repo_deps_subdir () {
                     # Test if the perl module is usable
                     echo "Dependency $dep is a perl package"
                     # The unittests run prove with additional paths
-                    PERL5LIB="$PERL5LIB:src/test/perl:src/test/resources:target/lib/perl" perl -e "use $perlpkg;"
+                    PERL5LIB="$PERL5LIB:src/test/perl:target/lib/perl" perl -e "use $perlpkg;"
                     if [ $? -eq 0 ]; then
                         echo "Dependency $dep is a usable perl package"
                         add_has_dep "$dep" 1
