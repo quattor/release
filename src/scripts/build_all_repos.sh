@@ -643,7 +643,7 @@ function get_repo_deps_subdir () {
     # only search src and target (there's some legacy code in other dirs)
     # ignore mock modules from test/resources (and assume they have dependencies resolved elsewhere)
     # TT have 'use X', which perl.req thinks are perl modules
-    found=$(find {src,target} -type f  ! -regex '.*\.tt' ! -regex '.*src/test/resources/.*)
+    found=$(find {src,target} -type f  ! -regex '.*\.tt' ! -regex '.*src/test/resources/.*')
 
     # find-requires doesn't cover perl .t files
     deps=`(echo "$found" | /usr/lib/rpm/perl.req ; echo "$found" | /usr/lib/rpm/find-requires) | sort | uniq | grep -E '\w'`
