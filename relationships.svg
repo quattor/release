@@ -150,7 +150,7 @@
 <!-- CAF#233 -->
 <g id="node20" class="node"><title>CAF#233</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/233" xlink:title="filewriter_notmocked.t: fix regexp to be EL6 compatible" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-2040 409,-2040 409,-1986 487,-1986 487,-2040"/>
+<polygon fill="#6e5494" stroke="black" points="487,-2040 409,-2040 409,-1986 487,-1986 487,-2040"/>
 <text text-anchor="middle" x="448" y="-2017" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-2004" font-family="Sans" font-size="10.00">CAF#233</text>
 </a>
@@ -158,7 +158,7 @@
 <!-- CAF#232 -->
 <g id="node22" class="node"><title>CAF#232</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/232" xlink:title="filewriter_notmocked.t fails on SL6" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-1978" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-1978" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-1982" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-1969" font-family="Sans" font-size="10.00">CAF#232</text>
 </a>
