@@ -1,0 +1,11 @@
+g.edge:hover {
+    fill: #edd400;
+    cursor: default;
+}
+g.edge:hover > path {
+    stroke: #edd400;
+}
+g.edge:hover > polygon {
+    stroke: #edd400;
+    fill: #edd400;
+}
