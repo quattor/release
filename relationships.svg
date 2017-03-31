@@ -173,7 +173,7 @@
 <!-- CAF#235 -->
 <g id="node23" class="node"><title>CAF#235</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/235" xlink:title="filewriter/fileeditor tests: reset the string reference to avoid perl warnings" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-2106.04 409,-2106.04 409,-2052.04 487,-2052.04 487,-2106.04"/>
+<polygon fill="#6e5494" stroke="black" points="487,-2106.04 409,-2106.04 409,-2052.04 487,-2052.04 487,-2106.04"/>
 <text text-anchor="middle" x="448" y="-2083.04" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-2070.04" font-family="Sans" font-size="10.00">CAF#235</text>
 </a>
@@ -181,7 +181,7 @@
 <!-- CAF#234 -->
 <g id="node25" class="node"><title>CAF#234</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/234" xlink:title="Unittests on el5 fail due to perl warnings" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2065.04" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2065.04" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2069.04" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2056.04" font-family="Sans" font-size="10.00">CAF#234</text>
 </a>
