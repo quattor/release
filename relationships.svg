@@ -181,7 +181,7 @@
 <!-- CAF#238 -->
 <g id="node25" class="node"><title>CAF#238</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/238" xlink:title="FileWriter/Editor: fix bug in close with source" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="487,-2290 409,-2290 409,-2236 487,-2236 487,-2290"/>
+<polygon fill="#6e5494" stroke="black" points="487,-2290 409,-2290 409,-2236 487,-2236 487,-2290"/>
 <text text-anchor="middle" x="448" y="-2267" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-2254" font-family="Sans" font-size="10.00">CAF#238</text>
 </a>
@@ -195,7 +195,7 @@
 <!-- CAF#237 -->
 <g id="node27" class="node"><title>CAF#237</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/237" xlink:title="CAF::FileEditor from source broken" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2122" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2122" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2126" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2113" font-family="Sans" font-size="10.00">CAF#237</text>
 </a>
@@ -209,7 +209,7 @@
 <!-- CAF#236 -->
 <g id="node29" class="node"><title>CAF#236</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/236" xlink:title="FileWriter: confusing same message with `cancel` and `close` with save=0" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2216" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2216" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2220" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2207" font-family="Sans" font-size="10.00">CAF#236</text>
 </a>
@@ -223,7 +223,7 @@
 <!-- CAF#239 -->
 <g id="node31" class="node"><title>CAF#239</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/239" xlink:title="CAF::FileWriter: reported diff does not end up in verbose logfile" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2310" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2310" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2314" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2301" font-family="Sans" font-size="10.00">CAF#239</text>
 </a>
