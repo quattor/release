@@ -552,7 +552,7 @@
 <!-- maven&#45;tools#160 -->
 <g id="node82" class="node"><title>maven-tools#160</title>
 <a xlink:href="https://github.com/quattor/maven-tools/pull/160" xlink:title="Test::Quattor: set $Test::Quattor::NoAction default to 1" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1083,-1533 981,-1533 981,-1479 1083,-1479 1083,-1533"/>
+<polygon fill="#6e5494" stroke="black" points="1083,-1533 981,-1533 981,-1479 1083,-1479 1083,-1533"/>
 <text text-anchor="middle" x="1032" y="-1510" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="1032" y="-1497" font-family="Sans" font-size="10.00">maven-tools#160</text>
 </a>
