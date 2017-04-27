@@ -417,7 +417,19 @@ function check_quattor_externals () {
 
 function check_epel () {
     if [ $USE_EPEL -gt 0 ]; then
+
+        if [ "$RH_RELEASE" -eq 5 ]; then
+            # EPEL5 zombie mode
+            EPEL_REPO_RPM=$(echo $EPEL_REPO_RPM | sed 's#pub/epel/#pub/archive/epel/#')
+        fi
+
         localinstall_url $EPEL_REPO_RPM $DEST/epel-release-$RH_RELEASE.rpm "--nogpgcheck"
+
+        if [ "$RH_RELEASE" -eq 5 ]; then
+            # EPEL5 zombie mode
+            sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#pub/epel/#pub/archive/epel#' -i /etc/yum.repos.d/epel*.repo
+        fi
+
         $SUDO yum clean expire-cache
         $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
     fi
@@ -488,8 +500,6 @@ function os_hack () {
             get_cpan_dep "perl($dep)"
         done
 
-        # CentOS5 zombie mode: use vault and latest release
-        sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#mirror.centos.org/centos#vault.centos.org#;s/[$]releasever/5.11/' -i /etc/yum.repos.d/CentOS-*repo
     else
         if [ "$RH_RELEASE" -eq 6 ]; then
             # Force install very recent Pod::Simple
@@ -970,6 +980,11 @@ function eatmydata () {
 
 function main_init () {
     reset_perl5lib
+
+    if [ "$RH_RELEASE" -eq 5 ]; then
+        # CentOS5 zombie mode: use vault and latest release
+        $SUDO sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#mirror.centos.org/centos#vault.centos.org#;s/[$]releasever/5.11/' -i /etc/yum.repos.d/CentOS-*repo
+    fi
 
     $SUDO yum clean all
     $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
