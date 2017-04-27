@@ -487,6 +487,9 @@ function os_hack () {
         for dep in Pod::Simple Test::More JSON::XS; do
             get_cpan_dep "perl($dep)"
         done
+
+        # CentOS5 zombie mode: use vault and latest release
+        sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#mirror.centos.org/centos#vault.centos.org#;s/[$]releasever/5.11/' -i /etc/yum.repos.d/CentOS-*repo
     else
         if [ "$RH_RELEASE" -eq 6 ]; then
             # Force install very recent Pod::Simple
