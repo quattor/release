@@ -290,6 +290,7 @@ function get_cpanm () {
     # CPAN itself should come from yum, no way this will work otherwise
     deps_install_yum 'perl(CPAN)' 1
 
+    deps_install_yum 'perl(JSON::XS)' 0
     deps_install_yum 'perl(App::cpanminus)' 0
 
     # Some dependencies for building perl modules
@@ -427,7 +428,7 @@ function check_epel () {
 
         if [ "$RH_RELEASE" -eq 5 ]; then
             # EPEL5 zombie mode
-            sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#pub/epel/#pub/archive/epel#' -i /etc/yum.repos.d/epel*.repo
+            $SUDO sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#pub/epel/#pub/archive/epel/#' -i /etc/yum.repos.d/epel*.repo
         fi
 
         $SUDO yum clean expire-cache
@@ -1138,6 +1139,11 @@ function main() {
 
     # The tests require access to core templates
     git_repo template-library-core
+
+    if [ "$RH_RELEASE" -eq 5 ]; then
+        # CentOS5 cannot have too recent JSON::XS from cpanm
+        cpanm "--local-lib=$CPANINSTALL" -f -U JSON::XS
+    fi
 
     # test the maven-tools build scripts repo separately (can't package it)
     for repo in $REPOS_MVN_TESTONLY_ORDERED; do
