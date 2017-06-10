@@ -590,7 +590,7 @@
 <!-- configuration&#45;modules&#45;core#1070 -->
 <g id="node84" class="node"><title>configuration-modules-core#1070</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1070" xlink:title="ncm-network: cleanup and switch to 00-tqu" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="534,-1027 362,-1027 362,-973 534,-973 534,-1027"/>
+<polygon fill="#6e5494" stroke="black" points="534,-1027 362,-1027 362,-973 534,-973 534,-1027"/>
 <text text-anchor="middle" x="448" y="-1004" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-991" font-family="Sans" font-size="10.00">configuration-modules-core#1070</text>
 </a>
