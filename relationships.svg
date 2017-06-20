@@ -30,7 +30,7 @@
 <!-- aii#268 -->
 <g id="node3" class="node"><title>aii#268</title>
 <a xlink:href="https://github.com/quattor/aii/pull/268" xlink:title="aii-ks: support the aii partition and /or filesystem flag" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="423,-2030 345,-2030 345,-1976 423,-1976 423,-2030"/>
+<polygon fill="#6e5494" stroke="black" points="423,-2030 345,-2030 345,-1976 423,-1976 423,-2030"/>
 <text text-anchor="middle" x="384" y="-2007" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="384" y="-1994" font-family="Sans" font-size="10.00">aii#268</text>
 </a>
@@ -44,7 +44,7 @@
 <!-- aii#266 -->
 <g id="node4" class="node"><title>aii#266</title>
 <a xlink:href="https://github.com/quattor/aii/pull/266" xlink:title="aii-ks: xwindows: depth and resolution are not supported in EL6+" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="423,-1958 345,-1958 345,-1904 423,-1904 423,-1958"/>
+<polygon fill="#6e5494" stroke="black" points="423,-1958 345,-1958 345,-1904 423,-1904 423,-1958"/>
 <text text-anchor="middle" x="384" y="-1935" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="384" y="-1922" font-family="Sans" font-size="10.00">aii#266</text>
 </a>
@@ -52,7 +52,7 @@
 <!-- aii#262 -->
 <g id="node6" class="node"><title>aii#262</title>
 <a xlink:href="https://github.com/quattor/aii/issues/262" xlink:title="aii-ks: xwindows default configuration for SL7 is wrong" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="702" cy="-1992" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="702" cy="-1992" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="702" y="-1996" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="702" y="-1983" font-family="Sans" font-size="10.00">aii#262</text>
 </a>
