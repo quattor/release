@@ -132,7 +132,7 @@
 <!-- CAF#230 -->
 <g id="node17" class="node"><title>CAF#230</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/230" xlink:title="Path: listdir method to return directory entry names" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="741,-1994 663,-1994 663,-1940 741,-1940 741,-1994"/>
+<polygon fill="#6e5494" stroke="black" points="741,-1994 663,-1994 663,-1940 741,-1940 741,-1994"/>
 <text text-anchor="middle" x="702" y="-1971" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="702" y="-1958" font-family="Sans" font-size="10.00">CAF#230</text>
 </a>
