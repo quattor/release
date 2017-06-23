@@ -415,7 +415,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1028 -->
 <g id="node60" class="node"><title>configuration-modules-core#1028</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1028" xlink:title="Split logstash versions: keep legacy versions 1.2 and 2.0 and add 5.0" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1028" xlink:title="ncm-metaconfig: logstash: split versions: keep legacy versions 1.2 and 2.0 and add 5.0" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="470,-986 298,-986 298,-932 470,-932 470,-986"/>
 <text text-anchor="middle" x="384" y="-963" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="384" y="-950" font-family="Sans" font-size="10.00">configuration-modules-core#1028</text>
