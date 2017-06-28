@@ -150,7 +150,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1136 -->
 <g id="node20" class="node"><title>configuration-modules-core#1136</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1136" xlink:title="Cleanup gmond and support new configuration options" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1136" xlink:title="ncm-gmond: cleanup and support new configuration options" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="188,-2500 16,-2500 16,-2446 188,-2446 188,-2500"/>
 <text text-anchor="middle" x="102" y="-2477" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-2464" font-family="Sans" font-size="10.00">configuration-modules-core#1136</text>
