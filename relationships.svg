@@ -151,7 +151,7 @@
 <!-- CCM#174 -->
 <g id="node20" class="node"><title>CCM#174</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/174" xlink:title="ccm-purge: fix variable scoping error" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="423,-2207 345,-2207 345,-2153 423,-2153 423,-2207"/>
+<polygon fill="#6e5494" stroke="black" points="423,-2207 345,-2207 345,-2153 423,-2153 423,-2207"/>
 <text text-anchor="middle" x="384" y="-2184" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="384" y="-2171" font-family="Sans" font-size="10.00">CCM#174</text>
 </a>
@@ -159,7 +159,7 @@
 <!-- CCM#173 -->
 <g id="node22" class="node"><title>CCM#173</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/173" xlink:title="ccm-purge does not work" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="702" cy="-2180" rx="51.1176" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="702" cy="-2180" rx="51.1176" ry="38.1838"/>
 <text text-anchor="middle" x="702" y="-2184" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="702" y="-2171" font-family="Sans" font-size="10.00">CCM#173</text>
 </a>
