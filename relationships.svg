@@ -22,7 +22,7 @@
 <!-- aii#272 -->
 <g id="node1" class="node"><title>aii#272</title>
 <a xlink:href="https://github.com/quattor/aii/pull/272" xlink:title="aii-ks: support mailx and SMTP via mailx" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="403,-2636 325,-2636 325,-2582 403,-2582 403,-2636"/>
+<polygon fill="#6e5494" stroke="black" points="403,-2636 325,-2636 325,-2582 403,-2582 403,-2636"/>
 <text text-anchor="middle" x="364" y="-2613" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="364" y="-2600" font-family="Sans" font-size="10.00">aii#272</text>
 </a>
