@@ -637,7 +637,7 @@
 <!-- configuration&#45;modules&#45;core#821 -->
 <g id="node90" class="node"><title>configuration-modules-core#821</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/821" xlink:title="ncm-spma: Add backend for apt" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="447,-518 281,-518 281,-464 447,-464 447,-518"/>
+<polygon fill="#6e5494" stroke="black" points="447,-518 281,-518 281,-464 447,-464 447,-518"/>
 <text text-anchor="middle" x="364" y="-495" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="364" y="-482" font-family="Sans" font-size="10.00">configuration-modules-core#821</text>
 </a>
