@@ -319,7 +319,7 @@
 <!-- configuration&#45;modules&#45;core#1115 -->
 <g id="node43" class="node"><title>configuration-modules-core#1115</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1115" xlink:title="ncm-nfs: add server boolean and limit nfs service reload to export changes" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="450,-1887 278,-1887 278,-1833 450,-1833 450,-1887"/>
+<polygon fill="#6e5494" stroke="black" points="450,-1887 278,-1887 278,-1833 450,-1833 450,-1887"/>
 <text text-anchor="middle" x="364" y="-1864" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="364" y="-1851" font-family="Sans" font-size="10.00">configuration-modules-core#1115</text>
 </a>
@@ -327,7 +327,7 @@
 <!-- configuration&#45;modules&#45;core#1029 -->
 <g id="node45" class="node"><title>configuration-modules-core#1029</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1029" xlink:title="ncm-nfs: why restart nfs when fstab is updated? " target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="678" cy="-1818" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="678" cy="-1818" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="678" y="-1822" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="678" y="-1809" font-family="Sans" font-size="10.00">configuration-modules-core#1029</text>
 </a>
