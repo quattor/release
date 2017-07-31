@@ -533,7 +533,7 @@
 <!-- configuration&#45;modules&#45;core#1059 -->
 <g id="node74" class="node"><title>configuration-modules-core#1059</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1059" xlink:title="ncm-metaconfig: don't allow specific turning on of SEED and CAMELLIA" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="534,-1146 362,-1146 362,-1092 534,-1092 534,-1146"/>
+<polygon fill="#6e5494" stroke="black" points="534,-1146 362,-1146 362,-1092 534,-1092 534,-1146"/>
 <text text-anchor="middle" x="448" y="-1123" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="448" y="-1110" font-family="Sans" font-size="10.00">configuration-modules-core#1059</text>
 </a>
