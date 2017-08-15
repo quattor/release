@@ -18,7 +18,7 @@
 <!-- aii#275 -->
 <g id="node1" class="node"><title>aii#275</title>
 <a xlink:href="https://github.com/quattor/aii/pull/275" xlink:title="remove aii-freeipa, deprecated by ncm-freeipa AII support" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="173,-1179 95,-1179 95,-1125 173,-1125 173,-1179"/>
+<polygon fill="#6e5494" stroke="black" points="173,-1179 95,-1179 95,-1125 173,-1125 173,-1179"/>
 <text text-anchor="middle" x="134" y="-1156" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-1143" font-family="Sans" font-size="10.00">aii#275</text>
 </a>
@@ -26,7 +26,7 @@
 <!-- aii#134 -->
 <g id="node3" class="node"><title>aii#134</title>
 <a xlink:href="https://github.com/quattor/aii/issues/134" xlink:title="Missing freeipa.pm in AII RPM" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="448" cy="-1152" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="448" cy="-1152" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="448" y="-1156" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="448" y="-1143" font-family="Sans" font-size="10.00">aii#134</text>
 </a>
