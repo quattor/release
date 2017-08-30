@@ -87,7 +87,7 @@
 <!-- configuration&#45;modules&#45;core#1151 -->
 <g id="node11" class="node"><title>configuration-modules-core#1151</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1151" xlink:title="Escape / unescape functions from CCM::Path" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="220,-1085 48,-1085 48,-1031 220,-1031 220,-1085"/>
+<polygon fill="#6e5494" stroke="black" points="220,-1085 48,-1085 48,-1031 220,-1031 220,-1085"/>
 <text text-anchor="middle" x="134" y="-1062" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-1049" font-family="Sans" font-size="10.00">configuration-modules-core#1151</text>
 </a>
@@ -95,7 +95,7 @@
 <!-- configuration&#45;modules&#45;core#1083 -->
 <g id="node13" class="node"><title>configuration-modules-core#1083</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1083" xlink:title="warnings due to deprecated CCM modules" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="448" cy="-1058" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="448" cy="-1058" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="448" y="-1062" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="448" y="-1049" font-family="Sans" font-size="10.00">configuration-modules-core#1083</text>
 </a>
