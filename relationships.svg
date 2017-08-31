@@ -230,7 +230,7 @@
 <!-- configuration&#45;modules&#45;core#1124 -->
 <g id="node31" class="node"><title>configuration-modules-core#1124</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1124" xlink:title="ncm-cron: cleanup and switch to 00-tqu" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="220,-488 48,-488 48,-434 220,-434 220,-488"/>
+<polygon fill="#6e5494" stroke="black" points="220,-488 48,-488 48,-434 220,-434 220,-488"/>
 <text text-anchor="middle" x="134" y="-465" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="134" y="-452" font-family="Sans" font-size="10.00">configuration-modules-core#1124</text>
 </a>
