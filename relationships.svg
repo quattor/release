@@ -131,7 +131,7 @@
 <!-- configuration&#45;modules&#45;core#1159 -->
 <g id="node17" class="node"><title>configuration-modules-core#1159</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1159" xlink:title="ncm-authconfig: Remove deprecated startstop property" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="204,-1037 32,-1037 32,-983 204,-983 204,-1037"/>
+<polygon fill="#6e5494" stroke="black" points="204,-1037 32,-1037 32,-983 204,-983 204,-1037"/>
 <text text-anchor="middle" x="118" y="-1014" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1001" font-family="Sans" font-size="10.00">configuration-modules-core#1159</text>
 </a>
@@ -139,7 +139,7 @@
 <!-- configuration&#45;modules&#45;core#1145 -->
 <g id="node19" class="node"><title>configuration-modules-core#1145</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1145" xlink:title="ncm-authconfig: Remove startstop property" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-964" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-964" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-968" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-955" font-family="Sans" font-size="10.00">configuration-modules-core#1145</text>
 </a>
@@ -153,7 +153,7 @@
 <!-- configuration&#45;modules&#45;core#1143 -->
 <g id="node21" class="node"><title>configuration-modules-core#1143</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1143" xlink:title="ncm-authconfig: What is startstop supposed to do?" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-1058" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-1058" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-1062" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-1049" font-family="Sans" font-size="10.00">configuration-modules-core#1143</text>
 </a>
