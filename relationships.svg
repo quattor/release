@@ -157,7 +157,7 @@
 <!-- configuration&#45;modules&#45;core#1162 -->
 <g id="node20" class="node"><title>configuration-modules-core#1162</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1162" xlink:title="ncm-mcx: remove unsupported component" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="204,-1389 32,-1389 32,-1335 204,-1335 204,-1389"/>
+<polygon fill="#6e5494" stroke="black" points="204,-1389 32,-1389 32,-1335 204,-1335 204,-1389"/>
 <text text-anchor="middle" x="118" y="-1366" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1353" font-family="Sans" font-size="10.00">configuration-modules-core#1162</text>
 </a>
@@ -165,7 +165,7 @@
 <!-- configuration&#45;modules&#45;core#1054 -->
 <g id="node22" class="node"><title>configuration-modules-core#1054</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1054" xlink:title="ncm-mcx: Archive and remove from repository" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-1362" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-1362" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-1366" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-1353" font-family="Sans" font-size="10.00">configuration-modules-core#1054</text>
 </a>
