@@ -510,7 +510,7 @@
 <!-- template&#45;library&#45;standard#104 -->
 <g id="node71" class="node"><title>template-library-standard#104</title>
 <a xlink:href="https://github.com/quattor/template-library-standard/pull/104" xlink:title="Add CPUs used in Mellanox SN2100 and SN2700 switches" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="508,-637 352,-637 352,-583 508,-583 508,-637"/>
+<polygon fill="#6e5494" stroke="black" points="508,-637 352,-637 352,-583 508,-583 508,-637"/>
 <text text-anchor="middle" x="430" y="-614" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="430" y="-601" font-family="Sans" font-size="10.00">template-library-standard#104</text>
 </a>
@@ -518,7 +518,7 @@
 <!-- template&#45;library&#45;standard#103 -->
 <g id="node73" class="node"><title>template-library-standard#103</title>
 <a xlink:href="https://github.com/quattor/template-library-standard/issues/103" xlink:title="hardware/cpu/intel add embedded cpus" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="748" cy="-610" rx="111.016" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="748" cy="-610" rx="111.016" ry="38.1838"/>
 <text text-anchor="middle" x="748" y="-614" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="748" y="-601" font-family="Sans" font-size="10.00">template-library-standard#103</text>
 </a>
