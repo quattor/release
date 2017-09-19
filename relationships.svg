@@ -341,7 +341,7 @@
 <!-- configuration&#45;modules&#45;core#1087 -->
 <g id="node46" class="node"><title>configuration-modules-core#1087</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1087" xlink:title="ncm-network: cleanup, fixes and new features" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="516,-560 344,-560 344,-506 516,-506 516,-560"/>
+<polygon fill="#6e5494" stroke="black" points="516,-560 344,-560 344,-506 516,-506 516,-560"/>
 <text text-anchor="middle" x="430" y="-537" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="430" y="-524" font-family="Sans" font-size="10.00">configuration-modules-core#1087</text>
 </a>
@@ -355,7 +355,7 @@
 <!-- configuration&#45;modules&#45;core#1082 -->
 <g id="node48" class="node"><title>configuration-modules-core#1082</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1082" xlink:title="ncm-network: Allow extra routing options for the default route" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="748" cy="-516" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="748" cy="-516" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="748" y="-520" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="748" y="-507" font-family="Sans" font-size="10.00">configuration-modules-core#1082</text>
 </a>
@@ -369,7 +369,7 @@
 <!-- configuration&#45;modules&#45;core#870 -->
 <g id="node50" class="node"><title>configuration-modules-core#870</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/870" xlink:title="ncm-network: hostname is not set in el7" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="748" cy="-328" rx="118.087" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="748" cy="-328" rx="118.087" ry="38.1838"/>
 <text text-anchor="middle" x="748" y="-332" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="748" y="-319" font-family="Sans" font-size="10.00">configuration-modules-core#870</text>
 </a>
@@ -383,7 +383,7 @@
 <!-- configuration&#45;modules&#45;core#1109 -->
 <g id="node52" class="node"><title>configuration-modules-core#1109</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1109" xlink:title="ncm-network: systemd rpm scripts remove HOSTNAME from /etc/sysconfig/network" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="748" cy="-422" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="748" cy="-422" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="748" y="-426" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="748" y="-413" font-family="Sans" font-size="10.00">configuration-modules-core#1109</text>
 </a>
