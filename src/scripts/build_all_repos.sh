@@ -36,6 +36,15 @@ PERL_CPAN_INSTALL_LIST=$DEST/perl_cpan_install_list.$now
 # The current redhat-release
 RH_RELEASE=`sed -n "s/.*release \([0-9]\+\).*/\1/p" /etc/redhat-release`
 
+function check_perl_version {
+    # Return 0 if perl version is greater than or equal to required version
+    if [[ $# -eq 1 ]]; then
+        perl -e 'use version; exit ($^V >= version->new('"$1"') ? 0 : 1);'
+    else
+        return 2
+    fi
+}
+
 # Install and use the epel repo
 if [ "$RH_RELEASE" -eq 5 -o "$RH_RELEASE" -eq 6 ]; then
     USE_EPEL=1
@@ -53,21 +62,14 @@ else
 fi
 
 # Don't add filters here just because something fails
-if [ "$RH_RELEASE" -eq 5 ]; then
+if check_perl_version 5.10.1; then
+    POM_FILTER=""
+    REPO_FILTER=""
+else
     # These will not work with el5 since they require perl 5.10.1
     POM_FILTER='.*\(opennebula\|systemd\|ceph\|icinga\|freeipa\).*'
-else
-    POM_FILTER=""
-fi
-
-# Skip whole repos
-if [ "$RH_RELEASE" -eq 5 ]; then
-    # These will not work with el5 since they require perl 5.10.1
     REPO_FILTER='aii'
-else
-    REPO_FILTER=""
 fi
-
 
 OS_HACK=1
 
