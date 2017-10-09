@@ -1,6 +1,15 @@
 #!/bin/bash
 
+function is_color_tty {
+    ( [[ -t 1 ]] && tput colors >& /dev/null )
+    return $?
+}
+
 if [ "$DEBUGSCRIPT" == "1" ]; then
+    export PS4='+ \011 L$LINENO \011x: '
+    if is_color_tty; then
+        export PS4='+ \011 \e[0;45m L$LINENO\011\e[0m '
+    fi
     set -x
 fi
 
@@ -17,6 +26,9 @@ GITCLEAN=${GITCLEAN:-1}
 
 # Run verbose
 VERBOSE=${VERBOSE:-0}
+
+# Enable wrapping of command output
+RUN_WRAPPER=${RUN_WRAPPER:-1}
 
 # mvn clean PACKAGE
 PACKAGE=${PACKAGE:-package}
@@ -35,6 +47,57 @@ PERL_CPAN_INSTALL_LIST=$DEST/perl_cpan_install_list.$now
 
 # The current redhat-release
 RH_RELEASE=`sed -n "s/.*release \([0-9]\+\).*/\1/p" /etc/redhat-release`
+
+function echo_info {
+    prefix=""
+    suffix="I:"
+    if is_color_tty; then
+        prefix="\e[0;44m"
+        suffix="\e[0m"
+    fi
+    echo -e "${prefix}BUILD_ALL_REPOS ${suffix} $@"
+}
+
+function echo_error {
+    prefix=""
+    suffix="E:"
+    if is_color_tty; then
+        prefix="\e[0;41m"
+        suffix="\e[0m"
+    fi
+    echo -e "${prefix}BUILD_ALL_REPOS ${suffix} $@"
+}
+
+function run_wrapped {
+    # Run a command wrapping stdout and stderr to aid in identification of output text
+    # Disabled by setting RUN_WRAPPER=0
+    if [[ $RUN_WRAPPER -eq 1 ]]; then
+        cmd=$1
+        if [[ "$cmd" == "sudo" ]]; then
+            cmd="$2"
+        fi
+
+        # Wrap with plain characters by default, use colour if output is a colour-capable TTY
+        prefix=""
+        stdout="O:"
+        stderr="E:"
+        suffix=""
+        if is_color_tty; then
+            prefix="\e[0;100m"
+            stdout="\e[0;37m"
+            stderr="\e[0;31m"
+            suffix="\e[0m"
+        fi
+
+        cmd=$(printf '%15s' $(basename $cmd | tr [:lower:] [:upper:]))
+        $@ \
+            1> >(while read line; do echo -e "$prefix${cmd:0:15} $stdout $line$suffix" >&2; done) \
+            2> >(while read line; do echo -e "$prefix${cmd:0:15} $stderr $line$suffix" >&2; done)
+    else
+        # Wrapping disabled, just run exactly what we were passed
+        $@
+    fi
+}
 
 function check_perl_version {
     # Return 0 if perl version is greater than or equal to required version
@@ -151,7 +214,7 @@ EOF
     exit 2
 }
 
-echo "$NAME START "`date +%s` `date`
+echo_info "$NAME START "`date +%s` `date`
 
 # maven-tools is both testonly and packageonly
 # due to the build-scripts/package-build-scripts structure
@@ -234,10 +297,10 @@ function error () {
     # at least 2 arguments: exit code, the remainder is message
     ec=$1
     shift
-    echo "export PERL5LIB=$PERL5LIB"
-    echo "export PWD=$PWD"
-    echo "export PATH=$PATH"
-    echo $@
+    echo_info "export PERL5LIB=$PERL5LIB"
+    echo_info "export PWD=$PWD"
+    echo_info "export PATH=$PATH"
+    echo_error $@
     exit $ec
 }
 
@@ -248,7 +311,7 @@ function cerror () {
     if [ $fatal -gt 0 ]; then
         error $@
     else
-        echo "$@ (not fatal)"
+        echo_info "$@ (not fatal)"
     fi
 }
 
@@ -280,13 +343,13 @@ function add_has_dep () {
         fi
     fi
 
-    echo "add_has_dep $dep $msg THEDEPCACHE"
+    echo_info "add_has_dep $dep $msg THEDEPCACHE"
 
     return $has_dep
 }
 
 function get_cpanm () {
-    echo "Get and install cpanm"
+    echo_info "Get and install cpanm"
 
     # Try to get as much as possible via yum
     # CPAN itself should come from yum, no way this will work otherwise
@@ -315,7 +378,7 @@ function get_cpanm () {
     if [ $? -gt 0 ]; then
         error 31 "fetch and install cpanm failed"
     else
-        echo "get_cpanm OK"
+        echo_info "get_cpanm OK"
     fi
 
     # Add cpanm (for el5 only?)
@@ -345,8 +408,8 @@ function download () {
         opt="-L -o"
     fi
 
-    echo "download with $sudo $exe $opt $fn $url"
-    $sudo $exe $opt $fn $url
+    echo_info "download with $sudo $exe $opt $fn $url"
+    run_wrapped $sudo $exe $opt $fn $url
     return $?
 
 }
@@ -451,13 +514,13 @@ function has_mvn () {
     # this one is typically missing from repos etc etc
     which $mvn >& /dev/null
     if [ $? -gt 0 ]; then
-        echo "No maven executable $mvn found in PATH"
+        echo_info "No maven executable $mvn found in PATH"
 
         $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
         deps_install_yum "*bin/mvn" 0
         if [ $? -gt 0 ]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
-            echo "Couldn't get mvn $mvn via yum. Going to add the mvn epel repo $EPEL_MVN_REPO to $fn and retry."
+            echo_info "Couldn't get mvn $mvn via yum. Going to add the mvn epel repo $EPEL_MVN_REPO to $fn and retry."
             download "$EPEL_MVN_REPO" $fn $SUDO
             if [ $? -gt 0 ]; then
                 error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
@@ -467,7 +530,7 @@ function has_mvn () {
             if [ -z "$RH_RELEASE" ]; then
                 error 81 "No major release version found via /etc/redhat-release"
             fi
-            echo "Going to use releasever $RH_RELEASE for this repo"
+            echo_info "Going to use releasever $RH_RELEASE for this repo"
             $SUDO sed -i "s/\$releasever/$RH_RELEASE/g" $fn
 
             if [ $? -gt 0 ]; then
@@ -531,11 +594,11 @@ function deps_install_yum () {
     ec=0
 
     if [ -z "$dep" ]; then
-        echo "Trying to install empty dependency."
+        echo_info "Trying to install empty dependency."
         return 0
     fi
 
-    echo "Searching for dep $dep with $SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
+    echo_info "Searching for dep $dep with $SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
     pkgs=`$SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides "$dep" 2>/dev/null | grep -v 'No package provides' | sort| uniq`
     if [ -z "$pkgs" ]; then
         ec=70
@@ -547,7 +610,7 @@ function deps_install_yum () {
     yum="$SUDO yum"
 
     for pkg in $pkgs; do
-        echo "Installing pkg $pkg with yum install $DISABLEREPOSFULL $ENABLEREPOSFULL"
+        echo_info "Installing pkg $pkg with yum install $DISABLEREPOSFULL $ENABLEREPOSFULL"
         cmd="$yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $pkg"
         $cmd
         if [ $? -gt 0 ]; then
@@ -567,12 +630,12 @@ function check_deps_init_bin () {
     $SUDO yum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
 
     # these are fatal
-    echo "Checking DEPS_INIT_BIN_YUM $DEPS_INIT_BIN_YUM"
+    echo_info "Checking DEPS_INIT_BIN_YUM $DEPS_INIT_BIN_YUM"
     for bin in $DEPS_INIT_BIN_YUM; do
         deps_install_yum "*bin/$bin" 1
     done
 
-    echo "Checking other deps: $DEPS_INIT_YUM"
+    echo_info "Checking other deps: $DEPS_INIT_YUM"
     for dep in $DEPS_INIT_YUM; do
         deps_install_yum "$dep" 1
     done
@@ -585,7 +648,7 @@ function check_deps_init_bin () {
         fi
     done
 
-    echo "Done checking DEPS_INIT_BIN $DEPS_INIT_BIN"
+    echo_info "Done checking DEPS_INIT_BIN $DEPS_INIT_BIN"
     return 0
 }
 
@@ -599,15 +662,15 @@ function get_cpan_dep () {
     # No version info
     perlcpan=`echo $perldep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1/p"`
 
-    echo "Looking for CPAN perlcpan $perlcpan for dependency $perldep"
+    echo_info "Looking for CPAN perlcpan $perlcpan for dependency $perldep"
 
-    cpanm --local-lib=$CPANINSTALL $perlcpan
+    run_wrapped cpanm --local-lib=$CPANINSTALL $perlcpan
 
     if [ $? -eq 0 ]; then
-        echo "Perl dependency $perldep installed via CPAN"
+        echo_info "Perl dependency $perldep installed via CPAN"
         perl -e "use $perlpkg;"
         if [ $? -eq 0 ]; then
-            echo "Dependency $dep is a usable perl package"
+            echo_info "Dependency $dep is a usable perl package"
             echo "$perlpkg" >> $PERL_CPAN_PERLPKG_INSTALL_LIST
             echo "$perlcpan" >> $PERL_CPAN_INSTALL_LIST
             add_has_dep "$perldep" 1
@@ -631,7 +694,7 @@ function get_repo_deps () {
     # look for src subdirs (like AII or components)
     subdirs=`find $repo -type d -name src`
 
-    echo "Found subdirs for repository $repo : $subdirs"
+    echo_info "Found subdirs for repository $repo : $subdirs"
 
     for dir in $subdirs; do
         cd $REPOSITORY
@@ -663,47 +726,47 @@ function get_repo_deps_subdir () {
 
     # find-requires doesn't cover perl .t files
     deps=`(echo "$found" | /usr/lib/rpm/perl.req ; echo "$found" | /usr/lib/rpm/find-requires) | sort | uniq | grep -E '\w'`
-    echo "Dependencies found for repo $repo (dir $dir): $deps"
+    echo_info "Dependencies found for repo $repo (dir $dir): $deps"
 
     # this is what the current repository provides. they are not to be searched externally
     provs=`(echo "$found" | /usr/lib/rpm/perl.prov ; echo "$found" | /usr/lib/rpm/find-provides) |sort | uniq | grep -E '\w'`
-    echo "Provides found for repo $repo (dir $dir): $provs"
+    echo_info "Provides found for repo $repo (dir $dir): $provs"
 
     # WARNING dep can have whitespace!
     for dep in $deps; do
-        echo "Checking dependency '$dep'"
+        echo_info "Checking dependency '$dep'"
         export IFS=$origIFS
 
         add_has_dep "$dep"
         if [ $? -ne 0 ]; then
             echo $provs |grep "$dep" >& /dev/null
             if [ $? -eq 0 ]; then
-                echo "Dependency $dep is provided by this repository"
+                echo_info "Dependency $dep is provided by this repository"
             else
                 echo $dep >> $REPODEPS_INSTALL_LIST
                 perlpkg=`echo $dep | sed -n "s/^perl(\(.*\))\(.*\(\s[0-9]\+.*\)\)\?$/\1\3/p"`
                 if [ -z "$perlpkg" ]; then
-                    echo "Dependency $dep is not a perl package"
+                    echo_info "Dependency $dep is not a perl package"
                     # is it a full path?
                     if [[ "$dep" == /* ]] && [ -f "$dep" ]; then
-                        echo "Dependency $dep is a absolute filename and exists"
+                        echo_info "Dependency $dep is a absolute filename and exists"
                         add_has_dep "$dep" 1
                     else
                         deps_install_yum "$dep" $fatal
                     fi
                 else
                     # Test if the perl module is usable
-                    echo "Dependency $dep is a perl package"
+                    echo_info "Dependency $dep is a perl package"
                     # The unittests run prove with additional paths
                     PERL5LIB="$PERL5LIB:src/test/perl:target/lib/perl" perl -e "use $perlpkg;"
                     if [ $? -eq 0 ]; then
-                        echo "Dependency $dep is a usable perl package"
+                        echo_info "Dependency $dep is a usable perl package"
                         add_has_dep "$dep" 1
                     else
                         # try to get it with yum
                         deps_install_yum "$dep" 0
                         if [ $? -eq 0 ]; then
-                            echo "Dependency $dep is a perl package found with yum"
+                            echo_info "Dependency $dep is a perl package found with yum"
                         else
                             get_cpan_dep "$dep" $fatal
                         fi
@@ -727,7 +790,7 @@ function reset_perl5lib () {
         PERL5LIB="$INSTALLPERL:$ORIGPERL5LIB:/_nodir"
     fi
 
-    echo "reset_perl5lib PERL5LIB $PERL5LIB"
+    echo_info "reset_perl5lib PERL5LIB $PERL5LIB"
     export PERL5LIB
 }
 
@@ -740,7 +803,7 @@ function git_repo () {
     if [ -z "$repo" ]; then
         error 20 "No repository passed as argument"
     else
-        echo "git_repo for repository $repo"
+        echo_info "git_repo for repository $repo"
     fi
 
     if [ ! -d $REPOSITORY ]; then
@@ -749,19 +812,19 @@ function git_repo () {
     cd $REPOSITORY
 
     if [ $RELEASE -gt 0 ]; then
-        echo "RELEASE Revoming repository"
+        echo_info "RELEASE Removing repository"
         rm -Rf ./$repo
     fi
 
     if [ ! -d ./$repo ]; then
         cmd="git clone https://github.com/quattor/$repo.git"
-        $cmd
+        run_wrapped $cmd
         if [ $? -gt 0 ]; then
 	        error 23 "$cmd failed"
         fi
 
         cd $repo
-        git remote rename origin upstream
+        run_wrapped git remote rename origin upstream
         if [ $? -gt 0 ]; then
 	        error 24 "failed to rename origin to upstream"
         fi
@@ -772,20 +835,20 @@ function git_repo () {
     cd $repo
 
     # stash any local changes
-    git stash
+    run_wrapped git stash
 
     # maven-tools clone doesn't start in master?
-    git checkout master
+    run_wrapped git checkout master
 
     if [ $GITCLEAN -gt 0 ]; then
-        echo "git clean"
-        git clean -fxd
+        echo_info "git clean"
+        run_wrapped git clean -fxd
     else
-        echo "git clean disabled"
+        echo_info "git clean disabled"
     fi
 
     cmd="git pull upstream master"
-    $cmd
+    run_wrapped $cmd
     if [ $? -gt 0 ]; then
         error 22 "$cmd for repository $repo failed"
     fi
@@ -801,7 +864,7 @@ function prepare_build () {
     if [ -z "$repo" ]; then
         error 10 "prepare_build No repository passed as argument"
     else
-        echo "prepare_build repository $repo"
+        echo_info "prepare_build repository $repo"
     fi
 
     if [ ! -d $REPOSITORY ]; then
@@ -825,7 +888,7 @@ function mvn_compile () {
 
     # the PERL5LIB path for this repo during testing
     if [ "$repo" == "maven-tools" ]; then
-        echo "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
+        echo_info "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
         cd build-scripts
         tgtperl="$PWD/src/main/perl/"
     else
@@ -835,8 +898,8 @@ function mvn_compile () {
     # always clean?
     clean=clean
     mvn="mvn $clean $mvntgt $PROVEARGS"
-    echo "mvn_compile for repository $repo in $PWD : $mvn"
-    $mvn
+    echo_info "mvn_compile for repository $repo in $PWD : $mvn"
+    run_wrapped $mvn
     if [ $? -gt 0 ]; then
         error 13 "mvn_compile mvn $mvntgt failed for repository $repo (cmd $mvn)"
     fi
@@ -846,7 +909,7 @@ function mvn_compile () {
     # INSTALLPERL is always first dir
     PERL5LIB=`echo $PERL5LIB | sed "s%$INSTALLPERL:%%"`
     export PERL5LIB="$INSTALLPERL:$PERL5LIB"
-    echo "Added $tgtperl to PERL5LIB for repository $repo after mvn compile : PERL5LIB $PERL5LIB"
+    echo_info "Added $tgtperl to PERL5LIB for repository $repo after mvn compile : PERL5LIB $PERL5LIB"
 
     return 0
 }
@@ -861,10 +924,10 @@ function mvn_package () {
     tgtperl="$PWD/target/lib/perl/"
     if [ "$repo" == "maven-tools" ]; then
         if [ "$mvntgt" == "$PACKAGE" ]; then
-            echo "Exception for maven-tools repository: entering subdir package-build-scripts"
+            echo_info "Exception for maven-tools repository: entering subdir package-build-scripts"
             cd package-build-scripts
         else
-            echo "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
+            echo_info "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
             cd build-scripts
             tgtperl="$PWD/src/main/perl/"
         fi
@@ -872,19 +935,19 @@ function mvn_package () {
 
     # remove compile target from PERL5LIB; this repo should be available via INSTALL at the end
     export PERL5LIB=`echo $PERL5LIB | sed "s%$tgtperl:%%"`
-    echo "Removed $tgtperl from PERL5LIB for repository $repo after mvn $PACKAGE. New PERL5LIB $PERL5LIB"
+    echo_info "Removed $tgtperl from PERL5LIB for repository $repo after mvn $PACKAGE. New PERL5LIB $PERL5LIB"
 
     # always clean?
     clean=clean
     mvn="mvn $clean $mvntgt $PROVEARGS"
-    echo "mvn_package for repository $repo in $PWD : $mvn"
+    echo_info "mvn_package for repository $repo in $PWD : $mvn"
 
     if [ ! -z "$POM_FILTER" ]; then
-        echo "Deleting matching lines with POM_FILTER $POM_FILTER"
+        echo_info "Deleting matching lines with POM_FILTER $POM_FILTER"
         sed -i "/$POM_FILTER/d" pom.xml
     fi
 
-    $mvn
+    run_wrapped $mvn
     mvnec=$?
 
     if [ ! -z "$POM_FILTER" ]; then
@@ -899,30 +962,30 @@ function mvn_package () {
     fi
 
     if [ $mvntgt == "package" ]; then
-        echo "Looking for rpm in {target,*/target} in $PWD"
+        echo_info "Looking for rpm in {target,*/target} in $PWD"
         rpms=`find {target,*/target} -type f -name \*.rpm`
         if [ -z "$rpms" ]; then
             error 14 "No rpms found for repository $repo"
         else
-            echo "Rpms $rpms build for repository $repo"
+            echo_info "Rpms $rpms build for repository $repo"
             for rpm in $rpms; do
                 cp $rpm $RPMS
-                echo "Copied rpm $rpm to RPMS $RPMS"
+                echo_info "Copied rpm $rpm to RPMS $RPMS"
             done
         fi
 
-        echo "Looking for tar.gz in {target,*/target} in $PWD"
+        echo_info "Looking for tar.gz in {target,*/target} in $PWD"
         tars=`find {target,*/target} -type f -name \*.tar.gz`
         if [ -z "$tars" ]; then
             error 15 "No tar.gz found for repository $repo"
         else
-            echo "Found tars $tars"
+            echo_info "Found tars $tars"
             for tgz in $tars; do
-                tar -C $INSTALL -xvzf $tgz
+                run_wrapped tar -C $INSTALL -xvzf $tgz
                 if [ $? -gt 0 ]; then
                     error 16 "Failed to unpack tarball for repository $repo in INSTALL $INSTALL"
                 else
-                    echo "unpacked tarball $tgz for repository $repo in INSTALL $INSTALL"
+                    echo_info "unpacked tarball $tgz for repository $repo in INSTALL $INSTALL"
                 fi
             done
         fi
@@ -934,23 +997,23 @@ function mvn_package () {
 function main_init_bin_yum () {
     miby="$@"
 
-    echo "Checking MAIN_INIT_BIN_YUM $miby"
+    echo_info "Checking MAIN_INIT_BIN_YUM $miby"
     for bin in $miby; do
         binpath="/usr/bin/$bin"
         if [ ! -f $binpath ]; then
             cmd="$SUDO yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $binpath"
-            $cmd
+            run_wrapped $cmd
             if [ $? -gt 0 ]; then
                 error 19 "Failed to install $bin as part of MAIN_INIT_BIN_YUM $miby"
             else
-                echo "Installed $bin with $cmd"
+                echo_info "Installed $bin with $cmd"
             fi
         fi
     done
 }
 
 function eatmydata () {
-    echo "Building libeatmydata"
+    echo_info "Building libeatmydata"
     local lemd
     lemd=$DEST/libeatmydata
     mkdir -p $lemd
@@ -968,7 +1031,7 @@ function eatmydata () {
         error 130 "Downloading and unpacking libeatmydata failed"
     fi
 
-    make
+    run_wrapped make
 
     LIBEATMYDATA=$PWD/libeatmydata.so
     if [ ! -f $LIBEATMYDATA ]; then
@@ -1051,8 +1114,8 @@ function test_rpms() {
         done
     done
 
-    echo "Checking rpms in $RPMS with rpmlint"
-    rpmlint $RPMS
+    echo_info "Checking rpms in $RPMS with rpmlint"
+    run_wrapped rpmlint $RPMS
     if [ $? -gt 0 ]; then
         error 111 "Rpmlint failed"
     fi
@@ -1088,16 +1151,16 @@ function main() {
     main_init
 
     if [ ! -z "$REPO_FILTER" ]; then
-        echo "Applying REPO_FILTER $REPO_FILTER to REPOS_MVN_ORDERED $REPOS_MVN_ORDERED"
+        echo_info "Applying REPO_FILTER $REPO_FILTER to REPOS_MVN_ORDERED $REPOS_MVN_ORDERED"
         for repo in $REPOS_MVN_ORDERED; do
             if [[ $repo =~ $REPO_FILTER ]]; then
-                echo "Skipping filtered repo $repo"
+                echo_info "Skipping filtered repo $repo"
             else
                 filtered="$filtered $repo"
             fi
         done
         REPOS_MVN_ORDERED="$filtered"
-        echo "Filtered REPOS_MVN_ORDERED=$REPOS_MVN_ORDERED"
+        echo_info "Filtered REPOS_MVN_ORDERED=$REPOS_MVN_ORDERED"
     fi
 
     # compile first
@@ -1112,7 +1175,7 @@ function main() {
     # check dependencies
     if [ $CHECKDEPS -gt 0 ]; then
 
-        echo "Checking dependencies"
+        echo_info "Checking dependencies"
 
         # get the Test::Quattor tools in the PERL5LIB
         pretoolsPERL5LIB=$PERL5LIB
@@ -1144,7 +1207,7 @@ function main() {
 
     if [ "$RH_RELEASE" -eq 5 ]; then
         # CentOS5 cannot have too recent JSON::XS from cpanm
-        cpanm "--local-lib=$CPANINSTALL" -f -U JSON::XS
+        run_wrapped cpanm "--local-lib=$CPANINSTALL" -f -U JSON::XS
     fi
 
     # test the maven-tools build scripts repo separately (can't package it)
@@ -1184,6 +1247,6 @@ else
     msg="SUCCESS"
 fi
 
-echo "$NAME END $msg DEST $DEST"`date +%s` `date`
+echo_info "$NAME END $msg DEST $DEST"`date +%s` `date`
 
 exit $ec
