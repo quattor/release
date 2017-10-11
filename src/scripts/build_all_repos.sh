@@ -93,9 +93,11 @@ function run_wrapped {
         $@ \
             1> >(while read line; do echo -e "$prefix${cmd:0:15} $stdout $line$suffix" >&2; done) \
             2> >(while read line; do echo -e "$prefix${cmd:0:15} $stderr $line$suffix" >&2; done)
+        return "$?"
     else
         # Wrapping disabled, just run exactly what we were passed
         $@
+        return "$?"
     fi
 }
 
