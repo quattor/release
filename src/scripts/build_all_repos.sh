@@ -418,7 +418,7 @@ function download () {
     fi
 
     echo_info "download with $sudo $exe $opt $fn $url"
-    run_wrapped "$sudo" "$exe" "$opt" "$fn" "$url"
+    run_wrapped "$sudo $exe" "$opt" "$fn" "$url"
     return $?
 
 }
