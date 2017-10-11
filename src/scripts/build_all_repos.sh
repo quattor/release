@@ -399,7 +399,6 @@ function get_cpanm () {
 
 
 function download () {
-
     url="$1"
     fn="$2"
     sudo="$3"
@@ -465,7 +464,6 @@ function localinstall_url () {
 }
 
 function has_panc () {
-
     has_correct_panc
     if [[ $? -ne 0 ]]; then
         deps_install_yum "panc >= $PAN_MIN_VERSION" 0
