@@ -319,6 +319,12 @@ function cerror () {
     fi
 }
 
+function cd_or_die {
+    # Change directory or die trying
+    cd "$@" || error 2 "Failed to change directory to $*"
+    return 0
+}
+
 ID="$(/usr/bin/id -u)"
 if [[ -z "$ID" || $ID -ne 0 ]]; then
     SUDO=sudo
@@ -693,7 +699,7 @@ function get_repo_deps () {
     repo=$1
     fatal=${2:-1}
 
-    cd "$REPOSITORY"
+    cd_or_die "$REPOSITORY"
 
     # look for src subdirs (like AII or components)
     subdirs="$(find "$repo" -type d -name src)"
@@ -701,7 +707,7 @@ function get_repo_deps () {
     echo_info "Found subdirs for repository $repo : $subdirs"
 
     for dir in $subdirs; do
-        cd "$REPOSITORY"
+        cd_or_die "$REPOSITORY"
         # use dirname to scan both src/ and target/
         get_repo_deps_subdir "$repo" "$(dirname "$dir")" "$fatal"
     done
@@ -715,7 +721,7 @@ function get_repo_deps_subdir () {
 
     fatal=${3:-1}
 
-    cd "$dir"
+    cd_or_die "$dir"
 
     origIFS="$IFS"
     # newline is the only delimiter for IFS
@@ -813,7 +819,7 @@ function git_repo () {
     if [[ ! -d "$REPOSITORY" ]]; then
         error 21 "No REPOSITORY directory $REPOSITORY"
     fi
-    cd "$REPOSITORY"
+    cd_or_die "$REPOSITORY"
 
     if [[ "$RELEASE" -gt 0 ]]; then
         echo_info "RELEASE Removing repository"
@@ -829,16 +835,16 @@ function git_repo () {
 	        error 23 "$cmd failed"
         fi
 
-        cd "$repo"
+        cd_or_die "$repo"
         run_wrapped git remote rename origin upstream
         if [[ $? -gt 0 ]]; then
 	        error 24 "failed to rename origin to upstream"
         fi
 
-        cd "$REPOSITORY"
+        cd_or_die "$REPOSITORY"
     fi
 
-    cd "$repo"
+    cd_or_die "$repo"
 
     # stash any local changes
     run_wrapped git stash
@@ -861,7 +867,7 @@ function git_repo () {
         error 22 "$cmd for repository $repo failed"
     fi
 
-    cd "$here"
+    cd_or_die "$here"
     return 0
 }
 
@@ -879,7 +885,7 @@ function prepare_build () {
         error 12 "No REPOSITORY directory $REPOSITORY"
     fi
 
-    cd "$REPOSITORY"
+    cd_or_die "$REPOSITORY"
     git_repo "$repo"
 
     return 0
@@ -890,14 +896,14 @@ function mvn_compile () {
     repo=$1
     shift
 
-    cd "$REPOSITORY/$repo"
+    cd_or_die "$REPOSITORY/$repo"
 
     mvntgt="compile"
 
     # the PERL5LIB path for this repo during testing
     if [[ "$repo" == "maven-tools" ]]; then
         echo_info "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
-        cd build-scripts
+        cd_or_die build-scripts
         tgtperl="$PWD/src/main/perl/"
     else
         tgtperl="$PWD/target/lib/perl/"
@@ -931,16 +937,16 @@ function mvn_package () {
     repo=$1
     mvntgt=${2:-$PACKAGE}
 
-    cd "$REPOSITORY/$repo"
+    cd_or_die "$REPOSITORY/$repo"
 
     tgtperl="$PWD/target/lib/perl/"
     if [[ "$repo" == "maven-tools" ]]; then
         if [[ "$mvntgt" == "$PACKAGE" ]]; then
             echo_info "Exception for maven-tools repository: entering subdir package-build-scripts"
-            cd package-build-scripts
+            cd_or_die package-build-scripts
         else
             echo_info "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
-            cd build-scripts
+            cd_or_die build-scripts
             tgtperl="$PWD/src/main/perl/"
         fi
     fi
@@ -1036,7 +1042,7 @@ function eatmydata () {
     local lemd
     lemd="$DEST/libeatmydata"
     mkdir -p "$lemd"
-    cd "$lemd"
+    cd_or_die "$lemd"
 
     # same as for cpanm + unzip
     for dep in gcc-c++ make unzip; do
@@ -1045,7 +1051,7 @@ function eatmydata () {
 
     download "https://github.com/dmwm/libeatmydata/archive/master.zip" "$lemd/master.zip"
     unzip "$lemd/master.zip"
-    cd libeatmydata*master
+    cd_or_die "libeatmydata*master"
     if [[ $? -gt 0 ]]; then
         error 130 "Downloading and unpacking libeatmydata failed"
     fi
@@ -1060,7 +1066,7 @@ function eatmydata () {
     # enable it
     export LD_PRELOAD=$LIBEATMYDATA
 
-    cd "$DEST"
+    cd_or_die "$DEST"
 }
 
 function main_init () {
