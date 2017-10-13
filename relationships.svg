@@ -91,7 +91,7 @@
 <!-- CCM#176 -->
 <g id="node11" class="node"><title>CCM#176</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/176" xlink:title="ccm-purge: Use correct (new) path for DB module" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="471,-1613 393,-1613 393,-1559 471,-1559 471,-1613"/>
+<polygon fill="#6e5494" stroke="black" points="471,-1613 393,-1613 393,-1559 471,-1559 471,-1613"/>
 <text text-anchor="middle" x="432" y="-1590" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="432" y="-1577" font-family="Sans" font-size="10.00">CCM#176</text>
 </a>
@@ -99,7 +99,7 @@
 <!-- CCM#175 -->
 <g id="node13" class="node"><title>CCM#175</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/175" xlink:title="ccm-purge does not work in 17.7" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="750" cy="-1586" rx="51.1176" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="750" cy="-1586" rx="51.1176" ry="38.1838"/>
 <text text-anchor="middle" x="750" y="-1590" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="750" y="-1577" font-family="Sans" font-size="10.00">CCM#175</text>
 </a>
