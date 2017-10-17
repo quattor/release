@@ -318,7 +318,7 @@ function cerror () {
     fatal=$1
     shift
     if [[ "$fatal" -gt 0 ]]; then
-        error "$*"
+        error "$@"
     else
         echo_info "$* (not fatal)"
     fi
