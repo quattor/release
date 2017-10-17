@@ -106,7 +106,12 @@ function run_wrapped {
 function check_perl_version {
     # Return 0 if perl version is greater than or equal to required version
     if [[ $# -eq 1 ]]; then
-        perl -e 'use version; exit ($^V >= version->new('"$1"') ? 0 : 1);'
+        perl -e 'use version' >& /dev/null
+        if [[ $? -eq 0 ]]; then
+            perl -e 'use version; exit ($^V >= version->new('"$1"') ? 0 : 1);'
+        else
+            echo_error "missing perl and/or perl version module. Assuming this is a very very old OS."
+        fi
     else
         return 2
     fi
