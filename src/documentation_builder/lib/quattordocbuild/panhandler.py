@@ -139,6 +139,9 @@ def parse_type(ptype):
         if fieldtype == "long" and basetype.get('range'):
             fieldinfo['range'] = basetype.get('range')
 
+        fielddefault = field.find(".//%sdefault" % namespace)
+        if fielddefault is not None:
+            fieldinfo['default'] = fielddefault.get('text')
         typeinfo['fields'].append(fieldinfo)
 
     return typeinfo

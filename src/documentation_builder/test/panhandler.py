@@ -173,18 +173,23 @@ class PanHandlerTest(TestCase):
                             'desc': 'simple addition of two numbers'}],
                           'types': [
                               {'fields': [
-                                  {'range': '0..1',
+                                  {'name': 'debug',
+                                   'default': '0',
                                    'required': 'true',
+                                   'range': '0..1',
                                    'type': 'long',
-                                   'name': 'debug',
                                    'desc': 'Test long.'},
                                   {'required': 'false',
                                    'type': 'string',
                                    'name': 'ca_dir',
-                                   'desc': 'Test string'}],
+                                   'desc': 'Test string'},
+                                  {'default': 'testdefault',
+                                   'required': 'true',
+                                   'type': 'string',
+                                   'name': 'def',
+                                   'desc': 'Test default'}],
                                'name': 'testtype',
                                'desc': 'test type.'}]}
-
         # Test with valid input.
         self.assertEqual(panh.get_content_from_pan("test/testdata/pan_annotated_schema.pan"), expectedresult)
 
@@ -197,7 +202,7 @@ class PanHandlerTest(TestCase):
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile)
         testoutput = panh.markdown_from_pan(testfile)
         print testoutput
-        self.assertEqual(len(testoutput), 484)
+        self.assertEqual(len(testoutput), 666)
         self.assertTrue("Types" in testoutput)
         self.assertTrue("Functions" in testoutput)
 
