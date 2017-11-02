@@ -73,22 +73,16 @@
 <!-- configuration&#45;modules&#45;core#1139 -->
 <g id="node10" class="node"><title>configuration-modules-core#1139</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1139" xlink:title="ncm-opennebula: include hugepages options" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="470,-701 298,-701 298,-647 470,-647 470,-701"/>
-<text text-anchor="middle" x="384" y="-678" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="384" y="-665" font-family="Sans" font-size="10.00">configuration-modules-core#1139</text>
+<polygon fill="#6cc644" stroke="black" points="470,-702 298,-702 298,-648 470,-648 470,-702"/>
+<text text-anchor="middle" x="384" y="-679" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="384" y="-666" font-family="Sans" font-size="10.00">configuration-modules-core#1139</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1182&#45;&gt;configuration&#45;modules&#45;core#1139 -->
 <g id="edge8" class="edge"><title>configuration-modules-core#1182-&gt;configuration-modules-core#1139</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M188.262,-652.631C194.237,-651.586 200.191,-650.688 206,-650 232.497,-646.86 261.167,-648.5 287.598,-652.076"/>
-<polygon fill="none" stroke="black" points="287.209,-655.557 297.609,-653.536 288.219,-648.63 287.209,-655.557"/>
-<text text-anchor="middle" x="225" y="-654" font-family="Sans" font-size="10.00">requires</text>
-</g>
-<!-- configuration&#45;modules&#45;core#1182&#45;&gt;configuration&#45;modules&#45;core#1139 -->
-<g id="edge18" class="edge"><title>configuration-modules-core#1182-&gt;configuration-modules-core#1139</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M188.142,-674.695C219.565,-674.583 255.296,-674.456 287.558,-674.342"/>
-<polygon fill="none" stroke="black" points="287.913,-677.841 297.9,-674.305 287.888,-670.841 287.913,-677.841"/>
-<text text-anchor="middle" x="225" y="-678" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M188.142,-675C219.565,-675 255.296,-675 287.558,-675"/>
+<polygon fill="none" stroke="black" points="287.9,-678.5 297.9,-675 287.9,-671.5 287.9,-678.5"/>
+<text text-anchor="middle" x="225" y="-679" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1171 -->
 <g id="node11" class="node"><title>configuration-modules-core#1171</title>
@@ -101,21 +95,15 @@
 <!-- configuration&#45;modules&#45;core#1164 -->
 <g id="node13" class="node"><title>configuration-modules-core#1164</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1164" xlink:title="ncm-cups 17.7.0: configuration of ServerAlias + miscellanous enhancements" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-590" rx="121.122" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-594" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-581" font-family="Sans" font-size="10.00">configuration-modules-core#1164</text>
+<ellipse fill="#6cc644" stroke="black" cx="384" cy="-592" rx="121.122" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-596" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-583" font-family="Sans" font-size="10.00">configuration-modules-core#1164</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1171&#45;&gt;configuration&#45;modules&#45;core#1164 -->
 <g id="edge10" class="edge"><title>configuration-modules-core#1171-&gt;configuration-modules-core#1164</title>
-<path fill="none" stroke="black" stroke-width="2" d="M188.192,-577.949C194.184,-576.778 200.161,-575.772 206,-575 224.85,-572.507 244.881,-572.068 264.447,-572.843"/>
-<polygon fill="black" stroke="black" points="264.464,-576.349 274.627,-573.355 264.815,-569.357 264.464,-576.349"/>
-<text text-anchor="middle" x="225" y="-579" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- configuration&#45;modules&#45;core#1171&#45;&gt;configuration&#45;modules&#45;core#1164 -->
-<g id="edge20" class="edge"><title>configuration-modules-core#1171-&gt;configuration-modules-core#1164</title>
-<path fill="none" stroke="black" stroke-width="2" d="M188.142,-599.029C208.79,-598.077 231.297,-597.039 253.458,-596.018"/>
-<polygon fill="black" stroke="black" points="253.78,-599.507 263.608,-595.55 253.457,-592.514 253.78,-599.507"/>
+<path fill="none" stroke="black" stroke-width="2" d="M188.142,-599.64C208.719,-598.837 231.144,-597.962 253.232,-597.101"/>
+<polygon fill="black" stroke="black" points="253.493,-600.593 263.349,-596.706 253.22,-593.599 253.493,-600.593"/>
 <text text-anchor="middle" x="225" y="-602" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1149 -->
@@ -132,16 +120,10 @@
 <text text-anchor="middle" x="384" y="-321.5" font-family="Sans" font-size="10.00">configuration-modules-core#1126</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1149&#45;&gt;configuration&#45;modules&#45;core#1126 -->
-<g id="edge22" class="edge"><title>configuration-modules-core#1149-&gt;configuration-modules-core#1126</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M188.186,-447.818C208.762,-441.429 229.062,-431.474 244,-416 265.713,-393.507 239.192,-369.382 262,-348 269.578,-340.896 278.618,-335.614 288.303,-331.721"/>
-<polygon fill="none" stroke="black" points="289.483,-335.016 297.759,-328.4 287.164,-328.412 289.483,-335.016"/>
-<text text-anchor="middle" x="225" y="-445" font-family="Sans" font-size="10.00">requires</text>
-</g>
-<!-- configuration&#45;modules&#45;core#1149&#45;&gt;configuration&#45;modules&#45;core#1126 -->
 <g id="edge12" class="edge"><title>configuration-modules-core#1149-&gt;configuration-modules-core#1126</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M173.727,-431.922C178.699,-429.159 183.512,-426.185 188,-423 197.752,-416.079 197.73,-411.638 206,-403 207.508,-401.425 260.071,-349.017 262,-348 270.133,-343.711 278.937,-340.185 287.963,-337.286"/>
-<polygon fill="none" stroke="black" points="289.221,-340.564 297.824,-334.381 287.242,-333.85 289.221,-340.564"/>
-<text text-anchor="middle" x="225" y="-407" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M173.123,-431.926C178.288,-429.149 183.306,-426.172 188,-423 226.799,-396.781 220.753,-370.169 262,-348 270.099,-343.647 278.88,-340.078 287.892,-337.153"/>
+<polygon fill="none" stroke="black" points="289.153,-340.43 297.741,-334.225 287.158,-333.72 289.153,-340.43"/>
+<text text-anchor="middle" x="225" y="-412" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1119 -->
 <g id="node17" class="node"><title>configuration-modules-core#1119</title>
@@ -154,21 +136,15 @@
 <!-- configuration&#45;modules&#45;core#1095 -->
 <g id="node19" class="node"><title>configuration-modules-core#1095</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1095" xlink:title="ncm-systemd: Manual intervention required in order for drop-in unit files to have any affect" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-495" rx="121.122" ry="38.1838"/>
-<text text-anchor="middle" x="384" y="-499" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="384" y="-486" font-family="Sans" font-size="10.00">configuration-modules-core#1095</text>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-498" rx="121.122" ry="38.1838"/>
+<text text-anchor="middle" x="384" y="-502" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="384" y="-489" font-family="Sans" font-size="10.00">configuration-modules-core#1095</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1119&#45;&gt;configuration&#45;modules&#45;core#1095 -->
-<g id="edge24" class="edge"><title>configuration-modules-core#1119-&gt;configuration-modules-core#1095</title>
-<path fill="none" stroke="black" stroke-width="2" d="M172.561,-503.919C183.607,-500.654 195.007,-497.832 206,-496 221.003,-493.5 236.817,-491.924 252.575,-491.01"/>
-<polygon fill="black" stroke="black" points="253.098,-494.488 262.913,-490.501 252.754,-487.497 253.098,-494.488"/>
-<text text-anchor="middle" x="225" y="-500" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- configuration&#45;modules&#45;core#1119&#45;&gt;configuration&#45;modules&#45;core#1095 -->
 <g id="edge14" class="edge"><title>configuration-modules-core#1119-&gt;configuration-modules-core#1095</title>
-<path fill="none" stroke="black" stroke-width="2" d="M188.142,-520.003C211.204,-517.059 236.586,-513.819 261.214,-510.675"/>
-<polygon fill="black" stroke="black" points="261.867,-514.12 271.343,-509.382 260.98,-507.176 261.867,-514.12"/>
+<path fill="none" stroke="black" stroke-width="2" d="M188.142,-520.92C210.848,-518.262 235.803,-515.342 260.074,-512.502"/>
+<polygon fill="black" stroke="black" points="260.533,-515.972 270.059,-511.334 259.72,-509.02 260.533,-515.972"/>
 <text text-anchor="middle" x="225" y="-522" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1058 -->
@@ -185,16 +161,10 @@
 <text text-anchor="middle" x="384" y="-263.5" font-family="Sans" font-size="10.00">configuration-modules-core#983</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1058&#45;&gt;configuration&#45;modules&#45;core#983 -->
-<g id="edge26" class="edge"><title>configuration-modules-core#1058-&gt;configuration-modules-core#983</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M183.389,-359.903C204.581,-350.389 226.386,-338.184 244,-323 255.205,-313.34 249.929,-303.553 262,-295 270.704,-288.833 280.546,-283.964 290.771,-280.123"/>
-<polygon fill="black" stroke="black" points="300.248,-276.876 292.246,-284.374 295.517,-278.497 290.787,-280.117 290.787,-280.117 290.787,-280.117 295.517,-278.497 289.329,-275.86 300.248,-276.876 300.248,-276.876"/>
-<text text-anchor="middle" x="225" y="-352" font-family="Sans" font-size="10.00">replaces</text>
-</g>
-<!-- configuration&#45;modules&#45;core#1058&#45;&gt;configuration&#45;modules&#45;core#983 -->
 <g id="edge16" class="edge"><title>configuration-modules-core#1058-&gt;configuration-modules-core#983</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M132.317,-359.746C152.069,-343.26 179.089,-322.983 206,-310 232.288,-297.317 262.579,-288.075 290.633,-281.436"/>
-<polygon fill="black" stroke="black" points="300.453,-279.195 291.705,-285.807 295.578,-280.307 290.704,-281.42 290.704,-281.42 290.704,-281.42 295.578,-280.307 289.702,-277.033 300.453,-279.195 300.453,-279.195"/>
-<text text-anchor="middle" x="225" y="-314" font-family="Sans" font-size="10.00">replaces</text>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M122.671,-359.608C141.643,-336.657 171.916,-305.134 206,-289 231.836,-276.771 262.012,-270.352 290.1,-267.151"/>
+<polygon fill="black" stroke="black" points="300.342,-266.112 290.848,-271.598 295.368,-266.617 290.394,-267.121 290.394,-267.121 290.394,-267.121 295.368,-266.617 289.939,-262.644 300.342,-266.112 300.342,-266.112"/>
+<text text-anchor="middle" x="225" y="-293" font-family="Sans" font-size="10.00">replaces</text>
 </g>
 </g>
 </svg>
