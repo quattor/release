@@ -87,7 +87,7 @@
 <!-- configuration&#45;modules&#45;core#1171 -->
 <g id="node11" class="node"><title>configuration-modules-core#1171</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1171" xlink:title="ncm-cups enhancements and cleanups" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="188,-630 16,-630 16,-576 188,-576 188,-630"/>
+<polygon fill="#6e5494" stroke="black" points="188,-630 16,-630 16,-576 188,-576 188,-630"/>
 <text text-anchor="middle" x="102" y="-607" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-594" font-family="Sans" font-size="10.00">configuration-modules-core#1171</text>
 </a>
@@ -95,7 +95,7 @@
 <!-- configuration&#45;modules&#45;core#1164 -->
 <g id="node13" class="node"><title>configuration-modules-core#1164</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1164" xlink:title="ncm-cups 17.7.0: configuration of ServerAlias + miscellanous enhancements" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-592" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-592" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-596" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="384" y="-583" font-family="Sans" font-size="10.00">configuration-modules-core#1164</text>
 </a>
