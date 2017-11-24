@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """
 Script to convert a Tracwiki page to Jekyll markdown.
@@ -15,12 +15,19 @@ import re
 import argparse
 import subprocess
 
-HEADING_1_PATTERN = re.compile(r'^=(?P<title>.*)\s+=\s*$')
-HEADING_2_PATTERN = re.compile(r'^==(?P<title>.*)\s+==\s*$')
-HEADING_3_PATTERN = re.compile(r'^===(?P<title>.*)\s+===\s*$')
+# FIXME:
+#  - Convert tables, including adding the CSS class
+# Heading marker can be followed by a '# anchor' in Trac wiki
+HEADING_1_PATTERN = re.compile(r'^=(?P<title>.*)\s+=\s*(?:#.*)?$')
+HEADING_2_PATTERN = re.compile(r'^==(?P<title>.*)\s+==\s*(?:#.*)?$')
+HEADING_3_PATTERN = re.compile(r'^===(?P<title>.*)\s+===\s*(?:#.*)?$')
+HEADING_4_PATTERN = re.compile(r'^====(?P<title>.*)\s+====\s*(?:#.*)?$')
 LINK_PATTERN = re.compile(r'\[(?P<url>https?://.*)\s+(?P<text>\w+)\]')
 MACRO_PATTERN = re.compile(r'^\s*\[\[.*\]\]\s*')
-CODE_PATTERN = re.compile(r'\{\{\{|\}\}\}')
+CODE_OPENING_PATTERN = re.compile(r'\{\{\{')
+CODE_CLOSING_PATTERN = re.compile(r'\}\}\}')
+ITALIC_PATTERN = re.compile(r'\'\'')
+BOLD_PATTERN = re.compile(r'\'\'\'')
 
 def main():
 
@@ -61,14 +68,29 @@ def main():
 
         try:
             with open(file, 'r') as trac_f:
+                code_section = False
                 for line in trac_f:
-                    line= line.rstrip()
+                    line = line.rstrip()
                     if not MACRO_PATTERN.match(line):
-                        line = HEADING_3_PATTERN.sub(r'### \g<title>', line)
-                        line = HEADING_2_PATTERN.sub(r'## \g<title>', line)
-                        line = HEADING_1_PATTERN.sub(r'# \g<title>', line)
-                        line = LINK_PATTERN.sub(r'[\g<text>](\g<url>)', line)
-                        line = CODE_PATTERN.sub(r'```', line)
+                        # Order of operations is important...
+                        if code_section:
+                            if CODE_CLOSING_PATTERN.match(line):
+                                code_section = False
+                                line = CODE_CLOSING_PATTERN.sub(r'```', line)
+                        else:
+                            if CODE_OPENING_PATTERN.match(line):
+                                code_section = True
+                                line = CODE_OPENING_PATTERN.sub(r'```', line)
+                            else:
+                                line = HEADING_4_PATTERN.sub(r'#### \g<title>', line)
+                                line = HEADING_3_PATTERN.sub(r'### \g<title>', line)
+                                line = HEADING_2_PATTERN.sub(r'## \g<title>', line)
+                                line = HEADING_1_PATTERN.sub(r'# \g<title>', line)
+                                line = LINK_PATTERN.sub(r'[\g<text>](\g<url>)', line)
+                                line = CODE_OPENING_PATTERN.sub(r'```', line)
+                                line = CODE_CLOSING_PATTERN.sub(r'```', line)
+                                line = BOLD_PATTERN.sub(r'**', line)
+                                line = ITALIC_PATTERN.sub(r'*', line)
                         md_f.write('%s\n' % line)
 
         except IOError, e:

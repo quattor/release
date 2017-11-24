@@ -8,10 +8,16 @@
         - Optional
         - Type: long
         - Range: 0..1
+        - Default value: 0
     - `/software/component-test/testtype/ca_dir`
         - Description: Test string
         - Optional
         - Type: string
+    - `/software/component-test/testtype/def`
+        - Description: Test default
+        - Optional
+        - Type: string
+        - Default value: testdefault
 
 ### Functions
 

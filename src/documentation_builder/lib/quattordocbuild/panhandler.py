@@ -61,32 +61,32 @@ def get_content_from_pan(panfile):
     return content
 
 
-def build_annotations(file, basedir, outputdir):
+def build_annotations(pfile, basedir, outputdir):
     """Build pan annotations."""
     panccommand = ["panc-annotations", "--output-dir", outputdir, "--base-dir", basedir]
-    panccommand.append(file)
+    panccommand.append(pfile)
     logger.debug("Running %s." % panccommand)
     ec, output = output = run_asyncloop(panccommand)
     logger.debug(output)
-    if ec == 0 and os.path.exists(os.path.join(outputdir, "%s.annotation.xml" % file)):
+    if ec == 0 and os.path.exists(os.path.join(outputdir, "%s.annotation.xml" % pfile)):
         return True
     else:
         logger.warning("Something went wrong running '%s'." % panccommand)
         return False
 
 
-def validate_annotations(file):
+def validate_annotations(xmlfile):
     """
     Check if a pan annotations file is usable.
 
     e.g. XML is parsable and the root element is not empty.
     If it is usable, return the xml root element.
     """
-    xml = etree.parse(file)
+    xml = etree.parse(xmlfile)
     root = xml.getroot()
 
     if len(root) == 0:
-        logger.debug("%s is empty, skipping it." % file)
+        logger.debug("%s is empty, skipping it." % xmlfile)
         return None
     else:
         return root
@@ -115,17 +115,17 @@ def find_description(element):
     return desc
 
 
-def parse_type(type):
+def parse_type(ptype):
     """Parse a type from an XML Element Tree."""
     typeinfo = {}
-    typeinfo['name'] = type.get('name')
-    desc = find_description(type)
+    typeinfo['name'] = ptype.get('name')
+    desc = find_description(ptype)
     if desc is not None:
         typeinfo['desc'] = desc.text
 
     typeinfo['fields'] = []
 
-    for field in type.findall(".//%sfield" % namespace):
+    for field in ptype.findall(".//%sfield" % namespace):
         fieldinfo = {}
         fieldinfo['name'] = field.get('name')
         desc = find_description(field)
@@ -139,6 +139,9 @@ def parse_type(type):
         if fieldtype == "long" and basetype.get('range'):
             fieldinfo['range'] = basetype.get('range')
 
+        fielddefault = field.find(".//%sdefault" % namespace)
+        if fielddefault is not None:
+            fieldinfo['default'] = fielddefault.get('text')
         typeinfo['fields'].append(fieldinfo)
 
     return typeinfo

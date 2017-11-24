@@ -6,6 +6,8 @@ type testtype = {
     'debug' : long(0..1) = 0
     @{Test string}
     'ca_dir' ? string
+    @{Test default}
+    'def': string = "testdefault"
 };
 
 @documentation{

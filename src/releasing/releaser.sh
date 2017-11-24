@@ -138,7 +138,7 @@ tag_repository() {
     tag=$2
     cd ${repo}
     #FIXME: we may want to check that the tag doesn't exist already
-    git tag -m "Release ${tag}" ${tag}
+    git tag -s -m "Release ${tag}" "${tag}"
     git push origin --tags HEAD
     cd -
 }
@@ -153,7 +153,7 @@ tag_branches() {
     do
       branch_name=$(basename ${branch})
       tag=${branch_name}-${version}
-      git tag  -m "Release ${version} of branch ${branch_name}" ${tag} ${branch}
+      git tag -s -m "Release ${version} of branch ${branch_name}" "${tag}" "${branch}"
     done
     git push origin --tags
     cd -

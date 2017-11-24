@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?><template xmlns="http://quattor.org/pan/annotations" name="pan_annotated_schema" source-range="1.1-1.42" type="DECLARATION">
-    <type name="testtype" source-range="4.1-9.2">
+    <type name="testtype" source-range="4.1-11.2">
         <documentation>
             <desc>test type.</desc>
         </documentation>
-        <basetype source-range="4.17-9.1" extensible="false">
+        <basetype source-range="4.17-11.1" extensible="false">
             <field name="debug" source-range="6.5-6.11" required="true">
                 <desc>Test long.</desc>
                 <basetype name="long" source-range="6.15-6.24" extensible="false" range="0..1"/>
+                <default source-range="6.28-6.28" text="0"/>
             </field>
             <field name="ca_dir" source-range="8.5-8.12" required="false">
                 <desc>Test string</desc>
                 <basetype name="string" source-range="8.16-8.21" extensible="false"/>
             </field>
+            <field name="def" source-range="10.5-10.9" required="true">
+                <desc>Test default</desc>
+                <basetype name="string" source-range="10.12-10.17" extensible="false"/>
+                <default source-range="10.21-10.33" text="testdefault"/>
+            </field>
         </basetype>
     </type>
-    <function name="add" source-range="16.1-18.2">
+    <function name="add" source-range="18.1-20.2">
         <documentation>
             <desc>simple addition of two numbers</desc>
             <arg>first number to add</arg>
