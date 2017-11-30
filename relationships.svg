@@ -209,7 +209,7 @@
 </g>
 <!-- template&#45;library&#45;core#167 -->
 <g id="node29" class="node"><title>template-library-core#167</title>
-<a xlink:href="https://github.com/quattor/template-library-core/pull/167" xlink:title="Update schema to support aquilon clusters" target="_parent">
+<a xlink:href="https://github.com/quattor/template-library-core/pull/167" xlink:title="schema: Add support for aquilon clusters" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="171,-854 33,-854 33,-800 171,-800 171,-854"/>
 <text text-anchor="middle" x="102" y="-831" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-818" font-family="Sans" font-size="10.00">template-library-core#167</text>
