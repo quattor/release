@@ -65,7 +65,7 @@
 <!-- CAF#262 -->
 <g id="node8" class="node"><title>CAF#262</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/262" xlink:title="FileWriter: set file status when no content was modified" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="141,-1214 63,-1214 63,-1160 141,-1160 141,-1214"/>
+<polygon fill="#6e5494" stroke="black" points="141,-1214 63,-1214 63,-1160 141,-1160 141,-1214"/>
 <text text-anchor="middle" x="102" y="-1191" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-1178" font-family="Sans" font-size="10.00">CAF#262</text>
 </a>
@@ -73,7 +73,7 @@
 <!-- CAF#259 -->
 <g id="node10" class="node"><title>CAF#259</title>
 <a xlink:href="https://github.com/quattor/CAF/issues/259" xlink:title="Filewriter: modify permissions when content is unmodified" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-1176" rx="48.9975" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-1176" rx="48.9975" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-1180" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="384" y="-1167" font-family="Sans" font-size="10.00">CAF#259</text>
 </a>
