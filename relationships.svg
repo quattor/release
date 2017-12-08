@@ -131,7 +131,7 @@
 <!-- CCM#179 -->
 <g id="node17" class="node"><title>CCM#179</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/179" xlink:title="TextRender: support unescape keys" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="423,-780 345,-780 345,-726 423,-726 423,-780"/>
+<polygon fill="#6e5494" stroke="black" points="423,-780 345,-780 345,-726 423,-726 423,-780"/>
 <text text-anchor="middle" x="384" y="-757" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="384" y="-744" font-family="Sans" font-size="10.00">CCM#179</text>
 </a>
@@ -139,7 +139,7 @@
 <!-- CCM#178 -->
 <g id="node19" class="node"><title>CCM#178</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/178" xlink:title="TextRender or getTree should support a way to unescape keys" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="616" cy="-753" rx="51.1176" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="616" cy="-753" rx="51.1176" ry="38.1838"/>
 <text text-anchor="middle" x="616" y="-757" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="616" y="-744" font-family="Sans" font-size="10.00">CCM#178</text>
 </a>
