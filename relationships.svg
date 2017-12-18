@@ -274,7 +274,7 @@
 <!-- configuration&#45;modules&#45;core#1058 -->
 <g id="node37" class="node"><title>configuration-modules-core#1058</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1058" xlink:title="ncm-ssh: disable insecure ssh ciphersuites and macs" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="188,-508 16,-508 16,-454 188,-454 188,-508"/>
+<polygon fill="#6e5494" stroke="black" points="188,-508 16,-508 16,-454 188,-454 188,-508"/>
 <text text-anchor="middle" x="102" y="-485" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-472" font-family="Sans" font-size="10.00">configuration-modules-core#1058</text>
 </a>
