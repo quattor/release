@@ -87,22 +87,42 @@ publish_templates() {
 # that obsolete templates are removed.
 publish_aii() {
     echo_info "Publishing AII Templates"
-    tag=$1
-    cd aii
-    git checkout $tag
-    mvn-c -q clean compile
-    dest_root=${LIBRARY_CORE_DIR}/quattor/aii
+    tag="$1"
+    dest_root="${LIBRARY_CORE_DIR}/quattor/aii"
+
     # It's better to do a rm before copying, in case a template has been suppressed.
     # For aii-core, don't delete subdirectory as some are files not coming from somewhere else...
     rm ${dest_root}/*.pan
-    cp -r aii-core/target/pan/quattor/aii/* ${dest_root}
-    for aii_component in dhcp ks pxelinux opennebula
-    do
-      rm -Rf ${dest_root}/${aii_component}
-      cp -r aii-${aii_component}/target/pan/quattor/aii/${aii_component} ${dest_root}
-    done
-    git checkout master
-    cd ${LIBRARY_CORE_DIR}
+
+    (
+        cd aii || return
+        git checkout "aii-$tag"
+        mvn-c -q clean compile
+
+        # Copy dedicated AII templates
+        cp -r aii-core/target/pan/quattor/aii/* "${dest_root}"
+
+        # Copy AII component templates
+        for aii_component in dhcp ks pxelinux; do
+            rm -Rf "${dest_root:?}/${aii_component}"
+            cp -r "aii-${aii_component}/target/pan/quattor/aii/${aii_component}" "${dest_root}"
+        done
+        git checkout master
+    )
+
+    (
+        cd configuration-modules-core || return
+        git checkout "configuration-modules-core-$tag"
+        mvn-c -q clean compile
+        # Copy shared AII/core component templates
+        for component in freeipa opennebula; do
+            rm -Rf "${dest_root:?}/${component}"
+            cp -r "ncm-${component}/target/pan/quattor/aii/${component}" "${dest_root}"
+        done
+        git checkout master
+    )
+
+    cd "${LIBRARY_CORE_DIR}" || return
     git add -A .
     git commit -m "AII templates for tag $tag"
     cd ..
@@ -296,7 +316,7 @@ if gpg-agent; then
             remove_obsolete_components
 
             echo_info "    Updating AII templates..."
-            publish_aii "aii-$VERSION" &&  echo_info "    AII templates successfully updated"
+            publish_aii "$VERSION" &&  echo_info "    AII templates successfully updated"
 
             echo_info "    Updating Quattor version template..."
             update_version_file "$VERSION" && echo_info "    Quattor version template sucessfully updated"
