@@ -88,10 +88,10 @@ function burndown(release) {
                                 name: 'Linear Regression',
                                 type: 'line',
                                 data: (function() {
-                                    start = mydata.closed[0][0];
+                                    start_lin = mydata.closed[0][0];
                                     fit = fitData(mydata.closed);
                                     return [
-                                        [start, fit.y(start)],
+                                        [start_lin, fit.y(start_lin)],
                                         [target, fit.y(target)],
                                     ];
                                 })(),
@@ -105,15 +105,15 @@ function burndown(release) {
                                 type: 'line',
                                 data: (function() {
                                     secondsinday = 24 * 60 * 60;
-                                    start = start / 1000;
-                                    end = target / 1000;
-                                    days = (end - start) / secondsinday;
+                                    start_secs = start / 1000;
+                                    end_secs = target / 1000;
+                                    days = (end_secs - start_secs) / secondsinday;
                                     coeff_a = mydata.to_burn / (secondsinday * (days / 30));
                                     coeff_b = mydata.to_burn / (secondsinday / (days / 7))
                                     points = [];
                                     for (day = 0; day <= days; day++) {
                                         y = -coeff_a * Math.pow(day, 3) + coeff_b * Math.pow(day, 2) - day + mydata.to_burn;
-                                        x = mydata.closed[0][0] + day * secondsinday * 1000;
+                                        x = start + day * secondsinday * 1000;
                                         points.push([x, y]);
                                     }
                                     return points;
