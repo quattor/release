@@ -387,7 +387,7 @@
 <!-- template&#45;library&#45;grid#205 -->
 <g id="node53" class="node"><title>template-library-grid#205</title>
 <a xlink:href="https://github.com/quattor/template-library-grid/pull/205" xlink:title="repository/config/htcondor: Cleanup and make use of repository name" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="169,-1030 35,-1030 35,-976 169,-976 169,-1030"/>
+<polygon fill="#6e5494" stroke="black" points="169,-1030 35,-1030 35,-976 169,-976 169,-1030"/>
 <text text-anchor="middle" x="102" y="-1007" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-994" font-family="Sans" font-size="10.00">template-library-grid#205</text>
 </a>
@@ -395,7 +395,7 @@
 <!-- template&#45;library&#45;grid#204 -->
 <g id="node55" class="node"><title>template-library-grid#204</title>
 <a xlink:href="https://github.com/quattor/template-library-grid/issues/204" xlink:title="htcondor repo" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-870" rx="94.9596" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-870" rx="94.9596" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-874" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="384" y="-861" font-family="Sans" font-size="10.00">template-library-grid#204</text>
 </a>
