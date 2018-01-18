@@ -373,7 +373,7 @@
 <!-- ncm&#45;ncd#121 -->
 <g id="node52" class="node"><title>ncm-ncd#121</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/121" xlink:title="rework chdir handling use mktemp instead of '/tmp'" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="427,-1074 341,-1074 341,-1020 427,-1020 427,-1074"/>
+<polygon fill="#6e5494" stroke="black" points="427,-1074 341,-1074 341,-1020 427,-1020 427,-1074"/>
 <text text-anchor="middle" x="384" y="-1051" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="384" y="-1038" font-family="Sans" font-size="10.00">ncm-ncd#121</text>
 </a>
