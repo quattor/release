@@ -387,7 +387,7 @@
 <!-- template&#45;library&#45;core#167 -->
 <g id="node53" class="node"><title>template-library-core#167</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/167" xlink:title="schema: Add support for aquilon clusters" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="171,-1102 33,-1102 33,-1048 171,-1048 171,-1102"/>
+<polygon fill="#6e5494" stroke="black" points="171,-1102 33,-1102 33,-1048 171,-1048 171,-1102"/>
 <text text-anchor="middle" x="102" y="-1079" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-1066" font-family="Sans" font-size="10.00">template-library-core#167</text>
 </a>
@@ -395,7 +395,7 @@
 <!-- template&#45;library&#45;core#71 -->
 <g id="node55" class="node"><title>template-library-core#71</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/71" xlink:title="Schema for aquilon cluster archetypes needed" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="384" cy="-964" rx="94.0452" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="384" cy="-964" rx="94.0452" ry="38.1838"/>
 <text text-anchor="middle" x="384" y="-968" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="384" y="-955" font-family="Sans" font-size="10.00">template-library-core#71</text>
 </a>
