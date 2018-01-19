@@ -365,7 +365,7 @@
 <!-- ncm&#45;ncd#123 -->
 <g id="node50" class="node"><title>ncm-ncd#123</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/123" xlink:title="ncm-ncd: run from temporary directory" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="145,-1174 59,-1174 59,-1120 145,-1120 145,-1174"/>
+<polygon fill="#6e5494" stroke="black" points="145,-1174 59,-1174 59,-1120 145,-1120 145,-1174"/>
 <text text-anchor="middle" x="102" y="-1151" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="102" y="-1138" font-family="Sans" font-size="10.00">ncm-ncd#123</text>
 </a>
