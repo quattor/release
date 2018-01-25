@@ -111,6 +111,7 @@ function check_perl_version {
             perl -e 'use version; exit ($^V >= version->new('"$1"') ? 0 : 1);'
         else
             echo_error "missing perl and/or perl version module. Assuming this is a very very old OS."
+            return 3
         fi
     else
         return 2
