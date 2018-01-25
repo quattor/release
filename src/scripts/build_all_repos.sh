@@ -118,11 +118,7 @@ function check_perl_version {
 }
 
 # Install and use the epel repo
-if [[ "$RH_RELEASE" -eq 5 || "$RH_RELEASE" -eq 6 ]]; then
-    USE_EPEL=1
-else
-    USE_EPEL=0
-fi
+USE_EPEL=1
 
 # Install and use rpmforge repo (expect rpm conflicts)
 if [[ "$RH_RELEASE" -eq 5 ]]; then
