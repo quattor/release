@@ -1,11 +1,14 @@
 g.edge:hover {
-    fill: #edd400;
+    fill: #c4a000;
     cursor: default;
+    filter: drop-shadow(0 0 2px #fce94f);
 }
 g.edge:hover > path {
-    stroke: #edd400;
+    stroke: #c4a000;
+    filter: drop-shadow(0 0 2px #fce94f);
 }
 g.edge:hover > polygon {
-    stroke: #edd400;
-    fill: #edd400;
+    stroke: #c4a000;
+    fill: #c4a000;
+    filter: drop-shadow(0 0 2px #fce94f);
 }
