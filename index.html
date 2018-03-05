@@ -101,7 +101,7 @@
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/issues/811"><strong>ncm-systemd: add a decent component documentation</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 9</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jouvin">jouvin</a> <span class="text-muted"><span class="reldate">2016-07-13T10:47:18</span></span><span class="text-muted">, Assigned to</span> <a href="http://www.github.com/stdweird">stdweird</a><span class="text-muted">, Updated <span class="reldate">2017-10-25T13:56:57</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/issues/1191"><strong>ncm-sysconfig: Values should be quoted</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jrha">jrha</a> <span class="text-muted"><span class="reldate">2017-11-13T11:17:40</span></span><span class="text-muted">, Updated <span class="reldate">2017-12-19T13:49:40</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/issues/1237"><strong>ncm-ssh: config option renamed between RHEL6 and RHEL7</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/drossy">drossy</a> <span class="text-muted"><span class="reldate">2018-02-07T17:41:11</span></span><span class="text-muted">, Updated <span class="reldate">2018-02-07T17:58:30</span></span> </div></li>
-<li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1244"><strong>ncm-spma: yum: support package filter</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 6</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/stdweird">stdweird</a> <span class="text-muted"><span class="reldate">2018-03-01T14:22:02</span></span><span class="text-muted">, Updated <span class="reldate">2018-03-04T16:39:37</span></span> </div></li>
+<li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1244"><strong>ncm-spma: yum: support package filter</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 6</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/stdweird">stdweird</a> <span class="text-muted"><span class="reldate">2018-03-01T14:22:02</span></span><span class="text-muted">, Updated <span class="reldate">2018-03-04T19:26:50</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/issues/1208"><strong>ncm-spma: yum: Support for include</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 1</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jrha">jrha</a> <span class="text-muted"><span class="reldate">2017-12-08T14:27:05</span></span><span class="text-muted">, Updated <span class="reldate">2017-12-13T10:41:04</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1236"><strong>ncm-spma: yum: Expose support for multiple reposdirs</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 8</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jrha">jrha</a> <span class="text-muted"><span class="reldate">2018-02-07T08:20:13</span></span><span class="text-muted">, Updated <span class="reldate">2018-02-19T14:43:05</span></span> </div></li>
 <li class="thing-closed"><span class="text-github-closed octicon octicon-git-pull-request" title="State: closed"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1075"><strong>ncm-spma (yum): Allow unmanaged repositories to be controlled seperately from packages</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 7</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jrha">jrha</a> <span class="text-muted"><span class="reldate">2017-03-15T14:53:24</span></span><span class="text-muted">, Updated <span class="reldate">2018-02-07T15:25:13</span></span> </div></li>
@@ -624,6 +624,20 @@
 <thead>
 <tr><th>Date</th><th>OS</th><th>Result</th><th>Files</th></tr></thead>
 <tbody>
+<tr style="border-top: 2px solid #ddd"><td class="text-center"><b>2018-03-05</b></td>
+<td style="color: rgb(102,194,165)"><span class="fl-centos" title="CentOS"></span> 7</td>
+<td>
+<span style="color:#ca0020"><samp style="font-size: smaller">BUILD_ALL_REPOS E: mvn_package mvn package <b>failed</b> for repository CCM <br>(cmd mvn clean package -Dprove.args=-v)</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="https://github.com/quattor/release/releases/download/nightly_2018-03-05T01/build.log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="https://github.com/quattor/release/releases/download/nightly_2018-03-05T01/packages.tar.bz2"><span class="octicon octicon-package"></span></a></td>
+</tr>
+<tr><td class="text-center" style="border-top-style: none"><span class="text-muted" title="2018-03-05">&#x3003;</span></td>
+<td style="color: rgb(252,141,98)"><span class="fl-centos" title="CentOS"></span> 6</td>
+<td>
+<span style="color:#777777"><samp style="font-size: smaller">BUILD_ALL_REPOS I: build_all_repos END <b>SUCCESS</b> DEST /home/foo10231/quattordev1520212860 Mon Mar  5 01:21:00 UTC 2018</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="https://github.com/quattor/release/releases/download/nightly_2018-03-05T01/build.log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="https://github.com/quattor/release/releases/download/nightly_2018-03-05T01/packages.tar.bz2"><span class="octicon octicon-package"></span></a></td>
+</tr>
 <tr style="border-top: 2px solid #ddd"><td class="text-center"><b>2018-03-02</b></td>
 <td style="color: rgb(102,194,165)"><span class="fl-centos" title="CentOS"></span> 7</td>
 <td>
@@ -1468,7 +1482,7 @@
 </div>
 </div>
 </div>
-<p class="text-muted">Page generated <span class="reldate">2018-03-04 17:39:35<span></p>
+<p class="text-muted">Page generated <span class="reldate">2018-03-05 08:10:09<span></p>
 </div>
 
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
