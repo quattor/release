@@ -375,7 +375,7 @@
 </g>
 <!-- template&#45;library&#45;standard#109 -->
 <g id="node53" class="node"><title>template-library-standard#109</title>
-<a xlink:href="https://github.com/quattor/template-library-standard/pull/109" xlink:title="Add sample of nVidia workstation and compute GPUs" target="_parent">
+<a xlink:href="https://github.com/quattor/template-library-standard/pull/109" xlink:title="Add sample of nvidia workstation and compute GPUs" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="196,-842 40,-842 40,-788 196,-788 196,-842"/>
 <text text-anchor="middle" x="118" y="-819" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-806" font-family="Sans" font-size="10.00">template-library-standard#109</text>
