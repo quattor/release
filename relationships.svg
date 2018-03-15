@@ -235,7 +235,7 @@
 <!-- configuration&#45;modules&#45;core#1220 -->
 <g id="node33" class="node"><title>configuration-modules-core#1220</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1220" xlink:title="ncm-cups: Stop daemon if server not enabled" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="204,-629 32,-629 32,-575 204,-575 204,-629"/>
+<polygon fill="#6e5494" stroke="black" points="204,-629 32,-629 32,-575 204,-575 204,-629"/>
 <text text-anchor="middle" x="118" y="-606" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-593" font-family="Sans" font-size="10.00">configuration-modules-core#1220</text>
 </a>
@@ -243,7 +243,7 @@
 <!-- configuration&#45;modules&#45;core#1189 -->
 <g id="node35" class="node"><title>configuration-modules-core#1189</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1189" xlink:title="ncm-cups: Nodetype of client should stop running cups daemon" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-602" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-602" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-606" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-593" font-family="Sans" font-size="10.00">configuration-modules-core#1189</text>
 </a>
@@ -387,7 +387,7 @@
 <!-- template&#45;library&#45;core#172 -->
 <g id="node55" class="node"><title>template-library-core#172</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/172" xlink:title="Allow RAM to be modelled on GPU cards" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="501,-170 363,-170 363,-116 501,-116 501,-170"/>
+<polygon fill="#6e5494" stroke="black" points="501,-170 363,-170 363,-116 501,-116 501,-170"/>
 <text text-anchor="middle" x="432" y="-147" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="432" y="-134" font-family="Sans" font-size="10.00">template-library-core#172</text>
 </a>
