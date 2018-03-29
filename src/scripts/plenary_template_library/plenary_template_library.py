@@ -17,10 +17,10 @@ RELEASES_URL = 'http://www.quattor.org/release/releases.json'
 LIBRARY_URL_PATTERN = 'https://github.com/quattor/template-library-%s.git'
 LIBRARY_BRANCHES = {
     'core' : ['master'],
-    'grid' : ['emi-2', 'umd-3'],
+    'grid' : ['umd-3', 'umd-4'],
     'os' : ['sl5.x-x86_64', 'sl6.x-x86_64', 'el7.x-x86_64'],
     'standard' : ['master'],
-    #'openstack' : ['icehouse'],
+    'openstack' : ['mitaka', 'newton', 'ocata'],
 }
 
 BIN_GIT = '/usr/bin/git'
@@ -128,7 +128,7 @@ def sync_template_library(base_dir, releases):
                     source = temp_dir + sep
                     target = target_dir + sep
                     logger.info('  rsyncing tag from %s to %s', source, target)
-                    execute([BIN_RSYNC, '-rtx', '--exclude=\.git', source, target])
+                    execute([BIN_RSYNC, '-rtx', '--exclude=.*', source, target])
 
         chdir(base_dir)
         try:
