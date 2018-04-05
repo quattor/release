@@ -32,6 +32,10 @@ if [ ! -d "$BASE/$NAME" ]; then
     if [ $? -gt 0 ]; then error "!!"; fi
     cd "$NAME"
     if [ $? -gt 0 ]; then error "!!"; fi
+
+    git config --global user.email "build@quattor.org"
+    git config --global user.name "Build Quattor"
+
     git remote add $UPSTREAM $REPO
     if [ $? -gt 0 ]; then error "!!"; fi
 fi

@@ -111,6 +111,7 @@ function check_perl_version {
             perl -e 'use version; exit ($^V >= version->new('"$1"') ? 0 : 1);'
         else
             echo_error "missing perl and/or perl version module. Assuming this is a very very old OS."
+            return 3
         fi
     else
         return 2
@@ -343,6 +344,25 @@ else
     SUDO=''
 fi
 
+YUMYES="-y $DISABLEREPOSFULL $ENABLEREPOSFULL"
+
+function doyum () {
+    echo_info "${1}-ing pkgs with '$SUDO yum $YUMYES $*'"
+    # shellcheck disable=SC2086
+    $SUDO yum $YUMYES "$@"
+    return $?
+}
+
+
+function makecache () {
+    if [[ ! -z "$1" ]]; then
+        doyum clean "$1"
+    fi
+    # shellcheck disable=SC2086
+    doyum makecache $DISABLEREPOSFULL $ENABLEREPOSFULL
+    return $?
+}
+
 
 THEDEPCACHE=""
 # Keep bash dependency cache
@@ -468,7 +488,7 @@ function localinstall_url () {
         error 100 "Failed to download $rpmurl"
     fi
     # panc rpm is not signed
-    $SUDO yum localinstall "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" -y "$installopts" "$localrpm"
+    doyum localinstall "$installopts" "$localrpm"
     if [[ $? -ne 0 ]]; then
         error 101 "Failed to do localinstall of $localrpm from $rpmurl"
     fi
@@ -495,8 +515,7 @@ function check_quattor_externals () {
         # remove the quattor and aquilon repos; should only leave the externals
         $SUDO sed -i '/quattor\]/,+5d;/quattor_aquilon\]/,+5d' "$fn"
 
-        $SUDO yum clean expire-cache
-        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+        makecache expire-cache
     fi
 }
 
@@ -505,7 +524,7 @@ function check_epel () {
 
         if [[ "$RH_RELEASE" -eq 5 ]]; then
             # EPEL5 zombie mode
-            EPEL_REPO_RPM="${EPEL_REPO_RPM//pub\/epel\//pub\/archive\/epel\/}"
+            EPEL_REPO_RPM="${EPEL_REPO_RPM//pub\/epel\//pub/archive/epel/}"
         fi
 
         localinstall_url "$EPEL_REPO_RPM" "$DEST/epel-release-$RH_RELEASE.rpm" "--nogpgcheck"
@@ -515,16 +534,14 @@ function check_epel () {
             $SUDO sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#pub/epel/#pub/archive/epel/#' -i /etc/yum.repos.d/epel*.repo
         fi
 
-        $SUDO yum clean expire-cache
-        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+        makecache expire-cache
     fi
 }
 
 function check_rpmforge () {
     if [[ "$USE_RPMFORGE" -gt 0 ]]; then
         localinstall_url "$RPMFORGE_REPO_RPM" "$DEST/rpmforge-release-$RH_RELEASE.rpm" "--nogpgcheck"
-        $SUDO yum clean expire-cache
-        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+        makecache expire-cache
     fi
 }
 
@@ -535,7 +552,7 @@ function has_mvn () {
     if [[ $? -gt 0 ]]; then
         echo_info "No maven executable $mvn found in PATH"
 
-        $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+        makecache
         deps_install_yum "*bin/mvn" 0
         if [[ $? -gt 0 ]]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
@@ -556,7 +573,7 @@ function has_mvn () {
                 error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
             fi
 
-            $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+            makecache
             # now it's fatal
             deps_install_yum "*bin/mvn" 1
         fi
@@ -617,23 +634,18 @@ function deps_install_yum () {
     fi
 
     echo_info "Searching for dep $dep with $SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides \"$dep\""
-    pkgs="$($SUDO repoquery -C --qf '%{name}' "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" --whatprovides "$dep" 2>/dev/null | grep -v 'No package provides' | sort | uniq)"
+    # shellcheck disable=SC2086
+    pkgs="$($SUDO repoquery -C --qf '%{name}' $DISABLEREPOSFULL $ENABLEREPOSFULL --whatprovides "$dep" 2>/dev/null | grep -v 'No package provides' | sort | uniq)"
     if [[ -z "$pkgs" ]]; then
         ec=70
         cerror "$fatal" "$ec" "No packages found for dep $dep with repoquery"
     fi
 
-    # yum command (e.g. add sudo or something like that)
-    # no -C here
-    yum="$SUDO yum"
-
     for pkg in $pkgs; do
-        echo_info "Installing pkg $pkg with yum install $DISABLEREPOSFULL $ENABLEREPOSFULL"
-        cmd="$yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $pkg"
-        $cmd
+        doyum install "$pkg"
         if [[ $? -gt 0 ]]; then
             ec=71
-            cerror "$fatal" "$ec" "Failed installation of pkg $pkg with yum : $cmd"
+            cerror "$fatal" "$ec" "Failed installation of pkg $pkg with yum"
         else
             echo "$pkg" >> "$YUM_INSTALL_LIST"
             add_has_dep "$dep" 1
@@ -644,8 +656,7 @@ function deps_install_yum () {
 }
 
 function check_deps_init_bin () {
-    $SUDO yum clean expire-cache
-    $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+    makecache expire-cache
 
     # these are fatal
     echo_info "Checking DEPS_INIT_BIN_YUM $DEPS_INIT_BIN_YUM"
@@ -1032,7 +1043,7 @@ function main_init_bin_yum () {
     for bin in $miby; do
         binpath="/usr/bin/$bin"
         if [[ ! -f "$binpath" ]]; then
-            cmd="$SUDO yum install $DISABLEREPOSFULL $ENABLEREPOSFULL -y $binpath"
+            cmd="$SUDO yum install $YUMYES $binpath"
             # Don't quote arguments as we want to allow the shell to do globbing and word splitting
             # shellcheck disable=SC2086
             run_wrapped $cmd
@@ -1085,8 +1096,7 @@ function main_init () {
         $SUDO sed '/mirrorlist/d;s/^#baseurl/baseurl/;s#mirror.centos.org/centos#vault.centos.org#;s/[$]releasever/5.11/' -i /etc/yum.repos.d/CentOS-*repo
     fi
 
-    $SUDO yum clean all
-    $SUDO yum makecache "$DISABLEREPOSFULL" "$ENABLEREPOSFULL"
+    makecache all
 
     # provided by yum-utils
     # Don't quote arguments as we want to allow the shell to do globbing and word splitting
@@ -1162,55 +1172,55 @@ function build_aquilon_protocols() {
 
     # need very recent git for sorting tags on date
     ius="ius-release"
-    download $IUS_REPO_RPM_EL7 $ius.rpm
-    $SUDO yum localinstall -y $ius.rpm
-    $SUDO yum remove -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" git git-core-doc git-core
-    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" git2u
-    $SUDO yum remove -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$ius"
-    $SUDO yum clean all
+    download "$IUS_REPO_RPM_EL7" "$ius.rpm"
+    doyum localinstall "$ius.rpm"
+    doyum remove git git-core-doc git-core
+    doyum install git2u
+    doyum remove "$ius"
+    doyum clean all
 
     # This is the only requirement
-    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" protobuf-compiler
+    doyum install protobuf-compiler
 
     fn=/tmp/aquilon_protocols_build.sh
-    download $AQUILON_PROTO_BUILDSCRIPT $fn
-    chmod +x $fn
+    download "$AQUILON_PROTO_BUILDSCRIPT" "$fn"
+    chmod +x "$fn"
 
     export BASE=$PWD
     $fn
 
     # install it, not the src rpm
     latest=$(sed "s/-/_/" "$BASE/latest")
-    $SUDO yum localinstall -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$BASE"/aquilon-protocols/dist/*"$latest"*.noarch.rpm
+    doyum localinstall "$BASE/aquilon-protocols/dist/*$latest*.noarch.rpm"
 }
 
 function build_aquilon() {
     # ugly
     local fn
-    $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" docbook5-style-xsl docbook5-schemas
+    doyum install docbook5-style-xsl docbook5-schemas
 
     fn=/tmp/aquilon_build.sh
-    download $AQUILON_BUILDSCRIPT $fn
-    chmod +x $fn
+    download "$AQUILON_BUILDSCRIPT" "$fn"
+    chmod +x "$fn"
 
     export BASE=$PWD
     $fn
 
     # get all deps
-    $SUDO yum localinstall -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$BASE"/aquilon/dist/*.noarch.rpm
+    doyum localinstall "$BASE/aquilon/dist/*.noarch.rpm"
 
     # to run tests
     RUNAQTESTS=0
     if [ $RUNAQTESTS -gt 0 ]; then
         $SUDO rpm -e aquilon
-        $SUDO yum install "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" python-devel libxml2-devel libxslt-devel
+        doyum install python-devel libxml2-devel libxslt-devel
         cd "$BASE/aquilon" || exit 1
         # install bunch of test deps, like more recent protobuf?
         # why not setuptools and tests_require?
 
         for dep in $(git grep ms.version.addpkg tests/ |tr '"' "'"|sed "s/.*addpkg('//;s/', \?'.*//"|sort|uniq); do
             echo "Installing aquilon test python dep $dep using fuzzy yum"
-            $SUDO yum install -y "$DISABLEREPOSFULL" "$ENABLEREPOSFULL" "$dep" "python-$dep"
+            doyum install "$dep" "python-$dep"
         done
 
         # some require more recent setuptools?
