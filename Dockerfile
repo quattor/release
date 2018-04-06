@@ -13,23 +13,17 @@ RUN tar xvfz template-library-core-master.tar.gz
 ADD . /ncm-metaconfig/
 
 # Install dependencies
-RUN yum groupinstall 'Development Tools' -y
-RUN yum-config-manager --add-repo http://yum.quattor.org/current
-RUN yum-config-manager --add-repo http://yum.quattor.org/externals/noarch/el7/
-RUN yum install maven wget epel-release -y
+RUN yum install maven epel-release -y
+RUN rpm -U http://yum.quattor.org/devel/quattor-release-1-1.noarch.rpm
 
-RUN wget http://yum.quattor.org/devel/quattor-release-1-1.noarch.rpm
-RUN yum localinstall --nogpgcheck quattor-release-1-1.noarch.rpm -y
-RUN yum install --nogpgcheck panc ncm-ncd perl-Test-Quattor -y
+RUN yum install --nogpgcheck perl-Test-Quattor -y
 # needed by some tests, not a dependency of perl-Test-Quattor
-RUN yum install perl-JSON-Any -y
+RUN yum install panc perl-JSON-Any -y
 
 # these are not by default in centos7, but quattor tests assume they are
 RUN touch /usr/sbin/selinuxenabled /sbin/restorecon
 RUN chmod +x /usr/sbin/selinuxenabled /sbin/restorecon
 
-# Define environment variable
-ENV QUATTOR_TEST_SUITE_FILTER simple
 # point library core to where we downloaded it
 ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-master
 
