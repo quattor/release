@@ -21,7 +21,7 @@ RUN yum install maven wget epel-release -y
 RUN wget http://yum.quattor.org/devel/quattor-release-1-1.noarch.rpm
 RUN yum localinstall --nogpgcheck quattor-release-1-1.noarch.rpm -y
 RUN yum install --nogpgcheck panc ncm-ncd perl-Test-Quattor -y
-# needed by some tests, not a dependency from perl-Test-Quattor
+# needed by some tests, not a dependency of perl-Test-Quattor
 RUN yum install perl-JSON-Any -y
 
 # these are not by default in centos7, but quattor tests assume they are
