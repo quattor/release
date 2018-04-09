@@ -33,6 +33,8 @@ WORKDIR /quattor_test
 
 # when running the container, by default run the tests 
 # you can run any command in the container from the cli.
+# e.g. to test configuration-modules-core/ncm-metaconfig
+# (The only tests that this container has all dependencies for at the moment)
 # docker run --mount type=bind,source="$PWD",target=/quattor_test/configuration-modules-core \
 # quattor-test bash -c 'source /usr/bin/mvn_test.sh && \
 # cd /quattor_test/configuration-modules-core/ncm-metaconfig && mvn_test service_mailrc'
