@@ -27,6 +27,7 @@ ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-master
 # you need to provide the content of this directory when running this docker container:
 # first build this container:
 # docker build -t quattor_test .
+# mount pwd in /quattor_test (not in /quattor or the mount will hide /quattor/template-library-core)
 # docker run --mount type=bind,source="$PWD",target=/quattor_test quattor_test
 WORKDIR /quattor_test
 
