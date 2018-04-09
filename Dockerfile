@@ -8,10 +8,6 @@ WORKDIR /quattor
 ADD https://codeload.github.com/quattor/template-library-core/tar.gz/master /quattor/template-library-core-master.tar.gz
 RUN tar xvfz template-library-core-master.tar.gz
 
-# Copy the current directory contents into the container at /ncm-metaconfig
-#TODO: use docker volumes here to mount the current directory contents, no no need to rebuild every time to test
-ADD . /ncm-metaconfig/
-
 # Install dependencies
 RUN yum install maven epel-release -y
 RUN rpm -U http://yum.quattor.org/devel/quattor-release-1-1.noarch.rpm
@@ -28,8 +24,14 @@ RUN chmod +x /usr/sbin/selinuxenabled /sbin/restorecon
 ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-master
 
 # set workdir to where we'll run the tests
-WORKDIR /ncm-metaconfig
+# you need to provide the content of this directory when running this docker container:
+# first build this container:
+# docker build -t quattor_test .
+# docker run --mount type=bind,source="$PWD",target=/quattor_test quattor_test
+WORKDIR /quattor_test
 
 # when running the container, by default run the tests 
 # you can run any command in the container from the cli.
+# docker run --mount type=bind,source="$PWD"/,target=/quattor_test \
+# quattor_test bash -c 'source /usr/bin/mvn_test.sh && cd ncm-metaconfig && mvn_test service_mailrc'
 CMD . /usr/bin/mvn_test.sh && mvn_test
