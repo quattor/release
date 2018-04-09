@@ -38,5 +38,5 @@ WORKDIR /quattor_test
 # cd /path/to/configuration-modules-core
 # docker run --mount type=bind,source="$PWD",target=/quattor_test/configuration-modules-core \
 # quattor_test bash -c 'source /usr/bin/mvn_test.sh && \
-# cd /quattor_test/configuration-modules-core/ncm-metaconfig && mvn_test service_mailrc'
+# cd /quattor_test/configuration-modules-core/ncm-metaconfig && mvn_test service-mailrc'
 CMD . /usr/bin/mvn_test.sh && mvn_test
