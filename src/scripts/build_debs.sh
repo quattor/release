@@ -1,10 +1,22 @@
 #!/bin/bash
 
+if [ "${DEBUG:-0}" -ne 0 ]; then
+    set -x
+fi
 
 function hr () {
     printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 }
 
+WHITESPACE="THISISASPACEWOOHOOCRAPPYBASH"
+
+function encode_whitespace () {
+    sed "s/ /$WHITESPACE/g"
+}
+
+function decode_whitespace () {
+    sed "s/$WHITESPACE/ /g"
+}
 
 function render_copyright () {
     name=$1
@@ -44,9 +56,34 @@ function render_changelog () {
     echo "$dir_changelog/changelog.gz"
 }
 
-
 function filter_package_names () {
-    grep -v '^rpmlib' | grep -v '^/' | grep -v '[<=>]' | grep -v '__' | sed 's/^perl(\(\S\+\))/lib\1-perl/g' | sed 's/::/-/g' | tr '[:upper:]' '[:lower:]' | sed 's/_/-/g' | xargs -n 1 -I @ grep @ "$APT_CACHE_DUMP"
+    grep -v '^rpmlib' | grep -v '^/' | grep -v '__' | sed 's/^perl(\(\S\+\))/lib\1-perl/g' | sed 's/::/-/g' | tr '[:upper:]' '[:lower:]' | sed 's/_/-/g'
+}
+
+function mk_prov () {
+    while read data; do
+        # no real manipulation required?
+        echo "$data" | encode_whitespace
+    done
+}
+
+function mk_req () {
+    local dep depname oper vers from_cache
+    while read data; do
+        # get package name and optional version
+        read depname oper vers <<< $(echo "$data" )
+        from_cache=$(grep "^$depname\$" "$APT_CACHE_DUMP")
+        if [ -z "$from_cache" ]; then
+            echo "missing dep for $data" >> $MISSING_DEP
+        else
+            if [ -z "$oper" ]; then
+                echo $depname
+            else
+                # no epoch in version
+                echo "$depname $oper ${vers#*:}" | encode_whitespace
+            fi
+        fi
+    done
 }
 
 
@@ -61,11 +98,25 @@ function repackage () {
     name=$(echo $name | tr '[:upper:]' '[:lower:]' | sed 's/^perl-\(\S\+\)/lib\1-perl/g')
     echo "Using name: $name"
 
-    requires=$(rpm -q --requires -p $package | filter_package_names | sed 's/^/--depends /g')
-    provides=$(rpm -q --provides -p $package | filter_package_names | sed 's/^/--provides /g')
+    requires=($(rpm -q --requires -p $package | filter_package_names | mk_req | sed 's/^/--depends /g'))
+    provides=($(rpm -q --provides -p $package | filter_package_names | mk_prov | sed 's/^/--provides /g'))
 
-    #echo -e "Requires:\n$requires"
-    #echo -e "Provides:\n$provides"
+    # decode whitespace
+    count=0
+    while [ "x${requires[$count]}" != "x" ]; do
+        requires[$count]=$(echo ${requires[$count]} | decode_whitespace)
+        count=$(( $count + 1 ))
+    done
+    count=0
+    while [ "x${provides[$count]}" != "x" ]; do
+        provides[$count]=$(echo ${provides[$count]} | decode_whitespace)
+        count=$(( $count + 1 ))
+    done
+
+    if [ "${DEBUG:-0}" -ne 0 ]; then
+        echo -e "Requires:\n${requires[@]}"
+        echo -e "Provides:\n${provides[@]}"
+    fi
 
     # Setup scratch area
     mkdir $name
@@ -100,8 +151,8 @@ function repackage () {
         --rpm-sign \
         --category admin \
         --url "http://www.quattor.org/" \
-        $requires \
-        $provides \
+        "${requires[@]}" \
+        "${provides[@]}" \
         .
 
     readlink -f *.deb
@@ -127,6 +178,7 @@ if [[ -d $1 ]]; then
 
     for p in $(find $1 -type f -name \*.rpm | xargs -n 1 readlink -f); do
         echo "Package: $p"
+        MISSING_DEP="missing_dep.${p##*/}"
         cp $p $DIR_RPMS
         cd $DIR_WORK
         repackage $p
@@ -136,4 +188,3 @@ if [[ -d $1 ]]; then
 else
     echo "First argument must be a directory tree containing RPMs"
 fi
-
