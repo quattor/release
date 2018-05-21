@@ -542,7 +542,7 @@
 </g>
 <!-- aquilon#79 -->
 <g id="node76" class="node"><title>aquilon#79</title>
-<a xlink:href="https://github.com/quattor/aquilon/pull/79" xlink:title="aqd.conf.nomss: fix wrong ant_home" target="_parent">
+<a xlink:href="https://github.com/quattor/aquilon/pull/79" xlink:title="aqd.conf.noms: fix wrong ant_home" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="157,-2420 79,-2420 79,-2366 157,-2366 157,-2420"/>
 <text text-anchor="middle" x="118" y="-2397" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-2384" font-family="Sans" font-size="10.00">aquilon#79</text>
