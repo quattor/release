@@ -428,7 +428,7 @@
 </g>
 <!-- aquilon#87 -->
 <g id="node61" class="node"><title>aquilon#87</title>
-<a xlink:href="https://github.com/quattor/aquilon/pull/87" xlink:title="Plenary template adjustement to fix the template library support" target="_parent">
+<a xlink:href="https://github.com/quattor/aquilon/pull/87" xlink:title="Plenary template adjustment to fix the template library support" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="157,-1947 79,-1947 79,-1893 157,-1893 157,-1947"/>
 <text text-anchor="middle" x="118" y="-1924" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1911" font-family="Sans" font-size="10.00">aquilon#87</text>
