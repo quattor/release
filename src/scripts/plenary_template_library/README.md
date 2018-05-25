@@ -33,12 +33,12 @@ For example, 16.8.0 would appear as follows:
       ├── xen/
 ```
 
-Which can be used by setting (in `archetype/base`):
+Which can be used by setting (in `archetype/loadpath`):
 ```pan
 final variable QUATTOR_RELEASE = '16.8.0';
 
 variable LOADPATH = prepend(SELF, format('template-library/%s/core', QUATTOR_RELEASE));
-variable LOADPATH = prepend(SELF, format('template-library/%s/standard', QUATTOR_RELEASE))
+variable LOADPATH = prepend(SELF, format('template-library/%s/standard', QUATTOR_RELEASE));
 ```
 
 The OS libraries can be used by setting (in the OS config e.g. `os/sl/7x-x86_64/config`):
