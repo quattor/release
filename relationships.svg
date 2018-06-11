@@ -559,7 +559,7 @@
 </g>
 <!-- aquilon#97 -->
 <g id="node79" class="node"><title>aquilon#97</title>
-<a xlink:href="https://github.com/quattor/aquilon/pull/97" xlink:title="aq.py: fix aqhost/aqservice options ignored" target="_parent">
+<a xlink:href="https://github.com/quattor/aquilon/pull/97" xlink:title="aq.py: fix aqhost options ignored" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="157,-2498 79,-2498 79,-2444 157,-2444 157,-2498"/>
 <text text-anchor="middle" x="118" y="-2475" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-2462" font-family="Sans" font-size="10.00">aquilon#97</text>
