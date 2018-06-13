@@ -18,7 +18,7 @@
 <!-- aii#284 -->
 <g id="node1" class="node"><title>aii#284</title>
 <a xlink:href="https://github.com/quattor/aii/pull/284" xlink:title=" pxelinux/ks: support ipdev: use ip configuration from ipdev device" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="157,-1831 79,-1831 79,-1777 157,-1777 157,-1831"/>
+<polygon fill="#6e5494" stroke="black" points="157,-1831 79,-1831 79,-1777 157,-1777 157,-1831"/>
 <text text-anchor="middle" x="118" y="-1808" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1795" font-family="Sans" font-size="10.00">aii#284</text>
 </a>
