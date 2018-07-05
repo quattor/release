@@ -285,7 +285,7 @@
 <!-- configuration&#45;modules&#45;core#1102 -->
 <g id="node38" class="node"><title>configuration-modules-core#1102</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1102" xlink:title="ncm-authconfig: There is no " target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="994" cy="-1340" rx="121.122" ry="38.1838"/>
+<ellipse fill="#6cc644" stroke="black" cx="994" cy="-1340" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="994" y="-1344" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="994" y="-1331" font-family="Sans" font-size="10.00">configuration-modules-core#1102</text>
 </a>
@@ -299,7 +299,7 @@
 <!-- configuration&#45;modules&#45;core#1103 -->
 <g id="node40" class="node"><title>configuration-modules-core#1103</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1103" xlink:title="ncm-authconfig: krb5_realm = ARRAY(0x39a5830)" target="_parent">
-<ellipse fill="#bd2c00" stroke="black" cx="994" cy="-1152" rx="121.122" ry="38.1838"/>
+<ellipse fill="#6cc644" stroke="black" cx="994" cy="-1152" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="994" y="-1156" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="994" y="-1143" font-family="Sans" font-size="10.00">configuration-modules-core#1103</text>
 </a>
