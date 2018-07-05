@@ -368,7 +368,7 @@
 <!-- configuration&#45;modules&#45;core#1278 -->
 <g id="node49" class="node"><title>configuration-modules-core#1278</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1278" xlink:title="ncm-ssh: schema update for changed AuthorizedKeysCommand* " target="_parent">
-<polygon fill="#6cc644" stroke="black" points="798,-991 626,-991 626,-937 798,-937 798,-991"/>
+<polygon fill="#6e5494" stroke="black" points="798,-991 626,-991 626,-937 798,-937 798,-991"/>
 <text text-anchor="middle" x="712" y="-968" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="712" y="-955" font-family="Sans" font-size="10.00">configuration-modules-core#1278</text>
 </a>
@@ -376,7 +376,7 @@
 <!-- configuration&#45;modules&#45;core#1237 -->
 <g id="node51" class="node"><title>configuration-modules-core#1237</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1237" xlink:title="ncm-ssh: config option renamed between RHEL6 and RHEL7" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="994" cy="-964" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="994" cy="-964" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="994" y="-968" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="994" y="-955" font-family="Sans" font-size="10.00">configuration-modules-core#1237</text>
 </a>
