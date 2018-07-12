@@ -613,70 +613,70 @@
 <polygon fill="black" stroke="black" points="946.048,-19.1786 956.183,-16.0915 946.335,-12.1844 946.048,-19.1786"/>
 <text text-anchor="middle" x="835" y="-47" font-family="Sans" font-size="10.00">fixes</text>
 </g>
-<!-- aquilon#106 -->
-<g id="node86" class="node"><title>aquilon#106</title>
-<a xlink:href="https://github.com/quattor/aquilon/pull/106" xlink:title="machine plenary templates: allow to use the rack fullname" target="_parent">
+<!-- aquilon#108 -->
+<g id="node86" class="node"><title>aquilon#108</title>
+<a xlink:href="https://github.com/quattor/aquilon/pull/108" xlink:title=".gitignore: add etc/aq.conf" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="158,-2795 78,-2795 78,-2741 158,-2741 158,-2795"/>
 <text text-anchor="middle" x="118" y="-2772" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="118" y="-2759" font-family="Sans" font-size="10.00">aquilon#106</text>
-</a>
-</g>
-<!-- aquilon#105 -->
-<g id="node88" class="node"><title>aquilon#105</title>
-<a xlink:href="https://github.com/quattor/aquilon/issues/105" xlink:title="1.12.62: allow to use rack fullname rather than name in machine template namespace" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-2768" rx="56.0679" ry="38.1838"/>
-<text text-anchor="middle" x="432" y="-2772" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="432" y="-2759" font-family="Sans" font-size="10.00">aquilon#105</text>
-</a>
-</g>
-<!-- aquilon#106&#45;&gt;aquilon#105 -->
-<g id="edge70" class="edge"><title>aquilon#106-&gt;aquilon#105</title>
-<path fill="none" stroke="black" stroke-width="2" d="M158.087,-2768C210.318,-2768 302.376,-2768 365.228,-2768"/>
-<polygon fill="black" stroke="black" points="365.441,-2771.5 375.441,-2768 365.441,-2764.5 365.441,-2771.5"/>
-<text text-anchor="middle" x="273" y="-2772" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- aquilon#102 -->
-<g id="node89" class="node"><title>aquilon#102</title>
-<a xlink:href="https://github.com/quattor/aquilon/pull/102" xlink:title="Use new include syntax" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="158,-2701 78,-2701 78,-2647 158,-2647 158,-2701"/>
-<text text-anchor="middle" x="118" y="-2678" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="118" y="-2665" font-family="Sans" font-size="10.00">aquilon#102</text>
-</a>
-</g>
-<!-- aquilon#84 -->
-<g id="node91" class="node"><title>aquilon#84</title>
-<a xlink:href="https://github.com/quattor/aquilon/issues/84" xlink:title="1.12.58: generated templates should adopt the " target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-2674" rx="53.033" ry="38.1838"/>
-<text text-anchor="middle" x="432" y="-2678" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="432" y="-2665" font-family="Sans" font-size="10.00">aquilon#84</text>
-</a>
-</g>
-<!-- aquilon#102&#45;&gt;aquilon#84 -->
-<g id="edge72" class="edge"><title>aquilon#102-&gt;aquilon#84</title>
-<path fill="none" stroke="black" stroke-width="2" d="M158.087,-2674C211.258,-2674 305.701,-2674 368.591,-2674"/>
-<polygon fill="black" stroke="black" points="368.789,-2677.5 378.789,-2674 368.789,-2670.5 368.789,-2677.5"/>
-<text text-anchor="middle" x="273" y="-2678" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- aquilon#99 -->
-<g id="node92" class="node"><title>aquilon#99</title>
-<a xlink:href="https://github.com/quattor/aquilon/pull/99" xlink:title="Config file path: allow to ignore that an exe runs from the sources" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="157,-2607 79,-2607 79,-2553 157,-2553 157,-2607"/>
-<text text-anchor="middle" x="118" y="-2584" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="118" y="-2571" font-family="Sans" font-size="10.00">aquilon#99</text>
+<text text-anchor="middle" x="118" y="-2759" font-family="Sans" font-size="10.00">aquilon#108</text>
 </a>
 </g>
 <!-- aquilon#98 -->
-<g id="node94" class="node"><title>aquilon#98</title>
+<g id="node88" class="node"><title>aquilon#98</title>
 <a xlink:href="https://github.com/quattor/aquilon/issues/98" xlink:title="aq.py ignores system-wide conf file if run from the sources" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-2580" rx="53.033" ry="38.1838"/>
-<text text-anchor="middle" x="432" y="-2584" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="432" y="-2571" font-family="Sans" font-size="10.00">aquilon#98</text>
+<ellipse fill="#6cc644" stroke="black" cx="432" cy="-2768" rx="53.033" ry="38.1838"/>
+<text text-anchor="middle" x="432" y="-2772" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="432" y="-2759" font-family="Sans" font-size="10.00">aquilon#98</text>
 </a>
 </g>
-<!-- aquilon#99&#45;&gt;aquilon#98 -->
-<g id="edge74" class="edge"><title>aquilon#99-&gt;aquilon#98</title>
-<path fill="none" stroke="black" stroke-width="2" d="M157.768,-2580C210.918,-2580 305.713,-2580 368.729,-2580"/>
-<polygon fill="black" stroke="black" points="368.945,-2583.5 378.945,-2580 368.945,-2576.5 368.945,-2583.5"/>
+<!-- aquilon#108&#45;&gt;aquilon#98 -->
+<g id="edge70" class="edge"><title>aquilon#108-&gt;aquilon#98</title>
+<path fill="none" stroke="black" stroke-width="2" d="M158.087,-2768C211.258,-2768 305.701,-2768 368.591,-2768"/>
+<polygon fill="black" stroke="black" points="368.789,-2771.5 378.789,-2768 368.789,-2764.5 368.789,-2771.5"/>
+<text text-anchor="middle" x="273" y="-2772" font-family="Sans" font-size="10.00">fixes</text>
+</g>
+<!-- aquilon#106 -->
+<g id="node89" class="node"><title>aquilon#106</title>
+<a xlink:href="https://github.com/quattor/aquilon/pull/106" xlink:title="machine plenary templates: allow to use the rack fullname" target="_parent">
+<polygon fill="#6cc644" stroke="black" points="158,-2701 78,-2701 78,-2647 158,-2647 158,-2701"/>
+<text text-anchor="middle" x="118" y="-2678" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="118" y="-2665" font-family="Sans" font-size="10.00">aquilon#106</text>
+</a>
+</g>
+<!-- aquilon#105 -->
+<g id="node91" class="node"><title>aquilon#105</title>
+<a xlink:href="https://github.com/quattor/aquilon/issues/105" xlink:title="1.12.62: allow to use rack fullname rather than name in machine template namespace" target="_parent">
+<ellipse fill="#6cc644" stroke="black" cx="432" cy="-2674" rx="56.0679" ry="38.1838"/>
+<text text-anchor="middle" x="432" y="-2678" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="432" y="-2665" font-family="Sans" font-size="10.00">aquilon#105</text>
+</a>
+</g>
+<!-- aquilon#106&#45;&gt;aquilon#105 -->
+<g id="edge72" class="edge"><title>aquilon#106-&gt;aquilon#105</title>
+<path fill="none" stroke="black" stroke-width="2" d="M158.087,-2674C210.318,-2674 302.376,-2674 365.228,-2674"/>
+<polygon fill="black" stroke="black" points="365.441,-2677.5 375.441,-2674 365.441,-2670.5 365.441,-2677.5"/>
+<text text-anchor="middle" x="273" y="-2678" font-family="Sans" font-size="10.00">fixes</text>
+</g>
+<!-- aquilon#102 -->
+<g id="node92" class="node"><title>aquilon#102</title>
+<a xlink:href="https://github.com/quattor/aquilon/pull/102" xlink:title="Use new include syntax" target="_parent">
+<polygon fill="#6cc644" stroke="black" points="158,-2607 78,-2607 78,-2553 158,-2553 158,-2607"/>
+<text text-anchor="middle" x="118" y="-2584" font-family="Sans" font-size="10.00">pull-request</text>
+<text text-anchor="middle" x="118" y="-2571" font-family="Sans" font-size="10.00">aquilon#102</text>
+</a>
+</g>
+<!-- aquilon#84 -->
+<g id="node94" class="node"><title>aquilon#84</title>
+<a xlink:href="https://github.com/quattor/aquilon/issues/84" xlink:title="1.12.58: generated templates should adopt the " target="_parent">
+<ellipse fill="#6cc644" stroke="black" cx="432" cy="-2580" rx="53.033" ry="38.1838"/>
+<text text-anchor="middle" x="432" y="-2584" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="432" y="-2571" font-family="Sans" font-size="10.00">aquilon#84</text>
+</a>
+</g>
+<!-- aquilon#102&#45;&gt;aquilon#84 -->
+<g id="edge74" class="edge"><title>aquilon#102-&gt;aquilon#84</title>
+<path fill="none" stroke="black" stroke-width="2" d="M158.087,-2580C211.258,-2580 305.701,-2580 368.591,-2580"/>
+<polygon fill="black" stroke="black" points="368.789,-2583.5 378.789,-2580 368.789,-2576.5 368.789,-2583.5"/>
 <text text-anchor="middle" x="273" y="-2584" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- aquilon#97 -->
