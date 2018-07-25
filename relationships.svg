@@ -274,7 +274,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1305 -->
 <g id="node36" class="node"><title>configuration-modules-core#1305</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1305" xlink:title="ncm-network 18.6.0-rc1: why requiring a brodcast address when using a static bootproto" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1305" xlink:title="ncm-network 18.6.0-rc1: why requiring a broadcast address when using a static bootproto" target="_parent">
 <ellipse fill="#6cc644" stroke="black" cx="1302" cy="-379" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="1302" y="-383" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="1302" y="-370" font-family="Sans" font-size="10.00">configuration-modules-core#1305</text>
