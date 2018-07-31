@@ -18,7 +18,7 @@
 <!-- aii#291 -->
 <g id="node1" class="node"><title>aii#291</title>
 <a xlink:href="https://github.com/quattor/aii/pull/291" xlink:title="aii-installfe: add support for --cdburl" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="465,-1134 387,-1134 387,-1080 465,-1080 465,-1134"/>
+<polygon fill="#6e5494" stroke="black" points="465,-1134 387,-1134 387,-1080 465,-1080 465,-1134"/>
 <text text-anchor="middle" x="426" y="-1111" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="426" y="-1098" font-family="Sans" font-size="10.00">aii#291</text>
 </a>
@@ -26,7 +26,7 @@
 <!-- aii#290 -->
 <g id="node3" class="node"><title>aii#290</title>
 <a xlink:href="https://github.com/quattor/aii/issues/290" xlink:title="18.6.0: aii-installfe should allow to define cdburl" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="740" cy="-1099" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="740" cy="-1099" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="740" y="-1103" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="740" y="-1090" font-family="Sans" font-size="10.00">aii#290</text>
 </a>
