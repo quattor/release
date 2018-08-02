@@ -202,7 +202,7 @@
 <!-- configuration&#45;modules&#45;core#1279 -->
 <g id="node28" class="node"><title>configuration-modules-core#1279</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1279" xlink:title="ncm-metaconfig: ganeshav2 add include" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="512,-750 340,-750 340,-696 512,-696 512,-750"/>
+<polygon fill="#6e5494" stroke="black" points="512,-750 340,-750 340,-696 512,-696 512,-750"/>
 <text text-anchor="middle" x="426" y="-727" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="426" y="-714" font-family="Sans" font-size="10.00">configuration-modules-core#1279</text>
 </a>
@@ -210,7 +210,7 @@
 <!-- configuration&#45;modules&#45;core#1276 -->
 <g id="node30" class="node"><title>configuration-modules-core#1276</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1276" xlink:title="ncm-metaconfig: Ganesha v2 %include option is missing" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="740" cy="-723" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="740" cy="-723" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="740" y="-727" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="740" y="-714" font-family="Sans" font-size="10.00">configuration-modules-core#1276</text>
 </a>
