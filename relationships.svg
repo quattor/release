@@ -158,7 +158,7 @@
 <!-- configuration&#45;modules&#45;core#1308 -->
 <g id="node22" class="node"><title>configuration-modules-core#1308</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1308" xlink:title="ncm-network: no error wrt missing (IPv4) ip and netmask in a pure IPv6 config" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="512,-938 340,-938 340,-884 512,-884 512,-938"/>
+<polygon fill="#6e5494" stroke="black" points="512,-938 340,-938 340,-884 512,-884 512,-938"/>
 <text text-anchor="middle" x="426" y="-915" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="426" y="-902" font-family="Sans" font-size="10.00">configuration-modules-core#1308</text>
 </a>
@@ -166,7 +166,7 @@
 <!-- configuration&#45;modules&#45;core#1296 -->
 <g id="node24" class="node"><title>configuration-modules-core#1296</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1296" xlink:title="ncm-network: Returns an error when an interface is configured as IPv6 only" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="740" cy="-911" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="740" cy="-911" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="740" y="-915" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="740" y="-902" font-family="Sans" font-size="10.00">configuration-modules-core#1296</text>
 </a>
