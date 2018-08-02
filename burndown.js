@@ -89,7 +89,9 @@ function burndown(release) {
                                 type: 'line',
                                 data: (function() {
                                     start_lin = mydata.closed[0][0];
-                                    fit = fitData(mydata.closed);
+                                    tdata = mydata.closed;
+                                    tdata.push([Date.now(), tdata.slice(-1)[0][1]]);
+                                    fit = fitData(tdata);
                                     return [
                                         [start_lin, fit.y(start_lin)],
                                         [target, fit.y(target)],
@@ -97,7 +99,7 @@ function burndown(release) {
                                 })(),
                                 color: '#ad7fa8',
                                 dashStyle: 'shortdot',
-                                visible: false,
+                                //visible: false,
                                 enableMouseTracking: false,
                             },
                             {
