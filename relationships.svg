@@ -418,7 +418,7 @@
 <!-- template&#45;library&#45;core#187 -->
 <g id="node58" class="node"><title>template-library-core#187</title>
 <a xlink:href="https://github.com/quattor/template-library-core/pull/187" xlink:title="pan/types: fix incorrect regexp for linux_capability" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="495,-563.504 357,-563.504 357,-509.504 495,-509.504 495,-563.504"/>
+<polygon fill="#6e5494" stroke="black" points="495,-563.504 357,-563.504 357,-509.504 495,-509.504 495,-563.504"/>
 <text text-anchor="middle" x="426" y="-540.504" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="426" y="-527.504" font-family="Sans" font-size="10.00">template-library-core#187</text>
 </a>
@@ -426,7 +426,7 @@
 <!-- template&#45;library&#45;core#186 -->
 <g id="node60" class="node"><title>template-library-core#186</title>
 <a xlink:href="https://github.com/quattor/template-library-core/issues/186" xlink:title="18.6.0: linux_capability type regexp incorrect" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="740" cy="-536.504" rx="97.0803" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="740" cy="-536.504" rx="97.0803" ry="38.1838"/>
 <text text-anchor="middle" x="740" y="-540.504" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="740" y="-527.504" font-family="Sans" font-size="10.00">template-library-core#186</text>
 </a>
