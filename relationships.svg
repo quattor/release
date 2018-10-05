@@ -40,7 +40,7 @@
 <!-- aii#294 -->
 <g id="node4" class="node"><title>aii#294</title>
 <a xlink:href="https://github.com/quattor/aii/pull/294" xlink:title="aii: ks: disable selinux with kernel param" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="157,-1498.53 79,-1498.53 79,-1444.53 157,-1444.53 157,-1498.53"/>
+<polygon fill="#6e5494" stroke="black" points="157,-1498.53 79,-1498.53 79,-1444.53 157,-1444.53 157,-1498.53"/>
 <text text-anchor="middle" x="118" y="-1475.53" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1462.53" font-family="Sans" font-size="10.00">aii#294</text>
 </a>
@@ -48,7 +48,7 @@
 <!-- aii#293 -->
 <g id="node6" class="node"><title>aii#293</title>
 <a xlink:href="https://github.com/quattor/aii/issues/293" xlink:title="Disabling selinux during OS installation does not work with CentOS 7.5" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-1471.53" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-1471.53" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-1475.53" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-1462.53" font-family="Sans" font-size="10.00">aii#293</text>
 </a>
