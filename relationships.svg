@@ -378,7 +378,7 @@
 <!-- ncm&#45;lib&#45;blockdevices#91 -->
 <g id="node52" class="node"><title>ncm-lib-blockdevices#91</title>
 <a xlink:href="https://github.com/quattor/ncm-lib-blockdevices/pull/91" xlink:title="Filesystem.pm: add option -f to mkfs.xfs" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="186,-954 50,-954 50,-900 186,-900 186,-954"/>
+<polygon fill="#6e5494" stroke="black" points="186,-954 50,-954 50,-900 186,-900 186,-954"/>
 <text text-anchor="middle" x="118" y="-931" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-918" font-family="Sans" font-size="10.00">ncm-lib-blockdevices#91</text>
 </a>
@@ -386,7 +386,7 @@
 <!-- ncm&#45;lib&#45;blockdevices#90 -->
 <g id="node54" class="node"><title>ncm-lib-blockdevices#90</title>
 <a xlink:href="https://github.com/quattor/ncm-lib-blockdevices/issues/90" xlink:title="Filesystem: mkfs.xfs should be used with -f" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-927" rx="96.1665" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-927" rx="96.1665" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-931" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-918" font-family="Sans" font-size="10.00">ncm-lib-blockdevices#90</text>
 </a>
