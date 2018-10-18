@@ -444,7 +444,7 @@
 <!-- template&#45;library&#45;grid#215 -->
 <g id="node61" class="node"><title>template-library-grid#215</title>
 <a xlink:href="https://github.com/quattor/template-library-grid/pull/215" xlink:title="Committing changes running in production at GRIF" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="185,-672 51,-672 51,-618 185,-618 185,-672"/>
+<polygon fill="#6e5494" stroke="black" points="185,-672 51,-672 51,-618 185,-618 185,-672"/>
 <text text-anchor="middle" x="118" y="-649" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-636" font-family="Sans" font-size="10.00">template-library-grid#215</text>
 </a>
@@ -452,7 +452,7 @@
 <!-- template&#45;library&#45;grid#214 -->
 <g id="node63" class="node"><title>template-library-grid#214</title>
 <a xlink:href="https://github.com/quattor/template-library-grid/issues/214" xlink:title="features/htcondor/server/groups: voms-clients package renamed" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-645" rx="94.9596" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-645" rx="94.9596" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-649" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-636" font-family="Sans" font-size="10.00">template-library-grid#214</text>
 </a>
