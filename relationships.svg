@@ -110,7 +110,7 @@
 <!-- ncm&#45;ncd#74 -->
 <g id="node14" class="node"><title>ncm-ncd#74</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/74" xlink:title="Set the current active config as an attribute to the component" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="473,-589 391,-589 391,-535 473,-535 473,-589"/>
+<polygon fill="#6e5494" stroke="black" points="473,-589 391,-589 391,-535 473,-535 473,-589"/>
 <text text-anchor="middle" x="432" y="-566" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="432" y="-553" font-family="Sans" font-size="10.00">ncm-ncd#74</text>
 </a>
