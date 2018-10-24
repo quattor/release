@@ -7,15 +7,15 @@
 <g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 2324)">
 <title>Dependencies</title>
 <polygon fill="white" stroke="white" points="-4,5 -4,-2324 701,-2324 701,5 -4,5"/>
-<g id="graph2" class="cluster"><title>cluster_milestone_18.9</title>
-<polygon fill="none" stroke="black" points="24,-361 24,-1655 562,-1655 562,-361 24,-361"/>
-<text text-anchor="middle" x="293" y="-1640.2" font-family="Sans" font-size="12.00">18.9</text>
-</g>
 <g id="graph3" class="cluster"><title>cluster_milestone_18.12</title>
-<polygon fill="none" stroke="black" points="70,-8 70,-196 490,-196 490,-8 70,-8"/>
-<text text-anchor="middle" x="280" y="-181.2" font-family="Sans" font-size="12.00">18.12</text>
+<polygon fill="none" stroke="black" points="24,-361 24,-1655 562,-1655 562,-361 24,-361"/>
+<text text-anchor="middle" x="293" y="-1640.2" font-family="Sans" font-size="12.00">18.12</text>
 </g>
-<g id="graph4" class="cluster"><title>cluster_repo_aquilon</title>
+<g id="graph4" class="cluster"><title>cluster_milestone_19.2</title>
+<polygon fill="none" stroke="black" points="70,-8 70,-196 490,-196 490,-8 70,-8"/>
+<text text-anchor="middle" x="280" y="-181.2" font-family="Sans" font-size="12.00">19.2</text>
+</g>
+<g id="graph5" class="cluster"><title>cluster_repo_aquilon</title>
 <polygon fill="none" stroke="black" points="57,-1908 57,-2312 497,-2312 497,-1908 57,-1908"/>
 <text text-anchor="middle" x="277" y="-2297.2" font-family="Sans" font-size="12.00">aquilon</text>
 </g>
