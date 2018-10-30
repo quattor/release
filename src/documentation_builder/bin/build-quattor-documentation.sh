@@ -22,11 +22,12 @@ quattor-documentation-builder -c -m $tmpdir/src/ -o $tmpdir/output/ --info || { 
 # get required index which is not generated
 curl https://raw.githubusercontent.com/quattor/documentation/master/docs/index.md -o $tmpdir/output/docs/index.md
 
-cd $tmpdir/output
-mkdocs build --clean
+# build sphinx site
+cd $tmpdir/output/docs
+make clean html
 
 # Get some tests up
-curl https://raw.githubusercontent.com/quattor/documentation/master/Gemfile -o Gemfile
-bundle
+#curl https://raw.githubusercontent.com/quattor/documentation/master/Gemfile -o Gemfile
+#bundle
 
-bundle exec htmlproofer  --check-html ./site/ --file-ignore ./site/base.html,./site/breadcrumbs.html,./site/footer.html,./site/toc.html,./site/versions.html || { echo 'build test errors detected. stopping.' ; exit 1 ; }
+#bundle exec htmlproofer  --check-html ./site/ --file-ignore ./site/base.html,./site/breadcrumbs.html,./site/footer.html,./site/toc.html,./site/versions.html || { echo 'build test errors detected. stopping.' ; exit 1 ; }
