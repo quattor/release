@@ -3,7 +3,7 @@
 import re
 
 from vsc.utils import fancylogger
-from vsc.utils.run import run_asyncloop
+from vsc.utils.run import asyncloop
 from panhandler import rst_from_pan
 
 logger = fancylogger.getLogger()
@@ -37,12 +37,12 @@ def generate_rst(sources):
 
 def rst_from_perl(podfile, title):
     """
-    Take a perl file and converts it to a reStrcturedText with the help of pod2rst.
+    Take a perl file and converts it to a reStructuredText with the help of pod2rst.
 
     Returns True if pod2rst worked, False if it failed.
     """
     logger.info("Making rst from perl: %s." % podfile)
-    ec, output = run_asyncloop("pod2rst --infile %s --title %s" % (podfile, title))
+    ec, output = asyncloop(["pod2rst", "--infile", podfile, "--title", title])
     logger.debug(output)
     if ec != 0 or output == "\n":
         logger.warning("pod2rst failed on %s." % podfile)

@@ -4,9 +4,9 @@ import os
 import re
 import tempfile
 import shutil
-from template import Template, TemplateException
+import jinja2
 from vsc.utils import fancylogger
-from vsc.utils.run import run_asyncloop
+from vsc.utils.run import asyncloop
 from lxml import etree
 
 logger = fancylogger.getLogger()
@@ -27,14 +27,16 @@ def rst_from_pan(panfile, title):
 
 def render_template(content, basename, title):
     """Render the template."""
-    try:
-        name = 'pan.tt'
-        template = Template({'INCLUDE_PATH': os.path.join(os.path.dirname(__file__), 'tt')})
-        output = template.process(name, {'content': content, 'basename': basename, 'title': title})
-    except TemplateException as e:
-        msg = "Failed to render template %s with data %s: %s." % (name, content, e)
-        logger.error(msg)
-        raise TemplateException('render', msg)
+#    try:
+    name = 'pan.j2'
+    loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'jinja'))
+    jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
+    template = jenv.get_template('pan.j2')
+    output = template.render(content=content, basename=basename)
+#    except Exception as e:
+#        msg = "Failed to render template %s with data %s: %s." % (name, content, e)
+#        logger.error(msg)
+#        raise Exception('render', msg)
     return output
 
 
@@ -66,7 +68,7 @@ def build_annotations(pfile, basedir, outputdir):
     panccommand = ["panc-annotations", "--output-dir", outputdir, "--base-dir", basedir]
     panccommand.append(pfile)
     logger.debug("Running %s." % panccommand)
-    ec, output = output = run_asyncloop(panccommand)
+    ec, output = output = asyncloop(panccommand)
     logger.debug(output)
     if ec == 0 and os.path.exists(os.path.join(outputdir, "%s.annotation.xml" % pfile)):
         return True
