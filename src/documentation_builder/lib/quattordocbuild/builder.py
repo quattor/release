@@ -3,6 +3,7 @@
 import os
 import sys
 import re
+import codecs
 from sourcehandler import get_source_files
 from rsthandler import generate_rst, cleanup_content
 from config import build_repository_map
@@ -181,5 +182,5 @@ def write_site(sitepages, location, docsdir):
         if not os.path.exists(fullsubdir):
             os.makedirs(fullsubdir)
         for pagename, content in pages.iteritems():
-            with open(os.path.join(fullsubdir, pagename), 'w') as fih:
+            with codecs.open(os.path.join(fullsubdir, pagename), 'w', encoding='utf-8') as fih:
                 fih.write(content)

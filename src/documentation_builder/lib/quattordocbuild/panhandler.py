@@ -27,16 +27,11 @@ def rst_from_pan(panfile, title):
 
 def render_template(content, basename, title):
     """Render the template."""
-#    try:
     name = 'pan.j2'
     loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'jinja'))
     jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
     template = jenv.get_template('pan.j2')
     output = template.render(content=content, basename=basename)
-#    except Exception as e:
-#        msg = "Failed to render template %s with data %s: %s." % (name, content, e)
-#        logger.error(msg)
-#        raise Exception('render', msg)
     return output
 
 
@@ -123,7 +118,7 @@ def parse_type(ptype):
     typeinfo['name'] = ptype.get('name')
     desc = find_description(ptype)
     if desc is not None:
-        typeinfo['desc'] = desc.text
+        typeinfo['desc'] = desc.text.strip()
 
     typeinfo['fields'] = []
 
@@ -132,7 +127,7 @@ def parse_type(ptype):
         fieldinfo['name'] = field.get('name')
         desc = find_description(field)
         if desc is not None:
-            fieldinfo['desc'] = desc.text
+            fieldinfo['desc'] = desc.text.strip()
 
         fieldinfo['required'] = field.get('required')
         basetype = field.find(".//%sbasetype" % namespace)
@@ -155,10 +150,10 @@ def parse_function(function):
     functinfo['name'] = function.get('name')
     desc = find_description(function)
     if desc is not None:
-        functinfo['desc'] = desc.text
+        functinfo['desc'] = desc.text.strip()
     functinfo['args'] = []
     for arg in function.findall(".//%sarg" % namespace):
-        functinfo['args'].append(arg.text)
+        functinfo['args'].append(arg.text.strip())
 
     return functinfo
 
