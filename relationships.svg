@@ -249,7 +249,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1299 -->
 <g id="node34" class="node"><title>configuration-modules-core#1299</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1299" xlink:title="ncm-sysconfig: Quote values" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1299" xlink:title="ncm-sysconfig: Automatically quote values containing whitespace" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="516,-1222 344,-1222 344,-1168 516,-1168 516,-1222"/>
 <text text-anchor="middle" x="430" y="-1199" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="430" y="-1186" font-family="Sans" font-size="10.00">configuration-modules-core#1299</text>
