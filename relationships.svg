@@ -472,7 +472,7 @@
 <!-- ncm&#45;ncd#117 -->
 <g id="node65" class="node"><title>ncm-ncd#117</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/pull/117" xlink:title="Allow component modules to be loaded from any path" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="473,-714 387,-714 387,-660 473,-660 473,-714"/>
+<polygon fill="#6e5494" stroke="black" points="473,-714 387,-714 387,-660 473,-660 473,-714"/>
 <text text-anchor="middle" x="430" y="-691" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="430" y="-678" font-family="Sans" font-size="10.00">ncm-ncd#117</text>
 </a>
@@ -480,7 +480,7 @@
 <!-- ncm&#45;ncd#116 -->
 <g id="node67" class="node"><title>ncm-ncd#116</title>
 <a xlink:href="https://github.com/quattor/ncm-ncd/issues/116" xlink:title="hasFile() prevents component modules from being relocated" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="748" cy="-725" rx="61.0181" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="748" cy="-725" rx="61.0181" ry="38.1838"/>
 <text text-anchor="middle" x="748" y="-729" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="748" y="-716" font-family="Sans" font-size="10.00">ncm-ncd#116</text>
 </a>
