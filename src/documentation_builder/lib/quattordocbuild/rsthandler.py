@@ -23,14 +23,15 @@ def generate_rst(sources):
 
     for title, source in sources.iteritems():
         logger.debug("Parsing %s." % source)
+        rst = None
         if source.endswith(".pan"):
             rst = rst_from_pan(source, title)
-            if rst is not None:
-                rstlist[source] = rst
         else:
             rst = rst_from_perl(source, title)
-            if rst is not None:
-                rstlist[source] = rst
+
+        # contains more than a title
+        if rst is not None and rst.count('\n') > 6:
+            rstlist[source] = rst
 
     return rstlist
 
