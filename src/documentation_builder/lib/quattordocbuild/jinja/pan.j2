@@ -1,16 +1,23 @@
+{% if content.types or content.functions %}
+{% for i in range(title|length) %}#{% endfor %}
+
+{{ title }}
+{% for i in range(title|length) %}#{% endfor %}
+{% endif %}
+
 {% if content.types %}
 
 Types
 -----
 
 {% for type in content.types %}
- - `/software/{{ basename }}/{{ type.name }}`
+ - **/software/{{ basename }}/{{ type.name }}**
     {% if type.desc %}
     - Description: {{ type.desc }}
     {% endif %}
     {% if type.fields -%}
     {% for field in type.fields %}
-    - `/software/{{ basename }}/{{ type.name }}/{{ field.name }}`
+    - */software/{{ basename }}/{{ type.name }}/{{ field.name }}*
         {% if field.desc %}
         - Description: {{ field.desc }}
         {% endif %}
@@ -22,6 +29,9 @@ Types
         - Type: {{ field.type }}
         {% if field.range %}
         - Range: {{ field.range }}
+        {% endif %}
+        {% if field.default %}
+        - Default value: {{ field.default }}
         {% endif %}
     {% endfor %}
     {% endif %}

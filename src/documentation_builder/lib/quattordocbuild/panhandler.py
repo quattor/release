@@ -31,7 +31,7 @@ def render_template(content, basename, title):
     loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'jinja'))
     jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
     template = jenv.get_template('pan.j2')
-    output = template.render(content=content, basename=basename)
+    output = template.render(content=content, basename=basename, title=title)
     return output
 
 
@@ -111,6 +111,8 @@ def find_description(element):
         desc = element.find("./%sdesc" % namespace)
     return desc
 
+def cleanup_description(desc):
+    return " ".join(desc.replace('\n', '').replace('\r', '').split())
 
 def parse_type(ptype):
     """Parse a type from an XML Element Tree."""
@@ -118,7 +120,7 @@ def parse_type(ptype):
     typeinfo['name'] = ptype.get('name')
     desc = find_description(ptype)
     if desc is not None:
-        typeinfo['desc'] = desc.text.strip()
+        typeinfo['desc'] = cleanup_description(desc.text)
 
     typeinfo['fields'] = []
 
@@ -127,7 +129,7 @@ def parse_type(ptype):
         fieldinfo['name'] = field.get('name')
         desc = find_description(field)
         if desc is not None:
-            fieldinfo['desc'] = desc.text.strip()
+            fieldinfo['desc'] = cleanup_description(desc.text)
 
         fieldinfo['required'] = field.get('required')
         basetype = field.find(".//%sbasetype" % namespace)
@@ -150,10 +152,10 @@ def parse_function(function):
     functinfo['name'] = function.get('name')
     desc = find_description(function)
     if desc is not None:
-        functinfo['desc'] = desc.text.strip()
+        functinfo['desc'] = cleanup_description(desc.text)
     functinfo['args'] = []
     for arg in function.findall(".//%sarg" % namespace):
-        functinfo['args'].append(arg.text.strip())
+        functinfo['args'].append(cleanup_description(arg.text))
 
     return functinfo
 

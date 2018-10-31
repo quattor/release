@@ -182,5 +182,6 @@ def write_site(sitepages, location, docsdir):
         if not os.path.exists(fullsubdir):
             os.makedirs(fullsubdir)
         for pagename, content in pages.iteritems():
-            with codecs.open(os.path.join(fullsubdir, pagename), 'w', encoding='utf-8') as fih:
-                fih.write(content)
+            if content:
+                with codecs.open(os.path.join(fullsubdir, pagename), 'w', encoding='utf-8') as fih:
+                    fih.write(content)

@@ -20,11 +20,11 @@ cd ..
 quattor-documentation-builder -c -m $tmpdir/src/ -o $tmpdir/output/ --info || { echo 'Something went wrong building documentation.' ; exit 1 ; }
 
 # get required index which is not generated
-curl https://raw.githubusercontent.com/quattor/documentation/master/docs/index.md -o $tmpdir/output/docs/index.md
+#curl https://raw.githubusercontent.com/quattor/documentation/master/docs/index.md -o $tmpdir/output/docs/index.md
 
 # build sphinx site
-cd $tmpdir/output/docs
-make clean html
+#cd $tmpdir/output/docs
+#make clean html
 
 # Get some tests up
 #curl https://raw.githubusercontent.com/quattor/documentation/master/Gemfile -o Gemfile
