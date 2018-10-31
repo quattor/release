@@ -11,13 +11,13 @@ Types
 -----
 
 {% for type in content.types %}
- - **/software/{{ basename }}/{{ type.name }}**
+ - **/software/components/{{ basename }}/{{ type.name }}**
     {% if type.desc %}
     - Description: {{ type.desc }}
     {% endif %}
     {% if type.fields -%}
     {% for field in type.fields %}
-    - */software/{{ basename }}/{{ type.name }}/{{ field.name }}*
+    - */software/components/{{ basename }}/{{ type.name }}/{{ field.name }}*
         {% if field.desc %}
         - Description: {{ field.desc }}
         {% endif %}
