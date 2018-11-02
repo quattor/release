@@ -21,7 +21,7 @@ Types
         {% if field.desc %}
         - Description: {{ field.desc }}
         {% endif %}
-        {% if field.required == true %}
+        {% if field.required == 'true' %}
         - Required
         {% else %}
         - Optional
@@ -47,7 +47,7 @@ Functions
     {% if function.desc %}
     - Description: {{ function.desc }}
     {% endif %}
-    {% if function.args -%}
+    {% if function.args %}
     - Arguments:
     {% for arg in function.args %}
         - {{ arg }}
