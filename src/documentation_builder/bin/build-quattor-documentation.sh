@@ -4,7 +4,7 @@ for com in 'mkdocs' 'mvn' 'pod2markdown' 'bundle'; do
     command -v $com >/dev/null 2>&1 || { echo >&2 "I require $com but it's not installed.  Aborting."; exit 1; }
 done
 
-tmpdir="/tmp/quattor-documentation"
+tmpdir="/dev/shm/quattor-documentation"
 
 # Create temporary working directory
 mkdir -p $tmpdir/{src,output}
