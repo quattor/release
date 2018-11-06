@@ -11,7 +11,7 @@ mkdir -p $tmpdir/{src,output}
 cd $tmpdir/src
 
 # Clone required github repositories
-for REPO in CAF configuration-modules-core configuration-modules-grid CCM maven-tools;  do
+for REPO in CAF configuration-modules-core configuration-modules-grid CCM maven-tools ncm-ncd;  do
     git clone https://github.com/quattor/$REPO.git
 done
 cd ..
@@ -23,7 +23,7 @@ quattor-documentation-builder -c -m $tmpdir/src/ -o $tmpdir/output/ --info || { 
 git clone https://github.com/wdpypere/docs-test-comps.git
 # build sphinx site
 cd docs-test-comps/docs
-rm -rf components CAF CCM components-grid Unittesting
+rm -rf components CAF CCM components-grid Unittesting ncm-ncd
 mv $tmpdir/output/docs/* .
 make clean html
 
