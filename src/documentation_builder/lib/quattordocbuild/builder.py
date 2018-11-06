@@ -110,6 +110,7 @@ def make_title_from_source_path(source, targets):
             title = source.split(target)[-1]
             if title.replace('.pod', '') == '':
                 title = target
+                return title
             title = os.path.splitext(title)[0].replace("/", "\::")
             title = "%s%s" % (target.lstrip('/').replace("/", "\::"), title)
 
@@ -117,7 +118,7 @@ def make_title_from_source_path(source, targets):
                 title = title.replace('components', 'NCM\::Component')
                 title = rreplace(title, '\::', ' - ')
 
-            if title.startswith('pan\::quattor')
+            if title.startswith('pan\::quattor'):
                 title = title.replace('pan\::quattor', 'NCM\::Component')
                 title = rreplace(title, '\::', ' - ')
 
