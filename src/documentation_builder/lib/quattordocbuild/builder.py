@@ -31,7 +31,7 @@ def build_documentation(repository_location, cleanup_options, compile, output_lo
             fullpath = os.path.join(fullpath, repository_map[repository]["subdir"])
         logger.info("Path: %s." % fullpath)
         sources = get_source_files(fullpath, compile)
-        logger.debug("Sources:" % sources)
+        logger.debug("Sources: %s" % sources)
         sources = make_titles(sources, repository_map[repository]['targets'])
         rst = generate_rst(sources)
         cleanup_content(rst, cleanup_options)
@@ -96,16 +96,35 @@ def make_titles(sources, targets):
     return new_sources
 
 
+def rreplace(s, old, new):
+    """Replace right most occurence of a substring."""
+    li = s.rsplit(old, 1) #Split only once
+    return new.join(li)
+
 def make_title_from_source_path(source, targets):
     """Make a title from source path."""
     found = False
     for target in targets:
+        logger.debug("target: %s" % target)
         if target in source and not found:
             title = source.split(target)[-1]
-            title = os.path.splitext(title)[0].replace("/", " :: ")
+            if title.replace('.pod', '') == '':
+                title = target
+            title = os.path.splitext(title)[0].replace("/", "\::")
+            title = "%s%s" % (target.lstrip('/').replace("/", "\::"), title)
+
+            if title.startswith('components\::'):
+                title = title.replace('components', 'NCM\::Component')
+                title = rreplace(title, '\::', ' - ')
+
+            if title.startswith('pan\::quattor')
+                title = title.replace('pan\::quattor', 'NCM\::Component')
+                title = rreplace(title, '\::', ' - ')
+
+            logger.debug("title: %s" % title)
             return title
-        if not found:
-            logger.error("No suitable target found for %s in %s." % (source, targets))
+    if not found:
+        logger.error("No suitable target found for %s in %s." % (source, targets))
 
     return False
 
@@ -124,6 +143,8 @@ def build_site_structure(rstlist, repository_map):
             for target in targets:
                 if target in source and not found:
                     newname = source.split(target)[-1]
+                    if newname.replace('.pod', '') == '':
+                        newname = target
                     newname = os.path.splitext(newname)[0].replace("/", "_") + ".rst"
                     sitepages[sitesection][newname] = rst
                     found = True
