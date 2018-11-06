@@ -8,11 +8,12 @@ from sourcehandler import get_source_files
 from rsthandler import generate_rst, cleanup_content
 from config import build_repository_map
 from vsc.utils import fancylogger
+from multiprocessing import Pool
 
 logger = fancylogger.getLogger()
+RESULTS = {}
 
-
-def build_documentation(repository_location, cleanup_options, compile, output_location):
+def build_documentation(repository_location, cleanup_options, compile, output_location, singlet=False):
     """Build the whole documentation from quattor repositories."""
     if not check_input(repository_location, output_location):
         sys.exit(1)
@@ -24,24 +25,39 @@ def build_documentation(repository_location, cleanup_options, compile, output_lo
 
     rstlist = {}
 
-    for repository in repository_map.keys():
-        logger.info("Building documentation for %s." % repository)
-        fullpath = os.path.join(repository_location, repository)
-        if repository_map[repository]["subdir"]:
-            fullpath = os.path.join(fullpath, repository_map[repository]["subdir"])
-        logger.info("Path: %s." % fullpath)
-        sources = get_source_files(fullpath, compile)
-        logger.debug("Sources: %s" % sources)
-        sources = make_titles(sources, repository_map[repository]['targets'])
-        rst = generate_rst(sources)
-        cleanup_content(rst, cleanup_options)
-        rstlist[repository] = rst
+    if singlet:
+        for repository in repository_map.keys():
+            repository, result = build_docs(repository, repository_location, repository_map, cleanup_options)
+            RESULTS[repository] = result
+    else:
+        pool = Pool()
+        for repository in repository_map.keys():
+            pool.apply_async(build_docs, args=(repository, repository_location, repository_map, cleanup_options), callback = log_result)
+        pool.close()
+        pool.join()
 
-    site_pages = build_site_structure(rstlist, repository_map)
+    site_pages = build_site_structure(RESULTS, repository_map)
     # site_pages = make_interlinks(site_pages) # disabled for now
     write_site(site_pages, output_location, "docs")
     return True
 
+def log_result(result):
+    repository = result[0]
+    result = result[1]
+    RESULTS[repository] = result
+
+def build_docs(repository, repository_location, repository_map, cleanup_options):
+    logger.info("Building documentation for %s." % repository)
+    fullpath = os.path.join(repository_location, repository)
+    if repository_map[repository]["subdir"]:
+        fullpath = os.path.join(fullpath, repository_map[repository]["subdir"])
+    logger.info("Path: %s." % fullpath)
+    sources = get_source_files(fullpath, compile)
+    logger.debug("Sources: %s" % sources)
+    sources = make_titles(sources, repository_map[repository]['targets'])
+    rst = generate_rst(sources)
+    cleanup_content(rst, cleanup_options)
+    return repository, rst
 
 def which(command):
     """Check if given command is available for the current user on this system."""
