@@ -9,7 +9,7 @@ from unittest import TestCase, main, TestLoader
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../lib')))  # noqa
 from quattordocbuild import rsthandler as rsth
-
+from quattordocbuild import repo
 
 class RstHandlerTest(TestCase):
     """Test class for rsthandler."""
@@ -47,9 +47,12 @@ class RstHandlerTest(TestCase):
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile1)
         shutil.copy("test/testdata/pod_test_input.pod", testfile2)
-        output = rsth.generate_rst({'title1': testfile1, 'title2': testfile2})
+
+        tfil1 = repo.Sourcepage('title1', testfile1, False, False)
+        tfil2 = repo.Sourcepage('title2', testfile2, False, False)
+
+        output = rsth.generate_rst([tfil1, tfil2])
         self.assertEquals(len(output), 2)
-        self.assertEquals(sorted(output.keys()), [testfile1, testfile2])
 
     def test_remove_emails(self):
         """Test remove_emails function."""
@@ -73,12 +76,11 @@ class RstHandlerTest(TestCase):
 
     def test_cleanup_content(self):
         """Test cleanup_content."""
-        opts = {
-            'codify_paths': True,
-            'remove_emails': True,
-        }
-        text = {"/tmp/testfile": "\n/path/to/test/on \n test@test.com"}
-        self.assertEquals(rsth.cleanup_content(text, opts), {'/tmp/testfile': '\n`/path/to/test/on` \n '})
+        verify = repo.Sourcepage('test', '/tmp/testfile', False, False)
+        verify.rstcontent = '`/path/to/test/on`'
+        testpage = repo.Sourcepage('test', '/tmp/testfile', False, False)
+        testpage.rstcontent = "/path/to/test/on test@test.com"
+        self.assertEquals(rsth.cleanup_content([testpage, ]), [verify, ])
 
     def suite(self):
         """Return all the testcases in this module."""

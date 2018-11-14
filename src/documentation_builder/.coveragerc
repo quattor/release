@@ -8,3 +8,5 @@ omit =
     */test/*
     # omit everything in /tmp
     /tmp/*
+    # omit everything in .eggs
+    .eggs/*

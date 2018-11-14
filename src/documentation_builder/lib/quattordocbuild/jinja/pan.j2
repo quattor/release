@@ -1,4 +1,4 @@
-{% if content.types or content.functions %}
+{% if content.types or content.functions or content.variables %}
 {% for i in range(title|length) %}#{% endfor %}
 
 {{ title }}
@@ -11,13 +11,13 @@ Types
 -----
 
 {% for type in content.types %}
- - **/software/components/{{ basename }}/{{ type.name }}**
+ - **{{ basename }}{{ type.name }}**
     {% if type.desc %}
     - Description: {{ type.desc }}
     {% endif %}
     {% if type.fields -%}
     {% for field in type.fields %}
-    - */software/components/{{ basename }}/{{ type.name }}/{{ field.name }}*
+    - *{{ basename }}{{ type.name }}/{{ field.name }}*
         {% if field.desc %}
         - Description: {{ field.desc }}
         {% endif %}
@@ -34,6 +34,24 @@ Types
         - Default value: {{ field.default }}
         {% endif %}
     {% endfor %}
+    {% endif %}
+{% endfor %}
+{% endif %}
+{% if content.variables %}
+
+Variables
+---------
+
+{% for variable in content.variables %}
+ - {{ variable.name }}
+    {% if variable.desc %}
+    - Description: {{ variable.desc }}
+    {% endif %}
+    {% if variable.default %}
+    - Default value: {{ variable.default }}
+    {% endif %}
+    {% if variable.varvalues %}
+    - Default value: {{ variable.varvalues }}
     {% endif %}
 {% endfor %}
 {% endif %}

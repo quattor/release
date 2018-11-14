@@ -13,21 +13,24 @@ logger = fancylogger.getLogger()
 namespace = "{http://quattor.org/pan/annotations}"
 
 
-def rst_from_pan(panfile, title):
+def rst_from_pan(panfile, title, path_prefix, guess_basename):
     """Make reStructuredText from a pan annotated file."""
-    logger.info("Making rst from pan: %s." % panfile)
+    logger.info("Making rst from pan: %s.", panfile)
     content = get_content_from_pan(panfile)
-    basename = get_basename(panfile)
+    logger.debug(content)
+    basename = ''
+    if guess_basename:
+        basename = get_basename(panfile)
+    if path_prefix:
+        basename = '%s%s/' % (path_prefix, basename)
     output = render_template(content, basename, title)
-    if len(output) == 0:
-        return None
-    else:
-        return output
+    if not output:
+        output = None
+    return output
 
 
 def render_template(content, basename, title):
     """Render the template."""
-    name = 'pan.j2'
     loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'jinja'))
     jenv = jinja2.Environment(loader=loader, trim_blocks=True, lstrip_blocks=True)
     template = jenv.get_template('pan.j2')
@@ -44,7 +47,7 @@ def get_content_from_pan(panfile):
     if built:
         xmlroot = validate_annotations(os.path.join(tempdir, "%s.annotation.xml" % filename))
         if xmlroot is not None:
-            types, functions = get_types_and_functions(xmlroot)
+            types, functions, variables = get_types_and_functions(xmlroot)
             if types is not None:
                 content['types'] = []
                 for ptype in types:
@@ -54,6 +57,11 @@ def get_content_from_pan(panfile):
                 content['functions'] = []
                 for function in functions:
                     content['functions'].append(parse_function(function))
+
+            if variables is not None:
+                content['variables'] = []
+                for variable in variables:
+                    content['variables'].append(parse_variable(variable))
     shutil.rmtree(tempdir)
     return content
 
@@ -62,13 +70,13 @@ def build_annotations(pfile, basedir, outputdir):
     """Build pan annotations."""
     panccommand = ["panc-annotations", "--output-dir", outputdir, "--base-dir", basedir]
     panccommand.append(pfile)
-    logger.debug("Running %s." % panccommand)
-    ec, output = output = asyncloop(panccommand)
+    logger.debug("Running %s.", panccommand)
+    errc, output = output = asyncloop(panccommand)
     logger.debug(output)
-    if ec == 0 and os.path.exists(os.path.join(outputdir, "%s.annotation.xml" % pfile)):
+    if errc == 0 and os.path.exists(os.path.join(outputdir, "%s.annotation.xml" % pfile)):
         return True
     else:
-        logger.warning("Something went wrong running '%s'." % panccommand)
+        logger.warning("Something went wrong running '%s'.", panccommand)
         return False
 
 
@@ -82,26 +90,28 @@ def validate_annotations(pfile):
     xml = etree.parse(pfile)
     root = xml.getroot()
 
-    if len(root) == 0:
-        logger.debug("%s is empty, skipping it." % pfile)
-        return None
-    else:
-        return root
+    if not len(root):
+        logger.debug("%s is empty, skipping it.", pfile)
+        root = None
+
+    return root
 
 
 def get_types_and_functions(root):
     """Return a list of types and functions from a root element."""
     types = root.findall('%stype' % namespace)
     functions = root.findall('%sfunction' % namespace)
+    variables = root.findall('%svariable' % namespace)
 
-    logger.debug(types)
-    logger.debug(functions)
+    logger.debug("types: %s", types)
+    logger.debug("functions: %s", functions)
+    logger.debug("variables: %s", variables)
 
-    if len(types) == 0 and len(functions) == 0:
-        logger.debug("%s has no usable content, skipping it." % file)
-        return None, None
+    if not types and not functions and not variables:
+        logger.debug("%s has no usable content, skipping it.", root)
+        return None, None, None
 
-    return types, functions
+    return types, functions, variables
 
 
 def find_description(element):
@@ -112,7 +122,8 @@ def find_description(element):
     return desc
 
 def cleanup_description(desc):
-    return " ".join(desc.replace('\n', '').replace('\r', '').split())
+    """Clean up a multiline description."""
+    return " ".join(desc.replace('\n', ' ').replace('\r', ' ').split())
 
 def parse_type(ptype):
     """Parse a type from an XML Element Tree."""
@@ -140,7 +151,14 @@ def parse_type(ptype):
 
         fielddefault = field.find(".//%sdefault" % namespace)
         if fielddefault is not None:
-            fieldinfo['default'] = fielddefault.get('text')
+            fielddeftext = fielddefault.get('text')
+            if '`' in fielddeftext:
+                fielddeftext = fielddeftext.replace('`', '\`')
+
+            if fielddeftext.endswith('_'):
+                fielddeftext = fielddeftext.replace('_', '\_')
+
+            fieldinfo['default'] = fielddeftext
         typeinfo['fields'].append(fieldinfo)
 
     return typeinfo
@@ -159,12 +177,34 @@ def parse_function(function):
 
     return functinfo
 
+def parse_variable(pvar):
+    """Parse a type from an XML Element Tree."""
+    varinfo = {}
+    varinfo['name'] = pvar.get('name')
+    desc = find_description(pvar)
+    if desc is not None:
+        varinfo['desc'] = cleanup_description(desc.text)
+
+    vardefault = pvar.get('default')
+    if vardefault is not None:
+        varinfo['default'] = vardefault.get('text')
+
+    varvalues = pvar.find(".//%svalues" % namespace)
+    if varvalues is not None:
+        varinfo['varvalues'] = varvalues.get('text')
+
+    return varinfo
+
 
 def get_basename(path):
     """Return a base name from a path and regular expression."""
-    regex = ".*/(.*?)/target/.*"
+    regex = r".*/(.*?)/target/.*"
     result = re.search(regex, path)
-    result = result.group(1)
+    if result:
+        result = result.group(1)
+    else:
+        logger.error("failed to find basename from path %s", path)
+        return None
     if "ncm-" in result:
         result = result.replace("ncm-", "")
 

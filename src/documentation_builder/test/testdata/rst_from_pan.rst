@@ -1,18 +1,27 @@
+############
+test::schema
+############
 
 Types
 -----
 
- - `/software/component-test/testtype`
+ - **component-testtesttype**
     - Description: test type.
-    - `/software/component-test/testtype/debug`
+    - *component-test/testtype/debug*
         - Description: Test long.
-        - Optional
+        - Required
         - Type: long
         - Range: 0..1
-    - `/software/component-test/testtype/ca_dir`
+        - Default value: 0
+    - *component-test/testtype/ca_dir*
         - Description: Test string
         - Optional
         - Type: string
+    - *component-test/testtype/def*
+        - Description: Test default
+        - Required
+        - Type: string
+        - Default value: testdefault
 
 Functions
 ---------

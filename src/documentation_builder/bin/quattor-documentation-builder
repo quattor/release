@@ -19,24 +19,23 @@ from quattordocbuild.builder import build_documentation
 logger = fancylogger.getLogger()
 
 
-def main(repolocation, outputlocation, maven_compile, cleanup_options):
+def main(repolocation, outputlocation, single_threaded):
     """Main run of the script."""
-    build_documentation(repolocation, cleanup_options, maven_compile, outputlocation)
+    build_documentation(repolocation, outputlocation, singlet=single_threaded)
 
 
 if __name__ == '__main__':
     OPTIONS = {
         'modules_location': ('The location of the repo checkout.', None, 'store', None, 'm'),
         'output_location': ('The location where the output markdown files should be written to.', None, 'store', None, 'o'),
-        'maven_compile': ('Execute a maven clean and maven compile before generating the documentation.', None, 'store_true', False, 'c'),
-        'remove_emails': ('Remove email addresses from generated rst files.', None, 'store_true', True, 'r'),
-        'codify_paths': ('Put paths inside code tags.', None, 'store_true', False, 'p'),
+        'single_threaded': ('Run single threaded.', None, 'store_true', False, 's'),
     }
     GO = simple_option(OPTIONS)
+
+    if GO.options.debug:
+        logger.info('Debug mode is set. Forcing single threaded run.')
+        GO.options.single_threaded = True
+
     logger.info("Starting main.")
-    cleanup_options = {
-        'remove_emails': GO.options.remove_emails,
-        'codify_paths': GO.options.codify_paths,
-    }
-    main(GO.options.modules_location, GO.options.output_location, GO.options.maven_compile, cleanup_options)
+    main(GO.options.modules_location, GO.options.output_location, GO.options.single_threaded)
     logger.info("Done.")

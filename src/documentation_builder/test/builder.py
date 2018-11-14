@@ -7,6 +7,7 @@ from tempfile import mkdtemp
 from unittest import TestCase, main, TestLoader
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../lib')))  # noqa
 from quattordocbuild import builder
+from quattordocbuild import repo
 
 
 class BuilderTest(TestCase):
@@ -40,31 +41,25 @@ class BuilderTest(TestCase):
 
     def test_build_site_structure(self):
         """Test build_site_structure function."""
-        repomap = {
-            "configuration-modules-core": {
-                "sitesection": "components",
-                "targets": ["/NCM/Component/", "/components/", "/pan/quattor/"]
-            },
-            "CCM": {
-                "sitesection": "CCM",
-                "targets": ["EDG/WP4/CCM/"],
-            },
-        }
-        testdata = {'CCM': {'/tmp/qdoc/src/CCM/target/doc/pod/EDG/WP4/CCM/Fetch/Download.pod':
-                            "# NAME\n\nEDG::WP4::CC"},
-                    'configuration-modules-core':
-                    {'/tmp/doc/src/configuration-modules-core/ncm-profile/target/pan/components/profile/functions.pan':
-                     u'\n### Functions\n',
-                     '/tmp/doc/src/configuration-modules-core/ncm-fmonagent/target/doc/pod/NCM/Component/fmonagent.pod':
-                     'Hello',
-                     '/tmp/doc/src/configuration-modules-core/ncm-freeipa/target/pan/quattor/aii/freeipa/schema.pan':
-                     'Hello2'
-                     }}
         expected_response = {'CCM': {'Fetch_Download.rst': '# NAME\n\nEDG::WP4::CC'},
                              'components': {'aii_freeipa_schema.rst': 'Hello2',
                                             'fmonagent.rst': 'Hello',
                                             'profile_functions.rst': u'\n### Functions\n'}}
-        self.assertEquals(builder.build_site_structure(testdata, repomap), expected_response)
+
+        file1 = repo.Sourcepage('Fetch\::Download', '/tmp/qdoc/src/CCM/target/doc/pod/EDG/WP4/CCM/Fetch/Download.pod', False, False)
+        file1.rstcontent = '# NAME\n\nEDG::WP4::CC'
+        file2 = repo.Sourcepage('profile\::functions', '/tmp/doc/src/configuration-modules-core/ncm-profile/target/pan/components/profile/functions.pan', False, False)
+        file2.rstcontent = u'\n### Functions\n'
+        file3 = repo.Sourcepage('fmonagent', '/tmp/doc/src/configuration-modules-core/ncm-fmonagent/target/doc/pod/NCM/Component/fmonagent.pod', False, False)
+        file3.rstcontent = 'Hello'
+        file4 = repo.Sourcepage('aii\::freeipa - schema', '/tmp/doc/src/configuration-modules-core/ncm-freeipa/target/pan/quattor/aii/freeipa/schema.pan', False, False)
+        file4.rstcontent = 'Hello2'
+
+        repo1 = repo.Repo('CCM', 'notimportant')
+        repo1.sources = [file1, ]
+        repo2 = repo.Repo('configuration-modules-core', 'notimportant')
+        repo2.sources = [file2, file3, file4]
+        self.assertEquals(builder.build_site_structure([repo1, repo2]), expected_response)
 
     def test_make_interlinks(self):
         """Test make_interlinks function."""
@@ -114,12 +109,12 @@ to [NCM::Component::FreeIPA::Client](https://metacpan.org/pod/NCM::Component::Fr
 
     def test_write_site(self):
         """Test write_site function."""
-        input = {'CCM': {'fetch::download.rst': '# NAME\n\nEDG::WP4::CC'},
-                 'components': {'fmonagent.rst': 'Hello',
-                                'profile::functions.rst': u'\n### Functions\n'}}
+        testinput = {'CCM': {'fetch::download.rst': '# NAME\n\nEDG::WP4::CC'},
+                     'components': {'fmonagent.rst': 'Hello',
+                                    'profile::functions.rst': u'\n### Functions\n'}}
 
         sitedir = os.path.join(self.tmpdir, "docs")
-        builder.write_site(input, self.tmpdir, "docs")
+        builder.write_site(testinput, self.tmpdir, "docs")
         self.assertTrue(os.path.exists(os.path.join(sitedir, 'components')))
         self.assertTrue(os.path.exists(os.path.join(sitedir, 'components/profile::functions.rst')))
         self.assertTrue(os.path.exists(os.path.join(sitedir, 'components/fmonagent.rst')))
@@ -129,6 +124,7 @@ to [NCM::Component::FreeIPA::Client](https://metacpan.org/pod/NCM::Component::Fr
     def suite(self):
         """Return all the testcases in this module."""
         return TestLoader().loadTestsFromTestCase(BuilderTest)
+
 
 if __name__ == '__main__':
     main()
