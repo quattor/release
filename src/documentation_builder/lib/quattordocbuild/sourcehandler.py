@@ -10,7 +10,7 @@ files, where when there is a duplicate between '.pod' and
 import os
 
 from vsc.utils import fancylogger
-from vsc.utils.run import run_asyncloop
+from vsc.utils.run import asyncloop
 
 logger = fancylogger.getLogger()
 
@@ -18,7 +18,7 @@ logger = fancylogger.getLogger()
 def maven_clean_compile(location):
     """Execute mvn clean and mvn compile in the given modules_location."""
     logger.info("Doing maven clean compile in %s." % location)
-    ec, output = run_asyncloop("mvn clean compile", startpath=location)
+    ec, output = asyncloop(["mvn", "clean", "compile"], startpath=location)
     logger.debug(output)
     return ec
 
