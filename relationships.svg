@@ -236,7 +236,7 @@
 <!-- CAF#267 -->
 <g id="node33" class="node"><title>CAF#267</title>
 <a xlink:href="https://github.com/quattor/CAF/pull/267" xlink:title="ServiceActions: handle multiple service actions" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="471,-1767 393,-1767 393,-1713 471,-1713 471,-1767"/>
+<polygon fill="#6e5494" stroke="black" points="471,-1767 393,-1767 393,-1713 471,-1713 471,-1767"/>
 <text text-anchor="middle" x="432" y="-1744" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="432" y="-1731" font-family="Sans" font-size="10.00">CAF#267</text>
 </a>
