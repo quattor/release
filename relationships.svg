@@ -410,7 +410,7 @@
 <!-- configuration&#45;modules&#45;core#1261 -->
 <g id="node56" class="node"><title>configuration-modules-core#1261</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1261" xlink:title="ncm-openstack: Include ovs and storage support" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="204,-1175 32,-1175 32,-1121 204,-1121 204,-1175"/>
+<polygon fill="#6e5494" stroke="black" points="204,-1175 32,-1175 32,-1121 204,-1121 204,-1175"/>
 <text text-anchor="middle" x="118" y="-1152" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1139" font-family="Sans" font-size="10.00">configuration-modules-core#1261</text>
 </a>
@@ -418,7 +418,7 @@
 <!-- configuration&#45;modules&#45;core#1310 -->
 <g id="node58" class="node"><title>configuration-modules-core#1310</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1310" xlink:title="ncm-openstack: add Heat service support" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-1115" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-1115" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-1119" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-1106" font-family="Sans" font-size="10.00">configuration-modules-core#1310</text>
 </a>
@@ -432,7 +432,7 @@
 <!-- configuration&#45;modules&#45;core#1315 -->
 <g id="node60" class="node"><title>configuration-modules-core#1315</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1315" xlink:title="ncm-openstack: add murano service support" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-1209" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-1209" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-1213" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-1200" font-family="Sans" font-size="10.00">configuration-modules-core#1315</text>
 </a>
