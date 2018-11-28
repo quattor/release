@@ -187,7 +187,7 @@
 <!-- CCM#192 -->
 <g id="node25" class="node"><title>CCM#192</title>
 <a xlink:href="https://github.com/quattor/CCM/pull/192" xlink:title="ccm-purge: close db with close_db" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="157,-2038 79,-2038 79,-1984 157,-1984 157,-2038"/>
+<polygon fill="#6e5494" stroke="black" points="157,-2038 79,-2038 79,-1984 157,-1984 157,-2038"/>
 <text text-anchor="middle" x="118" y="-2015" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-2002" font-family="Sans" font-size="10.00">CCM#192</text>
 </a>
@@ -195,7 +195,7 @@
 <!-- CCM#191 -->
 <g id="node27" class="node"><title>CCM#191</title>
 <a xlink:href="https://github.com/quattor/CCM/issues/191" xlink:title="ccm-purge does not work in 18.6" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-2011" rx="51.1176" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-2011" rx="51.1176" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-2015" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-2002" font-family="Sans" font-size="10.00">CCM#191</text>
 </a>
