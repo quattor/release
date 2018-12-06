@@ -47,7 +47,7 @@ clean_templates() {
 
 # Commit to template-library-core the removal of obsolete configuration modules
 remove_obsolete_components () {
-    cd "${LIBRARY_CORE_DIR}" || echo_error "Failed to change directory to '$LIBRARY_CORE_DIR'"
+    cd_or_die "${LIBRARY_CORE_DIR}"
     #FIXME: ideally should check that there is only deleted files left
     git add -A .
     git commit -m 'Remove obsolete components'
@@ -60,12 +60,12 @@ publish_templates() {
     echo_info "Publishing Component Templates"
     type=$1
     tag=$2
-    cd "configuration-modules-$1" || echo_error "Failed to change directory to 'configuration-modules-$1'"
+    cd_or_die "configuration-modules-$1"
     git checkout "$tag"
     mvn-c clean compile
     # ugly hack
     if [ -d ncm-metaconfig ]; then
-        cd ncm-metaconfig || echo_error "Failed to change directory to 'ncm-metaconfig'"
+        cd_or_die ncm-metaconfig
         mvn-c clean test
         cd ..
     fi
@@ -76,7 +76,7 @@ publish_templates() {
     cp -r ncm-*/target/pan/components/* "${components_root}"
     cp -r ncm-metaconfig/target/pan/metaconfig/* "${metaconfig_root}"
     git checkout master
-    cd "${LIBRARY_CORE_DIR}"
+    cd_or_die "${LIBRARY_CORE_DIR}"
     git add .
     git commit -m "Component templates (${type}) for tag ${tag}"
     cd ..
@@ -138,7 +138,7 @@ update_version_file() {
       release_minor="_1"
     fi
     version_template=quattor/client/version.pan
-    cd "$LIBRARY_CORE_DIR" || echo_error "Failed to change directory to '$LIBRARY_CORE_DIR'"
+    cd_or_die "$LIBRARY_CORE_DIR"
 
     cat > ${version_template} <<EOF
 template quattor/client/version;
@@ -156,7 +156,7 @@ EOF
 tag_repository() {
     repo=$1
     tag=$2
-    cd "$repo" || echo_error "Failed to change directory to '$repo'"
+    cd_or_die "$repo"
     #FIXME: we may want to check that the tag doesn't exist already
     git tag -s -m "Release ${tag}" "${tag}"
     git push origin --tags HEAD
@@ -166,7 +166,7 @@ tag_repository() {
 tag_branches() {
     repo=$1
     version=$2
-    cd "$repo" || echo_error "Failed to change directory to '$repo'"
+    cd_or_die "$repo"
     # Ignore remote HEAD symlink and branches marked as obsolete
     branches=$(git branch -r | grep -v ' -> ' | egrep -v 'obsolete$' )
     for branch in ${branches}
@@ -200,6 +200,12 @@ function exit_usage {
     echo "USAGE: releaser.sh RELEASE_NUMBER [RELEASE_CANDIDATE]"
     echo "       RELEASE_NUMBER should be of the form YY.MM.N without leading zeros"
     exit 3
+}
+
+function cd_or_die {
+    # Change directory or die trying
+    cd "$@" || error 2 "Failed to change directory to $*"
+    return 0
 }
 
 # Check that dependencies required to perform a release are available
@@ -251,7 +257,7 @@ if gpg-agent; then
             if [[ ! -d "$r" ]]; then
                 git clone -q "git@github.com:quattor/$r.git"
             fi
-            cd "$r" || echo_error "Failed to change directory to '$r'"
+            cd_or_die "$r"
             git branch -r | grep "$RELEASE" > /dev/null && git checkout -q "quattor-$RELEASE" || git checkout -q master
             details="$details\n$r\t$(git branch | grep '^\*')"
             cd ..
@@ -266,7 +272,7 @@ if gpg-agent; then
         if [[ $prompt == "yes" ]]; then
             for r in $REPOS_MVN; do
                 echo_info "---------------- Releasing $r ----------------"
-                cd "$r" || echo_error "Failed to change directory to '$r'"
+                cd_or_die "$r"
                 mvn-c -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -D"releaseVersion=$VERSION" clean release:prepare
                 if [[ $? -gt 0 ]]; then
                     echo_error "RELEASE FAILURE"
@@ -302,7 +308,7 @@ if gpg-agent; then
 
             echo_success "---------------- YUM repositories complete, tagging git repositories ----------------"
 
-            cd "$RELEASE_ROOT/src" || echo_error "Failed to change directory to '$RELEASE_ROOT/src'"
+            cd_or_die "$RELEASE_ROOT/src"
 
             echo_info "---------------- Updating template-library-core  ----------------"
             clean_templates
