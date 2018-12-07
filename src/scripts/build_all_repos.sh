@@ -1274,7 +1274,7 @@ function main() {
     fi
 
     # give VMs some extra time
-    sleep 60
+    lscpu | grep -qs Hypervisor && sleep 60
 
     main_init
 
