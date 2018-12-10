@@ -131,13 +131,29 @@ else
 fi
 
 # Don't add filters here just because something fails
-if check_perl_version 5.10.1; then
-    POM_FILTER=""
-    REPO_FILTER=""
-else
+POM_FILTER=""
+REPO_FILTER=""
+
+pom_filters=()
+repo_filters=()
+
+if ! check_perl_version 5.16.3; then
+    # These will not work with el6 since they require perl 5.16.3
+    pom_filters+=('openstack')
+fi
+
+if ! check_perl_version 5.10.1; then
     # These will not work with el5 since they require perl 5.10.1
-    POM_FILTER='.*\(opennebula\|systemd\|ceph\|icinga\|freeipa\).*'
-    REPO_FILTER='aii'
+    pom_filters+=('opennebula' 'systemd' 'ceph' 'icinga' 'freeipa')
+    repo_filters+=('aii')
+fi
+
+if [[ ${#pom_filters[@]} -gt 0 ]]; then
+    POM_FILTER="$(IFS='|' ; echo ".*\(${pom_filters[*]}\).*")"
+fi
+
+if [[ ${#repo_filters[@]} -gt 0 ]]; then
+    REPO_FILTER="$(IFS='|' ; echo ".*\(${repo_filters[*]}\).*")"
 fi
 
 if [[ "$RH_RELEASE" -eq 7 ]]; then
@@ -1258,7 +1274,7 @@ function main() {
     fi
 
     # give VMs some extra time
-    sleep 60
+    lscpu | grep -qs Hypervisor && sleep 60
 
     main_init
 
