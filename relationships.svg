@@ -7,13 +7,13 @@
 <g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 2926.3)">
 <title>Dependencies</title>
 <polygon fill="white" stroke="white" points="-4,5 -4,-2926.3 1017,-2926.3 1017,5 -4,5"/>
+<g id="graph2" class="cluster"><title>cluster_milestone_19.6</title>
+<polygon fill="none" stroke="black" points="24,-1549.3 24,-2329.3 825,-2329.3 825,-1549.3 24,-1549.3"/>
+<text text-anchor="middle" x="424.5" y="-2314.5" font-family="Sans" font-size="12.00">19.6</text>
+</g>
 <g id="graph3" class="cluster"><title>cluster_milestone_18.12</title>
 <polygon fill="none" stroke="black" points="336,-153.296 336,-1541.3 878,-1541.3 878,-153.296 336,-153.296"/>
 <text text-anchor="middle" x="607" y="-1526.5" font-family="Sans" font-size="12.00">18.12</text>
-</g>
-<g id="graph4" class="cluster"><title>cluster_milestone_19.2</title>
-<polygon fill="none" stroke="black" points="24,-1549.3 24,-2329.3 825,-2329.3 825,-1549.3 24,-1549.3"/>
-<text text-anchor="middle" x="424.5" y="-2314.5" font-family="Sans" font-size="12.00">19.2</text>
 </g>
 <g id="graph5" class="cluster"><title>cluster_repo_aquilon</title>
 <polygon fill="none" stroke="black" points="57,-2582.3 57,-2914.3 495,-2914.3 495,-2582.3 57,-2582.3"/>
@@ -512,7 +512,7 @@
 <!-- configuration&#45;modules&#45;core#1255 -->
 <g id="node70" class="node"><title>configuration-modules-core#1255</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1255" xlink:title=" ncm-metaconfig: add irods config files" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="516,-215.296 344,-215.296 344,-161.296 516,-161.296 516,-215.296"/>
+<polygon fill="#6e5494" stroke="black" points="516,-215.296 344,-215.296 344,-161.296 516,-161.296 516,-215.296"/>
 <text text-anchor="middle" x="430" y="-192.296" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="430" y="-179.296" font-family="Sans" font-size="10.00">configuration-modules-core#1255</text>
 </a>
