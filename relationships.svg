@@ -249,7 +249,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1383 -->
 <g id="node34" class="node"><title>configuration-modules-core#1383</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1383" xlink:title="[WIP] ncm-openstack:  add ceilometer service" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1383" xlink:title="ncm-openstack:  add ceilometer service" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="204,-1658 32,-1658 32,-1604 204,-1604 204,-1658"/>
 <text text-anchor="middle" x="118" y="-1635" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1622" font-family="Sans" font-size="10.00">configuration-modules-core#1383</text>
