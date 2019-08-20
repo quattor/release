@@ -581,7 +581,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1393 -->
 <g id="node80" class="node"><title>configuration-modules-core#1393</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1393" xlink:title="ncm-openstack: add CloudKitty rating service" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1393" xlink:title="[WIP] ncm-openstack: add CloudKitty rating service" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="204,-2536 32,-2536 32,-2482 204,-2482 204,-2536"/>
 <text text-anchor="middle" x="118" y="-2513" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-2500" font-family="Sans" font-size="10.00">configuration-modules-core#1393</text>
