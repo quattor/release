@@ -425,7 +425,7 @@
 <!-- configuration&#45;modules&#45;core#1383 -->
 <g id="node56" class="node"><title>configuration-modules-core#1383</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1383" xlink:title="ncm-openstack:  add ceilometer service" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="512,-2474 340,-2474 340,-2420 512,-2420 512,-2474"/>
+<polygon fill="#6e5494" stroke="black" points="512,-2474 340,-2474 340,-2420 512,-2420 512,-2474"/>
 <text text-anchor="middle" x="426" y="-2451" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="426" y="-2438" font-family="Sans" font-size="10.00">configuration-modules-core#1383</text>
 </a>
@@ -447,7 +447,7 @@
 <!-- configuration&#45;modules&#45;core#1381 -->
 <g id="node60" class="node"><title>configuration-modules-core#1381</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1381" xlink:title="ncm-openstack: add ceilometer service support" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="740" cy="-2474" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="740" cy="-2474" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="740" y="-2478" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="740" y="-2465" font-family="Sans" font-size="10.00">configuration-modules-core#1381</text>
 </a>
