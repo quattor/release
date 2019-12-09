@@ -366,7 +366,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1398 -->
 <g id="node48" class="node"><title>configuration-modules-core#1398</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1398" xlink:title="[WIP] ncm-openstack: add Magnum orchestration service" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1398" xlink:title="ncm-openstack: add Magnum orchestration service" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="204,-2764 32,-2764 32,-2710 204,-2710 204,-2764"/>
 <text text-anchor="middle" x="118" y="-2741" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-2728" font-family="Sans" font-size="10.00">configuration-modules-core#1398</text>
