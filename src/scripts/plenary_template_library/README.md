@@ -4,7 +4,7 @@ This can be run every so often as a cron job or manually for a specific release 
 
 Each release is placed in a top level directory with the libraries underneath, this allows archetypes to switch releases using `LOADPATH` while preventing local modification of the libraries by users (as they are in the plenary rather than the git repository).
 
-For example, 16.8.0 would appear as follows:
+For example, 18.3.0 would appear as follows:
 ```
 /var/quattor/cfg/plenary/template-library/16.8.0/
   ├── core/
@@ -13,8 +13,12 @@ For example, 16.8.0 would appear as follows:
   │   ├── pan/
   │   ├── quattor/
   ├── grid/
-  │   ├── emi-2/
   │   ├── umd-3/
+  │   ├── umd-4/
+  ├── openstack/
+  │   ├── mitaka/
+  │   ├── newton/
+  │   ├── ocata/
   ├── os/
   │   ├── el7.x-x86_64/
   │   ├── sl5.x-x86_64/
@@ -33,20 +37,29 @@ For example, 16.8.0 would appear as follows:
       ├── xen/
 ```
 
-Which can be used by setting (in `archetype/base`):
+Which can be used by setting (in `archetype/declarations`):
 ```pan
-final variable QUATTOR_RELEASE = '16.8.0';
+declaration template archetype/declarations;
 
-variable LOADPATH = prepend(SELF, format('template-library/%s/core', QUATTOR_RELEASE));
-variable LOADPATH = prepend(SELF, format('template-library/%s/standard', QUATTOR_RELEASE))
+# Replace by the template library version you want to use
+final variable QUATTOR_RELEASE = '18.3.0';
+
+variable LOADPATH = append(SELF, format('template-library/%s/core', QUATTOR_RELEASE));
+variable LOADPATH = append(SELF, format('template-library/%s/standard', QUATTOR_RELEASE));
+
+# The following to add OS templates is better placed in 'config/os/distribution/version'
+# If you add it here, you need to define NODE_OS_VERSION to something like el7.x-x86_64
+#variable LOADPATH = append(SELF, format('template-library/%s/os/%s', QUATTOR_RELEASE, NODE_OS_VERSION));
+
+# To use UMD grid middleware templates, uncomment the following lines or place them in archetype/base
+#final variable GRID_MIDDLEWARE_RELEASE = 'umd-4';
+#variable LOADPATH = append(SELF, format('template-library/%s/grid/%s', QUATTOR_RELEASE, GRID_MIDDLEWARE_RELEASE));
+
+# To use OpenStack templates, uncomment the following lines or place them in archetype/base
+#final variable OPENSTACK_RELEASE = 'newton';
+#variable LOADPATH = append(SELF, format('template-library/%s/openstack/%s', QUATTOR_RELEASE, OPENSTACK_RELEASE));
+
+variable DEBUG = debug(format('%s: (template=%S) LOADPATH=%s', OBJECT, TEMPLATE, to_string(LOADPATH)));
 ```
 
-The OS libraries can be used by setting (in the OS config e.g. `os/sl/7x-x86_64/config`):
-```pan
-variable LOADPATH = append(SELF, format('template-library/%s/os/el7.x-x86_64', QUATTOR_RELEASE));
-```
-
-The grid library (when needed) can be used by setting:
-```pan
-variable LOADPATH = prepend(SELF, format('template-library/%s/grid/%s', QUATTOR_RELEASE, GRID_MIDDLEWARE_RELEASE));
-```
+To use this template, `object_declarations_template` must be set to true in the `panc` section of `aqd.conf`.
