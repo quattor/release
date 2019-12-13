@@ -474,7 +474,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1352 -->
 <g id="node65" class="node"><title>configuration-modules-core#1352</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1352" xlink:title="Tighten up schema and use choice for options" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1352" xlink:title="ncm-metaconfig: rsyslog: Tighten up schema and use choice for options" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="204,-2009 32,-2009 32,-1955 204,-1955 204,-2009"/>
 <text text-anchor="middle" x="118" y="-1986" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1973" font-family="Sans" font-size="10.00">configuration-modules-core#1352</text>
