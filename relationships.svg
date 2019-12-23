@@ -895,7 +895,7 @@
 <!-- template&#45;library&#45;grid#230 -->
 <g id="node123" class="node"><title>template-library-grid#230</title>
 <a xlink:href="https://github.com/quattor/template-library-grid/pull/230" xlink:title="UMD 4: Minor fixes from @Pansanel" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="519,-1598 385,-1598 385,-1544 519,-1544 519,-1598"/>
+<polygon fill="#6e5494" stroke="black" points="519,-1598 385,-1598 385,-1544 519,-1544 519,-1598"/>
 <text text-anchor="middle" x="452" y="-1575" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="452" y="-1562" font-family="Sans" font-size="10.00">template-library-grid#230</text>
 </a>
@@ -936,7 +936,7 @@
 <!-- template&#45;library&#45;standard#129 -->
 <g id="node129" class="node"><title>template-library-standard#129</title>
 <a xlink:href="https://github.com/quattor/template-library-standard/pull/129" xlink:title="frontier squid: Fix typo in script filename" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="530,-1742 374,-1742 374,-1688 530,-1688 530,-1742"/>
+<polygon fill="#6e5494" stroke="black" points="530,-1742 374,-1742 374,-1688 530,-1688 530,-1742"/>
 <text text-anchor="middle" x="452" y="-1719" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="452" y="-1706" font-family="Sans" font-size="10.00">template-library-standard#129</text>
 </a>
@@ -944,7 +944,7 @@
 <!-- template&#45;library&#45;standard#128 -->
 <g id="node131" class="node"><title>template-library-standard#128</title>
 <a xlink:href="https://github.com/quattor/template-library-standard/issues/128" xlink:title="frontier file name 'customized.sh'" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-1649" rx="111.016" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-1649" rx="111.016" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-1653" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-1640" font-family="Sans" font-size="10.00">template-library-standard#128</text>
 </a>
