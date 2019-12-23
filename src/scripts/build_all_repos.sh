@@ -937,11 +937,8 @@ function mvn_compile () {
 
     # the PERL5LIB path for this repo during testing
     if [[ "$repo" == "maven-tools" ]]; then
-        echo_info "Exception for maven-tools repository: entering subdir build-scripts and using non-target tgtperl"
+        echo_info "Exception for maven-tools repository: entering subdir build-scripts"
         cd_or_die build-scripts
-        tgtperl="$PWD/src/main/perl/"
-    else
-        tgtperl="$PWD/target/lib/perl/"
     fi
 
     # always clean?
@@ -953,6 +950,16 @@ function mvn_compile () {
     run_wrapped $mvn
     if [[ $? -gt 0 ]]; then
         error 13 "mvn_compile mvn $mvntgt failed for repository $repo (cmd $mvn)"
+    fi
+
+    # Configure the PERL5LIB path for this repo during testing
+    # Find target perl directories, which may be re-used later (e.g. by AII)
+    # As POMs can recurse there may be more than one.
+    if [[ "$repo" == "maven-tools" ]]; then
+        echo_info "Exception for maven-tools repository: using non-target tgtperl"
+        tgtperl="$PWD/src/main/perl/"
+    else
+        tgtperl="$(find "$PWD" -type d -name perl | grep '/target/lib/perl$' | paste -sd ':' -)"
     fi
 
     # add the target path to PERL5LIB
