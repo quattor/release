@@ -108,10 +108,13 @@ function burndown(release) {
                                 data: (function() {
                                     secondsinday = 24 * 60 * 60;
                                     start_secs = start / 1000;
-                                    end_secs = target / 1000;
+                                    // Account for overshoot
+                                    end_secs = (target + target - Date.now()) / 1000;
                                     days = (end_secs - start_secs) / secondsinday;
-                                    coeff_a = mydata.to_burn / (secondsinday * (days / 30));
-                                    coeff_b = mydata.to_burn / (secondsinday / (days / 7))
+                                    // Roughly the number of working days in a month
+                                    coeff_a = mydata.to_burn / (secondsinday * (days / 20));
+                                    // Number of working days in a week
+                                    coeff_b = mydata.to_burn / (secondsinday / (days / 5))
                                     points = [];
                                     for (day = 0; day <= days; day++) {
                                         y = -coeff_a * Math.pow(day, 3) + coeff_b * Math.pow(day, 2) - day + mydata.to_burn;
