@@ -26,7 +26,7 @@
 <!-- aii#319 -->
 <g id="node1" class="node"><title>aii#319</title>
 <a xlink:href="https://github.com/quattor/aii/pull/319" xlink:title="aii-ks: Deprecate ackurl" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="491,-2606 413,-2606 413,-2552 491,-2552 491,-2606"/>
+<polygon fill="#6e5494" stroke="black" points="491,-2606 413,-2606 413,-2552 491,-2552 491,-2606"/>
 <text text-anchor="middle" x="452" y="-2583" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="452" y="-2570" font-family="Sans" font-size="10.00">aii#319</text>
 </a>
@@ -34,7 +34,7 @@
 <!-- aii#317 -->
 <g id="node3" class="node"><title>aii#317</title>
 <a xlink:href="https://github.com/quattor/aii/issues/317" xlink:title="aii-ks: new ack list feature has wrong pan code" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="766" cy="-2568" rx="41.2167" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="766" cy="-2568" rx="41.2167" ry="38.1838"/>
 <text text-anchor="middle" x="766" y="-2572" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="766" y="-2559" font-family="Sans" font-size="10.00">aii#317</text>
 </a>
