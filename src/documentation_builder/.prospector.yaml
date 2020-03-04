@@ -6,6 +6,7 @@ member-warnings: true
 ignore-paths:
   - build
   - htmlcov
+  - test
 
 pep8:
     disable:
@@ -15,3 +16,9 @@ pep8:
 pep257:
     disable:
      - D203
+     - D212
+
+pylint:
+  disable:
+    - line-too-long  # Already checked by pep8
+    - relative-import

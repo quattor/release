@@ -51,7 +51,30 @@ class PanHandlerTest(TestCase):
         self.assertIsNotNone(panh.get_types_and_functions(root))
 
         el1 = self.create_element("test", "test")
-        self.assertEquals(panh.get_types_and_functions(el1), (None, None))
+        self.assertEquals(panh.get_types_and_functions(el1), (None, None, None))
+
+    def test_variables(self):
+        """Test basic variable in schema."""
+
+        content = panh.get_content_from_pan("test/testdata/pan_schema_variables.pan")
+        self.assertEquals(content, {'functions': [], 'variables': [{'name': 'FREEIPA_AII_MODULE_NAME'}], 'types': []})
+
+        testdir = os.path.join(self.tmpdir, "testdata")
+        testfile = os.path.join(testdir, "pan_schema_variables.pan")
+        os.makedirs(testdir)
+        shutil.copy("test/testdata/pan_schema_variables.pan", testfile)
+        testoutput = panh.rst_from_pan(testfile, "title", False, False)
+
+        self.assertEquals(testoutput, u'#####\ntitle\n#####\n\nVariables\n---------\n\n - FREEIPA_AII_MODULE_NAME\n')
+
+    def test_testconfig(self):
+        """Test a real life config"""
+        testdir = os.path.join(self.tmpdir, "testdata2")
+        testfile = os.path.join(testdir, "testconfig.pan")
+        os.makedirs(testdir)
+        shutil.copy("test/testdata/testconfig.pan", testfile)
+        testoutput = panh.rst_from_pan(testfile, "title", False, False)
+
 
     def create_element(self, name, text):
         """Create a XML element from name and text."""
@@ -141,7 +164,6 @@ class PanHandlerTest(TestCase):
         for line in output:
             testfile.write(line)
         testfile.close()
-
         self.assertTrue(filecmp.cmp("test/testdata/rst_from_pan.rst", testfile.name))
 
         # Test with only fields
@@ -150,7 +172,7 @@ class PanHandlerTest(TestCase):
         output = panh.render_template(content, "component-test", "test::schema")
         print output
 
-        expectedoutput = '\nFunctions\n---------\n\n - add\n    - Arguments:\n        - first number to add\n'
+        expectedoutput = u'############\ntest::schema\n############\n\nFunctions\n---------\n\n - add\n    - Arguments:\n        - first number to add\n'
 
         self.assertEquals(output, expectedoutput)
 
@@ -158,8 +180,7 @@ class PanHandlerTest(TestCase):
         content = {'types': [{'fields': [{'required': 'false', 'type': 'string', 'name': 'ca'}], 'name': 'testtype'}]}
         output = panh.render_template(content, "component-test", "test::schemae")
         print output
-        expectedoutput = '\nTypes\n-----\n\n - `/software/component-test/testtype`\n    - `/software/component-test/testtype/ca`\n\
-        - Optional\n        - Type: string\n'
+        expectedoutput = u'#############\ntest::schemae\n#############\n\nTypes\n-----\n\n - **component-testtesttype**\n    - *component-test/testtype/ca*\n        - Optional\n        - Type: string\n'
         self.assertEquals(output, expectedoutput)
 
     def test_get_content_from_pan(self):
@@ -168,29 +189,25 @@ class PanHandlerTest(TestCase):
         self.assertEqual(panh.get_content_from_pan("test/testdata/pan_empty_input.pan"), {})
 
         expectedresult = {'functions':
-                          [{'args': ['first number to add',
-                                     'second number to add'],
-                            'name': 'add',
-                            'desc': 'simple addition of two numbers'}],
-                          'types': [
-                              {'fields': [
-                                  {'name': 'debug',
-                                   'default': '0',
-                                   'required': 'true',
-                                   'range': '0..1',
-                                   'type': 'long',
-                                   'desc': 'Test long.'},
-                                  {'required': 'false',
-                                   'type': 'string',
-                                   'name': 'ca_dir',
-                                   'desc': 'Test string'},
-                                  {'default': 'testdefault',
-                                   'required': 'true',
-                                   'type': 'string',
-                                   'name': 'def',
-                                   'desc': 'Test default'}],
-                               'name': 'testtype',
-                               'desc': 'test type.'}]}
+                          [{'args': ['first number to add', 'second number to add'],
+                            'name': 'add', 'desc': 'simple addition of two numbers'}],
+                          'variables': [],
+                          'types': [{'fields': [
+                              {'name': 'debug',
+                               'default': '0',
+                               'required': 'true',
+                               'range': '0..1',
+                               'type': 'long',
+                               'desc': 'Test long.'},
+                              {'required': 'false',
+                               'type': 'string',
+                               'name': 'ca_dir',
+                               'desc': 'Test string'},
+                              {'default': 'testdefault',
+                               'required': 'true',
+                               'type': 'string',
+                               'name': 'def', 'desc': 'Test default'}],
+                            'name': 'testtype', 'desc': 'test type.'}]}
         # Test with valid input.
         self.assertEqual(panh.get_content_from_pan("test/testdata/pan_annotated_schema.pan"), expectedresult)
 
@@ -201,9 +218,9 @@ class PanHandlerTest(TestCase):
         testfile = os.path.join(testdir, "pan_annotated_schema.pan")
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_annotated_schema.pan", testfile)
-        testoutput = panh.rst_from_pan(testfile, "title")
+        testoutput = panh.rst_from_pan(testfile, "title", False, False)
         print testoutput
-        self.assertEqual(len(testoutput), 492)
+        self.assertEqual(len(testoutput), 621)
         self.assertTrue("Types" in testoutput)
         self.assertTrue("Functions" in testoutput)
 
@@ -212,7 +229,7 @@ class PanHandlerTest(TestCase):
         testfile = os.path.join(testdir, "pan_empty_input.pan")
         os.makedirs(testdir)
         shutil.copy("test/testdata/pan_empty_input.pan", testfile)
-        self.assertIsNone(panh.rst_from_pan(testfile, "title"))
+        self.assertEquals(panh.rst_from_pan(testfile, "title", False, False), u'\n')
 
     def test_get_basename(self):
         """Test get_basename function."""

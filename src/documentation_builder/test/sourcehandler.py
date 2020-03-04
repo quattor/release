@@ -7,6 +7,7 @@ from unittest import TestCase, main, TestLoader
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../lib')))  # noqa
 from quattordocbuild import sourcehandler
+from quattordocbuild import repo
 
 
 class SourcehandlerTest(TestCase):
@@ -41,25 +42,12 @@ class SourcehandlerTest(TestCase):
         # Test valid extensions
         for extension in ['pod', 'pm', 'pl', 'pan']:
             testfile = "test.%s" % extension
-            self.assertTrue(sourcehandler.is_wanted_file('', testfile))
+            self.assertTrue(sourcehandler.is_wanted_file('', testfile, ['.pod', '.pm', '.pl', '.pan'] ))
 
         # Test invalid extensions
         for extension in ['tpl', 'txt', 'xml']:
             testfile = "test.%s" % extension
-            self.assertFalse(sourcehandler.is_wanted_file('', testfile))
-
-        # Test valid shebang
-        testfilename = "test"
-        file = open(os.path.join(self.tmpdir, testfilename), "w")
-        file.write('#!/usr/bin/perl\n')
-        file.close()
-        self.assertTrue(sourcehandler.is_wanted_file(self.tmpdir, testfilename))
-
-        # Test invalid shebang
-        file = open(os.path.join(self.tmpdir, testfilename), "w")
-        file.write('#!/usr/bin/python\n')
-        file.close()
-        self.assertFalse(sourcehandler.is_wanted_file(self.tmpdir, testfilename))
+            self.assertFalse(sourcehandler.is_wanted_file('', testfile, ['.pod', '.pm', '.pl', '.pan']))
 
     def test_is_wanted_dir(self):
         """Test is_wanted_dir function."""
@@ -70,10 +58,10 @@ class SourcehandlerTest(TestCase):
         self.assertFalse(sourcehandler.is_wanted_dir('/tmp/target/test/', []))
 
         # Test for wrong subdir
-        self.assertFalse(sourcehandler.is_wanted_dir('/tmp/target/test/', ['schema.pan']))
+        self.assertFalse(sourcehandler.is_wanted_dir('/tmp/target/test/', ['lib/perl']))
 
         # Test for a correct path
-        self.assertTrue(sourcehandler.is_wanted_dir('/tmp/target/doc/pod', ['schema.pan']))
+        self.assertTrue(sourcehandler.is_wanted_dir('/tmp/target/doc/pod', ['doc/pod']))
 
     def test_handle_duplicates(self):
         """Test handle_duplicates function."""
@@ -93,7 +81,8 @@ class SourcehandlerTest(TestCase):
     def test_list_source_files(self):
         """Test list_source_files function."""
         # Test a bogus dir
-        self.assertEquals(sourcehandler.list_source_files(self.tmpdir), [])
+        testrepo = repo.Repo('CCM', self.tmpdir)
+        self.assertEquals(sourcehandler.list_source_files(testrepo), [])
 
         # Test a correct dir
         testfile = 'test.pod'
@@ -103,12 +92,45 @@ class SourcehandlerTest(TestCase):
         file.write("test\n")
         file.close()
 
-        self.assertEquals(sourcehandler.list_source_files(fulltestdir), [os.path.join(fulltestdir, testfile)])
+        testrepo = repo.Repo('CAF', self.tmpdir)
+        self.assertEquals(sourcehandler.list_source_files(testrepo), [os.path.join(fulltestdir, testfile)])
 
     def test_get_source_files(self):
         """Test get_source_files function."""
-        self.assertEquals(sourcehandler.get_source_files(self.tmpdir, False), [])
-        self.assertFalse(sourcehandler.get_source_files(self.tmpdir, True))
+        testrepo = repo.Repo('CCM', self.tmpdir)
+        self.assertEquals(sourcehandler.get_source_files(testrepo), None)
+        self.assertFalse(sourcehandler.get_source_files(testrepo))
+
+        testrepo.mvncompile = False
+        self.assertEquals(str(type(sourcehandler.get_source_files(testrepo))), "<class 'quattordocbuild.repo.Repo'>")
+
+
+    def test_rreplace(self):
+        """Test rreplace function."""
+        expected = 'allo::allo - allo'
+        self.assertEquals(sourcehandler.rreplace('allo::allo::allo', '::', ' - '), expected)
+
+    def test_make_title_from_source(self):
+        """Test make_title_from_source function."""
+
+        source = '/dev/shm/testdocs/src/config-modules/target/doc/pod/testname.pod'
+        testrepo = repo.Repo('CAF', self.tmpdir)
+        testrepo.sourcepaths = ['/dev/shm/testdocs/src/config-modules']
+        self.assertEquals(sourcehandler.make_title_from_source(source, testrepo), 'testname')
+        testrepo.sourcepaths = ['/dev/shm/testdocs/src/']
+        testrepo.subdirs = ['config-modules',]
+        self.assertEquals(sourcehandler.make_title_from_source(source, testrepo), 'testname')
+        source = '/dev/shm/testdocs/src/config-modules/target/doc/pod/mod/ule/testname.pan'
+        self.assertEquals(sourcehandler.make_title_from_source(source, testrepo), 'mod\::ule - testname')
+        source = '/dev/shm/testdocs/src/config-modules/target/doc/pod/mod/ule/testname.pan'
+        testrepo.title_pan_prefix = '/sec/'
+        self.assertEquals(sourcehandler.make_title_from_source(source, testrepo), 'sec\::mod\::ule - testname')
+        source = '/dev/shm/testdocs/src/config-modules/target/doc/pod/mod/ule/testname.pod'
+        self.assertEquals(sourcehandler.make_title_from_source(source, testrepo), 'mod\::ule\::testname')
+        testrepo.title_remove = [r'ule',]
+        self.assertEquals(sourcehandler.make_title_from_source(source, testrepo), 'mod\::testname')
+        testrepo.title_prefix = '/segundo/'
+        self.assertEquals(sourcehandler.make_title_from_source(source, testrepo), 'segundo\::mod\::testname')
 
     def suite(self):
         """Return all the testcases in this module."""
