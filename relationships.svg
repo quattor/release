@@ -218,7 +218,7 @@
 <!-- configuration&#45;modules&#45;core#1372 -->
 <g id="node32" class="node"><title>configuration-modules-core#1372</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1372" xlink:title="ncm-network: support ethtool channels" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="826,-990 654,-990 654,-936 826,-936 826,-990"/>
+<polygon fill="#6e5494" stroke="black" points="826,-990 654,-990 654,-936 826,-936 826,-990"/>
 <text text-anchor="middle" x="740" y="-967" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="740" y="-954" font-family="Sans" font-size="10.00">configuration-modules-core#1372</text>
 </a>
