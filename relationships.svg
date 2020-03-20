@@ -196,7 +196,7 @@
 <!-- configuration&#45;modules&#45;core#1417 -->
 <g id="node27" class="node"><title>configuration-modules-core#1417</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1417" xlink:title="ncm-puppet: Document string quoting behaviour" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="204,-1429 32,-1429 32,-1375 204,-1375 204,-1429"/>
+<polygon fill="#6e5494" stroke="black" points="204,-1429 32,-1429 32,-1375 204,-1375 204,-1429"/>
 <text text-anchor="middle" x="118" y="-1406" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1393" font-family="Sans" font-size="10.00">configuration-modules-core#1417</text>
 </a>
@@ -204,7 +204,7 @@
 <!-- configuration&#45;modules&#45;core#1416 -->
 <g id="node29" class="node"><title>configuration-modules-core#1416</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1416" xlink:title="ncm-puppet: document behaviour when quoting strings" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="432" cy="-1402" rx="121.122" ry="38.1838"/>
+<ellipse fill="#bd2c00" stroke="black" cx="432" cy="-1402" rx="121.122" ry="38.1838"/>
 <text text-anchor="middle" x="432" y="-1406" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="432" y="-1393" font-family="Sans" font-size="10.00">configuration-modules-core#1416</text>
 </a>
