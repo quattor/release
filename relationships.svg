@@ -196,7 +196,7 @@
 <!-- configuration&#45;modules&#45;core#1435 -->
 <g id="node27" class="node"><title>configuration-modules-core#1435</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1435" xlink:title="ncm-metaconfig: allow auth_type 'CAS' in httpd schema" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="204,-1670 32,-1670 32,-1616 204,-1616 204,-1670"/>
+<polygon fill="#6e5494" stroke="black" points="204,-1670 32,-1670 32,-1616 204,-1616 204,-1670"/>
 <text text-anchor="middle" x="118" y="-1647" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1634" font-family="Sans" font-size="10.00">configuration-modules-core#1435</text>
 </a>
