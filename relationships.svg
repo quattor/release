@@ -407,7 +407,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1456 -->
 <g id="node57" class="node"><title>configuration-modules-core#1456</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1456" xlink:title="[WIP] ncm-opennebula: include 5.12.x support" target="_parent">
+<a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1456" xlink:title="ncm-opennebula: include 5.12.x support" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="204,-1475 32,-1475 32,-1421 204,-1421 204,-1475"/>
 <text text-anchor="middle" x="118" y="-1452" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="118" y="-1439" font-family="Sans" font-size="10.00">configuration-modules-core#1456</text>
