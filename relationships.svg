@@ -193,24 +193,21 @@
 <!-- configuration&#45;modules&#45;core#1462 -->
 <g id="node27" class="node"><title>configuration-modules-core#1462</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1462" xlink:title="ncm-ceph: remove unsupported code (Jewel)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="518,-1329 346,-1329 346,-1275 518,-1275 518,-1329"/>
+<polygon fill="#6e5494" stroke="black" points="518,-1329 346,-1329 346,-1275 518,-1275 518,-1329"/>
 <text text-anchor="middle" x="432" y="-1306" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="432" y="-1293" font-family="Sans" font-size="10.00">configuration-modules-core#1462</text>
 </a>
 </g>
 <!-- configuration&#45;modules&#45;core#1418 -->
 <g id="node29" class="node"><title>configuration-modules-core#1418</title>
-<a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1418" xlink:title="ncm-ceph: Why are there two files called (C|c)ommands.pm in the same dir?" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="748" cy="-1221" rx="121.122" ry="38.1838"/>
-<text text-anchor="middle" x="748" y="-1225" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="748" y="-1212" font-family="Sans" font-size="10.00">configuration-modules-core#1418</text>
-</a>
+<polygon fill="lightgrey" stroke="black" points="834,-1259.5 662,-1259.5 662,-1218.5 834,-1218.5 834,-1259.5"/>
+<text text-anchor="middle" x="748" y="-1236.5" font-family="Sans" font-size="10.00">configuration-modules-core#1418</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1462&#45;&gt;configuration&#45;modules&#45;core#1418 -->
 <g id="edge22" class="edge"><title>configuration-modules-core#1462-&gt;configuration-modules-core#1418</title>
-<path fill="none" stroke="black" stroke-width="2" d="M518.321,-1280.1C530.307,-1277.05 542.462,-1273.95 554,-1271 583.365,-1263.49 615.219,-1255.29 644.465,-1247.75"/>
-<polygon fill="black" stroke="black" points="645.466,-1251.11 654.275,-1245.22 643.718,-1244.33 645.466,-1251.11"/>
-<text text-anchor="middle" x="590" y="-1270" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M518.418,-1284.55C551.999,-1277.79 590.789,-1270 626,-1263 634.384,-1261.33 643.093,-1259.61 651.826,-1257.88"/>
+<polygon fill="black" stroke="black" points="652.547,-1261.31 661.68,-1255.93 651.191,-1254.44 652.547,-1261.31"/>
+<text text-anchor="middle" x="590" y="-1278" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1435 -->
 <g id="node30" class="node"><title>configuration-modules-core#1435</title>
