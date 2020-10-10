@@ -342,7 +342,7 @@
 <!-- configuration&#45;modules&#45;core#1448 -->
 <g id="node46" class="node"><title>configuration-modules-core#1448</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1448" xlink:title="ncm-systemd: Add support for Socket in units" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="518,-528 346,-528 346,-474 518,-474 518,-528"/>
+<polygon fill="#6e5494" stroke="black" points="518,-528 346,-528 346,-474 518,-474 518,-528"/>
 <text text-anchor="middle" x="432" y="-505" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="432" y="-492" font-family="Sans" font-size="10.00">configuration-modules-core#1448</text>
 </a>
