@@ -447,7 +447,7 @@
 <!-- configuration&#45;modules&#45;core#1402 -->
 <g id="node59" class="node"><title>configuration-modules-core#1402</title>
 <a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1402" xlink:title="ncm-network: always enable the network service" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="518,-1108 346,-1108 346,-1054 518,-1054 518,-1108"/>
+<polygon fill="#6e5494" stroke="black" points="518,-1108 346,-1108 346,-1054 518,-1054 518,-1108"/>
 <text text-anchor="middle" x="432" y="-1085" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="432" y="-1072" font-family="Sans" font-size="10.00">configuration-modules-core#1402</text>
 </a>
