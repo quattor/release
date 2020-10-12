@@ -102,7 +102,7 @@ function burndown(release) {
                                 //visible: false,
                                 enableMouseTracking: false,
                             },
-                            {
+                            /*{
                                 name: 'Prediction',
                                 type: 'line',
                                 data: (function() {
@@ -127,7 +127,7 @@ function burndown(release) {
                                 color: '#75507b',
                                 dashStyle: 'shortdash',
                                 enableMouseTracking: false,
-                            },
+                            },*/
                             {
                                 name: 'Reality',
                                 data: mydata.closed,
