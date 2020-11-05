@@ -16,8 +16,8 @@
 <text text-anchor="middle" x="289" y="-2179.2" font-family="Sans" font-size="12.00">21.6</text>
 </g>
 <g id="graph4" class="cluster"><title>cluster_milestone_21.3</title>
-<polygon fill="none" stroke="black" points="24,-1306 24,-1976 825,-1976 825,-1306 24,-1306"/>
-<text text-anchor="middle" x="424.5" y="-1961.2" font-family="Sans" font-size="12.00">21.3</text>
+<polygon fill="none" stroke="black" points="24,-1306 24,-1976 562,-1976 562,-1306 24,-1306"/>
+<text text-anchor="middle" x="293" y="-1961.2" font-family="Sans" font-size="12.00">21.3</text>
 </g>
 <g id="graph5" class="cluster"><title>cluster_repo_aquilon</title>
 <polygon fill="none" stroke="black" points="57,-2447 57,-2779 497,-2779 497,-2447 57,-2447"/>
@@ -211,9 +211,9 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1467&#45;&gt;configuration&#45;modules&#45;core#1428 -->
 <g id="edge22" class="edge"><title>configuration-modules-core#1467-&gt;configuration-modules-core#1428</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M518.348,-1186.67C559.714,-1196.1 609.393,-1207.42 651.948,-1217.11"/>
-<polygon fill="none" stroke="black" points="651.228,-1220.54 661.756,-1219.35 652.783,-1213.72 651.228,-1220.54"/>
-<text text-anchor="middle" x="590" y="-1210" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M518.248,-1181.64C546.914,-1186.91 578.931,-1193.24 608,-1200 622.177,-1203.3 637.073,-1207.09 651.645,-1210.98"/>
+<polygon fill="none" stroke="black" points="651.102,-1214.46 661.669,-1213.69 652.929,-1207.71 651.102,-1214.46"/>
+<text text-anchor="middle" x="590" y="-1204" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1463 -->
 <g id="node30" class="node"><title>configuration-modules-core#1463</title>
@@ -578,11 +578,8 @@
 </g>
 <!-- template&#45;library&#45;core#191 -->
 <g id="node83" class="node"><title>template-library-core#191</title>
-<a xlink:href="https://github.com/quattor/template-library-core/pull/191" xlink:title="Allow the caf_service_action to be used by multiple components" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="817,-1872 679,-1872 679,-1818 817,-1818 817,-1872"/>
-<text text-anchor="middle" x="748" y="-1849" font-family="Sans" font-size="10.00">pull-request</text>
-<text text-anchor="middle" x="748" y="-1836" font-family="Sans" font-size="10.00">template-library-core#191</text>
-</a>
+<polygon fill="lightgrey" stroke="black" points="817,-1865.5 679,-1865.5 679,-1824.5 817,-1824.5 817,-1865.5"/>
+<text text-anchor="middle" x="748" y="-1842.5" font-family="Sans" font-size="10.00">template-library-core#191</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1335&#45;&gt;template&#45;library&#45;core#191 -->
 <g id="edge64" class="edge"><title>configuration-modules-core#1335-&gt;template-library-core#191</title>
