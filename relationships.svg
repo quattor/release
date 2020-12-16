@@ -206,7 +206,7 @@
 <!-- configuration&#45;modules&#45;core#1467 -->
 <g id="node17" class="node"><title>configuration-modules-core#1467</title>
 <g id="a_node17"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1467" xlink:title="ncm-shorewall: add support for snat and deprecate masq" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="581.5,-1209 386.5,-1209 386.5,-1159 581.5,-1159 581.5,-1209"/>
+<polygon fill="#6e5494" stroke="black" points="581.5,-1209 386.5,-1209 386.5,-1159 581.5,-1159 581.5,-1209"/>
 <text text-anchor="middle" x="484" y="-1187" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="484" y="-1176" font-family="Sans" font-size="10.00">configuration-modules-core#1467</text>
 </a>
