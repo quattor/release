@@ -6,7 +6,7 @@
   <artifactId>quattor-release</artifactId>
   <packaging>pom</packaging>
 
-  <version>19.12.1-SNAPSHOT</version>
+  <version>20.12.0-rc1</version>
 
   <name>Quattor Release Packages</name>
   <description>Utility packages for using Quattor releases.</description>
