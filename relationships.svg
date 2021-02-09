@@ -499,23 +499,17 @@
 <!-- aquilon#109 -->
 <g id="node42" class="node"><title>aquilon#109</title>
 <g id="a_node42"><a xlink:href="https://github.com/quattor/aquilon/issues/109" xlink:title="Why service configuration is included so late in the plenary object?" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="484" cy="-1975" rx="64.1938" ry="35.2113"/>
-<text text-anchor="middle" x="484" y="-1978" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="484" y="-1967" font-family="Sans" font-size="10.00">aquilon#109</text>
+<ellipse fill="#6cc644" stroke="black" cx="484" cy="-1982" rx="64.1938" ry="35.2113"/>
+<text text-anchor="middle" x="484" y="-1985" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="484" y="-1974" font-family="Sans" font-size="10.00">aquilon#109</text>
 </a>
 </g>
 </g>
 <!-- aquilon#115&#45;&gt;aquilon#109 -->
 <g id="edge27" class="edge"><title>aquilon#115-&gt;aquilon#109</title>
-<path fill="none" stroke="black" stroke-width="2" d="M179.726,-1983.37C209.67,-1978.04 250.039,-1971.72 286,-1969 327.011,-1965.89 372.941,-1967.03 410.129,-1969.1"/>
-<polygon fill="black" stroke="black" points="410.185,-1972.61 420.374,-1969.71 410.599,-1965.63 410.185,-1972.61"/>
-<text text-anchor="middle" x="307" y="-1972" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- aquilon#115&#45;&gt;aquilon#109 -->
-<g id="edge30" class="edge"><title>aquilon#115-&gt;aquilon#109</title>
-<path fill="none" stroke="black" stroke-width="2" d="M179.782,-1989.81C237.959,-1986.97 340.287,-1981.97 409.821,-1978.57"/>
-<polygon fill="black" stroke="black" points="410.015,-1982.07 419.832,-1978.09 409.674,-1975.08 410.015,-1982.07"/>
-<text text-anchor="middle" x="307" y="-1987" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M179.782,-1990.71C237.872,-1989.04 339.98,-1986.11 409.507,-1984.11"/>
+<polygon fill="black" stroke="black" points="409.624,-1987.61 419.519,-1983.82 409.423,-1980.61 409.624,-1987.61"/>
+<text text-anchor="middle" x="307" y="-1990" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- aquilon#110 -->
 <g id="node43" class="node"><title>aquilon#110</title>
@@ -529,23 +523,17 @@
 <!-- aquilon#104 -->
 <g id="node44" class="node"><title>aquilon#104</title>
 <g id="a_node44"><a xlink:href="https://github.com/quattor/aquilon/issues/104" xlink:title="1.12.62: location related templates cannot be used" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="484" cy="-1877" rx="64.1938" ry="35.2113"/>
-<text text-anchor="middle" x="484" y="-1880" font-family="Sans" font-size="10.00">issue</text>
-<text text-anchor="middle" x="484" y="-1869" font-family="Sans" font-size="10.00">aquilon#104</text>
+<ellipse fill="#6cc644" stroke="black" cx="484" cy="-1880" rx="64.1938" ry="35.2113"/>
+<text text-anchor="middle" x="484" y="-1883" font-family="Sans" font-size="10.00">issue</text>
+<text text-anchor="middle" x="484" y="-1872" font-family="Sans" font-size="10.00">aquilon#104</text>
 </a>
 </g>
 </g>
 <!-- aquilon#110&#45;&gt;aquilon#104 -->
 <g id="edge28" class="edge"><title>aquilon#110-&gt;aquilon#104</title>
-<path fill="none" stroke="black" stroke-width="2" d="M179.581,-1920.64C218.777,-1917.44 277.313,-1912.06 328,-1905 355.978,-1901.1 386.616,-1895.79 413.211,-1890.84"/>
-<polygon fill="black" stroke="black" points="414.01,-1894.25 423.191,-1888.97 412.717,-1887.37 414.01,-1894.25"/>
-<text text-anchor="middle" x="307" y="-1913" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- aquilon#110&#45;&gt;aquilon#104 -->
-<g id="edge31" class="edge"><title>aquilon#110-&gt;aquilon#104</title>
-<path fill="none" stroke="black" stroke-width="2" d="M179.651,-1912.91C209.563,-1905.88 249.924,-1897.17 286,-1892 326.656,-1886.17 372.379,-1882.51 409.535,-1880.27"/>
-<polygon fill="black" stroke="black" points="409.996,-1883.75 419.776,-1879.67 409.589,-1876.76 409.996,-1883.75"/>
-<text text-anchor="middle" x="307" y="-1895" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M179.782,-1918.34C238.309,-1910.94 341.52,-1897.89 411.072,-1889.09"/>
+<polygon fill="black" stroke="black" points="411.598,-1892.56 421.08,-1887.83 410.72,-1885.61 411.598,-1892.56"/>
+<text text-anchor="middle" x="307" y="-1907" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- aquilon#91 -->
 <g id="node45" class="node"><title>aquilon#91</title>
@@ -558,15 +546,9 @@
 </g>
 <!-- aquilon#91&#45;&gt;aquilon#104 -->
 <g id="edge29" class="edge"><title>aquilon#91-&gt;aquilon#104</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M194.174,-1849.73C232.39,-1852.27 283.168,-1855.92 328,-1860 355.013,-1862.46 384.626,-1865.6 410.665,-1868.51"/>
-<polygon fill="none" stroke="black" points="410.502,-1872.01 420.831,-1869.65 411.285,-1865.06 410.502,-1872.01"/>
-<text text-anchor="middle" x="307" y="-1863" font-family="Sans" font-size="10.00">requires</text>
-</g>
-<!-- aquilon#91&#45;&gt;aquilon#104 -->
-<g id="edge32" class="edge"><title>aquilon#91-&gt;aquilon#104</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M193.456,-1840.8C231.822,-1838.37 283.035,-1836.99 328,-1842 357.424,-1845.28 389.419,-1851.96 416.657,-1858.62"/>
-<polygon fill="none" stroke="black" points="415.914,-1862.04 426.463,-1861.06 417.607,-1855.25 415.914,-1862.04"/>
-<text text-anchor="middle" x="307" y="-1845" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M193.64,-1851.73C253.397,-1857.57 346.194,-1866.63 410.521,-1872.92"/>
+<polygon fill="none" stroke="black" points="410.298,-1876.41 420.591,-1873.9 410.979,-1869.45 410.298,-1876.41"/>
+<text text-anchor="middle" x="307" y="-1867" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- aquilon#89 -->
 <g id="node46" class="node"><title>aquilon#89</title>
@@ -587,7 +569,7 @@
 </g>
 </g>
 <!-- aquilon#89&#45;&gt;aquilon#88 -->
-<g id="edge33" class="edge"><title>aquilon#89-&gt;aquilon#88</title>
+<g id="edge30" class="edge"><title>aquilon#89-&gt;aquilon#88</title>
 <path fill="none" stroke="black" stroke-width="2" d="M177.672,-1769.23C236.488,-1770.92 343.167,-1773.98 413.558,-1776"/>
 <polygon fill="black" stroke="black" points="413.574,-1779.51 423.671,-1776.3 413.775,-1772.51 413.574,-1779.51"/>
 <text text-anchor="middle" x="307" y="-1777" font-family="Sans" font-size="10.00">fixes</text>
