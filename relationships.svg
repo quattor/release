@@ -234,7 +234,7 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1484 -->
 <g id="node20" class="node"><title>configuration-modules-core#1484</title>
-<g id="a_node20"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1484" xlink:title="Add panlint check as github action" target="_parent">
+<g id="a_node20"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1484" xlink:title="Replace travis checks with github action" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="893.5,-232 698.5,-232 698.5,-182 893.5,-182 893.5,-232"/>
 <text text-anchor="middle" x="796" y="-210" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="796" y="-199" font-family="Sans" font-size="10.00">configuration-modules-core#1484</text>
