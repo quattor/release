@@ -344,7 +344,7 @@
 <!-- configuration&#45;modules&#45;core#1451 -->
 <g id="node28" class="node"><title>configuration-modules-core#1451</title>
 <g id="a_node28"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1451" xlink:title="ncm-metaconfig: support running arbitrary commands in various steps" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="581.5,-164 386.5,-164 386.5,-114 581.5,-114 581.5,-164"/>
+<polygon fill="#6e5494" stroke="black" points="581.5,-164 386.5,-164 386.5,-114 581.5,-114 581.5,-164"/>
 <text text-anchor="middle" x="484" y="-142" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="484" y="-131" font-family="Sans" font-size="10.00">configuration-modules-core#1451</text>
 </a>
