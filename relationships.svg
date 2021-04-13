@@ -261,7 +261,7 @@
 <!-- configuration&#45;modules&#45;core#1489 -->
 <g id="node22" class="node"><title>configuration-modules-core#1489</title>
 <g id="a_node22"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1489" xlink:title="ncm-systemd: add support for resource control in units" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="581.5,-300 386.5,-300 386.5,-250 581.5,-250 581.5,-300"/>
+<polygon fill="#6e5494" stroke="black" points="581.5,-300 386.5,-300 386.5,-250 581.5,-250 581.5,-300"/>
 <text text-anchor="middle" x="484" y="-278" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="484" y="-267" font-family="Sans" font-size="10.00">configuration-modules-core#1489</text>
 </a>
