@@ -309,7 +309,7 @@
 <!-- configuration&#45;modules&#45;core#1391 -->
 <g id="node29" class="node"><title>configuration-modules-core#1391</title>
 <g id="a_node29"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1391" xlink:title="ncm-opennebula: include OpenNebula 5.8.x and vmgroups support" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="906.5,-300 711.5,-300 711.5,-250 906.5,-250 906.5,-300"/>
+<polygon fill="#6e5494" stroke="black" points="906.5,-300 711.5,-300 711.5,-250 906.5,-250 906.5,-300"/>
 <text text-anchor="middle" x="809" y="-278" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="809" y="-267" font-family="Sans" font-size="10.00">configuration-modules-core#1391</text>
 </a>
