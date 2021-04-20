@@ -217,7 +217,7 @@
 <!-- CCM#203 -->
 <g id="node18" class="node"><title>CCM#203</title>
 <g id="a_node18"><a xlink:href="https://github.com/quattor/CCM/pull/203" xlink:title="TextRender: support yaml multi document" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="527.5,-436 440.5,-436 440.5,-386 527.5,-386 527.5,-436"/>
+<polygon fill="#6e5494" stroke="black" points="527.5,-436 440.5,-436 440.5,-386 527.5,-386 527.5,-436"/>
 <text text-anchor="middle" x="484" y="-414" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="484" y="-403" font-family="Sans" font-size="10.00">CCM#203</text>
 </a>
