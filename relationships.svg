@@ -26,7 +26,7 @@
 <!-- aii#329 -->
 <g id="node1" class="node"><title>aii#329</title>
 <g id="a_node1"><a xlink:href="https://github.com/quattor/aii/pull/329" xlink:title="Document use of RewriteRules to restrict access" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="527.5,-504 440.5,-504 440.5,-454 527.5,-454 527.5,-504"/>
+<polygon fill="#6e5494" stroke="black" points="527.5,-504 440.5,-504 440.5,-454 527.5,-454 527.5,-504"/>
 <text text-anchor="middle" x="484" y="-482" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="484" y="-471" font-family="Sans" font-size="10.00">aii#329</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- aii#111 -->
 <g id="node2" class="node"><title>aii#111</title>
 <g id="a_node2"><a xlink:href="https://github.com/quattor/aii/issues/111" xlink:title="Idea: securing profiles and kickstart directories" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="809" cy="-469" rx="47.2526" ry="35.2113"/>
+<ellipse fill="#bd2c00" stroke="black" cx="809" cy="-469" rx="47.2526" ry="35.2113"/>
 <text text-anchor="middle" x="809" y="-472" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="809" y="-461" font-family="Sans" font-size="10.00">aii#111</text>
 </a>
