@@ -529,7 +529,7 @@
 <!-- template&#45;library&#45;grid#239 -->
 <g id="node44" class="node"><title>template-library-grid#239</title>
 <g id="a_node44"><a xlink:href="https://github.com/quattor/template-library-grid/pull/239" xlink:title="Ensure GSISSH_PORT is a string" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="562.5,-164 405.5,-164 405.5,-114 562.5,-114 562.5,-164"/>
+<polygon fill="#6e5494" stroke="black" points="562.5,-164 405.5,-164 405.5,-114 562.5,-114 562.5,-164"/>
 <text text-anchor="middle" x="484" y="-142" font-family="Sans" font-size="10.00">pull-request</text>
 <text text-anchor="middle" x="484" y="-131" font-family="Sans" font-size="10.00">template-library-grid#239</text>
 </a>
@@ -538,7 +538,7 @@
 <!-- template&#45;library&#45;grid#238 -->
 <g id="node45" class="node"><title>template-library-grid#238</title>
 <g id="a_node45"><a xlink:href="https://github.com/quattor/template-library-grid/issues/238" xlink:title="GSISSH_PORT to be converted to string for replace in cfg/grid/umd-4/personality/ui_gsissh/config.pan" target="_parent">
-<ellipse fill="#6cc644" stroke="black" cx="809" cy="-149" rx="111.032" ry="35.2113"/>
+<ellipse fill="#bd2c00" stroke="black" cx="809" cy="-149" rx="111.032" ry="35.2113"/>
 <text text-anchor="middle" x="809" y="-152" font-family="Sans" font-size="10.00">issue</text>
 <text text-anchor="middle" x="809" y="-141" font-family="Sans" font-size="10.00">template-library-grid#238</text>
 </a>
