@@ -294,7 +294,7 @@ DEPS_INIT_BIN_YUM="rpmbuild perl tar"
 DEPS_INIT_YUM="rpmlint perl-parent perl-IO-Compress-Zlib"
 
 # only major.minor!
-PAN_MIN_VERSION=10.3
+PAN_MIN_VERSION=10.7
 PAN_MIN_VERSION_RPM_URL="https://github.com/quattor/pan/releases/download/pan-${PAN_MIN_VERSION}/panc-${PAN_MIN_VERSION}-1.noarch.rpm"
 
 # quattor externals repo
