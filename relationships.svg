@@ -141,7 +141,7 @@
 <!-- aii#325 -->
 <g id="node4" class="node"><title>aii#325</title>
 <g id="a_node4"><a xlink:href="https://github.com/quattor/aii/pull/325" xlink:title="aii#325 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="502,-333.5 360,-333.5 360,-294.5 502,-294.5 502,-333.5"/>
+<polygon fill="#6e5494" stroke="black" points="502,-333.5 360,-333.5 360,-294.5 502,-294.5 502,-333.5"/>
 <text text-anchor="middle" x="431" y="-311.5" font-family="Sans" font-size="10.00">Use wipefs for RHEL6+</text>
 </a>
 </g>
