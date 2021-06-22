@@ -413,7 +413,7 @@
 <!-- template&#45;library&#45;grid#237 -->
 <g id="node33" class="node"><title>template-library-grid#237</title>
 <g id="a_node33"><a xlink:href="https://github.com/quattor/template-library-grid/pull/237" xlink:title="template-library-grid#237 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="505.5,-481 356.5,-481 356.5,-431 505.5,-431 505.5,-481"/>
+<polygon fill="#6e5494" stroke="black" points="505.5,-481 356.5,-481 356.5,-431 505.5,-431 505.5,-481"/>
 <text text-anchor="middle" x="431" y="-459" font-family="Sans" font-size="10.00">users: Fix collisions with</text>
 <text text-anchor="middle" x="431" y="-448" font-family="Sans" font-size="10.00">system managed groups</text>
 </a>
@@ -422,7 +422,7 @@
 <!-- template&#45;library&#45;grid#226 -->
 <g id="node34" class="node"><title>template-library-grid#226</title>
 <g id="a_node34"><a xlink:href="https://github.com/quattor/template-library-grid/issues/226" xlink:title="template-library-grid#226 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M788.5,-338.5C788.5,-338.5 695.5,-338.5 695.5,-338.5 689.5,-338.5 683.5,-332.5 683.5,-326.5 683.5,-326.5 683.5,-311.5 683.5,-311.5 683.5,-305.5 689.5,-299.5 695.5,-299.5 695.5,-299.5 788.5,-299.5 788.5,-299.5 794.5,-299.5 800.5,-305.5 800.5,-311.5 800.5,-311.5 800.5,-326.5 800.5,-326.5 800.5,-332.5 794.5,-338.5 788.5,-338.5"/>
+<path fill="#bd2c00" stroke="black" d="M788.5,-338.5C788.5,-338.5 695.5,-338.5 695.5,-338.5 689.5,-338.5 683.5,-332.5 683.5,-326.5 683.5,-326.5 683.5,-311.5 683.5,-311.5 683.5,-305.5 689.5,-299.5 695.5,-299.5 695.5,-299.5 788.5,-299.5 788.5,-299.5 794.5,-299.5 800.5,-305.5 800.5,-311.5 800.5,-311.5 800.5,-326.5 800.5,-326.5 800.5,-332.5 794.5,-338.5 788.5,-338.5"/>
 <text text-anchor="middle" x="742" y="-316.5" font-family="Sans" font-size="10.00">collisions group id</text>
 </a>
 </g>
