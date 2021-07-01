@@ -12,8 +12,8 @@
 <text text-anchor="middle" x="269" y="-1795.4" font-family="Sans" font-size="12.00">aquilon</text>
 </g>
 <g id="clust3" class="cluster"><title>cluster_milestone_21.8</title>
-<polygon fill="none" stroke="black" points="20,-756 20,-1207 538,-1207 538,-756 20,-756"/>
-<text text-anchor="middle" x="279" y="-1193.4" font-family="Sans" font-size="12.00">21.8</text>
+<polygon fill="none" stroke="black" points="16,-756 16,-1207 538,-1207 538,-756 16,-756"/>
+<text text-anchor="middle" x="277" y="-1193.4" font-family="Sans" font-size="12.00">21.8</text>
 </g>
 <g id="clust1" class="cluster"><title>cluster_milestone_21.6</title>
 <polygon fill="none" stroke="black" points="335,-218 335,-510 1102,-510 1102,-218 335,-218"/>
@@ -26,9 +26,9 @@
 <!-- aii#328 -->
 <g id="node1" class="node"><title>aii#328</title>
 <g id="a_node1"><a xlink:href="https://github.com/quattor/aii/pull/328" xlink:title="aii#328 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="194,-814 36,-814 36,-764 194,-764 194,-814"/>
-<text text-anchor="middle" x="115" y="-792" font-family="Sans" font-size="10.00">aii-ks: generate ks post as</text>
-<text text-anchor="middle" x="115" y="-781" font-family="Sans" font-size="10.00">ansible playbook</text>
+<polygon fill="#6cc644" stroke="black" points="206,-814 24,-814 24,-764 206,-764 206,-814"/>
+<text text-anchor="middle" x="115" y="-792" font-family="Sans" font-size="10.00">aii-ks: generate ks post section</text>
+<text text-anchor="middle" x="115" y="-781" font-family="Sans" font-size="10.00">as standalone script</text>
 </a>
 </g>
 </g>
