@@ -35,7 +35,7 @@
 <!-- aii#280 -->
 <g id="node2" class="node"><title>aii#280</title>
 <g id="a_node2"><a xlink:href="https://github.com/quattor/aii/pull/280" xlink:title="aii#280 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="1131,-804 965,-804 965,-754 1131,-754 1131,-804"/>
+<polygon fill="#6e5494" stroke="black" points="1131,-804 965,-804 965,-754 1131,-754 1131,-804"/>
 <text text-anchor="middle" x="1048" y="-782" font-family="Sans" font-size="10.00">Support active configuration</text>
 <text text-anchor="middle" x="1048" y="-771" font-family="Sans" font-size="10.00">attribute for plugins</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- aii#209 -->
 <g id="node9" class="node"><title>aii#209</title>
 <g id="a_node9"><a xlink:href="https://github.com/quattor/aii/issues/209" xlink:title="aii#209 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M1388,-798.5C1388,-798.5 1266,-798.5 1266,-798.5 1260,-798.5 1254,-792.5 1254,-786.5 1254,-786.5 1254,-771.5 1254,-771.5 1254,-765.5 1260,-759.5 1266,-759.5 1266,-759.5 1388,-759.5 1388,-759.5 1394,-759.5 1400,-765.5 1400,-771.5 1400,-771.5 1400,-786.5 1400,-786.5 1400,-792.5 1394,-798.5 1388,-798.5"/>
+<path fill="#bd2c00" stroke="black" d="M1388,-798.5C1388,-798.5 1266,-798.5 1266,-798.5 1260,-798.5 1254,-792.5 1254,-786.5 1254,-786.5 1254,-771.5 1254,-771.5 1254,-765.5 1260,-759.5 1266,-759.5 1266,-759.5 1388,-759.5 1388,-759.5 1394,-759.5 1400,-765.5 1400,-771.5 1400,-771.5 1400,-786.5 1400,-786.5 1400,-792.5 1394,-798.5 1388,-798.5"/>
 <text text-anchor="middle" x="1327" y="-776.5" font-family="Sans" font-size="10.00">support ACTIVE_CONFIG</text>
 </a>
 </g>
