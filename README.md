@@ -4,8 +4,8 @@ Quattor Release Management
 Files to manage the release of the Quattor Toolkit and to build the
 release repository.
 
-You can find more information about the development process in the
-[developer's corner](https://trac.lal.in2p3.fr/Quattor/wiki/Development/ReleaseProcess)
+You can find more information about the development process in our
+[documentation](https://www.quattor.org/documentation/)
 
 License
 -------
