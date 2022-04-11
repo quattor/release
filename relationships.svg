@@ -193,7 +193,7 @@
 <!-- template&#45;library&#45;core#212 -->
 <g id="node15" class="node"><title>template-library-core#212</title>
 <g id="a_node15"><a xlink:href="https://github.com/quattor/template-library-core/pull/212" xlink:title="template-library-core#212 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="830.5,-645.5 655.5,-645.5 655.5,-584.5 830.5,-584.5 830.5,-645.5"/>
+<polygon fill="#6e5494" stroke="black" points="830.5,-645.5 655.5,-645.5 655.5,-584.5 830.5,-584.5 830.5,-645.5"/>
 <text text-anchor="middle" x="743" y="-623.5" font-family="Sans" font-size="10.00">Add a transitional type for</text>
 <text text-anchor="middle" x="743" y="-612.5" font-family="Sans" font-size="10.00">strings being migrated to lists</text>
 <text text-anchor="middle" x="743" y="-601.5" font-family="Sans" font-size="10.00">of strings</text>
