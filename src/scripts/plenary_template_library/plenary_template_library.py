@@ -16,11 +16,11 @@ import errno
 RELEASES_URL = 'http://www.quattor.org/release/releases.json'
 LIBRARY_URL_PATTERN = 'https://github.com/quattor/template-library-%s.git'
 LIBRARY_BRANCHES = {
-    'core' : ['master'],
-    'grid' : ['umd-3', 'umd-4'],
-    'os' : ['sl5.x-x86_64', 'sl6.x-x86_64', 'el7.x-x86_64'],
-    'standard' : ['master'],
-    'openstack' : ['mitaka', 'newton', 'ocata'],
+    'core': ['master'],
+    'grid': ['umd-3', 'umd-4'],
+    'os': ['sl5.x-x86_64', 'sl6.x-x86_64', 'el7.x-x86_64'],
+    'standard': ['master'],
+    'openstack': ['mitaka', 'newton', 'ocata'],
 }
 
 BIN_GIT = '/usr/bin/git'
@@ -31,11 +31,7 @@ def execute(command):
     """Wrapper around subprocess, calls an external process, logging stdout and stderr to debug"""
     logger = logging.getLogger()
     if command:
-        process = subprocess.Popen(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = process.communicate()
         logger.debug('Executed %s, stdout: "%s", stderr: "%s"', command[0], output.strip(), error.strip())
         if process.returncode > 0:
@@ -66,7 +62,7 @@ def make_target_dir(directory):
 
 
 def get_release_dates():
-    #logger = logging.getLogger()
+    # logger = logging.getLogger()
     releases = load(urlopen(RELEASES_URL))
     results = []
     for release, properties in releases.items():
@@ -139,10 +135,7 @@ def sync_template_library(base_dir, releases):
 
 
 def main():
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(levelname)s: %(message)s'
-    )
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
     parser = ArgumentParser(description='Synchronise quattor template libraries')
     parser.add_argument('--debug', action='store_true', help='Enable debug output')
