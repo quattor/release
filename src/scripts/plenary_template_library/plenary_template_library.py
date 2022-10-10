@@ -18,7 +18,7 @@ LIBRARY_URL_PATTERN = 'https://github.com/quattor/template-library-%s.git'
 LIBRARY_BRANCHES = {
     'core': ['master'],
     'grid': ['umd-3', 'umd-4'],
-    'os': ['sl5.x-x86_64', 'sl6.x-x86_64', 'el7.x-x86_64', 'el8.x-x86_64'],
+    'os': ['sl6.x-x86_64', 'el7.x-x86_64', 'el8.x-x86-64'],
     'standard': ['master'],
     'openstack': ['mitaka', 'newton', 'ocata'],
 }
