@@ -91,7 +91,7 @@ def get_current_releases():
 def sync_template_library(base_dir, releases):
     logger = logging.getLogger()
 
-    logger.debug('Using %s as base directory', base_dir)
+    logger.debug('Using %s as base directory for releases %s', base_dir, ', '.join(releases))
 
     for library, branches in LIBRARY_BRANCHES.items():
         logger.info('Processing library %s', library)
