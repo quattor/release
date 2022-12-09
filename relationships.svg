@@ -7,10 +7,6 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1634)">
 <title>Dependencies</title>
 <polygon fill="white" stroke="white" points="-4,5 -4,-1634 1115,-1634 1115,5 -4,5"/>
-<g id="clust4" class="cluster"><title>cluster_milestone_23.12</title>
-<polygon fill="none" stroke="black" points="15,-892 15,-1059 529,-1059 529,-892 15,-892"/>
-<text text-anchor="middle" x="272" y="-1045.4" font-family="Sans" font-size="12.00">23.12</text>
-</g>
 <g id="clust3" class="cluster"><title>cluster_repo_aquilon</title>
 <polygon fill="none" stroke="black" points="8,-1331 8,-1622 530,-1622 530,-1331 8,-1331"/>
 <text text-anchor="middle" x="269" y="-1608.4" font-family="Sans" font-size="12.00">aquilon</text>
@@ -19,29 +15,53 @@
 <polygon fill="none" stroke="black" points="326,-218 326,-884 850,-884 850,-218 326,-218"/>
 <text text-anchor="middle" x="588" y="-870.4" font-family="Sans" font-size="12.00">22.12</text>
 </g>
+<g id="clust1" class="cluster"><title>cluster_milestone_23.6</title>
+<polygon fill="none" stroke="black" points="36,-723 36,-822 194,-822 194,-723 36,-723"/>
+<text text-anchor="middle" x="115" y="-808.4" font-family="Sans" font-size="12.00">23.6</text>
+</g>
+<g id="clust4" class="cluster"><title>cluster_milestone_23.12</title>
+<polygon fill="none" stroke="black" points="15,-892 15,-1059 529,-1059 529,-892 15,-892"/>
+<text text-anchor="middle" x="272" y="-1045.4" font-family="Sans" font-size="12.00">23.12</text>
+</g>
+<!-- aii#331 -->
+<g id="node1" class="node"><title>aii#331</title>
+<g id="a_node1"><a xlink:href="https://github.com/quattor/aii/pull/331" xlink:title="aii#331 (pull-request)" target="_parent">
+<polygon fill="#6cc644" stroke="black" points="186,-792.5 44,-792.5 44,-731.5 186,-731.5 186,-792.5"/>
+<text text-anchor="middle" x="115" y="-770.5" font-family="Sans" font-size="10.00">let aii generate ansible</text>
+<text text-anchor="middle" x="115" y="-759.5" font-family="Sans" font-size="10.00">playbook for supported</text>
+<text text-anchor="middle" x="115" y="-748.5" font-family="Sans" font-size="10.00">components</text>
+</a>
+</g>
+</g>
 <!-- aii#328 -->
-<g id="node1" class="node"><title>aii#328</title>
-<g id="a_node1"><a xlink:href="https://github.com/quattor/aii/pull/328" xlink:title="aii#328 (pull-request)" target="_parent">
+<g id="node2" class="node"><title>aii#328</title>
+<g id="a_node2"><a xlink:href="https://github.com/quattor/aii/pull/328" xlink:title="aii#328 (pull-request)" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="522,-787 340,-787 340,-737 522,-737 522,-787"/>
 <text text-anchor="middle" x="431" y="-765" font-family="Sans" font-size="10.00">aii-ks: generate ks post section</text>
 <text text-anchor="middle" x="431" y="-754" font-family="Sans" font-size="10.00">as standalone script</text>
 </a>
 </g>
 </g>
+<!-- aii#331&#45;&gt;aii#328 -->
+<g id="edge1" class="edge"><title>aii#331-&gt;aii#328</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M186.077,-762C228.343,-762 282.883,-762 329.668,-762"/>
+<polygon fill="none" stroke="black" points="329.834,-765.5 339.834,-762 329.834,-758.5 329.834,-765.5"/>
+<text text-anchor="middle" x="242.574" y="-754" font-family="Sans" font-size="10.00">requires</text>
+</g>
 <!-- aii#280 -->
-<g id="node2" class="node"><title>aii#280</title>
+<g id="node3" class="node"><title>aii#280</title>
 <polygon fill="lightgrey" stroke="black" points="1063.5,-851.5 996.5,-851.5 996.5,-812.5 1063.5,-812.5 1063.5,-851.5"/>
 <text text-anchor="middle" x="1030" y="-829.5" font-family="Sans" font-size="10.00">aii#280</text>
 </g>
 <!-- aii#328&#45;&gt;aii#280 -->
-<g id="edge1" class="edge"><title>aii#328-&gt;aii#280</title>
+<g id="edge2" class="edge"><title>aii#328-&gt;aii#280</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M522.102,-787.026C559.52,-796.429 603.569,-806.23 644,-812 767.211,-829.584 914.564,-832.175 985.976,-832.277"/>
 <polygon fill="none" stroke="black" points="986.361,-835.777 996.36,-832.274 986.359,-828.777 986.361,-835.777"/>
 <text text-anchor="middle" x="738.254" y="-816.081" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- aii#316 -->
-<g id="node3" class="node"><title>aii#316</title>
-<g id="a_node3"><a xlink:href="https://github.com/quattor/aii/pull/316" xlink:title="aii#316 (pull-request)" target="_parent">
+<g id="node4" class="node"><title>aii#316</title>
+<g id="a_node4"><a xlink:href="https://github.com/quattor/aii/pull/316" xlink:title="aii#316 (pull-request)" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="831,-803.5 655,-803.5 655,-742.5 831,-742.5 831,-803.5"/>
 <text text-anchor="middle" x="743" y="-781.5" font-family="Sans" font-size="10.00">aii-ks: generate kickstart repo</text>
 <text text-anchor="middle" x="743" y="-770.5" font-family="Sans" font-size="10.00">entries based on SPMA</text>
@@ -50,42 +70,42 @@
 </g>
 </g>
 <!-- aii#328&#45;&gt;aii#316 -->
-<g id="edge2" class="edge"><title>aii#328-&gt;aii#316</title>
+<g id="edge3" class="edge"><title>aii#328-&gt;aii#316</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M522.081,-765.196C560.563,-766.562 605.56,-768.159 644.792,-769.551"/>
 <polygon fill="none" stroke="black" points="644.781,-773.052 654.899,-769.909 645.029,-766.057 644.781,-773.052"/>
 <text text-anchor="middle" x="568.561" y="-759.555" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- aii#316&#45;&gt;aii#280 -->
-<g id="edge3" class="edge"><title>aii#316-&gt;aii#280</title>
+<g id="edge4" class="edge"><title>aii#316-&gt;aii#280</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M831.058,-791.023C882.518,-801.676 945.406,-814.695 986.29,-823.158"/>
 <polygon fill="none" stroke="black" points="985.688,-826.608 996.19,-825.208 987.107,-819.753 985.688,-826.608"/>
 <text text-anchor="middle" x="893.279" y="-800.044" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- aii#314 -->
-<g id="node4" class="node"><title>aii#314</title>
+<g id="node5" class="node"><title>aii#314</title>
 <polygon fill="lightgrey" stroke="black" points="1063.5,-793.5 996.5,-793.5 996.5,-754.5 1063.5,-754.5 1063.5,-793.5"/>
 <text text-anchor="middle" x="1030" y="-771.5" font-family="Sans" font-size="10.00">aii#314</text>
 </g>
 <!-- aii#316&#45;&gt;aii#314 -->
-<g id="edge4" class="edge"><title>aii#316-&gt;aii#314</title>
+<g id="edge5" class="edge"><title>aii#316-&gt;aii#314</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M831.058,-773.305C882.409,-773.486 945.14,-773.706 986.03,-773.849"/>
 <polygon fill="none" stroke="black" points="986.177,-777.35 996.19,-773.885 986.202,-770.35 986.177,-777.35"/>
 <text text-anchor="middle" x="893.741" y="-765.596" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- aii#315 -->
-<g id="node5" class="node"><title>aii#315</title>
+<g id="node6" class="node"><title>aii#315</title>
 <polygon fill="lightgrey" stroke="black" points="1063.5,-736.5 996.5,-736.5 996.5,-697.5 1063.5,-697.5 1063.5,-736.5"/>
 <text text-anchor="middle" x="1030" y="-714.5" font-family="Sans" font-size="10.00">aii#315</text>
 </g>
 <!-- aii#316&#45;&gt;aii#315 -->
-<g id="edge5" class="edge"><title>aii#316-&gt;aii#315</title>
+<g id="edge6" class="edge"><title>aii#316-&gt;aii#315</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M831.058,-755.894C882.518,-745.782 945.406,-733.425 986.29,-725.392"/>
 <polygon fill="none" stroke="black" points="987.052,-728.809 996.19,-723.447 985.702,-721.941 987.052,-728.809"/>
 <text text-anchor="middle" x="893.279" y="-731.738" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- aii#299 -->
-<g id="node6" class="node"><title>aii#299</title>
-<g id="a_node6"><a xlink:href="https://github.com/quattor/aii/pull/299" xlink:title="aii#299 (pull-request)" target="_parent">
+<g id="node7" class="node"><title>aii#299</title>
+<g id="a_node7"><a xlink:href="https://github.com/quattor/aii/pull/299" xlink:title="aii#299 (pull-request)" target="_parent">
 <polygon fill="#6cc644" stroke="black" points="507.5,-855 354.5,-855 354.5,-805 507.5,-805 507.5,-855"/>
 <text text-anchor="middle" x="431" y="-833" font-family="Sans" font-size="10.00">aii-dhcp: support optional</text>
 <text text-anchor="middle" x="431" y="-822" font-family="Sans" font-size="10.00">hostname ip verification</text>
@@ -93,26 +113,10 @@
 </g>
 </g>
 <!-- aii#299&#45;&gt;aii#280 -->
-<g id="edge6" class="edge"><title>aii#299-&gt;aii#280</title>
+<g id="edge7" class="edge"><title>aii#299-&gt;aii#280</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M507.966,-837.126C548.332,-840.561 598.817,-844.297 644,-846 735.491,-849.448 758.514,-849.572 850,-846 896.634,-844.179 949.947,-839.699 986.175,-836.294"/>
 <polygon fill="none" stroke="black" points="986.759,-839.754 996.382,-835.32 986.094,-832.786 986.759,-839.754"/>
 <text text-anchor="middle" x="732.037" y="-840.626" font-family="Sans" font-size="10.00">requires</text>
-</g>
-<!-- aii#331 -->
-<g id="node7" class="node"><title>aii#331</title>
-<g id="a_node7"><a xlink:href="https://github.com/quattor/aii/pull/331" xlink:title="aii#331 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="186,-792.5 44,-792.5 44,-731.5 186,-731.5 186,-792.5"/>
-<text text-anchor="middle" x="115" y="-770.5" font-family="Sans" font-size="10.00">let aii generate ansible</text>
-<text text-anchor="middle" x="115" y="-759.5" font-family="Sans" font-size="10.00">playbook for supported</text>
-<text text-anchor="middle" x="115" y="-748.5" font-family="Sans" font-size="10.00">components</text>
-</a>
-</g>
-</g>
-<!-- aii#331&#45;&gt;aii#328 -->
-<g id="edge7" class="edge"><title>aii#331-&gt;aii#328</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M186.077,-762C228.343,-762 282.883,-762 329.668,-762"/>
-<polygon fill="none" stroke="black" points="329.834,-765.5 339.834,-762 329.834,-758.5 329.834,-765.5"/>
-<text text-anchor="middle" x="242.574" y="-754" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- CAF#257 -->
 <g id="node8" class="node"><title>CAF#257</title>
