@@ -191,7 +191,7 @@
 <!-- configuration&#45;modules&#45;core#1490 -->
 <g id="node14" class="node"><title>configuration-modules-core#1490</title>
 <g id="a_node14"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1490" xlink:title="configuration-modules-core#1490 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="514.5,-355.5 347.5,-355.5 347.5,-294.5 514.5,-294.5 514.5,-355.5"/>
+<polygon fill="#6e5494" stroke="black" points="514.5,-355.5 347.5,-355.5 347.5,-294.5 514.5,-294.5 514.5,-355.5"/>
 <text text-anchor="middle" x="431" y="-333.5" font-family="Sans" font-size="10.00">ncm-ceph: Add support for</text>
 <text text-anchor="middle" x="431" y="-322.5" font-family="Sans" font-size="10.00">orchestrator/cephadm under</text>
 <text text-anchor="middle" x="431" y="-311.5" font-family="Sans" font-size="10.00">octopus</text>
@@ -404,7 +404,7 @@
 <!-- template&#45;library&#45;standard#140 -->
 <g id="node32" class="node"><title>template-library-standard#140</title>
 <g id="a_node32"><a xlink:href="https://github.com/quattor/template-library-standard/pull/140" xlink:title="template-library-standard#140 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="834,-418 652,-418 652,-368 834,-368 834,-418"/>
+<polygon fill="#6e5494" stroke="black" points="834,-418 652,-418 652,-368 834,-368 834,-418"/>
 <text text-anchor="middle" x="743" y="-396" font-family="Sans" font-size="10.00">machine-types/core refactoring</text>
 <text text-anchor="middle" x="743" y="-385" font-family="Sans" font-size="10.00">to make it more flexible</text>
 </a>
