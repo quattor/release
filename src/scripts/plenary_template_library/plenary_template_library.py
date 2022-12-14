@@ -1,7 +1,7 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import logging
-from urllib import urlopen
+from urllib.request import urlopen
 from json import load
 from datetime import datetime, timedelta
 from os.path import exists, isdir, join, abspath
@@ -16,11 +16,11 @@ import errno
 RELEASES_URL = 'http://www.quattor.org/release/releases.json'
 LIBRARY_URL_PATTERN = 'https://github.com/quattor/template-library-%s.git'
 LIBRARY_BRANCHES = {
-    'core' : ['master'],
-    'grid' : ['umd-3', 'umd-4'],
-    'os' : ['sl5.x-x86_64', 'sl6.x-x86_64', 'el7.x-x86_64'],
-    'standard' : ['master'],
-    'openstack' : ['mitaka', 'newton', 'ocata'],
+    'core': ['master'],
+    'grid': ['umd-3', 'umd-4'],
+    'os': ['sl6.x-x86_64', 'el7.x-x86_64', 'el8.x-x86-64'],
+    'standard': ['master'],
+    'openstack': ['mitaka', 'newton', 'ocata'],
 }
 
 BIN_GIT = '/usr/bin/git'
@@ -29,33 +29,29 @@ BIN_RSYNC = '/usr/bin/rsync'
 
 def execute(command):
     """Wrapper around subprocess, calls an external process, logging stdout and stderr to debug"""
-    logger = logging.getLogger('sync-template-library')
+    logger = logging.getLogger()
     if command:
-        process = subprocess.Popen(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = process.communicate()
         logger.debug('Executed %s, stdout: "%s", stderr: "%s"', command[0], output.strip(), error.strip())
         if process.returncode > 0:
             logger.error('Executed %s with errors: "%s"', command[0], error.strip())
             return False
         return True
-    else:
-        logger.error('Called execute without specifing a command to run')
+
+    logger.error('Called execute without specifing a command to run')
     return False
 
 
 def make_target_dir(directory):
     """Create specified directory. Stay silent if it already exists, but complain loudly if it isn't a directory"""
-    logger = logging.getLogger('sync-template-library')
+    logger = logging.getLogger()
     try:
         makedirs(directory)
         logger.debug('Created directory %s', directory)
         return True
-    except OSError, e:
-        if e.errno != errno.EEXIST:
+    except OSError as err:
+        if err.errno != errno.EEXIST:
             raise
         if exists(directory):
             if isdir(directory):
@@ -66,18 +62,18 @@ def make_target_dir(directory):
 
 
 def get_release_dates():
-    #logger = logging.getLogger('sync-template-library')
+    # logger = logging.getLogger()
     releases = load(urlopen(RELEASES_URL))
     results = []
-    for release, properties in releases.iteritems():
-        release = '%s.0' % release
+    for release, properties in releases.items():
+        release = f'{release}.0'
         release_date = datetime.strptime(properties['target'], '%Y-%m-%d')
         results.append((release, release_date))
     return results
 
 
 def get_current_releases():
-    logger = logging.getLogger('sync-template-library')
+    logger = logging.getLogger()
     results = []
     now = datetime.now()
     threshold = now - timedelta(days=365)
@@ -93,11 +89,11 @@ def get_current_releases():
 
 
 def sync_template_library(base_dir, releases):
-    logger = logging.getLogger('sync-template-library')
+    logger = logging.getLogger()
 
-    logger.debug('Using %s as base directory', base_dir)
+    logger.debug('Using %s as base directory for releases %s', base_dir, ', '.join(releases))
 
-    for library, branches in LIBRARY_BRANCHES.iteritems():
+    for library, branches in LIBRARY_BRANCHES.items():
         logger.info('Processing library %s', library)
 
         url = LIBRARY_URL_PATTERN % (library)
@@ -117,7 +113,7 @@ def sync_template_library(base_dir, releases):
                 target_dir = join(base_dir, release, library)
                 logger.debug('Target dir is %s', target_dir)
                 if branch != 'master':
-                    tag = '%s-%s' % (branch, tag)
+                    tag = f'{branch}-{tag}'
                     target_dir = join(target_dir, branch)
                     logger.debug('Added branch to target dir, which is now %s', target_dir)
 
@@ -134,17 +130,12 @@ def sync_template_library(base_dir, releases):
         try:
             rmtree(temp_dir)
             logger.debug('Removed temporary directory %s', temp_dir)
-        except OSError, e:
-            logger.error('Caught exception %s trying to remove temporary directory %s', temp_dir, e.strerror)
+        except OSError as err:
+            logger.error('Caught exception %s trying to remove temporary directory %s', temp_dir, err)
 
 
-
-if __name__ == '__main__':
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(levelname)s: %(message)s',
-        name='sync-template-library'
-    )
+def main():
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
     parser = ArgumentParser(description='Synchronise quattor template libraries')
     parser.add_argument('--debug', action='store_true', help='Enable debug output')
@@ -157,7 +148,7 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
 
-    logger = logging.getLogger('sync-template-library')
+    logger = logging.getLogger()
     if args.debug:
         logger.setLevel(logging.DEBUG)
 
@@ -169,3 +160,7 @@ if __name__ == '__main__':
     sync_template_library(abspath(args.path), releases)
 
     sys_exit(0)
+
+
+if __name__ == '__main__':
+    main()
