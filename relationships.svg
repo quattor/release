@@ -58,7 +58,7 @@
 <!-- aii#316 -->
 <g id="node4" class="node"><title>aii#316</title>
 <g id="a_node4"><a xlink:href="https://github.com/quattor/aii/pull/316" xlink:title="aii#316 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="824,-855.5 648,-855.5 648,-794.5 824,-794.5 824,-855.5"/>
+<polygon fill="#6e5494" stroke="black" points="824,-855.5 648,-855.5 648,-794.5 824,-794.5 824,-855.5"/>
 <text text-anchor="middle" x="736" y="-833.5" font-family="Sans" font-size="10.00">aii-ks: generate kickstart repo</text>
 <text text-anchor="middle" x="736" y="-822.5" font-family="Sans" font-size="10.00">entries based on SPMA</text>
 <text text-anchor="middle" x="736" y="-811.5" font-family="Sans" font-size="10.00">configuration</text>
