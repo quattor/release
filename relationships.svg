@@ -58,13 +58,7 @@
 <!-- aii#316 -->
 <g id="node4" class="node"><title>aii#316</title>
 <g id="a_node4"><a xlink:href="https://github.com/quattor/aii/pull/316" xlink:title="aii#316 (pull-request)" target="_parent">
-<defs>
-<linearGradient id="l_0" gradientUnits="userSpaceOnUse" x1="648" y1="-489" x2="824" y2="-489">
-<stop offset="0" style="stop-color:#000000;stop-opacity:1.;"/>
-<stop offset="1" style="stop-color:#000000;stop-opacity:1.;"/>
-</linearGradient>
-</defs>
-<polygon fill="url(#l_0)" stroke="black" points="824,-519.5 648,-519.5 648,-458.5 824,-458.5 824,-519.5"/>
+<polygon fill="#6e5494" stroke="black" points="824,-519.5 648,-519.5 648,-458.5 824,-458.5 824,-519.5"/>
 <text text-anchor="middle" x="736" y="-497.5" font-family="Sans" font-size="10.00">aii-ks: generate kickstart repo</text>
 <text text-anchor="middle" x="736" y="-486.5" font-family="Sans" font-size="10.00">entries based on SPMA</text>
 <text text-anchor="middle" x="736" y="-475.5" font-family="Sans" font-size="10.00">configuration</text>
@@ -193,13 +187,7 @@
 <!-- configuration&#45;modules&#45;core#1570 -->
 <g id="node14" class="node"><title>configuration-modules-core#1570</title>
 <g id="a_node14"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1570" xlink:title="configuration-modules-core#1570 (pull-request)" target="_parent">
-<defs>
-<linearGradient id="l_1" gradientUnits="userSpaceOnUse" x1="340.5" y1="-325" x2="507.5" y2="-325">
-<stop offset="0" style="stop-color:#000000;stop-opacity:1.;"/>
-<stop offset="1" style="stop-color:#000000;stop-opacity:1.;"/>
-</linearGradient>
-</defs>
-<polygon fill="url(#l_1)" stroke="black" points="507.5,-350 340.5,-350 340.5,-300 507.5,-300 507.5,-350"/>
+<polygon fill="#6e5494" stroke="black" points="507.5,-350 340.5,-350 340.5,-300 507.5,-300 507.5,-350"/>
 <text text-anchor="middle" x="424" y="-328" font-family="Sans" font-size="10.00">ncm-ntpd: Validate interface</text>
 <text text-anchor="middle" x="424" y="-317" font-family="Sans" font-size="10.00">match option</text>
 </a>
@@ -272,13 +260,7 @@
 <!-- configuration&#45;modules&#45;core#1490 -->
 <g id="node20" class="node"><title>configuration-modules-core#1490</title>
 <g id="a_node20"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1490" xlink:title="configuration-modules-core#1490 (pull-request)" target="_parent">
-<defs>
-<linearGradient id="l_2" gradientUnits="userSpaceOnUse" x1="340.5" y1="-535" x2="507.5" y2="-535">
-<stop offset="0" style="stop-color:#000000;stop-opacity:1.;"/>
-<stop offset="1" style="stop-color:#000000;stop-opacity:1.;"/>
-</linearGradient>
-</defs>
-<polygon fill="url(#l_2)" stroke="black" points="507.5,-565.5 340.5,-565.5 340.5,-504.5 507.5,-504.5 507.5,-565.5"/>
+<polygon fill="#6e5494" stroke="black" points="507.5,-565.5 340.5,-565.5 340.5,-504.5 507.5,-504.5 507.5,-565.5"/>
 <text text-anchor="middle" x="424" y="-543.5" font-family="Sans" font-size="10.00">ncm-ceph: Add support for</text>
 <text text-anchor="middle" x="424" y="-532.5" font-family="Sans" font-size="10.00">orchestrator/cephadm under</text>
 <text text-anchor="middle" x="424" y="-521.5" font-family="Sans" font-size="10.00">octopus</text>
@@ -299,13 +281,7 @@
 <!-- configuration&#45;modules&#45;core#1464 -->
 <g id="node22" class="node"><title>configuration-modules-core#1464</title>
 <g id="a_node22"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1464" xlink:title="configuration-modules-core#1464 (pull-request)" target="_parent">
-<defs>
-<linearGradient id="l_3" gradientUnits="userSpaceOnUse" x1="332" y1="-115" x2="516" y2="-115">
-<stop offset="0" style="stop-color:#000000;stop-opacity:1.;"/>
-<stop offset="1" style="stop-color:#000000;stop-opacity:1.;"/>
-</linearGradient>
-</defs>
-<polygon fill="url(#l_3)" stroke="black" points="516,-145.5 332,-145.5 332,-84.5 516,-84.5 516,-145.5"/>
+<polygon fill="#6e5494" stroke="black" points="516,-145.5 332,-145.5 332,-84.5 516,-84.5 516,-145.5"/>
 <text text-anchor="middle" x="424" y="-123.5" font-family="Sans" font-size="10.00">ncm-systemd: all pre and post</text>
 <text text-anchor="middle" x="424" y="-112.5" font-family="Sans" font-size="10.00">exec commands now take a list</text>
 <text text-anchor="middle" x="424" y="-101.5" font-family="Sans" font-size="10.00">instead of a string</text>
@@ -315,13 +291,7 @@
 <!-- template&#45;library&#45;core#212 -->
 <g id="node23" class="node"><title>template-library-core#212</title>
 <g id="a_node23"><a xlink:href="https://github.com/quattor/template-library-core/pull/212" xlink:title="template-library-core#212 (pull-request)" target="_parent">
-<defs>
-<linearGradient id="l_4" gradientUnits="userSpaceOnUse" x1="648.5" y1="-115" x2="823.5" y2="-115">
-<stop offset="0" style="stop-color:#000000;stop-opacity:1.;"/>
-<stop offset="1" style="stop-color:#000000;stop-opacity:1.;"/>
-</linearGradient>
-</defs>
-<polygon fill="url(#l_4)" stroke="black" points="823.5,-145.5 648.5,-145.5 648.5,-84.5 823.5,-84.5 823.5,-145.5"/>
+<polygon fill="#6e5494" stroke="black" points="823.5,-145.5 648.5,-145.5 648.5,-84.5 823.5,-84.5 823.5,-145.5"/>
 <text text-anchor="middle" x="736" y="-123.5" font-family="Sans" font-size="10.00">Add a transitional type for</text>
 <text text-anchor="middle" x="736" y="-112.5" font-family="Sans" font-size="10.00">strings being migrated to lists</text>
 <text text-anchor="middle" x="736" y="-101.5" font-family="Sans" font-size="10.00">of strings</text>
@@ -503,13 +473,7 @@
 <!-- template&#45;library&#45;standard#140 -->
 <g id="node38" class="node"><title>template-library-standard#140</title>
 <g id="a_node38"><a xlink:href="https://github.com/quattor/template-library-standard/pull/140" xlink:title="template-library-standard#140 (pull-request)" target="_parent">
-<defs>
-<linearGradient id="l_5" gradientUnits="userSpaceOnUse" x1="645" y1="-41" x2="827" y2="-41">
-<stop offset="0" style="stop-color:#000000;stop-opacity:1.;"/>
-<stop offset="1" style="stop-color:#000000;stop-opacity:1.;"/>
-</linearGradient>
-</defs>
-<polygon fill="url(#l_5)" stroke="black" points="827,-66 645,-66 645,-16 827,-16 827,-66"/>
+<polygon fill="#6e5494" stroke="black" points="827,-66 645,-66 645,-16 827,-16 827,-66"/>
 <text text-anchor="middle" x="736" y="-44" font-family="Sans" font-size="10.00">machine-types/core refactoring</text>
 <text text-anchor="middle" x="736" y="-33" font-family="Sans" font-size="10.00">to make it more flexible</text>
 </a>
