@@ -162,7 +162,7 @@
 <!-- configuration&#45;modules&#45;core#1578 -->
 <g id="node12" class="node"><title>configuration-modules-core#1578</title>
 <g id="a_node12"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1578" xlink:title="configuration-modules-core#1578 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="519,-634 329,-634 329,-584 519,-584 519,-634"/>
+<polygon fill="#6e5494" stroke="black" points="519,-634 329,-634 329,-584 519,-584 519,-634"/>
 <text text-anchor="middle" x="424" y="-612" font-family="Sans" font-size="10.00">ncm-modprobe: Change mkinitrd</text>
 <text text-anchor="middle" x="424" y="-601" font-family="Sans" font-size="10.00">references to dracut</text>
 </a>
@@ -171,7 +171,7 @@
 <!-- configuration&#45;modules&#45;core#1577 -->
 <g id="node13" class="node"><title>configuration-modules-core#1577</title>
 <g id="a_node13"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1577" xlink:title="configuration-modules-core#1577 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M824.5,-631C824.5,-631 649.5,-631 649.5,-631 643.5,-631 637.5,-625 637.5,-619 637.5,-619 637.5,-593 637.5,-593 637.5,-587 643.5,-581 649.5,-581 649.5,-581 824.5,-581 824.5,-581 830.5,-581 836.5,-587 836.5,-593 836.5,-593 836.5,-619 836.5,-619 836.5,-625 830.5,-631 824.5,-631"/>
+<path fill="#6e5494" stroke="black" d="M824.5,-631C824.5,-631 649.5,-631 649.5,-631 643.5,-631 637.5,-625 637.5,-619 637.5,-619 637.5,-593 637.5,-593 637.5,-587 643.5,-581 649.5,-581 649.5,-581 824.5,-581 824.5,-581 830.5,-581 836.5,-587 836.5,-593 836.5,-593 836.5,-619 836.5,-619 836.5,-625 830.5,-631 824.5,-631"/>
 <text text-anchor="middle" x="737" y="-609" font-family="Sans" font-size="10.00">ncm-modprobe: mkinitrd no longer</text>
 <text text-anchor="middle" x="737" y="-598" font-family="Sans" font-size="10.00">available on rhel9, use dracut</text>
 </a>
