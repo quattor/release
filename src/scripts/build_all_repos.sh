@@ -317,6 +317,8 @@ IUS_REPO_RPM_EL7=https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-
 AQUILON_PROTO_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aq_proto_releases.sh
 AQUILON_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aquilon_release.sh
 
+RPMLINT_CONFIG=https://raw.githubusercontent.com/quattor/release/master/src/rpmlint/config/quattor.toml
+
 if [[ ! -z "$ENABLEREPO" ]]; then
     ENABLEREPOSFULL="--enablerepo=$ENABLEREPO"
 fi
@@ -1182,10 +1184,19 @@ function test_rpms() {
         done
     done
 
+    rpmlint_cmd="rpmlint"
+    read -r rpmlint_major rpmlint_minor _ <<< "$(rpmlint --version | grep -Eo '[0-9]+(\.[0-9]+)+' | tr '.' ' ')"
+
+    # If version 2.4.0 or greater
+    if [[ $rpmlint_major -gt 2 || ($rpmlint_major -eq 2 && $rpmlint_minor -ge 4) ]]; then
+        rpmlint_dir="$(mktemp -d)"
+        run_wrapped wget -P "$rpmlint_dir" "$RPMLINT_CONFIG"
+        rpmlint_cmd="rpmlint --config $rpmlint_dir"
+    fi
     echo_info "Checking rpms in $RPMS with rpmlint"
-    run_wrapped rpmlint "$RPMS"
+    run_wrapped "$rpmlint_cmd" "$RPMS"
     if [[ $? -gt 0 ]]; then
-        error 111 "Rpmlint failed"
+        error 111 "rpmlint failed"
     fi
 }
 
