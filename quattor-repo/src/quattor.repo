@@ -1,6 +1,6 @@
 [quattor]
 name=Quattor ${project.version}
-baseurl=http://yum.quattor.org/${project.version}
+baseurl=http://yum.quattor.org/${project.version}/el$releasever
 enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-quattor-jrha
