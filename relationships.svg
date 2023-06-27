@@ -548,7 +548,7 @@
 <!-- template&#45;library&#45;grid#241 -->
 <g id="node44" class="node"><title>template-library-grid#241</title>
 <g id="a_node44"><a xlink:href="https://github.com/quattor/template-library-grid/pull/241" xlink:title="template-library-grid#241 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="827,-378 633,-378 633,-328 827,-328 827,-378"/>
+<polygon fill="#6e5494" stroke="black" points="827,-378 633,-378 633,-328 827,-328 827,-378"/>
 <text text-anchor="middle" x="730" y="-356" font-family="Sans" font-size="10.00">machines-types update based on</text>
 <text text-anchor="middle" x="730" y="-345" font-family="Sans" font-size="10.00">new standard/machine-types/core</text>
 </a>
@@ -604,18 +604,14 @@
 </g>
 <!-- template&#45;library&#45;standard#150 -->
 <g id="node49" class="node"><title>template-library-standard#150</title>
-<g id="a_node49"><a xlink:href="https://github.com/quattor/template-library-standard/issues/150" xlink:title="template-library-standard#150 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M495.5,-1810C495.5,-1810 342.5,-1810 342.5,-1810 336.5,-1810 330.5,-1804 330.5,-1798 330.5,-1798 330.5,-1772 330.5,-1772 330.5,-1766 336.5,-1760 342.5,-1760 342.5,-1760 495.5,-1760 495.5,-1760 501.5,-1760 507.5,-1766 507.5,-1772 507.5,-1772 507.5,-1798 507.5,-1798 507.5,-1804 501.5,-1810 495.5,-1810"/>
-<text text-anchor="middle" x="419" y="-1788" font-family="Sans" font-size="10.00">way to set lvm raid type when</text>
-<text text-anchor="middle" x="419" y="-1777" font-family="Sans" font-size="10.00">vol type = lvm</text>
-</a>
-</g>
+<polygon fill="lightgrey" stroke="black" points="509.5,-1804.5 328.5,-1804.5 328.5,-1765.5 509.5,-1765.5 509.5,-1804.5"/>
+<text text-anchor="middle" x="419" y="-1782.5" font-family="Sans" font-size="10.00">template-library-standard#150</text>
 </g>
 <!-- template&#45;library&#45;standard#151&#45;&gt;template&#45;library&#45;standard#150 -->
 <g id="edge31" class="edge"><title>template-library-standard#151-&gt;template-library-standard#150</title>
-<path fill="none" stroke="black" stroke-width="2" d="M185.271,-1785C226.574,-1785 277.071,-1785 320.459,-1785"/>
-<polygon fill="black" stroke="black" points="320.461,-1788.5 330.461,-1785 320.461,-1781.5 320.461,-1788.5"/>
-<text text-anchor="middle" x="246.071" y="-1777" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M185.271,-1785C225.814,-1785 275.216,-1785 318.057,-1785"/>
+<polygon fill="black" stroke="black" points="318.226,-1788.5 328.226,-1785 318.226,-1781.5 318.226,-1788.5"/>
+<text text-anchor="middle" x="244.679" y="-1777" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 </g>
 </svg>
