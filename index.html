@@ -312,7 +312,7 @@
 <td><ul class="list-unstyled">
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/issues/1480"><strong>ncm-systemd: Look at comments from #1407</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jrha">jrha</a> <span class="text-muted"><span class="reldate">2020-12-17T11:18:32</span></span><span class="text-muted">, Assigned to</span> <a href="http://www.github.com/stdweird">stdweird</a><span class="text-muted">, Updated <span class="reldate">2023-06-23T16:03:30</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/issues/1524"><strong>ncm-spma: yumdnf backend: fails while trying to expand groups</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 2</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/StephaneGerardVUB">StephaneGerardVUB</a> <span class="text-muted"><span class="reldate">2021-09-02T09:48:52</span></span><span class="text-muted">, Updated <span class="reldate">2023-06-23T20:10:32</span></span> </div></li>
-<li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <span class="github-review github-review-pending octicon octicon-primitive-dot" title="Review state: pending"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1595"><strong>ncm-network core schema: allow realhostname to be a short hostname</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 3</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jouvin">jouvin</a> <span class="text-muted"><span class="reldate">2023-06-28T13:48:42</span></span><span class="text-muted">, Updated <span class="reldate">2023-06-28T15:53:38</span></span> </div></li>
+<li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <span class="github-review github-review-pending octicon octicon-primitive-dot" title="Review state: pending"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1595"><strong>ncm-network core schema: allow realhostname to be a short hostname</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 6</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jouvin">jouvin</a> <span class="text-muted"><span class="reldate">2023-06-28T13:48:42</span></span><span class="text-muted">, Updated <span class="reldate">2023-06-28T18:12:21</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <span class="github-review github-review-commented octicon octicon-eye" title="Review state: commented"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1452"><strong>ncm-metaconfig: ssh daemon configuration support</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/stdweird">stdweird</a> <span class="text-muted"><span class="reldate">2020-06-10T21:44:50</span></span><span class="text-muted">, Updated <span class="reldate">2023-06-23T16:11:33</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/configuration-modules-core/issues/1471"><strong>ncm-authconfig: sssd: tighten types</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jrha">jrha</a> <span class="text-muted"><span class="reldate">2020-10-12T19:47:54</span></span><span class="text-muted">, Updated <span class="reldate">2023-06-23T18:21:28</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <span class="github-review github-review-pending octicon octicon-primitive-dot" title="Review state: pending"></span> <a href="https://github.com/quattor/configuration-modules-core/pull/1580"><strong>metaconfig: cumulus: basic initialisation script and bgp frr support</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/stdweird">stdweird</a> <span class="text-muted"><span class="reldate">2023-03-23T08:56:37</span></span><span class="text-muted">, Updated <span class="reldate">2023-06-23T20:40:02</span></span> </div></li>
@@ -792,6 +792,34 @@
 <thead>
 <tr><th>Date</th><th>OS</th><th>Result</th><th>Files</th></tr></thead>
 <tbody>
+<tr style="border-top: 2px solid #ddd"><td class="text-center"><b>2023-06-29</b></td>
+<td style="color: rgb(231,138,195)"><span class="fl-rocky-linux" title="Rocky"></span> 9</td>
+<td>
+<span style="color:#ca0020"><samp style="font-size: smaller">BUILD_ALL_REPOS E: mvn_package mvn package <b>failed</b> for repository maven-tools <br>(cmd mvn clean package -Dprove.args=-v)</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T02/Rocky-Linux-9/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T02/Rocky-Linux-9/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
+<tr><td class="text-center" style="border-top-style: none"><span class="text-muted" title="2023-06-29">&#x3003;</span></td>
+<td style="color: rgb(166,216,84)"><span class="fl-rocky-linux" title="Rocky"></span> 8</td>
+<td>
+<span style="color:#ca0020"><samp style="font-size: smaller">BUILD_ALL_REPOS E: mvn_package mvn package <b>failed</b> for repository maven-tools <br>(cmd mvn clean package -Dprove.args=-v)</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T02/Rocky-Linux-8/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T02/Rocky-Linux-8/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
+<tr><td class="text-center" style="border-top-style: none"><span class="text-muted" title="2023-06-29">&#x3003;</span></td>
+<td style="color: rgb(102,194,165)"><span class="fl-centos" title="CentOS"></span> 7</td>
+<td>
+<span style="color:#ca0020"><samp style="font-size: smaller">BUILD_ALL_REPOS E: mvn_package mvn package <b>failed</b> for repository ncm-ncd <br>(cmd mvn clean package -Dprove.args=-v)</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T02/CentOS-Linux-7/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T02/CentOS-Linux-7/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
+<tr><td class="text-center" style="border-top-style: none"><span class="text-muted" title="2023-06-29">&#x3003;</span></td>
+<td style="color: rgb(252,141,98)"><span class="fl-centos" title="CentOS"></span> 6</td>
+<td>
+<span style="color:#ca0020"><samp style="font-size: smaller">BUILD_ALL_REPOS E: <b>Failed</b> installation of pkg apache-maven with yum</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T01/CentOS-Linux-6/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-06-29T01/CentOS-Linux-6/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
 <tr style="border-top: 2px solid #ddd"><td class="text-center"><b>2023-06-28</b></td>
 <td style="color: rgb(231,138,195)"><span class="fl-rocky-linux" title="Rocky"></span> 9</td>
 <td>
@@ -8172,7 +8200,7 @@
 </div>
 </div>
 </div>
-<p class="text-muted">Page generated <span class="reldate">2023-06-28 16:35:47<span></p>
+<p class="text-muted">Page generated <span class="reldate">2023-06-29 07:06:23<span></p>
 </div>
 
   <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
