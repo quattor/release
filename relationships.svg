@@ -247,7 +247,7 @@
 <!-- configuration&#45;modules&#45;core#1567 -->
 <g id="node19" class="node"><title>configuration-modules-core#1567</title>
 <g id="a_node19"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1567" xlink:title="configuration-modules-core#1567 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="822.5,-662 637.5,-662 637.5,-612 822.5,-612 822.5,-662"/>
+<polygon fill="#6e5494" stroke="black" points="822.5,-662 637.5,-662 637.5,-612 822.5,-612 822.5,-662"/>
 <text text-anchor="middle" x="730" y="-640" font-family="Sans" font-size="10.00">ncm-systemd: All Exec* options</text>
 <text text-anchor="middle" x="730" y="-629" font-family="Sans" font-size="10.00">can be lists of strings</text>
 </a>
@@ -256,7 +256,7 @@
 <!-- configuration&#45;modules&#45;core#1262 -->
 <g id="node20" class="node"><title>configuration-modules-core#1262</title>
 <g id="a_node20"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1262" xlink:title="configuration-modules-core#1262 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M1123,-670C1123,-670 949,-670 949,-670 943,-670 937,-664 937,-658 937,-658 937,-632 937,-632 937,-626 943,-620 949,-620 949,-620 1123,-620 1123,-620 1129,-620 1135,-626 1135,-632 1135,-632 1135,-658 1135,-658 1135,-664 1129,-670 1123,-670"/>
+<path fill="#6e5494" stroke="black" d="M1123,-670C1123,-670 949,-670 949,-670 943,-670 937,-664 937,-658 937,-658 937,-632 937,-632 937,-626 943,-620 949,-620 949,-620 1123,-620 1123,-620 1129,-620 1135,-626 1135,-632 1135,-632 1135,-658 1135,-658 1135,-664 1129,-670 1123,-670"/>
 <text text-anchor="middle" x="1036" y="-648" font-family="Sans" font-size="10.00">ncm-systemd: ExecStart should be</text>
 <text text-anchor="middle" x="1036" y="-637" font-family="Sans" font-size="10.00">a list of string, not a string</text>
 </a>
