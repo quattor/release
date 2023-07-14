@@ -424,7 +424,7 @@
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/aii/issues/270"><strong>aii-ks: set hostname</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/stdweird">stdweird</a> <span class="text-muted"><span class="reldate">2017-04-24T10:48:37</span></span><span class="text-muted">, Updated <span class="reldate">2017-04-24T10:48:37</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/aii/issues/256"><strong>aii-ks: ksuserhooks() should handle NoAction flag</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jouvin">jouvin</a> <span class="text-muted"><span class="reldate">2017-03-01T21:20:01</span></span><span class="text-muted">, Updated <span class="reldate">2017-09-07T14:19:44</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/aii/issues/304"><strong>aii-ks issue : "access denied" from ssh or console access after post install (centos7)</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 3</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/pugnere">pugnere</a> <span class="text-muted"><span class="reldate">2019-03-05T14:14:55</span></span><span class="text-muted">, Updated <span class="reldate">2019-03-07T15:27:22</span></span> </div></li>
-<li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/aii/issues/338"><strong>aii-ks 21.12: regex for identifying PXE boot entries not strict enough</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 1</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jouvin">jouvin</a> <span class="text-muted"><span class="reldate">2023-07-06T15:22:05</span></span><span class="text-muted">, Assigned to</span> <a href="http://www.github.com/jrha">jrha</a><span class="text-muted">, Updated <span class="reldate">2023-07-13T14:56:34</span></span> </div></li>
+<li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/aii/issues/338"><strong>aii-ks 21.12: regex for identifying PXE boot entries not strict enough</strong></a> <span class="text-muted"><span class="octicon octicon-comment-discussion"></span> 2</span> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jouvin">jouvin</a> <span class="text-muted"><span class="reldate">2023-07-06T15:22:05</span></span><span class="text-muted">, Assigned to</span> <a href="http://www.github.com/jrha">jrha</a><span class="text-muted">, Updated <span class="reldate">2023-07-14T06:20:51</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-git-pull-request" title="State: open"></span> <span class="github-review github-review-commented octicon octicon-eye" title="Review state: commented"></span> <a href="https://github.com/quattor/aii/pull/299"><strong>aii-dhcp: support optional hostname ip verification</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/stdweird">stdweird</a> <span class="text-muted"><span class="reldate">2018-09-13T11:58:13</span></span><span class="text-muted">, Updated <span class="reldate">2023-01-03T11:06:43</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/aii/issues/150"><strong>aii-dhcp: reuse of hosts (i.e. mac addresses)</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/kwaegema">kwaegema</a> <span class="text-muted"><span class="reldate">2015-12-01T09:21:54</span></span><span class="text-muted">, Updated <span class="reldate">2016-01-12T11:07:42</span></span> </div></li>
 <li class="thing-open"><span class="text-github-open octicon octicon-issue-opened" title="State: open"></span> <a href="https://github.com/quattor/aii/issues/322"><strong>aii-dhcp: Review differences between module and plugin.</strong></a> <div style="margin-left: 16px;"><span class="text-muted">Created by</span> <a href="http://www.github.com/jrha">jrha</a> <span class="text-muted"><span class="reldate">2019-12-17T13:24:03</span></span><span class="text-muted">, Updated <span class="reldate">2019-12-17T13:24:03</span></span> </div></li>
@@ -808,6 +808,34 @@
 <thead>
 <tr><th>Date</th><th>OS</th><th>Result</th><th>Files</th></tr></thead>
 <tbody>
+<tr style="border-top: 2px solid #ddd"><td class="text-center"><b>2023-07-14</b></td>
+<td style="color: rgb(231,138,195)"><span class="fl-rocky-linux" title="Rocky"></span> 9</td>
+<td>
+<span style="color:#ca0020"><samp style="font-size: smaller">        RPMLINT O: 108 packages and 0 specfiles checked; 452 errors, 577 warnings, 452 badness; has taken 2.6 s</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/Rocky-Linux-9/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/Rocky-Linux-9/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
+<tr><td class="text-center" style="border-top-style: none"><span class="text-muted" title="2023-07-14">&#x3003;</span></td>
+<td style="color: rgb(166,216,84)"><span class="fl-rocky-linux" title="Rocky"></span> 8</td>
+<td>
+<span style="color:#777777"><samp style="font-size: smaller">BUILD_ALL_REPOS I: build_all_repos END <b>SUCCESS</b> DEST /home/rado48/quattordev1689301013 Fri Jul 14 02:16:53 UTC 2023</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/Rocky-Linux-8/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/Rocky-Linux-8/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
+<tr><td class="text-center" style="border-top-style: none"><span class="text-muted" title="2023-07-14">&#x3003;</span></td>
+<td style="color: rgb(102,194,165)"><span class="fl-centos" title="CentOS"></span> 7</td>
+<td>
+<span style="color:#777777"><samp style="font-size: smaller">BUILD_ALL_REPOS I: build_all_repos END <b>SUCCESS</b> DEST /home/qisa31/quattordev1689303588 Fri Jul 14 02:59:48 UTC 2023</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/CentOS-Linux-7/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/CentOS-Linux-7/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
+<tr><td class="text-center" style="border-top-style: none"><span class="text-muted" title="2023-07-14">&#x3003;</span></td>
+<td style="color: rgb(252,141,98)"><span class="fl-centos" title="CentOS"></span> 6</td>
+<td>
+<span style="color:#777777"><samp style="font-size: smaller">BUILD_ALL_REPOS I: build_all_repos END <b>SUCCESS</b> DEST /home/cigo54/quattordev1689300587 Fri Jul 14 02:09:47 UTC 2023</samp></span></td>
+<td>
+<a title="Build log" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/CentOS-Linux-6/log.gz"><span class="octicon octicon-file-text"></span></a><a title="Packages" class="btn btn-default btn-xs" href="http://yum.quattor.org/nightlies/2023-07-14T02/CentOS-Linux-6/rpms"><span class="octicon octicon-package"></span></a></td>
+</tr>
 <tr style="border-top: 2px solid #ddd"><td class="text-center"><b>2023-07-13</b></td>
 <td style="color: rgb(231,138,195)"><span class="fl-rocky-linux" title="Rocky"></span> 9</td>
 <td>
@@ -8608,7 +8636,7 @@
 </div>
 </div>
 </div>
-<p class="text-muted">Page generated <span class="reldate">2023-07-13 16:36:22<span></p>
+<p class="text-muted">Page generated <span class="reldate">2023-07-14 07:06:53<span></p>
 </div>
 
   <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
