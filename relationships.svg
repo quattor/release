@@ -18,7 +18,7 @@
 <!-- aii#340 -->
 <g id="node1" class="node"><title>aii#340</title>
 <g id="a_node1"><a xlink:href="https://github.com/quattor/aii/pull/340" xlink:title="aii#340 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="818.5,-1543.5 641.5,-1543.5 641.5,-1482.5 818.5,-1482.5 818.5,-1543.5"/>
+<polygon fill="#6e5494" stroke="black" points="818.5,-1543.5 641.5,-1543.5 641.5,-1482.5 818.5,-1482.5 818.5,-1543.5"/>
 <text text-anchor="middle" x="730" y="-1521.5" font-family="Sans" font-size="10.00">UEFI boot order definition: set</text>
 <text text-anchor="middle" x="730" y="-1510.5" font-family="Sans" font-size="10.00">the device currently booted as</text>
 <text text-anchor="middle" x="730" y="-1499.5" font-family="Sans" font-size="10.00">the first entry</text>
@@ -28,7 +28,7 @@
 <!-- aii#338 -->
 <g id="node2" class="node"><title>aii#338</title>
 <g id="a_node2"><a xlink:href="https://github.com/quattor/aii/issues/338" xlink:title="aii#338 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M1115.5,-1543.5C1115.5,-1543.5 956.5,-1543.5 956.5,-1543.5 950.5,-1543.5 944.5,-1537.5 944.5,-1531.5 944.5,-1531.5 944.5,-1494.5 944.5,-1494.5 944.5,-1488.5 950.5,-1482.5 956.5,-1482.5 956.5,-1482.5 1115.5,-1482.5 1115.5,-1482.5 1121.5,-1482.5 1127.5,-1488.5 1127.5,-1494.5 1127.5,-1494.5 1127.5,-1531.5 1127.5,-1531.5 1127.5,-1537.5 1121.5,-1543.5 1115.5,-1543.5"/>
+<path fill="#6e5494" stroke="black" d="M1115.5,-1543.5C1115.5,-1543.5 956.5,-1543.5 956.5,-1543.5 950.5,-1543.5 944.5,-1537.5 944.5,-1531.5 944.5,-1531.5 944.5,-1494.5 944.5,-1494.5 944.5,-1488.5 950.5,-1482.5 956.5,-1482.5 956.5,-1482.5 1115.5,-1482.5 1115.5,-1482.5 1121.5,-1482.5 1127.5,-1488.5 1127.5,-1494.5 1127.5,-1494.5 1127.5,-1531.5 1127.5,-1531.5 1127.5,-1537.5 1121.5,-1543.5 1115.5,-1543.5"/>
 <text text-anchor="middle" x="1036" y="-1521.5" font-family="Sans" font-size="10.00">aii-ks 21.12: regex for</text>
 <text text-anchor="middle" x="1036" y="-1510.5" font-family="Sans" font-size="10.00">identifying PXE boot entries not</text>
 <text text-anchor="middle" x="1036" y="-1499.5" font-family="Sans" font-size="10.00">strict enough</text>
