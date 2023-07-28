@@ -209,7 +209,7 @@
 <!-- configuration&#45;modules&#45;core#1605 -->
 <g id="node16" class="node"><title>configuration-modules-core#1605</title>
 <g id="a_node16"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1605" xlink:title="configuration-modules-core#1605 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="822.5,-1333 637.5,-1333 637.5,-1283 822.5,-1283 822.5,-1333"/>
+<polygon fill="#6e5494" stroke="black" points="822.5,-1333 637.5,-1333 637.5,-1283 822.5,-1283 822.5,-1333"/>
 <text text-anchor="middle" x="730" y="-1311" font-family="Sans" font-size="10.00">kafka &amp; hnormalise: Add and fix</text>
 <text text-anchor="middle" x="730" y="-1300" font-family="Sans" font-size="10.00">tests</text>
 </a>
@@ -218,7 +218,7 @@
 <!-- configuration&#45;modules&#45;core#1487 -->
 <g id="node17" class="node"><title>configuration-modules-core#1487</title>
 <g id="a_node17"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1487" xlink:title="configuration-modules-core#1487 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M1110.5,-1321C1110.5,-1321 961.5,-1321 961.5,-1321 955.5,-1321 949.5,-1315 949.5,-1309 949.5,-1309 949.5,-1283 949.5,-1283 949.5,-1277 955.5,-1271 961.5,-1271 961.5,-1271 1110.5,-1271 1110.5,-1271 1116.5,-1271 1122.5,-1277 1122.5,-1283 1122.5,-1283 1122.5,-1309 1122.5,-1309 1122.5,-1315 1116.5,-1321 1110.5,-1321"/>
+<path fill="#6e5494" stroke="black" d="M1110.5,-1321C1110.5,-1321 961.5,-1321 961.5,-1321 955.5,-1321 949.5,-1315 949.5,-1309 949.5,-1309 949.5,-1283 949.5,-1283 949.5,-1277 955.5,-1271 961.5,-1271 961.5,-1271 1110.5,-1271 1110.5,-1271 1116.5,-1271 1122.5,-1277 1122.5,-1283 1122.5,-1283 1122.5,-1309 1122.5,-1309 1122.5,-1315 1116.5,-1321 1110.5,-1321"/>
 <text text-anchor="middle" x="1036" y="-1299" font-family="Sans" font-size="10.00">ncm-metaconfig: missing pan</text>
 <text text-anchor="middle" x="1036" y="-1288" font-family="Sans" font-size="10.00">files in build</text>
 </a>
