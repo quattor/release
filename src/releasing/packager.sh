@@ -127,7 +127,7 @@ if gpg-agent; then
             echo "repository: $r" | sed 's/./=/g'
 
             echo "release tag: "
-            release_tag="$(git tag -l | grep -e "$RELEASE\$")"
+            release_tag="$(git tag -l | grep -e "$VERSION\$")"
             echo "    $release_tag"
 
             echo
