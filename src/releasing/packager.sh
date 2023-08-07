@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Source this first as it has the potential to scribble all over our variables otherwise
+# shellcheck source=/dev/null
 source /etc/os-release || exit 1
 
 function echo_warning {
