@@ -175,7 +175,7 @@ if gpg-agent; then
             rpm --resign "$TARGET_DIR"/*.rpm
 
             echo_info "Creating repository"
-            createrepo -s sha "$TARGET_DIR/"
+            createrepo "$TARGET_DIR/"
 
             echo_info "Signing repository"
             gpg --detach-sign --armor "$TARGET_DIR/repodata/repomd.xml"
