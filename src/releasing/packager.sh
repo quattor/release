@@ -167,22 +167,21 @@ if gpg-agent; then
             mkdir -p target/
 
             echo_info "Collecting RPMs"
-            mkdir -p "target/$VERSION"
-            find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ "target/$VERSION/"
-
-            cd target/ || exit 96
+            TARGET_DIR="target/$VERSION/$PACKAGE_SUFFIX"
+            mkdir -p "$TARGET_DIR"
+            find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ "$TARGET_DIR/"
 
             echo_info "Signing RPMs"
-            rpm --resign "$VERSION"/*.rpm
+            rpm --resign "$TARGET_DIR"/*.rpm
 
             echo_info "Creating repository"
-            createrepo -s sha "$VERSION/"
+            createrepo -s sha "$TARGET_DIR/"
 
             echo_info "Signing repository"
-            gpg --detach-sign --armor "$VERSION/repodata/repomd.xml"
+            gpg --detach-sign --armor "$TARGET_DIR/repodata/repomd.xml"
 
             echo_info "Creating repository tarball"
-            tar -cjf "quattor-$VERSION.tar.bz2" "$VERSION/"
+            tar -cjf "quattor-$VERSION.tar.bz2" "$TARGET_DIR/"
             echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
 
             echo_success "---------------- YUM repositories complete ----------------"
