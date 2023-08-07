@@ -32,7 +32,7 @@ if [[ ! $ID_LIKE =~ 'rhel' ]]; then
     exit 1
 fi
 
-PACKAGE_SUFFIX="el$VERSION_ID"
+PACKAGE_SUFFIX="el${VERSION_ID//.*/}"
 
 echo_info "Set package suffix to $PACKAGE_SUFFIX"
 
