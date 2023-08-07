@@ -69,7 +69,7 @@ source maven-illuminate.sh
 # Check that dependencies required to perform a release are available
 missing_deps=0
 for cmd in {gpg,gpg-agent,git,mvn,createrepo,tar,sed}; do
-    hash $cmd 2>/dev/null || {
+    hash "$cmd" 2>/dev/null || {
         echo_error "Command '$cmd' is required but could not be found"
         missing_deps=$((missing_deps + 1))
     }
