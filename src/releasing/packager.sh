@@ -98,9 +98,9 @@ else
     echo_warning "You are running a final release, please ensure you have built at least one release candidate before proceeding!"
 fi
 
-VERSION="$RELEASE"
+QUATTOR_VERSION="$RELEASE"
 if [[ -n $BUILD ]]; then
-    VERSION="$RELEASE-rc$BUILD"
+    QUATTOR_VERSION="$RELEASE-rc$BUILD"
 fi
 
 details=""
@@ -127,7 +127,7 @@ if gpg-agent; then
             echo "repository: $r" | sed 's/./=/g'
 
             echo "release tag: "
-            release_tag="$(git tag -l | grep -e "$VERSION\$")"
+            release_tag="$(git tag -l | grep -e "$QUATTOR_VERSION\$")"
             echo "    $release_tag"
 
             echo
@@ -145,7 +145,7 @@ if gpg-agent; then
         echo
         echo -e "$details" | column -t
         echo
-        echo "We will package $VERSION from the tags shown above, continue? yes/NO"
+        echo "We will package $QUATTOR_VERSION from the tags shown above, continue? yes/NO"
         echo -n "> "
         read -r prompt
         if [[ $prompt == "yes" ]]; then
@@ -167,7 +167,7 @@ if gpg-agent; then
             mkdir -p target/
 
             echo_info "Collecting RPMs"
-            TARGET_DIR="target/$VERSION/$PACKAGE_SUFFIX"
+            TARGET_DIR="target/$QUATTOR_VERSION/$PACKAGE_SUFFIX"
             mkdir -p "$TARGET_DIR"
             find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ "$TARGET_DIR/"
 
@@ -181,8 +181,8 @@ if gpg-agent; then
             gpg --detach-sign --armor "$TARGET_DIR/repodata/repomd.xml"
 
             echo_info "Creating repository tarball"
-            tar -cjf "quattor-$VERSION.tar.bz2" "$TARGET_DIR/"
-            echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
+            tar -cjf "quattor-$QUATTOR_VERSION.tar.bz2" "$TARGET_DIR/"
+            echo_info "Repository tarball built: target/quattor-$QUATTOR_VERSION.tar.bz2"
 
             echo_success "---------------- YUM repositories complete ----------------"
 
