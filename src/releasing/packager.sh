@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Source this first as it has the potential to scribble all over our variables otherwise
+# shellcheck source=/dev/null
 source /etc/os-release || exit 1
 
 function echo_warning {
@@ -31,7 +32,7 @@ if [[ ! $ID_LIKE =~ 'rhel' ]]; then
     exit 1
 fi
 
-PACKAGE_SUFFIX="el$VERSION_ID"
+PACKAGE_SUFFIX="el${VERSION_ID//.*/}"
 
 echo_info "Set package suffix to $PACKAGE_SUFFIX"
 
@@ -68,7 +69,7 @@ source maven-illuminate.sh
 # Check that dependencies required to perform a release are available
 missing_deps=0
 for cmd in {gpg,gpg-agent,git,mvn,createrepo,tar,sed}; do
-    hash $cmd 2>/dev/null || {
+    hash "$cmd" 2>/dev/null || {
         echo_error "Command '$cmd' is required but could not be found"
         missing_deps=$((missing_deps + 1))
     }
@@ -97,9 +98,9 @@ else
     echo_warning "You are running a final release, please ensure you have built at least one release candidate before proceeding!"
 fi
 
-VERSION="$RELEASE"
+QUATTOR_VERSION="$RELEASE"
 if [[ -n $BUILD ]]; then
-    VERSION="$RELEASE-rc$BUILD"
+    QUATTOR_VERSION="$RELEASE-rc$BUILD"
 fi
 
 details=""
@@ -126,7 +127,7 @@ if gpg-agent; then
             echo "repository: $r" | sed 's/./=/g'
 
             echo "release tag: "
-            release_tag="$(git tag -l | grep -e "$RELEASE\$")"
+            release_tag="$(git tag -l | grep -e "$QUATTOR_VERSION\$")"
             echo "    $release_tag"
 
             echo
@@ -144,7 +145,7 @@ if gpg-agent; then
         echo
         echo -e "$details" | column -t
         echo
-        echo "We will package $VERSION from the tags shown above, continue? yes/NO"
+        echo "We will package $QUATTOR_VERSION from the tags shown above, continue? yes/NO"
         echo -n "> "
         read -r prompt
         if [[ $prompt == "yes" ]]; then
@@ -166,23 +167,22 @@ if gpg-agent; then
             mkdir -p target/
 
             echo_info "Collecting RPMs"
-            mkdir -p "target/$VERSION"
-            find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ "target/$VERSION/"
-
-            cd target/ || exit 96
+            TARGET_DIR="target/$QUATTOR_VERSION/$PACKAGE_SUFFIX"
+            mkdir -p "$TARGET_DIR"
+            find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ "$TARGET_DIR/"
 
             echo_info "Signing RPMs"
-            rpm --resign "$VERSION"/*.rpm
+            rpm --resign "$TARGET_DIR"/*.rpm
 
             echo_info "Creating repository"
-            createrepo -s sha "$VERSION/"
+            createrepo "$TARGET_DIR/"
 
             echo_info "Signing repository"
-            gpg --detach-sign --armor "$VERSION/repodata/repomd.xml"
+            gpg --detach-sign --armor "$TARGET_DIR/repodata/repomd.xml"
 
             echo_info "Creating repository tarball"
-            tar -cjf "quattor-$VERSION.tar.bz2" "$VERSION/"
-            echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
+            tar -cjf "quattor-$QUATTOR_VERSION.tar.bz2" "$TARGET_DIR/"
+            echo_info "Repository tarball built: target/quattor-$QUATTOR_VERSION.tar.bz2"
 
             echo_success "---------------- YUM repositories complete ----------------"
 
