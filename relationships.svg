@@ -76,9 +76,9 @@
 <!-- CAF#277 -->
 <g id="node6" class="node"><title>CAF#277</title>
 <g id="a_node6"><a xlink:href="https://github.com/quattor/CAF/pull/277" xlink:title="CAF#277 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="498,-763 340,-763 340,-713 498,-713 498,-763"/>
-<text text-anchor="middle" x="419" y="-741" font-family="Sans" font-size="10.00">Replace three instances of</text>
-<text text-anchor="middle" x="419" y="-730" font-family="Sans" font-size="10.00">while-each with foreach</text>
+<polygon fill="#6cc644" stroke="black" points="511.5,-763 326.5,-763 326.5,-713 511.5,-713 511.5,-763"/>
+<text text-anchor="middle" x="419" y="-741" font-family="Sans" font-size="10.00">Replace four instances of while-</text>
+<text text-anchor="middle" x="419" y="-730" font-family="Sans" font-size="10.00">each with foreach</text>
 </a>
 </g>
 </g>
@@ -93,9 +93,9 @@
 </g>
 <!-- CAF#277&#45;&gt;CAF#109 -->
 <g id="edge5" class="edge"><title>CAF#277-&gt;CAF#109</title>
-<path fill="none" stroke="black" stroke-width="2" d="M498.373,-738C540.921,-738 593.737,-738 638.086,-738"/>
-<polygon fill="black" stroke="black" points="638.286,-741.5 648.286,-738 638.286,-734.5 638.286,-741.5"/>
-<text text-anchor="middle" x="561.197" y="-730" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M511.874,-738C551.805,-738 598.455,-738 638.258,-738"/>
+<polygon fill="black" stroke="black" points="638.488,-741.5 648.488,-738 638.488,-734.5 638.488,-741.5"/>
+<text text-anchor="middle" x="568.182" y="-730" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- CAF#257 -->
 <g id="node8" class="node"><title>CAF#257</title>
