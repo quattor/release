@@ -169,7 +169,7 @@
 <!-- configuration&#45;modules&#45;core#1620 -->
 <g id="node14" class="node"><title>configuration-modules-core#1620</title>
 <g id="a_node14"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1620" xlink:title="configuration-modules-core#1620 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="518,-491 320,-491 320,-441 518,-441 518,-491"/>
+<polygon fill="#6e5494" stroke="black" points="518,-491 320,-491 320,-441 518,-441 518,-491"/>
 <text text-anchor="middle" x="419" y="-469" font-family="Sans" font-size="10.00">ncm-spma: yumdnf: Don't attempt</text>
 <text text-anchor="middle" x="419" y="-458" font-family="Sans" font-size="10.00">to expand groups with repoquery</text>
 </a>
@@ -178,7 +178,7 @@
 <!-- configuration&#45;modules&#45;core#1524 -->
 <g id="node15" class="node"><title>configuration-modules-core#1524</title>
 <g id="a_node15"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1524" xlink:title="configuration-modules-core#1524 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M815.5,-479C815.5,-479 644.5,-479 644.5,-479 638.5,-479 632.5,-473 632.5,-467 632.5,-467 632.5,-441 632.5,-441 632.5,-435 638.5,-429 644.5,-429 644.5,-429 815.5,-429 815.5,-429 821.5,-429 827.5,-435 827.5,-441 827.5,-441 827.5,-467 827.5,-467 827.5,-473 821.5,-479 815.5,-479"/>
+<path fill="#6e5494" stroke="black" d="M815.5,-479C815.5,-479 644.5,-479 644.5,-479 638.5,-479 632.5,-473 632.5,-467 632.5,-467 632.5,-441 632.5,-441 632.5,-435 638.5,-429 644.5,-429 644.5,-429 815.5,-429 815.5,-429 821.5,-429 827.5,-435 827.5,-441 827.5,-441 827.5,-467 827.5,-467 827.5,-473 821.5,-479 815.5,-479"/>
 <text text-anchor="middle" x="730" y="-457" font-family="Sans" font-size="10.00">ncm-spma: yumdnf backend: fails</text>
 <text text-anchor="middle" x="730" y="-446" font-family="Sans" font-size="10.00">while trying to expand groups</text>
 </a>
