@@ -145,7 +145,7 @@
 <!-- CCM#210 -->
 <g id="node12" class="node"><title>CCM#210</title>
 <g id="a_node12"><a xlink:href="https://github.com/quattor/CCM/pull/210" xlink:title="CCM#210 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="497,-695 341,-695 341,-645 497,-645 497,-695"/>
+<polygon fill="#6e5494" stroke="black" points="497,-695 341,-695 341,-645 497,-645 497,-695"/>
 <text text-anchor="middle" x="419" y="-673" font-family="Sans" font-size="10.00">Fetch: Remove suffix from</text>
 <text text-anchor="middle" x="419" y="-662" font-family="Sans" font-size="10.00">downloaded profile</text>
 </a>
@@ -154,7 +154,7 @@
 <!-- CCM#204 -->
 <g id="node13" class="node"><title>CCM#204</title>
 <g id="a_node13"><a xlink:href="https://github.com/quattor/CCM/issues/204" xlink:title="CCM#204 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M809.5,-683.5C809.5,-683.5 650.5,-683.5 650.5,-683.5 644.5,-683.5 638.5,-677.5 638.5,-671.5 638.5,-671.5 638.5,-634.5 638.5,-634.5 638.5,-628.5 644.5,-622.5 650.5,-622.5 650.5,-622.5 809.5,-622.5 809.5,-622.5 815.5,-622.5 821.5,-628.5 821.5,-634.5 821.5,-634.5 821.5,-671.5 821.5,-671.5 821.5,-677.5 815.5,-683.5 809.5,-683.5"/>
+<path fill="#6e5494" stroke="black" d="M809.5,-683.5C809.5,-683.5 650.5,-683.5 650.5,-683.5 644.5,-683.5 638.5,-677.5 638.5,-671.5 638.5,-671.5 638.5,-634.5 638.5,-634.5 638.5,-628.5 644.5,-622.5 650.5,-622.5 650.5,-622.5 809.5,-622.5 809.5,-622.5 815.5,-622.5 821.5,-628.5 821.5,-634.5 821.5,-634.5 821.5,-671.5 821.5,-671.5 821.5,-677.5 815.5,-683.5 809.5,-683.5"/>
 <text text-anchor="middle" x="730" y="-661.5" font-family="Sans" font-size="10.00">Cached profiles always have an</text>
 <text text-anchor="middle" x="730" y="-650.5" font-family="Sans" font-size="10.00">xml extension regardless of</text>
 <text text-anchor="middle" x="730" y="-639.5" font-family="Sans" font-size="10.00">their content</text>
