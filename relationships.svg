@@ -223,7 +223,7 @@
 <!-- configuration&#45;modules&#45;core#1621 -->
 <g id="node18" class="node"><title>configuration-modules-core#1621</title>
 <g id="a_node18"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1621" xlink:title="configuration-modules-core#1621 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="211.5,-906 20.5,-906 20.5,-856 211.5,-856 211.5,-906"/>
+<polygon fill="#6e5494" stroke="black" points="211.5,-906 20.5,-906 20.5,-856 211.5,-856 211.5,-906"/>
 <text text-anchor="middle" x="116" y="-884" font-family="Sans" font-size="10.00">ncm-nfs: Allow daemon to reload</text>
 <text text-anchor="middle" x="116" y="-873" font-family="Sans" font-size="10.00">to be specified</text>
 </a>
@@ -232,7 +232,7 @@
 <!-- configuration&#45;modules&#45;core#1618 -->
 <g id="node19" class="node"><title>configuration-modules-core#1618</title>
 <g id="a_node19"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1618" xlink:title="configuration-modules-core#1618 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M498.5,-883C498.5,-883 365.5,-883 365.5,-883 359.5,-883 353.5,-877 353.5,-871 353.5,-871 353.5,-845 353.5,-845 353.5,-839 359.5,-833 365.5,-833 365.5,-833 498.5,-833 498.5,-833 504.5,-833 510.5,-839 510.5,-845 510.5,-845 510.5,-871 510.5,-871 510.5,-877 504.5,-883 498.5,-883"/>
+<path fill="#6e5494" stroke="black" d="M498.5,-883C498.5,-883 365.5,-883 365.5,-883 359.5,-883 353.5,-877 353.5,-871 353.5,-871 353.5,-845 353.5,-845 353.5,-839 359.5,-833 365.5,-833 365.5,-833 498.5,-833 498.5,-833 504.5,-833 510.5,-839 510.5,-845 510.5,-845 510.5,-871 510.5,-871 510.5,-877 504.5,-883 498.5,-883"/>
 <text text-anchor="middle" x="432" y="-861" font-family="Sans" font-size="10.00">ncm-nfs: start service nfs-</text>
 <text text-anchor="middle" x="432" y="-850" font-family="Sans" font-size="10.00">server instead of nfs</text>
 </a>
