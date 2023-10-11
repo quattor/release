@@ -1,42 +1,39 @@
-# Use an official centos image as a parent image
-FROM centos:7
+# Use an official RockyLinux image as a parent image
+FROM rockylinux:8
 
 # Set the working directory to install dependencies to /quattor
 WORKDIR /quattor
 
 # install library core in /quattor, tests need it
-ADD https://codeload.github.com/quattor/template-library-core/tar.gz/master /quattor/template-library-core-master.tar.gz
-RUN tar xvfz template-library-core-master.tar.gz
-
-# Install dependencies
-RUN yum install maven epel-release -y
-RUN rpm -U http://yum.quattor.org/devel/quattor-release-1-1.noarch.rpm
-
-RUN yum install --nogpgcheck perl-Test-Quattor -y
-# needed by some tests, not a dependency of perl-Test-Quattor
-RUN yum install panc perl-JSON-Any -y
-
-# these are not by default in centos7, but quattor tests assume they are
-RUN touch /usr/sbin/selinuxenabled /sbin/restorecon
-RUN chmod +x /usr/sbin/selinuxenabled /sbin/restorecon
+ADD https://codeload.github.com/quattor/template-library-core/tar.gz/master template-library-core-master.tar.gz
+RUN tar -xzf template-library-core-master.tar.gz
 
 # point library core to where we downloaded it
 ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-master
 
-# set workdir to where we'll run the tests
-# you need to provide the content of this directory when running this docker container:
-# first build this container:
-# docker build -t quattor_test .
-# mount pwd in /quattor_test (not in /quattor or the mount will hide /quattor/template-library-core)
-# docker run --mount type=bind,source="$PWD",target=/quattor_test quattor_test
+# Prepare to install dependencies
+RUN dnf -y install dnf-plugins-core && \
+  dnf config-manager --set-enabled appstream && \
+  dnf config-manager --set-enabled powertools && \
+  dnf -y install epel-release http://yum.quattor.org/devel/quattor-yum-repo-2-1.noarch.rpm
+
+# The available version of perl-Test-Quattor is too old for mvnprove.pl to
+# work, but this is a quick way of pulling in a lot of required dependencies.
+# Surprisingly `which` is not installed by default and panc depends on it.
+# libselinux-utils is required for /usr/sbin/selinuxenabled
+RUN dnf install -y maven which rpm-build panc ncm-lib-blockdevices \
+  ncm-ncd git libselinux-utils sudo perl-Crypt-OpenSSL-X509 \
+  perl-Data-Compare perl-Date-Manip perl-File-Touch perl-JSON-Any \
+  perl-Net-DNS perl-Net-FreeIPA perl-Net-OpenNebula \
+  perl-Net-OpenStack-Client perl-NetAddr-IP perl-REST-Client \
+  perl-Set-Scalar perl-Text-Glob cpanminus gcc wget \
+  perl-Git-Repository perl-Data-Structure-Util \
+  perl-Test-Quattor aii-ks
+
+# quattor tests should not be run as root
+RUN RUN useradd --user-group --create-home --no-log-init --home-dir /quattor_test quattortest
+USER quattortest
 WORKDIR /quattor_test
 
-# when running the container, by default run the tests 
-# you can run any command in the container from the cli.
-# e.g. to test configuration-modules-core/ncm-metaconfig
-# (The only tests that this container has all dependencies for at the moment)
-# cd /path/to/configuration-modules-core
-# docker run --mount type=bind,source="$PWD",target=/quattor_test/configuration-modules-core \
-# quattor_test bash -c 'source /usr/bin/mvn_test.sh && \
-# cd /quattor_test/configuration-modules-core/ncm-metaconfig && mvn_test service-mailrc'
+# Default action on running the container is to run all tests
 CMD . /usr/bin/mvn_test.sh && mvn_test
