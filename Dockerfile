@@ -31,7 +31,7 @@ RUN dnf install -y maven which rpm-build panc ncm-lib-blockdevices \
   perl-Test-Quattor aii-ks
 
 # quattor tests should not be run as root
-RUN RUN useradd --user-group --create-home --no-log-init --home-dir /quattor_test quattortest
+RUN useradd --user-group --create-home --no-log-init --home-dir /quattor_test quattortest
 USER quattortest
 WORKDIR /quattor_test
 
