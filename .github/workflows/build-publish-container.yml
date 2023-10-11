@@ -1,0 +1,50 @@
+name: Build and publish container images
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+  schedule:
+   # rebuild image every Sunday
+   - cron: '41 1 * * 0'
+
+jobs:
+  build_publish:
+    name: Build/publish containers
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Set the image date tag
+        run: |
+          echo IMAGE_TAG=$(date +"%Y%m%d") >> $GITHUB_ENV
+
+      - name: Build Image
+        uses: redhat-actions/buildah-build@v2.12
+        id: build-image
+        with:
+          image: quattor-test-container
+          tags: latest ${{ github.sha }} ${{ env.IMAGE_TAG }}
+          dockerfiles: |
+            ./Dockerfile
+
+      - name: Publish image on ghcr.io
+        id: push-to-ghcr
+        if: github.event_name == 'push' && github.ref_name == 'main'
+        uses: redhat-actions/push-to-registry@v2.7
+        with:
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: ghcr.io/${{ github.repository_owner }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print image name and tags
+        run: echo "Image ${{ steps.build-image.outputs.image }} build with tags ${{ steps.build-image.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Print image url
+        if: github.event_name == 'push' && github.ref_name == 'main'
+        run: echo "Image pushed to ${{ steps.push-to-ghcr.outputs.registry-paths }}" >> $GITHUB_STEP_SUMMARY
