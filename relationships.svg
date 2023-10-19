@@ -199,7 +199,7 @@
 <!-- configuration&#45;modules&#45;core#1622 -->
 <g id="node16" class="node"><title>configuration-modules-core#1622</title>
 <g id="a_node16"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1622" xlink:title="configuration-modules-core#1622 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="520.5,-241 343.5,-241 343.5,-191 520.5,-191 520.5,-241"/>
+<polygon fill="#6e5494" stroke="black" points="520.5,-241 343.5,-241 343.5,-191 520.5,-191 520.5,-241"/>
 <text text-anchor="middle" x="432" y="-219" font-family="Sans" font-size="10.00">ncm-authconfig: sssd: Schema</text>
 <text text-anchor="middle" x="432" y="-208" font-family="Sans" font-size="10.00">improvements</text>
 </a>
@@ -208,7 +208,7 @@
 <!-- configuration&#45;modules&#45;core#1471 -->
 <g id="node17" class="node"><title>configuration-modules-core#1471</title>
 <g id="a_node17"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1471" xlink:title="configuration-modules-core#1471 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M812.5,-229C812.5,-229 663.5,-229 663.5,-229 657.5,-229 651.5,-223 651.5,-217 651.5,-217 651.5,-191 651.5,-191 651.5,-185 657.5,-179 663.5,-179 663.5,-179 812.5,-179 812.5,-179 818.5,-179 824.5,-185 824.5,-191 824.5,-191 824.5,-217 824.5,-217 824.5,-223 818.5,-229 812.5,-229"/>
+<path fill="#6e5494" stroke="black" d="M812.5,-229C812.5,-229 663.5,-229 663.5,-229 657.5,-229 651.5,-223 651.5,-217 651.5,-217 651.5,-191 651.5,-191 651.5,-185 657.5,-179 663.5,-179 663.5,-179 812.5,-179 812.5,-179 818.5,-179 824.5,-185 824.5,-191 824.5,-191 824.5,-217 824.5,-217 824.5,-223 818.5,-229 812.5,-229"/>
 <text text-anchor="middle" x="738" y="-207" font-family="Sans" font-size="10.00">ncm-authconfig: sssd: tighten</text>
 <text text-anchor="middle" x="738" y="-196" font-family="Sans" font-size="10.00">types</text>
 </a>
