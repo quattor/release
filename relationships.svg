@@ -7,9 +7,9 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1470)">
 <title>Dependencies</title>
 <polygon fill="white" stroke="white" points="-4,5 -4,-1470 852,-1470 852,5 -4,5"/>
-<g id="clust2" class="cluster"><title>cluster_milestone_23.9</title>
+<g id="clust2" class="cluster"><title>cluster_milestone_23.10</title>
 <polygon fill="none" stroke="black" points="8,-576 8,-1003 538,-1003 538,-576 8,-576"/>
-<text text-anchor="middle" x="273" y="-989.4" font-family="Sans" font-size="12.00">23.9</text>
+<text text-anchor="middle" x="273" y="-989.4" font-family="Sans" font-size="12.00">23.10</text>
 </g>
 <g id="clust1" class="cluster"><title>cluster_milestone_23.next</title>
 <polygon fill="none" stroke="black" points="331,-47 331,-338 839,-338 839,-47 331,-47"/>
