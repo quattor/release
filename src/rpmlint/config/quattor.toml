@@ -60,6 +60,7 @@ Filters = [
     ' non-conffile-in-etc /etc/pki/rpm-gpg/',
     ' conffile-without-noreplace-flag /etc/bash_completion.d/',
     ' postin-without-install-info ',
+    ' non-executable-script /usr/share/templates/quattor/metaconfig/',
 
     # Things that are "by-design" for Quattor packages
     ' file-contains-current-date ',
