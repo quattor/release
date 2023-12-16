@@ -562,15 +562,9 @@
 </g>
 <!-- quattor.github.com#278&#45;&gt;quattor.github.com#215 -->
 <g id="edge27" class="edge"><title>quattor.github.com#278-&gt;quattor.github.com#215</title>
-<path fill="none" stroke="black" stroke-width="2" d="M190.223,-1695.19C237.595,-1694.01 299.358,-1693.94 348.469,-1694.98"/>
-<polygon fill="black" stroke="black" points="348.668,-1698.48 358.747,-1695.21 348.83,-1691.48 348.668,-1698.48"/>
-<text text-anchor="middle" x="262.497" y="-1686.25" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- quattor.github.com#278&#45;&gt;quattor.github.com#215 -->
-<g id="edge28" class="edge"><title>quattor.github.com#278-&gt;quattor.github.com#215</title>
-<path fill="none" stroke="black" stroke-width="2" d="M190.223,-1706.81C237.595,-1707.99 299.358,-1708.06 348.469,-1707.02"/>
-<polygon fill="black" stroke="black" points="348.83,-1710.52 358.747,-1706.79 348.668,-1703.52 348.83,-1710.52"/>
-<text text-anchor="middle" x="262.497" y="-1699.75" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M190.223,-1701C237.595,-1701 299.358,-1701 348.469,-1701"/>
+<polygon fill="black" stroke="black" points="348.747,-1704.5 358.747,-1701 348.746,-1697.5 348.747,-1704.5"/>
+<text text-anchor="middle" x="262.497" y="-1693" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- template&#45;library&#45;grid#232 -->
 <g id="node46" class="node"><title>template-library-grid#232</title>
@@ -591,7 +585,7 @@
 </g>
 </g>
 <!-- template&#45;library&#45;grid#232&#45;&gt;template&#45;library&#45;grid#221 -->
-<g id="edge29" class="edge"><title>template-library-grid#232-&gt;template-library-grid#221</title>
+<g id="edge28" class="edge"><title>template-library-grid#232-&gt;template-library-grid#221</title>
 <path fill="none" stroke="black" stroke-width="2" d="M199.911,-1764C240.702,-1764 290.151,-1764 332.823,-1764"/>
 <polygon fill="black" stroke="black" points="332.947,-1767.5 342.947,-1764 332.947,-1760.5 332.947,-1767.5"/>
 <text text-anchor="middle" x="259.543" y="-1756" font-family="Sans" font-size="10.00">fixes</text>
