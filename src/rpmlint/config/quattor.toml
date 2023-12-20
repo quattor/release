@@ -1,4 +1,4 @@
-# Quattor's configuration for the rpmlint utility.
+# Quattor's configuration for the rpmlint utility (versions 2.0 and above).
 # Based on Fedora's configuration from the rpmlint repository.
 
 # When checking that various files that should be compressed are
