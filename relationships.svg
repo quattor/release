@@ -201,7 +201,7 @@
 <!-- configuration&#45;modules&#45;core#1640 -->
 <g id="node16" class="node"><title>configuration-modules-core#1640</title>
 <g id="a_node16"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1640" xlink:title="configuration-modules-core#1640 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="207,-1072.5 25,-1072.5 25,-1011.5 207,-1011.5 207,-1072.5"/>
+<polygon fill="#6e5494" stroke="black" points="207,-1072.5 25,-1072.5 25,-1011.5 207,-1011.5 207,-1072.5"/>
 <text text-anchor="middle" x="116" y="-1050.5" font-family="Sans" font-size="10.00">ncm-network: fix multi bonding</text>
 <text text-anchor="middle" x="116" y="-1039.5" font-family="Sans" font-size="10.00">configuration and arp_ip_target</text>
 <text text-anchor="middle" x="116" y="-1028.5" font-family="Sans" font-size="10.00">bonding options</text>
@@ -211,7 +211,7 @@
 <!-- configuration&#45;modules&#45;core#1638 -->
 <g id="node17" class="node"><title>configuration-modules-core#1638</title>
 <g id="a_node17"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1638" xlink:title="configuration-modules-core#1638 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M515.5,-999.5C515.5,-999.5 348.5,-999.5 348.5,-999.5 342.5,-999.5 336.5,-993.5 336.5,-987.5 336.5,-987.5 336.5,-950.5 336.5,-950.5 336.5,-944.5 342.5,-938.5 348.5,-938.5 348.5,-938.5 515.5,-938.5 515.5,-938.5 521.5,-938.5 527.5,-944.5 527.5,-950.5 527.5,-950.5 527.5,-987.5 527.5,-987.5 527.5,-993.5 521.5,-999.5 515.5,-999.5"/>
+<path fill="#6e5494" stroke="black" d="M515.5,-999.5C515.5,-999.5 348.5,-999.5 348.5,-999.5 342.5,-999.5 336.5,-993.5 336.5,-987.5 336.5,-987.5 336.5,-950.5 336.5,-950.5 336.5,-944.5 342.5,-938.5 348.5,-938.5 348.5,-938.5 515.5,-938.5 515.5,-938.5 521.5,-938.5 527.5,-944.5 527.5,-950.5 527.5,-950.5 527.5,-987.5 527.5,-987.5 527.5,-993.5 521.5,-999.5 515.5,-999.5"/>
 <text text-anchor="middle" x="432" y="-977.5" font-family="Sans" font-size="10.00">ncm-network: nmstate backend -</text>
 <text text-anchor="middle" x="432" y="-966.5" font-family="Sans" font-size="10.00">multiple boding configuration</text>
 <text text-anchor="middle" x="432" y="-955.5" font-family="Sans" font-size="10.00">does not work</text>
@@ -227,7 +227,7 @@
 <!-- configuration&#45;modules&#45;core#1639 -->
 <g id="node18" class="node"><title>configuration-modules-core#1639</title>
 <g id="a_node18"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1639" xlink:title="configuration-modules-core#1639 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M512,-1078.5C512,-1078.5 352,-1078.5 352,-1078.5 346,-1078.5 340,-1072.5 340,-1066.5 340,-1066.5 340,-1029.5 340,-1029.5 340,-1023.5 346,-1017.5 352,-1017.5 352,-1017.5 512,-1017.5 512,-1017.5 518,-1017.5 524,-1023.5 524,-1029.5 524,-1029.5 524,-1066.5 524,-1066.5 524,-1072.5 518,-1078.5 512,-1078.5"/>
+<path fill="#6e5494" stroke="black" d="M512,-1078.5C512,-1078.5 352,-1078.5 352,-1078.5 346,-1078.5 340,-1072.5 340,-1066.5 340,-1066.5 340,-1029.5 340,-1029.5 340,-1023.5 346,-1017.5 352,-1017.5 352,-1017.5 512,-1017.5 512,-1017.5 518,-1017.5 524,-1023.5 524,-1029.5 524,-1029.5 524,-1066.5 524,-1066.5 524,-1072.5 518,-1078.5 512,-1078.5"/>
 <text text-anchor="middle" x="432" y="-1056.5" font-family="Sans" font-size="10.00">ncm-network: nmstate backend</text>
 <text text-anchor="middle" x="432" y="-1045.5" font-family="Sans" font-size="10.00">bonding option 'arp_ip_target'</text>
 <text text-anchor="middle" x="432" y="-1034.5" font-family="Sans" font-size="10.00">needs to be a string.</text>
