@@ -317,7 +317,8 @@ IUS_REPO_RPM_EL7=https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-
 AQUILON_PROTO_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aq_proto_releases.sh
 AQUILON_BUILDSCRIPT=https://raw.githubusercontent.com/quattor/release/master/src/scripts/build_last_aquilon_release.sh
 
-RPMLINT_CONFIG=https://raw.githubusercontent.com/quattor/release/master/src/rpmlint/config/quattor.toml
+RPMLINT_1_CONFIG=https://raw.githubusercontent.com/quattor/release/master/src/rpmlint/config/quattor.py
+RPMLINT_2_CONFIG=https://raw.githubusercontent.com/quattor/release/master/src/rpmlint/config/quattor.toml
 
 if [[ ! -z "$ENABLEREPO" ]]; then
     ENABLEREPOSFULL="--enablerepo=$ENABLEREPO"
@@ -1190,8 +1191,12 @@ function test_rpms() {
     # If version 2.4.0 or greater
     if [[ $rpmlint_major -gt 2 || ($rpmlint_major -eq 2 && $rpmlint_minor -ge 4) ]]; then
         rpmlint_dir="$(mktemp -d)"
-        run_wrapped wget -P "$rpmlint_dir" "$RPMLINT_CONFIG"
+        run_wrapped wget -P "$rpmlint_dir" "$RPMLINT_2_CONFIG"
         rpmlint_cmd="rpmlint --config $rpmlint_dir"
+    elif [[ $rpmlint_major -eq 1 && $rpmlint_minor -ge 5 ]]; then
+        rpmlint_dir="$(mktemp -d)"
+        run_wrapped wget -P "$rpmlint_dir" "$RPMLINT_1_CONFIG"
+        rpmlint_cmd="rpmlint --file $rpmlint_dir/quattor.py"
     fi
     echo_info "Checking rpms in $RPMS with rpmlint"
     run_wrapped "$rpmlint_cmd" "$RPMS"
