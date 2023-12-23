@@ -586,15 +586,9 @@
 </g>
 <!-- template&#45;library&#45;grid#232&#45;&gt;template&#45;library&#45;grid#221 -->
 <g id="edge28" class="edge"><title>template-library-grid#232-&gt;template-library-grid#221</title>
-<path fill="none" stroke="black" stroke-width="2" d="M199.911,-1709.97C240.702,-1709.11 290.151,-1709.02 332.823,-1709.69"/>
-<polygon fill="black" stroke="black" points="332.888,-1713.19 342.947,-1709.87 333.01,-1706.19 332.888,-1713.19"/>
-<text text-anchor="middle" x="259.543" y="-1701.25" font-family="Sans" font-size="10.00">fixes</text>
-</g>
-<!-- template&#45;library&#45;grid#232&#45;&gt;template&#45;library&#45;grid#221 -->
-<g id="edge29" class="edge"><title>template-library-grid#232-&gt;template-library-grid#221</title>
-<path fill="none" stroke="black" stroke-width="2" d="M199.911,-1722.03C240.702,-1722.89 290.151,-1722.98 332.823,-1722.31"/>
-<polygon fill="black" stroke="black" points="333.01,-1725.81 342.947,-1722.13 332.888,-1718.81 333.01,-1725.81"/>
-<text text-anchor="middle" x="259.543" y="-1714.75" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M199.911,-1716C240.702,-1716 290.151,-1716 332.823,-1716"/>
+<polygon fill="black" stroke="black" points="332.947,-1719.5 342.947,-1716 332.947,-1712.5 332.947,-1719.5"/>
+<text text-anchor="middle" x="259.543" y="-1708" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 </g>
 </svg>
