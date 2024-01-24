@@ -12,8 +12,8 @@
 <text text-anchor="middle" x="585" y="-324.4" font-family="Sans" font-size="12.00">24.next</text>
 </g>
 <g id="clust1" class="cluster"><title>cluster_milestone_23.12</title>
-<polygon fill="none" stroke="black" points="8,-690 8,-1423 539,-1423 539,-690 8,-690"/>
-<text text-anchor="middle" x="273.5" y="-1409.4" font-family="Sans" font-size="12.00">23.12</text>
+<polygon fill="none" stroke="black" points="8,-690 8,-1491 539,-1491 539,-690 8,-690"/>
+<text text-anchor="middle" x="273.5" y="-1477.4" font-family="Sans" font-size="12.00">23.12</text>
 </g>
 <!-- aii#328 -->
 <g id="node1" class="node"><title>aii#328</title>
@@ -149,27 +149,27 @@
 <!-- CCM#210 -->
 <g id="node12" class="node"><title>CCM#210</title>
 <g id="a_node12"><a xlink:href="https://github.com/quattor/CCM/pull/210" xlink:title="CCM#210 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="194,-1394 38,-1394 38,-1344 194,-1344 194,-1394"/>
-<text text-anchor="middle" x="116" y="-1372" font-family="Sans" font-size="10.00">Fetch: Remove suffix from</text>
-<text text-anchor="middle" x="116" y="-1361" font-family="Sans" font-size="10.00">downloaded profile</text>
+<polygon fill="#6e5494" stroke="black" points="194,-1462 38,-1462 38,-1412 194,-1412 194,-1462"/>
+<text text-anchor="middle" x="116" y="-1440" font-family="Sans" font-size="10.00">Fetch: Remove suffix from</text>
+<text text-anchor="middle" x="116" y="-1429" font-family="Sans" font-size="10.00">downloaded profile</text>
 </a>
 </g>
 </g>
 <!-- CCM#204 -->
 <g id="node13" class="node"><title>CCM#204</title>
 <g id="a_node13"><a xlink:href="https://github.com/quattor/CCM/issues/204" xlink:title="CCM#204 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M511.5,-1393.5C511.5,-1393.5 352.5,-1393.5 352.5,-1393.5 346.5,-1393.5 340.5,-1387.5 340.5,-1381.5 340.5,-1381.5 340.5,-1344.5 340.5,-1344.5 340.5,-1338.5 346.5,-1332.5 352.5,-1332.5 352.5,-1332.5 511.5,-1332.5 511.5,-1332.5 517.5,-1332.5 523.5,-1338.5 523.5,-1344.5 523.5,-1344.5 523.5,-1381.5 523.5,-1381.5 523.5,-1387.5 517.5,-1393.5 511.5,-1393.5"/>
-<text text-anchor="middle" x="432" y="-1371.5" font-family="Sans" font-size="10.00">Cached profiles always have an</text>
-<text text-anchor="middle" x="432" y="-1360.5" font-family="Sans" font-size="10.00">xml extension regardless of</text>
-<text text-anchor="middle" x="432" y="-1349.5" font-family="Sans" font-size="10.00">their content</text>
+<path fill="#6e5494" stroke="black" d="M511.5,-1461.5C511.5,-1461.5 352.5,-1461.5 352.5,-1461.5 346.5,-1461.5 340.5,-1455.5 340.5,-1449.5 340.5,-1449.5 340.5,-1412.5 340.5,-1412.5 340.5,-1406.5 346.5,-1400.5 352.5,-1400.5 352.5,-1400.5 511.5,-1400.5 511.5,-1400.5 517.5,-1400.5 523.5,-1406.5 523.5,-1412.5 523.5,-1412.5 523.5,-1449.5 523.5,-1449.5 523.5,-1455.5 517.5,-1461.5 511.5,-1461.5"/>
+<text text-anchor="middle" x="432" y="-1439.5" font-family="Sans" font-size="10.00">Cached profiles always have an</text>
+<text text-anchor="middle" x="432" y="-1428.5" font-family="Sans" font-size="10.00">xml extension regardless of</text>
+<text text-anchor="middle" x="432" y="-1417.5" font-family="Sans" font-size="10.00">their content</text>
 </a>
 </g>
 </g>
 <!-- CCM#210&#45;&gt;CCM#204 -->
 <g id="edge8" class="edge"><title>CCM#210-&gt;CCM#204</title>
-<path fill="none" stroke="black" stroke-width="2" d="M194.215,-1367.52C235.236,-1366.74 286.154,-1365.77 330.251,-1364.93"/>
-<polygon fill="black" stroke="black" points="330.492,-1368.42 340.423,-1364.73 330.358,-1361.42 330.492,-1368.42"/>
-<text text-anchor="middle" x="255.112" y="-1358.13" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M194.215,-1435.52C235.236,-1434.74 286.154,-1433.77 330.251,-1432.93"/>
+<polygon fill="black" stroke="black" points="330.492,-1436.42 340.423,-1432.73 330.358,-1429.42 330.492,-1436.42"/>
+<text text-anchor="middle" x="255.112" y="-1426.13" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1647 -->
 <g id="node14" class="node"><title>configuration-modules-core#1647</title>
@@ -205,193 +205,193 @@
 <!-- configuration&#45;modules&#45;core#1642 -->
 <g id="node17" class="node"><title>configuration-modules-core#1642</title>
 <g id="a_node17"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1642" xlink:title="configuration-modules-core#1642 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="196.5,-1325.5 35.5,-1325.5 35.5,-1264.5 196.5,-1264.5 196.5,-1325.5"/>
-<text text-anchor="middle" x="116" y="-1303.5" font-family="Sans" font-size="10.00">ncm-network: nmstate - fix</text>
-<text text-anchor="middle" x="116" y="-1292.5" font-family="Sans" font-size="10.00">default gateway and policy</text>
-<text text-anchor="middle" x="116" y="-1281.5" font-family="Sans" font-size="10.00">routing table</text>
+<polygon fill="#6e5494" stroke="black" points="196.5,-1393.5 35.5,-1393.5 35.5,-1332.5 196.5,-1332.5 196.5,-1393.5"/>
+<text text-anchor="middle" x="116" y="-1371.5" font-family="Sans" font-size="10.00">ncm-network: nmstate - fix</text>
+<text text-anchor="middle" x="116" y="-1360.5" font-family="Sans" font-size="10.00">default gateway and policy</text>
+<text text-anchor="middle" x="116" y="-1349.5" font-family="Sans" font-size="10.00">routing table</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1641 -->
 <g id="node18" class="node"><title>configuration-modules-core#1641</title>
 <g id="a_node18"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1641" xlink:title="configuration-modules-core#1641 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M518.5,-1314C518.5,-1314 345.5,-1314 345.5,-1314 339.5,-1314 333.5,-1308 333.5,-1302 333.5,-1302 333.5,-1254 333.5,-1254 333.5,-1248 339.5,-1242 345.5,-1242 345.5,-1242 518.5,-1242 518.5,-1242 524.5,-1242 530.5,-1248 530.5,-1254 530.5,-1254 530.5,-1302 530.5,-1302 530.5,-1308 524.5,-1314 518.5,-1314"/>
-<text text-anchor="middle" x="432" y="-1292" font-family="Sans" font-size="10.00">ncm-network: nmstate backend -</text>
-<text text-anchor="middle" x="432" y="-1281" font-family="Sans" font-size="10.00">fix duplicate default route for</text>
-<text text-anchor="middle" x="432" y="-1270" font-family="Sans" font-size="10.00">multihomed host and policy based</text>
-<text text-anchor="middle" x="432" y="-1259" font-family="Sans" font-size="10.00">routing</text>
+<path fill="#6e5494" stroke="black" d="M518.5,-1382C518.5,-1382 345.5,-1382 345.5,-1382 339.5,-1382 333.5,-1376 333.5,-1370 333.5,-1370 333.5,-1322 333.5,-1322 333.5,-1316 339.5,-1310 345.5,-1310 345.5,-1310 518.5,-1310 518.5,-1310 524.5,-1310 530.5,-1316 530.5,-1322 530.5,-1322 530.5,-1370 530.5,-1370 530.5,-1376 524.5,-1382 518.5,-1382"/>
+<text text-anchor="middle" x="432" y="-1360" font-family="Sans" font-size="10.00">ncm-network: nmstate backend -</text>
+<text text-anchor="middle" x="432" y="-1349" font-family="Sans" font-size="10.00">fix duplicate default route for</text>
+<text text-anchor="middle" x="432" y="-1338" font-family="Sans" font-size="10.00">multihomed host and policy based</text>
+<text text-anchor="middle" x="432" y="-1327" font-family="Sans" font-size="10.00">routing</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1642&#45;&gt;configuration&#45;modules&#45;core#1641 -->
 <g id="edge11" class="edge"><title>configuration-modules-core#1642-&gt;configuration-modules-core#1641</title>
-<path fill="none" stroke="black" stroke-width="2" d="M196.641,-1290.69C235.079,-1288.61 281.765,-1286.08 323.319,-1283.83"/>
-<polygon fill="black" stroke="black" points="323.69,-1287.31 333.486,-1283.28 323.312,-1280.33 323.69,-1287.31"/>
-<text text-anchor="middle" x="253.425" y="-1278.96" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M196.641,-1358.69C235.079,-1356.61 281.765,-1354.08 323.319,-1351.83"/>
+<polygon fill="black" stroke="black" points="323.69,-1355.31 333.486,-1351.28 323.312,-1348.33 323.69,-1355.31"/>
+<text text-anchor="middle" x="253.425" y="-1346.96" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1640 -->
 <g id="node19" class="node"><title>configuration-modules-core#1640</title>
 <g id="a_node19"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1640" xlink:title="configuration-modules-core#1640 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="207,-1246.5 25,-1246.5 25,-1185.5 207,-1185.5 207,-1246.5"/>
-<text text-anchor="middle" x="116" y="-1224.5" font-family="Sans" font-size="10.00">ncm-network: fix multi bonding</text>
-<text text-anchor="middle" x="116" y="-1213.5" font-family="Sans" font-size="10.00">configuration and arp_ip_target</text>
-<text text-anchor="middle" x="116" y="-1202.5" font-family="Sans" font-size="10.00">bonding options</text>
+<polygon fill="#6e5494" stroke="black" points="207,-1314.5 25,-1314.5 25,-1253.5 207,-1253.5 207,-1314.5"/>
+<text text-anchor="middle" x="116" y="-1292.5" font-family="Sans" font-size="10.00">ncm-network: fix multi bonding</text>
+<text text-anchor="middle" x="116" y="-1281.5" font-family="Sans" font-size="10.00">configuration and arp_ip_target</text>
+<text text-anchor="middle" x="116" y="-1270.5" font-family="Sans" font-size="10.00">bonding options</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1638 -->
 <g id="node20" class="node"><title>configuration-modules-core#1638</title>
 <g id="a_node20"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1638" xlink:title="configuration-modules-core#1638 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M515.5,-1223.5C515.5,-1223.5 348.5,-1223.5 348.5,-1223.5 342.5,-1223.5 336.5,-1217.5 336.5,-1211.5 336.5,-1211.5 336.5,-1174.5 336.5,-1174.5 336.5,-1168.5 342.5,-1162.5 348.5,-1162.5 348.5,-1162.5 515.5,-1162.5 515.5,-1162.5 521.5,-1162.5 527.5,-1168.5 527.5,-1174.5 527.5,-1174.5 527.5,-1211.5 527.5,-1211.5 527.5,-1217.5 521.5,-1223.5 515.5,-1223.5"/>
-<text text-anchor="middle" x="432" y="-1201.5" font-family="Sans" font-size="10.00">ncm-network: nmstate backend -</text>
-<text text-anchor="middle" x="432" y="-1190.5" font-family="Sans" font-size="10.00">multiple boding configuration</text>
-<text text-anchor="middle" x="432" y="-1179.5" font-family="Sans" font-size="10.00">does not work</text>
+<path fill="#6e5494" stroke="black" d="M515.5,-1212.5C515.5,-1212.5 348.5,-1212.5 348.5,-1212.5 342.5,-1212.5 336.5,-1206.5 336.5,-1200.5 336.5,-1200.5 336.5,-1163.5 336.5,-1163.5 336.5,-1157.5 342.5,-1151.5 348.5,-1151.5 348.5,-1151.5 515.5,-1151.5 515.5,-1151.5 521.5,-1151.5 527.5,-1157.5 527.5,-1163.5 527.5,-1163.5 527.5,-1200.5 527.5,-1200.5 527.5,-1206.5 521.5,-1212.5 515.5,-1212.5"/>
+<text text-anchor="middle" x="432" y="-1190.5" font-family="Sans" font-size="10.00">ncm-network: nmstate backend -</text>
+<text text-anchor="middle" x="432" y="-1179.5" font-family="Sans" font-size="10.00">multiple boding configuration</text>
+<text text-anchor="middle" x="432" y="-1168.5" font-family="Sans" font-size="10.00">does not work</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1640&#45;&gt;configuration&#45;modules&#45;core#1638 -->
 <g id="edge12" class="edge"><title>configuration-modules-core#1640-&gt;configuration-modules-core#1638</title>
-<path fill="none" stroke="black" stroke-width="2" d="M207.401,-1209.38C244.488,-1206.66 287.663,-1203.5 326.128,-1200.68"/>
-<polygon fill="black" stroke="black" points="326.602,-1204.16 336.32,-1199.94 326.091,-1197.18 326.602,-1204.16"/>
-<text text-anchor="middle" x="259.943" y="-1196.65" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M207.401,-1254.63C245.064,-1242.4 289.004,-1228.13 327.915,-1215.49"/>
+<polygon fill="black" stroke="black" points="329.263,-1218.73 337.692,-1212.31 327.1,-1212.07 329.263,-1218.73"/>
+<text text-anchor="middle" x="260.492" y="-1225.49" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1639 -->
 <g id="node21" class="node"><title>configuration-modules-core#1639</title>
 <g id="a_node21"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1639" xlink:title="configuration-modules-core#1639 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M512,-1144.5C512,-1144.5 352,-1144.5 352,-1144.5 346,-1144.5 340,-1138.5 340,-1132.5 340,-1132.5 340,-1095.5 340,-1095.5 340,-1089.5 346,-1083.5 352,-1083.5 352,-1083.5 512,-1083.5 512,-1083.5 518,-1083.5 524,-1089.5 524,-1095.5 524,-1095.5 524,-1132.5 524,-1132.5 524,-1138.5 518,-1144.5 512,-1144.5"/>
-<text text-anchor="middle" x="432" y="-1122.5" font-family="Sans" font-size="10.00">ncm-network: nmstate backend</text>
-<text text-anchor="middle" x="432" y="-1111.5" font-family="Sans" font-size="10.00">bonding option 'arp_ip_target'</text>
-<text text-anchor="middle" x="432" y="-1100.5" font-family="Sans" font-size="10.00">needs to be a string.</text>
+<path fill="#6e5494" stroke="black" d="M512,-1291.5C512,-1291.5 352,-1291.5 352,-1291.5 346,-1291.5 340,-1285.5 340,-1279.5 340,-1279.5 340,-1242.5 340,-1242.5 340,-1236.5 346,-1230.5 352,-1230.5 352,-1230.5 512,-1230.5 512,-1230.5 518,-1230.5 524,-1236.5 524,-1242.5 524,-1242.5 524,-1279.5 524,-1279.5 524,-1285.5 518,-1291.5 512,-1291.5"/>
+<text text-anchor="middle" x="432" y="-1269.5" font-family="Sans" font-size="10.00">ncm-network: nmstate backend</text>
+<text text-anchor="middle" x="432" y="-1258.5" font-family="Sans" font-size="10.00">bonding option 'arp_ip_target'</text>
+<text text-anchor="middle" x="432" y="-1247.5" font-family="Sans" font-size="10.00">needs to be a string.</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1640&#45;&gt;configuration&#45;modules&#45;core#1639 -->
 <g id="edge13" class="edge"><title>configuration-modules-core#1640-&gt;configuration-modules-core#1639</title>
-<path fill="none" stroke="black" stroke-width="2" d="M207.401,-1186.63C245.813,-1174.16 290.755,-1159.56 330.231,-1146.73"/>
-<polygon fill="black" stroke="black" points="331.449,-1150.02 339.878,-1143.6 329.286,-1143.36 331.449,-1150.02"/>
-<text text-anchor="middle" x="261.826" y="-1157.06" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M207.401,-1277.38C245.651,-1274.58 290.375,-1271.3 329.73,-1268.42"/>
+<polygon fill="black" stroke="black" points="330.16,-1271.9 339.878,-1267.67 329.649,-1264.91 330.16,-1271.9"/>
+<text text-anchor="middle" x="261.537" y="-1264.53" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1637 -->
 <g id="node22" class="node"><title>configuration-modules-core#1637</title>
 <g id="a_node22"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1637" xlink:title="configuration-modules-core#1637 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="205.5,-1167.5 26.5,-1167.5 26.5,-1106.5 205.5,-1106.5 205.5,-1167.5"/>
-<text text-anchor="middle" x="116" y="-1145.5" font-family="Sans" font-size="10.00">ncm-network: set profile-name</text>
-<text text-anchor="middle" x="116" y="-1134.5" font-family="Sans" font-size="10.00">and set dhcp to disable for</text>
-<text text-anchor="middle" x="116" y="-1123.5" font-family="Sans" font-size="10.00">static config</text>
+<polygon fill="#6e5494" stroke="black" points="205.5,-1235.5 26.5,-1235.5 26.5,-1174.5 205.5,-1174.5 205.5,-1235.5"/>
+<text text-anchor="middle" x="116" y="-1213.5" font-family="Sans" font-size="10.00">ncm-network: set profile-name</text>
+<text text-anchor="middle" x="116" y="-1202.5" font-family="Sans" font-size="10.00">and set dhcp to disable for</text>
+<text text-anchor="middle" x="116" y="-1191.5" font-family="Sans" font-size="10.00">static config</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1636 -->
 <g id="node23" class="node"><title>configuration-modules-core#1636</title>
 <g id="a_node23"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1636" xlink:title="configuration-modules-core#1636 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M515.5,-1065C515.5,-1065 348.5,-1065 348.5,-1065 342.5,-1065 336.5,-1059 336.5,-1053 336.5,-1053 336.5,-1027 336.5,-1027 336.5,-1021 342.5,-1015 348.5,-1015 348.5,-1015 515.5,-1015 515.5,-1015 521.5,-1015 527.5,-1021 527.5,-1027 527.5,-1027 527.5,-1053 527.5,-1053 527.5,-1059 521.5,-1065 515.5,-1065"/>
-<text text-anchor="middle" x="432" y="-1043" font-family="Sans" font-size="10.00">ncm-network: nmstate backend -</text>
-<text text-anchor="middle" x="432" y="-1032" font-family="Sans" font-size="10.00">add profile-name in config</text>
+<path fill="#6e5494" stroke="black" d="M515.5,-1133C515.5,-1133 348.5,-1133 348.5,-1133 342.5,-1133 336.5,-1127 336.5,-1121 336.5,-1121 336.5,-1095 336.5,-1095 336.5,-1089 342.5,-1083 348.5,-1083 348.5,-1083 515.5,-1083 515.5,-1083 521.5,-1083 527.5,-1089 527.5,-1095 527.5,-1095 527.5,-1121 527.5,-1121 527.5,-1127 521.5,-1133 515.5,-1133"/>
+<text text-anchor="middle" x="432" y="-1111" font-family="Sans" font-size="10.00">ncm-network: nmstate backend -</text>
+<text text-anchor="middle" x="432" y="-1100" font-family="Sans" font-size="10.00">add profile-name in config</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1637&#45;&gt;configuration&#45;modules&#45;core#1636 -->
 <g id="edge14" class="edge"><title>configuration-modules-core#1637-&gt;configuration-modules-core#1636</title>
-<path fill="none" stroke="black" stroke-width="2" d="M205.721,-1109.59C247.783,-1096.6 297.965,-1081.1 340.28,-1068.02"/>
-<polygon fill="black" stroke="black" points="341.496,-1071.31 350.018,-1065.02 339.43,-1064.62 341.496,-1071.31"/>
-<text text-anchor="middle" x="265.777" y="-1079.33" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M205.721,-1177.59C247.783,-1164.6 297.965,-1149.1 340.28,-1136.02"/>
+<polygon fill="black" stroke="black" points="341.496,-1139.31 350.018,-1133.02 339.43,-1132.62 341.496,-1139.31"/>
+<text text-anchor="middle" x="265.777" y="-1147.33" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1630 -->
 <g id="node24" class="node"><title>configuration-modules-core#1630</title>
 <g id="a_node24"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1630" xlink:title="configuration-modules-core#1630 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="215.5,-1088 16.5,-1088 16.5,-1038 215.5,-1038 215.5,-1088"/>
-<text text-anchor="middle" x="116" y="-1066" font-family="Sans" font-size="10.00">ncm-network: fix nmstate package</text>
-<text text-anchor="middle" x="116" y="-1055" font-family="Sans" font-size="10.00">definition in Kickstart config</text>
+<polygon fill="#6e5494" stroke="black" points="215.5,-1156 16.5,-1156 16.5,-1106 215.5,-1106 215.5,-1156"/>
+<text text-anchor="middle" x="116" y="-1134" font-family="Sans" font-size="10.00">ncm-network: fix nmstate package</text>
+<text text-anchor="middle" x="116" y="-1123" font-family="Sans" font-size="10.00">definition in Kickstart config</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1629 -->
 <g id="node25" class="node"><title>configuration-modules-core#1629</title>
 <g id="a_node25"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1629" xlink:title="configuration-modules-core#1629 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M508.5,-996.5C508.5,-996.5 355.5,-996.5 355.5,-996.5 349.5,-996.5 343.5,-990.5 343.5,-984.5 343.5,-984.5 343.5,-947.5 343.5,-947.5 343.5,-941.5 349.5,-935.5 355.5,-935.5 355.5,-935.5 508.5,-935.5 508.5,-935.5 514.5,-935.5 520.5,-941.5 520.5,-947.5 520.5,-947.5 520.5,-984.5 520.5,-984.5 520.5,-990.5 514.5,-996.5 508.5,-996.5"/>
-<text text-anchor="middle" x="432" y="-974.5" font-family="Sans" font-size="10.00">ncm-network nmstate: invalid</text>
-<text text-anchor="middle" x="432" y="-963.5" font-family="Sans" font-size="10.00">package definition in Kickstart</text>
-<text text-anchor="middle" x="432" y="-952.5" font-family="Sans" font-size="10.00">configuration</text>
+<path fill="#6e5494" stroke="black" d="M508.5,-1064.5C508.5,-1064.5 355.5,-1064.5 355.5,-1064.5 349.5,-1064.5 343.5,-1058.5 343.5,-1052.5 343.5,-1052.5 343.5,-1015.5 343.5,-1015.5 343.5,-1009.5 349.5,-1003.5 355.5,-1003.5 355.5,-1003.5 508.5,-1003.5 508.5,-1003.5 514.5,-1003.5 520.5,-1009.5 520.5,-1015.5 520.5,-1015.5 520.5,-1052.5 520.5,-1052.5 520.5,-1058.5 514.5,-1064.5 508.5,-1064.5"/>
+<text text-anchor="middle" x="432" y="-1042.5" font-family="Sans" font-size="10.00">ncm-network nmstate: invalid</text>
+<text text-anchor="middle" x="432" y="-1031.5" font-family="Sans" font-size="10.00">package definition in Kickstart</text>
+<text text-anchor="middle" x="432" y="-1020.5" font-family="Sans" font-size="10.00">configuration</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1630&#45;&gt;configuration&#45;modules&#45;core#1629 -->
 <g id="edge15" class="edge"><title>configuration-modules-core#1630-&gt;configuration-modules-core#1629</title>
-<path fill="none" stroke="black" stroke-width="2" d="M198.271,-1037.89C239.661,-1025.11 290.283,-1009.47 333.733,-996.047"/>
-<polygon fill="black" stroke="black" points="334.94,-999.338 343.461,-993.042 332.873,-992.65 334.94,-999.338"/>
-<text text-anchor="middle" x="258.685" y="-1007.52" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M198.271,-1105.89C239.661,-1093.11 290.283,-1077.47 333.733,-1064.05"/>
+<polygon fill="black" stroke="black" points="334.94,-1067.34 343.461,-1061.04 332.873,-1060.65 334.94,-1067.34"/>
+<text text-anchor="middle" x="258.685" y="-1075.52" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1622 -->
 <g id="node26" class="node"><title>configuration-modules-core#1622</title>
 <g id="a_node26"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1622" xlink:title="configuration-modules-core#1622 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="204.5,-1020 27.5,-1020 27.5,-970 204.5,-970 204.5,-1020"/>
-<text text-anchor="middle" x="116" y="-998" font-family="Sans" font-size="10.00">ncm-authconfig: sssd: Schema</text>
-<text text-anchor="middle" x="116" y="-987" font-family="Sans" font-size="10.00">improvements</text>
+<polygon fill="#6e5494" stroke="black" points="204.5,-1088 27.5,-1088 27.5,-1038 204.5,-1038 204.5,-1088"/>
+<text text-anchor="middle" x="116" y="-1066" font-family="Sans" font-size="10.00">ncm-authconfig: sssd: Schema</text>
+<text text-anchor="middle" x="116" y="-1055" font-family="Sans" font-size="10.00">improvements</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1471 -->
 <g id="node27" class="node"><title>configuration-modules-core#1471</title>
 <g id="a_node27"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1471" xlink:title="configuration-modules-core#1471 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M506.5,-917C506.5,-917 357.5,-917 357.5,-917 351.5,-917 345.5,-911 345.5,-905 345.5,-905 345.5,-879 345.5,-879 345.5,-873 351.5,-867 357.5,-867 357.5,-867 506.5,-867 506.5,-867 512.5,-867 518.5,-873 518.5,-879 518.5,-879 518.5,-905 518.5,-905 518.5,-911 512.5,-917 506.5,-917"/>
-<text text-anchor="middle" x="432" y="-895" font-family="Sans" font-size="10.00">ncm-authconfig: sssd: tighten</text>
-<text text-anchor="middle" x="432" y="-884" font-family="Sans" font-size="10.00">types</text>
+<path fill="#6e5494" stroke="black" d="M506.5,-985C506.5,-985 357.5,-985 357.5,-985 351.5,-985 345.5,-979 345.5,-973 345.5,-973 345.5,-947 345.5,-947 345.5,-941 351.5,-935 357.5,-935 357.5,-935 506.5,-935 506.5,-935 512.5,-935 518.5,-941 518.5,-947 518.5,-947 518.5,-973 518.5,-973 518.5,-979 512.5,-985 506.5,-985"/>
+<text text-anchor="middle" x="432" y="-963" font-family="Sans" font-size="10.00">ncm-authconfig: sssd: tighten</text>
+<text text-anchor="middle" x="432" y="-952" font-family="Sans" font-size="10.00">types</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1622&#45;&gt;configuration&#45;modules&#45;core#1471 -->
 <g id="edge16" class="edge"><title>configuration-modules-core#1622-&gt;configuration-modules-core#1471</title>
-<path fill="none" stroke="black" stroke-width="2" d="M193.3,-969.9C233.139,-956.802 282.692,-940.522 327,-926 332.666,-924.143 338.507,-922.23 344.393,-920.303"/>
-<polygon fill="black" stroke="black" points="345.906,-923.491 354.321,-917.054 343.729,-916.838 345.906,-923.491"/>
-<text text-anchor="middle" x="262.108" y="-935.351" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M193.3,-1037.9C233.139,-1024.8 282.692,-1008.52 327,-994 332.666,-992.143 338.507,-990.23 344.393,-988.303"/>
+<polygon fill="black" stroke="black" points="345.906,-991.491 354.321,-985.054 343.729,-984.838 345.906,-991.491"/>
+<text text-anchor="middle" x="262.108" y="-1003.35" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1621 -->
 <g id="node28" class="node"><title>configuration-modules-core#1621</title>
 <g id="a_node28"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1621" xlink:title="configuration-modules-core#1621 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="211.5,-952 20.5,-952 20.5,-902 211.5,-902 211.5,-952"/>
-<text text-anchor="middle" x="116" y="-930" font-family="Sans" font-size="10.00">ncm-nfs: Allow daemon to reload</text>
-<text text-anchor="middle" x="116" y="-919" font-family="Sans" font-size="10.00">to be specified</text>
+<polygon fill="#6e5494" stroke="black" points="211.5,-1020 20.5,-1020 20.5,-970 211.5,-970 211.5,-1020"/>
+<text text-anchor="middle" x="116" y="-998" font-family="Sans" font-size="10.00">ncm-nfs: Allow daemon to reload</text>
+<text text-anchor="middle" x="116" y="-987" font-family="Sans" font-size="10.00">to be specified</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1618 -->
 <g id="node29" class="node"><title>configuration-modules-core#1618</title>
 <g id="a_node29"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1618" xlink:title="configuration-modules-core#1618 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M498.5,-849C498.5,-849 365.5,-849 365.5,-849 359.5,-849 353.5,-843 353.5,-837 353.5,-837 353.5,-811 353.5,-811 353.5,-805 359.5,-799 365.5,-799 365.5,-799 498.5,-799 498.5,-799 504.5,-799 510.5,-805 510.5,-811 510.5,-811 510.5,-837 510.5,-837 510.5,-843 504.5,-849 498.5,-849"/>
-<text text-anchor="middle" x="432" y="-827" font-family="Sans" font-size="10.00">ncm-nfs: start service nfs-</text>
-<text text-anchor="middle" x="432" y="-816" font-family="Sans" font-size="10.00">server instead of nfs</text>
+<path fill="#6e5494" stroke="black" d="M498.5,-917C498.5,-917 365.5,-917 365.5,-917 359.5,-917 353.5,-911 353.5,-905 353.5,-905 353.5,-879 353.5,-879 353.5,-873 359.5,-867 365.5,-867 365.5,-867 498.5,-867 498.5,-867 504.5,-867 510.5,-873 510.5,-879 510.5,-879 510.5,-905 510.5,-905 510.5,-911 504.5,-917 498.5,-917"/>
+<text text-anchor="middle" x="432" y="-895" font-family="Sans" font-size="10.00">ncm-nfs: start service nfs-</text>
+<text text-anchor="middle" x="432" y="-884" font-family="Sans" font-size="10.00">server instead of nfs</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1621&#45;&gt;configuration&#45;modules&#45;core#1618 -->
 <g id="edge17" class="edge"><title>configuration-modules-core#1621-&gt;configuration-modules-core#1618</title>
-<path fill="none" stroke="black" stroke-width="2" d="M193.3,-901.9C233.139,-888.802 282.692,-872.522 327,-858 332.666,-856.143 338.507,-854.23 344.393,-852.303"/>
-<polygon fill="black" stroke="black" points="345.906,-855.491 354.321,-849.054 343.729,-848.838 345.906,-855.491"/>
-<text text-anchor="middle" x="262.108" y="-867.351" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M193.3,-969.9C233.139,-956.802 282.692,-940.522 327,-926 332.666,-924.143 338.507,-922.23 344.393,-920.303"/>
+<polygon fill="black" stroke="black" points="345.906,-923.491 354.321,-917.054 343.729,-916.838 345.906,-923.491"/>
+<text text-anchor="middle" x="262.108" y="-935.351" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1620 -->
 <g id="node30" class="node"><title>configuration-modules-core#1620</title>
 <g id="a_node30"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1620" xlink:title="configuration-modules-core#1620 (pull-request)" target="_parent">
-<polygon fill="#6e5494" stroke="black" points="215,-884 17,-884 17,-834 215,-834 215,-884"/>
-<text text-anchor="middle" x="116" y="-862" font-family="Sans" font-size="10.00">ncm-spma: yumdnf: Don't attempt</text>
-<text text-anchor="middle" x="116" y="-851" font-family="Sans" font-size="10.00">to expand groups with repoquery</text>
+<polygon fill="#6e5494" stroke="black" points="215,-952 17,-952 17,-902 215,-902 215,-952"/>
+<text text-anchor="middle" x="116" y="-930" font-family="Sans" font-size="10.00">ncm-spma: yumdnf: Don't attempt</text>
+<text text-anchor="middle" x="116" y="-919" font-family="Sans" font-size="10.00">to expand groups with repoquery</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1524 -->
 <g id="node31" class="node"><title>configuration-modules-core#1524</title>
 <g id="a_node31"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1524" xlink:title="configuration-modules-core#1524 (issue)" target="_parent">
-<path fill="#6e5494" stroke="black" d="M517.5,-781C517.5,-781 346.5,-781 346.5,-781 340.5,-781 334.5,-775 334.5,-769 334.5,-769 334.5,-743 334.5,-743 334.5,-737 340.5,-731 346.5,-731 346.5,-731 517.5,-731 517.5,-731 523.5,-731 529.5,-737 529.5,-743 529.5,-743 529.5,-769 529.5,-769 529.5,-775 523.5,-781 517.5,-781"/>
-<text text-anchor="middle" x="432" y="-759" font-family="Sans" font-size="10.00">ncm-spma: yumdnf backend: fails</text>
-<text text-anchor="middle" x="432" y="-748" font-family="Sans" font-size="10.00">while trying to expand groups</text>
+<path fill="#6e5494" stroke="black" d="M517.5,-849C517.5,-849 346.5,-849 346.5,-849 340.5,-849 334.5,-843 334.5,-837 334.5,-837 334.5,-811 334.5,-811 334.5,-805 340.5,-799 346.5,-799 346.5,-799 517.5,-799 517.5,-799 523.5,-799 529.5,-805 529.5,-811 529.5,-811 529.5,-837 529.5,-837 529.5,-843 523.5,-849 517.5,-849"/>
+<text text-anchor="middle" x="432" y="-827" font-family="Sans" font-size="10.00">ncm-spma: yumdnf backend: fails</text>
+<text text-anchor="middle" x="432" y="-816" font-family="Sans" font-size="10.00">while trying to expand groups</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1620&#45;&gt;configuration&#45;modules&#45;core#1524 -->
 <g id="edge18" class="edge"><title>configuration-modules-core#1620-&gt;configuration-modules-core#1524</title>
-<path fill="none" stroke="black" stroke-width="2" d="M193.3,-833.9C233.139,-820.802 282.692,-804.522 327,-790 332.666,-788.143 338.507,-786.23 344.393,-784.303"/>
-<polygon fill="black" stroke="black" points="345.906,-787.491 354.321,-781.054 343.729,-780.838 345.906,-787.491"/>
-<text text-anchor="middle" x="262.108" y="-799.351" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M193.3,-901.9C233.139,-888.802 282.692,-872.522 327,-858 332.666,-856.143 338.507,-854.23 344.393,-852.303"/>
+<polygon fill="black" stroke="black" points="345.906,-855.491 354.321,-849.054 343.729,-848.838 345.906,-855.491"/>
+<text text-anchor="middle" x="262.108" y="-867.351" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1554 -->
 <g id="node32" class="node"><title>configuration-modules-core#1554</title>
@@ -452,152 +452,152 @@
 <!-- configuration&#45;modules&#45;core#1507 -->
 <g id="node37" class="node"><title>configuration-modules-core#1507</title>
 <g id="a_node37"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1507" xlink:title="configuration-modules-core#1507 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="204,-1481 28,-1481 28,-1431 204,-1431 204,-1481"/>
-<text text-anchor="middle" x="116" y="-1459" font-family="Sans" font-size="10.00">[WIP] ncm-spma: yumdnf: use</text>
-<text text-anchor="middle" x="116" y="-1448" font-family="Sans" font-size="10.00">spmaleaves dnf plugin</text>
+<polygon fill="#6cc644" stroke="black" points="204,-1549 28,-1549 28,-1499 204,-1499 204,-1549"/>
+<text text-anchor="middle" x="116" y="-1527" font-family="Sans" font-size="10.00">[WIP] ncm-spma: yumdnf: use</text>
+<text text-anchor="middle" x="116" y="-1516" font-family="Sans" font-size="10.00">spmaleaves dnf plugin</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1401 -->
 <g id="node38" class="node"><title>configuration-modules-core#1401</title>
-<polygon fill="lightgrey" stroke="black" points="529.5,-1475.5 334.5,-1475.5 334.5,-1436.5 529.5,-1436.5 529.5,-1475.5"/>
-<text text-anchor="middle" x="432" y="-1453.5" font-family="Sans" font-size="10.00">configuration-modules-core#1401</text>
+<polygon fill="lightgrey" stroke="black" points="529.5,-1543.5 334.5,-1543.5 334.5,-1504.5 529.5,-1504.5 529.5,-1543.5"/>
+<text text-anchor="middle" x="432" y="-1521.5" font-family="Sans" font-size="10.00">configuration-modules-core#1401</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1507&#45;&gt;configuration&#45;modules&#45;core#1401 -->
 <g id="edge22" class="edge"><title>configuration-modules-core#1507-&gt;configuration-modules-core#1401</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M204.05,-1456C241.203,-1456 284.927,-1456 324.027,-1456"/>
-<polygon fill="none" stroke="black" points="324.391,-1459.5 334.391,-1456 324.391,-1452.5 324.391,-1459.5"/>
-<text text-anchor="middle" x="249.549" y="-1448" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M204.05,-1524C241.203,-1524 284.927,-1524 324.027,-1524"/>
+<polygon fill="none" stroke="black" points="324.391,-1527.5 334.391,-1524 324.391,-1520.5 324.391,-1527.5"/>
+<text text-anchor="middle" x="249.549" y="-1516" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1336 -->
 <g id="node39" class="node"><title>configuration-modules-core#1336</title>
 <g id="a_node39"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1336" xlink:title="configuration-modules-core#1336 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="203,-1592.5 29,-1592.5 29,-1531.5 203,-1531.5 203,-1592.5"/>
-<text text-anchor="middle" x="116" y="-1570.5" font-family="Sans" font-size="10.00">ncm-network: Add support for</text>
-<text text-anchor="middle" x="116" y="-1559.5" font-family="Sans" font-size="10.00">CAF::Service actions after</text>
-<text text-anchor="middle" x="116" y="-1548.5" font-family="Sans" font-size="10.00">changes</text>
+<polygon fill="#6cc644" stroke="black" points="203,-1660.5 29,-1660.5 29,-1599.5 203,-1599.5 203,-1660.5"/>
+<text text-anchor="middle" x="116" y="-1638.5" font-family="Sans" font-size="10.00">ncm-network: Add support for</text>
+<text text-anchor="middle" x="116" y="-1627.5" font-family="Sans" font-size="10.00">CAF::Service actions after</text>
+<text text-anchor="middle" x="116" y="-1616.5" font-family="Sans" font-size="10.00">changes</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1335 -->
 <g id="node40" class="node"><title>configuration-modules-core#1335</title>
 <g id="a_node40"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1335" xlink:title="configuration-modules-core#1335 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="525,-1623.5 339,-1623.5 339,-1562.5 525,-1562.5 525,-1623.5"/>
-<text text-anchor="middle" x="432" y="-1601.5" font-family="Sans" font-size="10.00">ncm-metaconfig: Remove</text>
-<text text-anchor="middle" x="432" y="-1590.5" font-family="Sans" font-size="10.00">caf_service_action type to allow</text>
-<text text-anchor="middle" x="432" y="-1579.5" font-family="Sans" font-size="10.00">reuse</text>
+<polygon fill="#6cc644" stroke="black" points="525,-1691.5 339,-1691.5 339,-1630.5 525,-1630.5 525,-1691.5"/>
+<text text-anchor="middle" x="432" y="-1669.5" font-family="Sans" font-size="10.00">ncm-metaconfig: Remove</text>
+<text text-anchor="middle" x="432" y="-1658.5" font-family="Sans" font-size="10.00">caf_service_action type to allow</text>
+<text text-anchor="middle" x="432" y="-1647.5" font-family="Sans" font-size="10.00">reuse</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1336&#45;&gt;configuration&#45;modules&#45;core#1335 -->
 <g id="edge23" class="edge"><title>configuration-modules-core#1336-&gt;configuration-modules-core#1335</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M203.217,-1570.51C242.047,-1574.35 288.184,-1578.9 328.746,-1582.9"/>
-<polygon fill="none" stroke="black" points="328.636,-1586.41 338.931,-1583.91 329.323,-1579.44 328.636,-1586.41"/>
-<text text-anchor="middle" x="250.868" y="-1569.19" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M203.217,-1638.51C242.047,-1642.35 288.184,-1646.9 328.746,-1650.9"/>
+<polygon fill="none" stroke="black" points="328.636,-1654.41 338.931,-1651.91 329.323,-1647.44 328.636,-1654.41"/>
+<text text-anchor="middle" x="250.868" y="-1637.19" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1071 -->
 <g id="node41" class="node"><title>configuration-modules-core#1071</title>
 <g id="a_node41"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1071" xlink:title="configuration-modules-core#1071 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M518.5,-1544C518.5,-1544 345.5,-1544 345.5,-1544 339.5,-1544 333.5,-1538 333.5,-1532 333.5,-1532 333.5,-1506 333.5,-1506 333.5,-1500 339.5,-1494 345.5,-1494 345.5,-1494 518.5,-1494 518.5,-1494 524.5,-1494 530.5,-1500 530.5,-1506 530.5,-1506 530.5,-1532 530.5,-1532 530.5,-1538 524.5,-1544 518.5,-1544"/>
-<text text-anchor="middle" x="432" y="-1522" font-family="Sans" font-size="10.00">ncm-network: support daemons to</text>
-<text text-anchor="middle" x="432" y="-1511" font-family="Sans" font-size="10.00">restart after network changes</text>
+<path fill="#6cc644" stroke="black" d="M518.5,-1612C518.5,-1612 345.5,-1612 345.5,-1612 339.5,-1612 333.5,-1606 333.5,-1600 333.5,-1600 333.5,-1574 333.5,-1574 333.5,-1568 339.5,-1562 345.5,-1562 345.5,-1562 518.5,-1562 518.5,-1562 524.5,-1562 530.5,-1568 530.5,-1574 530.5,-1574 530.5,-1600 530.5,-1600 530.5,-1606 524.5,-1612 518.5,-1612"/>
+<text text-anchor="middle" x="432" y="-1590" font-family="Sans" font-size="10.00">ncm-network: support daemons to</text>
+<text text-anchor="middle" x="432" y="-1579" font-family="Sans" font-size="10.00">restart after network changes</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1336&#45;&gt;configuration&#45;modules&#45;core#1071 -->
 <g id="edge24" class="edge"><title>configuration-modules-core#1336-&gt;configuration-modules-core#1071</title>
-<path fill="none" stroke="black" stroke-width="2" d="M203.217,-1550.19C240.216,-1545.13 283.848,-1539.15 322.972,-1533.79"/>
-<polygon fill="black" stroke="black" points="323.912,-1537.2 333.344,-1532.37 322.962,-1530.26 323.912,-1537.2"/>
-<text text-anchor="middle" x="256.527" y="-1533.25" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M203.217,-1618.19C240.216,-1613.13 283.848,-1607.15 322.972,-1601.79"/>
+<polygon fill="black" stroke="black" points="323.912,-1605.2 333.344,-1600.37 322.962,-1598.26 323.912,-1605.2"/>
+<text text-anchor="middle" x="256.527" y="-1601.25" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- template&#45;library&#45;core#191 -->
 <g id="node42" class="node"><title>template-library-core#191</title>
-<polygon fill="lightgrey" stroke="black" points="817.5,-1612.5 658.5,-1612.5 658.5,-1573.5 817.5,-1573.5 817.5,-1612.5"/>
-<text text-anchor="middle" x="738" y="-1590.5" font-family="Sans" font-size="10.00">template-library-core#191</text>
+<polygon fill="lightgrey" stroke="black" points="817.5,-1680.5 658.5,-1680.5 658.5,-1641.5 817.5,-1641.5 817.5,-1680.5"/>
+<text text-anchor="middle" x="738" y="-1658.5" font-family="Sans" font-size="10.00">template-library-core#191</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1335&#45;&gt;template&#45;library&#45;core#191 -->
 <g id="edge25" class="edge"><title>configuration-modules-core#1335-&gt;template-library-core#191</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M525.035,-1593C564.097,-1593 609.452,-1593 648.16,-1593"/>
-<polygon fill="none" stroke="black" points="648.369,-1596.5 658.369,-1593 648.369,-1589.5 648.369,-1596.5"/>
-<text text-anchor="middle" x="571.665" y="-1585" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M525.035,-1661C564.097,-1661 609.452,-1661 648.16,-1661"/>
+<polygon fill="none" stroke="black" points="648.369,-1664.5 658.369,-1661 648.369,-1657.5 648.369,-1664.5"/>
+<text text-anchor="middle" x="571.665" y="-1653" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1148 -->
 <g id="node43" class="node"><title>configuration-modules-core#1148</title>
 <g id="a_node43"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1148" xlink:title="configuration-modules-core#1148 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="215.5,-1760 16.5,-1760 16.5,-1710 215.5,-1710 215.5,-1760"/>
-<text text-anchor="middle" x="116" y="-1738" font-family="Sans" font-size="10.00">ncm-spma: Remove support from</text>
-<text text-anchor="middle" x="116" y="-1727" font-family="Sans" font-size="10.00">groups from spma yumng backend</text>
+<polygon fill="#6cc644" stroke="black" points="215.5,-1828 16.5,-1828 16.5,-1778 215.5,-1778 215.5,-1828"/>
+<text text-anchor="middle" x="116" y="-1806" font-family="Sans" font-size="10.00">ncm-spma: Remove support from</text>
+<text text-anchor="middle" x="116" y="-1795" font-family="Sans" font-size="10.00">groups from spma yumng backend</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#952 -->
 <g id="node44" class="node"><title>configuration-modules-core#952</title>
 <g id="a_node44"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/952" xlink:title="configuration-modules-core#952 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M525,-1760C525,-1760 339,-1760 339,-1760 333,-1760 327,-1754 327,-1748 327,-1748 327,-1722 327,-1722 327,-1716 333,-1710 339,-1710 339,-1710 525,-1710 525,-1710 531,-1710 537,-1716 537,-1722 537,-1722 537,-1748 537,-1748 537,-1754 531,-1760 525,-1760"/>
-<text text-anchor="middle" x="432" y="-1738" font-family="Sans" font-size="10.00">ncm-spma (yumng): Remove support</text>
-<text text-anchor="middle" x="432" y="-1727" font-family="Sans" font-size="10.00">for package groups</text>
+<path fill="#6cc644" stroke="black" d="M525,-1828C525,-1828 339,-1828 339,-1828 333,-1828 327,-1822 327,-1816 327,-1816 327,-1790 327,-1790 327,-1784 333,-1778 339,-1778 339,-1778 525,-1778 525,-1778 531,-1778 537,-1784 537,-1790 537,-1790 537,-1816 537,-1816 537,-1822 531,-1828 525,-1828"/>
+<text text-anchor="middle" x="432" y="-1806" font-family="Sans" font-size="10.00">ncm-spma (yumng): Remove support</text>
+<text text-anchor="middle" x="432" y="-1795" font-family="Sans" font-size="10.00">for package groups</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#1148&#45;&gt;configuration&#45;modules&#45;core#952 -->
 <g id="edge26" class="edge"><title>configuration-modules-core#1148-&gt;configuration-modules-core#952</title>
-<path fill="none" stroke="black" stroke-width="2" d="M215.921,-1735C247.933,-1735 283.695,-1735 316.726,-1735"/>
-<polygon fill="black" stroke="black" points="316.883,-1738.5 326.883,-1735 316.882,-1731.5 316.883,-1738.5"/>
-<text text-anchor="middle" x="259.546" y="-1727" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M215.921,-1803C247.933,-1803 283.695,-1803 316.726,-1803"/>
+<polygon fill="black" stroke="black" points="316.883,-1806.5 326.883,-1803 316.882,-1799.5 316.883,-1806.5"/>
+<text text-anchor="middle" x="259.546" y="-1795" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#950 -->
 <g id="node45" class="node"><title>configuration-modules-core#950</title>
 <g id="a_node45"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/950" xlink:title="configuration-modules-core#950 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M207,-1692C207,-1692 25,-1692 25,-1692 19,-1692 13,-1686 13,-1680 13,-1680 13,-1654 13,-1654 13,-1648 19,-1642 25,-1642 25,-1642 207,-1642 207,-1642 213,-1642 219,-1648 219,-1654 219,-1654 219,-1680 219,-1680 219,-1686 213,-1692 207,-1692"/>
-<text text-anchor="middle" x="116" y="-1670" font-family="Sans" font-size="10.00">ncm-spma: Remove support for</text>
-<text text-anchor="middle" x="116" y="-1659" font-family="Sans" font-size="10.00">package groups from yum backends</text>
+<path fill="#6cc644" stroke="black" d="M207,-1760C207,-1760 25,-1760 25,-1760 19,-1760 13,-1754 13,-1748 13,-1748 13,-1722 13,-1722 13,-1716 19,-1710 25,-1710 25,-1710 207,-1710 207,-1710 213,-1710 219,-1716 219,-1722 219,-1722 219,-1748 219,-1748 219,-1754 213,-1760 207,-1760"/>
+<text text-anchor="middle" x="116" y="-1738" font-family="Sans" font-size="10.00">ncm-spma: Remove support for</text>
+<text text-anchor="middle" x="116" y="-1727" font-family="Sans" font-size="10.00">package groups from yum backends</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#951 -->
 <g id="node46" class="node"><title>configuration-modules-core#951</title>
 <g id="a_node46"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/951" xlink:title="configuration-modules-core#951 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M519,-1692C519,-1692 345,-1692 345,-1692 339,-1692 333,-1686 333,-1680 333,-1680 333,-1654 333,-1654 333,-1648 339,-1642 345,-1642 345,-1642 519,-1642 519,-1642 525,-1642 531,-1648 531,-1654 531,-1654 531,-1680 531,-1680 531,-1686 525,-1692 519,-1692"/>
-<text text-anchor="middle" x="432" y="-1670" font-family="Sans" font-size="10.00">ncm-spma (yum): Remove support</text>
-<text text-anchor="middle" x="432" y="-1659" font-family="Sans" font-size="10.00">for package groups</text>
+<path fill="#6cc644" stroke="black" d="M519,-1760C519,-1760 345,-1760 345,-1760 339,-1760 333,-1754 333,-1748 333,-1748 333,-1722 333,-1722 333,-1716 339,-1710 345,-1710 345,-1710 519,-1710 519,-1710 525,-1710 531,-1716 531,-1722 531,-1722 531,-1748 531,-1748 531,-1754 525,-1760 519,-1760"/>
+<text text-anchor="middle" x="432" y="-1738" font-family="Sans" font-size="10.00">ncm-spma (yum): Remove support</text>
+<text text-anchor="middle" x="432" y="-1727" font-family="Sans" font-size="10.00">for package groups</text>
 </a>
 </g>
 </g>
 <!-- configuration&#45;modules&#45;core#950&#45;&gt;configuration&#45;modules&#45;core#951 -->
 <g id="edge27" class="edge"><title>configuration-modules-core#950-&gt;configuration-modules-core#951</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M219.381,-1667C252.386,-1667 289.071,-1667 322.502,-1667"/>
-<polygon fill="none" stroke="black" points="322.765,-1670.5 332.765,-1667 322.765,-1663.5 322.765,-1670.5"/>
-<text text-anchor="middle" x="256.107" y="-1659" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M219.381,-1735C252.386,-1735 289.071,-1735 322.502,-1735"/>
+<polygon fill="none" stroke="black" points="322.765,-1738.5 332.765,-1735 322.765,-1731.5 322.765,-1738.5"/>
+<text text-anchor="middle" x="256.107" y="-1727" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- configuration&#45;modules&#45;core#950&#45;&gt;configuration&#45;modules&#45;core#952 -->
 <g id="edge28" class="edge"><title>configuration-modules-core#950-&gt;configuration-modules-core#952</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M219.381,-1689.17C250.602,-1695.93 285.116,-1703.41 317.053,-1710.32"/>
-<polygon fill="none" stroke="black" points="316.361,-1713.75 326.876,-1712.45 317.843,-1706.91 316.361,-1713.75"/>
-<text text-anchor="middle" x="253.372" y="-1692.86" font-family="Sans" font-size="10.00">requires</text>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M219.381,-1757.17C250.602,-1763.93 285.116,-1771.41 317.053,-1778.32"/>
+<polygon fill="none" stroke="black" points="316.361,-1781.75 326.876,-1780.45 317.843,-1774.91 316.361,-1781.75"/>
+<text text-anchor="middle" x="253.372" y="-1760.86" font-family="Sans" font-size="10.00">requires</text>
 </g>
 <!-- ncm&#45;cdispd#60 -->
 <g id="node47" class="node"><title>ncm-cdispd#60</title>
 <g id="a_node47"><a xlink:href="https://github.com/quattor/ncm-cdispd/pull/60" xlink:title="ncm-cdispd#60 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="187.5,-1828 44.5,-1828 44.5,-1778 187.5,-1778 187.5,-1828"/>
-<text text-anchor="middle" x="116" y="-1806" font-family="Sans" font-size="10.00">Add chkconfig as a rpm</text>
-<text text-anchor="middle" x="116" y="-1795" font-family="Sans" font-size="10.00">dependency</text>
+<polygon fill="#6e5494" stroke="black" points="187.5,-884 44.5,-884 44.5,-834 187.5,-834 187.5,-884"/>
+<text text-anchor="middle" x="116" y="-862" font-family="Sans" font-size="10.00">Add chkconfig as a rpm</text>
+<text text-anchor="middle" x="116" y="-851" font-family="Sans" font-size="10.00">dependency</text>
 </a>
 </g>
 </g>
 <!-- ncm&#45;cdispd#59 -->
 <g id="node48" class="node"><title>ncm-cdispd#59</title>
 <g id="a_node48"><a xlink:href="https://github.com/quattor/ncm-cdispd/issues/59" xlink:title="ncm-cdispd#59 (issue)" target="_parent">
-<path fill="#6cc644" stroke="black" d="M505,-1828C505,-1828 359,-1828 359,-1828 353,-1828 347,-1822 347,-1816 347,-1816 347,-1790 347,-1790 347,-1784 353,-1778 359,-1778 359,-1778 505,-1778 505,-1778 511,-1778 517,-1784 517,-1790 517,-1790 517,-1816 517,-1816 517,-1822 511,-1828 505,-1828"/>
-<text text-anchor="middle" x="432" y="-1806" font-family="Sans" font-size="10.00">ncm-cdispd breaks chkconfig</text>
-<text text-anchor="middle" x="432" y="-1795" font-family="Sans" font-size="10.00">installation on Rocky 9</text>
+<path fill="#6e5494" stroke="black" d="M505,-781C505,-781 359,-781 359,-781 353,-781 347,-775 347,-769 347,-769 347,-743 347,-743 347,-737 353,-731 359,-731 359,-731 505,-731 505,-731 511,-731 517,-737 517,-743 517,-743 517,-769 517,-769 517,-775 511,-781 505,-781"/>
+<text text-anchor="middle" x="432" y="-759" font-family="Sans" font-size="10.00">ncm-cdispd breaks chkconfig</text>
+<text text-anchor="middle" x="432" y="-748" font-family="Sans" font-size="10.00">installation on Rocky 9</text>
 </a>
 </g>
 </g>
 <!-- ncm&#45;cdispd#60&#45;&gt;ncm&#45;cdispd#59 -->
 <g id="edge29" class="edge"><title>ncm-cdispd#60-&gt;ncm-cdispd#59</title>
-<path fill="none" stroke="black" stroke-width="2" d="M187.859,-1803C231.85,-1803 288.908,-1803 336.695,-1803"/>
-<polygon fill="black" stroke="black" points="336.743,-1806.5 346.743,-1803 336.743,-1799.5 336.743,-1806.5"/>
-<text text-anchor="middle" x="255.497" y="-1795" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M187.951,-835.659C228.642,-822.279 280.687,-805.179 327,-790 332.666,-788.143 338.507,-786.23 344.393,-784.303"/>
+<polygon fill="black" stroke="black" points="345.906,-787.491 354.321,-781.054 343.729,-780.838 345.906,-787.491"/>
+<text text-anchor="middle" x="259.121" y="-800.331" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- quattor.github.com#278 -->
 <g id="node49" class="node"><title>quattor.github.com#278</title>
