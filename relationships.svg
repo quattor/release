@@ -485,8 +485,8 @@
 <!-- configuration&#45;modules&#45;core#1656 -->
 <g id="node40" class="node"><title>configuration-modules-core#1656</title>
 <g id="a_node40"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1656" xlink:title="configuration-modules-core#1656 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="170.5,-1714.5 61.5,-1714.5 61.5,-1675.5 170.5,-1675.5 170.5,-1714.5"/>
-<text text-anchor="middle" x="116" y="-1692.5" font-family="Sans" font-size="10.00">Nmstate dgw fix</text>
+<polygon fill="#6cc644" stroke="black" points="205,-1714.5 27,-1714.5 27,-1675.5 205,-1675.5 205,-1714.5"/>
+<text text-anchor="middle" x="116" y="-1692.5" font-family="Sans" font-size="10.00">ncm-network: nmstate dgw fix</text>
 </a>
 </g>
 </g>
@@ -501,9 +501,9 @@
 </g>
 <!-- configuration&#45;modules&#45;core#1656&#45;&gt;configuration&#45;modules&#45;core#1655 -->
 <g id="edge25" class="edge"><title>configuration-modules-core#1656-&gt;configuration-modules-core#1655</title>
-<path fill="none" stroke="black" stroke-width="2" d="M170.622,-1695C215.134,-1695 279.603,-1695 333.254,-1695"/>
-<polygon fill="black" stroke="black" points="333.484,-1698.5 343.484,-1695 333.484,-1691.5 333.484,-1698.5"/>
-<text text-anchor="middle" x="245.192" y="-1687" font-family="Sans" font-size="10.00">fixes</text>
+<path fill="none" stroke="black" stroke-width="2" d="M205.302,-1695C245.101,-1695 292.236,-1695 333.112,-1695"/>
+<polygon fill="black" stroke="black" points="333.361,-1698.5 343.361,-1695 333.361,-1691.5 333.361,-1698.5"/>
+<text text-anchor="middle" x="262.443" y="-1687" font-family="Sans" font-size="10.00">fixes</text>
 </g>
 <!-- configuration&#45;modules&#45;core#1507 -->
 <g id="node42" class="node"><title>configuration-modules-core#1507</title>
