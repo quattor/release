@@ -198,7 +198,7 @@
 <!-- configuration&#45;modules&#45;core#1676 -->
 <g id="node16" class="node"><title>configuration-modules-core#1676</title>
 <g id="a_node16"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1676" xlink:title="configuration-modules-core#1676 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="196.5,-1769 35.5,-1769 35.5,-1719 196.5,-1719 196.5,-1769"/>
+<polygon fill="#6e5494" stroke="black" points="196.5,-1769 35.5,-1769 35.5,-1719 196.5,-1719 196.5,-1769"/>
 <text text-anchor="middle" x="116" y="-1747" font-family="Sans" font-size="10.00">ncm-network: add nmstate</text>
 <text text-anchor="middle" x="116" y="-1736" font-family="Sans" font-size="10.00">infiniband support</text>
 </a>
