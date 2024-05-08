@@ -207,7 +207,7 @@
 <!-- configuration&#45;modules&#45;core#1673 -->
 <g id="node17" class="node"><title>configuration-modules-core#1673</title>
 <g id="a_node17"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1673" xlink:title="configuration-modules-core#1673 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="black" points="522,-1757 342,-1757 342,-1707 522,-1707 522,-1757"/>
+<polygon fill="#6e5494" stroke="black" points="522,-1757 342,-1757 342,-1707 522,-1707 522,-1757"/>
 <text text-anchor="middle" x="432" y="-1735" font-family="Sans" font-size="10.00">ncm-network: refactor network</text>
 <text text-anchor="middle" x="432" y="-1724" font-family="Sans" font-size="10.00">core schema</text>
 </a>
