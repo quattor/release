@@ -16,14 +16,14 @@ jobs:
       contents: read
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set the image date tag
         run: |
           echo IMAGE_TAG=$(date +"%Y%m%d") >> $GITHUB_ENV
 
       - name: Build Image
-        uses: redhat-actions/buildah-build@v2.12
+        uses: redhat-actions/buildah-build@v2
         id: build-image
         with:
           image: quattor-test-container
@@ -34,7 +34,7 @@ jobs:
       - name: Publish image on ghcr.io
         id: push-to-ghcr
         if: github.event_name == 'push' && github.ref_name == 'master'
-        uses: redhat-actions/push-to-registry@v2.7
+        uses: redhat-actions/push-to-registry@v2
         with:
           image: ${{ steps.build-image.outputs.image }}
           tags: ${{ steps.build-image.outputs.tags }}
