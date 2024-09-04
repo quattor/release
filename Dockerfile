@@ -28,12 +28,10 @@ RUN dnf install -y maven which rpm-build panc ncm-lib-blockdevices \
   perl-Net-OpenStack-Client perl-NetAddr-IP perl-REST-Client \
   perl-Set-Scalar perl-Text-Glob cpanminus gcc wget \
   perl-Git-Repository perl-Data-Structure-Util \
-  perl-Test-Quattor aii-ks procps-ng
+  perl-Test-Quattor aii-ks procps-ng rpm-build
 
 # quattor tests should not be run as root
 RUN useradd --user-group --create-home --no-log-init --home-dir /quattor_test quattortest
-USER quattortest
 WORKDIR /quattor_test
 
-# Default action on running the container is to run all tests
-CMD . /usr/bin/mvn_test.sh && mvn_test
+CMD sudo -iu quattortest
