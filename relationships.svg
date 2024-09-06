@@ -44,7 +44,7 @@
 <g id="node3" class="node">
 <title>aii#345</title>
 <g id="a_node3"><a xlink:href="https://github.com/quattor/aii/pull/345" xlink:title="aii#345 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="188,-1312.5 26,-1312.5 26,-1251.5 188,-1251.5 188,-1312.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="188,-1312.5 26,-1312.5 26,-1251.5 188,-1251.5 188,-1312.5"/>
 <text text-anchor="middle" x="107" y="-1290.5" font-family="Sans" font-size="10.00" fill="#000000">aii/ks: support for sending mail</text>
 <text text-anchor="middle" x="107" y="-1279.5" font-family="Sans" font-size="10.00" fill="#000000">in el9 using correct s-nail</text>
 <text text-anchor="middle" x="107" y="-1268.5" font-family="Sans" font-size="10.00" fill="#000000">format</text>
@@ -55,7 +55,7 @@
 <g id="node4" class="node">
 <title>aii#342</title>
 <g id="a_node4"><a xlink:href="https://github.com/quattor/aii/issues/342" xlink:title="aii#342 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M465,-497C465,-497 343,-497 343,-497 337,-497 331,-491 331,-485 331,-485 331,-459 331,-459 331,-453 337,-447 343,-447 343,-447 465,-447 465,-447 471,-447 477,-453 477,-459 477,-459 477,-485 477,-485 477,-491 471,-497 465,-497"/>
+<path fill="#6e5494" stroke="#000000" d="M465,-497C465,-497 343,-497 343,-497 337,-497 331,-491 331,-485 331,-485 331,-459 331,-459 331,-453 337,-447 343,-447 343,-447 465,-447 465,-447 471,-447 477,-453 477,-459 477,-459 477,-485 477,-485 477,-491 471,-497 465,-497"/>
 <text text-anchor="middle" x="404" y="-475" font-family="Sans" font-size="10.00" fill="#000000">support for  s-nail (mailx</text>
 <text text-anchor="middle" x="404" y="-464" font-family="Sans" font-size="10.00" fill="#000000">replacement) syntax on el9</text>
 </a>
@@ -440,7 +440,7 @@
 <g id="node31" class="node">
 <title>configuration-modules-core#1693</title>
 <g id="a_node31"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1693" xlink:title="configuration-modules-core#1693 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="187.5,-3263.5 26.5,-3263.5 26.5,-3202.5 187.5,-3202.5 187.5,-3263.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="187.5,-3263.5 26.5,-3263.5 26.5,-3202.5 187.5,-3202.5 187.5,-3263.5"/>
 <text text-anchor="middle" x="107" y="-3241.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-network: nmstate: simple</text>
 <text text-anchor="middle" x="107" y="-3230.5" font-family="Sans" font-size="10.00" fill="#000000">interfaces reorder on</text>
 <text text-anchor="middle" x="107" y="-3219.5" font-family="Sans" font-size="10.00" fill="#000000">apply/delete</text>
@@ -451,7 +451,7 @@
 <g id="node32" class="node">
 <title>configuration-modules-core#1692</title>
 <g id="a_node32"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1692" xlink:title="configuration-modules-core#1692 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M475,-3275C475,-3275 333,-3275 333,-3275 327,-3275 321,-3269 321,-3263 321,-3263 321,-3237 321,-3237 321,-3231 327,-3225 333,-3225 333,-3225 475,-3225 475,-3225 481,-3225 487,-3231 487,-3237 487,-3237 487,-3263 487,-3263 487,-3269 481,-3275 475,-3275"/>
+<path fill="#6e5494" stroke="#000000" d="M475,-3275C475,-3275 333,-3275 333,-3275 327,-3275 321,-3269 321,-3263 321,-3263 321,-3237 321,-3237 321,-3231 327,-3225 333,-3225 333,-3225 475,-3225 475,-3225 481,-3225 487,-3231 487,-3237 487,-3237 487,-3263 487,-3263 487,-3269 481,-3275 475,-3275"/>
 <text text-anchor="middle" x="404" y="-3253" font-family="Sans" font-size="10.00" fill="#000000">ncm-network: nmstate: bonding</text>
 <text text-anchor="middle" x="404" y="-3242" font-family="Sans" font-size="10.00" fill="#000000">apply</text>
 </a>
