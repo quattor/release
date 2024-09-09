@@ -160,7 +160,7 @@
 <g id="node11" class="node">
 <title>CAF#277</title>
 <g id="a_node11"><a xlink:href="https://github.com/quattor/CAF/pull/277" xlink:title="CAF#277 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="191.5,-3671 22.5,-3671 22.5,-3621 191.5,-3621 191.5,-3671"/>
+<polygon fill="#6e5494" stroke="#000000" points="191.5,-3671 22.5,-3671 22.5,-3621 191.5,-3621 191.5,-3671"/>
 <text text-anchor="middle" x="107" y="-3649" font-family="Sans" font-size="10.00" fill="#000000">Replace four instances of while-</text>
 <text text-anchor="middle" x="107" y="-3638" font-family="Sans" font-size="10.00" fill="#000000">each with foreach</text>
 </a>
@@ -170,7 +170,7 @@
 <g id="node12" class="node">
 <title>CAF#109</title>
 <g id="a_node12"><a xlink:href="https://github.com/quattor/CAF/issues/109" xlink:title="CAF#109 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M465.5,-3671C465.5,-3671 342.5,-3671 342.5,-3671 336.5,-3671 330.5,-3665 330.5,-3659 330.5,-3659 330.5,-3633 330.5,-3633 330.5,-3627 336.5,-3621 342.5,-3621 342.5,-3621 465.5,-3621 465.5,-3621 471.5,-3621 477.5,-3627 477.5,-3633 477.5,-3633 477.5,-3659 477.5,-3659 477.5,-3665 471.5,-3671 465.5,-3671"/>
+<path fill="#6e5494" stroke="#000000" d="M465.5,-3671C465.5,-3671 342.5,-3671 342.5,-3671 336.5,-3671 330.5,-3665 330.5,-3659 330.5,-3659 330.5,-3633 330.5,-3633 330.5,-3627 336.5,-3621 342.5,-3621 342.5,-3621 465.5,-3621 465.5,-3621 471.5,-3621 477.5,-3627 477.5,-3633 477.5,-3633 477.5,-3659 477.5,-3659 477.5,-3665 471.5,-3671 465.5,-3671"/>
 <text text-anchor="middle" x="404" y="-3649" font-family="Sans" font-size="10.00" fill="#000000">review the current usage of</text>
 <text text-anchor="middle" x="404" y="-3638" font-family="Sans" font-size="10.00" fill="#000000">`each`</text>
 </a>
