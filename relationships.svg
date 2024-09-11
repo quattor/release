@@ -1174,7 +1174,7 @@
 <g id="node84" class="node">
 <title>ncm-cdispd#61</title>
 <g id="a_node84"><a xlink:href="https://github.com/quattor/ncm-cdispd/pull/61" xlink:title="ncm-cdispd#61 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="182.5,-2287.5 31.5,-2287.5 31.5,-2226.5 182.5,-2226.5 182.5,-2287.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="182.5,-2287.5 31.5,-2287.5 31.5,-2226.5 182.5,-2226.5 182.5,-2287.5"/>
 <text text-anchor="middle" x="107" y="-2265.5" font-family="Sans" font-size="10.00" fill="#000000">add unitfile for ncm-cdispd,</text>
 <text text-anchor="middle" x="107" y="-2254.5" font-family="Sans" font-size="10.00" fill="#000000">remove initscripts/chkconfig</text>
 <text text-anchor="middle" x="107" y="-2243.5" font-family="Sans" font-size="10.00" fill="#000000">support</text>
@@ -1185,7 +1185,7 @@
 <g id="node85" class="node">
 <title>ncm-cdispd#56</title>
 <g id="a_node85"><a xlink:href="https://github.com/quattor/ncm-cdispd/issues/56" xlink:title="ncm-cdispd#56 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M480,-2208C480,-2208 328,-2208 328,-2208 322,-2208 316,-2202 316,-2196 316,-2196 316,-2170 316,-2170 316,-2164 322,-2158 328,-2158 328,-2158 480,-2158 480,-2158 486,-2158 492,-2164 492,-2170 492,-2170 492,-2196 492,-2196 492,-2202 486,-2208 480,-2208"/>
+<path fill="#6e5494" stroke="#000000" d="M480,-2208C480,-2208 328,-2208 328,-2208 322,-2208 316,-2202 316,-2196 316,-2196 316,-2170 316,-2170 316,-2164 322,-2158 328,-2158 328,-2158 480,-2158 480,-2158 486,-2158 492,-2164 492,-2170 492,-2170 492,-2196 492,-2196 492,-2202 486,-2208 480,-2208"/>
 <text text-anchor="middle" x="404" y="-2186" font-family="Sans" font-size="10.00" fill="#000000">ncm-cdispd needs a systemd unit</text>
 <text text-anchor="middle" x="404" y="-2175" font-family="Sans" font-size="10.00" fill="#000000">file</text>
 </a>
