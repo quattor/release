@@ -354,7 +354,7 @@
 <g id="node25" class="node">
 <title>configuration-modules-core#1714</title>
 <g id="a_node25"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1714" xlink:title="configuration-modules-core#1714 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="196,-3517.5 18,-3517.5 18,-3467.5 196,-3467.5 196,-3517.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="196,-3517.5 18,-3517.5 18,-3467.5 196,-3467.5 196,-3517.5"/>
 <text text-anchor="middle" x="107" y="-3495.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-ssh: add ssh/sshd option</text>
 <text text-anchor="middle" x="107" y="-3484.5" font-family="Sans" font-size="10.00" fill="#000000">GSSAPIKexAlgorithms to schema</text>
 </a>
@@ -364,7 +364,7 @@
 <g id="node26" class="node">
 <title>configuration-modules-core#1713</title>
 <g id="a_node26"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1713" xlink:title="configuration-modules-core#1713 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M487.5,-3505.5C487.5,-3505.5 320.5,-3505.5 320.5,-3505.5 314.5,-3505.5 308.5,-3499.5 308.5,-3493.5 308.5,-3493.5 308.5,-3467.5 308.5,-3467.5 308.5,-3461.5 314.5,-3455.5 320.5,-3455.5 320.5,-3455.5 487.5,-3455.5 487.5,-3455.5 493.5,-3455.5 499.5,-3461.5 499.5,-3467.5 499.5,-3467.5 499.5,-3493.5 499.5,-3493.5 499.5,-3499.5 493.5,-3505.5 487.5,-3505.5"/>
+<path fill="#6e5494" stroke="#000000" d="M487.5,-3505.5C487.5,-3505.5 320.5,-3505.5 320.5,-3505.5 314.5,-3505.5 308.5,-3499.5 308.5,-3493.5 308.5,-3493.5 308.5,-3467.5 308.5,-3467.5 308.5,-3461.5 314.5,-3455.5 320.5,-3455.5 320.5,-3455.5 487.5,-3455.5 487.5,-3455.5 493.5,-3455.5 499.5,-3461.5 499.5,-3467.5 499.5,-3467.5 499.5,-3493.5 499.5,-3493.5 499.5,-3499.5 493.5,-3505.5 487.5,-3505.5"/>
 <text text-anchor="middle" x="404" y="-3483.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-ssh: add GSSAPIKexAlgorithms</text>
 <text text-anchor="middle" x="404" y="-3472.5" font-family="Sans" font-size="10.00" fill="#000000">to PAN schema.</text>
 </a>
