@@ -369,7 +369,7 @@
 <g id="node26" class="node">
 <title>configuration-modules-core#1715</title>
 <g id="a_node26"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1715" xlink:title="configuration-modules-core#1715 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="179.5,-3643.5 34.5,-3643.5 34.5,-3593.5 179.5,-3593.5 179.5,-3643.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="179.5,-3643.5 34.5,-3643.5 34.5,-3593.5 179.5,-3593.5 179.5,-3643.5"/>
 <text text-anchor="middle" x="107" y="-3621.5" font-family="Sans" font-size="10.00" fill="#000000">/var/tmp is supposed to be</text>
 <text text-anchor="middle" x="107" y="-3610.5" font-family="Sans" font-size="10.00" fill="#000000">reboot persistent</text>
 </a>
@@ -379,7 +379,7 @@
 <g id="node27" class="node">
 <title>aii#347</title>
 <g id="a_node27"><a xlink:href="https://github.com/quattor/aii/pull/347" xlink:title="aii#347 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="476.5,-3631.5 331.5,-3631.5 331.5,-3581.5 476.5,-3581.5 476.5,-3631.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="476.5,-3631.5 331.5,-3631.5 331.5,-3581.5 476.5,-3581.5 476.5,-3631.5"/>
 <text text-anchor="middle" x="404" y="-3609.5" font-family="Sans" font-size="10.00" fill="#000000">/var/tmp is supposed to be</text>
 <text text-anchor="middle" x="404" y="-3598.5" font-family="Sans" font-size="10.00" fill="#000000">reboot persistent</text>
 </a>
