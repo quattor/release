@@ -25,7 +25,7 @@
 
 git_url_root=https://github.com
 quattor_git_url=${git_url_root}/quattor
-git_repo_list='core examples grid os standard monitoring'
+git_repo_list='core examples grid os standard'
 # Do not change the following defaults except if you know what you are doing...
 use_tags_default=1
 ignore_version_default=0
