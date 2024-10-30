@@ -143,7 +143,7 @@
 <g id="node10" class="node">
 <title>CAF#279</title>
 <g id="a_node10"><a xlink:href="https://github.com/quattor/CAF/pull/279" xlink:title="CAF#279 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="198,-3180.5 16,-3180.5 16,-3130.5 198,-3130.5 198,-3180.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="198,-3180.5 16,-3180.5 16,-3130.5 198,-3130.5 198,-3180.5"/>
 <text text-anchor="middle" x="107" y="-3158.5" font-family="Sans" font-size="10.00" fill="#000000">ServiceActions: Unescape daemon</text>
 <text text-anchor="middle" x="107" y="-3147.5" font-family="Sans" font-size="10.00" fill="#000000">names</text>
 </a>
@@ -153,7 +153,7 @@
 <g id="node11" class="node">
 <title>configuration-modules-core#1672</title>
 <g id="a_node11"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1672" xlink:title="configuration-modules-core#1672 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M486,-3192.5C486,-3192.5 322,-3192.5 322,-3192.5 316,-3192.5 310,-3186.5 310,-3180.5 310,-3180.5 310,-3154.5 310,-3154.5 310,-3148.5 316,-3142.5 322,-3142.5 322,-3142.5 486,-3142.5 486,-3142.5 492,-3142.5 498,-3148.5 498,-3154.5 498,-3154.5 498,-3180.5 498,-3180.5 498,-3186.5 492,-3192.5 486,-3192.5"/>
+<path fill="#6e5494" stroke="#000000" d="M486,-3192.5C486,-3192.5 322,-3192.5 322,-3192.5 316,-3192.5 310,-3186.5 310,-3180.5 310,-3180.5 310,-3154.5 310,-3154.5 310,-3148.5 316,-3142.5 322,-3142.5 322,-3142.5 486,-3142.5 486,-3142.5 492,-3142.5 498,-3148.5 498,-3154.5 498,-3154.5 498,-3180.5 498,-3180.5 498,-3186.5 492,-3192.5 486,-3192.5"/>
 <text text-anchor="middle" x="404" y="-3170.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-metaconfig 23.6: daemon name</text>
 <text text-anchor="middle" x="404" y="-3159.5" font-family="Sans" font-size="10.00" fill="#000000">should be escaped/unescaped</text>
 </a>
