@@ -423,7 +423,7 @@
 <g id="node30" class="node">
 <title>configuration-modules-core#1719</title>
 <g id="a_node30"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1719" xlink:title="configuration-modules-core#1719 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="193.5,-2840.5 20.5,-2840.5 20.5,-2790.5 193.5,-2790.5 193.5,-2840.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="193.5,-2840.5 20.5,-2840.5 20.5,-2790.5 193.5,-2790.5 193.5,-2840.5"/>
 <text text-anchor="middle" x="107" y="-2818.5" font-family="Sans" font-size="10.00" fill="#000000">network: nmstate add support for</text>
 <text text-anchor="middle" x="107" y="-2807.5" font-family="Sans" font-size="10.00" fill="#000000">ovsintport and ovsbridge</text>
 </a>
@@ -433,7 +433,7 @@
 <g id="node31" class="node">
 <title>configuration-modules-core#1718</title>
 <g id="a_node31"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1718" xlink:title="configuration-modules-core#1718 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M468,-2840C468,-2840 340,-2840 340,-2840 334,-2840 328,-2834 328,-2828 328,-2828 328,-2791 328,-2791 328,-2785 334,-2779 340,-2779 340,-2779 468,-2779 468,-2779 474,-2779 480,-2785 480,-2791 480,-2791 480,-2828 480,-2828 480,-2834 474,-2840 468,-2840"/>
+<path fill="#6e5494" stroke="#000000" d="M468,-2840C468,-2840 340,-2840 340,-2840 334,-2840 328,-2834 328,-2828 328,-2828 328,-2791 328,-2791 328,-2785 334,-2779 340,-2779 340,-2779 468,-2779 468,-2779 474,-2779 480,-2785 480,-2791 480,-2791 480,-2828 480,-2828 480,-2834 474,-2840 468,-2840"/>
 <text text-anchor="middle" x="404" y="-2818" font-family="Sans" font-size="10.00" fill="#000000">ncm-network: nmstate, add</text>
 <text text-anchor="middle" x="404" y="-2807" font-family="Sans" font-size="10.00" fill="#000000">support for OVS bridges and</text>
 <text text-anchor="middle" x="404" y="-2796" font-family="Sans" font-size="10.00" fill="#000000">ports</text>
