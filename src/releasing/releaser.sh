@@ -27,7 +27,6 @@ else
 fi
 
 shopt -s expand_aliases
-source maven-illuminate.sh
 
 # Update the Quattor version used by template-library-examples (SCDB-based) to the one being released
 update_examples () {
@@ -62,11 +61,11 @@ publish_templates() {
     tag=$2
     cd configuration-modules-$1
     git checkout $tag
-    mvn-c clean compile
+    mvn -e clean compile
     # ugly hack
     if [ -d ncm-metaconfig ]; then
         cd ncm-metaconfig
-        mvn-c clean test
+        mvn -e clean test
         cd ..
     fi
     components_root=${LIBRARY_CORE_DIR}/components
@@ -97,7 +96,7 @@ publish_aii() {
     (
         cd aii || return
         git checkout "aii-$tag"
-        mvn-c -q clean compile
+        mvn -e -q clean compile
 
         # Copy dedicated AII templates
         cp -r aii-core/target/pan/quattor/aii/* "${dest_root}"
@@ -113,7 +112,7 @@ publish_aii() {
     (
         cd configuration-modules-core || return
         git checkout "configuration-modules-core-$tag"
-        mvn-c -q clean compile
+        mvn -e -q clean compile
         # Copy shared AII/core component templates
         for component in freeipa opennebula; do
             rm -Rf "${dest_root:?}/${component}"
@@ -267,7 +266,7 @@ if gpg-agent; then
             for r in $REPOS_MVN; do
                 echo_info "---------------- Releasing $r ----------------"
                 cd $r
-                mvn-c -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare
+                mvn -e -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare
                 if [[ $? -gt 0 ]]; then
                     echo_error "RELEASE FAILURE"
                     exit 1
