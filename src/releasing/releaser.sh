@@ -250,7 +250,7 @@ fi
 details=""
 
 if gpg-agent; then
-    if gpg --yes --sign "$0"; then
+    if gpg --yes --output /tmp/"$(basename "$0")".gpg --sign "$0"; then
         echo -n "Preparing repositories for release... "
         cd "$RELEASE_ROOT" || exit 1
         mkdir -p src/
