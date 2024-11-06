@@ -406,7 +406,7 @@
 <g id="node29" class="node">
 <title>configuration-modules-core#1720</title>
 <g id="a_node29"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1720" xlink:title="configuration-modules-core#1720 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="480.5,-2908.5 327.5,-2908.5 327.5,-2858.5 480.5,-2858.5 480.5,-2908.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="480.5,-2908.5 327.5,-2908.5 327.5,-2858.5 480.5,-2858.5 480.5,-2908.5"/>
 <text text-anchor="middle" x="404" y="-2886.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-network: Move nmstate</text>
 <text text-anchor="middle" x="404" y="-2875.5" font-family="Sans" font-size="10.00" fill="#000000">options to new schema</text>
 </a>
@@ -669,7 +669,7 @@
 <g id="node48" class="node">
 <title>configuration-modules-core#1679</title>
 <g id="a_node48"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1679" xlink:title="configuration-modules-core#1679 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="185,-2239.5 29,-2239.5 29,-2189.5 185,-2189.5 185,-2239.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="185,-2239.5 29,-2239.5 29,-2189.5 185,-2189.5 185,-2239.5"/>
 <text text-anchor="middle" x="107" y="-2217.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-nmstate: relax syntax of</text>
 <text text-anchor="middle" x="107" y="-2206.5" font-family="Sans" font-size="10.00" fill="#000000">VLAN interface names</text>
 </a>
@@ -679,7 +679,7 @@
 <g id="node49" class="node">
 <title>configuration-modules-core#1678</title>
 <g id="a_node49"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1678" xlink:title="configuration-modules-core#1678 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M481,-2265.5C481,-2265.5 327,-2265.5 327,-2265.5 321,-2265.5 315,-2259.5 315,-2253.5 315,-2253.5 315,-2227.5 315,-2227.5 315,-2221.5 321,-2215.5 327,-2215.5 327,-2215.5 481,-2215.5 481,-2215.5 487,-2215.5 493,-2221.5 493,-2227.5 493,-2227.5 493,-2253.5 493,-2253.5 493,-2259.5 487,-2265.5 481,-2265.5"/>
+<path fill="#6e5494" stroke="#000000" d="M481,-2265.5C481,-2265.5 327,-2265.5 327,-2265.5 321,-2265.5 315,-2259.5 315,-2253.5 315,-2253.5 315,-2227.5 315,-2227.5 315,-2221.5 321,-2215.5 327,-2215.5 327,-2215.5 481,-2215.5 481,-2215.5 487,-2215.5 493,-2221.5 493,-2227.5 493,-2227.5 493,-2253.5 493,-2253.5 493,-2259.5 487,-2265.5 481,-2265.5"/>
 <text text-anchor="middle" x="404" y="-2243.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-nmstate: VLAN name pattern</text>
 <text text-anchor="middle" x="404" y="-2232.5" font-family="Sans" font-size="10.00" fill="#000000">too restrictive</text>
 </a>
