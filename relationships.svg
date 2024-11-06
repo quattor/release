@@ -396,7 +396,7 @@
 <g id="node28" class="node">
 <title>configuration-modules-core#1725</title>
 <g id="a_node28"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1725" xlink:title="configuration-modules-core#1725 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="186.5,-2908.5 27.5,-2908.5 27.5,-2858.5 186.5,-2858.5 186.5,-2908.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="186.5,-2908.5 27.5,-2908.5 27.5,-2858.5 186.5,-2858.5 186.5,-2908.5"/>
 <text text-anchor="middle" x="107" y="-2886.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-network: Remove legacy</text>
 <text text-anchor="middle" x="107" y="-2875.5" font-family="Sans" font-size="10.00" fill="#000000">schema</text>
 </a>
