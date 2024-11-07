@@ -238,7 +238,7 @@ fi
 # NOTE: currently only Travis is supported
 if [ ${use_ci_work_dir} -eq 1 ]
 then
-    echo [ ${verbose} -eq 1 ] && "Configuring continuous integration mode..."
+    [ ${verbose} -eq 1 ] && echo "Configuring continuous integration mode..."
     if [ -n "${TRAVIS_BUILD_DIR}" ]
     then
         ci_work_dir=${TRAVIS_BUILD_DIR}
@@ -530,7 +530,7 @@ do
     then
       dest_dir=$(echo ${dest_dir} | sed -e 's/-spma//')
     fi
-    echo Copying Git branch ${branch_or_tag} contents to ${dest_dir}...
+    echo "Copying Git branch ${branch_or_tag} contents (${src_dir}) to ${dest_dir}..."
     mkdir -p ${dest_dir}
     cp -R ${src_dir}/* ${dest_dir}
 
