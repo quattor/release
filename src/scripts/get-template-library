@@ -238,6 +238,7 @@ fi
 # NOTE: currently only Travis is supported
 if [ ${use_ci_work_dir} -eq 1 ]
 then
+    echo [ ${verbose} -eq 1 ] && "Configuring continuous integration mode..."
     if [ -n "${TRAVIS_BUILD_DIR}" ]
     then
         ci_work_dir=${TRAVIS_BUILD_DIR}
@@ -260,6 +261,7 @@ then
         echo "TRAVIS_BRANCH not defined: not a Travis build environment,  --continuous-integration invalid"
         exit 2
     fi
+    [ ${verbose} -eq 1 ] && echo "CI mode: ci_work_dir=${ci_work_dir}, pr_repo=${pr_repo}, pr_target=${pr_target}"
 fi
 
 if [ ${add_legacy} -ne 1 ]
