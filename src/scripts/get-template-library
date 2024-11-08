@@ -235,30 +235,37 @@ fi
 
 
 # --continuous-integration: check environment
-# NOTE: currently only Travis is supported
+# NOTE: currently only GitHub Actions or Travis are supported
 if [ ${use_ci_work_dir} -eq 1 ]
 then
     [ ${verbose} -eq 1 ] && echo "Configuring continuous integration mode..."
-    if [ -n "${TRAVIS_BUILD_DIR}" ]
+    if [ -n "${GITHUB_WORKSPACE}" ]
+    then
+        ci_work_dir=${GITHUB_WORKSPACE}
+    elif [ -n "${TRAVIS_BUILD_DIR}" ]
     then
         ci_work_dir=${TRAVIS_BUILD_DIR}
     else
-        echo "Not in a Travis build environment: --continuous-integration invalid"
+        echo "Not in a GitHub Actions or Travis build environment: --continuous-integration invalid"
         usage
     fi
-    # $TRAVIS_REPO_SLUG contains the GitHub user/repo (e.g. quattor/template-library-core)
-    pr_repo=$(echo $TRAVIS_REPO_SLUG | sed -e 's%^quattor/%%')
+    # TRAVIS_REPO_SLUG contains the GitHub user/repo (e.g. quattor/template-library-core)
+    pr_repo="${GITHUB_REPOSITORY/#quattor\//}"
+    [[ -z "${pr_repo}" ]] && pr_repo="${TRAVIS_REPO_SLUG/#quattor\//}"
     if [ -z "${pr_repo}" ]
     then
-        echo "Current PR repository could not be retrieved from TRAVIS_REPO_SLUG env var"
+        echo "Current PR repository could not be retrieved from either GITHUB_REPOSITORY or TRAVIS_REPO_SLUG"
         exit 2
     fi
-    # TRAVIS_BRANCH contains the PR branch target
-    if [ -n "${TRAVIS_BRANCH}" ]
+    # GITHUB_BASE_REF or TRAVIS_BRANCH contains the PR branch target
+    if [ -n "${GITHUB_BASE_REF}" ]
+    then
+        pr_target=${GITHUB_BASE_REF}
+    elif [ -n "${TRAVIS_BRANCH}" ]
     then
         pr_target=${TRAVIS_BRANCH}
     else
-        echo "TRAVIS_BRANCH not defined: not a Travis build environment,  --continuous-integration invalid"
+        echo "Neither GITHUB_BASE_REF nor TRAVIS_BRANCH defined: not a GitHub Actions or Travis build environment,  --continuous-integration invalid"
         exit 2
     fi
     [ ${verbose} -eq 1 ] && echo "CI mode: ci_work_dir=${ci_work_dir}, pr_repo=${pr_repo}, pr_target=${pr_target}"
