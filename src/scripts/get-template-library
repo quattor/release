@@ -40,10 +40,10 @@ core_dest_dir=quattor/%TAG%
 # whatever is done for other repos.
 core_use_tags=1
 core_ignore_version=1
-# Rename master branch from -core repo
-# Set to an empty string or comment out to disable renaming
-# Can be used for each repository but generally used only with -core
-core_rename_master=dev
+# Define the working copy directory used for template-library-core master
+# branch (qQuattor version = HEAD).
+# If underfined, 'master' will be used.
+core_master_dir=dev
 
 examples_git_repo=template-library-examples
 examples_branch_pattern=master
@@ -321,7 +321,7 @@ do
   repo_name_variable=${repo}_git_repo
   branch_variable=${repo}_branch_pattern
   dest_dir_variable=${repo}_dest_dir
-  rename_master_variable=${repo}_rename_master
+  master_dir_variable=${repo}_master_dir
   use_tags_variable=${repo}_use_tags
   ignore_version_variable=${repo}_ignore_version
   tags_ignore_pattern_variable=${repo}_tags_ignore_pattern
@@ -357,9 +357,9 @@ do
   fi
 
   git_clone_dir=${git_clone_root}/${repo}
-  if [ $?{!rename_master_variable} ]
+  if [ $?{!master_dir_variable} ]
   then
-    master_dir_name=${!rename_master_variable}
+    master_dir_name=${!master_dir_variable}
   fi
 
   echo Cloning Git repository ${repo_url} in ${repo_dir}...
@@ -576,9 +576,9 @@ then
   property_files=$(find ${template_lib_root}/clusters -name cluster.build.properties)
   if [ -n "${property_files}" ]
   then
-    if [ $?{core_rename_master} ]
+    if [ $?{core_master_dir} ]
     then
-      quattor_dev_version=${core_rename_master}
+      quattor_dev_version=${core_master_dir}
     else
       quattor_dev_version=master
     fi
