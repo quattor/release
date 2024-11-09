@@ -32,6 +32,8 @@ ignore_version_default=0
 tags_ignore_pattern_pattern=master
 pull_request=''
 use_ci_work_dir=0
+# If true, Quattor version will be updated in cluster.build.properties files
+cluster_build_properties_update=1
 
 core_git_repo=template-library-core
 core_branch_pattern='^(template-library-)*'
@@ -92,6 +94,7 @@ usage () {
   echo "        --debug : verbose output"
   echo "        -F : remove {template_lib_root} if it already exists."
   echo "        -l : list available branches matching the selected version."
+  echo "        --no-build-properties-update : disable update of cluster.build.properties files."
   echo "        --pull-request repository:user:branch[:target] : merge the GitHub pull request specifed by the"
   echo "                                  source branch repository:user:branch into repository:quattor:target."
   echo "                                  target can be a branch or a tag. If not specified, it defaults to"
@@ -122,6 +125,10 @@ do
      add_legacy=1
      ;;
 
+  --all-versions)
+    ignore_version_patterns="non existing version pattern"
+    ;;
+
   --continuous*)
     use_ci_work_dir=1
     ;;
@@ -147,8 +154,8 @@ do
     usage
     ;;
 
-  --all-versions)
-    ignore_version_patterns="non existing version pattern"
+  --no-build-properties-update)
+    cluster_build_properties_update=0
     ;;
 
   --pull-request)
@@ -567,23 +574,27 @@ do
 done      # repository loop
 
 
-# If version request is HEAD, update the cluster.build.properties file in each
-# cluster example to use the master branch of template-library-core rather than
-# the last release.
+# cluster.build.properties: update version used to the requested Quattor version.
+# Ine the case of HEAD, use the directory the master branch has been checkout to/
 
-if [ ${list_branches} -eq 0 -a "${quattor_version}" = "HEAD" ]
+if [ ${list_branches} -eq 0 -a ${cluster_build_properties_update} -eq 1 ]
 then
   property_files=$(find ${template_lib_root}/clusters -name cluster.build.properties)
   if [ -n "${property_files}" ]
   then
-    if [ $?{core_master_dir} ]
+    if [ "${quattor_version}" = "HEAD" ]
     then
-      quattor_dev_version=${core_master_dir}
+        if [ $?{core_master_dir} ]
+        then
+            quattor_version_dir=${core_master_dir}
+        else
+            quattor_version_dir=master
+        fi
     else
-      quattor_dev_version=master
+        quattor_version_dir=${branch_or_tag}
     fi
-    echo "Updating cluster.build.properties files to use Quattor version ${quattor_dev_version} ($(echo ${property_files}))..."
-    sed -i "s%\squattor/\S\+\s% quattor/${quattor_dev_version} %" ${property_files} 
+    echo "Updating cluster.build.properties files to use Quattor version ${quattor_version_dir} ($(echo ${property_files}))..."
+    sed -i "s%\squattor/\S\+\s% quattor/${quattor_version_dir} %" ${property_files} 
   else
     echo "Warning: no cluster.build.properties file found. Examples may be incomplete"
   fi
