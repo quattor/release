@@ -32,6 +32,8 @@ ignore_version_default=0
 tags_ignore_pattern_pattern=master
 pull_request=''
 use_ci_work_dir=0
+# If true, Quattor version will be updated in cluster.build.properties files
+cluster_build_properties_update=1
 
 core_git_repo=template-library-core
 core_branch_pattern='^(template-library-)*'
@@ -40,10 +42,10 @@ core_dest_dir=quattor/%TAG%
 # whatever is done for other repos.
 core_use_tags=1
 core_ignore_version=1
-# Rename master branch from -core repo
-# Set to an empty string or comment out to disable renaming
-# Can be used for each repository but generally used only with -core
-core_rename_master=dev
+# Define the working copy directory used for template-library-core master
+# branch (Quattor version = HEAD).
+# If underfined, 'master' will be used.
+core_master_dir=dev
 
 examples_git_repo=template-library-examples
 examples_branch_pattern=master
@@ -92,6 +94,7 @@ usage () {
   echo "        --debug : verbose output"
   echo "        -F : remove {template_lib_root} if it already exists."
   echo "        -l : list available branches matching the selected version."
+  echo "        --no-build-properties-update : disable update of cluster.build.properties files."
   echo "        --pull-request repository:user:branch[:target] : merge the GitHub pull request specifed by the"
   echo "                                  source branch repository:user:branch into repository:quattor:target."
   echo "                                  target can be a branch or a tag. If not specified, it defaults to"
@@ -122,6 +125,10 @@ do
      add_legacy=1
      ;;
 
+  --all-versions)
+    ignore_version_patterns="non existing version pattern"
+    ;;
+
   --continuous*)
     use_ci_work_dir=1
     ;;
@@ -147,8 +154,8 @@ do
     usage
     ;;
 
-  --all-versions)
-    ignore_version_patterns="non existing version pattern"
+  --no-build-properties-update)
+    cluster_build_properties_update=0
     ;;
 
   --pull-request)
@@ -224,7 +231,7 @@ then
     else
       pr_target=${quattor_version}
     fi
-  elif [ -n "$(echo ${pr_target} | egrep '^template-library-')" ]
+  elif echo "${pr_target}" | grep -E -q '^template-library-'
   then
     # Old tag name format: renormalize to the new format without the template-library- prefix
     [ ${verbose} -eq 1 ] && echo "pr_target: template-library- prefix removed (legacy tag format)"
@@ -321,7 +328,7 @@ do
   repo_name_variable=${repo}_git_repo
   branch_variable=${repo}_branch_pattern
   dest_dir_variable=${repo}_dest_dir
-  rename_master_variable=${repo}_rename_master
+  master_dir_variable=${repo}_master_dir
   use_tags_variable=${repo}_use_tags
   ignore_version_variable=${repo}_ignore_version
   tags_ignore_pattern_variable=${repo}_tags_ignore_pattern
@@ -348,18 +355,18 @@ do
   tags_ignore_pattern=${!tags_ignore_pattern_variable}
   if [ -z ${tags_ignore_pattern} ]
   then
-    if [ -z "$(echo ${branch_pattern} | egrep -- ${tags_ignore_pattern_pattern})" ]
+    if echo "${branch_pattern}" | grep -E -q -- ${tags_ignore_pattern_pattern}
     then
-      tags_ignore_pattern=0
-    else
       tags_ignore_pattern=1
+    else
+      tags_ignore_pattern=0
     fi
   fi
 
   git_clone_dir=${git_clone_root}/${repo}
-  if [ $?{!rename_master_variable} ]
+  if [ "${!master_dir_variable}" ]
   then
-    master_dir_name=${!rename_master_variable}
+    master_dir_name=${!master_dir_variable}
   fi
 
   echo Cloning Git repository ${repo_url} in ${repo_dir}...
@@ -375,7 +382,7 @@ do
   # In fact branch_pattern can be a regexp matched against existing branch names
   if [ ${use_tags} -eq 1 ]
   then
-    if [ -n "${quattor_version}" -a ${ignore_version} -eq 0 ]
+    if [ -n "${quattor_version}" ] && [ ${ignore_version} -eq 0 ]
     then
       if [ ${tags_ignore_pattern} -eq 1 ]
       then
@@ -385,14 +392,14 @@ do
       fi
     fi
     [ ${verbose} -eq 1 ] && echo "Using tags rather than branches for repository ${repo} (branch pattern=${branch_pattern})"
-    branch_list=$(git tag | egrep -- "${branch_pattern}")
+    branch_list=$(git tag | grep -E -- "${branch_pattern}")
     # If version is HEAD, need to add master branch to all the other tags
     if [ "${quattor_version}" = "HEAD" ]
     then
       branch_list="${branch_list} master"
     fi
   else
-    branch_list=$(git branch -r | egrep "origin/${branch_pattern}" | grep -v HEAD)
+    branch_list=$(git branch -r | grep -E "origin/${branch_pattern}" | grep -v HEAD)
   fi
   [  ${verbose} -eq 1 -o ${list_branches} -eq 1 ] && echo -e "Branches/tags found in ${repo}:\n${branch_list}"
   [ ${list_branches} -eq 1 ] && continue
@@ -415,7 +422,7 @@ do
     if [ ${use_tags} -eq 0 ]
     then
       pr_actual_target=${branch_or_tag}
-      if [ "${branch_or_tag}" = "master" -a $?{master_dir_name} ]
+      if [ "${branch_or_tag}" = "master" ] && [ "${master_dir_name}" ]
       then
         branch_dir=${master_dir_name}
       else
@@ -427,7 +434,7 @@ do
       pr_actual_target=${tag_dir}
       # master is normally not a tag name but master branch can be added to
       # other tags when the version is HEAD (for example for template-library-core)
-      if [ "${tag_dir}" = "master" -a $?{master_dir_name} ]
+      if [ "${tag_dir}" = "master" ] && [ "${master_dir_name}" ]
       then
         tag_dir=${master_dir_name}
       fi
@@ -439,7 +446,7 @@ do
       # If branch_dir is not tag_dir or master, indicates a repository without a master
       # branch (e.g. template-library-grid). In this case, pr_actual_target must be 
       # redefined as branch_dir-tag_dir, as the tag name is prefixed by the branch name (branch_dir).
-      if [ "${branch_dir}" != "master" -a "${branch_dir}" != "${tag_dir}" ]
+      if [ "${branch_dir}" != "master" ] && [ "${branch_dir}" != "${tag_dir}" ]
       then
         pr_actual_target="${branch_dir}-${tag_dir}"
       fi
@@ -452,7 +459,7 @@ do
     for ignore_pattern in ${ignore_branch_patterns}
     do
       [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, ignore_pattern = >>${ignore_pattern}<<"
-      if [ -n "$(echo ${branch_dir} | egrep -- ${ignore_pattern})" -a "${branch_dir}" != "${quattor_version}" ]
+      if [ "${branch_dir}" != "${quattor_version}" ] && echo "${branch_dir}" | grep -E -q -- "${ignore_pattern}"
       then
         [ ${verbose} -eq 1 ] && echo "Branch ${remote_branch} ignored"
         ignore_branch=1
@@ -463,7 +470,7 @@ do
     for ignore_pattern in ${ignore_version_patterns}
     do
       [ ${verbose} -eq 1 ] && echo "Branch=${remote_branch}, version=${tag_dir}, ignore_version_pattern = >>${ignore_pattern}<<"
-      if [ -n "$(echo ${tag_dir} | egrep -- ${ignore_pattern})" -a "${tag_dir}" != "${quattor_version}" ]
+      if [ "${tag_dir}" != "${quattor_version}" ] && echo "${tag_dir}" | grep -E -q -- "${ignore_pattern}"
       then
         [ ${verbose} -eq 1 ] && echo "Branch ${remote_branch} (version ${tag_dir}) ignored"
         ignore_branch=1
@@ -479,7 +486,7 @@ do
     # If --continuous-inegration and the current repo/target matches the CI context, just define src_dir
     # to be what has been checked out as part of the CI.
     [ ${verbose} -eq 1 ] && echo "use_ci_work_dir=${use_ci_work_dir}, repo_name=${repo_name}, pr_repo=${pr_repo}, pr_target=${pr_target}, pr_actual_target=${pr_actual_target}"
-    if [ ${use_ci_work_dir} -eq 1 -a "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${pr_actual_target}" ]
+    if [ ${use_ci_work_dir} -eq 1 ] && [ "${pr_repo}" = "${repo_name}" ] && [ "${pr_target}" = "${pr_actual_target}" ]
     then
         src_dir=${ci_work_dir}
 
@@ -493,7 +500,7 @@ do
       if [ -n "${pull_request}" ]
       then
         [ ${verbose} -eq 1 ] && echo "Checking if pull request applies to current branch/tag (pr_repo=${pr_repo}, pr_target=${pr_target}, pr_actual_target=${pr_actual_target})..."
-        if [ "${pr_repo}" = "${repo_name}" -a "${pr_target}" = "${pr_actual_target}" ]
+        if [ "${pr_repo}" = "${repo_name}" ] && [ "${pr_target}" = "${pr_actual_target}" ]
         then
           echo "Merging pull request from ${pr_user}/${pr_branch} into branch/tag ${branch_or_tag}..."
           pr_remote=${git_url_root}/${pr_user}/${pr_repo}
@@ -560,30 +567,35 @@ do
   fi
 
   # Except if --debug has been specified, remove Git clone created
-  if [ ${verbose} -eq 0 -a -d ${repo_dir} ]
+  if [ ${verbose} -eq 0 ] && [ -d "${repo_dir}" ]
   then
     rm -Rf ${repo_dir}
   fi
 done      # repository loop
 
 
-# If version request is HEAD, update the cluster.build.properties file in each
-# cluster example to use the master branch of template-library-core rather than
-# the last release.
+# cluster.build.properties: update version used to the requested Quattor version.
+# Ine the case of HEAD, use the directory the master branch has been checkout to/
 
-if [ ${list_branches} -eq 0 -a "${quattor_version}" = "HEAD" ]
+if [ ${list_branches} -eq 0 ] && [ ${cluster_build_properties_update} -eq 1 ]
 then
-  property_files=$(find ${template_lib_root}/clusters -name cluster.build.properties)
+  # Pipe find output into xargs to remove \n
+  property_files=$(find "${template_lib_root}/clusters" -name cluster.build.properties -print0 | xargs -0)
   if [ -n "${property_files}" ]
   then
-    if [ $?{core_rename_master} ]
+    if [ "${quattor_version}" = "HEAD" ]
     then
-      quattor_dev_version=${core_rename_master}
+        if [ ${core_master_dir} ]
+        then
+            quattor_version_dir=${core_master_dir}
+        else
+            quattor_version_dir=master
+        fi
     else
-      quattor_dev_version=master
+        quattor_version_dir=${branch_or_tag}
     fi
-    echo "Updating cluster.build.properties files to use Quattor version ${quattor_dev_version} ($(echo ${property_files}))..."
-    sed -i "s%\squattor/\S\+\s% quattor/${quattor_dev_version} %" ${property_files} 
+    echo "Updating cluster.build.properties files to use Quattor version ${quattor_version_dir} (${property_files})..."
+    echo "${property_files}" | xargs sed -i "s%\squattor/\S\+\s% quattor/${quattor_version_dir} %"
   else
     echo "Warning: no cluster.build.properties file found. Examples may be incomplete"
   fi
