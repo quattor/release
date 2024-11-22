@@ -33,7 +33,7 @@ RUN_WRAPPER=${RUN_WRAPPER:-1}
 # mvn clean PACKAGE
 PACKAGE=${PACKAGE:-package}
 
-MINIMAL_DEPS_PATH="which rpm yum repoquery";
+MINIMAL_DEPS_PATH="which"
 
 now="$(date +%s)"
 # List with all deps
@@ -118,16 +118,103 @@ function check_perl_version {
     fi
 }
 
-# Install and use the epel repo
-USE_EPEL=1
+function version_gte {
+    # Return 0 if the first version passed as an argument is greater than or equal to the second version
+    if [[ $# -eq 2 ]]; then
+        perl -e 'use version; exit (version->new('"$1"') >= version->new('"$2"') ? 0 : 1);'
+    else
+        return 2
+    fi
+}
 
-# Install and use rpmforge repo (expect rpm conflicts)
-if [[ "$RH_RELEASE" -eq 5 ]]; then
-    # YAML::XS on el5?
-    # try with cpan for now
-    USE_RPMFORGE=0
+DISTRO_FAMILY=""
+RH_RELEASE=0
+DEBIAN_RELEASE=0
+PACKAGE_MANAGER=""
+USE_EPEL=0
+
+if [[ -e /etc/redhat-release ]]; then
+    DISTRO_FAMILY="rhel"
+
+    # Perform RedHat Specific Setup
+    echo_info "This appears to be a RedHat compatible distribution"
+
+    # Assume yum is the packager for now
+    # TODO: Test on Fedora and handle DNF properly
+    PACKAGE_MANAGER="yum"
+
+    MINIMAL_DEPS_PATH="$MINIMAL_DEPS_PATH rpm yum repoquery"
+
+    # The current redhat-release
+    RH_RELEASE="$(sed -n "s/.*release \([0-9]\+\).*/\1/p" /etc/redhat-release)"
+
+    # Install and use the epel repo
+    if [ "$RH_RELEASE" -eq 5 -o "$RH_RELEASE" -eq 6 ]; then
+        USE_EPEL=1
+    fi
+
+    # Install and use rpmforge repo (expect rpm conflicts)
+    if [ "$RH_RELEASE" -eq 5 ]; then
+        # YAML::XS on el5?
+        # try with cpan for now
+        USE_RPMFORGE=0
+    else
+        USE_RPMFORGE=0
+    fi
+elif [[ -e /etc/debian_version ]]; then
+    DISTRO_FAMILY="debian"
+
+    # Perform Debian Specific Setup
+    echo_info "This appears to be a Debian compatible distribution"
+
+    PACKAGE_MANAGER="apt"
+
+    DEBIAN_RELEASE="$(sed 's/\..*$//g' /etc/debian_version)"
+
+    MINIMAL_DEPS_PATH="$MINIMAL_DEPS_PATH dpkg apt-get apt-cache"
+
+    run_wrapped sudo apt-get -y install \
+        libcdb-file-perl \
+        libconfig-general-perl \
+        libconfig-properties-perl \
+        libconfig-tiny-perl \
+        libcrypt-openssl-x509-perl \
+        libcrypt-ssleay-perl \
+        libdata-compare-perl \
+        libdata-structure-util-perl \
+        libenum-perl \
+        libfile-copy-recursive-perl \
+        libfile-touch-perl \
+        libfile-which-perl \
+        libgit-repository-perl \
+        libio-string-perl \
+        libjson-any-perl \
+        libjson-xs-perl \
+        liblwp-authen-negotiate-perl \
+        libnet-dns-perl \
+        libnetaddr-ip-perl \
+        libparallel-forkmanager-perl \
+        libperl-critic-perl \
+        libreadonly-perl \
+        librest-client-perl \
+        libset-scalar-perl \
+        libtaint-runtime-perl \
+        libtemplate-perl \
+        libtest-deep-perl \
+        libtest-mockmodule-perl \
+        libtest-mockobject-perl \
+        libtest-nowarnings-perl \
+        libtest-pod-perl \
+        libtext-diff-perl \
+        libtext-glob-perl \
+        libversion-perl \
+        libxml-parser-perl \
+        libxml-simple-perl \
+        libyaml-libyaml-perl
 else
-    USE_RPMFORGE=0
+    # Unknown distribution type, bomb out
+    echo_error "This does not appear to be a distribution we know how to support"
+    exit 2
 fi
 
 # Don't add filters here just because something fails
@@ -255,22 +342,22 @@ REPOS_MVN_ORDERED="LC CAF CCM ncm-ncd ncm-lib-blockdevices aii configuration-mod
 REPOS_MVN_PACKAGEONLY_ORDERED="maven-tools"
 
 # pseudo-install dir
-INSTALL=$DEST/install
+INSTALL="$DEST/install"
 # perl5lib dir in INSTALL
 # LC is under lib/perl, remainder under usr/lib/perl?
-CPANINSTALL=$INSTALL/usr
-INSTALLPERL=$INSTALL/lib/perl:$INSTALL/usr/lib/perl:$CPANINSTALL/lib/perl5
+CPANINSTALL="$INSTALL/usr"
+INSTALLPERL="$INSTALL/lib/perl:$INSTALL/usr/lib/perl:$CPANINSTALL/lib/perl5"
 
 # gather all produced rpms
-RPMS=$DEST/rpms
+RPMS="$DEST/rpms"
 
 # the original PERL5LIB
-ORIGPERL5LIB=$PERL5LIB
+ORIGPERL5LIB="$PERL5LIB"
 
 # repository dir
-REPOSITORY=$DEST/repos
+REPOSITORY="$DEST/repos"
 # a checkout in the same base directory is default (but lets set this anyway)
-export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE=$REPOSITORY/template-library-core
+export QUATTOR_TEST_TEMPLATE_LIBRARY_CORE="$REPOSITORY/template-library-core"
 
 
 if [[ ! -z "$VERBOSE" ]]; then
@@ -285,13 +372,13 @@ fi
 CHECKDEPS=${CHECKDEPS:-1}
 
 # Main init binaries
-MAIN_INIT_BIN_YUM="repoquery curl wget"
+YUM_MAIN_INIT_BIN="repoquery curl wget"
 
 # Binary dependencies (/usr/bin/<name>) to be installed with yum
-DEPS_INIT_BIN_YUM="rpmbuild perl tar"
+YUM_DEPS_INIT_BIN="rpmbuild perl tar"
 
 # Dependencies (package names) to be installed
-DEPS_INIT_YUM="rpmlint perl-parent perl-IO-Compress-Zlib"
+YUM_DEPS_INIT="rpmlint perl-parent perl-IO-Compress-Zlib"
 
 # only major.minor!
 PAN_MIN_VERSION=10.7
@@ -299,16 +386,16 @@ PAN_MIN_VERSION_RPM_URL="https://github.com/quattor/pan/releases/download/pan-${
 
 # quattor externals repo
 USE_QEXT=1
-QEXT_REPO_URL="https://raw.githubusercontent.com/quattor/release/master/quattor-repo/src/quattor.repo"
+YUM_QEXT_REPO_URL="https://raw.githubusercontent.com/quattor/release/master/quattor-repo/src/quattor.repo"
 
 # the mvn epel url (who has this mirrored/enabled by default?)
-EPEL_MVN_REPO=https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+YUM_EPEL_MVN_REPO="https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo"
 
 # EPEL repo
-EPEL_REPO_RPM=https://dl.fedoraproject.org/pub/epel/epel-release-latest-${RH_RELEASE}.noarch.rpm
+YUM_EPEL_REPO_RPM="https://dl.fedoraproject.org/pub/epel/epel-release-latest-${RH_RELEASE}.noarch.rpm"
 
 # repoforge repo
-RPMFORGE_REPO_RPM=http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el${RH_RELEASE}.rf.x86_64.rpm
+YUM_RPMFORGE_REPO_RPM="http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el${RH_RELEASE}.rf.x86_64.rpm"
 
 # noreplace (config) files
 NOREPLACE_FILES="/etc/ccm.conf /etc/cdp-listend.conf /etc/ncm-ncd.conf /etc/ncm-cdispd.conf"
@@ -519,7 +606,7 @@ function has_panc () {
         deps_install_yum "panc >= $PAN_MIN_VERSION" 0
         has_correct_panc
         if [[ $? -ne 0 ]]; then
-            localinstall_url "$PAN_MIN_VERSION_RPM_URL" "$DEST/panc-${PAN_MIN_VERSION}.rpm" "--nogpgcheck"
+            localinstall_url "$YUM_PAN_MIN_VERSION_RPM_URL" "$DEST/panc-${PAN_MIN_VERSION}.rpm" "--nogpgcheck"
         fi
     fi
 }
@@ -527,9 +614,9 @@ function has_panc () {
 function check_quattor_externals () {
     if [[ "$USE_QEXT" -gt 0 ]]; then
         fn=/etc/yum.repos.d/quattor.repo
-        download "$QEXT_REPO_URL" "$fn" "$SUDO"
+        download "$YUM_QEXT_REPO_URL" "$fn" "$SUDO"
         if [[ $? -gt 0 ]]; then
-            error 102 "Failed to download quattor repo $QEXT_REPO_URL to $fn with '$SUDO $exe $opt'"
+            error 102 "Failed to download quattor repo $YUM_QEXT_REPO_URL to $fn with '$SUDO $exe $opt'"
         fi
         # remove the quattor and aquilon repos; should only leave the externals
         $SUDO sed -i '/quattor\]/,+5d;/quattor_aquilon\]/,+5d' "$fn"
@@ -543,10 +630,10 @@ function check_epel () {
 
         if [[ "$RH_RELEASE" -eq 5 ]]; then
             # EPEL5 zombie mode
-            EPEL_REPO_RPM="${EPEL_REPO_RPM//pub\/epel\//pub/archive/epel/}"
+            YUM_EPEL_REPO_RPM="${YUM_EPEL_REPO_RPM//pub\/epel\//pub\/archive\/epel\/}"
         fi
 
-        localinstall_url "$EPEL_REPO_RPM" "$DEST/epel-release-$RH_RELEASE.rpm" "--nogpgcheck"
+        localinstall_url "$YUM_EPEL_REPO_RPM" "$DEST/epel-release-$RH_RELEASE.rpm" "--nogpgcheck"
 
         if [[ "$RH_RELEASE" -eq 5 ]]; then
             # EPEL5 zombie mode
@@ -559,7 +646,7 @@ function check_epel () {
 
 function check_rpmforge () {
     if [[ "$USE_RPMFORGE" -gt 0 ]]; then
-        localinstall_url "$RPMFORGE_REPO_RPM" "$DEST/rpmforge-release-$RH_RELEASE.rpm" "--nogpgcheck"
+        localinstall_url "$YUM_RPMFORGE_REPO_RPM" "$DEST/rpmforge-release-$RH_RELEASE.rpm" "--nogpgcheck"
         makecache expire-cache
     fi
 }
@@ -575,10 +662,10 @@ function has_mvn () {
         deps_install_yum "*bin/mvn" 0
         if [[ $? -gt 0 ]]; then
             fn=/etc/yum.repos.d/check_deps_mvn.repo
-            echo_info "Couldn't get mvn $mvn via yum. Going to add the mvn epel repo $EPEL_MVN_REPO to $fn and retry."
-            download "$EPEL_MVN_REPO" "$fn" "$SUDO"
+            echo_info "Couldn't get mvn $mvn via yum. Going to add the mvn epel repo $YUM_EPEL_MVN_REPO to $fn and retry."
+            download "$YUM_EPEL_MVN_REPO" "$fn" "$SUDO"
             if [[ $? -gt 0 ]]; then
-                error 84 "Failed to download maven repo $EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
+                error 84 "Failed to download maven repo $YUM_EPEL_MVN_REPO to $fn with '$SUDO $exe $opt'"
             fi
 
             # releasever but repos have single digits/RHEL naming
@@ -589,7 +676,7 @@ function has_mvn () {
             $SUDO sed -i "s/\$releasever/$RH_RELEASE/g" "$fn"
 
             if [[ $? -gt 0 ]]; then
-                error 82 "has_mvn fetch mvn epel repo $EPEL_MVN_REPO failed"
+                error 82 "has_mvn fetch mvn epel repo $YUM_EPEL_MVN_REPO failed"
             fi
 
             makecache
@@ -674,17 +761,17 @@ function deps_install_yum () {
     return $ec
 }
 
-function check_deps_init_bin () {
+function yum_deps_init_bin () {
     makecache expire-cache
 
     # these are fatal
-    echo_info "Checking DEPS_INIT_BIN_YUM $DEPS_INIT_BIN_YUM"
-    for bin in $DEPS_INIT_BIN_YUM; do
+    echo_info "Checking YUM_DEPS_INIT_BIN $YUM_DEPS_INIT_BIN"
+    for bin in $YUM_DEPS_INIT_BIN; do
         deps_install_yum "*bin/$bin" 1
     done
 
-    echo_info "Checking other deps: $DEPS_INIT_YUM"
-    for dep in $DEPS_INIT_YUM; do
+    echo_info "Checking other deps: $YUM_DEPS_INIT"
+    for dep in $YUM_DEPS_INIT; do
         deps_install_yum "$dep" 1
     done
 
@@ -1062,10 +1149,10 @@ function mvn_package () {
     return 0
 }
 
-function main_init_bin_yum () {
+function YUM_MAIN_INIT_BIN () {
     miby="$*"
 
-    echo_info "Checking MAIN_INIT_BIN_YUM $miby"
+    echo_info "Checking YUM_MAIN_INIT_BIN $miby"
     for bin in $miby; do
         binpath="/usr/bin/$bin"
         if [[ ! -f "$binpath" ]]; then
@@ -1074,7 +1161,7 @@ function main_init_bin_yum () {
             # shellcheck disable=SC2086
             run_wrapped $cmd
             if [[ $? -gt 0 ]]; then
-                error 19 "Failed to install $bin as part of MAIN_INIT_BIN_YUM $miby"
+                error 19 "Failed to install $bin as part of YUM_MAIN_INIT_BIN $miby"
             else
                 echo_info "Installed $bin with $cmd"
             fi
@@ -1127,7 +1214,7 @@ function main_init () {
     # provided by yum-utils
     # Don't quote arguments as we want to allow the shell to do globbing and word splitting
     # shellcheck disable=SC2086
-    main_init_bin_yum $MAIN_INIT_BIN_YUM
+    YUM_MAIN_INIT_BIN $YUM_MAIN_INIT_BIN
 
     if [[ "$EATMYDATA" -gt 0 ]]; then
         eatmydata
@@ -1139,7 +1226,7 @@ function main_init () {
     check_rpmforge
 
     # get git (EL5 needs epel; to get epel you need curl/wget)
-    main_init_bin_yum git
+    YUM_MAIN_INIT_BIN git
 
     check_deps_minimal
     check_deps_init_bin
