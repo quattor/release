@@ -174,7 +174,7 @@
 <g id="node13" class="node">
 <title>CCM#214</title>
 <g id="a_node13"><a xlink:href="https://github.com/quattor/CCM/pull/214" xlink:title="CCM#214 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="753,-946.5 615,-946.5 615,-896.5 753,-896.5 753,-946.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="753,-946.5 615,-946.5 615,-896.5 753,-896.5 753,-946.5"/>
 <text text-anchor="middle" x="684" y="-924.5" font-family="Sans" font-size="10.00" fill="#000000">Strip out all references to</text>
 <text text-anchor="middle" x="684" y="-913.5" font-family="Sans" font-size="10.00" fill="#000000">derivation</text>
 </a>
@@ -191,7 +191,7 @@
 <g id="node14" class="node">
 <title>CCM#134</title>
 <g id="a_node14"><a xlink:href="https://github.com/quattor/CCM/issues/134" xlink:title="CCM#134 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M1040,-941C1040,-941 894,-941 894,-941 888,-941 882,-935 882,-929 882,-929 882,-914 882,-914 882,-908 888,-902 894,-902 894,-902 1040,-902 1040,-902 1046,-902 1052,-908 1052,-914 1052,-914 1052,-929 1052,-929 1052,-935 1046,-941 1040,-941"/>
+<path fill="#6e5494" stroke="#000000" d="M1040,-941C1040,-941 894,-941 894,-941 888,-941 882,-935 882,-929 882,-929 882,-914 882,-914 882,-908 888,-902 894,-902 894,-902 1040,-902 1040,-902 1046,-902 1052,-908 1052,-914 1052,-914 1052,-929 1052,-929 1052,-935 1046,-941 1040,-941"/>
 <text text-anchor="middle" x="967" y="-919" font-family="Sans" font-size="10.00" fill="#000000">Remove references to derivation</text>
 </a>
 </g>
