@@ -138,7 +138,7 @@
 <g id="node10" class="node">
 <title>CCM#216</title>
 <g id="a_node10"><a xlink:href="https://github.com/quattor/CCM/pull/216" xlink:title="CCM#216 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="468,-1026.5 313,-1026.5 313,-976.5 468,-976.5 468,-1026.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="468,-1026.5 313,-1026.5 313,-976.5 468,-976.5 468,-1026.5"/>
 <text text-anchor="middle" x="390.5" y="-1004.5" font-family="Sans" font-size="10.00" fill="#000000">ProfileCache: Include type in</text>
 <text text-anchor="middle" x="390.5" y="-993.5" font-family="Sans" font-size="10.00" fill="#000000">checksum calculation</text>
 </a>
@@ -148,7 +148,7 @@
 <g id="node11" class="node">
 <title>CCM#213</title>
 <g id="a_node11"><a xlink:href="https://github.com/quattor/CCM/issues/213" xlink:title="CCM#213 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M743.5,-1014.5C743.5,-1014.5 624.5,-1014.5 624.5,-1014.5 618.5,-1014.5 612.5,-1008.5 612.5,-1002.5 612.5,-1002.5 612.5,-976.5 612.5,-976.5 612.5,-970.5 618.5,-964.5 624.5,-964.5 624.5,-964.5 743.5,-964.5 743.5,-964.5 749.5,-964.5 755.5,-970.5 755.5,-976.5 755.5,-976.5 755.5,-1002.5 755.5,-1002.5 755.5,-1008.5 749.5,-1014.5 743.5,-1014.5"/>
+<path fill="#6e5494" stroke="#000000" d="M743.5,-1014.5C743.5,-1014.5 624.5,-1014.5 624.5,-1014.5 618.5,-1014.5 612.5,-1008.5 612.5,-1002.5 612.5,-1002.5 612.5,-976.5 612.5,-976.5 612.5,-970.5 618.5,-964.5 624.5,-964.5 624.5,-964.5 743.5,-964.5 743.5,-964.5 749.5,-964.5 755.5,-970.5 755.5,-976.5 755.5,-976.5 755.5,-1002.5 755.5,-1002.5 755.5,-1008.5 749.5,-1014.5 743.5,-1014.5"/>
 <text text-anchor="middle" x="684" y="-992.5" font-family="Sans" font-size="10.00" fill="#000000">Include type information in</text>
 <text text-anchor="middle" x="684" y="-981.5" font-family="Sans" font-size="10.00" fill="#000000">checksum computation</text>
 </a>
