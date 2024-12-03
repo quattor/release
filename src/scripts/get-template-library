@@ -53,8 +53,8 @@ examples_branch_pattern=main
 examples_dest_dir=
 
 grid_git_repo=template-library-grid
-grid_branch_pattern=.*
-grid_dest_dir=grid/%BRANCH%
+grid_branch_pattern=main
+grid_dest_dir=grid
 
 os_git_repo=template-library-os
 os_branch_pattern=.*
