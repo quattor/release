@@ -16,10 +16,10 @@ import errno
 RELEASES_URL = 'http://www.quattor.org/release/releases.json'
 LIBRARY_URL_PATTERN = 'https://github.com/quattor/template-library-%s.git'
 LIBRARY_BRANCHES = {
-    'core': ['master'],
-    'grid': ['umd-3', 'umd-4'],
-    'os': ['sl6.x-x86_64', 'el7.x-x86_64', 'el8.x-x86-64'],
-    'standard': ['master'],
+    'core': ['main'],
+    'grid': ['main'],
+    'os': ['main'],
+    'standard': ['main'],
     'openstack': ['mitaka', 'newton', 'ocata'],
 }
 
@@ -112,7 +112,7 @@ def sync_template_library(base_dir, releases):
 
                 target_dir = join(base_dir, release, library)
                 logger.debug('Target dir is %s', target_dir)
-                if branch != 'master':
+                if branch != 'main':
                     tag = f'{branch}-{tag}'
                     target_dir = join(target_dir, branch)
                     logger.debug('Added branch to target dir, which is now %s', target_dir)
