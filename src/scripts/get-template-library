@@ -57,8 +57,8 @@ grid_branch_pattern=main
 grid_dest_dir=grid
 
 os_git_repo=template-library-os
-os_branch_pattern=.*
-os_dest_dir=os/%BRANCH%
+os_branch_pattern=main
+os_dest_dir=os
 
 standard_git_repo=template-library-standard
 standard_branch_pattern=main
