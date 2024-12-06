@@ -5,11 +5,11 @@ FROM rockylinux:8
 WORKDIR /quattor
 
 # install library core in /quattor, tests need it
-ADD https://codeload.github.com/quattor/template-library-core/tar.gz/master template-library-core-master.tar.gz
-RUN tar -xzf template-library-core-master.tar.gz
+ADD https://codeload.github.com/quattor/template-library-core/tar.gz/main template-library-core-main.tar.gz
+RUN tar -xzf template-library-core-main.tar.gz
 
 # point library core to where we downloaded it
-ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-master
+ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-main
 
 # Prepare to install dependencies
 RUN dnf -y install dnf-plugins-core && \
