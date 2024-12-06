@@ -28,7 +28,9 @@ RUN dnf install -y maven which rpm-build panc ncm-lib-blockdevices \
   perl-Net-OpenStack-Client perl-NetAddr-IP perl-REST-Client \
   perl-Set-Scalar perl-Text-Glob cpanminus gcc wget \
   perl-Git-Repository perl-Data-Structure-Util \
-  perl-Test-Quattor aii-ks procps-ng rpm-build
+  aii-ks procps-ng rpm-build
+
+RUN dnf install -y http://yum.quattor.org/23.6.0/el8/perl-Test-Quattor-23.6.0-1.noarch.rpm
 
 # quattor tests should not be run as root
 RUN useradd --user-group --create-home --no-log-init --home-dir /quattor_test quattortest
