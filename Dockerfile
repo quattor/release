@@ -5,11 +5,11 @@ FROM rockylinux:8
 WORKDIR /quattor
 
 # install library core in /quattor, tests need it
-ADD https://codeload.github.com/quattor/template-library-core/tar.gz/master template-library-core-master.tar.gz
-RUN tar -xzf template-library-core-master.tar.gz
+ADD https://codeload.github.com/quattor/template-library-core/tar.gz/main template-library-core-main.tar.gz
+RUN tar -xzf template-library-core-main.tar.gz
 
 # point library core to where we downloaded it
-ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-master
+ENV QUATTOR_TEST_TEMPLATE_LIBRARY_CORE /quattor/template-library-core-main
 
 # Prepare to install dependencies
 RUN dnf -y install dnf-plugins-core && \
@@ -28,7 +28,9 @@ RUN dnf install -y maven which rpm-build panc ncm-lib-blockdevices \
   perl-Net-OpenStack-Client perl-NetAddr-IP perl-REST-Client \
   perl-Set-Scalar perl-Text-Glob cpanminus gcc wget \
   perl-Git-Repository perl-Data-Structure-Util \
-  perl-Test-Quattor aii-ks procps-ng rpm-build
+  aii-ks procps-ng rpm-build
+
+RUN dnf install -y http://yum.quattor.org/23.6.0/el8/perl-Test-Quattor-23.6.0-1.noarch.rpm
 
 # quattor tests should not be run as root
 RUN useradd --user-group --create-home --no-log-init --home-dir /quattor_test quattortest
