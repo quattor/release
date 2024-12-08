@@ -21,7 +21,7 @@
 #  - xxx_dest_dir: directory where to put the repo contents, under template library root
 #                  (%BRANCH% is replaced by the "branch" name, %TAG% by the
 #                   Quattor version specified in the tag)
-#  - xxx_rename_master (optional): "branch name" to use if the branch is master
+#  - xxx_rename_master (optional): "branch name" to use if the branch is main
 
 git_url_root=https://github.com
 quattor_git_url=${git_url_root}/quattor
@@ -29,7 +29,7 @@ git_repo_list='core examples grid os standard'
 # Do not change the following defaults except if you know what you are doing...
 use_tags_default=1
 ignore_version_default=0
-tags_ignore_pattern_pattern=master
+tags_ignore_pattern_pattern=main
 pull_request=''
 use_ci_work_dir=0
 # If true, Quattor version will be updated in cluster.build.properties files
@@ -42,13 +42,13 @@ core_dest_dir=quattor/%TAG%
 # whatever is done for other repos.
 core_use_tags=1
 core_ignore_version=1
-# Define the working copy directory used for template-library-core master
+# Define the working copy directory used for template-library-core main
 # branch (Quattor version = HEAD).
-# If underfined, 'master' will be used.
+# If underfined, 'main' will be used.
 core_master_dir=dev
 
 examples_git_repo=template-library-examples
-examples_branch_pattern=master
+examples_branch_pattern=main
 # examples provides sites/ and clusters/ directory directly under the template library root
 examples_dest_dir=
 
@@ -61,11 +61,11 @@ os_branch_pattern=.*
 os_dest_dir=os/%BRANCH%
 
 standard_git_repo=template-library-standard
-standard_branch_pattern=master
+standard_branch_pattern=main
 standard_dest_dir=standard
 
 monitoring_git_repo=template-library-monitoring
-monitoring_branch_pattern=master
+monitoring_branch_pattern=main
 monitoring_dest_dir=standard/monitoring
 
 # Other initializations
@@ -98,7 +98,7 @@ usage () {
   echo "        --pull-request repository:user:branch[:target] : merge the GitHub pull request specifed by the"
   echo "                                  source branch repository:user:branch into repository:quattor:target."
   echo "                                  target can be a branch or a tag. If not specified, it defaults to"
-  echo "                                  quattor_version or master when quattor_version=HEAD. Note that using"
+  echo "                                  quattor_version or main when quattor_version=HEAD. Note that using"
   echo "                                  a version other than HEAD generally produces unpredictable results."
   echo "        --release-candidates: download release candidates in template-library-core (disabled by default)."
   echo "        --spma : download SPMA-based OS templates (disabled by default)."
@@ -193,7 +193,7 @@ fi
 #   - user: the GitHub user who contributed the PR (will be used to select the fork to use)
 #   - branch: the branch to import from the fork
 #   - target_branch: the branch in the Quattor repo which is in the target for the PR. It is
-#                    optional and default to master (it is in fact required if the target is not master)
+#                    optional and default to main (it is in fact required if the target is not main)
 # Check that the value is syntactically valid.
 if [ -n "${pull_request}" ]
 then
@@ -227,7 +227,7 @@ then
   then
     if [ "${quattor_version}" = "HEAD" ]
     then
-      pr_target=master
+      pr_target=main
     else
       pr_target=${quattor_version}
     fi
@@ -393,10 +393,10 @@ do
     fi
     [ ${verbose} -eq 1 ] && echo "Using tags rather than branches for repository ${repo} (branch pattern=${branch_pattern})"
     branch_list=$(git tag | grep -E -- "${branch_pattern}")
-    # If version is HEAD, need to add master branch to all the other tags
+    # If version is HEAD, need to add main branch to all the other tags
     if [ "${quattor_version}" = "HEAD" ]
     then
-      branch_list="${branch_list} master"
+      branch_list="${branch_list} main"
     fi
   else
     branch_list=$(git branch -r | grep -E "origin/${branch_pattern}" | grep -v HEAD)
@@ -417,12 +417,12 @@ do
     # (e.g. template-library-) removed. Define a non empty default value.
     # Also define the branch/tag name to use to compare with pr_target (--pull-request):
     # when using a branch, use branch name (branch_or_tag) and when using a tag, use
-    # tag_dir before the rename applied to master.
+    # tag_dir before the rename applied to main.
     tag_dir="undefined_tag"
     if [ ${use_tags} -eq 0 ]
     then
       pr_actual_target=${branch_or_tag}
-      if [ "${branch_or_tag}" = "master" ] && [ "${master_dir_name}" ]
+      if [ "${branch_or_tag}" = "main" ] && [ "${master_dir_name}" ]
       then
         branch_dir=${master_dir_name}
       else
@@ -432,9 +432,9 @@ do
       branch_dir=$(echo ${branch_or_tag} | sed -e 's%-\([0-9\.]\+\)\+\(-[0-Z]\+\)*$%%')
       tag_dir=$(echo ${branch_or_tag} | sed -e "s%^.*${branch_dir}-%%")
       pr_actual_target=${tag_dir}
-      # master is normally not a tag name but master branch can be added to
+      # main is normally not a tag name but main branch can be added to
       # other tags when the version is HEAD (for example for template-library-core)
-      if [ "${tag_dir}" = "master" ] && [ "${master_dir_name}" ]
+      if [ "${tag_dir}" = "main" ] && [ "${master_dir_name}" ]
       then
         tag_dir=${master_dir_name}
       fi
@@ -443,10 +443,10 @@ do
       then
         branch_dir=${tag_dir}
       fi
-      # If branch_dir is not tag_dir or master, indicates a repository without a master
+      # If branch_dir is not tag_dir or main, indicates a repository without a main
       # branch (e.g. template-library-grid). In this case, pr_actual_target must be 
       # redefined as branch_dir-tag_dir, as the tag name is prefixed by the branch name (branch_dir).
-      if [ "${branch_dir}" != "master" ] && [ "${branch_dir}" != "${tag_dir}" ]
+      if [ "${branch_dir}" != "main" ] && [ "${branch_dir}" != "${tag_dir}" ]
       then
         pr_actual_target="${branch_dir}-${tag_dir}"
       fi
@@ -575,7 +575,7 @@ done      # repository loop
 
 
 # cluster.build.properties: update version used to the requested Quattor version.
-# Ine the case of HEAD, use the directory the master branch has been checkout to/
+# Ine the case of HEAD, use the directory the main branch has been checkout to/
 
 if [ ${list_branches} -eq 0 ] && [ ${cluster_build_properties_update} -eq 1 ]
 then
@@ -589,7 +589,7 @@ then
         then
             quattor_version_dir=${core_master_dir}
         else
-            quattor_version_dir=master
+            quattor_version_dir=main
         fi
     else
         quattor_version_dir=${branch_or_tag}
