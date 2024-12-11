@@ -491,7 +491,7 @@
 <g id="node35" class="node">
 <title>release#370</title>
 <g id="a_node35"><a xlink:href="https://github.com/quattor/release/pull/370" xlink:title="release#370 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="471.5,-685.5 309.5,-685.5 309.5,-635.5 471.5,-635.5 471.5,-685.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="471.5,-685.5 309.5,-685.5 309.5,-635.5 471.5,-635.5 471.5,-685.5"/>
 <text text-anchor="middle" x="390.5" y="-663.5" font-family="Sans" font-size="10.00" fill="#000000">Update template library scripts</text>
 <text text-anchor="middle" x="390.5" y="-652.5" font-family="Sans" font-size="10.00" fill="#000000">for new repository structure</text>
 </a>
@@ -501,7 +501,7 @@
 <g id="node36" class="node">
 <title>release#373</title>
 <g id="a_node36"><a xlink:href="https://github.com/quattor/release/issues/373" xlink:title="release#373 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M758.5,-640C758.5,-640 609.5,-640 609.5,-640 603.5,-640 597.5,-634 597.5,-628 597.5,-628 597.5,-591 597.5,-591 597.5,-585 603.5,-579 609.5,-579 609.5,-579 758.5,-579 758.5,-579 764.5,-579 770.5,-585 770.5,-591 770.5,-591 770.5,-628 770.5,-628 770.5,-634 764.5,-640 758.5,-640"/>
+<path fill="#6e5494" stroke="#000000" d="M758.5,-640C758.5,-640 609.5,-640 609.5,-640 603.5,-640 597.5,-634 597.5,-628 597.5,-628 597.5,-591 597.5,-591 597.5,-585 603.5,-579 609.5,-579 609.5,-579 758.5,-579 758.5,-579 764.5,-579 770.5,-585 770.5,-591 770.5,-591 770.5,-628 770.5,-628 770.5,-634 764.5,-640 758.5,-640"/>
 <text text-anchor="middle" x="684" y="-618" font-family="Sans" font-size="10.00" fill="#000000">get-template-library: update the</text>
 <text text-anchor="middle" x="684" y="-607" font-family="Sans" font-size="10.00" fill="#000000">default master branch name after</text>
 <text text-anchor="middle" x="684" y="-596" font-family="Sans" font-size="10.00" fill="#000000">master -&gt; main rename</text>
