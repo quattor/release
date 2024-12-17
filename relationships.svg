@@ -207,7 +207,7 @@
 <g id="node15" class="node">
 <title>configuration-modules-core#1788</title>
 <g id="a_node15"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1788" xlink:title="configuration-modules-core#1788 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="461.5,-1116.5 319.5,-1116.5 319.5,-1066.5 461.5,-1066.5 461.5,-1116.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="461.5,-1116.5 319.5,-1116.5 319.5,-1066.5 461.5,-1066.5 461.5,-1116.5"/>
 <text text-anchor="middle" x="390.5" y="-1094.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-systemd: ensure unit</text>
 <text text-anchor="middle" x="390.5" y="-1083.5" font-family="Sans" font-size="10.00" fill="#000000">property is defined</text>
 </a>
@@ -217,7 +217,7 @@
 <g id="node16" class="node">
 <title>configuration-modules-core#1787</title>
 <g id="a_node16"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1787" xlink:title="configuration-modules-core#1787 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M757,-1094.5C757,-1094.5 611,-1094.5 611,-1094.5 605,-1094.5 599,-1088.5 599,-1082.5 599,-1082.5 599,-1056.5 599,-1056.5 599,-1050.5 605,-1044.5 611,-1044.5 611,-1044.5 757,-1044.5 757,-1044.5 763,-1044.5 769,-1050.5 769,-1056.5 769,-1056.5 769,-1082.5 769,-1082.5 769,-1088.5 763,-1094.5 757,-1094.5"/>
+<path fill="#6e5494" stroke="#000000" d="M757,-1094.5C757,-1094.5 611,-1094.5 611,-1094.5 605,-1094.5 599,-1088.5 599,-1082.5 599,-1082.5 599,-1056.5 599,-1056.5 599,-1050.5 605,-1044.5 611,-1044.5 611,-1044.5 757,-1044.5 757,-1044.5 763,-1044.5 769,-1050.5 769,-1056.5 769,-1056.5 769,-1082.5 769,-1082.5 769,-1088.5 763,-1094.5 757,-1094.5"/>
 <text text-anchor="middle" x="684" y="-1072.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-systemd 24.10.0: validation</text>
 <text text-anchor="middle" x="684" y="-1061.5" font-family="Sans" font-size="10.00" fill="#000000">fails if no unit is defined</text>
 </a>
