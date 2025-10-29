@@ -624,7 +624,7 @@
 <g id="node45" class="node">
 <title>template-library-os#111</title>
 <g id="a_node45"><a xlink:href="https://github.com/quattor/template-library-os/pull/111" xlink:title="template-library-os#111 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="457.5,-548.5 323.5,-548.5 323.5,-498.5 457.5,-498.5 457.5,-548.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="457.5,-548.5 323.5,-548.5 323.5,-498.5 457.5,-498.5 457.5,-548.5"/>
 <text text-anchor="middle" x="390.5" y="-526.5" font-family="Sans" font-size="10.00" fill="#000000">el8/9: Make architecture</text>
 <text text-anchor="middle" x="390.5" y="-515.5" font-family="Sans" font-size="10.00" fill="#000000">independent</text>
 </a>
@@ -634,7 +634,7 @@
 <g id="node46" class="node">
 <title>template-library-os#110</title>
 <g id="a_node46"><a xlink:href="https://github.com/quattor/template-library-os/issues/110" xlink:title="template-library-os#110 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M741,-481C741,-481 627,-481 627,-481 621,-481 615,-475 615,-469 615,-469 615,-432 615,-432 615,-426 621,-420 627,-420 627,-420 741,-420 741,-420 747,-420 753,-426 753,-432 753,-432 753,-469 753,-469 753,-475 747,-481 741,-481"/>
+<path fill="#6e5494" stroke="#000000" d="M741,-481C741,-481 627,-481 627,-481 621,-481 615,-475 615,-469 615,-469 615,-432 615,-432 615,-426 621,-420 627,-420 627,-420 741,-420 741,-420 747,-420 753,-426 753,-432 753,-432 753,-469 753,-469 753,-475 747,-481 741,-481"/>
 <text text-anchor="middle" x="684" y="-459" font-family="Sans" font-size="10.00" fill="#000000">OS templates should be</text>
 <text text-anchor="middle" x="684" y="-448" font-family="Sans" font-size="10.00" fill="#000000">independent of processor</text>
 <text text-anchor="middle" x="684" y="-437" font-family="Sans" font-size="10.00" fill="#000000">architecture</text>
