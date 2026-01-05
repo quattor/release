@@ -289,7 +289,7 @@
 <g id="node21" class="node">
 <title>configuration-modules-core#1783</title>
 <g id="a_node21"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1783" xlink:title="configuration-modules-core#1783 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="475.5,-1184 305.5,-1184 305.5,-1123 475.5,-1123 475.5,-1184"/>
+<polygon fill="#6e5494" stroke="#000000" points="475.5,-1184 305.5,-1184 305.5,-1123 475.5,-1123 475.5,-1184"/>
 <text text-anchor="middle" x="390.5" y="-1162" font-family="Sans" font-size="10.00" fill="#000000">metaconfig/named: fix validation</text>
 <text text-anchor="middle" x="390.5" y="-1151" font-family="Sans" font-size="10.00" fill="#000000">of logging channels in</text>
 <text text-anchor="middle" x="390.5" y="-1140" font-family="Sans" font-size="10.00" fill="#000000">categories</text>
@@ -300,7 +300,7 @@
 <g id="node22" class="node">
 <title>configuration-modules-core#1784</title>
 <g id="a_node22"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1784" xlink:title="configuration-modules-core#1784 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M755.5,-1150C755.5,-1150 612.5,-1150 612.5,-1150 606.5,-1150 600.5,-1144 600.5,-1138 600.5,-1138 600.5,-1101 600.5,-1101 600.5,-1095 606.5,-1089 612.5,-1089 612.5,-1089 755.5,-1089 755.5,-1089 761.5,-1089 767.5,-1095 767.5,-1101 767.5,-1101 767.5,-1138 767.5,-1138 767.5,-1144 761.5,-1150 755.5,-1150"/>
+<path fill="#6e5494" stroke="#000000" d="M755.5,-1150C755.5,-1150 612.5,-1150 612.5,-1150 606.5,-1150 600.5,-1144 600.5,-1138 600.5,-1138 600.5,-1101 600.5,-1101 600.5,-1095 606.5,-1089 612.5,-1089 612.5,-1089 755.5,-1089 755.5,-1089 761.5,-1089 767.5,-1095 767.5,-1101 767.5,-1101 767.5,-1138 767.5,-1138 767.5,-1144 761.5,-1150 755.5,-1150"/>
 <text text-anchor="middle" x="684" y="-1128" font-family="Sans" font-size="10.00" fill="#000000">ncm-metaconfig 24.10.0 named</text>
 <text text-anchor="middle" x="684" y="-1117" font-family="Sans" font-size="10.00" fill="#000000">module: error in logging channel</text>
 <text text-anchor="middle" x="684" y="-1106" font-family="Sans" font-size="10.00" fill="#000000">name validation</text>
