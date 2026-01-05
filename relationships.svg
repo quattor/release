@@ -57,7 +57,7 @@
 <g id="node4" class="node">
 <title>aii#299</title>
 <g id="a_node4"><a xlink:href="https://github.com/quattor/aii/pull/299" xlink:title="aii#299 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="459,-355.5 322,-355.5 322,-305.5 459,-305.5 459,-355.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="459,-355.5 322,-355.5 322,-305.5 459,-305.5 459,-355.5"/>
 <text text-anchor="middle" x="390.5" y="-333.5" font-family="Sans" font-size="10.00" fill="#000000">aii-dhcp: support optional</text>
 <text text-anchor="middle" x="390.5" y="-322.5" font-family="Sans" font-size="10.00" fill="#000000">hostname ip verification</text>
 </a>
@@ -222,7 +222,7 @@
 <g id="node16" class="node">
 <title>configuration-modules-core#1816</title>
 <g id="a_node16"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1816" xlink:title="configuration-modules-core#1816 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="766,-1104.5 602,-1104.5 602,-1054.5 766,-1054.5 766,-1104.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="766,-1104.5 602,-1104.5 602,-1054.5 766,-1054.5 766,-1104.5"/>
 <text text-anchor="middle" x="684" y="-1082.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-metaconfig: httpd: support</text>
 <text text-anchor="middle" x="684" y="-1071.5" font-family="Sans" font-size="10.00" fill="#000000">requestheader in vhost</text>
 </a>
