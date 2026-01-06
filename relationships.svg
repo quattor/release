@@ -238,7 +238,7 @@
 <g id="node17" class="node">
 <title>configuration-modules-core#1830</title>
 <g id="a_node17"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1830" xlink:title="configuration-modules-core#1830 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="472.5,-1126.5 308.5,-1126.5 308.5,-1076.5 472.5,-1076.5 472.5,-1126.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="472.5,-1126.5 308.5,-1126.5 308.5,-1076.5 472.5,-1076.5 472.5,-1126.5"/>
 <text text-anchor="middle" x="390.5" y="-1104.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-metaconfig: httpd: support</text>
 <text text-anchor="middle" x="390.5" y="-1093.5" font-family="Sans" font-size="10.00" fill="#000000">casscope</text>
 </a>
