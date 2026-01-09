@@ -2,6 +2,10 @@ name: Standard quattor maven tests
 
 on:
   workflow_call:
+    inputs:
+      dependencies:
+        required: false
+        type: string
 
 jobs:
   maven_tests:
@@ -20,6 +24,11 @@ jobs:
         path: /tmp/m2
         key: ${{ runner.os }}-m2-${{ env.pomcachekey }}
         restore-keys: ${{ runner.os }}-m2-
+    - name: install dependencies
+      run: |
+        if [[ -n "${{ inputs.dependencies }}" ]]; then
+          dnf -y install ${{ inputs.dependencies }}
+        fi
     - name: run tests
       run: |
         # make sure it exists before chown
