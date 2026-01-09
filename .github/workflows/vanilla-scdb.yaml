@@ -1,0 +1,28 @@
+name: Standard SCDB tests for template libraries
+
+on:
+  workflow_call:
+
+jobs:
+  vanilla_scdb:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/quattor/quattor-test-container:latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install dependencies
+      run: dnf -y install subversion
+    - name: Download create-vanilla-SCDB
+      run: |
+        echo GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
+        echo GITHUB_BASE_REF: ${GITHUB_BASE_REF}
+        echo GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}
+
+        # Retrieve last version of create-vanilla-SCDB from GitHub
+        echo "Downloading create-vanilla-SCDB from GitHub..."
+        rm -f /tmp/create-vanilla-SCDB.sh
+        wget -q https://raw.githubusercontent.com/quattor/scdb/master/utils/scdb/create-vanilla-SCDB.sh -O /tmp/create-vanilla-SCDB.sh
+        chmod u+x /tmp/create-vanilla-SCDB.sh
+    - name: Run create-vanilla-SCDB
+      run: /tmp/create-vanilla-SCDB.sh -F --continuous-integration HEAD
