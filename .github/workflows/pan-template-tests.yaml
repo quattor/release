@@ -1,0 +1,49 @@
+name: Standard tests for pan templates
+
+on:
+  workflow_call:
+
+jobs:
+  panlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # we need the full repo or HEAD^ does not work
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3
+      - name: Install dependencies
+        run: pip install colorama prettytable six
+      - name: Download Panlint
+        run: |
+          rm -f /tmp/panlint.py
+          wget -q https://raw.githubusercontent.com/quattor/pan/master/panc/src/main/scripts/panlint/panlint.py -O /tmp/panlint.py
+          chmod u+x /tmp/panlint.py
+      - name: run Panlint
+        run: git diff --name-only --diff-filter=d HEAD^ | grep '\.pan$' | xargs -r /tmp/panlint.py
+
+  indentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # we need the full repo or HEAD^ does not work
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3
+      - name: Install dependencies
+        run: pip install colorama
+      - name: Download Indent Checker
+        run: |
+          rm -f /tmp/indent.py
+          wget -q https://raw.githubusercontent.com/stfc/Pan-Indenter/master/pan_indent_checker.py -O /tmp/indent.py
+          chmod u+x /tmp/indent.py
+      - name: Run Indent Checker
+        run: git diff --name-only --diff-filter=d HEAD^ | grep '\.pan$' | xargs -rn1 /tmp/indent.py check
