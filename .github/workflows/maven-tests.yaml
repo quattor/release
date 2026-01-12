@@ -39,3 +39,8 @@ jobs:
         runuser --shell /bin/bash --preserve-environment --command "source /usr/bin/mvn_test.sh && mvn_run \"dependency:resolve-plugins dependency:go-offline $MVN_ARGS\" && mvn_test" quattortest
       env:
         MVN_ARGS: -Dmaven.repo.local=/tmp/m2
+    - name: Upload Packages
+      uses: actions/upload-artifact@v4
+      with:
+        name: rpms
+        path: target/rpm/*/RPMS/*/*.rpm
