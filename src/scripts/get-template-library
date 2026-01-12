@@ -246,6 +246,13 @@ fi
 if [ ${use_ci_work_dir} -eq 1 ]
 then
     [ ${verbose} -eq 1 ] && echo "Configuring continuous integration mode..."
+
+    if [ -z "${GITHUB_ACTIONS}" ]
+    then
+        echo "Not in a GitHub Actions: --continuous-integration invalid"
+        usage
+    fi
+
     if [ -n "${GITHUB_WORKSPACE}" ]
     then
         ci_work_dir=${GITHUB_WORKSPACE}
@@ -272,8 +279,8 @@ then
     then
         pr_target=${TRAVIS_BRANCH}
     else
-        echo "Neither GITHUB_BASE_REF nor TRAVIS_BRANCH defined: not a GitHub Actions or Travis build environment,  --continuous-integration invalid"
-        exit 2
+        pr_target="master"
+        echo "Neither GITHUB_BASE_REF nor TRAVIS_BRANCH defined: falling back to master branch as target."
     fi
     [ ${verbose} -eq 1 ] && echo "CI mode: ci_work_dir=${ci_work_dir}, pr_repo=${pr_repo}, pr_target=${pr_target}"
 fi
