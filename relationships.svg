@@ -21,7 +21,7 @@
 <g id="node1" class="node">
 <title>aii#360</title>
 <g id="a_node1"><a xlink:href="https://github.com/quattor/aii/pull/360" xlink:title="aii#360 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="467,-1571.5 314,-1571.5 314,-1521.5 467,-1521.5 467,-1571.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="467,-1571.5 314,-1571.5 314,-1521.5 467,-1521.5 467,-1571.5"/>
 <text text-anchor="middle" x="390.5" y="-1549.5" font-family="Sans" font-size="10.00" fill="#000000">aii-ks: Only wait for 120</text>
 <text text-anchor="middle" x="390.5" y="-1538.5" font-family="Sans" font-size="10.00" fill="#000000">seconds in wait_for_network</text>
 </a>
@@ -31,7 +31,7 @@
 <g id="node2" class="node">
 <title>aii#354</title>
 <g id="a_node2"><a xlink:href="https://github.com/quattor/aii/issues/354" xlink:title="aii#354 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M751,-1571.5C751,-1571.5 617,-1571.5 617,-1571.5 611,-1571.5 605,-1565.5 605,-1559.5 605,-1559.5 605,-1533.5 605,-1533.5 605,-1527.5 611,-1521.5 617,-1521.5 617,-1521.5 751,-1521.5 751,-1521.5 757,-1521.5 763,-1527.5 763,-1533.5 763,-1533.5 763,-1559.5 763,-1559.5 763,-1565.5 757,-1571.5 751,-1571.5"/>
+<path fill="#6e5494" stroke="#000000" d="M751,-1571.5C751,-1571.5 617,-1571.5 617,-1571.5 611,-1571.5 605,-1565.5 605,-1559.5 605,-1559.5 605,-1533.5 605,-1533.5 605,-1527.5 611,-1521.5 617,-1521.5 617,-1521.5 751,-1521.5 751,-1521.5 757,-1521.5 763,-1527.5 763,-1533.5 763,-1533.5 763,-1559.5 763,-1559.5 763,-1565.5 757,-1571.5 751,-1571.5"/>
 <text text-anchor="middle" x="684" y="-1549.5" font-family="Sans" font-size="10.00" fill="#000000">wait_for_network waits longer</text>
 <text text-anchor="middle" x="684" y="-1538.5" font-family="Sans" font-size="10.00" fill="#000000">than two minutes</text>
 </a>
@@ -48,7 +48,7 @@
 <g id="node3" class="node">
 <title>aii#359</title>
 <g id="a_node3"><a xlink:href="https://github.com/quattor/aii/pull/359" xlink:title="aii#359 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="471,-1503 310,-1503 310,-1464 471,-1464 471,-1503"/>
+<polygon fill="#6e5494" stroke="#000000" points="471,-1503 310,-1503 310,-1464 471,-1464 471,-1503"/>
 <text text-anchor="middle" x="390.5" y="-1481" font-family="Sans" font-size="10.00" fill="#000000">Remove legacy aii-dhcp script</text>
 </a>
 </g>
@@ -57,7 +57,7 @@
 <g id="node4" class="node">
 <title>aii#321</title>
 <g id="a_node4"><a xlink:href="https://github.com/quattor/aii/issues/321" xlink:title="aii#321 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M738,-1503C738,-1503 630,-1503 630,-1503 624,-1503 618,-1497 618,-1491 618,-1491 618,-1476 618,-1476 618,-1470 624,-1464 630,-1464 630,-1464 738,-1464 738,-1464 744,-1464 750,-1470 750,-1476 750,-1476 750,-1491 750,-1491 750,-1497 744,-1503 738,-1503"/>
+<path fill="#6e5494" stroke="#000000" d="M738,-1503C738,-1503 630,-1503 630,-1503 624,-1503 618,-1497 618,-1491 618,-1491 618,-1476 618,-1476 618,-1470 624,-1464 630,-1464 630,-1464 738,-1464 738,-1464 744,-1464 750,-1470 750,-1476 750,-1476 750,-1491 750,-1491 750,-1497 744,-1503 738,-1503"/>
 <text text-anchor="middle" x="684" y="-1481" font-family="Sans" font-size="10.00" fill="#000000">aii-dhcp: Remove script</text>
 </a>
 </g>
