@@ -843,7 +843,7 @@
 <g id="node62" class="node">
 <title>template-library-standard#177</title>
 <g id="a_node62"><a xlink:href="https://github.com/quattor/template-library-standard/pull/177" xlink:title="template-library-standard#177 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="472.5,-333.5 308.5,-333.5 308.5,-283.5 472.5,-283.5 472.5,-333.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="472.5,-333.5 308.5,-333.5 308.5,-283.5 472.5,-283.5 472.5,-333.5"/>
 <text text-anchor="middle" x="390.5" y="-311.5" font-family="Sans" font-size="10.00" fill="#000000">Reuse shared workflows to run</text>
 <text text-anchor="middle" x="390.5" y="-300.5" font-family="Sans" font-size="10.00" fill="#000000">tests</text>
 </a>
