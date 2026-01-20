@@ -171,8 +171,7 @@ tag_branches() {
         cd_or_die "$repo"
         # Ignore remote HEAD symlink and branches marked as obsolete
         branches=$(git branch -r | grep -v ' -> ' | grep -Ev 'obsolete$' )
-        for branch in ${branches}
-        do
+        for branch in ${branches}; do
             branch_name=$(basename "${branch}")
             tag=${branch_name}-${version}
             git tag -s -m "Release ${version} of branch ${branch_name}" "${tag}" "${branch}"
@@ -338,12 +337,10 @@ if gpg-agent; then
 
             echo_info "    Tagging template library repositories..."
             #FIXME: ideally tag should be configurable but for now there is only template-library repos
-            for repo in $REPOS_ONE_TAG
-            do
+            for repo in $REPOS_ONE_TAG; do
                 tag_repository "$repo" "$VERSION" && echo_info "    Tagged $repo"
             done
-            for repo in $REPOS_BRANCH_TAG
-            do
+            for repo in $REPOS_BRANCH_TAG; do
                 tag_branches "$repo" "$VERSION" && echo_info "    Tagged branches in $repo"
             done
 
