@@ -291,7 +291,7 @@
 <g id="node21" class="node">
 <title>configuration-modules-core#1857</title>
 <g id="a_node21"><a xlink:href="https://github.com/quattor/configuration-modules-core/pull/1857" xlink:title="configuration-modules-core#1857 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="772.5,-1264.5 596.5,-1264.5 596.5,-1214.5 772.5,-1214.5 772.5,-1264.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="772.5,-1264.5 596.5,-1264.5 596.5,-1214.5 772.5,-1214.5 772.5,-1264.5"/>
 <text text-anchor="middle" x="684.5" y="-1242.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-postgresql: Make pg_version</text>
 <text text-anchor="middle" x="684.5" y="-1231.5" font-family="Sans" font-size="10.00" fill="#000000">mandatory in schema</text>
 </a>
@@ -301,7 +301,7 @@
 <g id="node22" class="node">
 <title>configuration-modules-core#1569</title>
 <g id="a_node22"><a xlink:href="https://github.com/quattor/configuration-modules-core/issues/1569" xlink:title="configuration-modules-core#1569 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M1040.5,-1264.5C1040.5,-1264.5 899.5,-1264.5 899.5,-1264.5 893.5,-1264.5 887.5,-1258.5 887.5,-1252.5 887.5,-1252.5 887.5,-1226.5 887.5,-1226.5 887.5,-1220.5 893.5,-1214.5 899.5,-1214.5 899.5,-1214.5 1040.5,-1214.5 1040.5,-1214.5 1046.5,-1214.5 1052.5,-1220.5 1052.5,-1226.5 1052.5,-1226.5 1052.5,-1252.5 1052.5,-1252.5 1052.5,-1258.5 1046.5,-1264.5 1040.5,-1264.5"/>
+<path fill="#6e5494" stroke="#000000" d="M1040.5,-1264.5C1040.5,-1264.5 899.5,-1264.5 899.5,-1264.5 893.5,-1264.5 887.5,-1258.5 887.5,-1252.5 887.5,-1252.5 887.5,-1226.5 887.5,-1226.5 887.5,-1220.5 893.5,-1214.5 899.5,-1214.5 899.5,-1214.5 1040.5,-1214.5 1040.5,-1214.5 1046.5,-1214.5 1052.5,-1220.5 1052.5,-1226.5 1052.5,-1226.5 1052.5,-1252.5 1052.5,-1252.5 1052.5,-1258.5 1046.5,-1264.5 1040.5,-1264.5"/>
 <text text-anchor="middle" x="970" y="-1242.5" font-family="Sans" font-size="10.00" fill="#000000">ncm-postgresql: Does not work</text>
 <text text-anchor="middle" x="970" y="-1231.5" font-family="Sans" font-size="10.00" fill="#000000">with newer postgres versions</text>
 </a>
