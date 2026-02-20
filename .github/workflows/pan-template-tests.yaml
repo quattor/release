@@ -24,7 +24,7 @@ jobs:
           wget -q https://raw.githubusercontent.com/quattor/pan/master/panc/src/main/scripts/panlint/panlint.py -O /tmp/panlint.py
           chmod u+x /tmp/panlint.py
       - name: run Panlint
-        run: git diff --name-only --diff-filter=d HEAD^ | grep '\.pan$' | xargs -r /tmp/panlint.py
+        run: git diff --name-only --diff-filter=d HEAD^ | grep '\.pan$' | xargs -r /tmp/panlint.py --allow_mvn_templates
 
   indentation:
     runs-on: ubuntu-latest
