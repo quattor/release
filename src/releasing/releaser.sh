@@ -1,8 +1,8 @@
 #!/bin/bash
 
 REPOS_MVN="release aii CAF CCM cdp-listend configuration-modules-core configuration-modules-grid LC ncm-cdispd ncm-ncd ncm-query ncm-lib-blockdevices"
-REPOS_ONE_TAG="template-library-core template-library-standard template-library-examples"
-REPOS_BRANCH_TAG="template-library-os template-library-grid template-library-openstack"
+REPOS_ONE_TAG="template-library-core template-library-standard template-library-examples template-library-os template-library-grid"
+REPOS_BRANCH_TAG="template-library-openstack"
 RELEASE=""
 BUILD=""
 MAXFILES=2048
