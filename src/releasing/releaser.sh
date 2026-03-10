@@ -6,7 +6,7 @@ REPOS_BRANCH_TAG="template-library-os template-library-grid template-library-ope
 RELEASE=""
 BUILD=""
 MAXFILES=2048
-RELEASE_ROOT=$(dirname $(readlink -f "$0"))
+RELEASE_ROOT=$(dirname "$(readlink -f "$0")")
 LIBRARY_CORE_DIR=$RELEASE_ROOT/src/template-library-core
 
 if [[ $(ulimit -n) -lt $MAXFILES ]]; then
@@ -31,26 +31,28 @@ shopt -s expand_aliases
 # Update the Quattor version used by template-library-examples (SCDB-based) to the one being released
 update_examples () {
     tag=$1
-    cd template-library-examples
-    sed -i -e "s%quattor/[0-Z\.\_\-]\+\s%quattor/$tag %" $(find clusters -name cluster.build.properties)
-    git commit -a -m "Update Quattor version used by examples to ${tag}"
-    cd ..
+    (
+        cd template-library-examples || return
+        find clusters -name cluster.build.properties -print0 | xargs -0 sed -i -e "s%quattor/[0-Z\.\_\-]\+\s%quattor/$tag %"
+        git commit -a -m "Update Quattor version used by examples to ${tag}"
+    )
 }
 
 # Remove all current configuration module related templates.
 # To be used before starting the update: after the updated
 # only the obsolete configuration modules will be missing.
 clean_templates() {
-    rm -Rf ${LIBRARY_CORE_DIR}/components/*
+    rm -Rf "${LIBRARY_CORE_DIR}/components"/*
 }
 
 # Commit to template-library-core the removal of obsolete configuration modules
 remove_obsolete_components () {
-    cd ${LIBRARY_CORE_DIR}
-    #FIXME: ideally should check that there is only deleted files left
-    git add -A .
-    git commit -m 'Remove obsolete components'
-    cd ..
+    (
+        cd_or_die "${LIBRARY_CORE_DIR}"
+        #FIXME: ideally should check that there is only deleted files left
+        git add -A .
+        git commit -m 'Remove obsolete components'
+    )
 }
 
 # Update the templates related to configuration modules.
@@ -59,23 +61,23 @@ publish_templates() {
     echo_info "Publishing Component Templates"
     type=$1
     tag=$2
-    cd configuration-modules-$1
-    git checkout $tag
-    mvn -e clean compile
+    cd_or_die "configuration-modules-$1"
+    git checkout "$tag"
+    mvn-c clean compile
     # ugly hack
     if [ -d ncm-metaconfig ]; then
-        cd ncm-metaconfig
+        cd_or_die ncm-metaconfig
         mvn -e clean test
         cd ..
     fi
-    components_root=${LIBRARY_CORE_DIR}/components
-    metaconfig_root=${LIBRARY_CORE_DIR}/metaconfig
-    mkdir -p ${components_root}
-    mkdir -p ${metaconfig_root}
-    cp -r ncm-*/target/pan/components/* ${components_root}
-    cp -r ncm-metaconfig/target/pan/metaconfig/* ${metaconfig_root}
+    components_root="${LIBRARY_CORE_DIR}/components"
+    metaconfig_root="${LIBRARY_CORE_DIR}/metaconfig"
+    mkdir -p "${components_root}"
+    mkdir -p "${metaconfig_root}"
+    cp -r ncm-*/target/pan/components/* "${components_root}"
+    cp -r ncm-metaconfig/target/pan/metaconfig/* "${metaconfig_root}"
     git checkout master
-    cd ${LIBRARY_CORE_DIR}
+    cd_or_die "${LIBRARY_CORE_DIR}"
     git add .
     git commit -m "Component templates (${type}) for tag ${tag}"
     cd ..
@@ -91,7 +93,7 @@ publish_aii() {
 
     # It's better to do a rm before copying, in case a template has been suppressed.
     # For aii-core, don't delete subdirectory as some are files not coming from somewhere else...
-    rm ${dest_root}/*.pan
+    rm "$dest_root"/*.pan
 
     (
         cd aii || return
@@ -130,52 +132,52 @@ publish_aii() {
 # Build the template version.pan appropriate for the version
 update_version_file() {
     release_major=$1
-    if [ -z "$(echo $release_major | egrep 'rc[0-9]*$')" ]
-    then
-      release_minor="-1"
+    if ! echo "$release_major" | grep -E 'rc[0-9]*$'; then
+        release_minor="-1"
     else
-      release_minor="_1"
+        release_minor="_1"
     fi
     version_template=quattor/client/version.pan
-    cd ${LIBRARY_CORE_DIR}
+    (
+        cd_or_die "$LIBRARY_CORE_DIR"
 
-    cat > ${version_template} <<EOF
+        cat > ${version_template} <<EOF
 template quattor/client/version;
 
 variable QUATTOR_RELEASE ?= '${release_major}';
 variable QUATTOR_REPOSITORY_RELEASE ?= QUATTOR_RELEASE;
 variable QUATTOR_PACKAGES_VERSION ?= QUATTOR_REPOSITORY_RELEASE + '${release_minor}';
 EOF
-
-    git add .
-    git commit -m "Update Quattor version file for ${release_major}"
-    cd -
+        git add .
+        git commit -m "Update Quattor version file for ${release_major}"
+    )
 }
 
 tag_repository() {
     repo=$1
     tag=$2
-    cd ${repo}
-    #FIXME: we may want to check that the tag doesn't exist already
-    git tag -s -m "Release ${tag}" "${tag}"
-    git push origin --tags HEAD
-    cd -
+    (
+        cd_or_die "$repo"
+        #FIXME: we may want to check that the tag doesn't exist already
+        git tag -s -m "Release ${tag}" "${tag}"
+        git push origin --tags HEAD
+    )
 }
 
 tag_branches() {
     repo=$1
     version=$2
-    cd ${repo}
-    # Ignore remote HEAD symlink and branches marked as obsolete
-    branches=$(git branch -r | grep -v ' -> ' | egrep -v 'obsolete$' )
-    for branch in ${branches}
-    do
-      branch_name=$(basename ${branch})
-      tag=${branch_name}-${version}
-      git tag -s -m "Release ${version} of branch ${branch_name}" "${tag}" "${branch}"
-    done
-    git push origin --tags
-    cd -
+    (
+        cd_or_die "$repo"
+        # Ignore remote HEAD symlink and branches marked as obsolete
+        branches=$(git branch -r | grep -v ' -> ' | grep -Ev 'obsolete$' )
+        for branch in ${branches}; do
+            branch_name=$(basename "${branch}")
+            tag=${branch_name}-${version}
+            git tag -s -m "Release ${version} of branch ${branch_name}" "${tag}" "${branch}"
+        done
+        git push origin --tags
+    )
 }
 
 function echo_warning {
@@ -201,12 +203,18 @@ function exit_usage {
     exit 3
 }
 
+function cd_or_die {
+    # Change directory or die trying
+    cd "$@" || error 2 "Failed to change directory to $*"
+    return 0
+}
+
 # Check that dependencies required to perform a release are available
 missing_deps=0
 for cmd in {gpg,gpg-agent,git,mvn,createrepo,tar,sed}; do
-    hash $cmd 2>/dev/null || {
+    hash "$cmd" 2>/dev/null || {
         echo_error "Command '$cmd' is required but could not be found"
-        missing_deps=$(($missing_deps + 1))
+        missing_deps=$((missing_deps + 1))
     }
 done
 if [[ $missing_deps -gt 0 ]]; then
@@ -217,7 +225,7 @@ fi
 
 if [[ -n $1 ]]; then
     RELEASE=$1
-    if echo $RELEASE | grep -qv '^[1-9][0-9]\?\.\([1-9]\|1[012]\)\.[0-9]\+$'; then
+    if echo "$RELEASE" | grep -qv '^[1-9][0-9]\?\.\([1-9]\|1[012]\)\.[0-9]\+$'; then
         echo_error "Release version doesn't match expected format."
         exit_usage
     fi
@@ -241,33 +249,37 @@ fi
 details=""
 
 if gpg-agent; then
-    if gpg --yes --sign $0; then
+    if gpg --yes --output /tmp/"$(basename "$0")".gpg --sign "$0"; then
         echo -n "Preparing repositories for release... "
-        cd $RELEASE_ROOT
+        cd "$RELEASE_ROOT" || exit 1
         mkdir -p src/
-        cd src/
+        cd src/ || exit 1
         for r in $REPOS_MVN $REPOS_ONE_TAG $REPOS_BRANCH_TAG; do
-            if [[ ! -d $r ]]; then
-                git clone -q git@github.com:quattor/$r.git
+            if [[ ! -d "$r" ]]; then
+                git clone -q "git@github.com:quattor/$r.git"
             fi
-            cd $r
-            git branch -r | grep $RELEASE > /dev/null && git checkout -q quattor-$RELEASE || git checkout -q master
-            details="$details\n$r\t$(git branch | grep '^*')"
+            cd_or_die "$r"
+            if git branch -r | grep -q "$RELEASE"; then
+                git checkout -q "quattor-$RELEASE"
+            else
+                git checkout -q master
+            fi
+            details="$details\n$r\t$(git branch | grep '^\*')"
             cd ..
         done
         echo "Done."
         echo
-        echo -e $details | column -t
+        echo -e "$details" | column -t
         echo
         echo "We will build $VERSION from the branches shown above, continue with release? yes/NO"
         echo -n "> "
-        read prompt
+        read -r prompt
         if [[ $prompt == "yes" ]]; then
             for r in $REPOS_MVN; do
                 echo_info "---------------- Releasing $r ----------------"
-                cd $r
-                mvn -e -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion="$VERSION" clean release:prepare
-                if [[ $? -gt 0 ]]; then
+                cd_or_die "$r"
+                mvn_prepare="mvn -e -q -DautoVersionSubmodules=true -Dgpg.useagent=true -Darguments=-Dgpg.useagent=true -B -DreleaseVersion=$VERSION clean release:prepare"
+                if ! $mvn_prepare; then
                     echo_error "RELEASE FAILURE"
                     exit 1
                 fi
@@ -277,31 +289,31 @@ if gpg-agent; then
 
             echo_success "---------------- Releases complete, building YUM repositories ----------------"
 
-            cd $RELEASE_ROOT
+            cd "$RELEASE_ROOT" || exit 1
             mkdir -p target/
 
             echo_info "Collecting RPMs"
-            mkdir -p target/$VERSION
-            find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ target/$VERSION/
+            mkdir -p "target/$VERSION"
+            find src/ -type f -name \*.rpm | grep /target/rpm/ | xargs -I @ cp @ "target/$VERSION/"
 
-            cd target/
+            cd target/ || exit 1
 
             echo_info "Signing RPMs"
-            rpm --resign $VERSION/*.rpm
+            rpm --resign "$VERSION"/*.rpm
 
             echo_info "Creating repository"
-            createrepo -s sha $VERSION/
+            createrepo -s sha "$VERSION/"
 
             echo_info "Signing repository"
-            gpg --detach-sign --armor $VERSION/repodata/repomd.xml
+            gpg --detach-sign --armor "$VERSION/repodata/repomd.xml"
 
             echo_info "Creating repository tarball"
-            tar -cjf quattor-$VERSION.tar.bz2 $VERSION/
+            tar -cjf "quattor-$VERSION.tar.bz2" "$VERSION/"
             echo_info "Repository tarball built: target/quattor-$VERSION.tar.bz2"
 
             echo_success "---------------- YUM repositories complete, tagging git repositories ----------------"
 
-            cd $RELEASE_ROOT/src
+            cd_or_die "$RELEASE_ROOT/src"
 
             echo_info "---------------- Updating template-library-core  ----------------"
             clean_templates
@@ -321,17 +333,15 @@ if gpg-agent; then
             update_version_file "$VERSION" && echo_info "    Quattor version template sucessfully updated"
 
             echo_info "Updating examples"
-            update_examples $VERSION
+            update_examples "$VERSION"
 
             echo_info "    Tagging template library repositories..."
             #FIXME: ideally tag should be configurable but for now there is only template-library repos
-            for repo in $REPOS_ONE_TAG
-            do
-                tag_repository $repo "$VERSION" && echo_info "    Tagged $repo"
+            for repo in $REPOS_ONE_TAG; do
+                tag_repository "$repo" "$VERSION" && echo_info "    Tagged $repo"
             done
-            for repo in $REPOS_BRANCH_TAG
-            do
-                tag_branches $repo  "$VERSION" && echo_info "    Tagged branches in $repo"
+            for repo in $REPOS_BRANCH_TAG; do
+                tag_branches "$repo" "$VERSION" && echo_info "    Tagged branches in $repo"
             done
 
             echo_success "---------------- Update of template-library-core successfully completed ----------------"
