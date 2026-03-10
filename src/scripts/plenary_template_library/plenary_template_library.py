@@ -124,7 +124,7 @@ def sync_template_library(base_dir, releases):
                     source = temp_dir + sep
                     target = target_dir + sep
                     logger.info('  rsyncing tag from %s to %s', source, target)
-                    execute([BIN_RSYNC, '-rtx', '--exclude=.*', source, target])
+                    execute([BIN_RSYNC, '-rtlx', '--exclude=.*', source, target])
 
         chdir(base_dir)
         try:
