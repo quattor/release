@@ -789,7 +789,7 @@
 <g id="node57" class="node">
 <title>release#379</title>
 <g id="a_node57"><a xlink:href="https://github.com/quattor/release/pull/379" xlink:title="release#379 (pull-request)" target="_parent">
-<polygon fill="#6cc644" stroke="#000000" points="767.5,-377.5 600.5,-377.5 600.5,-327.5 767.5,-327.5 767.5,-377.5"/>
+<polygon fill="#6e5494" stroke="#000000" points="767.5,-377.5 600.5,-377.5 600.5,-327.5 767.5,-327.5 767.5,-377.5"/>
 <text text-anchor="middle" x="684" y="-355.5" font-family="Sans" font-size="10.00" fill="#000000">Update tooling to reflect</text>
 <text text-anchor="middle" x="684" y="-344.5" font-family="Sans" font-size="10.00" fill="#000000">changes to repository branching</text>
 </a>
@@ -799,7 +799,7 @@
 <g id="node58" class="node">
 <title>release#375</title>
 <g id="a_node58"><a xlink:href="https://github.com/quattor/release/issues/375" xlink:title="release#375 (issue)" target="_parent">
-<path fill="#6cc644" stroke="#000000" d="M1036.5,-377C1036.5,-377 901.5,-377 901.5,-377 895.5,-377 889.5,-371 889.5,-365 889.5,-365 889.5,-328 889.5,-328 889.5,-322 895.5,-316 901.5,-316 901.5,-316 1036.5,-316 1036.5,-316 1042.5,-316 1048.5,-322 1048.5,-328 1048.5,-328 1048.5,-365 1048.5,-365 1048.5,-371 1042.5,-377 1036.5,-377"/>
+<path fill="#6e5494" stroke="#000000" d="M1036.5,-377C1036.5,-377 901.5,-377 901.5,-377 895.5,-377 889.5,-371 889.5,-365 889.5,-365 889.5,-328 889.5,-328 889.5,-322 895.5,-316 901.5,-316 901.5,-316 1036.5,-316 1036.5,-316 1042.5,-316 1048.5,-322 1048.5,-328 1048.5,-328 1048.5,-365 1048.5,-365 1048.5,-371 1042.5,-377 1036.5,-377"/>
 <text text-anchor="middle" x="969" y="-355" font-family="Sans" font-size="10.00" fill="#000000">releaser/packager: Update to</text>
 <text text-anchor="middle" x="969" y="-344" font-family="Sans" font-size="10.00" fill="#000000">handle the modified repository</text>
 <text text-anchor="middle" x="969" y="-333" font-family="Sans" font-size="10.00" fill="#000000">structure</text>
