@@ -451,7 +451,7 @@ do
         branch_dir=${tag_dir}
       fi
       # If branch_dir is not tag_dir or main, indicates a repository without a main
-      # branch (e.g. template-library-grid). In this case, pr_actual_target must be
+      # branch (e.g. template-library-openstack). In this case, pr_actual_target must be
       # redefined as branch_dir-tag_dir, as the tag name is prefixed by the branch name (branch_dir).
       if [ "${branch_dir}" != "main" ] && [ "${branch_dir}" != "${tag_dir}" ]
       then
